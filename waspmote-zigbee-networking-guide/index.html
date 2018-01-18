@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="profile" href="http://gmpg.org/xfn/11">
+    <link rel="pingback" href="http://ms.nala.ga/xmlrpc.php">
+
+<title>Waspmote ZigBee Networking Guide | All About MS CCL Contents</title>
+<meta name='robots' content='noindex,follow' />
+
+<!-- All in One SEO Pack 2.4.4 by Michael Torbert of Semper Fi Web Design[276,349] -->
+<meta name="description"  content="3줄 요약 -1 :이 모듈에서는 기능을 사용할 수 없습니다.전원을 껐다 켠 후에 매 ...중략... 사항을 저장하려면 writeValues() 함수를 실행해야합니다.사용예{ Monitoring and Control Number of devices for Network Waspmote ZigBee Networking Guide XBee 모듈 정보 및 종류 XBee 모듈 종류 XBee 모듈은 크게 Series1과 Series2 두 종류로 나눌 수 있다. 두 시리즈 제품은 기본적으로 동일한 특징들을 많이 가지고 있지만 몇 가지에서 서로 다른 차이점을 보이는 데 먼저 S1" />
+<meta name="robots" content="index,nofollow" />
+
+<link rel="canonical" href="http://ms.nala.ga/waspmote-zigbee-networking-guide/" />
+<!-- /all in one seo pack -->
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="All About MS CCL Contents &raquo; 피드" href="http://ms.nala.ga/feed/" />
+<link rel="alternate" type="application/rss+xml" title="All About MS CCL Contents &raquo; 댓글 피드" href="http://ms.nala.ga/comments/feed/" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.3\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.3\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/ms.nala.ga\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.8.5"}};
+			!function(a,b,c){function d(a){var b,c,d,e,f=String.fromCharCode;if(!k||!k.fillText)return!1;switch(k.clearRect(0,0,j.width,j.height),k.textBaseline="top",k.font="600 32px Arial",a){case"flag":return k.fillText(f(55356,56826,55356,56819),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,56826,8203,55356,56819),0,0),c=j.toDataURL(),b!==c&&(k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447),0,0),c=j.toDataURL(),b!==c);case"emoji4":return k.fillText(f(55358,56794,8205,9794,65039),0,0),d=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55358,56794,8203,9794,65039),0,0),e=j.toDataURL(),d!==e}return!1}function e(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i,j=b.createElement("canvas"),k=j.getContext&&j.getContext("2d");for(i=Array("flag","emoji4"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='bootstrap-css-css'  href='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/css/bootstrap.min.css?ver=3.3.5' type='text/css' media='all' />
+<link rel='stylesheet' id='font-awesome-css-css'  href='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/css/font-awesome.min.css?ver=4.4.0' type='text/css' media='all' />
+<link rel='stylesheet' id='shaped-blog-stylesheet-css'  href='http://ms.nala.ga/wp-content/themes/shaped-blog/style.css?ver=4.8.5' type='text/css' media='all' />
+<link rel='stylesheet' id='responsive-css-css'  href='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/css/responsive.css' type='text/css' media='all' />
+<script type='text/javascript' src='http://ms.nala.ga/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
+<script type='text/javascript' src='http://ms.nala.ga/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+<link rel='https://api.w.org/' href='http://ms.nala.ga/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://ms.nala.ga/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://ms.nala.ga/wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='Waspmote 802.15.4' href='http://ms.nala.ga/waspmote-802-15-4/' />
+<link rel='next' title='스타워즈 배틀프론트 2' href='http://ms.nala.ga/%ec%8a%a4%ed%83%80%ec%9b%8c%ec%a6%88-%eb%b0%b0%ed%8b%80%ed%94%84%eb%a1%a0%ed%8a%b8-2/' />
+<meta name="generator" content="WordPress 4.8.5" />
+<link rel='shortlink' href='http://ms.nala.ga/?p=11424' />
+<link rel="alternate" type="application/json+oembed" href="http://ms.nala.ga/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fms.nala.ga%2Fwaspmote-zigbee-networking-guide%2F" />
+<link rel="alternate" type="text/xml+oembed" href="http://ms.nala.ga/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fms.nala.ga%2Fwaspmote-zigbee-networking-guide%2F&#038;format=xml" />
+
+	<style>
+
+		/* Border Color */
+		.btn-social:hover,
+		blockquote,
+		#respond input:focus[type="text"], 
+	    #respond input:focus[type="email"], 
+	    #respond input:focus[type="url"],
+	    #respond textarea:focus,
+	    #comments .comment-reply a:hover
+		{
+			border-color: ;
+		}
+
+		
+		/* Background Color */
+		.scroll-up a,
+		.btn-social:hover,
+		button,
+		input[type="button"],
+		input[type="reset"],
+		input[type="submit"],
+		.navbar-default .navbar-nav .dropdown-menu li a:hover, .dropdown-menu li a:focus, .navbar-default .navbar-nav .dropdown-menu .active a,
+		.pagination>li>a:focus, .pagination>li>a:hover, .pagination>li>span:focus, .pagination>li>span:hover, .pagination li .current,
+		.next-previous-posts .next-post a:hover,
+		.next-previous-posts .previous-post a:hover,
+		.btn-goback,
+		.btn-submit,
+		a.more-link,
+		.featured-post .fa,
+		#comments .comment-reply a:hover,
+		.widget .tagcloud a
+		{
+			background-color: ;
+		}
+
+		
+		/* Color */
+		.text-logo a,
+		.navbar-default .navbar-nav .active a, .navbar-default .navbar-nav .active a:hover, .navbar-default .navbar-nav .active a:focus,
+		.navbar-default .navbar-nav li a:hover, .navbar-default .navbar-nav li a:focus,
+		a:hover,
+    	a:focus,
+		.next-previous-posts .previous-post a,
+		.next-previous-posts .next-post a,
+		.pagination>li>a, .pagination>li>span,
+		#comments .comment-author a:hover, 
+    	#respond .logged-in-as a:hover,
+    	#wp-calendar a,
+    	h2.entry-title a:hover
+		{
+			color: ;
+		}
+
+
+		/* A Color */
+		a{
+			color: ;
+		}
+
+		/* a:hover Color */
+		a:hover,
+		a:focus,
+		a:active,
+		.widget a:hover,
+		.post .post-content .entry-meta ul li a:hover
+		{
+			color: ;
+		}
+
+		/* .featured-post .fa:after*/
+		.featured-post .fa:after{
+			border-color:   transparent ;
+		}
+
+
+		
+
+	</style>
+</head>
+
+<body class="post-template-default single single-post postid-11424 single-format-standard">
+
+    <div id="st-preloader">
+        <div id="pre-status">
+            <div class="preload-placeholder"></div>
+        </div>
+    </div>
+<!-- /Preloader -->
+
+<header id="header">	
+	<div id="trueHeader">
+    	<div class="wrapper">
+            <div class="container">
+            	<!-- Menu -->
+            	<div class="menu_main">
+                	<div class="navbar blogx-navbar navbar-default">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#st-navber-collapse">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+
+                                                            <div class="text-logo">
+                                    <a href="http://ms.nala.ga">All About MS CCL Contents</a>
+                                    <p>All About MS CCL Contents</p>
+                                </div><!-- /Logo -->
+                                                    </div>
+                      
+                        <div id="st-navber-collapse" class="navbar-collapse collapse pull-right">
+                             
+                        </div>
+                    </div>
+            	</div><!-- end menu -->
+        	</div> <!-- /.container -->
+    	</div>
+	</div>
+	<DIV class='ads_adsense_img' style='margin:40px 0px 40px 0px;'>
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<!-- only display -->
+	<ins class="adsbygoogle"
+	     style="display:block"
+	     data-ad-client="ca-pub-8393857339019314"
+	     data-ad-slot="7474886381"
+	     data-ad-format="auto"></ins>
+	<script>
+	(adsbygoogle = window.adsbygoogle || []).push({});
+	</script>
+	</DIV>	
+
+</header>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div id="primary" class="content-area">
+                    <main id="main" class="site-main" role="main">
+
+                        
+                                <article id="post-11424" class="post-11424 post type-post status-publish format-standard hentry category-uncategorized tag-guide tag-networking tag-waspmote tag-zigbee">
+    <header class="entry-header">
+        
+        
+    </header> <!--/.entry-header -->
+
+    <div class="clearfix post-content media">
+
+        <h2 class="entry-title">
+            Waspmote ZigBee Networking Guide        </h2> <!-- //.entry-title -->
+
+        <div class="clearfix entry-meta">
+            
+            <ul class="list-inline">
+                <li>
+                    <span class="author vcard">
+                        By <a class="url fn n" href="http://ms.nala.ga/author/admin/">admin</a>                    </span>
+                </li>
+                <li>
+                    on <span class="posted-on">1월 13, 2018</span>
+                </li>
+                                    <li>
+                        in <span class="posted-in">
+                            <a href="http://ms.nala.ga/category/uncategorized/" rel="category tag">미분류</a>                        </span>
+                    </li>
+                            </ul>
+                </div> <!--/.entry-meta -->
+        
+        <div class="entry-summary">
+            <p><img src='//172.27.42.57/mediawiki/images/f/ff/Series1.png' style='max-width:250px;min-width:0px;' onError='this.style.display="none"' /></p>
+<h1>3줄 요약 </h1>
+<div style='color:#fff;background-color:#000;border-radius:10px;'>
+<ol>
+<li><span>-1 :이 모듈에서는 기능을 사용할 수 없습니다.전원을 껐다 켠 후에 매 <small>&#8230;중략&#8230;</small> 사항을 저장하려면 writeValues() 함수를 실행해야합니다.사용예{</span></li>
+<li><span>Monitoring and Control</span></li>
+<li><span>Number of devices for Network</span></li>
+</ol>
+</div>
+<p><span id="more-11424"></span></p>
+<p><iframe src='http://ad.selfhow.com/rd' width='100%' border=0 frameborder=0 style='height:auto;width:100%'></iframe></p>
+<hr />
+<h1>Waspmote ZigBee Networking Guide</h1>
+<h1> XBee 모듈 정보 및 종류 </h1>
+<h3 data-parsoid='{"dsr":[23,41,3,3]}' id="XBee_.EB.AA.A8.EB.93.88_.EC.A2.85.EB.A5.98"> XBee 모듈 종류 </h3>
+<p data-parsoid='{"dsr":[42,478,0,0]}'>XBee 모듈은 크게 Series1과 Series2 두 종류로 나눌 수 있다. 두 시리즈 제품은 기본적으로 동일한 특징들을 많이 가지고 있지만 몇 가지에서 서로 다른 차이점을 보이는 데 먼저 S1 같은 경우에는 별도의 설정이 필요하지 않기 때문에 즉시에 사용할 수 있다는 편리성이 있으며 IEE 802.15.4 프로토콜을 사용한다. 이 프로토콜은 무선 개인 영역 네트워크로 노드 사이의 데이터 처리를 1초당 250kbps까지 제공하는 특징이 있다. 또한 네트워크 토폴로지의 경우에는 P2P 또는 스타 네트워크 사용이 가능하다. 반면에 S2의 경우에는 802.15.4 프로토콜에 네트워크 계층과 응용 계층을 더 추가한 지그비 프로토콜을 지원한다. 이로 인해 초기에 사용하기 위해서는 별도의 설정이 필요하며 더 적은 전력으로 사용할 수 있고 추가적인 기능과 네트워크 사용이 가능하다.</p>
+<table class="wikitable" data-parsoid='{"dsr":[479,854,20,2]}'>
+<tbody data-parsoid='{"dsr":[500,852,0,0]}'>
+<tr data-parsoid='{"autoInsertedEnd":true,"autoInsertedStart":true,"dsr":[500,521,0,0]}'>
+<th data-parsoid='{"autoInsertedEnd":true,"dsr":[500,503,1,0]}'>구분</th>
+<th data-parsoid='{"autoInsertedEnd":true,"dsr":[504,512,1,0]}'>Series1</th>
+<th data-parsoid='{"autoInsertedEnd":true,"dsr":[513,521,1,0]}'>Series2</th>
+</tr>
+<tr data-parsoid='{"startTagSrc":"|-","autoInsertedEnd":true,"dsr":[522,582,2,0]}'>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[525,528,1,0]}'>형태</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[529,555,1,0]}'>
+<figure class="mw-default-size mw-halign-none" data-parsoid='{"optList":[{"ck":"none","ak":"없음"},{"ck":"thumbnail","ak":"섬네일"}],"dsr":[530,555,2,2]}' data-ve-attributes='{"typeof":"mw:Image/Thumb"}' typeof="mw:Image/Thumb"><a data-parsoid='{"a":{"href":"./파일:Series1.png"},"sa":{"href":"파일:Series1.png"},"dsr":[532,553,null,null]}' href="http://172.27.42.57/mediawiki/index.php/%ED%8C%8C%EC%9D%BC:Series1.png"><img data-file-height="159" data-file-type="bitmap" data-file-width="176" data-parsoid='{"a":{"resource":"./파일:Series1.png","height":"159","width":"176"},"sa":{"resource":"파일:Series1.png"}}' data-ve-attributes='{"resource":"./파일:Series1.png"}' height="159" resource="./파일:Series1.png" src="//172.27.42.57/mediawiki/images/f/ff/Series1.png" width="176"/></a></figure>
+</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[556,582,1,0]}'>
+<figure class="mw-default-size mw-halign-none" data-parsoid='{"optList":[{"ck":"none","ak":"없음"},{"ck":"thumbnail","ak":"섬네일"}],"dsr":[557,582,2,2]}' data-ve-attributes='{"typeof":"mw:Image/Thumb"}' typeof="mw:Image/Thumb"><a data-parsoid='{"a":{"href":"./파일:Series2.png"},"sa":{"href":"파일:Series2.png"},"dsr":[559,580,null,null]}' href="http://172.27.42.57/mediawiki/index.php/%ED%8C%8C%EC%9D%BC:Series2.png"><img data-file-height="147" data-file-type="bitmap" data-file-width="168" data-parsoid='{"a":{"resource":"./파일:Series2.png","height":"147","width":"168"},"sa":{"resource":"파일:Series2.png"}}' data-ve-attributes='{"resource":"./파일:Series2.png"}' height="147" resource="./파일:Series2.png" src="//172.27.42.57/mediawiki/images/5/5f/Series2.png" width="168"/></a></figure>
+</td>
+</tr>
+<tr data-parsoid='{"startTagSrc":"|-","autoInsertedEnd":true,"dsr":[583,614,2,0]}'>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[586,591,1,0]}'>통신규약</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[592,606,1,0]}'>IEEE 802.15.4</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[607,614,1,0]}'>Zigbee</td>
+</tr>
+<tr data-parsoid='{"startTagSrc":"|-","autoInsertedEnd":true,"dsr":[615,695,2,0]}'>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[618,623,1,0]}'>토폴로지</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[624,659,1,0]}'>
+<figure class="mw-default-size mw-halign-none" data-parsoid='{"optList":[{"ck":"none","ak":"없음"},{"ck":"thumbnail","ak":"섬네일"}],"dsr":[625,659,2,2]}' data-ve-attributes='{"typeof":"mw:Image/Thumb"}' typeof="mw:Image/Thumb"><a data-parsoid='{"a":{"href":"./파일:Series1-topology.png"},"sa":{"href":"파일:Series1-topology.png"},"dsr":[627,657,null,null]}' href="http://172.27.42.57/mediawiki/index.php/%ED%8C%8C%EC%9D%BC:Series1-topology.png"><img data-file-height="419" data-file-type="bitmap" data-file-width="263" data-parsoid='{"a":{"resource":"./파일:Series1-topology.png","height":"419","width":"263"},"sa":{"resource":"파일:Series1-topology.png"}}' data-ve-attributes='{"resource":"./파일:Series1-topology.png"}' height="419" resource="./파일:Series1-topology.png" src="//172.27.42.57/mediawiki/images/1/16/Series1-topology.png" width="263"/></a></figure>
+</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[660,695,1,0]}'>
+<figure class="mw-default-size mw-halign-none" data-parsoid='{"optList":[{"ck":"none","ak":"없음"},{"ck":"thumbnail","ak":"섬네일"}],"dsr":[661,695,2,2]}' data-ve-attributes='{"typeof":"mw:Image/Thumb"}' typeof="mw:Image/Thumb"><a data-parsoid='{"a":{"href":"./파일:Seriel2-topology.png"},"sa":{"href":"파일:Seriel2-topology.png"},"dsr":[663,693,null,null]}' href="http://172.27.42.57/mediawiki/index.php/%ED%8C%8C%EC%9D%BC:Seriel2-topology.png"><img data-file-height="659" data-file-type="bitmap" data-file-width="258" data-parsoid='{"a":{"resource":"./파일:Seriel2-topology.png","height":"659","width":"258"},"sa":{"resource":"파일:Seriel2-topology.png"}}' data-ve-attributes='{"resource":"./파일:Seriel2-topology.png"}' height="659" resource="./파일:Seriel2-topology.png" src="//172.27.42.57/mediawiki/images/d/d1/Seriel2-topology.png" width="258"/></a></figure>
+</td>
+</tr>
+<tr data-parsoid='{"startTagSrc":"|-","autoInsertedEnd":true,"dsr":[696,717,2,0]}'>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[699,707,1,0]}'>실내 통신거리</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[708,712,1,0]}'>30m</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[713,717,1,0]}'>40m</td>
+</tr>
+<tr data-parsoid='{"startTagSrc":"|-","autoInsertedEnd":true,"dsr":[718,741,2,0]}'>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[721,729,1,0]}'>실외 통신거리</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[730,735,1,0]}'>100m</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[736,741,1,0]}'>120m</td>
+</tr>
+<tr data-parsoid='{"startTagSrc":"|-","autoInsertedEnd":true,"dsr":[742,770,2,0]}'>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[745,750,1,0]}'>공급전압</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[751,760,1,0]}'>2.8~3.4V</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[761,770,1,0]}'>2.8~3.6V</td>
+</tr>
+<tr data-parsoid='{"startTagSrc":"|-","autoInsertedEnd":true,"dsr":[771,791,2,0]}'>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[774,779,1,0]}'>공급전류</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[780,785,1,0]}'>45mA</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[786,791,1,0]}'>40mA</td>
+</tr>
+<tr data-parsoid='{"startTagSrc":"|-","autoInsertedEnd":true,"dsr":[792,851,2,0]}'>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[795,800,1,0]}'>통신종류</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[801,817,1,0]}'>일대일 통신, 스타방식 통신</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[818,851,1,0]}'>일대일 통신, 스타방식 통신, 메쉬네트워크, 멀티 홉 통신</td>
+</tr>
+</tbody>
+</table>
+<p data-parsoid='{"dsr":[855,1004,0,0]}'>XBee 모듈은 일반 모듈과 프로 모듈로도 구분할 수 있다. 두 모듈의 차이는 크기와 무선전력의 차이가 있으며 작동과 기능은 거의 동일하다고 볼 수 있다. 프로 모듈의 경우 일반 모듈보다 크기가 크고 소비전력을 많이 소비하며 그만큼 더 먼 거리까지의 통신을 지원한다.</p>
+<p data-parsoid='{"dsr":[1006,1241,0,0]}'>마지막으로 XBee 모듈은 안테나를 통해서도 구분할 수 있는데 사실 안테나 종류에 따른 다양한 모델들이 있긴 하지지만 성능을 따져봤을 때 큰 의미는 없다. 즉 어떤 제품이든지 간에 잘 동작한다는 소리이다. 물론 안테나 유무에 따라서 신호의 세기를 감지하는 패턴이 달라지기 때문에 사용 용도에 따라 구분할 수 있겠지만 이 또한 그다지 큰 성능 향상을 기대하기 힘들다. 따라서 이 부분은 개인의 취향대로 구매하면 될 듯하다.</p>
+<h3 data-parsoid='{"dsr":[1243,1261,3,3]}' id="XBee_.ED.86.B5.EC.8B.A0_.EB.AA.A8.EB.93.9C"> XBee 통신 모드 </h3>
+<p data-parsoid='{"dsr":[1262,1675,0,0]}'>XBee모듈은 AT모드와 API모드를 모두 지원한다. 먼저 AT모드의 경우 전달 모드(Transpatent)라고도 불리며 간단하게 메시지 데이터를 보내고 받을 수 있다. 쉽게 말해 RX와 TX를 통해 데이터를 주고받는 직렬 데이터의 단순한 전송과 수신이 가능해진다. 따라서 별도의 프로그래밍이나 패키지화가 필요하지 않으며 간단하게 무선 통신을 진행할 수 있다는 장점이 있다. 반면에 API모드의 경우에는 AT모드에서 주고받는 직렬 데이터뿐만 아니라 도착 주소, 패킷 형태, 신호 강도 등의 정보를 같이 패키지화하여 전송한다. 이는 사용자가 필요로 하는 다양한 정보를 설정을 통해 데이터와 함께 보낼 수 있는 개념으로 각 노드간에 유연성있고 다이나믹한 통신망을 구축할 수 있게 해주며 상화에 따라 신뢰성 또한 크게 향상시킬 수 있게 해준다.</p>
+<p data-parsoid='{"dsr":[1677,1827,0,0]}'>두 노드간 서로 통신을 설정할 때는 양측이 모두 같은 모드일 필요는 없으며 API 모드에서 AT모드로 데이터 전송이 가능하고 그 반대도 가능하다. 모드는 XBee 모듈 사이에서 결정하는 것이 아니라 메인 컨트롤러와 XBee 모뎀 사이의 연결을 정의하는 것이기 때문이다.</p>
+<h3 data-parsoid='{"dsr":[1829,1846,3,3]}' id="XBee_.ED.95.80_.EB.B0.B0.EC.B9.98"> XBee 핀 배치 </h3>
+<figure class="mw-halign-none" data-parsoid='{"optList":[{"ck":"none","ak":"없음"},{"ck":"thumbnail","ak":"섬네일"},{"ck":"width","ak":"792x792픽셀"}],"dsr":[1847,1883,2,2]}' data-ve-attributes='{"typeof":"mw:Image/Thumb"}' typeof="mw:Image/Thumb"><a data-parsoid='{"a":{"href":"./파일:Xbee-pin.png"},"sa":{"href":"파일:Xbee-pin.png"},"dsr":[1849,1881,null,null]}' href="http://172.27.42.57/mediawiki/index.php/%ED%8C%8C%EC%9D%BC:Xbee-pin.png"><img data-file-height="658" data-file-type="bitmap" data-file-width="792" data-parsoid='{"a":{"resource":"./파일:Xbee-pin.png","height":"658","width":"792"},"sa":{"resource":"파일:Xbee-pin.png"}}' data-ve-attributes='{"resource":"./파일:Xbee-pin.png"}' height="658" resource="./파일:Xbee-pin.png" src="//172.27.42.57/mediawiki/images/1/1c/Xbee-pin.png" width="792"/></a></figure>
+<p data-parsoid='{"dsr":[1884,1895,0,0]}'>1) DOUT/DIN</p>
+<p data-parsoid='{"dsr":[1897,1982,0,0]}'>직렬데이터 송수신 핀. 이 데이터는 XBee의 환경 설정을 설정하고 읽을 수 있으며 기본 데이터 속도는 비동기 직렬 통신을 사용하여 9600baud이다.</p>
+<p data-parsoid='{"dsr":[1984,1998,0,0]}'>2) CTS/RTS/DTR</p>
+<p data-parsoid='{"dsr":[2000,2081,0,0]}'>일반적으로 XBee 모듈에 펌웨어 업데이트를 다운로드할 때 사용되며 오직 Serial 통신을 활용한 XBee 어댑터 보드를 사용할 때만 동작한다.</p>
+<p data-parsoid='{"dsr":[2083,2089,0,0]}'>3) DIO</p>
+<p data-parsoid='{"dsr":[2091,2138,0,0]}'>표준 3.3V 디지털 입력 및 출력으로 사용되며 핀의 상태의 설정을 조절할 수 있다.</p>
+<p data-parsoid='{"dsr":[2140,2145,0,0]}'>4) AD</p>
+<p data-parsoid='{"dsr":[2147,2223,0,0]}'>10비트의 아날로그를 디지털로 변환하여 XBee에 입력하는 역할을 하며 값을 읽을 수는 없지만  전압의 양(PWM)으로 나타낼 수 있다.</p>
+<p data-parsoid='{"dsr":[2225,2232,0,0]}'>5) RSSI</p>
+<p data-parsoid='{"dsr":[2234,2264,0,0]}'>PWM 출력으로 수신된 신호의 강도를 확인할 수 있다.</p>
+<p data-parsoid='{"dsr":[2266,2272,0,0]}'>6) PWM</p>
+<p data-parsoid='{"dsr":[2274,2322,0,0]}'>아날로그 출력에 사용할 수 있는 10비트 펄스 폭 변조 출력을 위해 설정 할 수 있다.</p>
+<p data-parsoid='{"dsr":[2324,2332,0,0]}'>7) ASSOC</p>
+<p data-parsoid='{"dsr":[2334,2383,0,0]}'>XBee가 기존의 네트워크에 가입할 수 있도록 설정하고 할당할 수 있는 매개 변수 이다.</p>
+<table class="wikitable" data-parsoid='{"dsr":[2384,3537,20,2]}'>
+<tbody data-parsoid='{"dsr":[2405,3535,0,0]}'>
+<tr data-parsoid='{"autoInsertedEnd":true,"autoInsertedStart":true,"dsr":[2405,2440,0,0]}'>
+<th data-parsoid='{"autoInsertedEnd":true,"dsr":[2405,2410,1,0]}'>Pin#</th>
+<th data-parsoid='{"autoInsertedEnd":true,"dsr":[2411,2416,1,0]}'>Name</th>
+<th data-parsoid='{"autoInsertedEnd":true,"dsr":[2417,2427,1,0]}'>Direction</th>
+<th data-parsoid='{"autoInsertedEnd":true,"dsr":[2428,2440,1,0]}'>Description</th>
+</tr>
+<tr data-parsoid='{"startTagSrc":"|-","autoInsertedEnd":true,"dsr":[2441,2469,2,0]}'>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[2444,2446,1,0]}'>1</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[2447,2451,1,0]}'>VCC</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[2452,2455,1,0]}'> &#8211;</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[2456,2469,1,0]}'>Power supply</td>
+</tr>
+<tr data-parsoid='{"startTagSrc":"|-","autoInsertedEnd":true,"dsr":[2470,2504,2,0]}'>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[2473,2475,1,0]}'>2</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[2476,2481,1,0]}'>DOUT</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[2482,2489,1,0]}'>Output</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[2490,2504,1,0]}'>UART Data Out</td>
+</tr>
+<tr data-parsoid='{"startTagSrc":"|-","autoInsertedEnd":true,"dsr":[2505,2543,2,0]}'>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[2508,2510,1,0]}'>3</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[2511,2522,1,0]}'>DIN/CONFIG</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[2523,2529,1,0]}'>Input</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[2530,2543,1,0]}'>UART Data In</td>
+</tr>
+<tr data-parsoid='{"startTagSrc":"|-","autoInsertedEnd":true,"dsr":[2544,2581,2,0]}'>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[2547,2549,1,0]}'>4</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[2550,2555,1,0]}'>DO8*</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[2556,2563,1,0]}'>Output</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[2564,2581,1,0]}'>Digital Output 8</td>
+</tr>
+<tr data-parsoid='{"startTagSrc":"|-","autoInsertedEnd":true,"dsr":[2582,2652,2,0]}'>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[2585,2587,1,0]}'>5</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[2588,2594,1,0]}'>RESET</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[2595,2601,1,0]}'>Input</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[2602,2652,1,0]}'>Module Reset(reset pulse must be at least 200 ns)</td>
+</tr>
+<tr data-parsoid='{"startTagSrc":"|-","autoInsertedEnd":true,"dsr":[2653,2722,2,0]}'>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[2656,2658,1,0]}'>6</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[2659,2669,1,0]}'>PWM0/RSSI</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[2670,2677,1,0]}'>Output</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[2678,2722,1,0]}'>PWM output 0 / RX Signal Strength Indicator</td>
+</tr>
+<tr data-parsoid='{"startTagSrc":"|-","autoInsertedEnd":true,"dsr":[2723,2756,2,0]}'>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[2726,2728,1,0]}'>7</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[2729,2734,1,0]}'>PWM1</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[2735,2742,1,0]}'>Output</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[2743,2756,1,0]}'>PWM Output 1</td>
+</tr>
+<tr data-parsoid='{"startTagSrc":"|-","autoInsertedEnd":true,"dsr":[2757,2794,2,0]}'>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[2760,2762,1,0]}'>8</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[2763,2774,1,0]}'>[reserved]</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[2775,2778,1,0]}'> &#8211;</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[2779,2794,1,0]}'>Do not connect</td>
+</tr>
+<tr data-parsoid='{"startTagSrc":"|-","autoInsertedEnd":true,"dsr":[2795,2868,2,0]}'>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[2798,2800,1,0]}'>9</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[2801,2818,1,0]}'>DTR/SLEEP_RQ/DI8</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[2819,2825,1,0]}'>Input</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[2826,2868,1,0]}'>Pin Sleep Control Line or Digital Input 8</td>
+</tr>
+<tr data-parsoid='{"startTagSrc":"|-","autoInsertedEnd":true,"dsr":[2869,2892,2,0]}'>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[2872,2875,1,0]}'>10</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[2876,2880,1,0]}'>GND</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[2881,2884,1,0]}'> &#8211;</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[2885,2892,1,0]}'>Ground</td>
+</tr>
+<tr data-parsoid='{"startTagSrc":"|-","autoInsertedEnd":true,"dsr":[2893,2950,2,0]}'>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[2896,2899,1,0]}'>11</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[2900,2909,1,0]}'>AD4/DIO4</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[2910,2917,1,0]}'>Either</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[2918,2950,1,0]}'>Analog Input 4 or Digital I/O 4</td>
+</tr>
+<tr data-parsoid='{"startTagSrc":"|-","autoInsertedEnd":true,"dsr":[2951,3020,2,0]}'>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[2954,2957,1,0]}'>12</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[2958,2967,1,0]}'>CTS/DIO7</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[2968,2975,1,0]}'>Either</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[2976,3020,1,0]}'>Clear-to-Send Flow Control or Digital I/O 7</td>
+</tr>
+<tr data-parsoid='{"startTagSrc":"|-","autoInsertedEnd":true,"dsr":[3021,3070,2,0]}'>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[3024,3027,1,0]}'>13</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[3028,3037,1,0]}'>ON/SLEEP</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[3038,3045,1,0]}'>Output</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[3046,3070,1,0]}'>Module Status Indicator</td>
+</tr>
+<tr data-parsoid='{"startTagSrc":"|-","autoInsertedEnd":true,"dsr":[3071,3124,2,0]}'>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[3074,3077,1,0]}'>14</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[3078,3083,1,0]}'>VREF</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[3084,3090,1,0]}'>Input</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[3091,3124,1,0]}'>Voltage Reference for A/D Inputs</td>
+</tr>
+<tr data-parsoid='{"startTagSrc":"|-","autoInsertedEnd":true,"dsr":[3125,3214,2,0]}'>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[3128,3131,1,0]}'>15</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[3132,3151,1,0]}'>Associate/AD6/DIO5</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[3152,3159,1,0]}'>Either</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[3160,3214,1,0]}'>Associated Indicator, Analog Input 5 or Digital I/O 6</td>
+</tr>
+<tr data-parsoid='{"startTagSrc":"|-","autoInsertedEnd":true,"dsr":[3215,3303,2,0]}'>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[3218,3221,1,0]}'>16</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[3222,3235,1,0]}'>RTS/AD6/DIO6</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[3236,3243,1,0]}'>Either</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[3244,3303,1,0]}'>Request-to-Send Flow Control, Analog Input 6 Digital I/O 6</td>
+</tr>
+<tr data-parsoid='{"startTagSrc":"|-","autoInsertedEnd":true,"dsr":[3304,3361,2,0]}'>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[3307,3310,1,0]}'>17</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[3311,3320,1,0]}'>AD3/DIO3</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[3321,3328,1,0]}'>Either</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[3329,3361,1,0]}'>Analog Input 3 of Digital I/O 3</td>
+</tr>
+<tr data-parsoid='{"startTagSrc":"|-","autoInsertedEnd":true,"dsr":[3362,3419,2,0]}'>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[3365,3368,1,0]}'>18</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[3369,3378,1,0]}'>AD2/DIO2</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[3379,3386,1,0]}'>Either</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[3387,3419,1,0]}'>Analog Input 2 of Digital I/O 2</td>
+</tr>
+<tr data-parsoid='{"startTagSrc":"|-","autoInsertedEnd":true,"dsr":[3420,3476,2,0]}'>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[3423,3426,1,0]}'>19</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[3427,3435,1,0]}'>AD1/DIO</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[3436,3443,1,0]}'>Either</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[3444,3476,1,0]}'>Analog Input 1 of Digital I/O 1</td>
+</tr>
+<tr data-parsoid='{"startTagSrc":"|-","autoInsertedEnd":true,"dsr":[3477,3534,2,0]}'>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[3480,3483,1,0]}'>20</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[3484,3493,1,0]}'>AD0/DIO0</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[3494,3501,1,0]}'>Either</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[3502,3534,1,0]}'>Analog Input 0 of Digital I/O 0</td>
+</tr>
+</tbody>
+</table>
+<p data-parsoid='{"dsr":[3539,3571,0,0]}'>출처: <a data-parsoid='{"stx":"url","dsr":[3543,3571,0,0]}' data-ve-attributes='{"rel":"mw:ExtLink"}' href="http://creamp.tistory.com/15" rel="mw:ExtLink">http://creamp.tistory.com/15</a></p>
+<h2 data-parsoid='{"dsr":[3573,3590,2,2]}' id=".EC.A7.80.EA.B7.B8.EB.B9.84_.EB.AC.B4.EC.84.A0_.ED.86.B5.EC.8B.A0.ED.95.98.EA.B8.B0"> 지그비 무선 통신하기 </h2>
+<h3 data-parsoid='{"dsr":[3592,3609,3,3]}' id=".EC.A7.80.EA.B7.B8.EB.B9.84_.ED.86.B5.EC.8B.A0_.EC.A4.80.EB.B9.84"> 지그비 통신 준비 </h3>
+<p data-parsoid='{"dsr":[3610,3620,0,0]}'>-XCTU 프로그램</p>
+<figure class="mw-default-size mw-halign-none" data-parsoid='{"optList":[{"ck":"none","ak":"없음"},{"ck":"thumbnail","ak":"섬네일"}],"dsr":[3621,3658,2,2]}' data-ve-attributes='{"typeof":"mw:Image/Thumb"}' typeof="mw:Image/Thumb"><a data-parsoid='{"a":{"href":"./파일:Xctu-splash-cropped.jpg"},"sa":{"href":"파일:Xctu-splash-cropped.jpg"},"dsr":[3623,3656,null,null]}' href="http://172.27.42.57/mediawiki/index.php/%ED%8C%8C%EC%9D%BC:Xctu-splash-cropped.jpg"><img data-file-height="255" data-file-type="bitmap" data-file-width="428" data-parsoid='{"a":{"resource":"./파일:Xctu-splash-cropped.jpg","height":"179","width":"300"},"sa":{"resource":"파일:Xctu-splash-cropped.jpg"}}' data-ve-attributes='{"resource":"./파일:Xctu-splash-cropped.jpg"}' height="179" resource="./파일:Xctu-splash-cropped.jpg" src="//172.27.42.57/mediawiki/images/thumb/4/43/Xctu-splash-cropped.jpg/300px-Xctu-splash-cropped.jpg" width="300"/></a></figure>
+<p data-parsoid='{"dsr":[3659,3851,0,0]}'>XCTU 프로그램은 XBee 모듈을 다루고 설정하기 위해 필수로 필요한 소프트웨어이다. XBee 모듈에 대한 ID, CH 등을 설정하고 테스트할 수 있는 환경을 제공해주며 최근 1~2년 사이에 새로 업데이트 되면서 UI 부분이 많이 바뀌었다. 전 버전과 동일한 기능을 수행할 수 있으므로 이번 실습에서는 최신 버전의 프로그램을 사용하도록 한다.</p>
+<p data-parsoid='{"dsr":[3853,3950,0,0]}'>다운로드<span class="ve-pasteProtect" data-parsoid='{"src":" ","isDisplayHack":true,"dsr":[3857,3858,null,0]}' data-ve-attributes='{"typeof":"mw:DisplaySpace mw:Placeholder"}' typeof="mw:DisplaySpace mw:Placeholder"> </span>:<a data-parsoid='{"stx":"url","dsr":[3859,3950,0,0]}' data-ve-attributes='{"rel":"mw:ExtLink"}' href="https://www.digi.com/products/xbee-rf-solutions/xctu-software/xctu#productsupport-utilities" rel="mw:ExtLink">https://www.digi.com/products/xbee-rf-solutions/xctu-software/xctu#productsupport-utilities</a></p>
+<h3 data-parsoid='{"dsr":[3952,3967,3,3]}' id="XCTU_.EC.84.A4.EC.B9.98"> XCTU 설치 </h3>
+<p data-parsoid='{"dsr":[3968,3979,0,0]}'><b data-parsoid='{"dsr":[3968,3979,3,3]}'>Linux</b></p>
+<p data-parsoid='{"dsr":[3981,4017,0,0]}'>XCTU v. 6.3.10 Linux x64 =&gt; Download</p>
+<p data-parsoid='{"dsr":[4019,4068,0,0]}'>다음과 같은 파일을 다운로드하면 40002881_K.run 이라는 파일이 생기게 됩니다.</p>
+<figure class="mw-halign-none" data-parsoid='{"optList":[{"ck":"none","ak":"없음"},{"ck":"thumbnail","ak":"섬네일"},{"ck":"width","ak":"612x612픽셀"}],"dsr":[4069,4106,2,2]}' data-ve-attributes='{"typeof":"mw:Image/Thumb"}' typeof="mw:Image/Thumb"><a data-parsoid='{"a":{"href":"./파일:4002881_K.png"},"sa":{"href":"파일:4002881 K.png"},"dsr":[4071,4104,null,null]}' href="http://172.27.42.57/mediawiki/index.php/%ED%8C%8C%EC%9D%BC:4002881_K.png"><img data-file-height="588" data-file-type="bitmap" data-file-width="1160" data-parsoid='{"a":{"resource":"./파일:4002881_K.png","height":"310","width":"612"},"sa":{"resource":"파일:4002881 K.png"}}' data-ve-attributes='{"resource":"./파일:4002881_K.png"}' height="310" resource="./파일:4002881_K.png" src="//172.27.42.57/mediawiki/images/thumb/6/6c/4002881_K.png/612px-4002881_K.png" width="612"/></a></figure>
+<div about="#mwt3" class="mw-highlight mw-content-ltr" data-mw='{"name":"syntaxhighlight","attrs":{"lang":"linux-config"},"body":{"extsrc":"\n# 실행시킬 수 있게 권한 주기\nchmod a+x 40002881.run\n\n#설치\n./40002881.run\n\n"}}' data-parsoid='{"dsr":[0,118,2,2]}' data-ve-attributes='{"typeof":"mw:Extension/syntaxhighlight","about":"#mwt3"}' dir="ltr" typeof="mw:Extension/syntaxhighlight">
+<pre><span class="c1 ve-pasteProtect"># 실행시킬 수 있게 권한 주기</span>
+chmod a+x <span class="mi ve-pasteProtect">40002881</span>.run
+
+<span class="c1 ve-pasteProtect">#설치</span>
+./40002881.run
+</pre>
+</div>
+<figure class="mw-halign-none" data-parsoid='{"optList":[{"ck":"none","ak":"없음"},{"ck":"thumbnail","ak":"섬네일"},{"ck":"width","ak":"621x621픽셀"}],"dsr":[4226,4257,2,2]}' data-ve-attributes='{"typeof":"mw:Image/Thumb"}' typeof="mw:Image/Thumb"><a data-parsoid='{"a":{"href":"./파일:Exe.png"},"sa":{"href":"파일:Exe.png"},"dsr":[4228,4255,null,null]}' href="http://172.27.42.57/mediawiki/index.php/%ED%8C%8C%EC%9D%BC:Exe.png"><img data-file-height="114" data-file-type="bitmap" data-file-width="621" data-parsoid='{"a":{"resource":"./파일:Exe.png","height":"114","width":"621"},"sa":{"resource":"파일:Exe.png"}}' data-ve-attributes='{"resource":"./파일:Exe.png"}' height="114" resource="./파일:Exe.png" src="//172.27.42.57/mediawiki/images/1/1d/Exe.png" width="621"/></a></figure>
+<p data-parsoid='{"dsr":[4258,4301,0,0]}'>1. Welcome to the XCTU setup Wizard =&gt; Next</p>
+<figure class="mw-halign-none" data-parsoid='{"optList":[{"ck":"none","ak":"없음"},{"ck":"thumbnail","ak":"섬네일"},{"ck":"width","ak":"500x500픽셀"}],"dsr":[4302,4344,2,2]}' data-ve-attributes='{"typeof":"mw:Image/Thumb"}' typeof="mw:Image/Thumb"><a data-parsoid='{"a":{"href":"./파일:Xctu-install-1.png"},"sa":{"href":"파일:Xctu-install-1.png"},"dsr":[4304,4342,null,null]}' href="http://172.27.42.57/mediawiki/index.php/%ED%8C%8C%EC%9D%BC:Xctu-install-1.png"><img data-file-height="350" data-file-type="bitmap" data-file-width="500" data-parsoid='{"a":{"resource":"./파일:Xctu-install-1.png","height":"350","width":"500"},"sa":{"resource":"파일:Xctu-install-1.png"}}' data-ve-attributes='{"resource":"./파일:Xctu-install-1.png"}' height="350" resource="./파일:Xctu-install-1.png" src="//172.27.42.57/mediawiki/images/d/df/Xctu-install-1.png" width="500"/></a></figure>
+<p data-parsoid='{"dsr":[4345,4399,0,0]}'>2. License Agreement =&gt; I accept the agreement =&gt; Next</p>
+<figure class="mw-halign-none" data-parsoid='{"optList":[{"ck":"none","ak":"없음"},{"ck":"thumbnail","ak":"섬네일"},{"ck":"width","ak":"500x500픽셀"}],"dsr":[4400,4442,2,2]}' data-ve-attributes='{"typeof":"mw:Image/Thumb"}' typeof="mw:Image/Thumb"><a data-parsoid='{"a":{"href":"./파일:Xctu-install-2.png"},"sa":{"href":"파일:Xctu-install-2.png"},"dsr":[4402,4440,null,null]}' href="http://172.27.42.57/mediawiki/index.php/%ED%8C%8C%EC%9D%BC:Xctu-install-2.png"><img data-file-height="350" data-file-type="bitmap" data-file-width="500" data-parsoid='{"a":{"resource":"./파일:Xctu-install-2.png","height":"350","width":"500"},"sa":{"resource":"파일:Xctu-install-2.png"}}' data-ve-attributes='{"resource":"./파일:Xctu-install-2.png"}' height="350" resource="./파일:Xctu-install-2.png" src="//172.27.42.57/mediawiki/images/e/e7/Xctu-install-2.png" width="500"/></a></figure>
+<p data-parsoid='{"dsr":[4443,4479,0,0]}'>3. Linux selection path info =&gt; Next</p>
+<figure class="mw-halign-none" data-parsoid='{"optList":[{"ck":"none","ak":"없음"},{"ck":"thumbnail","ak":"섬네일"},{"ck":"width","ak":"500x500픽셀"}],"dsr":[4480,4522,2,2]}' data-ve-attributes='{"typeof":"mw:Image/Thumb"}' typeof="mw:Image/Thumb"><a data-parsoid='{"a":{"href":"./파일:Xctu-install-3.png"},"sa":{"href":"파일:Xctu-install-3.png"},"dsr":[4482,4520,null,null]}' href="http://172.27.42.57/mediawiki/index.php/%ED%8C%8C%EC%9D%BC:Xctu-install-3.png"><img data-file-height="350" data-file-type="bitmap" data-file-width="500" data-parsoid='{"a":{"resource":"./파일:Xctu-install-3.png","height":"350","width":"500"},"sa":{"resource":"파일:Xctu-install-3.png"}}' data-ve-attributes='{"resource":"./파일:Xctu-install-3.png"}' height="350" resource="./파일:Xctu-install-3.png" src="//172.27.42.57/mediawiki/images/8/8b/Xctu-install-3.png" width="500"/></a></figure>
+<p data-parsoid='{"dsr":[4523,4598,0,0]}'>4. Installation Directory =&gt; /opt/gopath/src/github.com/hyperledger =&gt; Next</p>
+<figure class="mw-halign-none" data-parsoid='{"optList":[{"ck":"none","ak":"없음"},{"ck":"thumbnail","ak":"섬네일"},{"ck":"width","ak":"500x500픽셀"}],"dsr":[4599,4641,2,2]}' data-ve-attributes='{"typeof":"mw:Image/Thumb"}' typeof="mw:Image/Thumb"><a data-parsoid='{"a":{"href":"./파일:Xctu-install-4.png"},"sa":{"href":"파일:Xctu-install-4.png"},"dsr":[4601,4639,null,null]}' href="http://172.27.42.57/mediawiki/index.php/%ED%8C%8C%EC%9D%BC:Xctu-install-4.png"><img data-file-height="350" data-file-type="bitmap" data-file-width="500" data-parsoid='{"a":{"resource":"./파일:Xctu-install-4.png","height":"350","width":"500"},"sa":{"resource":"파일:Xctu-install-4.png"}}' data-ve-attributes='{"resource":"./파일:Xctu-install-4.png"}' height="350" resource="./파일:Xctu-install-4.png" src="//172.27.42.57/mediawiki/images/1/15/Xctu-install-4.png" width="500"/></a></figure>
+<p data-parsoid='{"dsr":[4642,4669,0,0]}'>5. Ready yo install =&gt; Next</p>
+<figure class="mw-halign-none" data-parsoid='{"optList":[{"ck":"none","ak":"없음"},{"ck":"thumbnail","ak":"섬네일"},{"ck":"width","ak":"500x500픽셀"}],"dsr":[4670,4712,2,2]}' data-ve-attributes='{"typeof":"mw:Image/Thumb"}' typeof="mw:Image/Thumb"><a data-parsoid='{"a":{"href":"./파일:Xctu-install-5.png"},"sa":{"href":"파일:Xctu-install-5.png"},"dsr":[4672,4710,null,null]}' href="http://172.27.42.57/mediawiki/index.php/%ED%8C%8C%EC%9D%BC:Xctu-install-5.png"><img data-file-height="350" data-file-type="bitmap" data-file-width="500" data-parsoid='{"a":{"resource":"./파일:Xctu-install-5.png","height":"350","width":"500"},"sa":{"resource":"파일:Xctu-install-5.png"}}' data-ve-attributes='{"resource":"./파일:Xctu-install-5.png"}' height="350" resource="./파일:Xctu-install-5.png" src="//172.27.42.57/mediawiki/images/5/56/Xctu-install-5.png" width="500"/></a></figure>
+<p data-parsoid='{"dsr":[4713,4726,0,0]}'>6. Installing</p>
+<figure class="mw-halign-none" data-parsoid='{"optList":[{"ck":"none","ak":"없음"},{"ck":"thumbnail","ak":"섬네일"},{"ck":"width","ak":"500x500픽셀"}],"dsr":[4727,4769,2,2]}' data-ve-attributes='{"typeof":"mw:Image/Thumb"}' typeof="mw:Image/Thumb"><a data-parsoid='{"a":{"href":"./파일:Xctu-install-6.png"},"sa":{"href":"파일:Xctu-install-6.png"},"dsr":[4729,4767,null,null]}' href="http://172.27.42.57/mediawiki/index.php/%ED%8C%8C%EC%9D%BC:Xctu-install-6.png"><img data-file-height="350" data-file-type="bitmap" data-file-width="500" data-parsoid='{"a":{"resource":"./파일:Xctu-install-6.png","height":"350","width":"500"},"sa":{"resource":"파일:Xctu-install-6.png"}}' data-ve-attributes='{"resource":"./파일:Xctu-install-6.png"}' height="350" resource="./파일:Xctu-install-6.png" src="//172.27.42.57/mediawiki/images/2/2d/Xctu-install-6.png" width="500"/></a></figure>
+<p data-parsoid='{"dsr":[4770,4899,0,0]}'>7. Problem running post-install step. Installation may not complete correctly Error writing file /home/hyper/Desktop/XCTU.desktop</p>
+<figure class="mw-halign-none" data-parsoid='{"optList":[{"ck":"none","ak":"없음"},{"ck":"thumbnail","ak":"섬네일"},{"ck":"width","ak":"397x397픽셀"}],"dsr":[4900,4942,2,2]}' data-ve-attributes='{"typeof":"mw:Image/Thumb"}' typeof="mw:Image/Thumb"><a data-parsoid='{"a":{"href":"./파일:Xctu-install-7.png"},"sa":{"href":"파일:Xctu-install-7.png"},"dsr":[4902,4940,null,null]}' href="http://172.27.42.57/mediawiki/index.php/%ED%8C%8C%EC%9D%BC:Xctu-install-7.png"><img data-file-height="140" data-file-type="bitmap" data-file-width="397" data-parsoid='{"a":{"resource":"./파일:Xctu-install-7.png","height":"140","width":"397"},"sa":{"resource":"파일:Xctu-install-7.png"}}' data-ve-attributes='{"resource":"./파일:Xctu-install-7.png"}' height="140" resource="./파일:Xctu-install-7.png" src="//172.27.42.57/mediawiki/images/6/68/Xctu-install-7.png" width="397"/></a></figure>
+<p data-parsoid='{"dsr":[4943,4989,0,0]}'>8. Completing the X CTU Setup Wizard =&gt; Finish</p>
+<figure class="mw-halign-none" data-parsoid='{"optList":[{"ck":"none","ak":"없음"},{"ck":"thumbnail","ak":"섬네일"},{"ck":"width","ak":"500x500픽셀"}],"dsr":[4990,5032,2,2]}' data-ve-attributes='{"typeof":"mw:Image/Thumb"}' typeof="mw:Image/Thumb"><a data-parsoid='{"a":{"href":"./파일:Xctu-install-8.png"},"sa":{"href":"파일:Xctu-install-8.png"},"dsr":[4992,5030,null,null]}' href="http://172.27.42.57/mediawiki/index.php/%ED%8C%8C%EC%9D%BC:Xctu-install-8.png"><img data-file-height="350" data-file-type="bitmap" data-file-width="500" data-parsoid='{"a":{"resource":"./파일:Xctu-install-8.png","height":"350","width":"500"},"sa":{"resource":"파일:Xctu-install-8.png"}}' data-ve-attributes='{"resource":"./파일:Xctu-install-8.png"}' height="350" resource="./파일:Xctu-install-8.png" src="//172.27.42.57/mediawiki/images/8/86/Xctu-install-8.png" width="500"/></a></figure>
+<p data-parsoid='{"dsr":[5033,5047,0,0]}'>9. Launch XCTU</p>
+<figure class="mw-halign-none" data-parsoid='{"optList":[{"ck":"none","ak":"없음"},{"ck":"thumbnail","ak":"섬네일"},{"ck":"width","ak":"715x715픽셀"}],"dsr":[5048,5086,2,2]}' data-ve-attributes='{"typeof":"mw:Image/Thumb"}' typeof="mw:Image/Thumb"><a data-parsoid='{"a":{"href":"./파일:Xctu-lauch.png"},"sa":{"href":"파일:Xctu-lauch.png"},"dsr":[5050,5084,null,null]}' href="http://172.27.42.57/mediawiki/index.php/%ED%8C%8C%EC%9D%BC:Xctu-lauch.png"><img data-file-height="739" data-file-type="bitmap" data-file-width="1018" data-parsoid='{"a":{"resource":"./파일:Xctu-lauch.png","height":"519","width":"715"},"sa":{"resource":"파일:Xctu-lauch.png"}}' data-ve-attributes='{"resource":"./파일:Xctu-lauch.png"}' height="519" resource="./파일:Xctu-lauch.png" src="//172.27.42.57/mediawiki/images/thumb/0/07/Xctu-lauch.png/715px-Xctu-lauch.png" width="715"/></a></figure>
+<h3 data-parsoid='{"dsr":[5088,5107,3,3]}' id="Device_.EC.B6.94.EA.B0.80.ED.95.98.EA.B8.B0"> Device 추가하기 </h3>
+<p data-parsoid='{"dsr":[5108,5145,0,0]}'>1. 빨간색으로 표시된 아이콘을 클릭합니다.(Add devices)</p>
+<figure class="mw-halign-none" data-parsoid='{"optList":[{"ck":"none","ak":"없음"},{"ck":"thumbnail","ak":"섬네일"},{"ck":"width","ak":"616x616픽셀"}],"dsr":[5146,5185,2,2]}' data-ve-attributes='{"typeof":"mw:Image/Thumb"}' typeof="mw:Image/Thumb"><a data-parsoid='{"a":{"href":"./파일:Add-devices.png"},"sa":{"href":"파일:Add-devices.png"},"dsr":[5148,5183,null,null]}' href="http://172.27.42.57/mediawiki/index.php/%ED%8C%8C%EC%9D%BC:Add-devices.png"><img data-file-height="734" data-file-type="bitmap" data-file-width="662" data-parsoid='{"a":{"resource":"./파일:Add-devices.png","height":"616","width":"556"},"sa":{"resource":"파일:Add-devices.png"}}' data-ve-attributes='{"resource":"./파일:Add-devices.png"}' height="616" resource="./파일:Add-devices.png" src="//172.27.42.57/mediawiki/images/thumb/9/94/Add-devices.png/556px-Add-devices.png" width="556"/></a></figure>
+<p data-parsoid='{"dsr":[5186,5207,0,0]}'>2. Add a radio module</p>
+<figure class="mw-halign-none" data-parsoid='{"optList":[{"ck":"none","ak":"없음"},{"ck":"thumbnail","ak":"섬네일"},{"ck":"width","ak":"622x622픽셀"}],"dsr":[5208,5257,2,2]}' data-ve-attributes='{"typeof":"mw:Image/Thumb"}' typeof="mw:Image/Thumb"><a data-parsoid='{"a":{"href":"./파일:Xctu-add-radio-device.png"},"sa":{"href":"파일:Xctu-add-radio-device.png"},"dsr":[5210,5255,null,null]}' href="http://172.27.42.57/mediawiki/index.php/%ED%8C%8C%EC%9D%BC:Xctu-add-radio-device.png"><img data-file-height="622" data-file-type="bitmap" data-file-width="420" data-parsoid='{"a":{"resource":"./파일:Xctu-add-radio-device.png","height":"622","width":"420"},"sa":{"resource":"파일:Xctu-add-radio-device.png"}}' data-ve-attributes='{"resource":"./파일:Xctu-add-radio-device.png"}' height="622" resource="./파일:Xctu-add-radio-device.png" src="//172.27.42.57/mediawiki/images/2/2b/Xctu-add-radio-device.png" width="420"/></a></figure>
+<p data-parsoid='{"dsr":[5258,5296,0,0]}'>위의 버튼을 누르면 뜨는 창이다. 현재 포트에 연결된 장치들이 뜬다.</p>
+<p data-parsoid='{"dsr":[5298,5383,0,0]}'>아래 옵션에서는 통신 대역폭, 비트, 패리티비트 등 여러가지 설정을 할 수 있지만 신경쓰지 않고 Finish를 누르면 검색과정을 거쳐 목록에 추가 된다.</p>
+<p data-parsoid='{"dsr":[5385,5403,0,0]}'>3. Action required</p>
+<figure class="mw-default-size mw-halign-none" data-parsoid='{"optList":[{"ck":"none","ak":"없음"},{"ck":"thumbnail","ak":"섬네일"}],"dsr":[5404,5442,2,2]}' data-ve-attributes='{"typeof":"mw:Image/Thumb"}' typeof="mw:Image/Thumb"><a data-parsoid='{"a":{"href":"./파일:Xctu-action-required.png"},"sa":{"href":"파일:Xctu-action-required.png"},"dsr":[5406,5440,null,null]}' href="http://172.27.42.57/mediawiki/index.php/%ED%8C%8C%EC%9D%BC:Xctu-action-required.png"><img data-file-height="1050" data-file-type="bitmap" data-file-width="932" data-parsoid='{"a":{"resource":"./파일:Xctu-action-required.png","height":"338","width":"300"},"sa":{"resource":"파일:Xctu-action-required.png"}}' data-ve-attributes='{"resource":"./파일:Xctu-action-required.png"}' height="338" resource="./파일:Xctu-action-required.png" src="//172.27.42.57/mediawiki/images/thumb/b/b4/Xctu-action-required.png/300px-Xctu-action-required.png" width="300"/></a></figure>
+<p data-parsoid='{"dsr":[5443,5535,0,0]}'>Finish버튼을 누르고 모듈을 추가하는 과정에서 다음과 같은 오류창이 뜰 수 도 있는데, 사용해보니 아두이노에 다른 코드가 업로드된 상태일 때 이런 오류창이 떴다.</p>
+<p data-parsoid='{"dsr":[5537,5613,0,0]}'>아두이노에 업로드 된 코드를 초기화하고 올리면 창이 뜨지 않는다.(다른 이유도 있을 수 있겠지만 아직까지는 사용과정에서 발견하지 못했다)</p>
+<h2 data-parsoid='{"dsr":[5615,5635,2,2]}' id=".EC.86.8C.EA.B0.9C.28Introduction.29">소개(Introduction)</h2>
+<p data-parsoid='{"dsr":[5636,5793,0,0]}'>이 가이드는 XBee ZigBee의 특징 및 기능을 설명합니다. 이 제품은 Waspmote v12 용으로 설계되었으며 Waspmote v15는 계속 변경되지 않습니다. 2016 년 10 월에 출시 된 새 제품 라인 Waspmote v15에 대한이 라이브러리에는 큰 차이가 없습니다.</p>
+<p data-parsoid='{"dsr":[5795,5849,0,0]}'>어쨌든 이전 버전의 제품을 사용하는 경우 개발 가이드 웹 사이트에있는 해당 안내서를 사용하십시오.</p>
+<p data-parsoid='{"dsr":[5851,5910,0,0]}'>세대 변경에 대한 더 자세한 정보는 &#8220;새로운 세대의 Libelium 제품 라인&#8221;문서에서 얻을 수 있습니다.</p>
+<h2 data-parsoid='{"dsr":[5912,5932,2,2]}' id=".ED.95.98.EB.93.9C.EC.9B.A8.EC.96.B4.28Hardware.29"> 하드웨어(Hardware) </h2>
+<table class="wikitable" data-parsoid='{"dsr":[5933,6103,20,2]}'>
+<tbody data-parsoid='{"dsr":[5954,6101,0,0]}'>
+<tr data-parsoid='{"autoInsertedEnd":true,"autoInsertedStart":true,"dsr":[5954,6033,0,0]}'>
+<th data-parsoid='{"autoInsertedEnd":true,"dsr":[5954,5961,1,0]}'>Module</th>
+<th data-parsoid='{"autoInsertedEnd":true,"dsr":[5962,5972,1,0]}'>Frequency</th>
+<th data-parsoid='{"autoInsertedEnd":true,"dsr":[5973,5992,1,0]}'>Transmission Power</th>
+<th data-parsoid='{"autoInsertedEnd":true,"dsr":[5993,6005,1,0]}'>Sensitivity</th>
+<th data-parsoid='{"autoInsertedEnd":true,"dsr":[6006,6025,1,0]}'>Number of channels</th>
+<th data-parsoid='{"autoInsertedEnd":true,"dsr":[6026,6033,1,0]}'>Range*</th>
+</tr>
+<tr data-parsoid='{"startTagSrc":"|-","autoInsertedEnd":true,"dsr":[6034,6100,2,0]}'>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[6037,6053,1,0]}'>XBee-PRO ZigBee</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[6054,6070,1,0]}'>2.40 &#8211; 2.47 GHz</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[6071,6078,1,0]}'>17 dBm</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[6079,6089,1,0]}'> -102 dBm</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[6090,6093,1,0]}'>14</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[6094,6100,1,0]}'>3200m</td>
+</tr>
+</tbody>
+</table>
+<p data-parsoid='{"dsr":[6104,6155,0,0]}'><span class="ve-pasteProtect" data-parsoid='{"dsr":[6104,6122,8,9]}' data-ve-attributes='{"typeof":"mw:Nowiki"}' typeof="mw:Nowiki">*</span> 범위를 결정하려면 작동 조건에서 범위 테스트를 수행하십시오</p>
+<p data-parsoid='{"dsr":[6157,6408,0,0]}'>참고<span class="ve-pasteProtect" data-parsoid='{"src":" ","isDisplayHack":true,"dsr":[6159,6160,null,0]}' data-ve-attributes='{"typeof":"mw:DisplaySpace mw:Placeholder"}' typeof="mw:DisplaySpace mw:Placeholder"> </span>: 2014 년 2 월부터 Libelium은 Standard 또는 Normal 버전에서 XBee ZigBee 무선 모듈을 더 이상 제공하지 않습니다. 이 날짜부터 XBee ZigBee는 PRO 버전에서만 제공됩니다. 표준 버전은 출력 전력 레벨이 낮고 감도가 더 낮습니다. 반면 표준 버전은 더 많은 채널 (16)에서 방사 할 수 있습니다. 기본적으로 두 버전 모두 동일한 방식으로 작동하므로이 안내서는 표준 버전 사용자에게 여전히 유용합니다.</p>
+<p data-parsoid='{"dsr":[6410,6591,0,0]}'>ZigBee는 IEEE 802.15.5 링크 계층에서 지원되므로 이전 섹션에서 설명한 것과 동일한 채널을 사용하며 XBee-ZB-PRO 모델은 채널 수를 14로 제한합니다. XBee-ZB 모듈은 ZigBee-PRO v2007 표준을 준수합니다.  이 모듈은 ZigBee가 제공 한 기능에 다음과 같은 특정 기능을 추가합니다.</p>
+<ul data-parsoid='{"dsr":[6592,6750,0,0]}'>
+<li data-parsoid='{"dsr":[6592,6750,1,0]}'> 노드 탐색(Node discovery)<span class="ve-pasteProtect" data-parsoid='{"src":" ","isDisplayHack":true,"dsr":[6615,6616,null,0]}' data-ve-attributes='{"typeof":"mw:DisplaySpace mw:Placeholder"}' typeof="mw:DisplaySpace mw:Placeholder"> </span>: 동일한 네트워크 내의 다른 노드를 검색 할 수 있도록 일부 머리글이 추가됩니다. 이는 노드 발견 메시지가 전송되도록하여 나머지 네트워크 노드가 자신의 특정 정보를 나타내는 응답을합니다(노드 식별자, @MAC, @ 16 비트, RSSI).</li>
+</ul>
+<ul data-parsoid='{"dsr":[6752,6830,0,0]}'>
+<li data-parsoid='{"dsr":[6752,6830,1,0]}'> 중복 패킷 탐지(Duplicated packet detection): 이 기능은 표준에서 설정되지 않고 XBee 모듈에 의해 추가됩니다.</li>
+</ul>
+<h2 data-parsoid='{"dsr":[6832,6871,2,2]}' id=".EC.9D.BC.EB.B0.98_.EA.B3.A0.EB.A0.A4.EC.82.AC.ED.95.AD.28_General_Considerations_.29"> 일반 고려사항( General Considerations ) </h2>
+<h3 data-parsoid='{"dsr":[6873,6899,3,3]}' id="Waspmote_Libraries"> Waspmote Libraries </h3>
+<p data-parsoid='{"dsr":[6900,6925,0,0]}'><b data-parsoid='{"dsr":[6900,6925,3,3]}'>Waspmote XBee Files</b></p>
+<p data-parsoid='{"dsr":[6927,6989,0,0]}'>WaspXBeeCore.h, WaspXBeeCore.cpp, WaspXBeeZB.h, WaspXBeeZB.cpp</p>
+<p data-parsoid='{"dsr":[6991,7053,0,0]}'>이 모듈을 사용할 때는 Xbee ZB 라이브러리를 포함시켜야합니다. 코드 시작 부분에 다음 줄을 삽입해야합니다.</p>
+<div about="#mwt3" class="mw-highlight mw-content-ltr" data-mw='{"name":"syntaxhighlight","attrs":{"lang":"c++"},"body":{"extsrc":"\n#include &lt;WaspXBeeZB.h&gt;\n"}}' data-parsoid='{"dsr":[0,71,2,2]}' data-ve-attributes='{"typeof":"mw:Extension/syntaxhighlight","about":"#mwt3"}' dir="ltr" typeof="mw:Extension/syntaxhighlight">
+<pre><span class="cp ve-pasteProtect">#include</span> <span class="cpf ve-pasteProtect">&lt;WaspXBeeZB.h&gt;</span><span class="cp ve-pasteProtect"></span>
+</pre>
+</div>
+<p data-parsoid='{"dsr":[7124,7141,0,0]}'><b data-parsoid='{"dsr":[7124,7141,3,3]}'>Constructor</b></p>
+<p data-parsoid='{"dsr":[7143,7337,0,0]}'>Waspmote XBee 라이브러리를 사용하려면 &#8216;WaspXBeeZB&#8217;클래스의 개체를 만들어야합니다. xbeeZB라는이 객체는 Waspmote XBee 라이브러리 내에 생성되며 모든 라이브러리에 공개됩니다. 가이드를 통해 Waspmote XBee 라이브러리의 작동 방식을 보여줍니다. 이 생성자를 만들 때 일부 변수는 기본적으로 값으로 정의됩니다.</p>
+<h3 data-parsoid='{"dsr":[7339,7360,3,3]}' id="API_Functions"> API Functions </h3>
+<p data-parsoid='{"dsr":[7361,7456,0,0]}'>이 가이드를 통해 매개 변수를 사용하는 많은 예제가 있습니다. 이 예제에서 API 함수는 명령을 실행하기 위해 호출되며 관련 변수에 각 경우에 매개 변수 값을 저장합니다.</p>
+<p data-parsoid='{"dsr":[7458,7461,0,0]}'>사용예</p>
+<div about="#mwt3" class="mw-highlight mw-content-ltr" data-mw='{"name":"syntaxhighlight","attrs":{"lang":"c++"},"body":{"extsrc":"\n{\nxbeeZB.getOwnMacLow (); // MAC 주소의 하위 32 비트 가져 오기\nxbeeZB.getOwnMacHigh (); // MAC 주소의 상위 32 비트 가져 오기\n}\n"}}' data-parsoid='{"dsr":[0,152,2,2]}' data-ve-attributes='{"typeof":"mw:Extension/syntaxhighlight","about":"#mwt3"}' dir="ltr" typeof="mw:Extension/syntaxhighlight">
+<pre><span class="p ve-pasteProtect">{</span>
+<span class="n ve-pasteProtect">xbeeZB</span><span class="p ve-pasteProtect">.</span><span class="n ve-pasteProtect">getOwnMacLow</span> <span class="p ve-pasteProtect">();</span> <span class="c1 ve-pasteProtect">// MAC 주소의 하위 32 비트 가져 오기</span>
+<span class="n ve-pasteProtect">xbeeZB</span><span class="p ve-pasteProtect">.</span><span class="n ve-pasteProtect">getOwnMacHigh</span> <span class="p ve-pasteProtect">();</span> <span class="c1 ve-pasteProtect">// MAC 주소의 상위 32 비트 가져 오기</span>
+<span class="p ve-pasteProtect">}</span>
+</pre>
+</div>
+<p data-parsoid='{"dsr":[7613,7618,0,0]}'>관련 변수</p>
+<div about="#mwt3" class="mw-highlight mw-content-ltr" data-mw='{"name":"syntaxhighlight","attrs":{"lang":"c++"},"body":{"extsrc":"\nxbeeZB.sourceMacHigh [0-3] → MAC 주소의 상위 32 비트 저장\nxbeeZB.sourceMacLow [0-3] → MAC 주소의 하위 32 비트 저장\n"}}' data-parsoid='{"dsr":[0,144,2,2]}' data-ve-attributes='{"typeof":"mw:Extension/syntaxhighlight","about":"#mwt3"}' dir="ltr" typeof="mw:Extension/syntaxhighlight">
+<pre><span class="n ve-pasteProtect">xbeeZB</span><span class="p ve-pasteProtect">.</span><span class="n ve-pasteProtect">sourceMacHigh</span> <span class="p ve-pasteProtect">[</span><span class="mi ve-pasteProtect">0</span><span class="o ve-pasteProtect">-</span><span class="mi ve-pasteProtect">3</span><span class="p ve-pasteProtect">]</span> <span class="err ve-pasteProtect">→</span> <span class="n ve-pasteProtect">MAC</span> <span class="err ve-pasteProtect">주소의</span> <span class="err ve-pasteProtect">상위</span> <span class="mi ve-pasteProtect">32</span> <span class="err ve-pasteProtect">비트</span> <span class="err ve-pasteProtect">저장</span>
+<span class="n ve-pasteProtect">xbeeZB</span><span class="p ve-pasteProtect">.</span><span class="n ve-pasteProtect">sourceMacLow</span> <span class="p ve-pasteProtect">[</span><span class="mi ve-pasteProtect">0</span><span class="o ve-pasteProtect">-</span><span class="mi ve-pasteProtect">3</span><span class="p ve-pasteProtect">]</span> <span class="err ve-pasteProtect">→</span> <span class="n ve-pasteProtect">MAC</span> <span class="err ve-pasteProtect">주소의</span> <span class="err ve-pasteProtect">하위</span> <span class="mi ve-pasteProtect">32</span> <span class="err ve-pasteProtect">비트</span> <span class="err ve-pasteProtect">저장</span>
+</pre>
+</div>
+<p data-parsoid='{"dsr":[7762,7913,0,0]}'>&#8216;xbeeZB.getOwnMacLow&#8217;에서 돌아오면 관련 변수 &#8216;xbeeZB.sourceMacLow&#8217;가 적절한 값으로 채워집니다. 함수를 호출하기 전에 관련 변수가 만들어 지지만 비어 있습니다. 거의 모든 함수는 관련된 변수를 가지고 있으며 함수가 설명될 때 표시됩니다.</p>
+<p data-parsoid='{"dsr":[7915,7948,0,0]}'>함수가 실행될 때 채워지는 세 가지 오류 플래그가 있습니다.</p>
+<ul data-parsoid='{"dsr":[7949,7996,0,0]}'>
+<li data-parsoid='{"dsr":[7949,7996,1,0]}'> error_AT<span class="ve-pasteProtect" data-parsoid='{"src":" ","isDisplayHack":true,"dsr":[7959,7960,null,0]}' data-ve-attributes='{"typeof":"mw:DisplaySpace mw:Placeholder"}' typeof="mw:DisplaySpace mw:Placeholder"> </span>: AT 명령 기능 실행 중 오류가 발생했는지 여부를 저장합니다.</li>
+</ul>
+<ul data-parsoid='{"dsr":[7998,8037,0,0]}'>
+<li data-parsoid='{"dsr":[7998,8037,1,0]}'> error_RX<span class="ve-pasteProtect" data-parsoid='{"src":" ","isDisplayHack":true,"dsr":[8008,8009,null,0]}' data-ve-attributes='{"typeof":"mw:DisplaySpace mw:Placeholder"}' typeof="mw:DisplaySpace mw:Placeholder"> </span>: 패킷 수신 중 에러가 발생 하였는지를 저장한다.</li>
+</ul>
+<ul data-parsoid='{"dsr":[8039,8081,0,0]}'>
+<li data-parsoid='{"dsr":[8039,8081,1,0]}'> error_TX<span class="ve-pasteProtect" data-parsoid='{"src":" ","isDisplayHack":true,"dsr":[8049,8050,null,0]}' data-ve-attributes='{"typeof":"mw:DisplaySpace mw:Placeholder"}' typeof="mw:DisplaySpace mw:Placeholder"> </span>: 패킷 전송 중에 오류가 발생했는지 여부를 저장합니다.</li>
+</ul>
+<p data-parsoid='{"dsr":[8082,8143,0,0]}'>모든 함수는 호출 된 함수가 성공했는지 여부를 알기위한 플래그를 반환합니다. 이 플래그에 사용할 수있는 값<span class="ve-pasteProtect" data-parsoid='{"src":" ","isDisplayHack":true,"dsr":[8141,8142,null,0]}' data-ve-attributes='{"typeof":"mw:DisplaySpace mw:Placeholder"}' typeof="mw:DisplaySpace mw:Placeholder"> </span>:</p>
+<ul data-parsoid='{"dsr":[8144,8289,0,0]}'>
+<li data-parsoid='{"dsr":[8144,8180,1,0]}'> 0<span class="ve-pasteProtect" data-parsoid='{"src":" ","isDisplayHack":true,"dsr":[8147,8148,null,0]}' data-ve-attributes='{"typeof":"mw:DisplaySpace mw:Placeholder"}' typeof="mw:DisplaySpace mw:Placeholder"> </span>: 성공. 함수가 오류없이 실행되었고 변수가 채워졌습니다.</li>
+<li data-parsoid='{"dsr":[8181,8218,1,0]}'> 1<span class="ve-pasteProtect" data-parsoid='{"src":" ","isDisplayHack":true,"dsr":[8184,8185,null,0]}' data-ve-attributes='{"typeof":"mw:DisplaySpace mw:Placeholder"}' typeof="mw:DisplaySpace mw:Placeholder"> </span>: 오류. 함수가 실행되었지만 실행 중 오류가 발생했습니다.</li>
+<li data-parsoid='{"dsr":[8219,8259,1,0]}'> 2<span class="ve-pasteProtect" data-parsoid='{"src":" ","isDisplayHack":true,"dsr":[8222,8223,null,0]}' data-ve-attributes='{"typeof":"mw:DisplaySpace mw:Placeholder"}' typeof="mw:DisplaySpace mw:Placeholder"> </span>: 실행되지 않습니다. 함수를 실행하기 전에 오류가 발생했습니다.</li>
+<li data-parsoid='{"dsr":[8260,8289,1,0]}'> -1<span class="ve-pasteProtect" data-parsoid='{"src":" ","isDisplayHack":true,"dsr":[8264,8265,null,0]}' data-ve-attributes='{"typeof":"mw:DisplaySpace mw:Placeholder"}' typeof="mw:DisplaySpace mw:Placeholder"> </span>:이 모듈에서는 기능을 사용할 수 없습니다.</li>
+</ul>
+<p data-parsoid='{"dsr":[8290,8347,0,0]}'>전원을 껐다 켠 후에 매개 변수 변경 사항을 저장하려면 writeValues() 함수를 실행해야합니다.</p>
+<p data-parsoid='{"dsr":[8349,8352,0,0]}'>사용예</p>
+<div about="#mwt3" class="mw-highlight mw-content-ltr" data-mw='{"name":"syntaxhighlight","attrs":{"lang":"c++"},"body":{"extsrc":"\n{\nxbeeZB.writeValues(); // Keep values after rebooting\n}\n"}}' data-parsoid='{"dsr":[0,104,2,2]}' data-ve-attributes='{"typeof":"mw:Extension/syntaxhighlight","about":"#mwt3"}' dir="ltr" typeof="mw:Extension/syntaxhighlight">
+<pre><span class="p ve-pasteProtect">{</span>
+<span class="n ve-pasteProtect">xbeeZB</span><span class="p ve-pasteProtect">.</span><span class="n ve-pasteProtect">writeValues</span><span class="p ve-pasteProtect">();</span> <span class="c1 ve-pasteProtect">// Keep values after rebooting</span>
+<span class="p ve-pasteProtect">}</span>
+</pre>
+</div>
+<h3 data-parsoid='{"dsr":[8458,8479,3,3]}' id="API_extension"> API extension </h3>
+<p data-parsoid='{"dsr":[8480,8548,0,0]}'>모든 XBee 명령을 트랜시버에 직접 보낼 수 있지만 관련되고 유용한 모든 기능이 Waspmote API에 포함되었습니다.</p>
+<p data-parsoid='{"dsr":[8550,8554,0,0]}'>사용 예</p>
+<div about="#mwt3" class="mw-highlight mw-content-ltr" data-mw='{"name":"syntaxhighlight","attrs":{"lang":"c++"},"body":{"extsrc":"\n{\nxbeeZB.sendCommandAT ( \"CH #\"); // ATCH 명령을 실행합니다.\n}\n"}}' data-parsoid='{"dsr":[0,102,2,2]}' data-ve-attributes='{"typeof":"mw:Extension/syntaxhighlight","about":"#mwt3"}' dir="ltr" typeof="mw:Extension/syntaxhighlight">
+<pre><span class="p ve-pasteProtect">{</span>
+<span class="n ve-pasteProtect">xbeeZB</span><span class="p ve-pasteProtect">.</span><span class="n ve-pasteProtect">sendCommandAT</span> <span class="p ve-pasteProtect">(</span> <span class="s ve-pasteProtect">"CH #"</span><span class="p ve-pasteProtect">);</span> <span class="c1 ve-pasteProtect">// ATCH 명령을 실행합니다.</span>
+<span class="p ve-pasteProtect">}</span>
+</pre>
+</div>
+<p data-parsoid='{"dsr":[8656,8661,0,0]}'>관련 변수</p>
+<div about="#mwt3" class="mw-highlight mw-content-ltr" data-mw='{"name":"syntaxhighlight","attrs":{"lang":"c++"},"body":{"extsrc":"\nxbeeZB.commandAT [0-99] → 모듈에 의해 주어진 응답을 최대 100 바이트로 저장합니다.\n"}}' data-parsoid='{"dsr":[0,107,2,2]}' data-ve-attributes='{"typeof":"mw:Extension/syntaxhighlight","about":"#mwt3"}' dir="ltr" typeof="mw:Extension/syntaxhighlight">
+<pre><span class="n ve-pasteProtect">xbeeZB</span><span class="p ve-pasteProtect">.</span><span class="n ve-pasteProtect">commandAT</span> <span class="p ve-pasteProtect">[</span><span class="mi ve-pasteProtect">0</span><span class="o ve-pasteProtect">-</span><span class="mi ve-pasteProtect">99</span><span class="p ve-pasteProtect">]</span> <span class="err ve-pasteProtect">→</span> <span class="err ve-pasteProtect">모듈에</span> <span class="err ve-pasteProtect">의해</span> <span class="err ve-pasteProtect">주어진</span> <span class="err ve-pasteProtect">응답을</span> <span class="err ve-pasteProtect">최대</span> <span class="mi ve-pasteProtect">100</span> <span class="err ve-pasteProtect">바이트로</span> <span class="err ve-pasteProtect">저장합니다</span><span class="p ve-pasteProtect">.</span>
+</pre>
+</div>
+<p data-parsoid='{"dsr":[8768,8778,0,0]}'>명령 보내기 예<span class="ve-pasteProtect" data-parsoid='{"src":" ","isDisplayHack":true,"dsr":[8776,8777,null,0]}' data-ve-attributes='{"typeof":"mw:DisplaySpace mw:Placeholder"}' typeof="mw:DisplaySpace mw:Placeholder"> </span>:</p>
+<p data-parsoid='{"dsr":[8780,8854,0,0]}'><a data-parsoid='{"stx":"url","dsr":[8780,8854,0,0]}' data-ve-attributes='{"rel":"mw:ExtLink"}' href="http://www.libelium.com/development/waspmote/examples/zb-13-send-atcommand" rel="mw:ExtLink">http://www.libelium.com/development/waspmote/examples/zb-13-send-atcommand</a></p>
+<h3 data-parsoid='{"dsr":[8856,8879,3,3]}' id="Waspmote_reboot"> Waspmote reboot </h3>
+<p data-parsoid='{"dsr":[8880,8941,0,0]}'>Waspmote가 다시 부팅되면 응용 프로그램 코드가 다시 시작되어 처음부터 모든 변수와 객체가 만들어집니다.</p>
+<h3 data-parsoid='{"dsr":[8943,8972,3,3]}' id="Constants_pre-defined"> Constants pre-defined </h3>
+<p data-parsoid='{"dsr":[8973,9072,0,0]}'>&#8216;WaspXBeeCore.h&#8217;라는 파일에 미리 정의 된 상수가 있습니다. 이 상수는 최대 데이터 크기와 같은 일부 매개 변수를 정의합니다. 가장 중요한 상수는 다음에 설명됩니다.</p>
+<ul data-parsoid='{"dsr":[9073,9183,0,0]}'>
+<li data-parsoid='{"dsr":[9073,9183,1,0]}'> MAX_DATA<span class="ve-pasteProtect" data-parsoid='{"src":" ","isDisplayHack":true,"dsr":[9083,9084,null,0]}' data-ve-attributes='{"typeof":"mw:DisplaySpace mw:Placeholder"}' typeof="mw:DisplaySpace mw:Placeholder"> </span>: (기본값은 300) 패킷에 사용할 수있는 최대 데이터 크기를 정의합니다. 이 상수는 각 패킷에서 데이터가 전송되는 것과 같거나 커야합니다. 이 크기는 1500보다 커야합니다.</li>
+</ul>
+<ul data-parsoid='{"dsr":[9185,9363,0,0]}'>
+<li data-parsoid='{"dsr":[9185,9363,1,0]}'> MAX_PARSE<span class="ve-pasteProtect" data-parsoid='{"src":" ","isDisplayHack":true,"dsr":[9196,9197,null,0]}' data-ve-attributes='{"typeof":"mw:DisplaySpace mw:Placeholder"}' typeof="mw:DisplaySpace mw:Placeholder"> </span>: (기본값은 300) treatData ()에 대한 각 호출에서 파싱되는 최대 데이터를 정의합니다. 더 많은 데이터가 수신되면 treatData ()에 대한 다음 호출이있을 때까지 UART 버퍼에 저장됩니다. 그러나 UART 버퍼가 가득차면 다음 데이터가 버퍼에 기록되므로 이 문제에주의하십시오.</li>
+</ul>
+<ul data-parsoid='{"dsr":[9365,9416,0,0]}'>
+<li data-parsoid='{"dsr":[9365,9416,1,0]}'> MAX_BROTHERS<span class="ve-pasteProtect" data-parsoid='{"src":" ","isDisplayHack":true,"dsr":[9379,9380,null,0]}' data-ve-attributes='{"typeof":"mw:DisplaySpace mw:Placeholder"}' typeof="mw:DisplaySpace mw:Placeholder"> </span>: (기본값은 5) 저장 될 수있는 형제의 최대 수를 정의합니다.</li>
+</ul>
+<h2 data-parsoid='{"dsr":[9418,9445,2,2]}' id=".EC.B4.88.EA.B8.B0.ED.99.94.28_Initialization_.29"> 초기화( Initialization ) </h2>
+<p data-parsoid='{"dsr":[9446,9514,0,0]}'>모듈을 사용하기 전에 초기화해야합니다. 이 과정에서 모듈과 통신 할 UART가 열리고 XBee 스위치가 켜져 있어야합니다.</p>
+<h3 data-parsoid='{"dsr":[9516,9534,3,3]}' id="Setting_ON"> Setting ON </h3>
+<p data-parsoid='{"dsr":[9535,9643,0,0]}'>ON() 함수는 모든 전역 변수를 초기화하고 해당 UART를 열고 XBee를 ON으로 전환합니다. UART를 여는 데 사용되는 보오율은 라이브러리에서 정의됩니다 (기본적으로 115200bps).</p>
+<p data-parsoid='{"dsr":[9645,9664,0,0]}'>그것은 아무것도 반환하지 않습니다.</p>
+<p data-parsoid='{"dsr":[9666,9685,0,0]}'>초기화 된 변수는 다음과 같습니다.</p>
+<ul data-parsoid='{"dsr":[9686,10019,0,0]}'>
+<li data-parsoid='{"dsr":[9686,9728,1,0]}'> protocol<span class="ve-pasteProtect" data-parsoid='{"src":" ","isDisplayHack":true,"dsr":[9696,9697,null,0]}' data-ve-attributes='{"typeof":"mw:DisplaySpace mw:Placeholder"}' typeof="mw:DisplaySpace mw:Placeholder"> </span>: 사용된 프로토콜을 지정합니다(이 경우 ZIGBEE).</li>
+<li data-parsoid='{"dsr":[9729,9761,1,0]}'> pos<span class="ve-pasteProtect" data-parsoid='{"src":" ","isDisplayHack":true,"dsr":[9734,9735,null,0]}' data-ve-attributes='{"typeof":"mw:DisplaySpace mw:Placeholder"}' typeof="mw:DisplaySpace mw:Placeholder"> </span>: 수신 된 패킷에서 사용할 위치를 지정합니다.</li>
+<li data-parsoid='{"dsr":[9762,9800,1,0]}'> discoveryOptions<span class="ve-pasteProtect" data-parsoid='{"src":" ","isDisplayHack":true,"dsr":[9780,9781,null,0]}' data-ve-attributes='{"typeof":"mw:DisplaySpace mw:Placeholder"}' typeof="mw:DisplaySpace mw:Placeholder"> </span>: 노드 검색의 옵션을 지정합니다.</li>
+<li data-parsoid='{"dsr":[9801,9837,1,0]}'> awakeTime<span class="ve-pasteProtect" data-parsoid='{"src":" ","isDisplayHack":true,"dsr":[9812,9813,null,0]}' data-ve-attributes='{"typeof":"mw:DisplaySpace mw:Placeholder"}' typeof="mw:DisplaySpace mw:Placeholder"> </span>: 잠자기 전에 깨어있는 시간을 지정합니다.</li>
+<li data-parsoid='{"dsr":[9838,9866,1,0]}'> sleepTime<span class="ve-pasteProtect" data-parsoid='{"src":" ","isDisplayHack":true,"dsr":[9849,9850,null,0]}' data-ve-attributes='{"typeof":"mw:DisplaySpace mw:Placeholder"}' typeof="mw:DisplaySpace mw:Placeholder"> </span>: 잠자기 시간을 지정합니다.</li>
+<li data-parsoid='{"dsr":[9867,9899,1,0]}'> scanChannels<span class="ve-pasteProtect" data-parsoid='{"src":" ","isDisplayHack":true,"dsr":[9881,9882,null,0]}' data-ve-attributes='{"typeof":"mw:DisplaySpace mw:Placeholder"}' typeof="mw:DisplaySpace mw:Placeholder"> </span>: 검사 할 채널을 지정합니다.</li>
+<li data-parsoid='{"dsr":[9900,9934,1,0]}'> scanTime<span class="ve-pasteProtect" data-parsoid='{"src":" ","isDisplayHack":true,"dsr":[9910,9911,null,0]}' data-ve-attributes='{"typeof":"mw:DisplaySpace mw:Placeholder"}' typeof="mw:DisplaySpace mw:Placeholder"> </span>: 각 채널을 검색 할 시간을 지정합니다.</li>
+<li data-parsoid='{"dsr":[9935,9976,1,0]}'> timeEnergyChannel<span class="ve-pasteProtect" data-parsoid='{"src":" ","isDisplayHack":true,"dsr":[9954,9955,null,0]}' data-ve-attributes='{"typeof":"mw:DisplaySpace mw:Placeholder"}' typeof="mw:DisplaySpace mw:Placeholder"> </span>: 채널을 검색 할 시간을 지정합니다.</li>
+<li data-parsoid='{"dsr":[9977,10019,1,0]}'> encryptMode<span class="ve-pasteProtect" data-parsoid='{"src":" ","isDisplayHack":true,"dsr":[9990,9991,null,0]}' data-ve-attributes='{"typeof":"mw:DisplaySpace mw:Placeholder"}' typeof="mw:DisplaySpace mw:Placeholder"> </span>: 암호화 모드가 활성화되었는지 여부를 지정합니다.</li>
+</ul>
+<ul data-parsoid='{"dsr":[10021,10687,0,0]}'>
+<li data-parsoid='{"dsr":[10021,10052,1,0]}'> powerLevel<span class="ve-pasteProtect" data-parsoid='{"src":" ","isDisplayHack":true,"dsr":[10033,10034,null,0]}' data-ve-attributes='{"typeof":"mw:DisplaySpace mw:Placeholder"}' typeof="mw:DisplaySpace mw:Placeholder"> </span>: 동력 전달 수준을 지정합니다.</li>
+<li data-parsoid='{"dsr":[10053,10090,1,0]}'> timeRSSI<span class="ve-pasteProtect" data-parsoid='{"src":" ","isDisplayHack":true,"dsr":[10063,10064,null,0]}' data-ve-attributes='{"typeof":"mw:DisplaySpace mw:Placeholder"}' typeof="mw:DisplaySpace mw:Placeholder"> </span>: RSSI LED가 켜지는 시간을 지정합니다.</li>
+<li data-parsoid='{"dsr":[10091,10122,1,0]}'> sleepOptions<span class="ve-pasteProtect" data-parsoid='{"src":" ","isDisplayHack":true,"dsr":[10105,10106,null,0]}' data-ve-attributes='{"typeof":"mw:DisplaySpace mw:Placeholder"}' typeof="mw:DisplaySpace mw:Placeholder"> </span>: 잠자기 옵션을 지정합니다.</li>
+<li data-parsoid='{"dsr":[10123,10150,1,0]}'> parentNA<span class="ve-pasteProtect" data-parsoid='{"src":" ","isDisplayHack":true,"dsr":[10133,10134,null,0]}' data-ve-attributes='{"typeof":"mw:DisplaySpace mw:Placeholder"}' typeof="mw:DisplaySpace mw:Placeholder"> </span>: 부모의 주소를 지정합니다.</li>
+<li data-parsoid='{"dsr":[10151,10179,1,0]}'> deviceType<span class="ve-pasteProtect" data-parsoid='{"src":" ","isDisplayHack":true,"dsr":[10163,10164,null,0]}' data-ve-attributes='{"typeof":"mw:DisplaySpace mw:Placeholder"}' typeof="mw:DisplaySpace mw:Placeholder"> </span>: 장치 유형을 지정합니다.</li>
+<li data-parsoid='{"dsr":[10180,10213,1,0]}'> extendedPAN<span class="ve-pasteProtect" data-parsoid='{"src":" ","isDisplayHack":true,"dsr":[10193,10194,null,0]}' data-ve-attributes='{"typeof":"mw:DisplaySpace mw:Placeholder"}' typeof="mw:DisplaySpace mw:Placeholder"> </span>: 확장 PAN ID를 지정합니다.</li>
+<li data-parsoid='{"dsr":[10214,10258,1,0]}'> maxUnicastHops<span class="ve-pasteProtect" data-parsoid='{"src":" ","isDisplayHack":true,"dsr":[10230,10231,null,0]}' data-ve-attributes='{"typeof":"mw:DisplaySpace mw:Placeholder"}' typeof="mw:DisplaySpace mw:Placeholder"> </span>: 유니 캐스트 전송의 최대 홉 수를 지정합니다.</li>
+<li data-parsoid='{"dsr":[10259,10305,1,0]}'> maxBroadcastHops<span class="ve-pasteProtect" data-parsoid='{"src":" ","isDisplayHack":true,"dsr":[10277,10278,null,0]}' data-ve-attributes='{"typeof":"mw:DisplaySpace mw:Placeholder"}' typeof="mw:DisplaySpace mw:Placeholder"> </span>: 브로드 캐스트 전송의 최대 홉 수를 지정합니다</li>
+<li data-parsoid='{"dsr":[10306,10350,1,0]}'> stackProfile<span class="ve-pasteProtect" data-parsoid='{"src":" ","isDisplayHack":true,"dsr":[10320,10321,null,0]}' data-ve-attributes='{"typeof":"mw:DisplaySpace mw:Placeholder"}' typeof="mw:DisplaySpace mw:Placeholder"> </span>: 사용 된 ZigBee 프로토콜 스택을 지정합니다.</li>
+<li data-parsoid='{"dsr":[10351,10398,1,0]}'> joinTime<span class="ve-pasteProtect" data-parsoid='{"src":" ","isDisplayHack":true,"dsr":[10361,10362,null,0]}' data-ve-attributes='{"typeof":"mw:DisplaySpace mw:Placeholder"}' typeof="mw:DisplaySpace mw:Placeholder"> </span>: 코디네이터가 네트워크 참여 노드를 허용하는 시간을 지정합니다.</li>
+<li data-parsoid='{"dsr":[10399,10465,1,0]}'> channelVerification<span class="ve-pasteProtect" data-parsoid='{"src":" ","isDisplayHack":true,"dsr":[10420,10421,null,0]}' data-ve-attributes='{"typeof":"mw:DisplaySpace mw:Placeholder"}' typeof="mw:DisplaySpace mw:Placeholder"> </span>: 라우터가 네트워크에서 유지 관리 코디네이터를 필요로하는지 여부를 지정합니다.</li>
+<li data-parsoid='{"dsr":[10466,10520,1,0]}'> joinNotification<span class="ve-pasteProtect" data-parsoid='{"src":" ","isDisplayHack":true,"dsr":[10484,10485,null,0]}' data-ve-attributes='{"typeof":"mw:DisplaySpace mw:Placeholder"}' typeof="mw:DisplaySpace mw:Placeholder"> </span>: 노드가 네트워크에 참여할 때 메시지가 전송되도록 지정합니다.</li>
+<li data-parsoid='{"dsr":[10521,10583,1,0]}'> aggregateNotification<span class="ve-pasteProtect" data-parsoid='{"src":" ","isDisplayHack":true,"dsr":[10544,10545,null,0]}' data-ve-attributes='{"typeof":"mw:DisplaySpace mw:Placeholder"}' typeof="mw:DisplaySpace mw:Placeholder"> </span>: 연속적인 총 경로 브로드 캐스트 메시지 사이의 시간을 지정합니다.</li>
+<li data-parsoid='{"dsr":[10584,10624,1,0]}'> encryptOptions<span class="ve-pasteProtect" data-parsoid='{"src":" ","isDisplayHack":true,"dsr":[10600,10601,null,0]}' data-ve-attributes='{"typeof":"mw:DisplaySpace mw:Placeholder"}' typeof="mw:DisplaySpace mw:Placeholder"> </span>: 암호화 모드에 대한 옵션을 지정합니다.</li>
+<li data-parsoid='{"dsr":[10625,10654,1,0]}'> networkKey<span class="ve-pasteProtect" data-parsoid='{"src":" ","isDisplayHack":true,"dsr":[10637,10638,null,0]}' data-ve-attributes='{"typeof":"mw:DisplaySpace mw:Placeholder"}' typeof="mw:DisplaySpace mw:Placeholder"> </span>: 네트워크 키를 지정합니다.</li>
+<li data-parsoid='{"dsr":[10655,10687,1,0]}'> powerMode<span class="ve-pasteProtect" data-parsoid='{"src":" ","isDisplayHack":true,"dsr":[10666,10667,null,0]}' data-ve-attributes='{"typeof":"mw:DisplaySpace mw:Placeholder"}' typeof="mw:DisplaySpace mw:Placeholder"> </span>: 사용 된 전원 모드를 지정합니다.</li>
+</ul>
+<p data-parsoid='{"dsr":[10688,10692,0,0]}'>사용 예</p>
+<div about="#mwt3" class="mw-highlight mw-content-ltr" data-mw='{"name":"syntaxhighlight","attrs":{"lang":"c++"},"body":{"extsrc":"\n{\n\nxbeeZB.ON ();\n\n}\n\n\n"}}' data-parsoid='{"dsr":[0,69,2,2]}' data-ve-attributes='{"typeof":"mw:Extension/syntaxhighlight","about":"#mwt3"}' dir="ltr" typeof="mw:Extension/syntaxhighlight">
+<pre><span class="p ve-pasteProtect">{</span>
+
+<span class="n ve-pasteProtect">xbeeZB</span><span class="p ve-pasteProtect">.</span><span class="n ve-pasteProtect">ON</span> <span class="p ve-pasteProtect">();</span>
+
+<span class="p ve-pasteProtect">}</span>
+</pre>
+</div>
+<p data-parsoid='{"dsr":[10761,10784,0,0]}'>확장 라디오 보드 (XBee ZigBee)</p>
+<p data-parsoid='{"dsr":[10786,11114,0,0]}'>확장 보드를 사용하면 Waspmote 센서 플랫폼에서 두 개의 통신 모듈을 동시에 연결할 수 있습니다. 이는 Waspmote에서 사용할 수있는 무선 라디오를 사용하여 여러 가지 조합이 가능하다는 것을 의미합니다. 802.15.4, ZigBee, DigiMesh, 868MHz, 900MHz, LoRa, WiFi, GPRS, GPRS + GPS, 3G, 4G, Sigfox, LoRaWAN , 블루투스 프로, 블루투스 저에너지 및 RFID / NFC. 또한 RS-485 / Modbus, RS-232 직렬 / Modbus 및 CAN 버스와 같은 산업용 프로토콜 모듈을 사용할 수 있습니다.</p>
+<p data-parsoid='{"dsr":[11116,11133,0,0]}'>가능한 조합은 다음과 같습니다.</p>
+<ul data-parsoid='{"dsr":[11134,11278,0,0]}'>
+<li data-parsoid='{"dsr":[11134,11150,1,0]}'> LoRaWAN &#8211; GPRS</li>
+<li data-parsoid='{"dsr":[11151,11170,1,0]}'> 802.15.4 &#8211; Sigfox</li>
+<li data-parsoid='{"dsr":[11171,11188,1,0]}'> 868MHz &#8211; RS-485</li>
+<li data-parsoid='{"dsr":[11189,11204,1,0]}'> RS-232 &#8211; WiFi</li>
+<li data-parsoid='{"dsr":[11205,11220,1,0]}'> DigiMesh &#8211; 4G</li>
+<li data-parsoid='{"dsr":[11221,11242,1,0]}'> RS-232 &#8211; RFID / NFC</li>
+<li data-parsoid='{"dsr":[11243,11254,1,0]}'> WiFi &#8211; 3G</li>
+<li data-parsoid='{"dsr":[11255,11271,1,0]}'> CAN bus &#8211; 블루투스</li>
+<li data-parsoid='{"dsr":[11272,11278,1,0]}'> etc.</li>
+</ul>
+<p data-parsoid='{"dsr":[11279,11364,0,0]}'>참고<span class="ve-pasteProtect" data-parsoid='{"src":" ","isDisplayHack":true,"dsr":[11281,11282,null,0]}' data-ve-attributes='{"typeof":"mw:DisplaySpace mw:Placeholder"}' typeof="mw:DisplaySpace mw:Placeholder"> </span>: GPRS, GPRS + GPS, 3G 및 4G 모듈은 확장 보드가 Waspmote에 연결될 필요가 없습니다. 소켓 1에 직접 꽂을 수 있습니다.</p>
+<p data-parsoid='{"dsr":[11366,11409,0,0]}'>다음 사진에서 할당 된 UART와 함께 사용할 수있는 소켓을 볼 수 있습니다.</p>
+<p data-parsoid='{"dsr":[11411,11496,0,0]}'>한편, SOCKET0은 UART0을 통해 모든 종류의 무선 모듈을 연결합니다. 반면, SOCKET1은 UART1을 통해 무선 모듈을 연결할 수 있습니다.</p>
+<h3 data-parsoid='{"dsr":[11498,11517,3,3]}' id="Setting_OFF"> Setting OFF </h3>
+<p data-parsoid='{"dsr":[11518,11548,0,0]}'>OFF () 함수는 UART를 닫고 XBee를 끕니다.</p>
+<p data-parsoid='{"dsr":[11550,11554,0,0]}'>사용 예</p>
+<div about="#mwt3" class="mw-highlight mw-content-ltr" data-mw='{"name":"syntaxhighlight","attrs":{"lang":"c++"},"body":{"extsrc":"\n{\nxbeeZB.OFF();\n}\n"}}' data-parsoid='{"dsr":[0,65,2,2]}' data-ve-attributes='{"typeof":"mw:Extension/syntaxhighlight","about":"#mwt3"}' dir="ltr" typeof="mw:Extension/syntaxhighlight">
+<pre><span class="p ve-pasteProtect">{</span>
+<span class="n ve-pasteProtect">xbeeZB</span><span class="p ve-pasteProtect">.</span><span class="n ve-pasteProtect">OFF</span><span class="p ve-pasteProtect">();</span>
+<span class="p ve-pasteProtect">}</span>
+</pre>
+</div>
+<h2 data-parsoid='{"dsr":[11621,11646,2,2]}' id=".EC.A7.80.EA.B7.B8.EB.B9.84.2C_Wi-Fi.2C_.EB.B8.94.EB.A3.A8.ED.88.AC.EC.8A.A4_.EB.B9.84.EA.B5.90"> 지그비, Wi-Fi, 블루투스 비교 </h2>
+<p>
+<span about="#mwt3" class="ve-pasteProtect" data-ve-attributes='{"about":"#mwt3"}'><br />
+</span><br />
+<span about="#mwt3" class="ve-pasteProtect" data-ve-attributes='{"about":"#mwt3"}'><br />
+</span><br />
+<span about="#mwt3" class="ve-pasteProtect" data-ve-attributes='{"about":"#mwt3"}'><br />
+</span><span about="#mwt3" class="ve-pasteProtect" data-ve-attributes='{"about":"#mwt3"}'><br />
+</span><br />
+<span about="#mwt3" class="ve-pasteProtect" data-ve-attributes='{"about":"#mwt3"}'><br />
+</span><br />
+<span about="#mwt3" class="ve-pasteProtect" data-ve-attributes='{"about":"#mwt3"}'><br />
+</span><span about="#mwt3" class="ve-pasteProtect" data-ve-attributes='{"about":"#mwt3"}'><br />
+</span><br />
+<span about="#mwt3" class="ve-pasteProtect" data-ve-attributes='{"about":"#mwt3"}'><br />
+</span><br />
+<span about="#mwt3" class="ve-pasteProtect" data-ve-attributes='{"about":"#mwt3"}'><br />
+</span>
+</p>
+<table class="wikitable" data-parsoid='{"dsr":[11647,12708,20,2]}'>
+<tbody data-parsoid='{"dsr":[11668,12706,0,0]}'>
+<tr data-parsoid='{"autoInsertedEnd":true,"autoInsertedStart":true,"dsr":[11668,11695,0,0]}'>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[11668,11669,1,0]}'></td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[11670,11677,1,0]}'>ZigBee</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[11678,11684,1,0]}'>Wi-Fi</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[11685,11695,1,0]}'>Bluetooth</td>
+</tr>
+<tr data-parsoid='{"startTagSrc":"|-","autoInsertedEnd":true,"dsr":[11696,11773,2,0]}'>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[11699,11711,1,0]}'>Application</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[11712,11735,1,0]}'>Monitoring and Control</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[11736,11754,1,0]}'>Email, Web, Video</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[11755,11773,1,0]}'>Cable replacement</td>
+</tr>
+<tr data-parsoid='{"startTagSrc":"|-","autoInsertedEnd":true,"dsr":[11774,11841,2,0]}'>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[11777,11798,1,0]}'>Physical/ MAC layers</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[11799,11813,1,0]}'>IEEE 802.15.4</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[11814,11826,1,0]}'>IEEE 802.11</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[11827,11841,1,0]}'>IEEE 802.15.1</td>
+</tr>
+<tr data-parsoid='{"startTagSrc":"|-","autoInsertedEnd":true,"dsr":[11842,11898,2,0]}'>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[11845,11855,1,0]}'>Data Rate</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[11856,11868,1,0]}'>250 Kbits/s</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[11869,11887,1,0]}'>11 &amp; 54 Mbits/sec</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[11888,11898,1,0]}'>1 Mbits/s</td>
+</tr>
+<tr data-parsoid='{"startTagSrc":"|-","autoInsertedEnd":true,"dsr":[11899,11949,2,0]}'>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[11902,11908,1,0]}'>Range</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[11909,11923,1,0]}'>10-100 meters</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[11924,11938,1,0]}'>50-100 meters</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[11939,11949,1,0]}'>10 meters</td>
+</tr>
+<tr data-parsoid='{"startTagSrc":"|-","autoInsertedEnd":true,"dsr":[11950,12022,2,0]}'>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[11953,11973,1,0]}'>Networking Topology</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[11974,11979,1,0]}'>Mesh</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[11980,11993,1,0]}'>Point to hub</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[11994,12022,1,0]}'>Ad-hoc, very small networks</td>
+</tr>
+<tr data-parsoid='{"startTagSrc":"|-","autoInsertedEnd":true,"dsr":[12023,12079,2,0]}'>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[12026,12046,1,0]}'>Operating Frequency</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[12047,12055,1,0]}'>2.4 GHz</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[12056,12070,1,0]}'>2.4 and 5 GHz</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[12071,12079,1,0]}'>2.4 GHz</td>
+</tr>
+<tr data-parsoid='{"startTagSrc":"|-","autoInsertedEnd":true,"dsr":[12080,12143,2,0]}'>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[12083,12126,1,0]}'>Complexity (Device and application impact)</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[12127,12131,1,0]}'>Low</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[12132,12137,1,0]}'>High</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[12138,12143,1,0]}'>High</td>
+</tr>
+<tr data-parsoid='{"startTagSrc":"|-","autoInsertedEnd":true,"dsr":[12144,12184,2,0]}'>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[12147,12165,1,0]}'>Power Consumption</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[12166,12170,1,0]}'>low</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[12171,12176,1,0]}'>High</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[12177,12184,1,0]}'>Medium</td>
+</tr>
+<tr data-parsoid='{"startTagSrc":"|-","autoInsertedEnd":true,"dsr":[12185,12242,2,0]}'>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[12188,12218,1,0]}'>Number of devices for Network</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[12219,12223,1,0]}'>64K</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[12224,12239,1,0]}'>액세스 포인트 당 32 개</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[12240,12242,1,0]}'>7</td>
+</tr>
+<tr data-parsoid='{"startTagSrc":"|-","autoInsertedEnd":true,"dsr":[12243,12303,2,0]}'>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[12246,12284,1,0]}'>Network Latency</p>
+<p data-parsoid='{"dsr":[12263,12284,0,0]}'>New slave enumeration</p>
+</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[12285,12291,1,0]}'>30 ms</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[12292,12295,1,0]}'> &#8211;</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[12296,12303,1,0]}'>20 sec</td>
+</tr>
+<tr data-parsoid='{"startTagSrc":"|-","autoInsertedEnd":true,"dsr":[12304,12433,2,0]}'>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[12307,12357,1,0]}'>Network Latency</p>
+<p data-parsoid='{"dsr":[12324,12357,0,0]}'>Sleeping slave changing to active</p>
+</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[12358,12393,1,0]}'>기기는 30ms 이내에 기존 네트워크에 조인 할 수 있습니다.</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[12394,12412,1,0]}'>기기 연결에는 3-5 초가 필요</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[12413,12433,1,0]}'>기기 연결에는 최대 10 초가 필요</td>
+</tr>
+<tr data-parsoid='{"startTagSrc":"|-","autoInsertedEnd":true,"dsr":[12434,12705,2,0]}'>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[12437,12458,1,0]}'>Typical Applications</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[12459,12573,1,0]}'>Industrial control and monitoring, sensor networks, building automation, home control and automation, toys, games</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[12574,12627,1,0]}'>Wireless LAN connectivity, broadband Internet access</td>
+<td data-parsoid='{"autoInsertedEnd":true,"dsr":[12628,12705,1,0]}'>Wireless connectivity between devices such as phones, PDA, laptops, headsets</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<hr />
+<p><iframe src='http://ad.selfhow.com/rd' width='100%' border=0 frameborder=0 style='height:auto;width:100%'></iframe></p>
+<p><a href='http://racoonlotty.tistory.com/14' target='_blank'>Origin Content : 로티의 블로그</a> | <a href="/cdn-cgi/l/email-protection#9ffcfcf3fcdff1fef3feb1f8fe" target='_blank'>Contact : <span class="__cf_email__" data-cfemail="6b080807082b050a070a450c0a">[email&#160;protected]</span></a>
+</p>
+<p>Cotent License : CC-BY </p>
+<p>This content is collected under the CCL license.</p>
+<p>Please check the license of the original article before asking about copyright.</p>
+<ul>
+<li><a href='/tag/Waspmote'>More About <span style='font-weight:bold;'>Waspmote</span></a></li>
+<li><a href='/tag/ZigBee'>More About <span style='font-weight:bold;'>ZigBee</span></a></li>
+<li><a href='/tag/Networking'>More About <span style='font-weight:bold;'>Networking</span></a></li>
+<li><a href='/tag/Guide'>More About <span style='font-weight:bold;'>Guide</span></a></li>
+</ul>
+        </div> <!-- //.entry-summary -->
+        
+                    <div class="entry-tags"><b>Tags:</b> <a href="http://ms.nala.ga/tag/guide/" rel="tag">Guide</a>, <a href="http://ms.nala.ga/tag/networking/" rel="tag">Networking</a>, <a href="http://ms.nala.ga/tag/waspmote/" rel="tag">Waspmote</a>, <a href="http://ms.nala.ga/tag/zigbee/" rel="tag">ZigBee</a></div>
+        
+    </div>
+
+</article> <!--/#post-->
+
+
+
+
+
+                                                                    <div class="post-nav-area">
+                                                    
+            <nav class="next-previous-post clearfix media" role="navigation">
+                <div class="row">
+                    <!-- Previous Post -->
+                    <div class="previous-post col-sm-6 pull-left">
+                        <div class="nav-previous"><i class="fa fa-angle-left"></i> <a href="http://ms.nala.ga/waspmote-802-15-4/" rel="prev">Waspmote 802.15.4</a></div>                    </div>
+
+                    <!-- Next Post -->
+                    <div class="next-post col-sm-6 pull-right text-right">
+                        <div class="nav-next"><a href="http://ms.nala.ga/%ec%8a%a4%ed%83%80%ec%9b%8c%ec%a6%88-%eb%b0%b0%ed%8b%80%ed%94%84%eb%a1%a0%ed%8a%b8-2/" rel="next">스타워즈 배틀프론트 2</a> <i class="fa fa-angle-right"></i></div>                    </div>
+                </div>
+            </nav><!-- .navigation -->
+            
+                                            </div>
+                                
+                                
+                            
+                                            </main> <!-- /.site-main -->
+                </div>  <!-- /.content-area -->
+            </div> <!-- /col -->
+
+            <!-- Blogsidebar -->
+            
+	<div class="col-md-4">
+	    <div class="primary-sidebar widget-area" role="complementary">
+	        <div id="tag_cloud-2" class="widget widget_tag_cloud"><h2 class="widget-title">태그</h2><div class="tagcloud"><a href="http://ms.nala.ga/tag/1%ec%9b%94/" class="tag-cloud-link tag-link-2 tag-link-position-1" style="font-size: 18.440677966102pt;" aria-label="1월 (115 아이템)">1월</a>
+<a href="http://ms.nala.ga/tag/2017/" class="tag-cloud-link tag-link-21 tag-link-position-2" style="font-size: 17.016949152542pt;" aria-label="2017 (98 아이템)">2017</a>
+<a href="http://ms.nala.ga/tag/2017%eb%85%84/" class="tag-cloud-link tag-link-551 tag-link-position-3" style="font-size: 14.406779661017pt;" aria-label="2017년 (77 아이템)">2017년</a>
+<a href="http://ms.nala.ga/tag/2018/" class="tag-cloud-link tag-link-155 tag-link-position-4" style="font-size: 15.830508474576pt;" aria-label="2018 (89 아이템)">2018</a>
+<a href="http://ms.nala.ga/tag/2018%eb%85%84/" class="tag-cloud-link tag-link-64 tag-link-position-5" style="font-size: 19.864406779661pt;" aria-label="2018년 (130 아이템)">2018년</a>
+<a href="http://ms.nala.ga/tag/the/" class="tag-cloud-link tag-link-310 tag-link-position-6" style="font-size: 11.322033898305pt;" aria-label="the (57 아이템)">the</a>
+<a href="http://ms.nala.ga/tag/vs/" class="tag-cloud-link tag-link-128 tag-link-position-7" style="font-size: 8pt;" aria-label="vs (41 아이템)">vs</a>
+<a href="http://ms.nala.ga/tag/%ea%b0%80%ea%b2%a9/" class="tag-cloud-link tag-link-275 tag-link-position-8" style="font-size: 12.271186440678pt;" aria-label="가격 (62 아이템)">가격</a>
+<a href="http://ms.nala.ga/tag/%ea%b2%b0%ed%98%bc/" class="tag-cloud-link tag-link-501 tag-link-position-9" style="font-size: 20.338983050847pt;" aria-label="결혼 (136 아이템)">결혼</a>
+<a href="http://ms.nala.ga/tag/%ea%b3%b5%ea%b0%9c/" class="tag-cloud-link tag-link-260 tag-link-position-10" style="font-size: 9.8983050847458pt;" aria-label="공개 (49 아이템)">공개</a>
+<a href="http://ms.nala.ga/tag/%ea%b7%b8%eb%a6%ac%ea%b3%a0/" class="tag-cloud-link tag-link-980 tag-link-position-11" style="font-size: 10.135593220339pt;" aria-label="그리고 (50 아이템)">그리고</a>
+<a href="http://ms.nala.ga/tag/%eb%82%98%ec%9d%b4%ec%b0%a8/" class="tag-cloud-link tag-link-1184 tag-link-position-12" style="font-size: 8.2372881355932pt;" aria-label="나이차 (42 아이템)">나이차</a>
+<a href="http://ms.nala.ga/tag/%eb%82%a8%ec%9e%90/" class="tag-cloud-link tag-link-364 tag-link-position-13" style="font-size: 9.4237288135593pt;" aria-label="남자 (47 아이템)">남자</a>
+<a href="http://ms.nala.ga/tag/%eb%82%a8%ed%8e%b8/" class="tag-cloud-link tag-link-603 tag-link-position-14" style="font-size: 16.305084745763pt;" aria-label="남편 (92 아이템)">남편</a>
+<a href="http://ms.nala.ga/tag/%eb%85%b8%eb%9e%98/" class="tag-cloud-link tag-link-713 tag-link-position-15" style="font-size: 8.9491525423729pt;" aria-label="노래 (45 아이템)">노래</a>
+<a href="http://ms.nala.ga/tag/%eb%8c%80%ed%95%9c/" class="tag-cloud-link tag-link-3572 tag-link-position-16" style="font-size: 10.135593220339pt;" aria-label="대한 (50 아이템)">대한</a>
+<a href="http://ms.nala.ga/tag/%eb%93%9c%eb%9d%bc%eb%a7%88/" class="tag-cloud-link tag-link-1041 tag-link-position-17" style="font-size: 16.542372881356pt;" aria-label="드라마 (95 아이템)">드라마</a>
+<a href="http://ms.nala.ga/tag/%eb%a6%ac%eb%b7%b0/" class="tag-cloud-link tag-link-447 tag-link-position-18" style="font-size: 12.508474576271pt;" aria-label="리뷰 (64 아이템)">리뷰</a>
+<a href="http://ms.nala.ga/tag/%eb%a7%9b%ec%a7%91/" class="tag-cloud-link tag-link-782 tag-link-position-19" style="font-size: 16.779661016949pt;" aria-label="맛집 (97 아이템)">맛집</a>
+<a href="http://ms.nala.ga/tag/%eb%aa%a8%ec%9d%8c/" class="tag-cloud-link tag-link-1142 tag-link-position-20" style="font-size: 13.694915254237pt;" aria-label="모음 (72 아이템)">모음</a>
+<a href="http://ms.nala.ga/tag/%eb%aa%b8%eb%a7%a4/" class="tag-cloud-link tag-link-2391 tag-link-position-21" style="font-size: 15.830508474576pt;" aria-label="몸매 (88 아이템)">몸매</a>
+<a href="http://ms.nala.ga/tag/%eb%b0%a9%eb%b2%95/" class="tag-cloud-link tag-link-930 tag-link-position-22" style="font-size: 17.491525423729pt;" aria-label="방법 (103 아이템)">방법</a>
+<a href="http://ms.nala.ga/tag/%eb%b0%b0%ec%9a%b0/" class="tag-cloud-link tag-link-895 tag-link-position-23" style="font-size: 15.593220338983pt;" aria-label="배우 (86 아이템)">배우</a>
+<a href="http://ms.nala.ga/tag/%eb%b6%80%ec%82%b0/" class="tag-cloud-link tag-link-157 tag-link-position-24" style="font-size: 8.4745762711864pt;" aria-label="부산 (43 아이템)">부산</a>
+<a href="http://ms.nala.ga/tag/%ec%82%ac%eb%9e%91/" class="tag-cloud-link tag-link-2972 tag-link-position-25" style="font-size: 14.406779661017pt;" aria-label="사랑 (77 아이템)">사랑</a>
+<a href="http://ms.nala.ga/tag/%ec%82%ac%ec%a7%84/" class="tag-cloud-link tag-link-410 tag-link-position-26" style="font-size: 9.4237288135593pt;" aria-label="사진 (47 아이템)">사진</a>
+<a href="http://ms.nala.ga/tag/%ec%95%84%eb%82%b4/" class="tag-cloud-link tag-link-3039 tag-link-position-27" style="font-size: 9.6610169491525pt;" aria-label="아내 (48 아이템)">아내</a>
+<a href="http://ms.nala.ga/tag/%ec%95%88%eb%82%b4/" class="tag-cloud-link tag-link-1327 tag-link-position-28" style="font-size: 11.322033898305pt;" aria-label="안내 (56 아이템)">안내</a>
+<a href="http://ms.nala.ga/tag/%ec%95%8c%ec%95%84%eb%b3%b4%ea%b8%b0/" class="tag-cloud-link tag-link-821 tag-link-position-29" style="font-size: 15.118644067797pt;" aria-label="알아보기 (82 아이템)">알아보기</a>
+<a href="http://ms.nala.ga/tag/%ec%95%8c%ec%95%84%eb%b3%b4%ec%9e%90/" class="tag-cloud-link tag-link-341 tag-link-position-30" style="font-size: 11.322033898305pt;" aria-label="알아보자 (56 아이템)">알아보자</a>
+<a href="http://ms.nala.ga/tag/%ec%97%ac%ed%96%89/" class="tag-cloud-link tag-link-873 tag-link-position-31" style="font-size: 17.016949152542pt;" aria-label="여행 (98 아이템)">여행</a>
+<a href="http://ms.nala.ga/tag/%ec%98%81%ed%99%94/" class="tag-cloud-link tag-link-562 tag-link-position-32" style="font-size: 19.389830508475pt;" aria-label="영화 (124 아이템)">영화</a>
+<a href="http://ms.nala.ga/tag/%ec%98%a4%eb%8a%98/" class="tag-cloud-link tag-link-1059 tag-link-position-33" style="font-size: 13.694915254237pt;" aria-label="오늘 (72 아이템)">오늘</a>
+<a href="http://ms.nala.ga/tag/%ec%9a%b0%eb%a6%ac/" class="tag-cloud-link tag-link-888 tag-link-position-34" style="font-size: 11.322033898305pt;" aria-label="우리 (57 아이템)">우리</a>
+<a href="http://ms.nala.ga/tag/%ec%9c%84%ed%95%9c/" class="tag-cloud-link tag-link-1175 tag-link-position-35" style="font-size: 12.983050847458pt;" aria-label="위한 (66 아이템)">위한</a>
+<a href="http://ms.nala.ga/tag/%ec%9d%b4%ec%95%bc%ea%b8%b0/" class="tag-cloud-link tag-link-611 tag-link-position-36" style="font-size: 12.508474576271pt;" aria-label="이야기 (64 아이템)">이야기</a>
+<a href="http://ms.nala.ga/tag/%ec%9d%b4%ec%9c%a0/" class="tag-cloud-link tag-link-296 tag-link-position-37" style="font-size: 10.372881355932pt;" aria-label="이유 (51 아이템)">이유</a>
+<a href="http://ms.nala.ga/tag/%ec%9e%90%ea%b2%a9%ec%a6%9d/" class="tag-cloud-link tag-link-2111 tag-link-position-38" style="font-size: 9.4237288135593pt;" aria-label="자격증 (47 아이템)">자격증</a>
+<a href="http://ms.nala.ga/tag/%ec%a0%95%eb%a6%ac/" class="tag-cloud-link tag-link-1831 tag-link-position-39" style="font-size: 13.220338983051pt;" aria-label="정리 (68 아이템)">정리</a>
+<a href="http://ms.nala.ga/tag/%ec%a0%95%eb%b3%b4/" class="tag-cloud-link tag-link-89 tag-link-position-40" style="font-size: 15.118644067797pt;" aria-label="정보 (83 아이템)">정보</a>
+<a href="http://ms.nala.ga/tag/%ec%b6%94%ec%b2%9c/" class="tag-cloud-link tag-link-146 tag-link-position-41" style="font-size: 22pt;" aria-label="추천 (162 아이템)">추천</a>
+<a href="http://ms.nala.ga/tag/%ec%b6%9c%ec%97%b0/" class="tag-cloud-link tag-link-2930 tag-link-position-42" style="font-size: 10.847457627119pt;" aria-label="출연 (54 아이템)">출연</a>
+<a href="http://ms.nala.ga/tag/%ed%95%9c%ea%b5%ad/" class="tag-cloud-link tag-link-3361 tag-link-position-43" style="font-size: 11.796610169492pt;" aria-label="한국 (59 아이템)">한국</a>
+<a href="http://ms.nala.ga/tag/%ed%9a%a8%eb%8a%a5/" class="tag-cloud-link tag-link-810 tag-link-position-44" style="font-size: 9.6610169491525pt;" aria-label="효능 (48 아이템)">효능</a>
+<a href="http://ms.nala.ga/tag/%ed%9b%84%ea%b8%b0/" class="tag-cloud-link tag-link-14 tag-link-position-45" style="font-size: 17.966101694915pt;" aria-label="후기 (109 아이템)">후기</a></div>
+</div>	    </div>
+	</div>
+
+        </div> <!-- /.row -->
+    </div> <!-- /.container -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <hr>
+            </div>
+        </div>
+    </div>
+    <footer class="site-footer" role="contentinfo">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 text-center">
+  
+                    <p></p>
+                    
+                                            <div class="footer-social-icons">
+                                                                                                                                                                                                                                                                                                                                                                                                        
+                        </div>
+                    
+                </div>
+            </div>
+        </div>
+    </footer>
+
+            <div class="scroll-up">
+            <a href="#"><i class="fa fa-angle-up"></i></a>
+        </div>
+        <!-- Scroll Up -->
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/af2821b0/cloudflare-static/email-decode.min.js"></script><script type='text/javascript' src='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/js/bootstrap.min.js?ver=3.3.5'></script>
+<script type='text/javascript' src='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/js/scripts.js'></script>
+<script type='text/javascript' src='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/js/jquery.fitvids.js'></script>
+<script type='text/javascript' src='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/js/smoothscroll.js'></script>
+<script type='text/javascript' src='http://ms.nala.ga/wp-includes/js/wp-embed.min.js?ver=4.8.5'></script>
+    </body>
+</html>

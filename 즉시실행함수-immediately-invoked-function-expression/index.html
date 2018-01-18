@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="profile" href="http://gmpg.org/xfn/11">
+    <link rel="pingback" href="http://ms.nala.ga/xmlrpc.php">
+
+<title>즉시실행함수 (Immediately-invoked function expression) | All About MS CCL Contents</title>
+<meta name='robots' content='noindex,follow' />
+
+<!-- All in One SEO Pack 2.4.4 by Michael Torbert of Semper Fi Web Design[276,365] -->
+<meta name="description"  content="3줄 요약 var i = &#039;hello world&#039; ; init : initModule } else { 즉시실행함수 (Immediately-invoked function expression)즉시실행함수에 이해하기 위해서 함께 알면 좋을것들자바스크립트 함수 : first-class object자바스크립트 Scope (function-level scope)함수 정의 ( 함수 선언식, 함수 표현식 ) 자바스크립트에서 가장 큰 문제점 중의 하나는 글로벌 스코프에 정의된 것은 코드 내의 어디서든지 접근이 가능하다는 것입니다. 하지만, 외부에 공유되면 안되거나 공유될 필요가 없는" />
+<meta name="robots" content="index,nofollow" />
+
+<link rel="canonical" href="http://ms.nala.ga/%ec%a6%89%ec%8b%9c%ec%8b%a4%ed%96%89%ed%95%a8%ec%88%98-immediately-invoked-function-expression/" />
+<!-- /all in one seo pack -->
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="All About MS CCL Contents &raquo; 피드" href="http://ms.nala.ga/feed/" />
+<link rel="alternate" type="application/rss+xml" title="All About MS CCL Contents &raquo; 댓글 피드" href="http://ms.nala.ga/comments/feed/" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.3\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.3\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/ms.nala.ga\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.8.4"}};
+			!function(a,b,c){function d(a){var b,c,d,e,f=String.fromCharCode;if(!k||!k.fillText)return!1;switch(k.clearRect(0,0,j.width,j.height),k.textBaseline="top",k.font="600 32px Arial",a){case"flag":return k.fillText(f(55356,56826,55356,56819),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,56826,8203,55356,56819),0,0),c=j.toDataURL(),b!==c&&(k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447),0,0),c=j.toDataURL(),b!==c);case"emoji4":return k.fillText(f(55358,56794,8205,9794,65039),0,0),d=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55358,56794,8203,9794,65039),0,0),e=j.toDataURL(),d!==e}return!1}function e(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i,j=b.createElement("canvas"),k=j.getContext&&j.getContext("2d");for(i=Array("flag","emoji4"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='bootstrap-css-css'  href='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/css/bootstrap.min.css?ver=3.3.5' type='text/css' media='all' />
+<link rel='stylesheet' id='font-awesome-css-css'  href='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/css/font-awesome.min.css?ver=4.4.0' type='text/css' media='all' />
+<link rel='stylesheet' id='shaped-blog-stylesheet-css'  href='http://ms.nala.ga/wp-content/themes/shaped-blog/style.css?ver=4.8.4' type='text/css' media='all' />
+<link rel='stylesheet' id='responsive-css-css'  href='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/css/responsive.css' type='text/css' media='all' />
+<script type='text/javascript' src='http://ms.nala.ga/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
+<script type='text/javascript' src='http://ms.nala.ga/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+<link rel='https://api.w.org/' href='http://ms.nala.ga/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://ms.nala.ga/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://ms.nala.ga/wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='akg k141 모니터링 헤드폰 DIY 리폼 (리포스팅)' href='http://ms.nala.ga/akg-k141-%eb%aa%a8%eb%8b%88%ed%84%b0%eb%a7%81-%ed%97%a4%eb%93%9c%ed%8f%b0-diy-%eb%a6%ac%ed%8f%bc-%eb%a6%ac%ed%8f%ac%ec%8a%a4%ed%8c%85/' />
+<link rel='next' title='2017 티스토리 결산' href='http://ms.nala.ga/2017-%ed%8b%b0%ec%8a%a4%ed%86%a0%eb%a6%ac-%ea%b2%b0%ec%82%b0/' />
+<meta name="generator" content="WordPress 4.8.4" />
+<link rel='shortlink' href='http://ms.nala.ga/?p=278' />
+<link rel="alternate" type="application/json+oembed" href="http://ms.nala.ga/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fms.nala.ga%2F%25ec%25a6%2589%25ec%258b%259c%25ec%258b%25a4%25ed%2596%2589%25ed%2595%25a8%25ec%2588%2598-immediately-invoked-function-expression%2F" />
+<link rel="alternate" type="text/xml+oembed" href="http://ms.nala.ga/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fms.nala.ga%2F%25ec%25a6%2589%25ec%258b%259c%25ec%258b%25a4%25ed%2596%2589%25ed%2595%25a8%25ec%2588%2598-immediately-invoked-function-expression%2F&#038;format=xml" />
+
+	<style>
+
+		/* Border Color */
+		.btn-social:hover,
+		blockquote,
+		#respond input:focus[type="text"], 
+	    #respond input:focus[type="email"], 
+	    #respond input:focus[type="url"],
+	    #respond textarea:focus,
+	    #comments .comment-reply a:hover
+		{
+			border-color: ;
+		}
+
+		
+		/* Background Color */
+		.scroll-up a,
+		.btn-social:hover,
+		button,
+		input[type="button"],
+		input[type="reset"],
+		input[type="submit"],
+		.navbar-default .navbar-nav .dropdown-menu li a:hover, .dropdown-menu li a:focus, .navbar-default .navbar-nav .dropdown-menu .active a,
+		.pagination>li>a:focus, .pagination>li>a:hover, .pagination>li>span:focus, .pagination>li>span:hover, .pagination li .current,
+		.next-previous-posts .next-post a:hover,
+		.next-previous-posts .previous-post a:hover,
+		.btn-goback,
+		.btn-submit,
+		a.more-link,
+		.featured-post .fa,
+		#comments .comment-reply a:hover,
+		.widget .tagcloud a
+		{
+			background-color: ;
+		}
+
+		
+		/* Color */
+		.text-logo a,
+		.navbar-default .navbar-nav .active a, .navbar-default .navbar-nav .active a:hover, .navbar-default .navbar-nav .active a:focus,
+		.navbar-default .navbar-nav li a:hover, .navbar-default .navbar-nav li a:focus,
+		a:hover,
+    	a:focus,
+		.next-previous-posts .previous-post a,
+		.next-previous-posts .next-post a,
+		.pagination>li>a, .pagination>li>span,
+		#comments .comment-author a:hover, 
+    	#respond .logged-in-as a:hover,
+    	#wp-calendar a,
+    	h2.entry-title a:hover
+		{
+			color: ;
+		}
+
+
+		/* A Color */
+		a{
+			color: ;
+		}
+
+		/* a:hover Color */
+		a:hover,
+		a:focus,
+		a:active,
+		.widget a:hover,
+		.post .post-content .entry-meta ul li a:hover
+		{
+			color: ;
+		}
+
+		/* .featured-post .fa:after*/
+		.featured-post .fa:after{
+			border-color:   transparent ;
+		}
+
+
+		
+
+	</style>
+</head>
+
+<body class="post-template-default single single-post postid-278 single-format-standard">
+
+    <div id="st-preloader">
+        <div id="pre-status">
+            <div class="preload-placeholder"></div>
+        </div>
+    </div>
+<!-- /Preloader -->
+
+<header id="header">	
+	<div id="trueHeader">
+    	<div class="wrapper">
+            <div class="container">
+            	<!-- Menu -->
+            	<div class="menu_main">
+                	<div class="navbar blogx-navbar navbar-default">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#st-navber-collapse">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+
+                                                            <div class="text-logo">
+                                    <a href="http://ms.nala.ga">All About MS CCL Contents</a>
+                                    <p>All About MS CCL Contents</p>
+                                </div><!-- /Logo -->
+                                                    </div>
+                      
+                        <div id="st-navber-collapse" class="navbar-collapse collapse pull-right">
+                             
+                        </div>
+                    </div>
+            	</div><!-- end menu -->
+        	</div> <!-- /.container -->
+    	</div>
+	</div>
+	<DIV class='ads_adsense_img' style='margin:40px 0px 40px 0px;'>
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<!-- only display -->
+	<ins class="adsbygoogle"
+	     style="display:block"
+	     data-ad-client="ca-pub-8393857339019314"
+	     data-ad-slot="7474886381"
+	     data-ad-format="auto"></ins>
+	<script>
+	(adsbygoogle = window.adsbygoogle || []).push({});
+	</script>
+	</DIV>	
+
+</header>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div id="primary" class="content-area">
+                    <main id="main" class="site-main" role="main">
+
+                        
+                                <article id="post-278" class="post-278 post type-post status-publish format-standard hentry category-uncategorized tag-expression tag-function tag-immediately-invoked tag-682">
+    <header class="entry-header">
+        
+        
+    </header> <!--/.entry-header -->
+
+    <div class="clearfix post-content media">
+
+        <h2 class="entry-title">
+            즉시실행함수 (Immediately-invoked function expression)        </h2> <!-- //.entry-title -->
+
+        <div class="clearfix entry-meta">
+            
+            <ul class="list-inline">
+                <li>
+                    <span class="author vcard">
+                        By <a class="url fn n" href="http://ms.nala.ga/author/admin/">admin</a>                    </span>
+                </li>
+                <li>
+                    on <span class="posted-on">1월 12, 2018</span>
+                </li>
+                                    <li>
+                        in <span class="posted-in">
+                            <a href="http://ms.nala.ga/category/uncategorized/" rel="category tag">미분류</a>                        </span>
+                    </li>
+                            </ul>
+                </div> <!--/.entry-meta -->
+        
+        <div class="entry-summary">
+            <h1>3줄 요약 </h1>
+<div style='color:#fff;background-color:#000;border-radius:10px;'>
+<ol>
+<li><span>var i  = &#8216;hello world&#8217; ;</span></li>
+<li><span>init : initModule</span></li>
+<li><span>} else {</span></li>
+</ol>
+</div>
+<p><span id="more-278"></span></p>
+<p><iframe src='http://ad.selfhow.com/rd' width='100%' border=0 frameborder=0 style='height:auto;width:100%'></iframe></p>
+<hr />
+<h2>즉시실행함수 (Immediately-invoked function expression)</h2>
+<div></div>
+<div><span style="font-size: 12pt;">즉시실행함수에 이해하기 위해서 함께 알면 좋을것들</span></div>
+<div></div>
+<ul style="list-style-type: disc;">
+<li><span style="font-size: 12pt;">자바스크립트 함수 : first-class object</span></li>
+<li><span style="font-size: 12pt;">자바스크립트 Scope (function-level scope)</span></li>
+<li><span style="font-size: 12pt;">함수 정의 ( 함수 선언식, 함수 표현식 )</span></li>
+</ul>
+<div></div>
+<div></div>
+<p>자바스크립트에서 가장 큰 문제점 중의 하나는 글로벌 스코프에 정의된 것은 코드 내의 어디서든지 접근이 가능하다는 것입니다. 하지만, 외부에 공유되면 안되거나 공유될 필요가 없는 속성이나 메소드가 있습니다. 또한, 다른 스크립트 파일 내에서 동일한 이름으로 명명된 변수나 함수가 있을 경우 원치 않는 결과를 가져올 수 있습니다.</p>
+<p>익명 함수표현식으로 함수를 하나 정의하고 실행해 보겠습니다. 그리고 외부에서 함수 내의 변수에 접근해 보겠습니다.</p>
+<pre class="line-numbers"><code class="language-javascript">
+// 함수표현식에 의한 명시적인 함수호출
+var app = function() {  
+    console.log('함수 호출'); // "함수 호출" 출력
+};
+app();  
+
+</code></pre>
+<p>이번에는 익명 즉시실행함수로 함수를 정의해 보겠습니다.</p>
+<pre class="line-numbers"><code class="language-javascript">
+// 즉시실행함수
+(function() {
+    console.log('함수 호출'); // "함수 호출" 출력
+}());
+</code></pre>
+<p>위 두개의 코드는 동일한 동작을 수행합니다.</p>
+<p>함수표현식은 함수를 정의하고, 변수에 함수를 저장하고 실행하는 일련의 과정을 거칩니다. 하지만, 즉시실행함수를 사용하면 이와 같은 과정을 거치지 않고 즉시 실행된다는 특징이 있습니다. 차이점이라면 단순히 함수를 괄호&#8221;()&#8221;로 랩핑한 게 전부입니다. 이런 함수를 즉시실행함수(IIFE)라 부릅니다.</p>
+<p>이번에는 변수를 선언하고 이 변수에 즉시실행함수를 할당해 보겠습니다.</p>
+<pre class="line-numbers"><code class="language-javascript">
+var app = (function() {  
+    var privateVar = 'private';
+    return {
+        prop : privateVar
+    };
+}());
+console.log(app.prop); // "private" 출력  
+</code></pre>
+<p>콘솔에는 &#8220;private&#8221; 라고 출력됩니다.</p>
+<p>즉시실행함수 내에서 선언한 변수를 외부에서도 접근할 수 있음을 확인할 수 있습니다. 변수의 접근 범위가 함수 내부가 아닌 외부에서도 가능해진 것입니다. 이와 같이, 즉시실행함수는 변수의 스코프를 포함하는데 사용되며 외부에서 함수 내의 변수에 접근할 경우 이를 통제할 수 있습니다. 즉시실행함수는 글로벌 네임스페이스에 변수를 추가하지 않아도 되기 때문에 코드 충돌이 없이 구현할 수 있어 플러그인이나 라이브러리 등을 만들 때 많이 사용됩니다.</p>
+<p>아래 두개의 코드는 기명 함수표현식과 즉시실행함수에서 파라미터를 전달하는 방법을 보여줍니다.</p>
+<pre class="line-numbers"><code class="language-javascript">
+var buyCar = function(carName) {  
+    // "내가 구매한 차는 sonata입니다." 출력
+    console.log('내가 구매한 차는 ' + carName + '입니다.');
+};
+buyCar('sonata');
+
+(function(carName) {
+    // "내가 구매한 차는 sonata입니다." 출력
+    console.log('내가 구매한 차는 ' + carName + '입니다.');
+}('sonata'));
+</code></pre>
+<p>위 두개의 코드 블럭은 동일한 동작을 수행합니다. 또한, 앞서의 예제처럼 괄호&#8221;()&#8221;로 랩핑한 차이 밖에 없습니다.</p>
+<p></p>
+<h2> 과제 </h2>
+<pre class="line-numbers"><code class="language-javascript">
+// 1. 함수 선언식
+var hanq = a(); // alert 1
+
+function a() {
+ alert("1");
+};
+</code></pre>
+<p>위 코드를 보면 함수선언식으로 함수가 정의되기 이전에 함수 호출이 가능하다. 함수 선언의 위치와는 상관없이 코드 내 어느 곳에서든지 호출이 가능한데 이것을 함수 호이스팅(Function Hoisting)이라 한다. </p>
+<p>호이스팅이란 var 선언문이나 function 선언문 등을 해당 Scope의 맨 위로 옮기는 것을 말한다. 즉 자바스크립트는 코드를 실행하기 전에 var 선언문과 function 선언문을 해당 스코프의 맨위로 옮긴다.</p>
+<p>함수선언식으로 정의된 함수는 자바스크립트 엔진이 스크립트가 로딩되는 시점에 바로 초기화하고 이를 VO(variable object)에 저장한다. 즉, 함수 선언, 초기화, 할당이 한번에 이루어진다. 그렇기 때문에 함수 선언의 위치와는 상관없이 소스 내 어느 곳에서든지 호출이 가능하다.</p>
+<p>다음은 함수표현식으로 함수를 정의한 경우이다.</p>
+<pre class="line-numbers"><code class="language-javascript">
+// 2. 기명 즉시실행함수 
+var hanq = a(); // TypeError: a is not a function
+
+(function a() {
+ alert("1");
+})();
+
+// Douglas Crockford의 권장 표기법
+(function a() {
+ alert("1");
+}());
+</code></pre>
+<p>
+함수선언식의 경우와는 달리 TypeError가 발생하였다. 함수표현식의 경우 함수 호이스팅이 아니라 변수 호이스팅이 발생한다.</p>
+<blockquote class="tx-quote-tistory"><p>변수 호이스팅은 변수 생성 및 초기화와 할당이 분리되어 진행된다. 호이스팅된 변수는 undefined로 초기화 되고 실제값의 할당은 할당문에서 이루어진다.</p></blockquote>
+<p>함수표현식은 함수선언식과는 달리 스크립트 로딩 시점에 변수 객체(VO)에 함수를 할당하지 않고 runtime에 해석되고 실행되므로 이 두가지를 구분하는 것은 중요하다.</p>
+<p>JavaScript : The Good Parts의 저자이며 자바스크립트의 권위자인 더글러스 크락포드(Douglas Crockford)는 이와 같은 문제 때문에 함수표현식만을 사용할 것을 권고하고 있다. 함수 호이스팅이 함수 호출 전 반드시 함수를 선언하여야 한다는 규칙을 무시하므로 코드의 구조를 엉성하게 만들 수 있다고 지적한다.</p>
+<p>또한 함수선언식으로 함수를 정의하면 사용하기에 쉽지만 대규모 애플리케이션을 개발하는 경우 인터프리터가 너무 많은 코드를 변수 객체(VO)에 저장하므로 애플리케이션의 응답속도는 현저히 떨어질 수 있으므로 주의해야 할 필요가 있다.</p>
+<p></p>
+<h2>정리</h2>
+<ul style="list-style-type: disc;">
+<li> 즉시실행 구문을 사용하면 javascript 가 유효범위를 선언 할 수 없다고 해도 강제적으로 private 변수를 만들어 내는 것이 가능 하다.</li>
+</ul>
+<pre class="line-numbers"><code class="language-javascript">
+// i 라는 변수는 실행 시점에서만 사용되면 외부에서 접근 할수 없다. 
+(function() {
+   var i  = 'hello world' ;
+}());
+
+console.log(i)
+&gt; error
+</code></pre>
+<p>즉 익명함수는 동적으로 할당되는 유효범위를 가지기 때문에 javascript 내에서 강제적인 유효범위 설정을 하는 경우 사용되게 됩니다.</p>
+<h3>함수 선언식과 함수 표현식에 따른 차이 (함수 표현식 방법을 권장) </h3>
+<p></p>
+<blockquote class="tx-quote-tistory">
+<p>이유 ? </p>
+<p>함수 표현식은 함수 선언식과 달리 스크립트 로딩 시점에 변수 객체(VO)에 함수를 할당하지 않고 runtime에 실행됨 -&gt; 너무 많은 코드를 변수 객체(VO)에 저장하면 어플리케이션의 응답속도가 떨어짐 </p>
+</blockquote>
+<h3></h3>
+<h3>Javascript 모듈 패턴</h3>
+<p></p>
+<blockquote class="tx-quote-tistory">
+<p>javascript 의 모듈 패턴은 javascript 의 코드 관리 기법 중하나로서 javascript의 특성상 객체 핸들링을 위한 방법론중 하나이다.</p>
+<p>javascript 의 모듈 패턴은 일반적인 유효범위를 설정하는 언어에서와 같이 private 와 public 등의 캡슐화를 사용하는 방법이다.</p>
+<p>javascript 에서 함수 혹은 변수객체를 다룰때 중복된 name 사용으로 인한 문제를 방지하기 위해 주로 namespace 방법이 사용된다. 이는 global 영역에 객체 고유의 영역을 지정하고 변수와 함수 할당을 해당 namespace 하위로 두게 하여 중복된 name 으로 인한 오류를 피하는 방법이다.</p>
+<p>모듈 패턴은 이 네임스페이스 페턴에 언어적 유효범위를 추가 해논 것이라 이해하면 쉽다.</p>
+<p>모듈을 작성함에 있어서 return 구문을 이용하여 공개될 영역과 내부적으로 처리할 영역을 구분하여 공개여부를 선택하게 하는 것이다.</p>
+</blockquote>
+<p></p>
+<pre class="line-numbers"><code class="language-javascript">
+// namespace 패턴
+var myApp = myApp || {}; // 네임 스페이스 선언
+
+myApp.hanq= function() {
+    return 'hanq';
+};
+
+myApp.helloworld = function() {
+    return 'hello world';
+}
+
+// 모듈 페턴
+
+
+var Messages = {h : 'hello', w : 'world', insane:'insanehanq'};
+
+var myApp = (function(msg) {
+  var helloworld = msg.h+'  '+msg.w;
+  var helloinsanehanq = msg.h+' '+msg.insane;
+
+  var printInsane = function () {
+     return helloinsanehanq;
+  };
+
+  var printhello = function() {
+    return helloworld;
+  };  
+
+  return {
+    foo1 : printInsane,
+    foo2 : printhello
+  };
+
+})(Messages);
+
+
+console.log(myApp.foo1());
+&gt; hello insanehanq
+console.log(myApp.helloworld);
+&gt; undefined
+</code></pre>
+<p class="moreless_fold" id="more9_0"><span onclick="toggleMoreLess(this, '9_0','SPA 모듈 작성 순서 예시 더보기','접기'); return false;" style="cursor: pointer;">SPA 모듈 작성 순서 예시 더보기</span></p>
+<div class="moreless_content" id="content9_0" style="display: none;">
+<p> 자바스크립트 SPA모듈 작성시 코드 순서</p>
+<ol style="list-style-type: decimal;">
+<li>
+<p>모듈 스코프 내에서 사용할 변수 작성 </li>
+<li>유틸리티 메소드 작성</li>
+<li>DOM 조작 메소드 작성 </li>
+<li>이벤트 핸들러 작성 </li>
+<li>Public 메소드 작성</li>
+</ol>
+<pre class="line-numbers"><code class="language-javascript">
+// SPA 모듈 작성 순서 예시
+var app = (function() {
+
+    // 1. 모듈 스코프 내에서 사용할 변수 작성
+    var scopeVar = {};
+    var utilMethod;
+    var manipulateDom;
+    var eventHandle;
+    var initModule;
+
+    // 2. 유틸리티 메소드 작성
+    utilMethod = function() {
+        // 실행코드
+    };
+
+    // 3. DOM 조작 메소드 작성
+    manipulateDom = function() {
+        // 실행코드
+    };
+
+    // 4. 이벤트 핸들러 작성
+    eventHandle = function() {
+        // 실행코드
+    };
+
+    // Public 메소드 작성
+    initModule = function() {
+        // 실행코드
+    };
+
+    return {
+        init : initModule
+    };
+}());
+
+</code></pre>
+<p></p>
+</div>
+<p class="moreless_fold" id="more9_1"><span onclick="toggleMoreLess(this, '9_1','라이브러리를 모듈화 코딩기법 예시 더보기','접기'); return false;" style="cursor: pointer;">라이브러리를 모듈화 코딩기법 예시 더보기</span></p>
+<div class="moreless_content" id="content9_1" style="display: none;">
+<p>라이브러리를 모듈화 코딩기법 예시
+</p>
+<pre class="line-numbers"><code class="language-javascript">
+/**
+ * Library 모듈화를 위한 코딩기법 1
+ * call 함수 이용
+ */
+(function() {
+    'use strict';
+    var root = this;
+    var version = '1.0';
+    var Module1;
+    if(typeof exports !== 'undefined') {
+        Module1 = exports;
+    } else {
+        Module1 = root.Module1 = {};
+    }
+    Module1.getVersion = function() {
+        return version;
+    }
+}).call(this);
+console.log(Module1.getVersion());
+
+/**
+ * Library 모듈화를 위한 코딩기법 2
+ * 글로벌 객체를 파라미터로 전달
+ */
+(function(global) {
+    var root = global;
+    var version = '1.0';
+    var Module2;
+    if(typeof exports !== 'undefined') {
+        Module2 = exports;
+    } else {
+        Module2 = root.Module2 = {};
+    }
+    Module2.getVersion = function() {
+        return version;
+    }
+}(this));
+console.log(Module2.getVersion());
+
+/**
+ * Library 모듈화를 위한 코딩기법 3
+ * 즉시실행함수 내부에서 글로벌 객체를 내부 변수에 할당
+ */
+(function() {
+    var root = this;
+    var version = '1.0';
+    var Module3;
+    if(typeof exports !== 'undefined') {
+        Module3 = exports;
+    } else {
+        Module3 = root.Module3 = {};
+    }
+    Module3.getVersion = function() {
+        return version;
+    }
+}());
+console.log(Module3.getVersion());
+
+/**
+ * Library 모듈화를 위한 코딩기법 4
+ * apply 함수 이용
+ */
+(function() {
+    var root = this;
+    var version = '1.0';
+    var Module4;
+    if(typeof exports !== 'undefined') {
+        Module4 = exports;
+    } else {
+        Module4 = root.Module4 = {};
+    }
+    Module4.getVersion = function() {
+        return version;
+    }
+}).apply(this) ;
+console.log(Module4.getVersion());
+
+/**
+ * Library 모듈화를 위한 코딩기법 5
+ * 기명 즉시실행함수 이용
+ */
+var Module5 = (function() {  
+    var root = this;
+    var version = '1.0';
+    var Module;
+    if(typeof exports !== 'undefined') {
+        Module = exports;
+    } else {
+        Module = root.Module = {};
+    }
+    Module.getVersion = function() {
+        return version;
+    }
+    return Module;
+}());
+console.log(Module5.getVersion());  
+</code></pre>
+<p></p>
+</div>
+<p></p>
+<p></p>
+<p>
+<p>
+<hr>
+참고한 사이트</hr>
+</p>
+</p>
+<div>
+<ul style="list-style-type: disc;">
+<li><a class="tx-link" href="http://insanehong.kr/post/javascript-function/" target="_blank">Function Declarations(함수선언) vs Function Expressions(함수표현)</a></li>
+<li><a class="tx-link" href="http://www.nextree.co.kr/p4150/" target="_blank">Javascript : 함수(function) 다시 보기</a></li>
+</ul>
+</div>
+<p></p>
+<hr />
+<p><iframe src='http://ad.selfhow.com/rd' width='100%' border=0 frameborder=0 style='height:auto;width:100%'></iframe></p>
+<p><a href='http://devyj.tistory.com/9' target='_blank'>Origin Content : 웹 개발자가 되고 싶어요</a> | <a href="/cdn-cgi/l/email-protection#6e0d0d020d2e000f020f40090f" target='_blank'>Contact : <span class="__cf_email__" data-cfemail="9af9f9f6f9daf4fbf6fbb4fdfb">[email&#160;protected]</span></a>
+</p>
+<p>Cotent License : CC-BY </p>
+<p>This content is collected under the CCL license.</p>
+<p>Please check the license of the original article before asking about copyright.</p>
+<ul>
+<li><a href='/tag/즉시실행함수'>More About <span style='font-weight:bold;'>즉시실행함수</span></a></li>
+<li><a href='/tag/Immediately-invoked'>More About <span style='font-weight:bold;'>Immediately-invoked</span></a></li>
+<li><a href='/tag/function'>More About <span style='font-weight:bold;'>function</span></a></li>
+<li><a href='/tag/expression'>More About <span style='font-weight:bold;'>expression</span></a></li>
+</ul>
+        </div> <!-- //.entry-summary -->
+        
+                    <div class="entry-tags"><b>Tags:</b> <a href="http://ms.nala.ga/tag/expression/" rel="tag">expression</a>, <a href="http://ms.nala.ga/tag/function/" rel="tag">function</a>, <a href="http://ms.nala.ga/tag/immediately-invoked/" rel="tag">Immediately-invoked</a>, <a href="http://ms.nala.ga/tag/%ec%a6%89%ec%8b%9c%ec%8b%a4%ed%96%89%ed%95%a8%ec%88%98/" rel="tag">즉시실행함수</a></div>
+        
+    </div>
+
+</article> <!--/#post-->
+
+
+
+
+
+                                                                    <div class="post-nav-area">
+                                                    
+            <nav class="next-previous-post clearfix media" role="navigation">
+                <div class="row">
+                    <!-- Previous Post -->
+                    <div class="previous-post col-sm-6 pull-left">
+                        <div class="nav-previous"><i class="fa fa-angle-left"></i> <a href="http://ms.nala.ga/akg-k141-%eb%aa%a8%eb%8b%88%ed%84%b0%eb%a7%81-%ed%97%a4%eb%93%9c%ed%8f%b0-diy-%eb%a6%ac%ed%8f%bc-%eb%a6%ac%ed%8f%ac%ec%8a%a4%ed%8c%85/" rel="prev">akg k141 모니터링 헤드폰 DIY 리폼 (리포스팅)</a></div>                    </div>
+
+                    <!-- Next Post -->
+                    <div class="next-post col-sm-6 pull-right text-right">
+                        <div class="nav-next"><a href="http://ms.nala.ga/2017-%ed%8b%b0%ec%8a%a4%ed%86%a0%eb%a6%ac-%ea%b2%b0%ec%82%b0/" rel="next">2017 티스토리 결산</a> <i class="fa fa-angle-right"></i></div>                    </div>
+                </div>
+            </nav><!-- .navigation -->
+            
+                                            </div>
+                                
+                                
+                            
+                                            </main> <!-- /.site-main -->
+                </div>  <!-- /.content-area -->
+            </div> <!-- /col -->
+
+            <!-- Blogsidebar -->
+            
+	<div class="col-md-4">
+	    <div class="primary-sidebar widget-area" role="complementary">
+	        <div id="tag_cloud-2" class="widget widget_tag_cloud"><h2 class="widget-title">태그</h2><div class="tagcloud"><a href="http://ms.nala.ga/tag/1%ec%9b%94/" class="tag-cloud-link tag-link-2 tag-link-position-1" style="font-size: 18.440677966102pt;" aria-label="1월 (115 아이템)">1월</a>
+<a href="http://ms.nala.ga/tag/2017/" class="tag-cloud-link tag-link-21 tag-link-position-2" style="font-size: 17.016949152542pt;" aria-label="2017 (98 아이템)">2017</a>
+<a href="http://ms.nala.ga/tag/2017%eb%85%84/" class="tag-cloud-link tag-link-551 tag-link-position-3" style="font-size: 14.406779661017pt;" aria-label="2017년 (77 아이템)">2017년</a>
+<a href="http://ms.nala.ga/tag/2018/" class="tag-cloud-link tag-link-155 tag-link-position-4" style="font-size: 15.830508474576pt;" aria-label="2018 (89 아이템)">2018</a>
+<a href="http://ms.nala.ga/tag/2018%eb%85%84/" class="tag-cloud-link tag-link-64 tag-link-position-5" style="font-size: 19.864406779661pt;" aria-label="2018년 (130 아이템)">2018년</a>
+<a href="http://ms.nala.ga/tag/the/" class="tag-cloud-link tag-link-310 tag-link-position-6" style="font-size: 11.322033898305pt;" aria-label="the (57 아이템)">the</a>
+<a href="http://ms.nala.ga/tag/vs/" class="tag-cloud-link tag-link-128 tag-link-position-7" style="font-size: 8pt;" aria-label="vs (41 아이템)">vs</a>
+<a href="http://ms.nala.ga/tag/%ea%b0%80%ea%b2%a9/" class="tag-cloud-link tag-link-275 tag-link-position-8" style="font-size: 12.271186440678pt;" aria-label="가격 (62 아이템)">가격</a>
+<a href="http://ms.nala.ga/tag/%ea%b2%b0%ed%98%bc/" class="tag-cloud-link tag-link-501 tag-link-position-9" style="font-size: 20.338983050847pt;" aria-label="결혼 (136 아이템)">결혼</a>
+<a href="http://ms.nala.ga/tag/%ea%b3%b5%ea%b0%9c/" class="tag-cloud-link tag-link-260 tag-link-position-10" style="font-size: 9.8983050847458pt;" aria-label="공개 (49 아이템)">공개</a>
+<a href="http://ms.nala.ga/tag/%ea%b7%b8%eb%a6%ac%ea%b3%a0/" class="tag-cloud-link tag-link-980 tag-link-position-11" style="font-size: 10.135593220339pt;" aria-label="그리고 (50 아이템)">그리고</a>
+<a href="http://ms.nala.ga/tag/%eb%82%98%ec%9d%b4%ec%b0%a8/" class="tag-cloud-link tag-link-1184 tag-link-position-12" style="font-size: 8.2372881355932pt;" aria-label="나이차 (42 아이템)">나이차</a>
+<a href="http://ms.nala.ga/tag/%eb%82%a8%ec%9e%90/" class="tag-cloud-link tag-link-364 tag-link-position-13" style="font-size: 9.4237288135593pt;" aria-label="남자 (47 아이템)">남자</a>
+<a href="http://ms.nala.ga/tag/%eb%82%a8%ed%8e%b8/" class="tag-cloud-link tag-link-603 tag-link-position-14" style="font-size: 16.305084745763pt;" aria-label="남편 (92 아이템)">남편</a>
+<a href="http://ms.nala.ga/tag/%eb%85%b8%eb%9e%98/" class="tag-cloud-link tag-link-713 tag-link-position-15" style="font-size: 8.9491525423729pt;" aria-label="노래 (45 아이템)">노래</a>
+<a href="http://ms.nala.ga/tag/%eb%8c%80%ed%95%9c/" class="tag-cloud-link tag-link-3572 tag-link-position-16" style="font-size: 10.135593220339pt;" aria-label="대한 (50 아이템)">대한</a>
+<a href="http://ms.nala.ga/tag/%eb%93%9c%eb%9d%bc%eb%a7%88/" class="tag-cloud-link tag-link-1041 tag-link-position-17" style="font-size: 16.542372881356pt;" aria-label="드라마 (95 아이템)">드라마</a>
+<a href="http://ms.nala.ga/tag/%eb%a6%ac%eb%b7%b0/" class="tag-cloud-link tag-link-447 tag-link-position-18" style="font-size: 12.508474576271pt;" aria-label="리뷰 (64 아이템)">리뷰</a>
+<a href="http://ms.nala.ga/tag/%eb%a7%9b%ec%a7%91/" class="tag-cloud-link tag-link-782 tag-link-position-19" style="font-size: 16.779661016949pt;" aria-label="맛집 (97 아이템)">맛집</a>
+<a href="http://ms.nala.ga/tag/%eb%aa%a8%ec%9d%8c/" class="tag-cloud-link tag-link-1142 tag-link-position-20" style="font-size: 13.694915254237pt;" aria-label="모음 (72 아이템)">모음</a>
+<a href="http://ms.nala.ga/tag/%eb%aa%b8%eb%a7%a4/" class="tag-cloud-link tag-link-2391 tag-link-position-21" style="font-size: 15.830508474576pt;" aria-label="몸매 (88 아이템)">몸매</a>
+<a href="http://ms.nala.ga/tag/%eb%b0%a9%eb%b2%95/" class="tag-cloud-link tag-link-930 tag-link-position-22" style="font-size: 17.491525423729pt;" aria-label="방법 (103 아이템)">방법</a>
+<a href="http://ms.nala.ga/tag/%eb%b0%b0%ec%9a%b0/" class="tag-cloud-link tag-link-895 tag-link-position-23" style="font-size: 15.593220338983pt;" aria-label="배우 (86 아이템)">배우</a>
+<a href="http://ms.nala.ga/tag/%eb%b6%80%ec%82%b0/" class="tag-cloud-link tag-link-157 tag-link-position-24" style="font-size: 8.4745762711864pt;" aria-label="부산 (43 아이템)">부산</a>
+<a href="http://ms.nala.ga/tag/%ec%82%ac%eb%9e%91/" class="tag-cloud-link tag-link-2972 tag-link-position-25" style="font-size: 14.406779661017pt;" aria-label="사랑 (77 아이템)">사랑</a>
+<a href="http://ms.nala.ga/tag/%ec%82%ac%ec%a7%84/" class="tag-cloud-link tag-link-410 tag-link-position-26" style="font-size: 9.4237288135593pt;" aria-label="사진 (47 아이템)">사진</a>
+<a href="http://ms.nala.ga/tag/%ec%95%84%eb%82%b4/" class="tag-cloud-link tag-link-3039 tag-link-position-27" style="font-size: 9.6610169491525pt;" aria-label="아내 (48 아이템)">아내</a>
+<a href="http://ms.nala.ga/tag/%ec%95%88%eb%82%b4/" class="tag-cloud-link tag-link-1327 tag-link-position-28" style="font-size: 11.322033898305pt;" aria-label="안내 (56 아이템)">안내</a>
+<a href="http://ms.nala.ga/tag/%ec%95%8c%ec%95%84%eb%b3%b4%ea%b8%b0/" class="tag-cloud-link tag-link-821 tag-link-position-29" style="font-size: 15.118644067797pt;" aria-label="알아보기 (82 아이템)">알아보기</a>
+<a href="http://ms.nala.ga/tag/%ec%95%8c%ec%95%84%eb%b3%b4%ec%9e%90/" class="tag-cloud-link tag-link-341 tag-link-position-30" style="font-size: 11.322033898305pt;" aria-label="알아보자 (56 아이템)">알아보자</a>
+<a href="http://ms.nala.ga/tag/%ec%97%ac%ed%96%89/" class="tag-cloud-link tag-link-873 tag-link-position-31" style="font-size: 17.016949152542pt;" aria-label="여행 (98 아이템)">여행</a>
+<a href="http://ms.nala.ga/tag/%ec%98%81%ed%99%94/" class="tag-cloud-link tag-link-562 tag-link-position-32" style="font-size: 19.389830508475pt;" aria-label="영화 (124 아이템)">영화</a>
+<a href="http://ms.nala.ga/tag/%ec%98%a4%eb%8a%98/" class="tag-cloud-link tag-link-1059 tag-link-position-33" style="font-size: 13.694915254237pt;" aria-label="오늘 (72 아이템)">오늘</a>
+<a href="http://ms.nala.ga/tag/%ec%9a%b0%eb%a6%ac/" class="tag-cloud-link tag-link-888 tag-link-position-34" style="font-size: 11.322033898305pt;" aria-label="우리 (57 아이템)">우리</a>
+<a href="http://ms.nala.ga/tag/%ec%9c%84%ed%95%9c/" class="tag-cloud-link tag-link-1175 tag-link-position-35" style="font-size: 12.983050847458pt;" aria-label="위한 (66 아이템)">위한</a>
+<a href="http://ms.nala.ga/tag/%ec%9d%b4%ec%95%bc%ea%b8%b0/" class="tag-cloud-link tag-link-611 tag-link-position-36" style="font-size: 12.508474576271pt;" aria-label="이야기 (64 아이템)">이야기</a>
+<a href="http://ms.nala.ga/tag/%ec%9d%b4%ec%9c%a0/" class="tag-cloud-link tag-link-296 tag-link-position-37" style="font-size: 10.372881355932pt;" aria-label="이유 (51 아이템)">이유</a>
+<a href="http://ms.nala.ga/tag/%ec%9e%90%ea%b2%a9%ec%a6%9d/" class="tag-cloud-link tag-link-2111 tag-link-position-38" style="font-size: 9.4237288135593pt;" aria-label="자격증 (47 아이템)">자격증</a>
+<a href="http://ms.nala.ga/tag/%ec%a0%95%eb%a6%ac/" class="tag-cloud-link tag-link-1831 tag-link-position-39" style="font-size: 13.220338983051pt;" aria-label="정리 (68 아이템)">정리</a>
+<a href="http://ms.nala.ga/tag/%ec%a0%95%eb%b3%b4/" class="tag-cloud-link tag-link-89 tag-link-position-40" style="font-size: 15.118644067797pt;" aria-label="정보 (83 아이템)">정보</a>
+<a href="http://ms.nala.ga/tag/%ec%b6%94%ec%b2%9c/" class="tag-cloud-link tag-link-146 tag-link-position-41" style="font-size: 22pt;" aria-label="추천 (162 아이템)">추천</a>
+<a href="http://ms.nala.ga/tag/%ec%b6%9c%ec%97%b0/" class="tag-cloud-link tag-link-2930 tag-link-position-42" style="font-size: 10.847457627119pt;" aria-label="출연 (54 아이템)">출연</a>
+<a href="http://ms.nala.ga/tag/%ed%95%9c%ea%b5%ad/" class="tag-cloud-link tag-link-3361 tag-link-position-43" style="font-size: 11.796610169492pt;" aria-label="한국 (59 아이템)">한국</a>
+<a href="http://ms.nala.ga/tag/%ed%9a%a8%eb%8a%a5/" class="tag-cloud-link tag-link-810 tag-link-position-44" style="font-size: 9.6610169491525pt;" aria-label="효능 (48 아이템)">효능</a>
+<a href="http://ms.nala.ga/tag/%ed%9b%84%ea%b8%b0/" class="tag-cloud-link tag-link-14 tag-link-position-45" style="font-size: 17.966101694915pt;" aria-label="후기 (109 아이템)">후기</a></div>
+</div>	    </div>
+	</div>
+
+        </div> <!-- /.row -->
+    </div> <!-- /.container -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <hr>
+            </div>
+        </div>
+    </div>
+    <footer class="site-footer" role="contentinfo">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 text-center">
+  
+                    <p></p>
+                    
+                                            <div class="footer-social-icons">
+                                                                                                                                                                                                                                                                                                                                                                                                        
+                        </div>
+                    
+                </div>
+            </div>
+        </div>
+    </footer>
+
+            <div class="scroll-up">
+            <a href="#"><i class="fa fa-angle-up"></i></a>
+        </div>
+        <!-- Scroll Up -->
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/af2821b0/cloudflare-static/email-decode.min.js"></script><script type='text/javascript' src='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/js/bootstrap.min.js?ver=3.3.5'></script>
+<script type='text/javascript' src='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/js/scripts.js'></script>
+<script type='text/javascript' src='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/js/jquery.fitvids.js'></script>
+<script type='text/javascript' src='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/js/smoothscroll.js'></script>
+<script type='text/javascript' src='http://ms.nala.ga/wp-includes/js/wp-embed.min.js?ver=4.8.4'></script>
+    </body>
+</html>

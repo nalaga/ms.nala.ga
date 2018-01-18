@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /xmlrpc.php
+
+Sitemap: http://ms.nala.ga/sitemap.xml

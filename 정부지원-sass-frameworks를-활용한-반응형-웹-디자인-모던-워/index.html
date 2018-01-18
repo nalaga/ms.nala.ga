@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="profile" href="http://gmpg.org/xfn/11">
+    <link rel="pingback" href="http://ms.nala.ga/xmlrpc.php">
+
+<title>[정부지원] SASS &amp; Frameworks를 활용한 &#039;반응형 웹 디자인&#039; 모던 워크플로우 실무 향상 과정 | All About MS CCL Contents</title>
+<meta name='robots' content='noindex,follow' />
+
+<!-- All in One SEO Pack 2.4.4 by Michael Torbert of Semper Fi Web Design[276,393] -->
+<meta name="description"  content="3줄 요약 ◆ CSS 규칙 카테고라이징, Base, Layout, Module, State, Theme, Changing State, Icon Rules 반응형 웹 미니 프로젝트 0 - 프로젝트 스케폴딩(Scaffolding) ◆ Moderizr 필터링(Filtering)을 통해 문제(Bug) 수정 SASS &amp; Frameworks를 활용한 &#039;반응형 웹 디자인&#039; 모던 워크플로우 실무 향상 과정 - 진보된 Sass + Compass + Bourbon + Susy를 활용한 반응형 웹 모던 사이트 제작 워크플로우 - CSS 중심의 반응형 웹디자인(흔하디 흔한 과정)과는" />
+<meta name="robots" content="index,nofollow" />
+
+<link rel="canonical" href="http://ms.nala.ga/%ec%a0%95%eb%b6%80%ec%a7%80%ec%9b%90-sass-frameworks%eb%a5%bc-%ed%99%9c%ec%9a%a9%ed%95%9c-%eb%b0%98%ec%9d%91%ed%98%95-%ec%9b%b9-%eb%94%94%ec%9e%90%ec%9d%b8-%eb%aa%a8%eb%8d%98-%ec%9b%8c/" />
+<!-- /all in one seo pack -->
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="All About MS CCL Contents &raquo; 피드" href="http://ms.nala.ga/feed/" />
+<link rel="alternate" type="application/rss+xml" title="All About MS CCL Contents &raquo; 댓글 피드" href="http://ms.nala.ga/comments/feed/" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.3\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.3\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/ms.nala.ga\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.8.4"}};
+			!function(a,b,c){function d(a){var b,c,d,e,f=String.fromCharCode;if(!k||!k.fillText)return!1;switch(k.clearRect(0,0,j.width,j.height),k.textBaseline="top",k.font="600 32px Arial",a){case"flag":return k.fillText(f(55356,56826,55356,56819),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,56826,8203,55356,56819),0,0),c=j.toDataURL(),b!==c&&(k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447),0,0),c=j.toDataURL(),b!==c);case"emoji4":return k.fillText(f(55358,56794,8205,9794,65039),0,0),d=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55358,56794,8203,9794,65039),0,0),e=j.toDataURL(),d!==e}return!1}function e(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i,j=b.createElement("canvas"),k=j.getContext&&j.getContext("2d");for(i=Array("flag","emoji4"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='bootstrap-css-css'  href='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/css/bootstrap.min.css?ver=3.3.5' type='text/css' media='all' />
+<link rel='stylesheet' id='font-awesome-css-css'  href='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/css/font-awesome.min.css?ver=4.4.0' type='text/css' media='all' />
+<link rel='stylesheet' id='shaped-blog-stylesheet-css'  href='http://ms.nala.ga/wp-content/themes/shaped-blog/style.css?ver=4.8.4' type='text/css' media='all' />
+<link rel='stylesheet' id='responsive-css-css'  href='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/css/responsive.css' type='text/css' media='all' />
+<script type='text/javascript' src='http://ms.nala.ga/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
+<script type='text/javascript' src='http://ms.nala.ga/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+<link rel='https://api.w.org/' href='http://ms.nala.ga/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://ms.nala.ga/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://ms.nala.ga/wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='검암신축빌라 블랙과화이트의 기막힌조화 띠로리~' href='http://ms.nala.ga/%ea%b2%80%ec%95%94%ec%8b%a0%ec%b6%95%eb%b9%8c%eb%9d%bc-%eb%b8%94%eb%9e%99%ea%b3%bc%ed%99%94%ec%9d%b4%ed%8a%b8%ec%9d%98-%ea%b8%b0%eb%a7%89%ed%9e%8c%ec%a1%b0%ed%99%94-%eb%9d%a0%eb%a1%9c%eb%a6%ac/' />
+<link rel='next' title='윈도 8에 대한 소문과 실버라이트의 미래' href='http://ms.nala.ga/%ec%9c%88%eb%8f%84-8%ec%97%90-%eb%8c%80%ed%95%9c-%ec%86%8c%eb%ac%b8%ea%b3%bc-%ec%8b%a4%eb%b2%84%eb%9d%bc%ec%9d%b4%ed%8a%b8%ec%9d%98-%eb%af%b8%eb%9e%98/' />
+<meta name="generator" content="WordPress 4.8.4" />
+<link rel='shortlink' href='http://ms.nala.ga/?p=21507' />
+<link rel="alternate" type="application/json+oembed" href="http://ms.nala.ga/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fms.nala.ga%2F%25ec%25a0%2595%25eb%25b6%2580%25ec%25a7%2580%25ec%259b%2590-sass-frameworks%25eb%25a5%25bc-%25ed%2599%259c%25ec%259a%25a9%25ed%2595%259c-%25eb%25b0%2598%25ec%259d%2591%25ed%2598%2595-%25ec%259b%25b9-%25eb%2594%2594%25ec%259e%2590%25ec%259d%25b8-%25eb%25aa%25a8%25eb%258d%2598-%25ec%259b%258c%2F" />
+<link rel="alternate" type="text/xml+oembed" href="http://ms.nala.ga/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fms.nala.ga%2F%25ec%25a0%2595%25eb%25b6%2580%25ec%25a7%2580%25ec%259b%2590-sass-frameworks%25eb%25a5%25bc-%25ed%2599%259c%25ec%259a%25a9%25ed%2595%259c-%25eb%25b0%2598%25ec%259d%2591%25ed%2598%2595-%25ec%259b%25b9-%25eb%2594%2594%25ec%259e%2590%25ec%259d%25b8-%25eb%25aa%25a8%25eb%258d%2598-%25ec%259b%258c%2F&#038;format=xml" />
+
+	<style>
+
+		/* Border Color */
+		.btn-social:hover,
+		blockquote,
+		#respond input:focus[type="text"], 
+	    #respond input:focus[type="email"], 
+	    #respond input:focus[type="url"],
+	    #respond textarea:focus,
+	    #comments .comment-reply a:hover
+		{
+			border-color: ;
+		}
+
+		
+		/* Background Color */
+		.scroll-up a,
+		.btn-social:hover,
+		button,
+		input[type="button"],
+		input[type="reset"],
+		input[type="submit"],
+		.navbar-default .navbar-nav .dropdown-menu li a:hover, .dropdown-menu li a:focus, .navbar-default .navbar-nav .dropdown-menu .active a,
+		.pagination>li>a:focus, .pagination>li>a:hover, .pagination>li>span:focus, .pagination>li>span:hover, .pagination li .current,
+		.next-previous-posts .next-post a:hover,
+		.next-previous-posts .previous-post a:hover,
+		.btn-goback,
+		.btn-submit,
+		a.more-link,
+		.featured-post .fa,
+		#comments .comment-reply a:hover,
+		.widget .tagcloud a
+		{
+			background-color: ;
+		}
+
+		
+		/* Color */
+		.text-logo a,
+		.navbar-default .navbar-nav .active a, .navbar-default .navbar-nav .active a:hover, .navbar-default .navbar-nav .active a:focus,
+		.navbar-default .navbar-nav li a:hover, .navbar-default .navbar-nav li a:focus,
+		a:hover,
+    	a:focus,
+		.next-previous-posts .previous-post a,
+		.next-previous-posts .next-post a,
+		.pagination>li>a, .pagination>li>span,
+		#comments .comment-author a:hover, 
+    	#respond .logged-in-as a:hover,
+    	#wp-calendar a,
+    	h2.entry-title a:hover
+		{
+			color: ;
+		}
+
+
+		/* A Color */
+		a{
+			color: ;
+		}
+
+		/* a:hover Color */
+		a:hover,
+		a:focus,
+		a:active,
+		.widget a:hover,
+		.post .post-content .entry-meta ul li a:hover
+		{
+			color: ;
+		}
+
+		/* .featured-post .fa:after*/
+		.featured-post .fa:after{
+			border-color:   transparent ;
+		}
+
+
+		
+
+	</style>
+</head>
+
+<body class="post-template-default single single-post postid-21507 single-format-standard">
+
+    <div id="st-preloader">
+        <div id="pre-status">
+            <div class="preload-placeholder"></div>
+        </div>
+    </div>
+<!-- /Preloader -->
+
+<header id="header">	
+	<div id="trueHeader">
+    	<div class="wrapper">
+            <div class="container">
+            	<!-- Menu -->
+            	<div class="menu_main">
+                	<div class="navbar blogx-navbar navbar-default">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#st-navber-collapse">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+
+                                                            <div class="text-logo">
+                                    <a href="http://ms.nala.ga">All About MS CCL Contents</a>
+                                    <p>All About MS CCL Contents</p>
+                                </div><!-- /Logo -->
+                                                    </div>
+                      
+                        <div id="st-navber-collapse" class="navbar-collapse collapse pull-right">
+                             
+                        </div>
+                    </div>
+            	</div><!-- end menu -->
+        	</div> <!-- /.container -->
+    	</div>
+	</div>
+	<DIV class='ads_adsense_img' style='margin:40px 0px 40px 0px;'>
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<!-- only display -->
+	<ins class="adsbygoogle"
+	     style="display:block"
+	     data-ad-client="ca-pub-8393857339019314"
+	     data-ad-slot="7474886381"
+	     data-ad-format="auto"></ins>
+	<script>
+	(adsbygoogle = window.adsbygoogle || []).push({});
+	</script>
+	</DIV>	
+
+</header>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div id="primary" class="content-area">
+                    <main id="main" class="site-main" role="main">
+
+                        
+                                <article id="post-21507" class="post-21507 post type-post status-publish format-standard hentry category-uncategorized tag-frameworks tag-sass tag-3996 tag-3966 tag-28378 tag-17493 tag-31250 tag-31249 tag-31246 tag-31251 tag-30636">
+    <header class="entry-header">
+        
+        
+    </header> <!--/.entry-header -->
+
+    <div class="clearfix post-content media">
+
+        <h2 class="entry-title">
+            [정부지원] SASS &#038; Frameworks를 활용한 &#8216;반응형 웹 디자인&#8217; 모던 워크플로우 실무 향상 과정        </h2> <!-- //.entry-title -->
+
+        <div class="clearfix entry-meta">
+            
+            <ul class="list-inline">
+                <li>
+                    <span class="author vcard">
+                        By <a class="url fn n" href="http://ms.nala.ga/author/admin/">admin</a>                    </span>
+                </li>
+                <li>
+                    on <span class="posted-on">1월 16, 2018</span>
+                </li>
+                                    <li>
+                        in <span class="posted-in">
+                            <a href="http://ms.nala.ga/category/uncategorized/" rel="category tag">미분류</a>                        </span>
+                    </li>
+                            </ul>
+                </div> <!--/.entry-meta -->
+        
+        <div class="entry-summary">
+            <p><img src='http://kipfa.or.kr/images/etc/eduedm_templete/educenter_edm_header.jpg' style='max-width:250px;min-width:0px;' onError='this.style.display="none"' /></p>
+<h1>3줄 요약 </h1>
+<div style='color:#fff;background-color:#000;border-radius:10px;'>
+<ol>
+<li><span>◆ CSS 규칙 카테고라이징, Base, Layout, Module, State, Theme, Changing State, Icon Rules</span></li>
+<li><span>반응형 웹 미니 프로젝트 0 &#8211; 프로젝트 스케폴딩(Scaffolding)</span></li>
+<li><span>◆ Moderizr 필터링(Filtering)을 통해 문제(Bug) 수정</span></li>
+</ol>
+</div>
+<p><span id="more-21507"></span></p>
+<p><iframe src='http://ad.selfhow.com/rd' width='100%' border=0 frameborder=0 style='height:auto;width:100%'></iframe></p>
+<hr />
+<table align="center" bgcolor="#000000" border="0" cellpadding="0" cellspacing="0" width="680">
+<tbody>
+<tr>
+<td align="center" bgcolor="#c8242b" colspan="3"><img alt="상단 타이틀" src="http://kipfa.or.kr/images/etc/eduedm_templete/educenter_edm_header.jpg" width="650"/></td>
+</tr>
+<tr style="BORDER-TOP: rgb(173,173,173) 1px solid">
+<td bgcolor="#ececec" style="BORDER-LEFT: rgb(173,173,173) 1px solid" width="21"></td>
+<td bgcolor="#f1f1f1" style="BACKGROUND-COLOR: rgb(245,245,245)" valign="top" width="640">
+<p style="PADDING-BOTTOM: 0px; PADDING-LEFT: 10px; PADDING-RIGHT: 0px; FONT-FAMILY: Nanum Gothic,돋움,Dotum; COLOR: rgb(61,61,61); FONT-SIZE: 25px; PADDING-TOP: 10px">SASS &amp; Frameworks를 활용한 &#8216;반응형 웹 디자인&#8217; 모던 워크플로우 실무 향상 과정</p>
+<p style="PADDING-BOTTOM: 0px; PADDING-LEFT: 10px; PADDING-RIGHT: 0px; FONT-FAMILY: Nanum Gothic,돋움,Dotum; FONT-SIZE: 14px; PADDING-TOP: 0px">&#8211; 진보된 Sass + Compass + Bourbon + Susy를 활용한 반응형 웹 모던 사이트 제작 워크플로우 &#8211;</p>
+<table bgcolor="#f1f1f1" border="0" cellpadding="0" cellspacing="0" style="PADDING-BOTTOM: 0px; PADDING-LEFT: 7px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" width="640">
+<tbody>
+<tr>
+<td align="center"><a href="http://www.kipfa.or.kr/Education/EduCenter/EduCenterView.aspx?eduSeqNo=574" target="_blank"><img alt="SASS" border="0" src="http://www.kipfa.or.kr/Common/ImageView.aspx?folder=/Education/MainImg/&amp;fileName=e_201502060218101005229540.jpg"/></a></td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<table bgcolor="#f1f1f1" border="0" cellpadding="0" cellspacing="0" width="640">
+<tbody>
+<tr>
+<td style="PADDING-BOTTOM: 0px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; PADDING-TOP: 0px">
+<p style="LINE-HEIGHT: 1.5em; FONT-FAMILY: 돋움,Dotum; COLOR: rgb(51,51,51); FONT-SIZE: 13px">CSS 중심의 반응형 웹디자인(흔하디 흔한 과정)과는 구축과 운영 측면(생산성, 관리효율)에서 차원이 다른 반응형 웹 모던 사이트 제작 워크플로우를 배우는 과정입니다.<br /><img src="http://www.kipfa.or.kr/images/etc/KIPFA-sass-course-01.png"><br /><span style="COLOR: rgb(0,0,255)">* 수강료 69~86% 정부지원!! <br />&#8211; 교육비: 정규직 182,736원, 계약직 82,170원 (근로자카드 신청자에 한함)</span><br /><a href="http://www.hrd.go.kr/popup/incumbentTrain/trainInfoC.jsp" target="_blank">* 근로자 직업능력개발훈련이란?</a><br />* 수강료 정부지원시 결제는 사전등록 후 교육당일 근로자카드결제만 지원!!</img></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.5em; PADDING-LEFT: 10px; PADDING-RIGHT: 0px; FONT-FAMILY: 돋움,Dotum; COLOR: rgb(51,51,51); FONT-SIZE: 20px; PADDING-TOP: 0px"><strong>■ 교육 일정</strong></p>
+<table align="center" border="1" bordercolor="#999999" cellpadding="7" cellspacing="1" style="BORDER-BOTTOM: rgb(153,153,153) 1px solid; BORDER-LEFT: rgb(153,153,153) 1px solid; LINE-HEIGHT: 1.5em; BORDER-COLLAPSE: collapse; FONT-FAMILY: 돋움,Dotum; FONT-SIZE: 12px; BORDER-TOP: rgb(153,153,153) 1px solid; BORDER-RIGHT: rgb(153,153,153) 1px solid" width="630">
+<tbody>
+<tr>
+<td align="center" bgcolor="#f4f3eb" height="30" valign="middle" width="128"><strong>구분</strong></td>
+<td align="center" bgcolor="#f4f3eb" height="30" valign="middle" width="348"><strong>강의 주제 및 내용</strong></td>
+<td align="center" bgcolor="#f4f3eb" height="30" valign="middle" width="100"><strong>강사진</strong></td>
+</tr>
+<tr>
+<td align="center" bgcolor="#f9f9f9" style="VERTICAL-ALIGN: middle" valign="middle">
+<p><strong>Session 1</strong><br /><span style="VERTICAL-ALIGN: top"><strong>2015.3.9(월)</strong></span><span style="VERTICAL-ALIGN: top"> 19:00~22:00</span></p>
+</td>
+<td bgcolor="#f9f9f9" style="VERTICAL-ALIGN: top" valign="middle">
+<p><strong>CSS 프리프로세싱이란?</strong><br />CSS를 파워업(Power Up)하는 확장 컴파일 언어<br />◆ 프리프로세서(Pre-Processor) vs 프로세서(Processor)<br />◆ CSS로는 불가능한 것을 가능케 하는 SASS의 위대함!<br /><img src="http://www.kipfa.or.kr/images/etc/session1.gif"> </img></p>
+</td>
+<td align="center" bgcolor="#f9f9f9" rowspan="19" style="VERTICAL-ALIGN: middle" valign="middle">
+<p style="FONT-FAMILY: Nanum Gothic,Helvetica,  Arial, Verdana, sans-serif"><strong style="FONT-FAMILY: Nanum Gothic,Helvetica,  Arial, Verdana, sans-serif">지훈(야무) </strong></p>
+<p>프리랜서 IT 강사</p>
+</td>
+</tr>
+<tr>
+<td align="center" bgcolor="#f9f9f9" style="VERTICAL-ALIGN: middle" valign="middle"><span style="VERTICAL-ALIGN: middle"><strong></strong><strong>Session 2</strong><br /><span style="VERTICAL-ALIGN: top"><strong>2015.3.11.(수)</strong> 19:00~22:00</span><br /></span></td>
+<td bgcolor="#f9f9f9" style="VERTICAL-ALIGN: top" valign="middle">
+<p><strong>SASS를 배워보자.</strong><br />◆ Sass vs Scss 문법의 차이점: CSS에 익숙하다면 Scss!<br />◆ Sass 베이직: 변수, 중첩 규칙, 호출(모듈 관리), 상속, 확장, 연산 등<br /><img src="http://www.kipfa.or.kr/images/etc/session2.gif"/></p>
+</td>
+</tr>
+<tr>
+<td align="center" bgcolor="#f9f9f9" style="VERTICAL-ALIGN: middle" valign="middle"><strong>Session 3</strong><br /><span style="VERTICAL-ALIGN: top"><strong>2015.3.13.(금)</strong> 19:00~22:00</span></td>
+<td bgcolor="#f9f9f9" style="VERTICAL-ALIGN: top" valign="middle">
+<p><strong>SASS를 전문가(Expert)답게 사용해보자 1</strong><br />◆ Sass 스크립트 __ CSS 스타일 언어에 `프로그래밍 날개`를 달다.<br />◆ Sass 믹스인 __ 반복되는 CSS 노가다를 줄이자.<br /><img src="http://www.kipfa.or.kr/images/etc/session3.gif"/></p>
+</td>
+</tr>
+<tr>
+<td align="center" bgcolor="#f9f9f9" style="VERTICAL-ALIGN: middle" valign="middle"><strong>Session 4</strong><br /><span style="VERTICAL-ALIGN: top"><strong>2015.3.16.(월)</strong> 19:00~22:00</span></td>
+<td bgcolor="#f9f9f9" style="VERTICAL-ALIGN: top" valign="middle"><strong>SASS를 전문가(Expert)답게 사용해보자 2</strong><br />◆ Sass 스크립트 __ Sass 데이터 유형: 숫자,문자(컬러),리스트,맵,null<br />◆ Sass 스크립트 __ 조건문과 반복문을 적재적소에 버무리다.<br /><img src="http://www.kipfa.or.kr/images/etc/session4.gif"/></td>
+</tr>
+<tr>
+<td align="center" bgcolor="#f9f9f9" style="VERTICAL-ALIGN: middle" valign="middle"><strong>Session 5</strong><br /><span style="VERTICAL-ALIGN: top"><strong>2015.3.18.(수)</strong> 19:00~22:00</span></td>
+<td bgcolor="#f9f9f9" style="VERTICAL-ALIGN: top" valign="middle"><strong>SASS를 전문가(Expert)답게 사용해보자 3</strong><br />◆ Sass 스크립트 __ 빌트인(Build-in) 함수 &amp; 사용자 정의 함수<br /><img src="http://www.kipfa.or.kr/images/etc/session5.gif"/></td>
+</tr>
+<tr>
+<td align="center" bgcolor="#f9f9f9" style="VERTICAL-ALIGN: middle" valign="middle"><span style="VERTICAL-ALIGN: middle"><strong>Session 6</strong><br /><span style="VERTICAL-ALIGN: top"><strong>2015.3.20.(금)</strong> 19:00~22:00</span></span></td>
+<td bgcolor="#f9f9f9" style="VERTICAL-ALIGN: top" valign="middle"><strong>SASS를 확장하는 애드온(Add-On)을 설치해보자.</strong><br />◆ Sass 애드온 __ Compass, Bourbon, Sass Globbing<br /><img src="http://www.kipfa.or.kr/images/etc/session6.gif"/></td>
+</tr>
+<tr>
+<td align="center" bgcolor="#f9f9f9" style="VERTICAL-ALIGN: middle" valign="middle"><strong>Session 7</strong><br /><span style="VERTICAL-ALIGN: top"><strong>2015.3.23.(월)</strong> 19:00~22:00</span></td>
+<td bgcolor="#f9f9f9" style="VERTICAL-ALIGN: top" valign="middle"><strong>플렉서블한 반응형 웹(RWD) 모던 그리드 시스템 &#8211; Susy &amp; Breakpoint</strong><br />◆ Sass 애드온 __ Breakpoint, Susy는 그리드 설정<br /><img src="http://www.kipfa.or.kr/images/etc/session7.gif"/></td>
+</tr>
+<tr>
+<td align="center" bgcolor="#f9f9f9" style="VERTICAL-ALIGN: middle" valign="middle"><strong>Session 8</strong><br /><span style="VERTICAL-ALIGN: top"><strong>2015.3.25.(수)</strong> 19:00~22:00</span></td>
+<td bgcolor="#f9f9f9" style="VERTICAL-ALIGN: top" valign="middle"><strong>SASS 프레임워크 &#8211; Compass를 배워보자 1</strong><br />◆ Compass 프로젝트 시작하기 <br />◆ Compass 설치 및 초기화(Init), 생성(Create) / 도움말(Help)을 통해 명령어 공부 <br />◆ Compass CSS3 믹스인(Mixins) 활용 &#8211; Background, Border Radius, Box, Shadow, Transform, Transition 등 <br />◆ Compass Helpers 믹스인(Mixins) 활용 &#8211; 웹폰트 믹스인, URL 헬퍼 함수, 선택자 헬퍼 함수 등 <br />◆ Compass 레이아웃(Layout), 리셋(Reset), 타이포그래피(Typography) 믹스인 활용</td>
+</tr>
+<tr>
+<td align="center" bgcolor="#f9f9f9" style="VERTICAL-ALIGN: middle" valign="middle"><strong>Session 9</strong><br /><span style="VERTICAL-ALIGN: top"><strong>2015.3.27.(금)</strong> 19:00~22:00</span></td>
+<td bgcolor="#f9f9f9" style="VERTICAL-ALIGN: top" valign="middle"><strong>SASS 프레임워크 &#8211; Compass를 배워보자 2</strong><br />◆ Compass 유틸리티(Utilities) 활용 <br />◆ Color &#8211; contrast-color() 함수, contrasted 믹스인 <br />◆ General &#8211; clearfix, float, hacks, minimums, tag clouds <br />◆ Sprites &#8211; 스프라이트 이미지 자동 생성 및 배경이미지 위치, 가로/세로 값 자동 적용 방법 <br />◆ Compass 확장 &#8211; 효율적인 플레이스 상속 선택자 활용을 위한 compass-placeholders</td>
+</tr>
+<tr>
+<td align="center" bgcolor="#f9f9f9" style="VERTICAL-ALIGN: middle" valign="middle"><strong>Session 10</strong><br /><span style="VERTICAL-ALIGN: top"><strong>2015.3.30.(월)</strong> 19:00~22:00</span></td>
+<td bgcolor="#f9f9f9" style="VERTICAL-ALIGN: top" valign="middle"><strong>모듈러 CSS 구현을 위한 SMACSS</strong><br />◆ SMACSS는 SASS, Compass 같은 프레임워크가 아닌, CSS 스타일 가이드! <br />◆ SMACSS는 사이트 개발에 일관된 접근 방식을 문서화한 시도! <br />◆ CSS 규칙 카테고라이징, Base, Layout, Module, State, Theme, Changing State, Icon Rules <br />◆ CSS 프리프로세서를 활용한 모듈 통합</td>
+</tr>
+<tr>
+<td align="center" bgcolor="#f9f9f9" style="VERTICAL-ALIGN: middle" valign="middle"><strong>Session 11</strong><br /><span style="VERTICAL-ALIGN: top"><strong>2015.4.1.(수)</strong> 19:00~22:00</span></td>
+<td bgcolor="#f9f9f9" style="VERTICAL-ALIGN: top" valign="middle"><strong>반응형 웹 미니 프로젝트 0 &#8211; 프로젝트 스케폴딩(Scaffolding)</strong><br />◆ 반응형 웹(RWD) 제작을 위한 Compass 프로젝트 생성 <br />◆ Compass 프로젝트 생성 후, 프로젝트에 애드온(Add-On) 추가 <br />◆ RWD 그래픽 디자인 시안(PSD) 제작 &#8211; 모바일 퍼스트, 중단점(Breakpoint), 브라우저 지원 범위 설정 <br />◆ 이미지 슬라이싱(고해상도 대응) &amp; 스프라이트 이미지 제작</td>
+</tr>
+<tr>
+<td align="center" bgcolor="#f9f9f9" style="VERTICAL-ALIGN: middle" valign="middle"><strong>Session 12</strong><br /><span style="VERTICAL-ALIGN: top"><strong>2015.4.3.(금)</strong> 19:00~22:00</span></td>
+<td bgcolor="#f9f9f9" style="VERTICAL-ALIGN: top" valign="middle"><strong>반응형 웹 미니 프로젝트 1 &#8211; HTML5 구조화(Markup)</strong><br />◆ 시멘틱 마크업 + 유효한 문법 검사 <br />◆ 반응형 웹(RWD) PSD → HTML5 구조화 <br />◆ HTML5 마크업 문서 유효성 검사 (HTML5 Validation)</td>
+</tr>
+<tr>
+<td align="center" bgcolor="#f9f9f9" style="VERTICAL-ALIGN: middle" valign="middle"><strong>Session 13</strong><br /><span style="VERTICAL-ALIGN: top"><strong>2015.4.6.(월)</strong> 19:00~22:00</span></td>
+<td bgcolor="#f9f9f9" style="VERTICAL-ALIGN: top" valign="middle"><strong>반응형 웹 미니 프로젝트 2 &#8211; SMACSS를 토대로 모듈 분리</strong><br />◆ CSS 스타일 가이드 SMACSS 에 맞춰 Base, Layout, Module, State, Theme 모듈 분리 <br />◆ 분리된 모듈 통합을 위해 SASS Globbing 애드온 프로젝트에 추가 <br />◆ 분리된 모듈에 스타일 코드 작성(SCSS) 및 소스맵(Sourcemap) 적용 테스트 <br />◆ 구글 크롬(Chrome) 웹 브라우저에서 SCSS 원본 소스 코드 확인을 위한 소스맵 플래그(Flag) 추가 <br />◆ 커멘드 프롬프트(CLI)를 통해 SCSS → CSS 컴파일 결과 확인</td>
+</tr>
+<tr>
+<td align="center" bgcolor="#f9f9f9" style="VERTICAL-ALIGN: middle" valign="middle"><strong>Session 14</strong><br /><span style="VERTICAL-ALIGN: top"><strong>2015.4.8.(수)</strong> 19:00~22:00</span></td>
+<td bgcolor="#f9f9f9" style="VERTICAL-ALIGN: top" valign="middle"><strong>반응형 웹 미니 프로젝트 3 &#8211; 스타일링(Mobile &gt; Tablet &gt; Desktop)</strong><br />◆ 모바일 뷰(Mobile View) 스타일링 <br />◆ singularity.gs 를 활용하여 모바일 그리드 생성 / 엘리먼트 레이아웃 <br />◆ 태블릿 뷰(Tablet View) 스타일링 <br />◆ singularity.gs, Breakpoint를 활용하여 태블릿 그리드 생성 / 엘리먼트 레이아웃 <br />◆ 데스크탑 뷰(Desktop View) 스타일링 <br />◆ singularity.gs, Breakpoint를 활용하여 데스크탑 그리드 생성 / 엘리먼트 레이아웃</td>
+</tr>
+<tr>
+<td align="center" bgcolor="#f9f9f9" style="VERTICAL-ALIGN: middle" valign="middle"><strong>Session 15</strong><br /><span style="VERTICAL-ALIGN: top"><strong>2015.4.10.(금)</strong> 19:00~22:00</span></td>
+<td bgcolor="#f9f9f9" style="VERTICAL-ALIGN: top" valign="middle"><strong>반응형 웹 미니 프로젝트 4 &#8211; 최종 테스팅 &amp; 배포(Publish)</strong><br />◆ 설정한 브라우저 지원 범위에 따른 크로스 브라우징 최종 점검<br />◆ Moderizr 필터링(Filtering)을 통해 문제(Bug) 수정 <br />◆ 배포할 각 파일을 압축하여 출력 <br />◆ 이미지 최적화, HTML/CSS/JS 코드 압축 성능 개선</td>
+</tr>
+<tr></tr>
+</tbody>
+</table>
+<p style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.5em; PADDING-LEFT: 10px; PADDING-RIGHT: 0px; FONT-FAMILY: 돋움,Dotum; COLOR: rgb(51,51,51); FONT-SIZE: 20px; PADDING-TOP: 0px"><strong>■ 강사소개</strong></p>
+<table align="center" border="1" bordercolor="#999999" cellpadding="7" cellspacing="1" style="BORDER-BOTTOM: rgb(153,153,153) 1px solid; BORDER-LEFT: rgb(153,153,153) 1px solid; LINE-HEIGHT: 1.5em; BORDER-COLLAPSE: collapse; FONT-FAMILY: 돋움,Dotum; FONT-SIZE: 12px; BORDER-TOP: rgb(153,153,153) 1px solid; BORDER-RIGHT: rgb(153,153,153) 1px solid" width="630">
+<tbody>
+<tr>
+<td align="center" bgcolor="#f9f9f9" style="PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; VERTICAL-ALIGN: top; PADDING-TOP: 0px" valign="top" width="128">
+<p><span style="VERTICAL-ALIGN: top"><img alt="강사 사진" onerror='this.src="/images/Common/noimage.gif";' src="http://www.kipfa.or.kr/Common/ImageView.aspx?folder=/Education/Teacher/&amp;fileName=e_20141020024405810123554.jpg" width="150"/></span></p>
+</td>
+<td bgcolor="#f9f9f9" style="VERTICAL-ALIGN: top" valign="top" width="435">
+<p><strong style="FONT-SIZE: 14px">프리랜서 IT 강사 지훈(야무)</strong></p>
+<p>:: 경력<br />(전)KTH, UXD 교육 담당 PD<br />(전)모노디아트센터 팀장<br />∙ ㈜정글 커뮤니케이션즈 : 웹 디자인 스페셜리스트, 웹 표준, 액션스크립트<br />∙ Opener : LG전자 POP 그래픽 디자인<br />∙ Sunny Communication : CI,BI / Package / Brochure</p>
+<p>:: 주요프로젝트<br />∙ 신한은행 : 하이브리드 웹앱 제작을 위한 HTML5<br />∙ SKT : 모바일 비즈니스를 위한 웹 앱 환경 이해<br />∙ 매일유업 : 스마트 시대, 웹 표준 플랫폼 테크닉<br />∙ Adobe Systems : Webinar – online Seminar (IT &amp; Design)<br />∙ LG전자 교육원 : 웹 그래픽 디자인 Advanced<br />∙ 나우콤 : 웹 그리드 시스템</p>
+<p>:: 기타<br />∙ Adobe Creative Leader<br />∙ 저서 : 한빛미디어 &#8211; 만들면서 배우는 HTML5+CSS3+jQuery</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p></td>
+<td bgcolor="#ececec" style="BORDER-RIGHT: rgb(173,173,173) 1px solid" width="21"></td>
+</tr>
+<tr>
+<td align="center" bgcolor="#ececec" colspan="3" style="BORDER-BOTTOM: rgb(173,173,173) 1px solid; BORDER-LEFT: rgb(173,173,173) 1px solid; BORDER-RIGHT: rgb(173,173,173) 1px solid">  </td>
+</tr>
+</tbody>
+</table>
+<table align="center" bgcolor="#f1f1f1" border="0" cellpadding="0" cellspacing="0" width="680">
+<tbody>
+<tr>
+<td bgcolor="#f7f7f7" style="BORDER-BOTTOM: rgb(173,173,173) 1px solid; TEXT-ALIGN: center; BORDER-LEFT: rgb(173,173,173) 1px solid; PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BORDER-RIGHT: rgb(173,173,173) 1px solid; PADDING-TOP: 10px; 0: "><a href="http://www.kipfa.or.kr/Education/EduCenter/EduCenterView.aspx?eduSeqNo=574" target="_blank"><img alt="신청하기" border="0" src="http://www.kipfa.or.kr/images/etc/mail/register_kipfa.gif"/></a></td>
+</tr>
+</tbody>
+</table>
+<table align="center" bgcolor="#f1f1f1" border="0" cellpadding="0" cellspacing="0" width="680">
+<tbody>
+<tr>
+<td bgcolor="#f7f7f7" style="BORDER-BOTTOM: rgb(173,173,173) 1px solid; BORDER-LEFT: rgb(173,173,173) 1px solid; PADDING-BOTTOM: 0px; PADDING-LEFT: 19px; WIDTH: 640px; PADDING-RIGHT: 19px; BORDER-RIGHT: rgb(173,173,173) 1px solid; PADDING-TOP: 0px"><a href="http://www.kipfa.or.kr/Education/EduCenter/EduCenterView.aspx?eduSeqNo=575" target="_blank"><img align="middle" alt="3D 프린터와 IoT를 활용한 스마트 로봇(Robot)만들기" border="0" src="http://www.kipfa.or.kr/Common/ImageView.aspx?folder=/Education/MainImg/&amp;fileName=e_201502060219164442605298.jpg" width="640"/></a></td>
+</tr>
+</tbody>
+</table>
+<table align="center" bgcolor="#f1f1f1" border="0" cellpadding="0" cellspacing="0" width="680">
+<tbody>
+<tr>
+<td bgcolor="#f7f7f7" style="BORDER-BOTTOM: rgb(173,173,173) 1px solid; BORDER-LEFT: rgb(173,173,173) 1px solid; WIDTH: 120px"><img alt="(사)한국인터넷전문가협회" border="0" src="http://kipfa.or.kr/images/etc/mail/btm_kipfa_logo.jpg"/></td>
+<td bgcolor="#f7f7f7" style="BORDER-BOTTOM: rgb(173,173,173) 1px solid; BORDER-RIGHT: rgb(173,173,173) 1px solid">
+<p style="LINE-HEIGHT: 24px; COLOR: rgb(115,114,114); FONT-SIZE: 13px">서울시 동작구 동작대로 43 (사당동, 5층) 한국인터넷전문가협회 <br />교육문의: <a href="/cdn-cgi/l/email-protection#96f3f2e3f5f3f8e2f3e4d6fdffe6f0f7b8f9e4b8fde4"><span class="__cf_email__" data-cfemail="bdd8d9c8ded8d3c9d8cffdd6d4cddbdc93d2cf93d6cf">[email&#160;protected]</span></a> l<strong> </strong><b>페이스북:</b><a href="https://www.facebook.com/kipfa" target="_blank">/kipfa</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="entry-ccl" style="float:right;margin-top:0;height:0">
+<a href="http://creativecommons.org/licenses/by-sa/4.0/deed.ko" style="text-decoration: none" target="_blank"><br />
+<img alt="저작자 표시" class="entry-ccl-by" id="ccl-icon-233-0" src="//t1.daumcdn.net/tistory_admin/static/admin/editor/ccl_black01.png?_version_=b5527a21961b9a3cee10e4443ee6a9c5f59f0ac9" style="width:15px;height:15px"/><br />
+<img alt="동일 조건 변경 허락" class="entry-ccl-sa" id="ccl-icon-233-1" src="//t1.daumcdn.net/tistory_admin/static/admin/editor/ccl_black04.png?_version_=b5527a21961b9a3cee10e4443ee6a9c5f59f0ac9" style="width:15px;height:15px"/><br />
+<!--
+	<rdf:RDF xmlns="http://web.resource.org/cc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+		<Work rdf:about="">
+			<license rdf:resource="http://creativecommons.org/licenses/by-sa/2.0/kr/" />
+		</Work>
+		<License rdf:about="http://creativecommons.org/licenses/by-sa/">
+			<permits rdf:resource="http://web.resource.org/cc/Reproduction"/>
+			<permits rdf:resource="http://web.resource.org/cc/Distribution"/>
+			<requires rdf:resource="http://web.resource.org/cc/Notice"/>
+			<requires rdf:resource="http://web.resource.org/cc/Attribution"/>
+			<permits rdf:resource="http://web.resource.org/cc/DerivativeWorks"/>
+		</License>
+	</rdf:RDF>
+	--><br />
+</a>
+</div>
+<div style="text-align:center; padding-top:10px;clear:both">
+<iframe allowtransparency="true" frameborder="0" scrolling="no" src="//www.facebook.com/plugins/like.php?href=http://kipfanews.tistory.com/233&amp;layout=standard&amp;show_faces=true&amp;width=310&amp;action=like&amp;font=tahoma&amp;colorscheme=light&amp;height=65" style="border:none; overflow:hidden; width:310px; height:65px;"></iframe>
+</div>
+<hr />
+<p><iframe src='http://ad.selfhow.com/rd' width='100%' border=0 frameborder=0 style='height:auto;width:100%'></iframe></p>
+<p><a href='http://kipfanews.tistory.com/233' target='_blank'>Origin Content : kipfa</a> | <a href="/cdn-cgi/l/email-protection#e281818e81a28c838e83cc8583" target='_blank'>Contact : <span class="__cf_email__" data-cfemail="7f1c1c131c3f111e131e51181e">[email&#160;protected]</span></a>
+</p>
+<p>Cotent License : CC-BY-SA </p>
+<p>This content is collected under the CCL license.</p>
+<p>Please check the license of the original article before asking about copyright.</p>
+<ul>
+<li><a href='/tag/정부지원'>More About <span style='font-weight:bold;'>정부지원</span></a></li>
+<li><a href='/tag/SASS'>More About <span style='font-weight:bold;'>SASS</span></a></li>
+<li><a href='/tag/Frameworks'>More About <span style='font-weight:bold;'>Frameworks</span></a></li>
+<li><a href='/tag/활용한'>More About <span style='font-weight:bold;'>활용한</span></a></li>
+<li><a href='/tag/반응형'>More About <span style='font-weight:bold;'>반응형</span></a></li>
+<li><a href='/tag/디자인'>More About <span style='font-weight:bold;'>디자인</span></a></li>
+<li><a href='/tag/모던'>More About <span style='font-weight:bold;'>모던</span></a></li>
+<li><a href='/tag/워크플로우'>More About <span style='font-weight:bold;'>워크플로우</span></a></li>
+<li><a href='/tag/실무'>More About <span style='font-weight:bold;'>실무</span></a></li>
+<li><a href='/tag/향상'>More About <span style='font-weight:bold;'>향상</span></a></li>
+<li><a href='/tag/과정'>More About <span style='font-weight:bold;'>과정</span></a></li>
+</ul>
+        </div> <!-- //.entry-summary -->
+        
+                    <div class="entry-tags"><b>Tags:</b> <a href="http://ms.nala.ga/tag/frameworks/" rel="tag">Frameworks</a>, <a href="http://ms.nala.ga/tag/sass/" rel="tag">SASS</a>, <a href="http://ms.nala.ga/tag/%ea%b3%bc%ec%a0%95/" rel="tag">과정</a>, <a href="http://ms.nala.ga/tag/%eb%94%94%ec%9e%90%ec%9d%b8/" rel="tag">디자인</a>, <a href="http://ms.nala.ga/tag/%eb%aa%a8%eb%8d%98/" rel="tag">모던</a>, <a href="http://ms.nala.ga/tag/%eb%b0%98%ec%9d%91%ed%98%95/" rel="tag">반응형</a>, <a href="http://ms.nala.ga/tag/%ec%8b%a4%eb%ac%b4/" rel="tag">실무</a>, <a href="http://ms.nala.ga/tag/%ec%9b%8c%ed%81%ac%ed%94%8c%eb%a1%9c%ec%9a%b0/" rel="tag">워크플로우</a>, <a href="http://ms.nala.ga/tag/%ec%a0%95%eb%b6%80%ec%a7%80%ec%9b%90/" rel="tag">정부지원</a>, <a href="http://ms.nala.ga/tag/%ed%96%a5%ec%83%81/" rel="tag">향상</a>, <a href="http://ms.nala.ga/tag/%ed%99%9c%ec%9a%a9%ed%95%9c/" rel="tag">활용한</a></div>
+        
+    </div>
+
+</article> <!--/#post-->
+
+
+
+
+
+                                                                    <div class="post-nav-area">
+                                                    
+            <nav class="next-previous-post clearfix media" role="navigation">
+                <div class="row">
+                    <!-- Previous Post -->
+                    <div class="previous-post col-sm-6 pull-left">
+                        <div class="nav-previous"><i class="fa fa-angle-left"></i> <a href="http://ms.nala.ga/%ea%b2%80%ec%95%94%ec%8b%a0%ec%b6%95%eb%b9%8c%eb%9d%bc-%eb%b8%94%eb%9e%99%ea%b3%bc%ed%99%94%ec%9d%b4%ed%8a%b8%ec%9d%98-%ea%b8%b0%eb%a7%89%ed%9e%8c%ec%a1%b0%ed%99%94-%eb%9d%a0%eb%a1%9c%eb%a6%ac/" rel="prev">검암신축빌라 블랙과화이트의 기막힌조화 띠로리~</a></div>                    </div>
+
+                    <!-- Next Post -->
+                    <div class="next-post col-sm-6 pull-right text-right">
+                        <div class="nav-next"><a href="http://ms.nala.ga/%ec%9c%88%eb%8f%84-8%ec%97%90-%eb%8c%80%ed%95%9c-%ec%86%8c%eb%ac%b8%ea%b3%bc-%ec%8b%a4%eb%b2%84%eb%9d%bc%ec%9d%b4%ed%8a%b8%ec%9d%98-%eb%af%b8%eb%9e%98/" rel="next">윈도 8에 대한 소문과 실버라이트의 미래</a> <i class="fa fa-angle-right"></i></div>                    </div>
+                </div>
+            </nav><!-- .navigation -->
+            
+                                            </div>
+                                
+                                
+                            
+                                            </main> <!-- /.site-main -->
+                </div>  <!-- /.content-area -->
+            </div> <!-- /col -->
+
+            <!-- Blogsidebar -->
+            
+	<div class="col-md-4">
+	    <div class="primary-sidebar widget-area" role="complementary">
+	        <div id="tag_cloud-2" class="widget widget_tag_cloud"><h2 class="widget-title">태그</h2><div class="tagcloud"><a href="http://ms.nala.ga/tag/1%ec%9b%94/" class="tag-cloud-link tag-link-2 tag-link-position-1" style="font-size: 18.440677966102pt;" aria-label="1월 (115 아이템)">1월</a>
+<a href="http://ms.nala.ga/tag/2017/" class="tag-cloud-link tag-link-21 tag-link-position-2" style="font-size: 17.016949152542pt;" aria-label="2017 (98 아이템)">2017</a>
+<a href="http://ms.nala.ga/tag/2017%eb%85%84/" class="tag-cloud-link tag-link-551 tag-link-position-3" style="font-size: 14.406779661017pt;" aria-label="2017년 (77 아이템)">2017년</a>
+<a href="http://ms.nala.ga/tag/2018/" class="tag-cloud-link tag-link-155 tag-link-position-4" style="font-size: 15.830508474576pt;" aria-label="2018 (89 아이템)">2018</a>
+<a href="http://ms.nala.ga/tag/2018%eb%85%84/" class="tag-cloud-link tag-link-64 tag-link-position-5" style="font-size: 19.864406779661pt;" aria-label="2018년 (130 아이템)">2018년</a>
+<a href="http://ms.nala.ga/tag/the/" class="tag-cloud-link tag-link-310 tag-link-position-6" style="font-size: 11.322033898305pt;" aria-label="the (57 아이템)">the</a>
+<a href="http://ms.nala.ga/tag/vs/" class="tag-cloud-link tag-link-128 tag-link-position-7" style="font-size: 8pt;" aria-label="vs (41 아이템)">vs</a>
+<a href="http://ms.nala.ga/tag/%ea%b0%80%ea%b2%a9/" class="tag-cloud-link tag-link-275 tag-link-position-8" style="font-size: 12.271186440678pt;" aria-label="가격 (62 아이템)">가격</a>
+<a href="http://ms.nala.ga/tag/%ea%b2%b0%ed%98%bc/" class="tag-cloud-link tag-link-501 tag-link-position-9" style="font-size: 20.338983050847pt;" aria-label="결혼 (136 아이템)">결혼</a>
+<a href="http://ms.nala.ga/tag/%ea%b3%b5%ea%b0%9c/" class="tag-cloud-link tag-link-260 tag-link-position-10" style="font-size: 9.8983050847458pt;" aria-label="공개 (49 아이템)">공개</a>
+<a href="http://ms.nala.ga/tag/%ea%b7%b8%eb%a6%ac%ea%b3%a0/" class="tag-cloud-link tag-link-980 tag-link-position-11" style="font-size: 10.135593220339pt;" aria-label="그리고 (50 아이템)">그리고</a>
+<a href="http://ms.nala.ga/tag/%eb%82%98%ec%9d%b4%ec%b0%a8/" class="tag-cloud-link tag-link-1184 tag-link-position-12" style="font-size: 8.2372881355932pt;" aria-label="나이차 (42 아이템)">나이차</a>
+<a href="http://ms.nala.ga/tag/%eb%82%a8%ec%9e%90/" class="tag-cloud-link tag-link-364 tag-link-position-13" style="font-size: 9.4237288135593pt;" aria-label="남자 (47 아이템)">남자</a>
+<a href="http://ms.nala.ga/tag/%eb%82%a8%ed%8e%b8/" class="tag-cloud-link tag-link-603 tag-link-position-14" style="font-size: 16.305084745763pt;" aria-label="남편 (92 아이템)">남편</a>
+<a href="http://ms.nala.ga/tag/%eb%85%b8%eb%9e%98/" class="tag-cloud-link tag-link-713 tag-link-position-15" style="font-size: 8.9491525423729pt;" aria-label="노래 (45 아이템)">노래</a>
+<a href="http://ms.nala.ga/tag/%eb%8c%80%ed%95%9c/" class="tag-cloud-link tag-link-3572 tag-link-position-16" style="font-size: 10.135593220339pt;" aria-label="대한 (50 아이템)">대한</a>
+<a href="http://ms.nala.ga/tag/%eb%93%9c%eb%9d%bc%eb%a7%88/" class="tag-cloud-link tag-link-1041 tag-link-position-17" style="font-size: 16.542372881356pt;" aria-label="드라마 (95 아이템)">드라마</a>
+<a href="http://ms.nala.ga/tag/%eb%a6%ac%eb%b7%b0/" class="tag-cloud-link tag-link-447 tag-link-position-18" style="font-size: 12.508474576271pt;" aria-label="리뷰 (64 아이템)">리뷰</a>
+<a href="http://ms.nala.ga/tag/%eb%a7%9b%ec%a7%91/" class="tag-cloud-link tag-link-782 tag-link-position-19" style="font-size: 16.779661016949pt;" aria-label="맛집 (97 아이템)">맛집</a>
+<a href="http://ms.nala.ga/tag/%eb%aa%a8%ec%9d%8c/" class="tag-cloud-link tag-link-1142 tag-link-position-20" style="font-size: 13.694915254237pt;" aria-label="모음 (72 아이템)">모음</a>
+<a href="http://ms.nala.ga/tag/%eb%aa%b8%eb%a7%a4/" class="tag-cloud-link tag-link-2391 tag-link-position-21" style="font-size: 15.830508474576pt;" aria-label="몸매 (88 아이템)">몸매</a>
+<a href="http://ms.nala.ga/tag/%eb%b0%a9%eb%b2%95/" class="tag-cloud-link tag-link-930 tag-link-position-22" style="font-size: 17.491525423729pt;" aria-label="방법 (103 아이템)">방법</a>
+<a href="http://ms.nala.ga/tag/%eb%b0%b0%ec%9a%b0/" class="tag-cloud-link tag-link-895 tag-link-position-23" style="font-size: 15.593220338983pt;" aria-label="배우 (86 아이템)">배우</a>
+<a href="http://ms.nala.ga/tag/%eb%b6%80%ec%82%b0/" class="tag-cloud-link tag-link-157 tag-link-position-24" style="font-size: 8.4745762711864pt;" aria-label="부산 (43 아이템)">부산</a>
+<a href="http://ms.nala.ga/tag/%ec%82%ac%eb%9e%91/" class="tag-cloud-link tag-link-2972 tag-link-position-25" style="font-size: 14.406779661017pt;" aria-label="사랑 (77 아이템)">사랑</a>
+<a href="http://ms.nala.ga/tag/%ec%82%ac%ec%a7%84/" class="tag-cloud-link tag-link-410 tag-link-position-26" style="font-size: 9.4237288135593pt;" aria-label="사진 (47 아이템)">사진</a>
+<a href="http://ms.nala.ga/tag/%ec%95%84%eb%82%b4/" class="tag-cloud-link tag-link-3039 tag-link-position-27" style="font-size: 9.6610169491525pt;" aria-label="아내 (48 아이템)">아내</a>
+<a href="http://ms.nala.ga/tag/%ec%95%88%eb%82%b4/" class="tag-cloud-link tag-link-1327 tag-link-position-28" style="font-size: 11.322033898305pt;" aria-label="안내 (56 아이템)">안내</a>
+<a href="http://ms.nala.ga/tag/%ec%95%8c%ec%95%84%eb%b3%b4%ea%b8%b0/" class="tag-cloud-link tag-link-821 tag-link-position-29" style="font-size: 15.118644067797pt;" aria-label="알아보기 (82 아이템)">알아보기</a>
+<a href="http://ms.nala.ga/tag/%ec%95%8c%ec%95%84%eb%b3%b4%ec%9e%90/" class="tag-cloud-link tag-link-341 tag-link-position-30" style="font-size: 11.322033898305pt;" aria-label="알아보자 (56 아이템)">알아보자</a>
+<a href="http://ms.nala.ga/tag/%ec%97%ac%ed%96%89/" class="tag-cloud-link tag-link-873 tag-link-position-31" style="font-size: 17.016949152542pt;" aria-label="여행 (98 아이템)">여행</a>
+<a href="http://ms.nala.ga/tag/%ec%98%81%ed%99%94/" class="tag-cloud-link tag-link-562 tag-link-position-32" style="font-size: 19.389830508475pt;" aria-label="영화 (124 아이템)">영화</a>
+<a href="http://ms.nala.ga/tag/%ec%98%a4%eb%8a%98/" class="tag-cloud-link tag-link-1059 tag-link-position-33" style="font-size: 13.694915254237pt;" aria-label="오늘 (72 아이템)">오늘</a>
+<a href="http://ms.nala.ga/tag/%ec%9a%b0%eb%a6%ac/" class="tag-cloud-link tag-link-888 tag-link-position-34" style="font-size: 11.322033898305pt;" aria-label="우리 (57 아이템)">우리</a>
+<a href="http://ms.nala.ga/tag/%ec%9c%84%ed%95%9c/" class="tag-cloud-link tag-link-1175 tag-link-position-35" style="font-size: 12.983050847458pt;" aria-label="위한 (66 아이템)">위한</a>
+<a href="http://ms.nala.ga/tag/%ec%9d%b4%ec%95%bc%ea%b8%b0/" class="tag-cloud-link tag-link-611 tag-link-position-36" style="font-size: 12.508474576271pt;" aria-label="이야기 (64 아이템)">이야기</a>
+<a href="http://ms.nala.ga/tag/%ec%9d%b4%ec%9c%a0/" class="tag-cloud-link tag-link-296 tag-link-position-37" style="font-size: 10.372881355932pt;" aria-label="이유 (51 아이템)">이유</a>
+<a href="http://ms.nala.ga/tag/%ec%9e%90%ea%b2%a9%ec%a6%9d/" class="tag-cloud-link tag-link-2111 tag-link-position-38" style="font-size: 9.4237288135593pt;" aria-label="자격증 (47 아이템)">자격증</a>
+<a href="http://ms.nala.ga/tag/%ec%a0%95%eb%a6%ac/" class="tag-cloud-link tag-link-1831 tag-link-position-39" style="font-size: 13.220338983051pt;" aria-label="정리 (68 아이템)">정리</a>
+<a href="http://ms.nala.ga/tag/%ec%a0%95%eb%b3%b4/" class="tag-cloud-link tag-link-89 tag-link-position-40" style="font-size: 15.118644067797pt;" aria-label="정보 (83 아이템)">정보</a>
+<a href="http://ms.nala.ga/tag/%ec%b6%94%ec%b2%9c/" class="tag-cloud-link tag-link-146 tag-link-position-41" style="font-size: 22pt;" aria-label="추천 (162 아이템)">추천</a>
+<a href="http://ms.nala.ga/tag/%ec%b6%9c%ec%97%b0/" class="tag-cloud-link tag-link-2930 tag-link-position-42" style="font-size: 10.847457627119pt;" aria-label="출연 (54 아이템)">출연</a>
+<a href="http://ms.nala.ga/tag/%ed%95%9c%ea%b5%ad/" class="tag-cloud-link tag-link-3361 tag-link-position-43" style="font-size: 11.796610169492pt;" aria-label="한국 (59 아이템)">한국</a>
+<a href="http://ms.nala.ga/tag/%ed%9a%a8%eb%8a%a5/" class="tag-cloud-link tag-link-810 tag-link-position-44" style="font-size: 9.6610169491525pt;" aria-label="효능 (48 아이템)">효능</a>
+<a href="http://ms.nala.ga/tag/%ed%9b%84%ea%b8%b0/" class="tag-cloud-link tag-link-14 tag-link-position-45" style="font-size: 17.966101694915pt;" aria-label="후기 (109 아이템)">후기</a></div>
+</div>	    </div>
+	</div>
+
+        </div> <!-- /.row -->
+    </div> <!-- /.container -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <hr>
+            </div>
+        </div>
+    </div>
+    <footer class="site-footer" role="contentinfo">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 text-center">
+  
+                    <p></p>
+                    
+                                            <div class="footer-social-icons">
+                                                                                                                                                                                                                                                                                                                                                                                                        
+                        </div>
+                    
+                </div>
+            </div>
+        </div>
+    </footer>
+
+            <div class="scroll-up">
+            <a href="#"><i class="fa fa-angle-up"></i></a>
+        </div>
+        <!-- Scroll Up -->
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/af2821b0/cloudflare-static/email-decode.min.js"></script><script type='text/javascript' src='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/js/bootstrap.min.js?ver=3.3.5'></script>
+<script type='text/javascript' src='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/js/scripts.js'></script>
+<script type='text/javascript' src='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/js/jquery.fitvids.js'></script>
+<script type='text/javascript' src='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/js/smoothscroll.js'></script>
+<script type='text/javascript' src='http://ms.nala.ga/wp-includes/js/wp-embed.min.js?ver=4.8.4'></script>
+    </body>
+</html>

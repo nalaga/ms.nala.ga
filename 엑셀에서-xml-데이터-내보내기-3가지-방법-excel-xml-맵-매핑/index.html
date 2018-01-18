@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="profile" href="http://gmpg.org/xfn/11">
+    <link rel="pingback" href="http://ms.nala.ga/xmlrpc.php">
+
+<title>엑셀에서 xml 데이터 내보내기 3가지 방법 ( EXCEL / XML / 맵 / 매핑 ) | All About MS CCL Contents</title>
+<meta name='robots' content='noindex,follow' />
+
+<!-- All in One SEO Pack 2.4.4 by Michael Torbert of Semper Fi Web Design[276,366] -->
+<meta name="description"  content="3줄 요약 먼저 엑셀을 연다.상단의 파일 &gt; 옵션 을 클릭한다.리본 사용자 지정 &gt; ...중략... 리본 메뉴 사용자 지정(B) &gt; 기본 탭 &gt; 개발 도구 에 체크를 한다. OK 준비 끝~!!! 어떠신가요? 이제 원하시는대로 데이터를 xml로 저장하는 방법 충분히 이해가 되었나요? ^^덕분에 저도 오늘 하나 배웠습니다.감사합니다^^ 엑셀에서 xml 데이터 내보내기 3가지 방법 ( EXCEL / XML / 맵 / 매핑 )엑셀에서 준비먼저 엑셀을 연다.상단의 파일 &gt; 옵션 을 클릭한다.리본 사용자 지정 &gt; 리본 메뉴 사용자 지정(B) &gt; 기본 탭 &gt; 개발 도구 에 체크를" />
+<meta name="robots" content="index,nofollow" />
+
+<link rel="canonical" href="http://ms.nala.ga/%ec%97%91%ec%85%80%ec%97%90%ec%84%9c-xml-%eb%8d%b0%ec%9d%b4%ed%84%b0-%eb%82%b4%eb%b3%b4%eb%82%b4%ea%b8%b0-3%ea%b0%80%ec%a7%80-%eb%b0%a9%eb%b2%95-excel-xml-%eb%a7%b5-%eb%a7%a4%ed%95%91/" />
+<!-- /all in one seo pack -->
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="All About MS CCL Contents &raquo; 피드" href="http://ms.nala.ga/feed/" />
+<link rel="alternate" type="application/rss+xml" title="All About MS CCL Contents &raquo; 댓글 피드" href="http://ms.nala.ga/comments/feed/" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.3\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.3\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/ms.nala.ga\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.8.4"}};
+			!function(a,b,c){function d(a){var b,c,d,e,f=String.fromCharCode;if(!k||!k.fillText)return!1;switch(k.clearRect(0,0,j.width,j.height),k.textBaseline="top",k.font="600 32px Arial",a){case"flag":return k.fillText(f(55356,56826,55356,56819),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,56826,8203,55356,56819),0,0),c=j.toDataURL(),b!==c&&(k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447),0,0),c=j.toDataURL(),b!==c);case"emoji4":return k.fillText(f(55358,56794,8205,9794,65039),0,0),d=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55358,56794,8203,9794,65039),0,0),e=j.toDataURL(),d!==e}return!1}function e(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i,j=b.createElement("canvas"),k=j.getContext&&j.getContext("2d");for(i=Array("flag","emoji4"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='bootstrap-css-css'  href='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/css/bootstrap.min.css?ver=3.3.5' type='text/css' media='all' />
+<link rel='stylesheet' id='font-awesome-css-css'  href='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/css/font-awesome.min.css?ver=4.4.0' type='text/css' media='all' />
+<link rel='stylesheet' id='shaped-blog-stylesheet-css'  href='http://ms.nala.ga/wp-content/themes/shaped-blog/style.css?ver=4.8.4' type='text/css' media='all' />
+<link rel='stylesheet' id='responsive-css-css'  href='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/css/responsive.css' type='text/css' media='all' />
+<script type='text/javascript' src='http://ms.nala.ga/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
+<script type='text/javascript' src='http://ms.nala.ga/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+<link rel='https://api.w.org/' href='http://ms.nala.ga/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://ms.nala.ga/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://ms.nala.ga/wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='iKON, 오는 25일 정규 2집으로 컴백' href='http://ms.nala.ga/ikon-%ec%98%a4%eb%8a%94-25%ec%9d%bc-%ec%a0%95%ea%b7%9c-2%ec%a7%91%ec%9c%bc%eb%a1%9c-%ec%bb%b4%eb%b0%b1/' />
+<link rel='next' title='공연기획과 17학번 김지선 학생 인터뷰' href='http://ms.nala.ga/%ea%b3%b5%ec%97%b0%ea%b8%b0%ed%9a%8d%ea%b3%bc-17%ed%95%99%eb%b2%88-%ea%b9%80%ec%a7%80%ec%84%a0-%ed%95%99%ec%83%9d-%ec%9d%b8%ed%84%b0%eb%b7%b0/' />
+<meta name="generator" content="WordPress 4.8.4" />
+<link rel='shortlink' href='http://ms.nala.ga/?p=1134' />
+<link rel="alternate" type="application/json+oembed" href="http://ms.nala.ga/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fms.nala.ga%2F%25ec%2597%2591%25ec%2585%2580%25ec%2597%2590%25ec%2584%259c-xml-%25eb%258d%25b0%25ec%259d%25b4%25ed%2584%25b0-%25eb%2582%25b4%25eb%25b3%25b4%25eb%2582%25b4%25ea%25b8%25b0-3%25ea%25b0%2580%25ec%25a7%2580-%25eb%25b0%25a9%25eb%25b2%2595-excel-xml-%25eb%25a7%25b5-%25eb%25a7%25a4%25ed%2595%2591%2F" />
+<link rel="alternate" type="text/xml+oembed" href="http://ms.nala.ga/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fms.nala.ga%2F%25ec%2597%2591%25ec%2585%2580%25ec%2597%2590%25ec%2584%259c-xml-%25eb%258d%25b0%25ec%259d%25b4%25ed%2584%25b0-%25eb%2582%25b4%25eb%25b3%25b4%25eb%2582%25b4%25ea%25b8%25b0-3%25ea%25b0%2580%25ec%25a7%2580-%25eb%25b0%25a9%25eb%25b2%2595-excel-xml-%25eb%25a7%25b5-%25eb%25a7%25a4%25ed%2595%2591%2F&#038;format=xml" />
+
+	<style>
+
+		/* Border Color */
+		.btn-social:hover,
+		blockquote,
+		#respond input:focus[type="text"], 
+	    #respond input:focus[type="email"], 
+	    #respond input:focus[type="url"],
+	    #respond textarea:focus,
+	    #comments .comment-reply a:hover
+		{
+			border-color: ;
+		}
+
+		
+		/* Background Color */
+		.scroll-up a,
+		.btn-social:hover,
+		button,
+		input[type="button"],
+		input[type="reset"],
+		input[type="submit"],
+		.navbar-default .navbar-nav .dropdown-menu li a:hover, .dropdown-menu li a:focus, .navbar-default .navbar-nav .dropdown-menu .active a,
+		.pagination>li>a:focus, .pagination>li>a:hover, .pagination>li>span:focus, .pagination>li>span:hover, .pagination li .current,
+		.next-previous-posts .next-post a:hover,
+		.next-previous-posts .previous-post a:hover,
+		.btn-goback,
+		.btn-submit,
+		a.more-link,
+		.featured-post .fa,
+		#comments .comment-reply a:hover,
+		.widget .tagcloud a
+		{
+			background-color: ;
+		}
+
+		
+		/* Color */
+		.text-logo a,
+		.navbar-default .navbar-nav .active a, .navbar-default .navbar-nav .active a:hover, .navbar-default .navbar-nav .active a:focus,
+		.navbar-default .navbar-nav li a:hover, .navbar-default .navbar-nav li a:focus,
+		a:hover,
+    	a:focus,
+		.next-previous-posts .previous-post a,
+		.next-previous-posts .next-post a,
+		.pagination>li>a, .pagination>li>span,
+		#comments .comment-author a:hover, 
+    	#respond .logged-in-as a:hover,
+    	#wp-calendar a,
+    	h2.entry-title a:hover
+		{
+			color: ;
+		}
+
+
+		/* A Color */
+		a{
+			color: ;
+		}
+
+		/* a:hover Color */
+		a:hover,
+		a:focus,
+		a:active,
+		.widget a:hover,
+		.post .post-content .entry-meta ul li a:hover
+		{
+			color: ;
+		}
+
+		/* .featured-post .fa:after*/
+		.featured-post .fa:after{
+			border-color:   transparent ;
+		}
+
+
+		
+
+	</style>
+</head>
+
+<body class="post-template-default single single-post postid-1134 single-format-standard">
+
+    <div id="st-preloader">
+        <div id="pre-status">
+            <div class="preload-placeholder"></div>
+        </div>
+    </div>
+<!-- /Preloader -->
+
+<header id="header">	
+	<div id="trueHeader">
+    	<div class="wrapper">
+            <div class="container">
+            	<!-- Menu -->
+            	<div class="menu_main">
+                	<div class="navbar blogx-navbar navbar-default">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#st-navber-collapse">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+
+                                                            <div class="text-logo">
+                                    <a href="http://ms.nala.ga">All About MS CCL Contents</a>
+                                    <p>All About MS CCL Contents</p>
+                                </div><!-- /Logo -->
+                                                    </div>
+                      
+                        <div id="st-navber-collapse" class="navbar-collapse collapse pull-right">
+                             
+                        </div>
+                    </div>
+            	</div><!-- end menu -->
+        	</div> <!-- /.container -->
+    	</div>
+	</div>
+	<DIV class='ads_adsense_img' style='margin:40px 0px 40px 0px;'>
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<!-- only display -->
+	<ins class="adsbygoogle"
+	     style="display:block"
+	     data-ad-client="ca-pub-8393857339019314"
+	     data-ad-slot="7474886381"
+	     data-ad-format="auto"></ins>
+	<script>
+	(adsbygoogle = window.adsbygoogle || []).push({});
+	</script>
+	</DIV>	
+
+</header>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div id="primary" class="content-area">
+                    <main id="main" class="site-main" role="main">
+
+                        
+                                <article id="post-1134" class="post-1134 post type-post status-publish format-standard hentry category-uncategorized tag-2589 tag-excel tag-xml tag-2588 tag-2587 tag-2591 tag-930 tag-2585">
+    <header class="entry-header">
+        
+        
+    </header> <!--/.entry-header -->
+
+    <div class="clearfix post-content media">
+
+        <h2 class="entry-title">
+            엑셀에서 xml 데이터 내보내기 3가지 방법 ( EXCEL / XML / 맵 / 매핑 )        </h2> <!-- //.entry-title -->
+
+        <div class="clearfix entry-meta">
+            
+            <ul class="list-inline">
+                <li>
+                    <span class="author vcard">
+                        By <a class="url fn n" href="http://ms.nala.ga/author/admin/">admin</a>                    </span>
+                </li>
+                <li>
+                    on <span class="posted-on">1월 12, 2018</span>
+                </li>
+                                    <li>
+                        in <span class="posted-in">
+                            <a href="http://ms.nala.ga/category/uncategorized/" rel="category tag">미분류</a>                        </span>
+                    </li>
+                            </ul>
+                </div> <!--/.entry-meta -->
+        
+        <div class="entry-summary">
+            <p><img src='http://cfile2.uf.tistory.com/image/993B7F3A5A580CA40720FB' style='max-width:250px;min-width:0px;' onError='this.style.display="none"' /></p>
+<h1>3줄 요약 </h1>
+<div style='color:#fff;background-color:#000;border-radius:10px;'>
+<ol>
+<li><span>먼저 엑셀을 연다.상단의 파일 > 옵션 을 클릭한다.리본 사용자 지정 > <small>&#8230;중략&#8230;</small> 리본 메뉴 사용자 지정(B) > 기본 탭 > 개발 도구 에 체크를 한다.</span></li>
+<li><span>OK 준비 끝~!!!</span></li>
+<li><span>어떠신가요? 이제 원하시는대로 데이터를 xml로 저장하는 방법 충분히 이해가 되었나요? ^^덕분에 저도 오늘 하나 배웠습니다.감사합니다^^</span></li>
+</ol>
+</div>
+<p><span id="more-1134"></span></p>
+<p><iframe src='http://ad.selfhow.com/rd' width='100%' border=0 frameborder=0 style='height:auto;width:100%'></iframe></p>
+<hr />
+<div class="tt_adsense_top" style="margin-bottom:30px">
+</div>
+<p></p>
+<div class="txc-textbox" style="border-style: dashed; border-width: 1px; border-color: rgb(121, 165, 228); background-color: rgb(219, 232, 251); padding: 10px;">
+<p style="text-align: center;"><b>엑셀에서 xml 데이터 내보내기 3가지 방법 ( EXCEL / XML / 맵 / 매핑 )</b></p>
+</div>
+<p></p>
+<p></p>
+<div class="txc-textbox" style="border-style: dashed; border-width: 1px; border-color: rgb(254, 137, 67); background-color: rgb(254, 222, 199); padding: 10px;">
+<p><b>엑셀에서 준비</b></p>
+</div>
+<p></p>
+<p style="text-align: center; clear: none; float: none;"><span class="imageblock" style="display:inline-block;width:820px;;height:auto;max-width:100%"><img filemime="image/jpeg" filename="fdsfds.PNG" height="596" src="http://cfile2.uf.tistory.com/image/993B7F3A5A580CA40720FB" style="" width="820"/></span></p>
+<p></p>
+<p>먼저 엑셀을 연다.</p>
+<p>상단의 파일 &gt; 옵션 을 클릭한다.</p>
+<p>리본 사용자 지정 &gt; 리본 메뉴 사용자 지정(B) &gt; 기본 탭 &gt; 개발 도구 에 체크를 한다.</p>
+<p></p>
+<p style="text-align: center; clear: none; float: none;"><span class="imageblock" style="display:inline-block;width:820px;;height:auto;max-width:100%"><img filemime="image/jpeg" filename="fdffa.PNG" height="196" src="http://cfile29.uf.tistory.com/image/990225395A580D0005E7AE" style="" width="820"/></span></p>
+<p></p>
+<p></p>
+<p>그러면 위 그림과 같이 &#8216;개발 도구&#8217; 라는 이름의 탭이 생긴다.</p>
+<p>탭 하단 우측에 XML 부분이 이제 사용할 부분이다.</p>
+<p></p>
+<p>OK 준비 끝~!!!</p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<div class="txc-textbox" style="border-style: dashed; border-width: 1px; border-color: rgb(254, 137, 67); background-color: rgb(254, 222, 199); padding: 10px;">
+<p><b>XML 맵 불러오기</b></p>
+</div>
+<p></p>
+<p style="text-align: center; clear: none; float: none;"><span class="imageblock" style="display:inline-block;width:680px;;height:auto;max-width:100%"><img filemime="image/jpeg" filename="ffffdfdfdfd.PNG" height="741" src="http://cfile9.uf.tistory.com/image/99644D455A5810EF0A9A80" style="" width="680"/></span></p>
+<p></p>
+<p></p>
+<p>위와같이 엑셀에서 데이터를 입력합니다.</p>
+<p>그리고 개발도구 &gt; XML &gt; 원본 &gt; XML 맵 을 클릭하여 맵을 추가합니다.</p>
+<p>이때 추가할 맵이 있어야 겠죠?</p>
+<p></p>
+<p></p>
+<p style="text-align: center; clear: none; float: none;"><span class="imageblock" style="display:inline-block;width:461px;;height:auto;max-width:100%"><img filemime="image/jpeg" filename="fdsafdsa.PNG" height="491" src="http://cfile9.uf.tistory.com/image/9910D0485A5819E129128A" style="" width="461"/></span></p>
+<p></p>
+<p></p>
+<p>이렇게 메모장으로 xml 파일을 하나 만들어 주고,</p>
+<p>XML 맵에서 추가 버튼을 눌러서 추가하면 됩니다.</p>
+<p><b>* 중요*</b></p>
+<p> text 부분을 복사해서 두번 만들어야 합니다.</p>
+<p> 그렇게 해야 구분을 정확하게 인식할 수 있기 때문입니다.</p>
+<p></p>
+<p></p>
+<div class="txc-textbox" style="border-style: dashed; border-width: 1px; border-color: rgb(254, 137, 67); background-color: rgb(254, 222, 199); padding: 10px;">
+<p><b>XML 맵 매핑하기</b></p>
+</div>
+<p></p>
+<p style="text-align: center; clear: none; float: none;"><span class="imageblock" style="display:inline-block;width:679px;;height:auto;max-width:100%"><img filemime="image/jpeg" filename="dsaf.png" height="740" src="http://cfile30.uf.tistory.com/image/99217F465A5812C20F2552" style="" width="679"/></span></p>
+<p></p>
+<p></p>
+<p>우측의 XML 맵에서 끌어다가 놓으면 됩니다.</p>
+<p>name, phone, address 다 똑같이 해줍니다.</p>
+<p>귀찮으면 Root 를 끌어다가 놓아도 됩니다.</p>
+<p></p>
+<p></p>
+<p style="text-align: center; clear: none; float: none;"><span class="imageblock" style="display:inline-block;width:293px;;height:auto;max-width:100%"><img filemime="image/jpeg" filename="aaaaaa.PNG" height="135" src="http://cfile4.uf.tistory.com/image/99583B3F5A581CBD339E98" style="" width="293"/></span></p>
+<p></p>
+<p>이렇게 자동으로 표서식이 적용 됩니다.</p>
+<p>첫번해 행을 기준으로 맵핑되었다는 의미입니다.</p>
+<p></p>
+<p></p>
+<p></p>
+<div class="txc-textbox" style="border-style: dashed; border-width: 1px; border-color: rgb(254, 137, 67); background-color: rgb(254, 222, 199); padding: 10px;">
+<p><b>XML data로 내보내기</b></p>
+</div>
+<p></p>
+<p></p>
+<p>다들 아시죠? </p>
+<p>그리고 개발도구 &gt; XML &gt; 내보내기 누르시고 저장하시면 됩니다.</p>
+<p></p>
+<p>그런데 원하는대로의 모양이 아닐 수 있겠죠?</p>
+<p>그래서 몇가지 테스트 해보았습니다.</p>
+<p></p>
+<p style="text-align: center; clear: none; float: none;"><span class="imageblock" style="display:inline-block;width:461px;;height:auto;max-width:100%"><img filemime="image/jpeg" filename="01.PNG" height="625" src="http://cfile24.uf.tistory.com/image/992DEB385A581D4B333B22" style="" width="461"/></span></p>
+<p style="text-align: center;">[첫번째]</p>
+<p></p>
+<p style="text-align: center; clear: none; float: none;"><span class="imageblock" style="display:inline-block;width:496px;;height:auto;max-width:100%"><img filemime="image/jpeg" filename="02.PNG" height="639" src="http://cfile30.uf.tistory.com/image/991B673D5A581D63366F65" style="" width="496"/></span></p>
+<p style="text-align: center;"><span style="text-align: center;">[두번째</span><span style="text-align: center;">]</span></p>
+<p></p>
+<p style="text-align: center; clear: none; float: none;"><span class="imageblock" style="display:inline-block;width:494px;;height:auto;max-width:100%"><img filemime="image/jpeg" filename="04.PNG" height="639" src="http://cfile1.uf.tistory.com/image/99D763365A581D89366846" style="" width="494"/></span></p>
+<p style="text-align: center;"><span style="text-align: center;">[세번째]<br /></span></p>
+<p></p>
+<p>어떠신가요? 이제 원하시는대로 데이터를 xml로 저장하는 방법 충분히 이해가 되었나요? ^^</p>
+<p>덕분에 저도 오늘 하나 배웠습니다.</p>
+<p>감사합니다^^</p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<div class="txc-textbox" style="border-style: dashed; border-width: 1px; border-color: rgb(254, 137, 67); background-color: rgb(254, 222, 199); padding: 10px;">
+<p><b>[Excel 2016 도움말 요약] &#8211; </b>하단 자료 첨부</p>
+</div>
+<p></p>
+<div class="txc-textbox" style="border-style: dashed; border-width: 1px; border-color: rgb(121, 165, 228); background-color: rgb(219, 232, 251); padding: 10px;">
+<p class="ocpAlertSection"><b class="ocpNote">중요:</b> XML 맵을 만들고 Excel의 데이터를 XML 데이터 파일로 내보낼 경우 내보낼 수 있는 행 수가 제한되어 있습니다. XML에서 Excel로 내보내면 최대 65,536개 행이 저장됩니다. 파일에 65,536개보다 많은 행이 있는 경우 다음 중 하나를 실행해야 합니다.</p>
+<ul class="ocpAlertSectionListContainer">
+<li>
+<p>.xlsx 파일 형식을 사용하여 데이터를 내보냅니다.</p>
+</li>
+<li>
+<p>파일을 XML 스프레드시트(.xml)로 저장합니다. 이 경우 매핑이 손실됩니다.</p>
+</li>
+<li>
+<p>65,536행 다음의 행을 모두 삭제한 다음 다시 내보냅니다. 이 경우, 매핑은 유지되지만 파일 끝부분에 있는 데이터가 손실됩니다.</p>
+</li>
+</ul>
+</div>
+<p></p>
+<p>1. <b>XML 맵</b>을 만들어야 한다.</p>
+<p>2. <b>65,536행 이상</b>은 <b>XML 데이터구조로는 불가능</b>하다.</p>
+<p> 1) xlsx 로 변경한다.</p>
+<p> 2) XML 스프레드시트(.xml) 로 저장 ( 매핑 손실 됨)</p>
+<p> 3) 65,536행 이후 행 삭제 후 다시 내보내기 ( 매핑 유지, 끝부분 데이터 손실 됨)</p>
+<div></div>
+<p></p>
+<p><b>Excel 2016 도움말 참조</b></p>
+<div class="txc-textbox" style="border-style: solid; border-width: 1px; border-color: rgb(238, 238, 238); background-color: rgb(238, 238, 238); padding: 10px;">
+<section class="ocpArticleTitleSection">
+<h1>2016 Excel에서에서 XML 데이터 내보내기</h1>
+</section>
+<article class="ocpArticleContent" id="ocpArticleContent"><a aria-hidden="true" ms.cmpgrp="content" ms.pgarea="Body" name="__top" xmlns:antixss="urn:AntiXSSExtensions"></a></p>
+<section class="ocpIntroduction">
+<div class="ocpAlert" xmlns:antixss="urn:AntiXSSExtensions">
+<p class="ocpAlertSection"><b class="ocpNote">중요:</b>  본 문서는 기계 번역된 문서이므로 <a aria-label="섹션으로 건너뛰기 고지 사항" class="ocpInlineLink" data-bi-bhvr="NAVIGATION" href="https://support.office.com/client/2016-Excel%EC%97%90%EC%84%9C%EC%97%90%EC%84%9C-XML-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%82%B4%EB%B3%B4%EB%82%B4%EA%B8%B0-c3cd6ade-7845-4b75-ba2e-fb9daad0567d?NS=EXCEL&amp;Version=16&amp;SysLcid=1042&amp;UiLcid=1042&amp;AppVer=ZXL160&amp;HelpId=xlmain11.chm327910#mt_footer" ms.cmpgrp="content" ms.interactiontype="11" ms.pgarea="Body">고지 사항</a>을 확인하십시오. 이 문서의 영문 버전은 <a class="ocpExternalLink" href="https://support.office.com/en-us/article/c3cd6ade-7845-4b75-ba2e-fb9daad0567d" ms.cmpgrp="content" ms.pgarea="Body" target="_blank">여기</a>서 확인할 수 있습니다.</p>
+</div>
+<p xmlns:antixss="urn:AntiXSSExtensions">XML 데이터를 가져와서 워크시트의 셀에 매핑하고 데이터를 변경한 후 XML 파일로 내보내거나 저장할 수 있습니다.</p>
+<div class="ocpAlert" xmlns:antixss="urn:AntiXSSExtensions">
+<p class="ocpAlertSection"><b class="ocpNote">중요:</b> XML 맵을 만들고 Excel의 데이터를 XML 데이터 파일로 내보낼 경우 내보낼 수 있는 행 수가 제한되어 있습니다. XML에서 Excel로 내보내면 최대 65,536개 행이 저장됩니다. 파일에 65,536개보다 많은 행이 있는 경우 다음 중 하나를 실행해야 합니다.</p>
+<ul class="ocpAlertSectionListContainer">
+<li>
+<p>.xlsx 파일 형식을 사용하여 데이터를 내보냅니다.</p>
+</li>
+<li>
+<p>파일을 XML 스프레드시트(.xml)로 저장합니다. 이 경우 매핑이 손실됩니다.</p>
+</li>
+<li>
+<p>65,536행 다음의 행을 모두 삭제한 다음 다시 내보냅니다. 이 경우, 매핑은 유지되지만 파일 끝부분에 있는 데이터가 손실됩니다.</p>
+</li>
+</ul>
+</div>
+</section>
+<section class="ocpSection">
+<h2>65,536개 이하의 행이 포함된 워크시트에서 XML데이터 내보내기</h2>
+<ol type="1" xmlns:antixss="urn:AntiXSSExtensions">
+<li>
+<p><b class="ocpUI">개발 도구</b> 탭의 <b class="ocpUI">XML</b> 그룹에서 <b class="ocpUI">내보내기</b>를 클릭합니다.</p>
+<p><b class="ocpUI">개발 도구</b> 탭이 표시되지 않을 경우 <a aria-label="섹션으로 건너뛰기 개발 도구 탭 표시" class="ocpInlineLink" data-bi-bhvr="NAVIGATION" href="https://support.office.com/client/2016-Excel%EC%97%90%EC%84%9C%EC%97%90%EC%84%9C-XML-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%82%B4%EB%B3%B4%EB%82%B4%EA%B8%B0-c3cd6ade-7845-4b75-ba2e-fb9daad0567d?NS=EXCEL&amp;Version=16&amp;SysLcid=1042&amp;UiLcid=1042&amp;AppVer=ZXL160&amp;HelpId=xlmain11.chm327910#bm_showdevelopertab" ms.cmpgrp="content" ms.interactiontype="11" ms.pgarea="Body">개발 도구 탭 표시</a>를 참조하세요.</p>
+</li>
+<li>
+<p>작은 <b class="ocpLegacyBold">XML 내보내기</b> 대화 상자가 나타나면 사용할 XML 맵을 클릭한 다음 <b class="ocpUI">확인</b>을 클릭합니다.</p>
+<p>이 대화 상자는 XML 표가 선택되지 않았고 통합 문서에 여러 XML 맵이 포함된 경우에만 표시됩니다.</p>
+</li>
+<li>
+<p>큰 <b class="ocpUI">XML 내보내기</b> 대화 상자의 <b class="ocpLegacyBold">파일 이름</b> 상자에 XML 데이터 파일의 이름을 입력합니다.</p>
+</li>
+<li>
+<p><b class="ocpLegacyBold">내보내기</b>를 클릭합니다.</p>
+<div class="ocpAlert">
+<p class="ocpAlertSection"><b class="ocpNote">참고:</b> 워크시트에 XML 맵의 XML 요소 이름과 다른 제목 또는 레이블이 있는 경우 워크시트에서 XML 데이터를 내보내거나 저장하면 XML 요소 이름이 사용됩니다.</p>
+</div>
+</li>
+</ol>
+</section>
+<section class="ocpSection">
+<h2>65,536개보다 많은 행이 포함된 워크시트에서 XML데이터 내보내기</h2>
+<ol type="1" xmlns:antixss="urn:AntiXSSExtensions">
+<li>
+<p>파일의 전체 행 수에서 65,537을 뺍니다.</p>
+<p>그 결과 남은 행 수는 <i class="ocpItalic">x</i>개입니다.</p>
+</li>
+<li>
+<p>Excel 워크시트 시작 부분에서 <i class="ocpItalic">x</i>개의 행이 삭제됩니다.</p>
+</li>
+<li>
+<p>워크시트를 XML 데이터 파일로 내보냅니다.</p>
+</li>
+<li>
+<p><b class="ocpUI">닫기</b>를 클릭하고 Excel 워크시트를 다시 엽니다.</p>
+</li>
+<li>
+<p>총 <i class="ocpItalic">x</i>개 다음의 모든 행을 삭제한 다음 XML 데이터 파일로 내보냅니다.</p>
+<p>그러면 나머지 행만 남습니다. 이제 이 XML 내보내기 파일 2개를 결합해서 원래 워크시트의 복제본을 만들 수 있습니다.</p>
+</li>
+</ol>
+</section>
+<p><a aria-hidden="true" ms.cmpgrp="content" ms.pgarea="Body" name="bm2" xmlns:antixss="urn:AntiXSSExtensions"></a></p>
+<section class="ocpSection">
+<h2>매핑된 셀의 XML 데이터를 XML 데이터 파일로 저장</h2>
+<p xmlns:antixss="urn:AntiXSSExtensions">전 버전의 XML 기능과 호환성을 유지하기 위해 <b class="ocpUI">내보내기</b> 명령을 사용하지 않고 파일을 XML 데이터 파일(.xml)로 저장할 수 있습니다.</p>
+<ol type="1" xmlns:antixss="urn:AntiXSSExtensions">
+<li>
+<p>Ctrl+S를 눌러 파일을 저장합니다.</p>
+<p>이 단계를 사용하면 통합 문서를 XML 데이터 파일로 저장할 때 통합 문서의 변경 내용이 소실되지 않습니다.</p>
+</li>
+<li>
+<p><b class="ocpUI">파일</b> &gt; <b class="ocpUI">다른 이름으로 저장</b>을 클릭하고 파일을 저장할 위치를 선택합니다.</p>
+</li>
+<li>
+<p><b class="ocpUI">파일 이름</b> 상자에 XML 데이터 파일 이름을 입력합니다.</p>
+</li>
+<li>
+<p><b class="ocpUI">파일 형식</b> 목록에서 <b class="ocpUI">XML 데이터</b>를 클릭한 다음, <b class="ocpUI">저장</b>을 클릭합니다.</p>
+</li>
+<li>
+<p>파일을 XML 데이터로 저장하는 경우 기능이 소실될 수 있다는 메시지가 나타나면 <b class="ocpUI">계속</b>을 클릭합니다.</p>
+</li>
+<li>
+<p>작은 <b class="ocpUI">XML 내보내기</b> 대화 상자가 나타나면 사용할 XML 맵을 클릭한 다음 <b class="ocpUI">확인</b>을 클릭합니다.</p>
+<p>이 대화 상자는 XML 표가 선택되지 않았고 통합 문서에 여러 XML 맵이 포함된 경우에만 표시됩니다.</p>
+</li>
+<li>
+<p>큰 <b class="ocpUI">XML 내보내기</b> 대화 상자의 <b class="ocpUI">파일 이름</b> 상자에 XML 데이터 파일의 이름을 입력합니다.</p>
+</li>
+<li>
+<p><b class="ocpUI">내보내기</b>를 클릭합니다.</p>
+</li>
+</ol>
+<div class="ocpAlert" xmlns:antixss="urn:AntiXSSExtensions">
+<p class="ocpAlertSection"><b class="ocpNote">참고:</b> 워크시트에 XML 맵의 XML 요소 이름과 다른 제목 또는 레이블이 있는 경우 워크시트에서 XML 데이터를 내보내거나 저장하면 XML 요소 이름이 사용됩니다.</p>
+</div>
+</section>
+<p><a aria-hidden="true" ms.cmpgrp="content" ms.pgarea="Body" name="bm3" xmlns:antixss="urn:AntiXSSExtensions"></a></p>
+<section class="ocpSection">
+<h2>XML 데이터를 내보낼 때 발생할 수 있는 일반적인 문제</h2>
+<p xmlns:antixss="urn:AntiXSSExtensions">XML 데이터를 내보낼 때 아래와 같은 메시지가 나타날 수 있습니다.</p>
+<section class="ocpSection">
+<h3>XML 맵을 내보낼 수 있지만 일부 필수 요소가 매핑되지 않습니다</h3>
+<p xmlns:antixss="urn:AntiXSSExtensions">이 메시지가 표시되는 원인으로는 여러 가지가 있습니다.</p>
+<ul xmlns:antixss="urn:AntiXSSExtensions">
+<li>
+<p>XML 표에 매핑되지 않은 한 개 이상의 필수 요소가 이 XML 표와 연결된 XML 맵에 있습니다.</p>
+<p>XML 원본 작업창의 계층적 요소 목록에서 각 요소의 왼쪽에 관련 아이콘이 표시됩니다. 필수 요소의 경우에는 해당 아이콘의 오른쪽 위 모서리에 빨간색 별표가 표시됩니다. 필수 요소를 매핑하려면 워크시트에서 이를 표시할 위치로 해당 요소를 끕니다.</p>
+</li>
+<li>
+<p>요소가 재귀 구조입니다.</p>
+<p>재귀 구조의 일반적인 예로는 동일한 XML 요소가 여러 수준으로 중첩된 직원 및 관리자 계층 구조를 들 수 있습니다. XML 원본 작업창에서 모든 요소를 매핑하더라도 Excel에서 지원하는 재귀 구조는 한 수준까지이므로 요소 전체를 매핑할 수 없습니다.</p>
+</li>
+<li>
+<p>XML 표에 혼합된 콘텐츠가 포함되어 있습니다.</p>
+<p>혼합된 콘텐츠는 요소에 자식 요소가 있고 자식 요소 외부에 간단한 텍스트가 있는 경우 발생합니다. 굵은 글꼴 태그 등의 서식 태그를 사용하여 요소 내의 데이터를 표시하는 경우를 예로 들 수 있습니다. Excel에서 자식 요소를 지원하는 경우 자식 요소를 표시할 수 있더라도 데이터를 가져오면 텍스트 내용이 소실되고 데이터를 내보내면 텍스트 내용을 사용할 수 없으므로 이러한 자식 요소는 상호 전환될 수 없습니다.</p>
+</li>
+</ul>
+</section>
+<section class="ocpSection">
+<h3>통합 문서의 XML 맵은 내보낼 수 없음</h3>
+<p xmlns:antixss="urn:AntiXSSExtensions">매핑된 요소와 다른 요소의 관계를 유지할 수 없는 경우 XML 맵을 내보낼 수 없습니다. 이 관계가 유지되지 않는 이유는 다음과 같습니다.</p>
+<ul xmlns:antixss="urn:AntiXSSExtensions">
+<li>
+<p>매핑된 요소의 스키마 정의가 다음 특성의 시퀀스에 포함되어 있습니다.</p>
+<ul>
+<li>
+<p><b class="ocpLegacyBold">maxoccurs</b> 특성이 1이 아닙니다.</p>
+</li>
+<li>
+<p>시퀀스에 직계 자식 요소가 하나 이상 정의되어 있거나 직계 자식으로 다른 구성 요소가 포함되어 있습니다.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>같은 반복 부모 요소의 반복되지 않는 형제 요소들이 다른 XML 표에 매핑되어 있습니다.</p>
+</li>
+<li>
+<p>여러 반복 요소가 XML 표에 매핑되어 있고 조상 요소에서 반복을 정의하지 않았습니다.</p>
+</li>
+<li>
+<p>다른 부모의 자식 요소들이 같은 XML 표에 매핑되어 있습니다.</p>
+</li>
+</ul>
+<p xmlns:antixss="urn:AntiXSSExtensions">또는 XML 맵에 다음 중 하나에 해당하는 XML 스키마 구문이 포함되어 있어서 XML 맵을 내보내지 못할 수도 있습니다.</p>
+<ul xmlns:antixss="urn:AntiXSSExtensions">
+<li>
+<p><b class="ocpRunInHead">목록의 목록</b>    한 항목 목록에 다른 항목 목록이 들어 있습니다.</p>
+</li>
+<li>
+<p><b class="ocpRunInHead">비정규화된 데이터</b>    XML 표에는 <b class="ocpLegacyBold">maxoccurs</b> 특성을 1로 설정하여 한 번만 발생하도록 스키마에 정의된 요소가 있습니다. 이러한 요소를 XML 표에 추가하면 Excel에서 요소의 여러 인스턴스로 해당 표의 열이 채워집니다.</p>
+</li>
+<li>
+<p><b class="ocpRunInHead">선택</b>    매핑된 요소가 <b class="ocpLegacyBold">&lt;choice&gt;</b> 스키마 구문의 일부입니다.</p>
+</li>
+</ul>
+</section>
+<section class="ocpSection">
+<h3>통합 문서에 매핑된 범위가 없어 Excel에서 저장할 수 없음</h3>
+<p xmlns:antixss="urn:AntiXSSExtensions">하나 이상의 매핑된 범위를 만들지 않으면 Excel에서 통합 문서를 XML 데이터 파일로 저장할 수 없습니다.</p>
+<p xmlns:antixss="urn:AntiXSSExtensions">통합 문서에 XML 맵을 추가했으면 다음 단계에 따라 워크시트에 XML 요소를 매핑합니다.</p>
+<ol type="1" xmlns:antixss="urn:AntiXSSExtensions">
+<li>
+<p><b class="ocpUI">개발 도구</b> 탭의 <b class="ocpUI">XML</b> 그룹에서 <b class="ocpUI">원본</b>을 클릭합니다.</p>
+<p><img alt="개발 도구 탭의 XML 명령" ms.cmpgrp="content" ms.interactiontype="500" ms.pgarea="Body" src="https://support.content.office.net/ko-kr/media/7f5a7f7e-1706-49e5-85ab-108fe74a96e2.png" title="개발 도구 탭의 XML 명령"/></p>
+<p><b class="ocpUI">개발 도구</b> 탭이 표시되지 않을 경우 <a aria-label="섹션으로 건너뛰기 개발 도구 탭 표시" class="ocpInlineLink" data-bi-bhvr="NAVIGATION" href="https://support.office.com/client/2016-Excel%EC%97%90%EC%84%9C%EC%97%90%EC%84%9C-XML-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%82%B4%EB%B3%B4%EB%82%B4%EA%B8%B0-c3cd6ade-7845-4b75-ba2e-fb9daad0567d?NS=EXCEL&amp;Version=16&amp;SysLcid=1042&amp;UiLcid=1042&amp;AppVer=ZXL160&amp;HelpId=xlmain11.chm327910#bm_showdevelopertab" ms.cmpgrp="content" ms.interactiontype="11" ms.pgarea="Body">개발 도구 탭 표시</a>를 참조하세요.</p>
+</li>
+<li>
+<p><b class="ocpUI">XML 원본</b> 작업창에서 워크시트로 매핑하려는 요소를 선택합니다.</p>
+<p>인접하지 않은 여러 요소를 선택하려면 요소 하나를 클릭하고 Ctrl 키를 누른 채로 다른 요소를 클릭합니다.</p>
+</li>
+<li>
+<p>워크시트에서 표시할 위치로 선택한 요소를 끕니다.</p>
+</li>
+</ol>
+<p xmlns:antixss="urn:AntiXSSExtensions">통합 문서에 XML 맵을 추가하지 않았거나 데이터가 XML 표에 포함되어 있지 않으면 통합 문서를 Excel 매크로 사용 통합 문서 파일 형식(.xlsm)으로 저장합니다.</p>
+</section>
+</section>
+<p><a aria-hidden="true" ms.cmpgrp="content" ms.pgarea="Body" name="bm_showdevelopertab" xmlns:antixss="urn:AntiXSSExtensions"></a></p>
+<section class="ocpSection">
+<h2>개발 도구 탭 표시</h2>
+<ol type="1" xmlns:antixss="urn:AntiXSSExtensions">
+<li>
+<p><b class="ocpUI">파일</b>을 클릭한 다음 <b class="ocpUI">옵션</b>을 클릭합니다.</p>
+</li>
+<li>
+<p><b class="ocpUI">리본 사용자 지정</b> 범주를 클릭합니다.</p>
+</li>
+<li>
+<p><b class="ocpUI">기본 탭</b>에서 <b class="ocpUI">개발 도구</b> 확인란을 선택한 다음 <b class="ocpUI">확인</b>을 클릭합니다.</p>
+</li>
+</ol>
+</section>
+<p><a aria-hidden="true" ms.cmpgrp="content" ms.pgarea="Body" name="mt_footer" xmlns:antixss="urn:AntiXSSExtensions"></a></article>
+<p><b class="ocpNote">참고:</b> <b class="ocpUI">기계 번역 고지 사항</b>: 본 문서는 전문 번역가가 번역한 것이 아니라 Microsoft 기계 번역 소프트웨어로 번역한 것입니다. Microsoft에서는 비영어권 국가에 거주하는 사용자가 Microsoft 제품, 서비스 및 기술을 손쉽게 접할 수 있도록 이러한 기계 번역 내용을 제공하고 있습니다. 본 문서는 기계 번역된 문서이므로 어휘, 구문 또는 문법에 오류가 있을 수 있습니다.<b><br /></b></p>
+<div></div>
+</div>
+<p></p>
+<hr />
+<p><iframe src='http://ad.selfhow.com/rd' width='100%' border=0 frameborder=0 style='height:auto;width:100%'></iframe></p>
+<p><a href='http://insurang.tistory.com/190' target='_blank'>Origin Content : insurang.tistory.com</a> | <a href="/cdn-cgi/l/email-protection#0a696966694a646b666b246d6b" target='_blank'>Contact : <span class="__cf_email__" data-cfemail="aecdcdc2cdeec0cfc2cf80c9cf">[email&#160;protected]</span></a>
+</p>
+<p>Cotent License : CC-BY-SA </p>
+<p>This content is collected under the CCL license.</p>
+<p>Please check the license of the original article before asking about copyright.</p>
+<ul>
+<li><a href='/tag/엑셀에서'>More About <span style='font-weight:bold;'>엑셀에서</span></a></li>
+<li><a href='/tag/xml'>More About <span style='font-weight:bold;'>xml</span></a></li>
+<li><a href='/tag/데이터'>More About <span style='font-weight:bold;'>데이터</span></a></li>
+<li><a href='/tag/내보내기'>More About <span style='font-weight:bold;'>내보내기</span></a></li>
+<li><a href='/tag/3가지'>More About <span style='font-weight:bold;'>3가지</span></a></li>
+<li><a href='/tag/방법'>More About <span style='font-weight:bold;'>방법</span></a></li>
+<li><a href='/tag/EXCEL'>More About <span style='font-weight:bold;'>EXCEL</span></a></li>
+<li><a href='/tag/XML'>More About <span style='font-weight:bold;'>XML</span></a></li>
+<li><a href='/tag/매핑'>More About <span style='font-weight:bold;'>매핑</span></a></li>
+</ul>
+        </div> <!-- //.entry-summary -->
+        
+                    <div class="entry-tags"><b>Tags:</b> <a href="http://ms.nala.ga/tag/3%ea%b0%80%ec%a7%80/" rel="tag">3가지</a>, <a href="http://ms.nala.ga/tag/excel/" rel="tag">EXCEL</a>, <a href="http://ms.nala.ga/tag/xml/" rel="tag">xml</a>, <a href="http://ms.nala.ga/tag/%eb%82%b4%eb%b3%b4%eb%82%b4%ea%b8%b0/" rel="tag">내보내기</a>, <a href="http://ms.nala.ga/tag/%eb%8d%b0%ec%9d%b4%ed%84%b0/" rel="tag">데이터</a>, <a href="http://ms.nala.ga/tag/%eb%a7%a4%ed%95%91/" rel="tag">매핑</a>, <a href="http://ms.nala.ga/tag/%eb%b0%a9%eb%b2%95/" rel="tag">방법</a>, <a href="http://ms.nala.ga/tag/%ec%97%91%ec%85%80%ec%97%90%ec%84%9c/" rel="tag">엑셀에서</a></div>
+        
+    </div>
+
+</article> <!--/#post-->
+
+
+
+
+
+                                                                    <div class="post-nav-area">
+                                                    
+            <nav class="next-previous-post clearfix media" role="navigation">
+                <div class="row">
+                    <!-- Previous Post -->
+                    <div class="previous-post col-sm-6 pull-left">
+                        <div class="nav-previous"><i class="fa fa-angle-left"></i> <a href="http://ms.nala.ga/ikon-%ec%98%a4%eb%8a%94-25%ec%9d%bc-%ec%a0%95%ea%b7%9c-2%ec%a7%91%ec%9c%bc%eb%a1%9c-%ec%bb%b4%eb%b0%b1/" rel="prev">iKON, 오는 25일 정규 2집으로 컴백</a></div>                    </div>
+
+                    <!-- Next Post -->
+                    <div class="next-post col-sm-6 pull-right text-right">
+                        <div class="nav-next"><a href="http://ms.nala.ga/%ea%b3%b5%ec%97%b0%ea%b8%b0%ed%9a%8d%ea%b3%bc-17%ed%95%99%eb%b2%88-%ea%b9%80%ec%a7%80%ec%84%a0-%ed%95%99%ec%83%9d-%ec%9d%b8%ed%84%b0%eb%b7%b0/" rel="next">공연기획과 17학번 김지선 학생 인터뷰</a> <i class="fa fa-angle-right"></i></div>                    </div>
+                </div>
+            </nav><!-- .navigation -->
+            
+                                            </div>
+                                
+                                
+                            
+                                            </main> <!-- /.site-main -->
+                </div>  <!-- /.content-area -->
+            </div> <!-- /col -->
+
+            <!-- Blogsidebar -->
+            
+	<div class="col-md-4">
+	    <div class="primary-sidebar widget-area" role="complementary">
+	        <div id="tag_cloud-2" class="widget widget_tag_cloud"><h2 class="widget-title">태그</h2><div class="tagcloud"><a href="http://ms.nala.ga/tag/1%ec%9b%94/" class="tag-cloud-link tag-link-2 tag-link-position-1" style="font-size: 18.440677966102pt;" aria-label="1월 (115 아이템)">1월</a>
+<a href="http://ms.nala.ga/tag/2017/" class="tag-cloud-link tag-link-21 tag-link-position-2" style="font-size: 17.016949152542pt;" aria-label="2017 (98 아이템)">2017</a>
+<a href="http://ms.nala.ga/tag/2017%eb%85%84/" class="tag-cloud-link tag-link-551 tag-link-position-3" style="font-size: 14.406779661017pt;" aria-label="2017년 (77 아이템)">2017년</a>
+<a href="http://ms.nala.ga/tag/2018/" class="tag-cloud-link tag-link-155 tag-link-position-4" style="font-size: 15.830508474576pt;" aria-label="2018 (89 아이템)">2018</a>
+<a href="http://ms.nala.ga/tag/2018%eb%85%84/" class="tag-cloud-link tag-link-64 tag-link-position-5" style="font-size: 19.864406779661pt;" aria-label="2018년 (130 아이템)">2018년</a>
+<a href="http://ms.nala.ga/tag/the/" class="tag-cloud-link tag-link-310 tag-link-position-6" style="font-size: 11.322033898305pt;" aria-label="the (57 아이템)">the</a>
+<a href="http://ms.nala.ga/tag/vs/" class="tag-cloud-link tag-link-128 tag-link-position-7" style="font-size: 8pt;" aria-label="vs (41 아이템)">vs</a>
+<a href="http://ms.nala.ga/tag/%ea%b0%80%ea%b2%a9/" class="tag-cloud-link tag-link-275 tag-link-position-8" style="font-size: 12.271186440678pt;" aria-label="가격 (62 아이템)">가격</a>
+<a href="http://ms.nala.ga/tag/%ea%b2%b0%ed%98%bc/" class="tag-cloud-link tag-link-501 tag-link-position-9" style="font-size: 20.338983050847pt;" aria-label="결혼 (136 아이템)">결혼</a>
+<a href="http://ms.nala.ga/tag/%ea%b3%b5%ea%b0%9c/" class="tag-cloud-link tag-link-260 tag-link-position-10" style="font-size: 9.8983050847458pt;" aria-label="공개 (49 아이템)">공개</a>
+<a href="http://ms.nala.ga/tag/%ea%b7%b8%eb%a6%ac%ea%b3%a0/" class="tag-cloud-link tag-link-980 tag-link-position-11" style="font-size: 10.135593220339pt;" aria-label="그리고 (50 아이템)">그리고</a>
+<a href="http://ms.nala.ga/tag/%eb%82%98%ec%9d%b4%ec%b0%a8/" class="tag-cloud-link tag-link-1184 tag-link-position-12" style="font-size: 8.2372881355932pt;" aria-label="나이차 (42 아이템)">나이차</a>
+<a href="http://ms.nala.ga/tag/%eb%82%a8%ec%9e%90/" class="tag-cloud-link tag-link-364 tag-link-position-13" style="font-size: 9.4237288135593pt;" aria-label="남자 (47 아이템)">남자</a>
+<a href="http://ms.nala.ga/tag/%eb%82%a8%ed%8e%b8/" class="tag-cloud-link tag-link-603 tag-link-position-14" style="font-size: 16.305084745763pt;" aria-label="남편 (92 아이템)">남편</a>
+<a href="http://ms.nala.ga/tag/%eb%85%b8%eb%9e%98/" class="tag-cloud-link tag-link-713 tag-link-position-15" style="font-size: 8.9491525423729pt;" aria-label="노래 (45 아이템)">노래</a>
+<a href="http://ms.nala.ga/tag/%eb%8c%80%ed%95%9c/" class="tag-cloud-link tag-link-3572 tag-link-position-16" style="font-size: 10.135593220339pt;" aria-label="대한 (50 아이템)">대한</a>
+<a href="http://ms.nala.ga/tag/%eb%93%9c%eb%9d%bc%eb%a7%88/" class="tag-cloud-link tag-link-1041 tag-link-position-17" style="font-size: 16.542372881356pt;" aria-label="드라마 (95 아이템)">드라마</a>
+<a href="http://ms.nala.ga/tag/%eb%a6%ac%eb%b7%b0/" class="tag-cloud-link tag-link-447 tag-link-position-18" style="font-size: 12.508474576271pt;" aria-label="리뷰 (64 아이템)">리뷰</a>
+<a href="http://ms.nala.ga/tag/%eb%a7%9b%ec%a7%91/" class="tag-cloud-link tag-link-782 tag-link-position-19" style="font-size: 16.779661016949pt;" aria-label="맛집 (97 아이템)">맛집</a>
+<a href="http://ms.nala.ga/tag/%eb%aa%a8%ec%9d%8c/" class="tag-cloud-link tag-link-1142 tag-link-position-20" style="font-size: 13.694915254237pt;" aria-label="모음 (72 아이템)">모음</a>
+<a href="http://ms.nala.ga/tag/%eb%aa%b8%eb%a7%a4/" class="tag-cloud-link tag-link-2391 tag-link-position-21" style="font-size: 15.830508474576pt;" aria-label="몸매 (88 아이템)">몸매</a>
+<a href="http://ms.nala.ga/tag/%eb%b0%a9%eb%b2%95/" class="tag-cloud-link tag-link-930 tag-link-position-22" style="font-size: 17.491525423729pt;" aria-label="방법 (103 아이템)">방법</a>
+<a href="http://ms.nala.ga/tag/%eb%b0%b0%ec%9a%b0/" class="tag-cloud-link tag-link-895 tag-link-position-23" style="font-size: 15.593220338983pt;" aria-label="배우 (86 아이템)">배우</a>
+<a href="http://ms.nala.ga/tag/%eb%b6%80%ec%82%b0/" class="tag-cloud-link tag-link-157 tag-link-position-24" style="font-size: 8.4745762711864pt;" aria-label="부산 (43 아이템)">부산</a>
+<a href="http://ms.nala.ga/tag/%ec%82%ac%eb%9e%91/" class="tag-cloud-link tag-link-2972 tag-link-position-25" style="font-size: 14.406779661017pt;" aria-label="사랑 (77 아이템)">사랑</a>
+<a href="http://ms.nala.ga/tag/%ec%82%ac%ec%a7%84/" class="tag-cloud-link tag-link-410 tag-link-position-26" style="font-size: 9.4237288135593pt;" aria-label="사진 (47 아이템)">사진</a>
+<a href="http://ms.nala.ga/tag/%ec%95%84%eb%82%b4/" class="tag-cloud-link tag-link-3039 tag-link-position-27" style="font-size: 9.6610169491525pt;" aria-label="아내 (48 아이템)">아내</a>
+<a href="http://ms.nala.ga/tag/%ec%95%88%eb%82%b4/" class="tag-cloud-link tag-link-1327 tag-link-position-28" style="font-size: 11.322033898305pt;" aria-label="안내 (56 아이템)">안내</a>
+<a href="http://ms.nala.ga/tag/%ec%95%8c%ec%95%84%eb%b3%b4%ea%b8%b0/" class="tag-cloud-link tag-link-821 tag-link-position-29" style="font-size: 15.118644067797pt;" aria-label="알아보기 (82 아이템)">알아보기</a>
+<a href="http://ms.nala.ga/tag/%ec%95%8c%ec%95%84%eb%b3%b4%ec%9e%90/" class="tag-cloud-link tag-link-341 tag-link-position-30" style="font-size: 11.322033898305pt;" aria-label="알아보자 (56 아이템)">알아보자</a>
+<a href="http://ms.nala.ga/tag/%ec%97%ac%ed%96%89/" class="tag-cloud-link tag-link-873 tag-link-position-31" style="font-size: 17.016949152542pt;" aria-label="여행 (98 아이템)">여행</a>
+<a href="http://ms.nala.ga/tag/%ec%98%81%ed%99%94/" class="tag-cloud-link tag-link-562 tag-link-position-32" style="font-size: 19.389830508475pt;" aria-label="영화 (124 아이템)">영화</a>
+<a href="http://ms.nala.ga/tag/%ec%98%a4%eb%8a%98/" class="tag-cloud-link tag-link-1059 tag-link-position-33" style="font-size: 13.694915254237pt;" aria-label="오늘 (72 아이템)">오늘</a>
+<a href="http://ms.nala.ga/tag/%ec%9a%b0%eb%a6%ac/" class="tag-cloud-link tag-link-888 tag-link-position-34" style="font-size: 11.322033898305pt;" aria-label="우리 (57 아이템)">우리</a>
+<a href="http://ms.nala.ga/tag/%ec%9c%84%ed%95%9c/" class="tag-cloud-link tag-link-1175 tag-link-position-35" style="font-size: 12.983050847458pt;" aria-label="위한 (66 아이템)">위한</a>
+<a href="http://ms.nala.ga/tag/%ec%9d%b4%ec%95%bc%ea%b8%b0/" class="tag-cloud-link tag-link-611 tag-link-position-36" style="font-size: 12.508474576271pt;" aria-label="이야기 (64 아이템)">이야기</a>
+<a href="http://ms.nala.ga/tag/%ec%9d%b4%ec%9c%a0/" class="tag-cloud-link tag-link-296 tag-link-position-37" style="font-size: 10.372881355932pt;" aria-label="이유 (51 아이템)">이유</a>
+<a href="http://ms.nala.ga/tag/%ec%9e%90%ea%b2%a9%ec%a6%9d/" class="tag-cloud-link tag-link-2111 tag-link-position-38" style="font-size: 9.4237288135593pt;" aria-label="자격증 (47 아이템)">자격증</a>
+<a href="http://ms.nala.ga/tag/%ec%a0%95%eb%a6%ac/" class="tag-cloud-link tag-link-1831 tag-link-position-39" style="font-size: 13.220338983051pt;" aria-label="정리 (68 아이템)">정리</a>
+<a href="http://ms.nala.ga/tag/%ec%a0%95%eb%b3%b4/" class="tag-cloud-link tag-link-89 tag-link-position-40" style="font-size: 15.118644067797pt;" aria-label="정보 (83 아이템)">정보</a>
+<a href="http://ms.nala.ga/tag/%ec%b6%94%ec%b2%9c/" class="tag-cloud-link tag-link-146 tag-link-position-41" style="font-size: 22pt;" aria-label="추천 (162 아이템)">추천</a>
+<a href="http://ms.nala.ga/tag/%ec%b6%9c%ec%97%b0/" class="tag-cloud-link tag-link-2930 tag-link-position-42" style="font-size: 10.847457627119pt;" aria-label="출연 (54 아이템)">출연</a>
+<a href="http://ms.nala.ga/tag/%ed%95%9c%ea%b5%ad/" class="tag-cloud-link tag-link-3361 tag-link-position-43" style="font-size: 11.796610169492pt;" aria-label="한국 (59 아이템)">한국</a>
+<a href="http://ms.nala.ga/tag/%ed%9a%a8%eb%8a%a5/" class="tag-cloud-link tag-link-810 tag-link-position-44" style="font-size: 9.6610169491525pt;" aria-label="효능 (48 아이템)">효능</a>
+<a href="http://ms.nala.ga/tag/%ed%9b%84%ea%b8%b0/" class="tag-cloud-link tag-link-14 tag-link-position-45" style="font-size: 17.966101694915pt;" aria-label="후기 (109 아이템)">후기</a></div>
+</div>	    </div>
+	</div>
+
+        </div> <!-- /.row -->
+    </div> <!-- /.container -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <hr>
+            </div>
+        </div>
+    </div>
+    <footer class="site-footer" role="contentinfo">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 text-center">
+  
+                    <p></p>
+                    
+                                            <div class="footer-social-icons">
+                                                                                                                                                                                                                                                                                                                                                                                                        
+                        </div>
+                    
+                </div>
+            </div>
+        </div>
+    </footer>
+
+            <div class="scroll-up">
+            <a href="#"><i class="fa fa-angle-up"></i></a>
+        </div>
+        <!-- Scroll Up -->
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/af2821b0/cloudflare-static/email-decode.min.js"></script><script type='text/javascript' src='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/js/bootstrap.min.js?ver=3.3.5'></script>
+<script type='text/javascript' src='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/js/scripts.js'></script>
+<script type='text/javascript' src='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/js/jquery.fitvids.js'></script>
+<script type='text/javascript' src='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/js/smoothscroll.js'></script>
+<script type='text/javascript' src='http://ms.nala.ga/wp-includes/js/wp-embed.min.js?ver=4.8.4'></script>
+    </body>
+</html>

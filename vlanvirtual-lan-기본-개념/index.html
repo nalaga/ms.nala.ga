@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="profile" href="http://gmpg.org/xfn/11">
+    <link rel="pingback" href="http://ms.nala.ga/xmlrpc.php">
+
+<title>VLAN(Virtual LAN) 기본 개념 | All About MS CCL Contents</title>
+<meta name='robots' content='noindex,follow' />
+
+<!-- All in One SEO Pack 2.4.4 by Michael Torbert of Semper Fi Web Design[276,340] -->
+<meta name="description"  content="3줄 요약 · SVL/IVL Bridge - SVL과 IVL을 모두 지원하는 Bridge 2) Independent VLAN Learning 802.1Q Trunking Virtual LAN· 하나의 MAC Bridge 내의 여러 포트들을 복수개의 logical LAN segment로 나누어 Grouping 시키는 기술· 각각의 VLAN은 별개의 Broadcast domain· IEEE Std 802.1Q 1998 EditionWhy VLAN?· 단일 Broadcast domain에 연결된 단말이 증가할수록 망의 대역폭이 낭비됨(Broadcast" />
+<meta name="robots" content="index,nofollow" />
+
+<link rel="canonical" href="http://ms.nala.ga/vlanvirtual-lan-%ea%b8%b0%eb%b3%b8-%ea%b0%9c%eb%85%90/" />
+<!-- /all in one seo pack -->
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="All About MS CCL Contents &raquo; 피드" href="http://ms.nala.ga/feed/" />
+<link rel="alternate" type="application/rss+xml" title="All About MS CCL Contents &raquo; 댓글 피드" href="http://ms.nala.ga/comments/feed/" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.3\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.3\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/ms.nala.ga\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.8.5"}};
+			!function(a,b,c){function d(a){var b,c,d,e,f=String.fromCharCode;if(!k||!k.fillText)return!1;switch(k.clearRect(0,0,j.width,j.height),k.textBaseline="top",k.font="600 32px Arial",a){case"flag":return k.fillText(f(55356,56826,55356,56819),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,56826,8203,55356,56819),0,0),c=j.toDataURL(),b!==c&&(k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447),0,0),c=j.toDataURL(),b!==c);case"emoji4":return k.fillText(f(55358,56794,8205,9794,65039),0,0),d=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55358,56794,8203,9794,65039),0,0),e=j.toDataURL(),d!==e}return!1}function e(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i,j=b.createElement("canvas"),k=j.getContext&&j.getContext("2d");for(i=Array("flag","emoji4"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='bootstrap-css-css'  href='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/css/bootstrap.min.css?ver=3.3.5' type='text/css' media='all' />
+<link rel='stylesheet' id='font-awesome-css-css'  href='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/css/font-awesome.min.css?ver=4.4.0' type='text/css' media='all' />
+<link rel='stylesheet' id='shaped-blog-stylesheet-css'  href='http://ms.nala.ga/wp-content/themes/shaped-blog/style.css?ver=4.8.5' type='text/css' media='all' />
+<link rel='stylesheet' id='responsive-css-css'  href='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/css/responsive.css' type='text/css' media='all' />
+<script type='text/javascript' src='http://ms.nala.ga/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
+<script type='text/javascript' src='http://ms.nala.ga/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+<link rel='https://api.w.org/' href='http://ms.nala.ga/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://ms.nala.ga/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://ms.nala.ga/wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='오소마츠상 전통복 그림 합작 [ 편집중 ]' href='http://ms.nala.ga/%ec%98%a4%ec%86%8c%eb%a7%88%ec%b8%a0%ec%83%81-%ec%a0%84%ed%86%b5%eb%b3%b5-%ea%b7%b8%eb%a6%bc-%ed%95%a9%ec%9e%91-%ed%8e%b8%ec%a7%91%ec%a4%91/' />
+<link rel='next' title='[수학 I] 복소수란? (+허수, 켤레복소수, 연산)' href='http://ms.nala.ga/%ec%88%98%ed%95%99-i-%eb%b3%b5%ec%86%8c%ec%88%98%eb%9e%80-%ed%97%88%ec%88%98-%ec%bc%a4%eb%a0%88%eb%b3%b5%ec%86%8c%ec%88%98-%ec%97%b0%ec%82%b0/' />
+<meta name="generator" content="WordPress 4.8.5" />
+<link rel='shortlink' href='http://ms.nala.ga/?p=8902' />
+<link rel="alternate" type="application/json+oembed" href="http://ms.nala.ga/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fms.nala.ga%2Fvlanvirtual-lan-%25ea%25b8%25b0%25eb%25b3%25b8-%25ea%25b0%259c%25eb%2585%2590%2F" />
+<link rel="alternate" type="text/xml+oembed" href="http://ms.nala.ga/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fms.nala.ga%2Fvlanvirtual-lan-%25ea%25b8%25b0%25eb%25b3%25b8-%25ea%25b0%259c%25eb%2585%2590%2F&#038;format=xml" />
+
+	<style>
+
+		/* Border Color */
+		.btn-social:hover,
+		blockquote,
+		#respond input:focus[type="text"], 
+	    #respond input:focus[type="email"], 
+	    #respond input:focus[type="url"],
+	    #respond textarea:focus,
+	    #comments .comment-reply a:hover
+		{
+			border-color: ;
+		}
+
+		
+		/* Background Color */
+		.scroll-up a,
+		.btn-social:hover,
+		button,
+		input[type="button"],
+		input[type="reset"],
+		input[type="submit"],
+		.navbar-default .navbar-nav .dropdown-menu li a:hover, .dropdown-menu li a:focus, .navbar-default .navbar-nav .dropdown-menu .active a,
+		.pagination>li>a:focus, .pagination>li>a:hover, .pagination>li>span:focus, .pagination>li>span:hover, .pagination li .current,
+		.next-previous-posts .next-post a:hover,
+		.next-previous-posts .previous-post a:hover,
+		.btn-goback,
+		.btn-submit,
+		a.more-link,
+		.featured-post .fa,
+		#comments .comment-reply a:hover,
+		.widget .tagcloud a
+		{
+			background-color: ;
+		}
+
+		
+		/* Color */
+		.text-logo a,
+		.navbar-default .navbar-nav .active a, .navbar-default .navbar-nav .active a:hover, .navbar-default .navbar-nav .active a:focus,
+		.navbar-default .navbar-nav li a:hover, .navbar-default .navbar-nav li a:focus,
+		a:hover,
+    	a:focus,
+		.next-previous-posts .previous-post a,
+		.next-previous-posts .next-post a,
+		.pagination>li>a, .pagination>li>span,
+		#comments .comment-author a:hover, 
+    	#respond .logged-in-as a:hover,
+    	#wp-calendar a,
+    	h2.entry-title a:hover
+		{
+			color: ;
+		}
+
+
+		/* A Color */
+		a{
+			color: ;
+		}
+
+		/* a:hover Color */
+		a:hover,
+		a:focus,
+		a:active,
+		.widget a:hover,
+		.post .post-content .entry-meta ul li a:hover
+		{
+			color: ;
+		}
+
+		/* .featured-post .fa:after*/
+		.featured-post .fa:after{
+			border-color:   transparent ;
+		}
+
+
+		
+
+	</style>
+</head>
+
+<body class="post-template-default single single-post postid-8902 single-format-standard">
+
+    <div id="st-preloader">
+        <div id="pre-status">
+            <div class="preload-placeholder"></div>
+        </div>
+    </div>
+<!-- /Preloader -->
+
+<header id="header">	
+	<div id="trueHeader">
+    	<div class="wrapper">
+            <div class="container">
+            	<!-- Menu -->
+            	<div class="menu_main">
+                	<div class="navbar blogx-navbar navbar-default">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#st-navber-collapse">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+
+                                                            <div class="text-logo">
+                                    <a href="http://ms.nala.ga">All About MS CCL Contents</a>
+                                    <p>All About MS CCL Contents</p>
+                                </div><!-- /Logo -->
+                                                    </div>
+                      
+                        <div id="st-navber-collapse" class="navbar-collapse collapse pull-right">
+                             
+                        </div>
+                    </div>
+            	</div><!-- end menu -->
+        	</div> <!-- /.container -->
+    	</div>
+	</div>
+	<DIV class='ads_adsense_img' style='margin:40px 0px 40px 0px;'>
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<!-- only display -->
+	<ins class="adsbygoogle"
+	     style="display:block"
+	     data-ad-client="ca-pub-8393857339019314"
+	     data-ad-slot="7474886381"
+	     data-ad-format="auto"></ins>
+	<script>
+	(adsbygoogle = window.adsbygoogle || []).push({});
+	</script>
+	</DIV>	
+
+</header>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div id="primary" class="content-area">
+                    <main id="main" class="site-main" role="main">
+
+                        
+                                <article id="post-8902" class="post-8902 post type-post status-publish format-standard hentry category-uncategorized tag-lan tag-vlanvirtual tag-1532 tag-14772">
+    <header class="entry-header">
+        
+        
+    </header> <!--/.entry-header -->
+
+    <div class="clearfix post-content media">
+
+        <h2 class="entry-title">
+            VLAN(Virtual LAN) 기본 개념        </h2> <!-- //.entry-title -->
+
+        <div class="clearfix entry-meta">
+            
+            <ul class="list-inline">
+                <li>
+                    <span class="author vcard">
+                        By <a class="url fn n" href="http://ms.nala.ga/author/admin/">admin</a>                    </span>
+                </li>
+                <li>
+                    on <span class="posted-on">1월 13, 2018</span>
+                </li>
+                                    <li>
+                        in <span class="posted-in">
+                            <a href="http://ms.nala.ga/category/uncategorized/" rel="category tag">미분류</a>                        </span>
+                    </li>
+                            </ul>
+                </div> <!--/.entry-meta -->
+        
+        <div class="entry-summary">
+            <p><img src='http://cfile27.uf.tistory.com/image/251E9B3E581ACD912CFDBC' style='max-width:250px;min-width:0px;' onError='this.style.display="none"' /></p>
+<h1>3줄 요약 </h1>
+<div style='color:#fff;background-color:#000;border-radius:10px;'>
+<ol>
+<li><span>· SVL/IVL Bridge &#8211; SVL과 IVL을 모두 지원하는 Bridge</span></li>
+<li><span>2) Independent VLAN Learning</span></li>
+<li><span>802.1Q Trunking</span></li>
+</ol>
+</div>
+<p><span id="more-8902"></span></p>
+<p><iframe src='http://ad.selfhow.com/rd' width='100%' border=0 frameborder=0 style='height:auto;width:100%'></iframe></p>
+<hr />
+<p><span style="font-size: 12pt;"><b>  Virtual LAN</b></span></p>
+<p style="line-height: 2;">· 하나의 MAC Bridge 내의 여러 포트들을 복수개의 logical LAN segment로 나누어 Grouping 시키는 기술</p>
+<p style="line-height: 2;">· 각각의 VLAN은 별개의 Broadcast domain</p>
+<p style="line-height: 2;">· IEEE Std 802.1Q 1998 Edition</p>
+<p style="line-height: 2;"></p>
+<p><span style="font-size: 12pt;"><b>Why VLAN?</b></span></p>
+<p style="line-height: 2;">· 단일 Broadcast domain에 연결된 단말이 증가할수록 망의 대역폭이 낭비됨(Broadcast Traffic의증가)</p>
+<p style="line-height: 2;">· 단말(또는 단말들의 그룹) 간에 보안을 보장할 방안이 요구됨</p>
+<p style="line-height: 2;">    &#8211; VLAN 간의 Routing을 위한 별도의 방안이 마련되어있지않으면, VLAN 간에는 통신이 불가능함</p>
+<p style="line-height: 2;"></p>
+<p></p>
+<p style="text-align: center; clear: none; float: none;"><span class="imageblock" style="display:inline-block;width:630px;;height:auto;max-width:100%"><img filemime="image/jpeg" filename="vlan1.PNG" height="180" src="http://cfile27.uf.tistory.com/image/251E9B3E581ACD912CFDBC" width="630"/></span></p>
+<p></p>
+<p style="line-height: 2;">· 하나의 LAN segment에 연결된 단말의 개수가 많아질수록 망성능의 저하현상발생(Broadcast traffic의증가)</p>
+<p style="line-height: 2;">→ Broadcast traffic은 각 VLAN 내에서만 전파되므로, 망전체의 대역폭이 그만큼 절약되어 더효율적으로 사용 가능</p>
+<p style="line-height: 2;">· 어떤 Broadcast traffic들이있는가?</p>
+<p style="line-height: 2;">  &#8211; ARP request, NetBIOS Name Query &amp; Election, Unknown unicast, Unknown Multicast, …</p>
+<p style="line-height: 2;">· 하나의 LAN segment에 연결된 1000대의 단말이 1초 동안 하나의 Broadcast packet을 발생시켰다면, 각단말은 1초동안 999개의 Broadcast traffic 을 수신하게된다.</p>
+<p style="line-height: 2;">· 임의로 LAN segment를 나누어줄 방법이 필요해짐</p>
+<p style="line-height: 2;">· Virtual LAN (가상랜)</p>
+<p></p>
+<p></p>
+<p><span style="font-size: 12pt;"><b>VLAN 종류</b></span></p>
+<p>1) Port-based VLAN</p>
+<p>  &#8211; tagged / Untagged Port</p>
+<p></p>
+<p style="line-height: 2;">· Port 번호에 의한 VLAN 구분방법</p>
+<p style="line-height: 2;">  예) VLAN2 = {port 1,2,3,4}, VLAN3 = {port 5,6,7,8}, …</p>
+<p style="line-height: 2;">· 많은 단말이 하나의 LAN segment에 놓여있을 경우 개별 단말과 관계없는 다량의 Broadcast traffic으로 인해 Bridged LAN 전체의 대역폭이 불필요하게 낭비될 가능성이 점점 높아진다.</p>
+<p style="line-height: 2;">· Port-based VLAN을 설정해 마치 두대 이상의 HUB로 나뉘어진 것과 같은, traffic 유리화가 가능하다.</p>
+<p style="line-height: 2;">· 상용장비에서의 Port-based VLAN이란, VLAN tagging을 필요로 하지않는, 오로지 수신포트의 PVID에 의해서만 VLAN을 구분하는 방식을 가리키는 의미로 사용되나, 엄밀히 말하자면 VLAN tagging 하느냐에 관계없이 member port를 설정하는방식으로 VLAN을 정의하는 것이 모두 port-based VLAN이다.</p>
+<p style="line-height: 2;"></p>
+<p style="line-height: 2;">※ Member Port</p>
+<p style="line-height: 2;">&#8211; VLAN 내의 Layer2 forwarding은, 동일 VLAN에 소속된 Port들 간에만 가능하다. (Ingress filtering이 Disable 로 설정되어있는 경우는 예외)</p>
+<p style="line-height: 2;">&#8211; Layer2 Forwarding이 가능한 논리적인 LAN segment를 가리키는 포트들의 집합을 member port 라고한다.</p>
+<p style="line-height: 2;">&#8211; 수신된 Frame이 VLAN100 소속으로 판별되었다고 할때, 일반적으로 수신포트와 출력포트가 모두 VLAN100의 멤버일 경우에만 Layer2 forwarding이 이루어진다. (Ingress filtering이 Disable로 설정되어 있는경우는 예외)</p>
+<p style="line-height: 2;">&#8211; 멤버포트는, CLI, SNMP 등을 이용해 고정으로 설정될 수도 있고, GVRP에 의해 동적으로 설정될 수도 있다.</p>
+<p style="line-height: 2;"></p>
+<p style="line-height: 2;">· Port-based VLAN에서의 VLAN classification</p>
+<p style="line-height: 2;">&#8211; VLAN classification : 수신된 Ethernet frame이 어느 VLAN에 소속된 것인지 구분하는 일</p>
+<p style="line-height: 2;"></p>
+<p style="line-height: 2; text-align: center; clear: none; float: none;"><span class="imageblock" style="display:inline-block;width:630px;;height:auto;max-width:100%"><img filemime="image/jpeg" filename="vlan2.PNG" height="269" src="http://cfile1.uf.tistory.com/image/2643384B581AD1710CC0F8" width="630"/></span></p>
+<p style="line-height: 2;">· VLAN Tag에 의한 VLAN classification</p>
+<p style="line-height: 2;">&#8211; VLAN Tag : Ethernet Frame 내에 포함된 VLAN ID 값</p>
+<p style="line-height: 2; text-align: center; clear: none; float: none;"><span class="imageblock" style="display:inline-block;width:630px;;height:auto;max-width:100%"><img filemime="image/jpeg" filename="vlan3.PNG" height="250" src="http://cfile8.uf.tistory.com/image/2148A749581AD1EA12DAFF" width="630"/></span></p>
+<p style="line-height: 2;"></p>
+<p>2) Protocol-based VLAN</p>
+<p>  &#8211; Ethernet Payload의 내용에 따라 별개의 Forwarding 정책을 적용하고 싶을때 사용함</p>
+<p></p>
+<p>·  Protocol-based VLAN에서의 VLAN classification</p>
+<p>&#8211; Protocol의 구분 : Type field 및 Payload의 encapsulation 방법에 따라 구분됨</p>
+<p></p>
+<p style="text-align: center; clear: none; float: none;"><span class="imageblock" style="display:inline-block;width:630px;;height:auto;max-width:100%"><img filemime="image/jpeg" filename="vlan4.PNG" height="281" src="http://cfile5.uf.tistory.com/image/21190E4D581AD238185E71" width="630"/></span></p>
+<p></p>
+<p></p>
+<p>3) IP-based VLAN</p>
+<p>  &#8211; Source IP address에 의해 VLAN을 구분하는 방법</p>
+<p></p>
+<p>4) MAC-based VLAN</p>
+<p></p>
+<p>▶ VLAN을 구분짓는 여러가지 기준들이 사용되어 왔으며, 이중 IEEE standard로 표준화된 것은 Port-based VLAN(tagged, untagged)과 Protocol-based VLAN(IEEE802.1v-2001)이다.</p>
+<p></p>
+<p>▶ Layer 2 switching에 의한 통신은 VLAN 내에서만 이루어진다.</p>
+<p></p>
+<p></p>
+<p></p>
+<p><span style="font-size: 12pt;"><b>VLAN tag와 관련한 Frame의 종류</b></span></p>
+<p>· <span style="font-size: 16px;"><span style="font-size: 10pt;">VLAN-tagged Frame</span></span></p>
+<p><span style="font-size: 16px;"><span style="font-size: 10pt;"> &#8211; 32 bit (4 byte)의 VLAN tag field가 수록된 Ethernet Frame</span></span></p>
+<p><span style="font-size: 16px;"><span style="font-size: 10pt;"><br /></span></span></p>
+<p>· <span style="font-size: 16px;"><span style="font-size: 10pt;">Untagged frame</span></span></p>
+<p><span style="font-size: 16px;"><span style="font-size: 10pt;"> &#8211; VLAN tag field가 존재하지 않는 Ethernet Frame</span></span></p>
+<p><span style="font-size: 16px;"><span style="font-size: 10pt;"><br /></span></span></p>
+<p>· <span style="font-size: 16px;"><span style="font-size: 10pt;">Priority-tagged frame</span></span></p>
+<p><span style="font-size: 16px;"><span style="font-size: 10pt;"> &#8211; 32 bit의 VLAN tag field는 존재하지만 VID값이 0인 경우( </span></span><span style="font-size: 10pt;">이 경우 해당 Frame은 VLAN untagged인 경우로 인식된다)</span></p>
+<p><span style="font-size: 13.3333px;"> &#8211; </span><span style="font-size: 16px;"><span style="font-size: 10pt;">오직3 bit priority 값만을 표시해 주고자 할때 사용될수있다.</span></span></p>
+<p><span style="font-size: 13.3333px;"> &#8211; </span><span style="font-size: 16px;"><span style="font-size: 10pt;">정상적인 VLAN Bridge는 priority-tagged frame을 발생시키지 않는다.</span></span></p>
+<p><span style="font-size: 10pt;">   &#8211; 포트의 tagging 관련 설정에는 VLAN-tag를 붙이느냐, 안붙이느냐만이 있기때문에 priority tagged는발생할 수 없게 되어있다.</span></p>
+</p>
+<p><span style="font-size: 16px;"><span style="font-size: 10pt;"> &#8211; priority 값을 표시할 수 있는 단말만이 이 frame을 발생시킬 수있다.</span></span></p>
+<p><span style="font-size: 16px;"><span style="font-size: 10pt;"><br /></span></span></p>
+<p></p>
+<p><span style="font-size: 13.3333px;"><b><span style="font-size: 12pt;">VLAN-tagged frame</span></b></span></p>
+<p style="text-align: center; clear: none; float: none;"><span class="imageblock" style="display:inline-block;width:630px;;height:auto;max-width:100%"><img filemime="image/jpeg" filename="vlan5.PNG" height="483" src="http://cfile27.uf.tistory.com/image/24785E35581AD3C71F5119" style="" width="630"/></span></p>
+<p><span style="font-size: 13.3333px;"><b><span style="font-size: 12pt;"><br /></span></b></span></p>
+<p><span style="font-size: 13.3333px;"><br /></span></p>
+<p><span style="font-size: 16px;"><b>VLAN Bridge의 포트별 변수들</b></span></p>
+<p><span style="font-size: 16px;"><b><br /></b></span></p>
+<p>· Port State</p>
+<p>&#8211; STP 관점에서의 Port State</p>
+<p>&#8211; STP enable 일 때에는 STP 알고리즘에 의해 결정</p>
+<p>&#8211; STP disable 일 때에는, Link Up이면 곧바로 “Forwarding state”, Link Down이면 “Disabled state”</p>
+<p></p>
+<p>· Acceptable Frame Types</p>
+<p>&#8211; Admit Only VLAN-tagged frames</p>
+<p>&#8211; Admit All frames</p>
+<p></p>
+<p>· Port VLAN Identifier (PVID)</p>
+<p>&#8211; untagged frame 또는 priority-tagged frame이 수신되었을때 해당 frame의 VID는, 수신 포트에 설정된PVID값을 따른다.</p>
+<p></p>
+<p>· Ingress Filtering</p>
+<p> &#8211; Enable or Disable</p>
+<p></p>
+<p><b>※Port VLAN Identifier (PVID)</b></p>
+<p>· Untagged Frame이 수신되었을때, 이 Frame이 어느 VLAN 소속인지를 결정하기위해 각 포트별로 설정하는VLAN ID 값.</p>
+<p>· tag가 없는 Frame 또는 priority tag만 달려있는Frame은, 수신포트의 PVID값이 가리키는 VLAN에 소속된Frame으로 인식된다.</p>
+<p></p>
+<p style="text-align: center; clear: none; float: none;"><span class="imageblock" style="display:inline-block;width:630px;;height:auto;max-width:100%"><img filemime="image/jpeg" filename="vlan6.PNG" height="212" src="http://cfile8.uf.tistory.com/image/23387836581AD54E2CC0DB" style="" width="630"/></span></p>
+<p></p>
+<p><b>※Ingress Rule</b></p>
+<p>· 수신된 Frame이 어느 VLAN에 속하는지(Frame의 VID를) 판단하고, 수신을 취소하고 Frame을 버릴 것인지여부를 결정할 수 있는 판단기준</p>
+<p></p>
+<p>①VLAN Classification: 수신 frame의 VID를 결정</p>
+<p>· 수신된 Frame의 VID값이 0이면(untagged frame or priority-tagged frame)</p>
+<p>&#8211; “Acceptable Frame Types”값이“Admit Only VLAN-tagged frames”이면, 수신 Frame을 버린다.</p>
+<p>&#8211; Port-based VLAN 이외의 VLAN classification을 지원하는 경우, 해당 방법을 적용해 VID가 얻어졌다면 그VID값을 사용함. (IP-based VLAN, MAC address based VLAN, Protocol VLAN, etc.)</p>
+<p>&#8211; Port-based VLAN만을 지원하거나, 그외의 classification 방법에 의해 VID가 얻어지지 않았다면, 수신포트의 PVID값에 의해 frame의 VID를 결정</p>
+<p>· 수신된 Frame 자체에 VID값이 존재하면 그값을 사용(VLAN-tagged frame)</p>
+<p>· VID = 0xFFF (4095) 이면 Frame을 버린다.</p>
+<p></p>
+<p>②Ingress Filtering = Enable 인 경우, 수신포트가 VLAN “VID”의 member가 아니면 Frame을 버린다. 위 판별과정에서 버려지지않은 Frame은 Forwarding/Learning 대상이 된다.</p>
+<p></p>
+<p></p>
+<p><b>※Egress Rule</b></p>
+<p>· Frame을 전송할 포트(들) 및 전송될 Frame의 형태(Format)을 결정하는 기준들</p>
+<p> &#8211; 출력포트가, frame이 속한 VLAN의 멤버가 아니면 Discard.</p>
+<p> &#8211; Frame이 속한 VLAN에서 출력포트가 untagged port로 설정되어 있으면 VLAN tag를 붙이지않는다. (VLAN tag를 제거한다.)</p>
+<p> &#8211; 그렇지않으면 해당 VID를 VLAN tag에 수록하여 frame에 덧붙인다.</p>
+<p></p>
+<p></p>
+<p><b><span style="font-size: 12pt;">Filtering Database architecture</span></b></p>
+<p><span style="font-size: 10pt;">·</span><span style="font-size: 16px;"><span style="font-size: 10pt;">Shared VLAN learning</span></span></p>
+<p><span style="font-size: 10pt;"> &#8211; </span><span style="font-size: 16px;"><span style="font-size: 10pt;">하나의 VLAN에서 동적으로 배운 MAC주소를 타VLAN의 MAC주소 정보와 통합해 관리</span></span></p>
+<p><span style="font-size: 10pt;"> &#8211; </span><span style="font-size: 16px;"><span style="font-size: 10pt;">즉, SVL Bridge에서는 복수개의 VLAN에서 배운 MAC주소 정보가 하나의 address table에 통합관리된다.</span></span></p>
+<p><span style="font-size: 10pt;"> &#8211; </span><span style="font-size: 16px;"><span style="font-size: 10pt;">VLAN100에서 배워진 </span><span style="font-size: 10pt;">MAC주소가 VLAN200에서 새로 등장하면 그주소는 VLAN100에서 삭제되고 VLAN200에만 존재하는 것으로 인식된다.</span></span></p>
+<p><span style="font-size: 16px;"><span style="font-size: 10pt;"><br /></span></span></p>
+<p><span style="font-size: 10pt;">· </span><span style="font-size: 16px;"><span style="font-size: 10pt;">Independent VLAN learning</span></span></p>
+<p><span style="font-size: 10pt;"> &#8211; </span><span style="font-size: 16px;"><span style="font-size: 10pt;">한 VLAN에서 배운 MAC주소 정보가 타VLAN에서 배운 정보와 별개로 관리된다.</span></span></p>
+<p><span style="font-size: 10pt;"> &#8211; </span><span style="font-size: 16px;"><span style="font-size: 10pt;">IVL Bridge에서는, 하나의 MAC주소 정보가 복수의 VLAN 상에 동시에나타날 수 있다.</span></span></p>
+<p><span style="font-size: 10pt;"> &#8211; </span><span style="font-size: 16px;"><span style="font-size: 10pt;">이는, 각 VLAN별로 별개의 address table이 존재하는 것과 같은 효과를 나타낸다.</span></span></p>
+<p><span style="font-size: 16px;"><span style="font-size: 10pt;"><br /></span></span></p>
+<p><span style="font-size: 10pt;">· </span><span style="font-size: 16px;"><span style="font-size: 10pt;">SVL/IVL Bridge</span></span></p>
+</p>
+<p><span style="font-size: 10pt;"> &#8211; </span><span style="font-size: 16px;"><span style="font-size: 10pt;">SVL과 IVL을 모두 지원하는 Bridge</span></span></p>
+<p><span style="font-size: 16px;"><span style="font-size: 10pt;"><br /></span></span></p>
+<p><span style="font-size: 16px;"><span style="font-size: 10pt;">1) Shared VLAN Learning</span></span></p>
+<p style="text-align: center; clear: none; float: none;"><span class="imageblock" style="display:inline-block;width:630px;;height:auto;max-width:100%"><img filemime="image/jpeg" filename="vlan7.PNG" height="370" src="http://cfile4.uf.tistory.com/image/25354541581AD7532770B1" style="" width="630"/></span></p>
+<p><span style="font-size: 16px;"><span style="font-size: 10pt;"><br /></span></span></p>
+<p><span style="font-size: 13.3333px;"> </span><span style="font-size: 13.3333px;">· 실제 Address Table 모양</span></p>
+<p><span style="font-size: 13.3333px;"><br /></span></p>
+<p style="text-align: center; clear: none; float: none;"><span class="imageblock" style="display:inline-block;width:320px;;height:auto;max-width:100%"><img filemime="image/jpeg" filename="vlan8.PNG" height="260" src="http://cfile8.uf.tistory.com/image/2353AF41581AD79E0B8312" style="" width="320"/></span></p>
+<p><span style="font-size: 13.3333px;"><br /></span></p>
+<p><span style="font-size: 13.3333px;"><br /></span></p>
+<p><span style="font-size: 13.3333px;">2) Independent VLAN Learning</span></p>
+<p style="text-align: center; clear: none; float: none;"><span class="imageblock" style="display:inline-block;width:630px;;height:auto;max-width:100%"><img filemime="image/jpeg" filename="vlan9.PNG" height="368" src="http://cfile3.uf.tistory.com/image/23451443581AD7D4242D69" style="" width="630"/></span></p>
+<p><b><span style="font-size: 12pt;"></span><br /></b></p>
+<p><b><span style="font-size: 12pt;">Multi-VLAN</span></b></p>
+<p><span style="font-size: 10pt;"> </span><span style="font-size: 10pt;">· </span><span style="font-size: 16px;"><span style="font-size: 10pt;">하나의 포트가 여러 VLAN에 소속되는 설정을 통상적으로 Multi-VLAN(중첩VLAN)이라함</span></span></p>
+</p>
+<p><span style="font-size: 10pt;"> </span><span style="font-size: 10pt;">· </span><span style="font-size: 16px;"><span style="font-size: 10pt;">각 가입자 포트간</span><span style="font-size: 10pt;">에 보안을 유지하면서 모든 가입자가 Uplink와의 통신</span><span style="font-size: 10pt;">을 할 수 있도록 하기위해, untagged multi-VLAN 설정이 널리 사용된다.</span></span></p>
+<p><span style="font-size: 16px;"><span style="font-size: 10pt;"><br /></span></span></p>
+<p style="text-align: center; clear: none; float: none;"><span class="imageblock" style="display:inline-block;width:400px;;height:auto;max-width:100%"><img filemime="image/jpeg" filename="vlan10.PNG" height="205" src="http://cfile23.uf.tistory.com/image/26628537581AD8A732D743" style="" width="400"/></span></p>
+<p><span style="font-size: 16px;"><span style="font-size: 10pt;"><br /></span></span></p>
+<p><span style="font-size: 16px;"><span style="font-size: 10pt;"><br /></span></span></p>
+<p style="text-align: center; clear: none; float: none;"><span class="imageblock" style="display:inline-block;width:400px;;height:auto;max-width:100%"><img filemime="image/jpeg" filename="vlan11.PNG" height="450" src="http://cfile8.uf.tistory.com/image/2503793A581AD8EC08DF92" style="" width="400"/></span></p>
+<p><span style="font-size: 16px;"><span style="font-size: 10pt;"><br /></span></span></p>
+<p><span style="font-size: 10pt;"> </span><span style="font-size: 10pt;">· </span><span style="font-size: 13.3333px;">각 단말의 traffic은 Uplink Port로만 전달됨</span></p>
+<p><span style="font-size: 10pt;"> </span><span style="font-size: 10pt;">· </span><span style="font-size: 13.3333px;">위에서 아래로 내려오는 Broadcast traffic은 하위 모든 포트에 전달됨</span></p>
+<p><span style="font-size: 10pt;"> </span><span style="font-size: 10pt;">· </span><span style="font-size: 13.3333px;">최상위 uplink port에 연결된 Router는 모든 단말과 통신이 가능</span></p>
+</p>
+<p><span style="font-size: 10pt;"> </span><span style="font-size: 10pt;">· </span><span style="font-size: 13.3333px;">맨밑에 있는 가입자들은 서로 통신이 불가능</span></p>
+<p><span style="font-size: 13.3333px;"><br /></span></p>
+<p><span style="font-size: 13.3333px;"><br /></span></p>
+<p><span style="font-size: 12pt;"><b>Private VLAN</b></span></p>
+<p><span style="font-size: 10pt;"> </span><span style="font-size: 10pt;">· </span><span style="font-size: 10pt;">하나의 VLAN 안에서, 하나의 Uplink Port와 Client Port(가입자포트)를 설정함</span></p>
+<p><span style="font-size: 10pt;"> </span><span style="font-size: 10pt;">· </span><span style="font-size: 10pt;">가입자 포트에서 수신된 패킷은, 오직 Uplink Port로만 갈 수 있고, 다른 가입자포트로는 전달되지않음</span></p>
+</p>
+<p><span style="font-size: 10pt;"> </span><span style="font-size: 10pt;">· </span><span style="font-size: 10pt;">Uplink Port에 들어온 패킷은 어떤 가입자포트로도 전달될수있음</span></p>
+<p><span style="font-size: 12pt;"><b><br /></b></span></p>
+<p style="text-align: center; clear: none; float: none;"><span class="imageblock" style="display:inline-block;width:630px;;height:auto;max-width:100%"><img filemime="image/jpeg" filename="vlan12.PNG" height="171" src="http://cfile3.uf.tistory.com/image/2506C93C581AD9830C2082" style="" width="630"/></span></p>
+<p><span style="font-size: 12pt;"><b><br /></b></span></p>
+<p><span style="font-size: 12pt;"><b><br /></b></span></p>
+<p><span style="font-size: 12pt;"><b>802.1Q Trunking</b></span></p>
+<p><span style="font-size: 12pt;"><b><br /></b></span></p>
+<p style="text-align: center; clear: none; float: none;"><span class="imageblock" style="display:inline-block;width:630px;;height:auto;max-width:100%"><img filemime="image/jpeg" filename="vlan13.PNG" height="338" src="http://cfile29.uf.tistory.com/image/25247837581AD9AC0539AB" style="" width="630"/></span></p>
+<p><span style="font-size: 12pt;"><b><br /></b></span></p>
+<p><span style="font-size: 16px;"><span style="font-size: 10pt;">Trunk Link : 두 Bridge</span><span style="font-size: 10pt;">의 VLAN Multiplexing에 이용됨. 즉, 두 VLAN의 frame이 모두 통과됨</span></span></p>
+<p><span style="font-size: 16px;"><span style="font-size: 10pt;">Access Link : VLAN tag를 달지않은 frame이 수신</span><span style="font-size: 10pt;">되어 PVID값에 따라 VLAN이 결정됨</span></span></p>
+<p><span style="font-size: 16px;"><span style="font-size: 10pt;"><br /></span></span></p>
+<p><span style="font-size: 16px;"><span style="font-size: 10pt;"><br /></span></span></p>
+<p><span style="font-size: 13.3333px;">*출처 : 넷매니아즈</span></p>
+<p style="text-align: center; clear: none; float: none;"><span class="imageblock" style="display:inline-block;width:630px;;height:auto;max-width:100%"><img filemime="image/jpeg" filename="vlan15.PNG" height="363" src="http://cfile25.uf.tistory.com/image/227DE336581ADA070881C3" style="" width="630"/></span></p>
+<p><span style="font-size: 16px;"><span style="font-size: 10pt;"><br /></span></span></p>
+<p><span style="font-size: 16px;"><span style="font-size: 10pt;"><br /></span></span></p>
+<p><span style="font-size: 16px;"><span style="font-size: 10pt;"><br /></span></span></p>
+<hr />
+<p><iframe src='http://ad.selfhow.com/rd' width='100%' border=0 frameborder=0 style='height:auto;width:100%'></iframe></p>
+<p><a href='http://gettingconnected.tistory.com/79' target='_blank'>Origin Content : &#8211;</a> | <a href="/cdn-cgi/l/email-protection#abc8c8c7c8ebc5cac7ca85ccca" target='_blank'>Contact : <span class="__cf_email__" data-cfemail="e88b8b848ba886898489c68f89">[email&#160;protected]</span></a>
+</p>
+<p>Cotent License : CC-BY </p>
+<p>This content is collected under the CCL license.</p>
+<p>Please check the license of the original article before asking about copyright.</p>
+<ul>
+<li><a href='/tag/VLANVirtual'>More About <span style='font-weight:bold;'>VLANVirtual</span></a></li>
+<li><a href='/tag/LAN'>More About <span style='font-weight:bold;'>LAN</span></a></li>
+<li><a href='/tag/기본'>More About <span style='font-weight:bold;'>기본</span></a></li>
+<li><a href='/tag/개념'>More About <span style='font-weight:bold;'>개념</span></a></li>
+</ul>
+        </div> <!-- //.entry-summary -->
+        
+                    <div class="entry-tags"><b>Tags:</b> <a href="http://ms.nala.ga/tag/lan/" rel="tag">LAN</a>, <a href="http://ms.nala.ga/tag/vlanvirtual/" rel="tag">VLANVirtual</a>, <a href="http://ms.nala.ga/tag/%ea%b0%9c%eb%85%90/" rel="tag">개념</a>, <a href="http://ms.nala.ga/tag/%ea%b8%b0%eb%b3%b8/" rel="tag">기본</a></div>
+        
+    </div>
+
+</article> <!--/#post-->
+
+
+
+
+
+                                                                    <div class="post-nav-area">
+                                                    
+            <nav class="next-previous-post clearfix media" role="navigation">
+                <div class="row">
+                    <!-- Previous Post -->
+                    <div class="previous-post col-sm-6 pull-left">
+                        <div class="nav-previous"><i class="fa fa-angle-left"></i> <a href="http://ms.nala.ga/%ec%98%a4%ec%86%8c%eb%a7%88%ec%b8%a0%ec%83%81-%ec%a0%84%ed%86%b5%eb%b3%b5-%ea%b7%b8%eb%a6%bc-%ed%95%a9%ec%9e%91-%ed%8e%b8%ec%a7%91%ec%a4%91/" rel="prev">오소마츠상 전통복 그림 합작 [ 편집중 ]</a></div>                    </div>
+
+                    <!-- Next Post -->
+                    <div class="next-post col-sm-6 pull-right text-right">
+                        <div class="nav-next"><a href="http://ms.nala.ga/%ec%88%98%ed%95%99-i-%eb%b3%b5%ec%86%8c%ec%88%98%eb%9e%80-%ed%97%88%ec%88%98-%ec%bc%a4%eb%a0%88%eb%b3%b5%ec%86%8c%ec%88%98-%ec%97%b0%ec%82%b0/" rel="next">[수학 I] 복소수란? (+허수, 켤레복소수, 연산)</a> <i class="fa fa-angle-right"></i></div>                    </div>
+                </div>
+            </nav><!-- .navigation -->
+            
+                                            </div>
+                                
+                                
+                            
+                                            </main> <!-- /.site-main -->
+                </div>  <!-- /.content-area -->
+            </div> <!-- /col -->
+
+            <!-- Blogsidebar -->
+            
+	<div class="col-md-4">
+	    <div class="primary-sidebar widget-area" role="complementary">
+	        <div id="tag_cloud-2" class="widget widget_tag_cloud"><h2 class="widget-title">태그</h2><div class="tagcloud"><a href="http://ms.nala.ga/tag/1%ec%9b%94/" class="tag-cloud-link tag-link-2 tag-link-position-1" style="font-size: 18.440677966102pt;" aria-label="1월 (115 아이템)">1월</a>
+<a href="http://ms.nala.ga/tag/2017/" class="tag-cloud-link tag-link-21 tag-link-position-2" style="font-size: 17.016949152542pt;" aria-label="2017 (98 아이템)">2017</a>
+<a href="http://ms.nala.ga/tag/2017%eb%85%84/" class="tag-cloud-link tag-link-551 tag-link-position-3" style="font-size: 14.406779661017pt;" aria-label="2017년 (77 아이템)">2017년</a>
+<a href="http://ms.nala.ga/tag/2018/" class="tag-cloud-link tag-link-155 tag-link-position-4" style="font-size: 15.830508474576pt;" aria-label="2018 (89 아이템)">2018</a>
+<a href="http://ms.nala.ga/tag/2018%eb%85%84/" class="tag-cloud-link tag-link-64 tag-link-position-5" style="font-size: 19.864406779661pt;" aria-label="2018년 (130 아이템)">2018년</a>
+<a href="http://ms.nala.ga/tag/the/" class="tag-cloud-link tag-link-310 tag-link-position-6" style="font-size: 11.322033898305pt;" aria-label="the (57 아이템)">the</a>
+<a href="http://ms.nala.ga/tag/vs/" class="tag-cloud-link tag-link-128 tag-link-position-7" style="font-size: 8pt;" aria-label="vs (41 아이템)">vs</a>
+<a href="http://ms.nala.ga/tag/%ea%b0%80%ea%b2%a9/" class="tag-cloud-link tag-link-275 tag-link-position-8" style="font-size: 12.271186440678pt;" aria-label="가격 (62 아이템)">가격</a>
+<a href="http://ms.nala.ga/tag/%ea%b2%b0%ed%98%bc/" class="tag-cloud-link tag-link-501 tag-link-position-9" style="font-size: 20.338983050847pt;" aria-label="결혼 (136 아이템)">결혼</a>
+<a href="http://ms.nala.ga/tag/%ea%b3%b5%ea%b0%9c/" class="tag-cloud-link tag-link-260 tag-link-position-10" style="font-size: 9.8983050847458pt;" aria-label="공개 (49 아이템)">공개</a>
+<a href="http://ms.nala.ga/tag/%ea%b7%b8%eb%a6%ac%ea%b3%a0/" class="tag-cloud-link tag-link-980 tag-link-position-11" style="font-size: 10.135593220339pt;" aria-label="그리고 (50 아이템)">그리고</a>
+<a href="http://ms.nala.ga/tag/%eb%82%98%ec%9d%b4%ec%b0%a8/" class="tag-cloud-link tag-link-1184 tag-link-position-12" style="font-size: 8.2372881355932pt;" aria-label="나이차 (42 아이템)">나이차</a>
+<a href="http://ms.nala.ga/tag/%eb%82%a8%ec%9e%90/" class="tag-cloud-link tag-link-364 tag-link-position-13" style="font-size: 9.4237288135593pt;" aria-label="남자 (47 아이템)">남자</a>
+<a href="http://ms.nala.ga/tag/%eb%82%a8%ed%8e%b8/" class="tag-cloud-link tag-link-603 tag-link-position-14" style="font-size: 16.305084745763pt;" aria-label="남편 (92 아이템)">남편</a>
+<a href="http://ms.nala.ga/tag/%eb%85%b8%eb%9e%98/" class="tag-cloud-link tag-link-713 tag-link-position-15" style="font-size: 8.9491525423729pt;" aria-label="노래 (45 아이템)">노래</a>
+<a href="http://ms.nala.ga/tag/%eb%8c%80%ed%95%9c/" class="tag-cloud-link tag-link-3572 tag-link-position-16" style="font-size: 10.135593220339pt;" aria-label="대한 (50 아이템)">대한</a>
+<a href="http://ms.nala.ga/tag/%eb%93%9c%eb%9d%bc%eb%a7%88/" class="tag-cloud-link tag-link-1041 tag-link-position-17" style="font-size: 16.542372881356pt;" aria-label="드라마 (95 아이템)">드라마</a>
+<a href="http://ms.nala.ga/tag/%eb%a6%ac%eb%b7%b0/" class="tag-cloud-link tag-link-447 tag-link-position-18" style="font-size: 12.508474576271pt;" aria-label="리뷰 (64 아이템)">리뷰</a>
+<a href="http://ms.nala.ga/tag/%eb%a7%9b%ec%a7%91/" class="tag-cloud-link tag-link-782 tag-link-position-19" style="font-size: 16.779661016949pt;" aria-label="맛집 (97 아이템)">맛집</a>
+<a href="http://ms.nala.ga/tag/%eb%aa%a8%ec%9d%8c/" class="tag-cloud-link tag-link-1142 tag-link-position-20" style="font-size: 13.694915254237pt;" aria-label="모음 (72 아이템)">모음</a>
+<a href="http://ms.nala.ga/tag/%eb%aa%b8%eb%a7%a4/" class="tag-cloud-link tag-link-2391 tag-link-position-21" style="font-size: 15.830508474576pt;" aria-label="몸매 (88 아이템)">몸매</a>
+<a href="http://ms.nala.ga/tag/%eb%b0%a9%eb%b2%95/" class="tag-cloud-link tag-link-930 tag-link-position-22" style="font-size: 17.491525423729pt;" aria-label="방법 (103 아이템)">방법</a>
+<a href="http://ms.nala.ga/tag/%eb%b0%b0%ec%9a%b0/" class="tag-cloud-link tag-link-895 tag-link-position-23" style="font-size: 15.593220338983pt;" aria-label="배우 (86 아이템)">배우</a>
+<a href="http://ms.nala.ga/tag/%eb%b6%80%ec%82%b0/" class="tag-cloud-link tag-link-157 tag-link-position-24" style="font-size: 8.4745762711864pt;" aria-label="부산 (43 아이템)">부산</a>
+<a href="http://ms.nala.ga/tag/%ec%82%ac%eb%9e%91/" class="tag-cloud-link tag-link-2972 tag-link-position-25" style="font-size: 14.406779661017pt;" aria-label="사랑 (77 아이템)">사랑</a>
+<a href="http://ms.nala.ga/tag/%ec%82%ac%ec%a7%84/" class="tag-cloud-link tag-link-410 tag-link-position-26" style="font-size: 9.4237288135593pt;" aria-label="사진 (47 아이템)">사진</a>
+<a href="http://ms.nala.ga/tag/%ec%95%84%eb%82%b4/" class="tag-cloud-link tag-link-3039 tag-link-position-27" style="font-size: 9.6610169491525pt;" aria-label="아내 (48 아이템)">아내</a>
+<a href="http://ms.nala.ga/tag/%ec%95%88%eb%82%b4/" class="tag-cloud-link tag-link-1327 tag-link-position-28" style="font-size: 11.322033898305pt;" aria-label="안내 (56 아이템)">안내</a>
+<a href="http://ms.nala.ga/tag/%ec%95%8c%ec%95%84%eb%b3%b4%ea%b8%b0/" class="tag-cloud-link tag-link-821 tag-link-position-29" style="font-size: 15.118644067797pt;" aria-label="알아보기 (82 아이템)">알아보기</a>
+<a href="http://ms.nala.ga/tag/%ec%95%8c%ec%95%84%eb%b3%b4%ec%9e%90/" class="tag-cloud-link tag-link-341 tag-link-position-30" style="font-size: 11.322033898305pt;" aria-label="알아보자 (56 아이템)">알아보자</a>
+<a href="http://ms.nala.ga/tag/%ec%97%ac%ed%96%89/" class="tag-cloud-link tag-link-873 tag-link-position-31" style="font-size: 17.016949152542pt;" aria-label="여행 (98 아이템)">여행</a>
+<a href="http://ms.nala.ga/tag/%ec%98%81%ed%99%94/" class="tag-cloud-link tag-link-562 tag-link-position-32" style="font-size: 19.389830508475pt;" aria-label="영화 (124 아이템)">영화</a>
+<a href="http://ms.nala.ga/tag/%ec%98%a4%eb%8a%98/" class="tag-cloud-link tag-link-1059 tag-link-position-33" style="font-size: 13.694915254237pt;" aria-label="오늘 (72 아이템)">오늘</a>
+<a href="http://ms.nala.ga/tag/%ec%9a%b0%eb%a6%ac/" class="tag-cloud-link tag-link-888 tag-link-position-34" style="font-size: 11.322033898305pt;" aria-label="우리 (57 아이템)">우리</a>
+<a href="http://ms.nala.ga/tag/%ec%9c%84%ed%95%9c/" class="tag-cloud-link tag-link-1175 tag-link-position-35" style="font-size: 12.983050847458pt;" aria-label="위한 (66 아이템)">위한</a>
+<a href="http://ms.nala.ga/tag/%ec%9d%b4%ec%95%bc%ea%b8%b0/" class="tag-cloud-link tag-link-611 tag-link-position-36" style="font-size: 12.508474576271pt;" aria-label="이야기 (64 아이템)">이야기</a>
+<a href="http://ms.nala.ga/tag/%ec%9d%b4%ec%9c%a0/" class="tag-cloud-link tag-link-296 tag-link-position-37" style="font-size: 10.372881355932pt;" aria-label="이유 (51 아이템)">이유</a>
+<a href="http://ms.nala.ga/tag/%ec%9e%90%ea%b2%a9%ec%a6%9d/" class="tag-cloud-link tag-link-2111 tag-link-position-38" style="font-size: 9.4237288135593pt;" aria-label="자격증 (47 아이템)">자격증</a>
+<a href="http://ms.nala.ga/tag/%ec%a0%95%eb%a6%ac/" class="tag-cloud-link tag-link-1831 tag-link-position-39" style="font-size: 13.220338983051pt;" aria-label="정리 (68 아이템)">정리</a>
+<a href="http://ms.nala.ga/tag/%ec%a0%95%eb%b3%b4/" class="tag-cloud-link tag-link-89 tag-link-position-40" style="font-size: 15.118644067797pt;" aria-label="정보 (83 아이템)">정보</a>
+<a href="http://ms.nala.ga/tag/%ec%b6%94%ec%b2%9c/" class="tag-cloud-link tag-link-146 tag-link-position-41" style="font-size: 22pt;" aria-label="추천 (162 아이템)">추천</a>
+<a href="http://ms.nala.ga/tag/%ec%b6%9c%ec%97%b0/" class="tag-cloud-link tag-link-2930 tag-link-position-42" style="font-size: 10.847457627119pt;" aria-label="출연 (54 아이템)">출연</a>
+<a href="http://ms.nala.ga/tag/%ed%95%9c%ea%b5%ad/" class="tag-cloud-link tag-link-3361 tag-link-position-43" style="font-size: 11.796610169492pt;" aria-label="한국 (59 아이템)">한국</a>
+<a href="http://ms.nala.ga/tag/%ed%9a%a8%eb%8a%a5/" class="tag-cloud-link tag-link-810 tag-link-position-44" style="font-size: 9.6610169491525pt;" aria-label="효능 (48 아이템)">효능</a>
+<a href="http://ms.nala.ga/tag/%ed%9b%84%ea%b8%b0/" class="tag-cloud-link tag-link-14 tag-link-position-45" style="font-size: 17.966101694915pt;" aria-label="후기 (109 아이템)">후기</a></div>
+</div>	    </div>
+	</div>
+
+        </div> <!-- /.row -->
+    </div> <!-- /.container -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <hr>
+            </div>
+        </div>
+    </div>
+    <footer class="site-footer" role="contentinfo">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 text-center">
+  
+                    <p></p>
+                    
+                                            <div class="footer-social-icons">
+                                                                                                                                                                                                                                                                                                                                                                                                        
+                        </div>
+                    
+                </div>
+            </div>
+        </div>
+    </footer>
+
+            <div class="scroll-up">
+            <a href="#"><i class="fa fa-angle-up"></i></a>
+        </div>
+        <!-- Scroll Up -->
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/af2821b0/cloudflare-static/email-decode.min.js"></script><script type='text/javascript' src='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/js/bootstrap.min.js?ver=3.3.5'></script>
+<script type='text/javascript' src='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/js/scripts.js'></script>
+<script type='text/javascript' src='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/js/jquery.fitvids.js'></script>
+<script type='text/javascript' src='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/js/smoothscroll.js'></script>
+<script type='text/javascript' src='http://ms.nala.ga/wp-includes/js/wp-embed.min.js?ver=4.8.5'></script>
+    </body>
+</html>

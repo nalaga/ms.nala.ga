@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="profile" href="http://gmpg.org/xfn/11">
+    <link rel="pingback" href="http://ms.nala.ga/xmlrpc.php">
+
+<title>CD구워주는곳 [기고칼럼] 냅스터 부터 P2P까지, PC와 모바일의 클라이언트-서버 모델 | All About MS CCL Contents</title>
+<meta name='robots' content='noindex,follow' />
+
+<!-- All in One SEO Pack 2.4.4 by Michael Torbert of Semper Fi Web Design[276,366] -->
+<meta name="description"  content="1줄 요약 CD구워주는곳 냅스터 부터 P2P까지, PC와 모바일의 클라 ...중략... 판교에서 개최되는 인벤의 IGC 컨퍼런스에서 직접 들으실 수 있습니다. CD구워주는곳 냅스터 부터 P2P까지, PC와 모바일의 클라이언트-서버 모델 CD구워주는곳 냅스터 부터 P2P까지, PC와 모바일의 클라이언트-서버 모델인벤에서는 게임업계 1.5.5세대 인물로 안정적인 게임서버엔진인 아이펀 엔진을 개발한 아이펀팩토리의 문대경 대표님을 모시고 서버 관련 컬럼을 기고 받게 되었습니다.문대경 대표는 1999년 넥슨 입사 후 2005년까지 넥슨에서 출시되는 다수의 프로젝트 서버" />
+<meta name="robots" content="index,nofollow" />
+
+<link rel="canonical" href="http://ms.nala.ga/cd%ea%b5%ac%ec%9b%8c%ec%a3%bc%eb%8a%94%ea%b3%b3-%ea%b8%b0%ea%b3%a0%ec%b9%bc%eb%9f%bc-%eb%83%85%ec%8a%a4%ed%84%b0-%eb%b6%80%ed%84%b0-p2p%ea%b9%8c%ec%a7%80-pc%ec%99%80-%eb%aa%a8%eb%b0%94%ec%9d%bc/" />
+<!-- /all in one seo pack -->
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="All About MS CCL Contents &raquo; 피드" href="http://ms.nala.ga/feed/" />
+<link rel="alternate" type="application/rss+xml" title="All About MS CCL Contents &raquo; 댓글 피드" href="http://ms.nala.ga/comments/feed/" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.3\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.3\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/ms.nala.ga\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.8.4"}};
+			!function(a,b,c){function d(a){var b,c,d,e,f=String.fromCharCode;if(!k||!k.fillText)return!1;switch(k.clearRect(0,0,j.width,j.height),k.textBaseline="top",k.font="600 32px Arial",a){case"flag":return k.fillText(f(55356,56826,55356,56819),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,56826,8203,55356,56819),0,0),c=j.toDataURL(),b!==c&&(k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447),0,0),c=j.toDataURL(),b!==c);case"emoji4":return k.fillText(f(55358,56794,8205,9794,65039),0,0),d=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55358,56794,8203,9794,65039),0,0),e=j.toDataURL(),d!==e}return!1}function e(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i,j=b.createElement("canvas"),k=j.getContext&&j.getContext("2d");for(i=Array("flag","emoji4"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='bootstrap-css-css'  href='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/css/bootstrap.min.css?ver=3.3.5' type='text/css' media='all' />
+<link rel='stylesheet' id='font-awesome-css-css'  href='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/css/font-awesome.min.css?ver=4.4.0' type='text/css' media='all' />
+<link rel='stylesheet' id='shaped-blog-stylesheet-css'  href='http://ms.nala.ga/wp-content/themes/shaped-blog/style.css?ver=4.8.4' type='text/css' media='all' />
+<link rel='stylesheet' id='responsive-css-css'  href='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/css/responsive.css' type='text/css' media='all' />
+<script type='text/javascript' src='http://ms.nala.ga/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
+<script type='text/javascript' src='http://ms.nala.ga/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+<link rel='https://api.w.org/' href='http://ms.nala.ga/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://ms.nala.ga/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://ms.nala.ga/wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='V CASE API 연동을 통한 컨텐츠 업로드 샘플' href='http://ms.nala.ga/v-case-api-%ec%97%b0%eb%8f%99%ec%9d%84-%ed%86%b5%ed%95%9c-%ec%bb%a8%ed%85%90%ec%b8%a0-%ec%97%85%eb%a1%9c%eb%93%9c-%ec%83%98%ed%94%8c/' />
+<link rel='next' title='델 XPS 15 9560 고성능 비지니스, 디자이너, 프로그레머의 노트북 리뷰' href='http://ms.nala.ga/%eb%8d%b8-xps-15-9560-%ea%b3%a0%ec%84%b1%eb%8a%a5-%eb%b9%84%ec%a7%80%eb%8b%88%ec%8a%a4-%eb%94%94%ec%9e%90%ec%9d%b4%eb%84%88-%ed%94%84%eb%a1%9c%ea%b7%b8%eb%a0%88%eb%a8%b8%ec%9d%98-%eb%85%b8%ed%8a%b8/' />
+<meta name="generator" content="WordPress 4.8.4" />
+<link rel='shortlink' href='http://ms.nala.ga/?p=20932' />
+<link rel="alternate" type="application/json+oembed" href="http://ms.nala.ga/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fms.nala.ga%2Fcd%25ea%25b5%25ac%25ec%259b%258c%25ec%25a3%25bc%25eb%258a%2594%25ea%25b3%25b3-%25ea%25b8%25b0%25ea%25b3%25a0%25ec%25b9%25bc%25eb%259f%25bc-%25eb%2583%2585%25ec%258a%25a4%25ed%2584%25b0-%25eb%25b6%2580%25ed%2584%25b0-p2p%25ea%25b9%258c%25ec%25a7%2580-pc%25ec%2599%2580-%25eb%25aa%25a8%25eb%25b0%2594%25ec%259d%25bc%2F" />
+<link rel="alternate" type="text/xml+oembed" href="http://ms.nala.ga/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fms.nala.ga%2Fcd%25ea%25b5%25ac%25ec%259b%258c%25ec%25a3%25bc%25eb%258a%2594%25ea%25b3%25b3-%25ea%25b8%25b0%25ea%25b3%25a0%25ec%25b9%25bc%25eb%259f%25bc-%25eb%2583%2585%25ec%258a%25a4%25ed%2584%25b0-%25eb%25b6%2580%25ed%2584%25b0-p2p%25ea%25b9%258c%25ec%25a7%2580-pc%25ec%2599%2580-%25eb%25aa%25a8%25eb%25b0%2594%25ec%259d%25bc%2F&#038;format=xml" />
+
+	<style>
+
+		/* Border Color */
+		.btn-social:hover,
+		blockquote,
+		#respond input:focus[type="text"], 
+	    #respond input:focus[type="email"], 
+	    #respond input:focus[type="url"],
+	    #respond textarea:focus,
+	    #comments .comment-reply a:hover
+		{
+			border-color: ;
+		}
+
+		
+		/* Background Color */
+		.scroll-up a,
+		.btn-social:hover,
+		button,
+		input[type="button"],
+		input[type="reset"],
+		input[type="submit"],
+		.navbar-default .navbar-nav .dropdown-menu li a:hover, .dropdown-menu li a:focus, .navbar-default .navbar-nav .dropdown-menu .active a,
+		.pagination>li>a:focus, .pagination>li>a:hover, .pagination>li>span:focus, .pagination>li>span:hover, .pagination li .current,
+		.next-previous-posts .next-post a:hover,
+		.next-previous-posts .previous-post a:hover,
+		.btn-goback,
+		.btn-submit,
+		a.more-link,
+		.featured-post .fa,
+		#comments .comment-reply a:hover,
+		.widget .tagcloud a
+		{
+			background-color: ;
+		}
+
+		
+		/* Color */
+		.text-logo a,
+		.navbar-default .navbar-nav .active a, .navbar-default .navbar-nav .active a:hover, .navbar-default .navbar-nav .active a:focus,
+		.navbar-default .navbar-nav li a:hover, .navbar-default .navbar-nav li a:focus,
+		a:hover,
+    	a:focus,
+		.next-previous-posts .previous-post a,
+		.next-previous-posts .next-post a,
+		.pagination>li>a, .pagination>li>span,
+		#comments .comment-author a:hover, 
+    	#respond .logged-in-as a:hover,
+    	#wp-calendar a,
+    	h2.entry-title a:hover
+		{
+			color: ;
+		}
+
+
+		/* A Color */
+		a{
+			color: ;
+		}
+
+		/* a:hover Color */
+		a:hover,
+		a:focus,
+		a:active,
+		.widget a:hover,
+		.post .post-content .entry-meta ul li a:hover
+		{
+			color: ;
+		}
+
+		/* .featured-post .fa:after*/
+		.featured-post .fa:after{
+			border-color:   transparent ;
+		}
+
+
+		
+
+	</style>
+</head>
+
+<body class="post-template-default single single-post postid-20932 single-format-standard">
+
+    <div id="st-preloader">
+        <div id="pre-status">
+            <div class="preload-placeholder"></div>
+        </div>
+    </div>
+<!-- /Preloader -->
+
+<header id="header">	
+	<div id="trueHeader">
+    	<div class="wrapper">
+            <div class="container">
+            	<!-- Menu -->
+            	<div class="menu_main">
+                	<div class="navbar blogx-navbar navbar-default">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#st-navber-collapse">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+
+                                                            <div class="text-logo">
+                                    <a href="http://ms.nala.ga">All About MS CCL Contents</a>
+                                    <p>All About MS CCL Contents</p>
+                                </div><!-- /Logo -->
+                                                    </div>
+                      
+                        <div id="st-navber-collapse" class="navbar-collapse collapse pull-right">
+                             
+                        </div>
+                    </div>
+            	</div><!-- end menu -->
+        	</div> <!-- /.container -->
+    	</div>
+	</div>
+	<DIV class='ads_adsense_img' style='margin:40px 0px 40px 0px;'>
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<!-- only display -->
+	<ins class="adsbygoogle"
+	     style="display:block"
+	     data-ad-client="ca-pub-8393857339019314"
+	     data-ad-slot="7474886381"
+	     data-ad-format="auto"></ins>
+	<script>
+	(adsbygoogle = window.adsbygoogle || []).push({});
+	</script>
+	</DIV>	
+
+</header>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div id="primary" class="content-area">
+                    <main id="main" class="site-main" role="main">
+
+                        
+                                <article id="post-20932" class="post-20932 post type-post status-publish format-standard hentry category-uncategorized tag-cd tag-p2p tag-pc tag-30623 tag-30624 tag-740 tag-78 tag-10194 tag-30627">
+    <header class="entry-header">
+        
+        
+    </header> <!--/.entry-header -->
+
+    <div class="clearfix post-content media">
+
+        <h2 class="entry-title">
+            CD구워주는곳 [기고칼럼] 냅스터 부터 P2P까지, PC와 모바일의 클라이언트-서버 모델        </h2> <!-- //.entry-title -->
+
+        <div class="clearfix entry-meta">
+            
+            <ul class="list-inline">
+                <li>
+                    <span class="author vcard">
+                        By <a class="url fn n" href="http://ms.nala.ga/author/admin/">admin</a>                    </span>
+                </li>
+                <li>
+                    on <span class="posted-on">1월 16, 2018</span>
+                </li>
+                                    <li>
+                        in <span class="posted-in">
+                            <a href="http://ms.nala.ga/category/uncategorized/" rel="category tag">미분류</a>                        </span>
+                    </li>
+                            </ul>
+                </div> <!--/.entry-meta -->
+        
+        <div class="entry-summary">
+            <p><img src='http://cfile30.uf.tistory.com/image/21383E4F591BF0972F86FE' style='max-width:250px;min-width:0px;' onError='this.style.display="none"' /></p>
+<h1>1줄 요약 </h1>
+<div style='color:#fff;background-color:#000;border-radius:10px;'>
+<ol>
+<li><span>CD구워주는곳 [기고칼럼] 냅스터 부터 P2P까지, PC와 모바일의 클라 <small>&#8230;중략&#8230;</small>  판교에서 개최되는 인벤의 IGC 컨퍼런스에서 직접 들으실 수 있습니다.</span></li>
+</ol>
+</div>
+<p><span id="more-20932"></span></p>
+<p><iframe src='http://ad.selfhow.com/rd' width='100%' border=0 frameborder=0 style='height:auto;width:100%'></iframe></p>
+<hr />
+<h2>CD구워주는곳 [기고칼럼] 냅스터 부터 P2P까지, PC와 모바일의 클라이언트-서버 모델</h2>
+<p>CD구워주는곳 [기고칼럼] 냅스터 부터 P2P까지, PC와 모바일의 클라이언트-서버 모델</p>
+<p style="text-align: center;"><span class="imageblock" style="display:inline-block;width:306px;;height:auto;max-width:100%"><img filemime="image/jpeg" filename="CD구워주는곳_0.jpg" height="433" src="http://cfile30.uf.tistory.com/image/21383E4F591BF0972F86FE" width="306"/></span></p>
+<p style="text-align: center;"><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="/></p>
+<p style="text-align: center;"><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="/></p>
+<p style="text-align: center;"><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="/></p>
+<p style="text-align: center;"><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="/></p>
+<p style="text-align: center;"><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="/></p>
+<p style="text-align: center;"><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="/></p>
+<p style="text-align: center;"><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="/></p>
+<p style="text-align: center;"><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="/></p>
+<p>인벤에서는 게임업계 1.5.5세대 인물로 안정적인 게임서버엔진인 아이펀 엔진을 개발한 아이펀팩토리의 문대경 대표님을 모시고 서버 관련 컬럼을 기고 받게 되었습니다.</p>
+<p>문대경 대표는 1999년 넥슨 입사 후 2005년까지 넥슨에서 출시되는 다수의 프로젝트 서버 프로그램을 책임졌으며, 현재 아이펀팩토리의 대표로 게임서버 엔진인 <b>&#8216;아이펀엔진&#8217;</b>을 개발하였습니다.가 개발한 <b>&#8216;아이펀 엔진&#8217;</b>은 네트워크, DB처리, 분산 시스템 등 게임 서버 구현에 필요한 필수 기능을 손쉽게 구현해 개발 시간 단축을 돕는 모바일 게임 서버엔진입니다.</p>
+<p>그 다섯 번째 시간으로 P2P vs.</p>
+<p>클라이언트-서버 모델 Part 2란 타이틀을 가지고 설명하도록 하겠습니다.</p>
+<p>* 본 내용은 본지의 편집방향과 일치하지 않을 수도 있습니다.</p>
+<p>P2P vs.</p>
+<p>클라이언트-서버 모델 Part 2</p>
+<p>지난 칼럼에서는 게임 서비스 구성을 위한 네트워크 방식 중에 서버클라이언트 방식과 더불어 많이 사용되는 방식 중 하나인 P2P 방식에 대해서 살펴보도록 하자.</p>
+<p>그러기에 앞서 파일 공유에 많이 사용되던 P2P가 어떤 방식으로 동작했으며, 그게 어떻게 해서 게임 서비스 환경에 도입되어 사용되게 되었는지 살펴볼 필요가 있다.</p>
+<p>요즘은 음악이나 비디오 같은 멀티미디어가 소유보다 소비의 관점으로 인식되는 것 같다.</p>
+<p>MP3 나 영화 파일을 내려받아서 소유하기보다는 벅스나 멜론, IPTV 혹은 YouTube 같은 스트리밍 서비스를 이용하는 경우가 더 일반적인 게 되었다.</p>
+<p>이는 모바일 디바이스와 모바일 네트워크의 비약적 발전 때문에 파일을 복사하는 것이 귀찮아진 것도 있고, 즉각적인 것을 선호하는 사회 변화의 속도와 스트리밍 방식의 실시간적 편리함 때문이기도 하고, 팀 과제에 참여 안 한 선배 이름을 빼겠다는 음료 광고 및 그 광고의 <b>“그런데 그것이 실제로 일어났습니다&#8221; 일화에서 보듯 저작권에 대한 사회 전반적 인식의 성숙 때문이기도 한 것 같다.</b></p>
+<p>그러나 몇 년 전까지만 해도 멀티미디어 파일에 대한 저작권 인식은 지금보다 훨씬 흐릿해서 어둠의 경로를 통한 불법 다운로드는 굉장히 공공연한 일이었다. 심지어 습관적으로 스마트폰을 들여다보는 것처럼 인터넷이나 CD/DVD writer가 놀고 있으면 초조함을 느껴서 열심히 다운로드 받고 구워놓는 사람들도 많았다.  그리고 그런 일이 가능했던 것은 수많은 파일 공유 프로그램 덕이었다. 그 중 가장 중요했던 프로그램이 냅스터다.</p>
+<p>냅스터</p>
+<p>파일 공유 프로그램의 역사에서 냅스터를 빼놓고 이야기할 수는 없다. 냅스터는 1999년에 서비스되기 시작되어, 편리한 음악 파일 검색 기능으로 급속도로 확산하였다가, 메탈리카와 닥터 드레  그리고 미국 음반 산업 협회  등이 제기한 저작권법 위반 소송으로 2001년 서비스를 내리게 되었다.</p>
+<p>냅스터는 실제 파일은 각 사용자 컴퓨터에 그대로 두고, 음악 파일 이름과 이를 보유한 사용자 컴퓨터의 IP를 냅스터 서버에 저장하는 단순한 방식으로 동작했다. 그리고 해당 이름의 파일을 검색하면 냅스터 서버에 저장된 정보를 통해 실제 그 파일을 보유한 컴퓨터의 IP를 알려주고, 그 컴퓨터로부터 직접 파일을 다운로드 받게끔 했다. 그리고 이렇게 사용자  가 다른 사용자  에게 데이터를 전송해주는 방식 때문에 PeerPeer 라고 표현되었고, 줄여서 P2P 가 되었다.</p>
+<p>위의 그림 1에서 볼 수 있듯, 이 서비스는 1) MP3 파일 정보를 인덱스 서버에 등록하는 과정과 2) 이를 이용해 파일의 위치  를 찾는 과정, 3) 실제로 파일을 전송받는 과정으로 이루어진다. 그리고 실제로 파일을 전송받는 과정은 peer 들 끼리 통신을 하는 것이지만, 나머지 과정은  냅스터 서버와 통신하는 클라이언트-서버 모델이다.</p>
+<p>비록 냅스터는 실제로 음악 파일을 전혀 보관하지 않았지만, MP3 파일을 보유한 사용자 IP 주소 정보를 제공해서 파일을 전송받을 수 있게 도왔다는 이유로 저작권 위반 혐의를 받게 된 것이다. 즉, 앞에서 설명한 파일의 위치를 찾기 위한 클라이언트서버 부분은 당연히 서버에 큰 부하를 주게 되었다.</p>
+<p>그 때문에 gnutella, eDonkey, eMule, Overnet, BitTorrent, Vuze 등 이후의 파일 공유 프로그램들은 파일의 위치를 찾는 부분을 계층화하거나 P2P 화하거나 하는 등 많은 개선의 시도를 하게 되었다. 그리고 이런 노력의 결과로 2000년대 중반까지는 컴퓨터 네트워킹 관련된 학술 연구에서도 P2P는 굉장히 활발한 주제였다. 단순해 보이는데, 대체 뭐 더 팔 게 있다고 활발한 주제가 된 것일까? 이런 연구 주제들을 보면 P2P 통신 방식의 구현에서 중요하게 고려해야 할 점들을 시사한다. 그리고 이 점들은 게임 서비스에 P2P를 적용할 때도 중요한 고려 사항이 될 수 밖에 없다.</p>
+<p>과제 1. 상대방 찾기</p>
+<p>냅스터의 경우 음악 파일 이름을 사용자들로부터 수집해서 냅스터 서버가 보관하고 있다가 필요한 파일을 검색하면 그걸 소유한 사용자 IP 를 알려주는 방식을 썼다고 했다. 그리고 이는 당연히 클라이언트-서버 모델이고 사용량이 많아질 수록 서버 쪽에 큰 부하를 주게 되므로 확장 가능한 방법이 아니다. 그리고 다루는 데이터가 저작권물이라면 법적인 책임까지 떠안게 된다.</p>
+<p>이를 피하기 위해서 Gnutella 같은 경우는 원하는 파일을 찾는 요청을 전체 사용자들에게 다 뿌리는 방식으로 구현을 하였다. 이렇게 모든 사람에게 다 뿌리는 것을 “방송”</p>
+<p>이라는 영어 단어를 써서 브로드캐스팅  이라고 한다.</p>
+<p>브로드캐스팅은 공중파 방송처럼 뿌리는 쪽이 소수일 때에는 단 한 번의 발송으로 모두에게 전달되는 효과적인 방식이 될 수 있지만, 브로드캐스팅하는 쪽이 많아질수록 급속도로 비효율적이 된다.</p>
+<p>이 방법으로 천만 명이 파일 공유를 한다면 나는 아무것도 안 하고 있어도 약 천만 개의 쓸데없는 패킷을 받아야 하고 그 때문에 네트워크가 풀 나서 오버워치를 할 수 없게 된다.</p>
+<p>이 때문에 완전히 클라이언트-서버 방식을 택하기도 어렵고, 마구잡이 브로드캐스팅 방식도 어려워지기 때문에 사용자들 간에 체계화된 방식으로 연결관계를 맺는 방안들이 제안되었다.</p>
+<p>이를 분산 환경에서 해시 테이블 구현한 것과 같다고 해서 Distributed Hash Table  라고 하는데, 굳이 이 용어를 기억하지 않더라도 사용자가 많아짐에 따라 상대방 찾기는 복잡해지고 이를 구조화 할 방법이 필요하다는 것을 알 수 있을 것이다.</p>
+<p>그리고… 세상에 좋은 것만 취할 수 없듯이, 이렇게 구조화하게 되면 사용자들이 들락날락거림에 따라 그 구조가 깨지지 않게 유지하는 것이 어려운 문제가 된다.</p>
+<p>과제 2.</p>
+<p>사용자가 들락날락 하는 문제</p>
+<p>이 때문에 완전히 클라이언트-서버 방식을 택하기도 어렵고, 마구잡이 브로드캐스팅 방식도 어려워지기 때문에 사용자들 간에 체계화된 방식으로 연결관계를 맺는 방안들이 제안되었다.</p>
+<p>이를 분산 환경에서 해시 테이블 구현한 것과 같다고 해서 Distributed Hash Table  라고 하는데, 굳이 이 용어를 기억하지 않더라도 사용자가 많아짐에 따라 상대방 찾기는 복잡해지고 이를 구조화 할 방법이 필요하다는 것을 알 수 있을 것이다.</p>
+<p>그리고… 세상에 좋은 것만 취할 수 없듯이, 이렇게 구조화하게 되면 사용자들이 들락날락거림에 따라 그 구조가 깨지지 않게 유지하는 것이 어려운 문제가 된다.</p>
+<p>과제 2.</p>
+<p>사용자가 들락날락하는 문제</p>
+<p>사용자가 자신의 위치를 서버에 저장하는 클라이언트-서버 방식이나, 아니면 마구잡이로 필요할 때마다 브로드캐스팅을 날리는 방식이라면 다른 사용자가 들락날락 거려도 큰 문제는 안 될 것이다.</p>
+<p>하지만, 앞에서 이 두 방법은 모두 확장성에 문제가 있는 방식이기 때문에 <b>“일정 규칙대로 클라이언트들끼리 통신하게”</b> 만들어야 한다고 했다.</p>
+<p>그리고 이렇게 일정 규칙대로 통신하는데 중간에 있는 사용자가 갑자기 나가거나 새로운 사용자가 갑툭튀한다면 문제는 복잡해진다.</p>
+<p>예를 들어, 우리가 전체 사용자를 줄을 세우고 파일을 찾을 때까지 차례로 물어보는 방식을 썼다고 하자.</p>
+<p>이 경우에 다음 사용자가 나가버린다면 어떻게 될까? 단순히 생각하면 그런 경우를 대비해서 다음 사용자의 그다음 사용자를 기억하면 될 것 같지만, 이는 그마저도 나가버리면 다시 그다음 사용자가 필요해지는 한도 끝도 없는 방식이 되어버린다.</p>
+<p>이렇게 사용자가 들락 날락 거리는 것을 Churn이라고 하는데, P2P에서는 이런 churn 을 다루는 것이 매우 중요하다.</p>
+<p>그리고 이는 단순히 통신할 상대방을 찾기 위한 경우만 필요한 게 아니라, 실제 상대방과 통신을 하고 있을 때도 중요하다는 점을 기억해주기 바란다.</p>
+<p>내가 진또배기.</p>
+<p>mp3 를 내려받고 있었는데 나에게 파일을 주던 사용자가 나가버린다면 나는 다른 사람으로부터 그 파일을 받아야 하기 때문이다.</p>
+<p>과제 3.</p>
+<p>사용자가 정정당당하게끔 강제하기 혹은 그렇게 되도록 동기 부여하기</p>
+<p>P2P는 사용자가 다른 사용자로부터 서비스를 받는 것이라고 했다.</p>
+<p>그리고 이 방법이 잘 동작하기 위해서는 다른 사용자에게 성실하게 서비스를 제공할 수 있게 강제하거나 최소한 그렇게 하는 것이 좋다고 인식하게끔 동기를 유발할 필요가 있다.</p>
+<p>예를 들어 BitTorrent 을 실행하고 있으면 CPU와 네트워크를 잡아먹기 때문에, 원활한 오버워치 플레이를 위해 나는 아마도 진또배기.</p>
+<p>mp3 를 내려받자마자 BitTorrent 를 꺼버릴 것이다.</p>
+<p>그런데 P2P는 모든 사용자가 이렇게 이기적인 행동을 하는 경우 제대로 동작할 수 없다.</p>
+<p>그러니 오버 워치를 희생하더라도 계속해서 파일 공유를 하게끔 강제하거나 적어도 공유할 수 있는 동기부여를 하는 것이 필요해진다.</p>
+<p>이를 위해 업로드 양에 따른 다운로드 양이나 속도를 조절하는 방식 등 다양한 방식이 동원됐다.</p>
+<p>그러나 이걸 강제하는 것은 지극히 어렵다.</p>
+<p>BitTorrent 는 Tittat 전략이라는 것을 이론적인 배경으로 쓰고 있지만, 이걸 좀 더 잘 바꾸겠다면서 변형한 연구 논문만도 수도 없이 많다.</p>
+<p>그리고 그나마 지금까지의 예는 P2P의 룰을 안 지키긴 했지만 그다지 파괴적이지는 않았다.</p>
+<p>그런데 만일 해킹한 클라이언트가 있다면 어떻게 될까? 해!킹!클!라! 이 부분은 파일 전송에서뿐만 아니라 게임 서비스 구축에서도 직접적인 충격이 되기 때문에 아래에서 다시 살펴보겠다.</p>
+<p>과제 4.</p>
+<p>사용자간 연결 보장하기</p>
+<p>앞의 세 가지 과제가 시스템 디자인적인 문제였다면, 사용자 간에 실제로 연결을 맺고 통신을 하는 것은 좀 더 현실적이고 테크닉적인 문제다.</p>
+<p>우리가 사용하는 인터넷의 주소 체계는 마음대로 배정하는 32bit 숫자로 이루어진다.</p>
+<p>그리고 이 덕분에 배정 가능한 IP의 전체 수는 2의 32 승인 약 43억개 정도 된다.</p>
+<p>그러나 안타깝게도 특정 용도로 배정된 주소들 때문에 실제로 사용 가능한 IP의 숫자는 이보다 적다.</p>
+<p>그리고 이미 우리는 사실상 이 IP 주소를 모두 소진한 상태다.</p>
+<p>이런 문제를 극복하기 위해서 고안된 것이 128bit 주소 체계인 IPv6 인데, 안타깝게도 IPv6 스펙이 발표된 지 20년이 다 되어가지만, 아직까지 완벽하게 IPv6 가 도입되지는 못했다.</p>
+<p>주요 이유로는 아무리 표준안이 제안되더라도 시스코 같은 장비 업체가 이를 장비로 만들어 줘야 되고, 그리고 기업들이 막대한 돈을 들여 백본을 포함한 기존 장비들을 모두 교체해줘야 되고, IPv4 만 사용하게끔 된 프로그램들이 모두 수정되어야 되기 때문이다.</p>
+<p>애플이 IPv6를 지원하지 않는 앱들을 앱스토어 심사에서 떨어뜨리기 시작했는데, 이와 같은 강제가 없다면 아마 앞으로도 오랫동안 IPv6 가 주류가 되기는 어려울지도 모른다.</p>
+<p>필요는 발명의 어머니라고, 이 때문에 중간 단계로 사설 IP 가 활용되기 시작했다.</p>
+<p>사설 IP 는 어떤 곳에서든 인정되는 공인 IP 가 아니라 그 안에서만 통용되는 IP 라고 생각하면 된다.</p>
+<p>예를 들어 우리 회사의 <b>“미친개”</b>는 나 하나지만, 회사별로 “미친개<b>&#8221; 는 서로 다른 사람을 지칭하는 것과 유사하다고나 할까….</p>
+<p>이 때문에 사설 IP는 해당 네트워크에서만 접근 가능하게 된다. 그럼 사설 IP는 인터넷으로 연결이 안 되는가? 물론 그러면 안 되기에 사설 IP를 공인 IP 로 매칭해주는 방식이 사용된다. 우리가 흔히 말하는 “공유기&#8221;</p>
+<p></b> 라는 역할인데 정확히는 Network Address Translation  이다.</p>
+<p>공유기는 이런 NAT 기능이 들어가 있는 장비라고 생각하면 된다.</p>
+<p>이렇게 외부에서의 선진입을 허용하지 않는 NAT 의 동작 방식은 보안적인 이점이 되기도 하지만, P2P 통신에서는 상당한 장애가 된다.</p>
+<p>공유기 보급으로 이미 상당 경우 컴퓨터/스마트폰 등이 공유기 안에서 NAT 의 영향을 받고 있는데 서로 통신해야 되는 두 기기가 모두 각각의 공유기에 물려 있다면 어느 쪽도 먼저 상대방에 닿을 수 없는 교착 상태에 빠지기 때문이다.</p>
+<p>이 때문에 NAT 를 뚫고 통신하는 테크닉이 필요하고 그걸 NAT traversal 이라고 한다.</p>
+<p>게임 등에서 많이 쓰이는 홀 펀칭 등이 NAT traversal 의 한 방식이다.</p>
+<p>그런데 안타깝게도 NAT의 구현에 대해서는 표준이 없으므로 모든 장비가 같은 NAT 방식을 쓰지는 않는다.</p>
+<p>다시 말해 어떤 경우든 동작하는 NAT traversal은 사실상 존재하지 않는다는 뜻이다.</p>
+<p>PC 온라인 게임에서 P2P 기술의 적용 동기</p>
+<p>지금까지 파일 공유에서의 P2P에 대해서 설명했다.</p>
+<p>그런데 파일 공유의 세상에 있던 P2P가 왜 게임 구현에 사용되게 된 것일까?</p>
+<p>내가 기억하는 바로 게임에 P2P를 사용한 거의 최초의 경우이면서 상업적으로 성공을 한 것은, 모글루의 박세희 대표가 넥슨 재직 시절에 프로그래밍한 크레이지 아케이드 BnB 일 것이다.</p>
+<p>크아 BnB 는 사용자 간 움직임에 대한 빠른 동기화와 이에 따른 손맛이 재미요소였기 때문에 움직임 패킷을 신속하게 전달하는 것이 중요했고, 이 때문에 P2P가 시도되었다.</p>
+<p>이런 이유에는 우리가 사용하는 인터넷이 동작하는 방식과 연관이 있다.</p>
+<p>우리가 독일의 현 난민 정책을 알아보기 위해서 독일 정부 사이트에 접속한다고 해보자.</p>
+<p>아마 많은 사람이 가장 빠른 경로로 패킷이 갈 것으로 생각한다.</p>
+<p>하지만 안타깝게도 그렇지 않다.</p>
+<p>빠른 경로로 가는 것이 아니라 망 사업자 간의 이해관계와 정부 규제 등 다양한 정책적인 영향을 받아서 경로가 결정된다.</p>
+<p>가령, 대한민국의 패킷들은 북한과 관련이 있을 나라는 거치지 않게끔 전송될 것이고, 경로도 중국을 통해서 가는 방법과 해저 광케이블로 미국을 거쳐 가는 방법 중 내 통신망 사업자가 더 싸게 쓸 수 있는 회선을 따라간다.</p>
+<p>아래 가상의 시나리오를 그린 그림을 보자.</p>
+<p>이 때문에 인터넷은 정책 기반  방식으로 패킷을 전달한다고 한다.</p>
+<p>반면 회사 안의 인트라넷에 접속하는 경우는 딜레이나 적은 횟수의 전달 같은 산술적 기준으로 패킷을 전달하며 이를 메트릭 기반  방식이라고 한다.</p>
+<p>인터넷이 정책 기반으로 패킷을 전달하기 때문의 경우에 따라 클라에서 서버로 갔다가 다른 클라로 가는 것보다 클라 간에 직접 통신하는 것이 더 빠를 수도 있다.</p>
+<p>여기서 주의할 것은 “빠를 수도 있다.</p>
+<p><b>&#8220;이지 “빠르다&#8221;</b> 가 아니라는 것이다.</p>
+<p>대부분은 서버는 회선이 잘 갖춰진 데이터센터 안에 있기 때문에 클라와 서버 간의 통신 속도는 둘 사이가 물리적으로 상당히 멀리 떨어진 경우가 아니라면 그다지 나쁘지 않다.</p>
+<p>그렇기 때문에, 속도 때문이라면 P2P와 서버를 거쳐서 통신하는 두 경우를 재보고 더 빠른 경로를 택하는 것이 더 맞는 선택이다.</p>
+<p>다만 한국처럼 지역이 좁고 클라들이 같은 통신사를 쓸 가능성이 큰 경우, 서버를 거치는 것보다 클라끼리 통신하는 것이 더 빠를 가능성이 큰 것도 분명히 사실이다.</p>
+<p>그런데 속도는 보장할 수 없지만, 확실하게 보장할 수 있는 것이 있다.</p>
+<p>지금까지의 내용을 잘 따라온 분이라면 쉽게 예측할 수 있다.</p>
+<p>뭘까? 그렇다.</p>
+<p>서버 트래픽을 쓰지 않기 때문에 서버 쪽 부하가 줄어든다는 것이다.</p>
+<p>따라서 서버 부하가 P2P 도입 목적이라면 이는 적절한 선택이다.</p>
+<p>어쨌거나, 파일 공유의 영역에만 있던 P2P 가 게임에 도입되기 시작한 것은 인터넷이 가장 빠른 길을 택해서 패킷을 전달하는 것이 아니라는 사실 때문에 클라끼리의 직접 통신이 더 빠를 수도 있어서였다.</p>
+<p>그럼 게임에서는 앞에서 언급했던 과제들을 어떤 방식으로 극복했을까?</p>
+<p>PC 온라인 게임에서의 P2P 도입 시 작용한 환경</p>
+<p>PC 온라인 게임에서의 P2P는 유선 인터넷이라는 점을 깔고 들어갔기 때문에 구현에 상당히 유리한 점이 많았다.</p>
+<p>통신 상대방 찾기: P2P 방식으로 구현되는 게임들은 아케이드 게임이나 FPS 처럼 게임이 한 판 단위로 나뉘는 경우이고, 이 경우에 상대방을 찾는다는 것은 매치 메이킹을 의미한다.</p>
+<p>그 때문에 게임에 P2P 가 도입되는 경우 대부분은 로비 서버나 매치 메이킹 서버를 이용한 클라이언트-서버 방식으로 상대방을 찾는 방식이 이용되었다.</p>
+<p>비록 서버에 부하가 걸리긴 하지만, 매칭을 위해서는 괜찮은 방식이다.</p>
+<p>매칭 규칙도 클라이언트 패치 없이 변경할 수 있다는 장점이 있다.</p>
+<p>또한, 클라끼리 통신하는 것도 서버 역할의 클라를 정하고 그 클라와 통신을 하는 방식과 그냥 모든 클라에게 브로드캐스팅 하는 방식 모두 통용되었다.</p>
+<p>일반적인 파일 전송 P2P에서는 모든 클라들에게 브로드캐스팅하는 방식은 말도 안 되는 일이지만, 판 단위 게임의 특성상 통신에 관여하는 클라 숫자가 적기 때문에 게임에서는 충분히 가능하다.</p>
+<p>들락날락 하는 문제: PC는 대부분 유선 인터넷에 연결된다.</p>
+<p>그 때문에 네트워크가 끊기는 문제는 사실상 흔하지 않았다.</p>
+<p>그래서 특정 클라이언트가 끊겨서 나가는 경우 아예 판을 깨버리는 간단한 방법도 괜찮았다.</p>
+<p>그리고 끊기는 일이 많은 경우 의도적일 수 있으므로 유저에게 패널티를 줄 수도 있었다.</p>
+<p>좀 더 정교하게 만드는 경우 끊긴 사용자 대신 AI 가 플레이하게 하는 것도 가능하지만, 모든 클라가 각자 판정하는 것이 아니라 특정 클라가 서버 역할로 판정을 전담하고 있었다면, 판정을 담당하던 클라가 튕기는 경우 판을 깰 수밖에 없었다.</p>
+<p>어쨌거나 유선 인터넷은 그렇게 자주 끊기는 게 아니었기 때문에 이게 크게 문제가 되지는 않았다.</p>
+<p>서버 역할을 하게 하는 동기 부여 및 해킹 방지: 이 역시 유선 인터넷이라는 좋은 특성이 있었기 때문에 자연스럽게 해결이 되었다.</p>
+<p>유선 인터넷은 종량제가 아니며, 일반적으로 대역폭이 충분하다.</p>
+<p>그 때문에 클라가 서버 역할을 하는 것에 크게 거부감을 가질 이유가 없었다.</p>
+<p>이때 서버 역할의 클라가 더 유리한 위치를 차지할 수 있는 이유는 자신은 딜레이 없이 판정하지만, 상대방 패킷은 자신에게 도착해야만 판정이 시작된다는 점 때문이다.</p>
+<p>이를 이용해 상대방 패킷을 의도적으로 지연시키는 방식을 생각할 수 있는데, 유선 인터넷은 빠르고 안정적이기 때문에 일정 이상의 딜레이가 넘어가면 치팅 의심 행동으로 튕겨버리는 간단한 방식으로도 방지할 수 있었다.</p>
+<p>다만, 클라이언트 자체를 해킹해서 판정을 잘못하게 하는 것은 여전히 별도의 보안 솔루션이 필요했다.</p>
+<p>모바일 게임에서의 P2P 도입 시 환경적 어려움</p>
+<p>반면 모바일 게임은 네트워크적인 가정에서 받을 수 있는 도움이 없었다.</p>
+<p>IP는 기지국을 옮겨가거나 모바일 망과 WiFi를 오가면서 수시로 바뀔 수 있었고, 무선이라는 특성 때문에 패킷의 딜레이도 더 크다.</p>
+<p>이 때문에 이를 이용한 해킹 등도 가능하다.</p>
+<p>통신 상대방 찾기: 이는 궁극적으로 PC 온라인에서처럼 매치메이킹을 위해 클라이언트-서버 방식을 쓰기 때문에 모바일 게임이라고 큰 차이는 없다.</p>
+<p>들락날락 하는 문제: WiFi는 상대적으로 문제가 덜하지만, 모바일 망은 네트워크 간 이동 등의 이유 때문에 순간이 많이 발생한다.</p>
+<p>이 때문에 PC 온라인에서는 처리할 필요가 없었던 들락날락거림  을 처리해줘야 하는 상황이 되었다.</p>
+<p>PC 온라인처럼 마구잡이로 판을 깨버리면 사실 거의 플레이할 수 없게 되기 때문이다.</p>
+<p>특히 서버 역할을 하는 클라이언트가 안정적이지 못하고 들락날락하게 되는 경우 문제는 아주 복잡해진다.</p>
+<p>서버 역할의 동기 부여: 모바일 망은 유선 인터넷과 달리 종량제다.</p>
+<p>비록 무제한 요금제라고 하더라도 일정 트래픽 이후로는 속도가 급격히 줄어든다.</p>
+<p>그 때문에 클라이언트가 서버 역할을 하는 것은 비용적으로 부담될 수밖에 없다.</p>
+<p>개발사가 내야 할 서버 비용을 내가 추가적인 데이터 요금으로 부담하는 꼴이 되기 때문이다.</p>
+<p>그러나 안타깝게도 무선망의 종량제는 계속 유지될 것으로 보인다.</p>
+<p>통신 사업자로서 이미 전 세계적으로 자리 잡은 종량제 데이터 요금제를 풀어줄 이유도 없고, 케이블만 깔면 대역폭을 확보할 수 있는 유선 인터넷과 달리 무선 통신은 비싼 비용을 내고 주파수를 정부로부터 추가 임대해야 대역폭을 늘릴 수 있기 때문이다.</p>
+<p>그나마도 남는 주파수가 있을 때 경매로 임대한다.</p>
+<p>1)</p>
+<p>해킹 방지: 무선망 환경에서 안정적인 딜레이가 보장되지 않기 때문에, 무선망에서 동작하는 P2P 게임은 특정 이상의 딜레이가 그냥 느린 것인지 아니면 의도적으로 느리게 만든 것인지 알기 어렵다.</p>
+<p>가령 와이파이에 연결해서 플레이하는 클라이언트가 자신이 서버라는 사실을 알게 되면 공유기 랜선을 뽑아버리는 단순한 행동만으로도 스마트폰에서는 와이파이 네트워크는 연결된 것으로 잡히지만, 나는 다른 클라들의 패킷을 모두 지연시킬 수 있게 된다.</p>
+<p>극단적으로는 이 틈을 타서 본인 혼자 상대방을 전부 킬 하는 것도 가능하다.</p>
+<p>NAT 극복: 앞서 설명한 대로 무선망은 주파수라는 굉장히 희소한 자원을 기반으로 한다.</p>
+<p>이 때문에 망 사업자 입장에서는 보다 정교하게 네트워크를 제어하기를 원한다.</p>
+<p>이 때문에 무선망 사업자들이 사용하는 수억 원의 장비는 가정용 공유기보다 훨씬 복잡한 방식으로 NAT을 관리하며, 단순히 외부로 홀 펀칭 패킷을 보냈다고 그 구멍을 타고 내부 장비와 통신하게 해주지 않는다.</p>
+<p>이런 문제들을 극복하기 위해서 릴레이 서버를 통해 통신하게 하는 경우도 있지만, 릴레이 서버를 두는 경우는 결국 P2P의 최대 이점인 클라이언트 간의 직접 통신에 따른 서버 부하 감소와 통신 속도 개선이라는 것을 기대할 수 없게 된다.</p>
+<p>릴레이 서버가 병목이 되고, 릴레이를 거치면서 불필요한 딜레이가 추가될 수 있기 때문이다.</p>
+<p>결론: 기술의 적용은 서비스 환경에 대한 고려를 통해서 이루어져야 한다.</p>
+<p>P2P는 파일 공유에서부터 시작됐지만, 서버에 부하를 주지 않는다는 확실한 이점과 클라이언트끼리의 직접 통신이 더 빠를 수도 있다는 잠재적 메리트로 게임에 도입되기 시작했다.</p>
+<p>이런 면에서 P2P는 게임 서비스 구현을 위한 굉장히 매력적인 도구임이 분명하다.</p>
+<p>다만, 어떤 도구든 그 도구가 사용되는 상황을 고려해야 하는 것처럼 클라이언트-서버 방식이나 P2P 방식 모두 막연한 기대나 환상이 아닌 내가 만드는 게임이 어떤 서비스 환경에서 동작할지에 대한 정확한 판단에 따라 선택되어야 한다.</p>
+<p>어떤 경우든 항상 옳은 설계는 존재하지 않는다.</p>
+<p>본회 칼럼은 10월 6일 판교에서 개최되는 인벤의 IGC 컨퍼런스에서 직접 들으실 수 있습니다.</p>
+<p><span style="font-size: 8pt;">참고출처 : http://m.sports.naver.com/esports/news/read.nhn?oid=442&amp;aid;=0000043896</span></p>
+<hr />
+<p><iframe src='http://ad.selfhow.com/rd' width='100%' border=0 frameborder=0 style='height:auto;width:100%'></iframe></p>
+<p><a href='http://behbobo708.tistory.com/2' target='_blank'>Origin Content : 자유의 몸</a> | <a href="/cdn-cgi/l/email-protection#3457575857745a5558551a5355" target='_blank'>Contact : <span class="__cf_email__" data-cfemail="d9babab5ba99b7b8b5b8f7beb8">[email&#160;protected]</span></a>
+</p>
+<p>Cotent License : CC-BY </p>
+<p>This content is collected under the CCL license.</p>
+<p>Please check the license of the original article before asking about copyright.</p>
+<ul>
+<li><a href='/tag/CD구워주는곳'>More About <span style='font-weight:bold;'>CD구워주는곳</span></a></li>
+<li><a href='/tag/기고칼럼'>More About <span style='font-weight:bold;'>기고칼럼</span></a></li>
+<li><a href='/tag/냅스터'>More About <span style='font-weight:bold;'>냅스터</span></a></li>
+<li><a href='/tag/부터'>More About <span style='font-weight:bold;'>부터</span></a></li>
+<li><a href='/tag/P2P까지'>More About <span style='font-weight:bold;'>P2P까지</span></a></li>
+<li><a href='/tag/PC와'>More About <span style='font-weight:bold;'>PC와</span></a></li>
+<li><a href='/tag/모바일'>More About <span style='font-weight:bold;'>모바일</span></a></li>
+<li><a href='/tag/클라이언트-서버'>More About <span style='font-weight:bold;'>클라이언트-서버</span></a></li>
+<li><a href='/tag/모델'>More About <span style='font-weight:bold;'>모델</span></a></li>
+</ul>
+        </div> <!-- //.entry-summary -->
+        
+                    <div class="entry-tags"><b>Tags:</b> <a href="http://ms.nala.ga/tag/cd%ea%b5%ac%ec%9b%8c%ec%a3%bc%eb%8a%94%ea%b3%b3/" rel="tag">CD구워주는곳</a>, <a href="http://ms.nala.ga/tag/p2p%ea%b9%8c%ec%a7%80/" rel="tag">P2P까지</a>, <a href="http://ms.nala.ga/tag/pc%ec%99%80/" rel="tag">PC와</a>, <a href="http://ms.nala.ga/tag/%ea%b8%b0%ea%b3%a0%ec%b9%bc%eb%9f%bc/" rel="tag">기고칼럼</a>, <a href="http://ms.nala.ga/tag/%eb%83%85%ec%8a%a4%ed%84%b0/" rel="tag">냅스터</a>, <a href="http://ms.nala.ga/tag/%eb%aa%a8%eb%8d%b8/" rel="tag">모델</a>, <a href="http://ms.nala.ga/tag/%eb%aa%a8%eb%b0%94%ec%9d%bc/" rel="tag">모바일</a>, <a href="http://ms.nala.ga/tag/%eb%b6%80%ed%84%b0/" rel="tag">부터</a>, <a href="http://ms.nala.ga/tag/%ed%81%b4%eb%9d%bc%ec%9d%b4%ec%96%b8%ed%8a%b8-%ec%84%9c%eb%b2%84/" rel="tag">클라이언트-서버</a></div>
+        
+    </div>
+
+</article> <!--/#post-->
+
+
+
+
+
+                                                                    <div class="post-nav-area">
+                                                    
+            <nav class="next-previous-post clearfix media" role="navigation">
+                <div class="row">
+                    <!-- Previous Post -->
+                    <div class="previous-post col-sm-6 pull-left">
+                        <div class="nav-previous"><i class="fa fa-angle-left"></i> <a href="http://ms.nala.ga/v-case-api-%ec%97%b0%eb%8f%99%ec%9d%84-%ed%86%b5%ed%95%9c-%ec%bb%a8%ed%85%90%ec%b8%a0-%ec%97%85%eb%a1%9c%eb%93%9c-%ec%83%98%ed%94%8c/" rel="prev">V CASE API 연동을 통한 컨텐츠 업로드 샘플</a></div>                    </div>
+
+                    <!-- Next Post -->
+                    <div class="next-post col-sm-6 pull-right text-right">
+                        <div class="nav-next"><a href="http://ms.nala.ga/%eb%8d%b8-xps-15-9560-%ea%b3%a0%ec%84%b1%eb%8a%a5-%eb%b9%84%ec%a7%80%eb%8b%88%ec%8a%a4-%eb%94%94%ec%9e%90%ec%9d%b4%eb%84%88-%ed%94%84%eb%a1%9c%ea%b7%b8%eb%a0%88%eb%a8%b8%ec%9d%98-%eb%85%b8%ed%8a%b8/" rel="next">델 XPS 15 9560 고성능 비지니스, 디자이너, 프로그레머의 노트북 리뷰</a> <i class="fa fa-angle-right"></i></div>                    </div>
+                </div>
+            </nav><!-- .navigation -->
+            
+                                            </div>
+                                
+                                
+                            
+                                            </main> <!-- /.site-main -->
+                </div>  <!-- /.content-area -->
+            </div> <!-- /col -->
+
+            <!-- Blogsidebar -->
+            
+	<div class="col-md-4">
+	    <div class="primary-sidebar widget-area" role="complementary">
+	        <div id="tag_cloud-2" class="widget widget_tag_cloud"><h2 class="widget-title">태그</h2><div class="tagcloud"><a href="http://ms.nala.ga/tag/1%ec%9b%94/" class="tag-cloud-link tag-link-2 tag-link-position-1" style="font-size: 18.440677966102pt;" aria-label="1월 (115 아이템)">1월</a>
+<a href="http://ms.nala.ga/tag/2017/" class="tag-cloud-link tag-link-21 tag-link-position-2" style="font-size: 17.016949152542pt;" aria-label="2017 (98 아이템)">2017</a>
+<a href="http://ms.nala.ga/tag/2017%eb%85%84/" class="tag-cloud-link tag-link-551 tag-link-position-3" style="font-size: 14.406779661017pt;" aria-label="2017년 (77 아이템)">2017년</a>
+<a href="http://ms.nala.ga/tag/2018/" class="tag-cloud-link tag-link-155 tag-link-position-4" style="font-size: 15.830508474576pt;" aria-label="2018 (89 아이템)">2018</a>
+<a href="http://ms.nala.ga/tag/2018%eb%85%84/" class="tag-cloud-link tag-link-64 tag-link-position-5" style="font-size: 19.864406779661pt;" aria-label="2018년 (130 아이템)">2018년</a>
+<a href="http://ms.nala.ga/tag/the/" class="tag-cloud-link tag-link-310 tag-link-position-6" style="font-size: 11.322033898305pt;" aria-label="the (57 아이템)">the</a>
+<a href="http://ms.nala.ga/tag/vs/" class="tag-cloud-link tag-link-128 tag-link-position-7" style="font-size: 8pt;" aria-label="vs (41 아이템)">vs</a>
+<a href="http://ms.nala.ga/tag/%ea%b0%80%ea%b2%a9/" class="tag-cloud-link tag-link-275 tag-link-position-8" style="font-size: 12.271186440678pt;" aria-label="가격 (62 아이템)">가격</a>
+<a href="http://ms.nala.ga/tag/%ea%b2%b0%ed%98%bc/" class="tag-cloud-link tag-link-501 tag-link-position-9" style="font-size: 20.338983050847pt;" aria-label="결혼 (136 아이템)">결혼</a>
+<a href="http://ms.nala.ga/tag/%ea%b3%b5%ea%b0%9c/" class="tag-cloud-link tag-link-260 tag-link-position-10" style="font-size: 9.8983050847458pt;" aria-label="공개 (49 아이템)">공개</a>
+<a href="http://ms.nala.ga/tag/%ea%b7%b8%eb%a6%ac%ea%b3%a0/" class="tag-cloud-link tag-link-980 tag-link-position-11" style="font-size: 10.135593220339pt;" aria-label="그리고 (50 아이템)">그리고</a>
+<a href="http://ms.nala.ga/tag/%eb%82%98%ec%9d%b4%ec%b0%a8/" class="tag-cloud-link tag-link-1184 tag-link-position-12" style="font-size: 8.2372881355932pt;" aria-label="나이차 (42 아이템)">나이차</a>
+<a href="http://ms.nala.ga/tag/%eb%82%a8%ec%9e%90/" class="tag-cloud-link tag-link-364 tag-link-position-13" style="font-size: 9.4237288135593pt;" aria-label="남자 (47 아이템)">남자</a>
+<a href="http://ms.nala.ga/tag/%eb%82%a8%ed%8e%b8/" class="tag-cloud-link tag-link-603 tag-link-position-14" style="font-size: 16.305084745763pt;" aria-label="남편 (92 아이템)">남편</a>
+<a href="http://ms.nala.ga/tag/%eb%85%b8%eb%9e%98/" class="tag-cloud-link tag-link-713 tag-link-position-15" style="font-size: 8.9491525423729pt;" aria-label="노래 (45 아이템)">노래</a>
+<a href="http://ms.nala.ga/tag/%eb%8c%80%ed%95%9c/" class="tag-cloud-link tag-link-3572 tag-link-position-16" style="font-size: 10.135593220339pt;" aria-label="대한 (50 아이템)">대한</a>
+<a href="http://ms.nala.ga/tag/%eb%93%9c%eb%9d%bc%eb%a7%88/" class="tag-cloud-link tag-link-1041 tag-link-position-17" style="font-size: 16.542372881356pt;" aria-label="드라마 (95 아이템)">드라마</a>
+<a href="http://ms.nala.ga/tag/%eb%a6%ac%eb%b7%b0/" class="tag-cloud-link tag-link-447 tag-link-position-18" style="font-size: 12.508474576271pt;" aria-label="리뷰 (64 아이템)">리뷰</a>
+<a href="http://ms.nala.ga/tag/%eb%a7%9b%ec%a7%91/" class="tag-cloud-link tag-link-782 tag-link-position-19" style="font-size: 16.779661016949pt;" aria-label="맛집 (97 아이템)">맛집</a>
+<a href="http://ms.nala.ga/tag/%eb%aa%a8%ec%9d%8c/" class="tag-cloud-link tag-link-1142 tag-link-position-20" style="font-size: 13.694915254237pt;" aria-label="모음 (72 아이템)">모음</a>
+<a href="http://ms.nala.ga/tag/%eb%aa%b8%eb%a7%a4/" class="tag-cloud-link tag-link-2391 tag-link-position-21" style="font-size: 15.830508474576pt;" aria-label="몸매 (88 아이템)">몸매</a>
+<a href="http://ms.nala.ga/tag/%eb%b0%a9%eb%b2%95/" class="tag-cloud-link tag-link-930 tag-link-position-22" style="font-size: 17.491525423729pt;" aria-label="방법 (103 아이템)">방법</a>
+<a href="http://ms.nala.ga/tag/%eb%b0%b0%ec%9a%b0/" class="tag-cloud-link tag-link-895 tag-link-position-23" style="font-size: 15.593220338983pt;" aria-label="배우 (86 아이템)">배우</a>
+<a href="http://ms.nala.ga/tag/%eb%b6%80%ec%82%b0/" class="tag-cloud-link tag-link-157 tag-link-position-24" style="font-size: 8.4745762711864pt;" aria-label="부산 (43 아이템)">부산</a>
+<a href="http://ms.nala.ga/tag/%ec%82%ac%eb%9e%91/" class="tag-cloud-link tag-link-2972 tag-link-position-25" style="font-size: 14.406779661017pt;" aria-label="사랑 (77 아이템)">사랑</a>
+<a href="http://ms.nala.ga/tag/%ec%82%ac%ec%a7%84/" class="tag-cloud-link tag-link-410 tag-link-position-26" style="font-size: 9.4237288135593pt;" aria-label="사진 (47 아이템)">사진</a>
+<a href="http://ms.nala.ga/tag/%ec%95%84%eb%82%b4/" class="tag-cloud-link tag-link-3039 tag-link-position-27" style="font-size: 9.6610169491525pt;" aria-label="아내 (48 아이템)">아내</a>
+<a href="http://ms.nala.ga/tag/%ec%95%88%eb%82%b4/" class="tag-cloud-link tag-link-1327 tag-link-position-28" style="font-size: 11.322033898305pt;" aria-label="안내 (56 아이템)">안내</a>
+<a href="http://ms.nala.ga/tag/%ec%95%8c%ec%95%84%eb%b3%b4%ea%b8%b0/" class="tag-cloud-link tag-link-821 tag-link-position-29" style="font-size: 15.118644067797pt;" aria-label="알아보기 (82 아이템)">알아보기</a>
+<a href="http://ms.nala.ga/tag/%ec%95%8c%ec%95%84%eb%b3%b4%ec%9e%90/" class="tag-cloud-link tag-link-341 tag-link-position-30" style="font-size: 11.322033898305pt;" aria-label="알아보자 (56 아이템)">알아보자</a>
+<a href="http://ms.nala.ga/tag/%ec%97%ac%ed%96%89/" class="tag-cloud-link tag-link-873 tag-link-position-31" style="font-size: 17.016949152542pt;" aria-label="여행 (98 아이템)">여행</a>
+<a href="http://ms.nala.ga/tag/%ec%98%81%ed%99%94/" class="tag-cloud-link tag-link-562 tag-link-position-32" style="font-size: 19.389830508475pt;" aria-label="영화 (124 아이템)">영화</a>
+<a href="http://ms.nala.ga/tag/%ec%98%a4%eb%8a%98/" class="tag-cloud-link tag-link-1059 tag-link-position-33" style="font-size: 13.694915254237pt;" aria-label="오늘 (72 아이템)">오늘</a>
+<a href="http://ms.nala.ga/tag/%ec%9a%b0%eb%a6%ac/" class="tag-cloud-link tag-link-888 tag-link-position-34" style="font-size: 11.322033898305pt;" aria-label="우리 (57 아이템)">우리</a>
+<a href="http://ms.nala.ga/tag/%ec%9c%84%ed%95%9c/" class="tag-cloud-link tag-link-1175 tag-link-position-35" style="font-size: 12.983050847458pt;" aria-label="위한 (66 아이템)">위한</a>
+<a href="http://ms.nala.ga/tag/%ec%9d%b4%ec%95%bc%ea%b8%b0/" class="tag-cloud-link tag-link-611 tag-link-position-36" style="font-size: 12.508474576271pt;" aria-label="이야기 (64 아이템)">이야기</a>
+<a href="http://ms.nala.ga/tag/%ec%9d%b4%ec%9c%a0/" class="tag-cloud-link tag-link-296 tag-link-position-37" style="font-size: 10.372881355932pt;" aria-label="이유 (51 아이템)">이유</a>
+<a href="http://ms.nala.ga/tag/%ec%9e%90%ea%b2%a9%ec%a6%9d/" class="tag-cloud-link tag-link-2111 tag-link-position-38" style="font-size: 9.4237288135593pt;" aria-label="자격증 (47 아이템)">자격증</a>
+<a href="http://ms.nala.ga/tag/%ec%a0%95%eb%a6%ac/" class="tag-cloud-link tag-link-1831 tag-link-position-39" style="font-size: 13.220338983051pt;" aria-label="정리 (68 아이템)">정리</a>
+<a href="http://ms.nala.ga/tag/%ec%a0%95%eb%b3%b4/" class="tag-cloud-link tag-link-89 tag-link-position-40" style="font-size: 15.118644067797pt;" aria-label="정보 (83 아이템)">정보</a>
+<a href="http://ms.nala.ga/tag/%ec%b6%94%ec%b2%9c/" class="tag-cloud-link tag-link-146 tag-link-position-41" style="font-size: 22pt;" aria-label="추천 (162 아이템)">추천</a>
+<a href="http://ms.nala.ga/tag/%ec%b6%9c%ec%97%b0/" class="tag-cloud-link tag-link-2930 tag-link-position-42" style="font-size: 10.847457627119pt;" aria-label="출연 (54 아이템)">출연</a>
+<a href="http://ms.nala.ga/tag/%ed%95%9c%ea%b5%ad/" class="tag-cloud-link tag-link-3361 tag-link-position-43" style="font-size: 11.796610169492pt;" aria-label="한국 (59 아이템)">한국</a>
+<a href="http://ms.nala.ga/tag/%ed%9a%a8%eb%8a%a5/" class="tag-cloud-link tag-link-810 tag-link-position-44" style="font-size: 9.6610169491525pt;" aria-label="효능 (48 아이템)">효능</a>
+<a href="http://ms.nala.ga/tag/%ed%9b%84%ea%b8%b0/" class="tag-cloud-link tag-link-14 tag-link-position-45" style="font-size: 17.966101694915pt;" aria-label="후기 (109 아이템)">후기</a></div>
+</div>	    </div>
+	</div>
+
+        </div> <!-- /.row -->
+    </div> <!-- /.container -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <hr>
+            </div>
+        </div>
+    </div>
+    <footer class="site-footer" role="contentinfo">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 text-center">
+  
+                    <p></p>
+                    
+                                            <div class="footer-social-icons">
+                                                                                                                                                                                                                                                                                                                                                                                                        
+                        </div>
+                    
+                </div>
+            </div>
+        </div>
+    </footer>
+
+            <div class="scroll-up">
+            <a href="#"><i class="fa fa-angle-up"></i></a>
+        </div>
+        <!-- Scroll Up -->
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/af2821b0/cloudflare-static/email-decode.min.js"></script><script type='text/javascript' src='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/js/bootstrap.min.js?ver=3.3.5'></script>
+<script type='text/javascript' src='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/js/scripts.js'></script>
+<script type='text/javascript' src='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/js/jquery.fitvids.js'></script>
+<script type='text/javascript' src='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/js/smoothscroll.js'></script>
+<script type='text/javascript' src='http://ms.nala.ga/wp-includes/js/wp-embed.min.js?ver=4.8.4'></script>
+    </body>
+</html>

@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="profile" href="http://gmpg.org/xfn/11">
+    <link rel="pingback" href="http://ms.nala.ga/xmlrpc.php">
+
+<title>[JavaScript, TypeScript] 코드 보안 | All About MS CCL Contents</title>
+<meta name='robots' content='noindex,follow' />
+
+<!-- All in One SEO Pack 2.4.4 by Michael Torbert of Semper Fi Web Design[276,347] -->
+<meta name="description"  content="3줄 요약 자바스크립트와 타입스크립트를 공부하면서 가장큰 불안요소가 내가 만든 코드 ...중략... 기능을 잘 사용하면 코드 보안에 도움이 될 것 같은 기능들을 설명하겠다. 클로저는 이미 생명 주기가 끝난 외부 함수의 변수를 참조하는 방법이다. ...중략... 정의한 함수를 리턴하고 사용은 바깥에서 하게된다. 우선 아래 코드를 보자 // 클로저 미적용var gameManager = { num: 1, ge ...중략... console.log(gameManager.getNum()); // 2 코드 보안자바스크립트와 타입스크립트를 공부하면서 가장큰 불안요소가 내가 만든" />
+<meta name="robots" content="index,nofollow" />
+
+<link rel="canonical" href="http://ms.nala.ga/javascript-typescript-%ec%bd%94%eb%93%9c-%eb%b3%b4%ec%95%88/" />
+<!-- /all in one seo pack -->
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="All About MS CCL Contents &raquo; 피드" href="http://ms.nala.ga/feed/" />
+<link rel="alternate" type="application/rss+xml" title="All About MS CCL Contents &raquo; 댓글 피드" href="http://ms.nala.ga/comments/feed/" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.3\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.3\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/ms.nala.ga\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.8.4"}};
+			!function(a,b,c){function d(a){var b,c,d,e,f=String.fromCharCode;if(!k||!k.fillText)return!1;switch(k.clearRect(0,0,j.width,j.height),k.textBaseline="top",k.font="600 32px Arial",a){case"flag":return k.fillText(f(55356,56826,55356,56819),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,56826,8203,55356,56819),0,0),c=j.toDataURL(),b!==c&&(k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447),0,0),c=j.toDataURL(),b!==c);case"emoji4":return k.fillText(f(55358,56794,8205,9794,65039),0,0),d=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55358,56794,8203,9794,65039),0,0),e=j.toDataURL(),d!==e}return!1}function e(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i,j=b.createElement("canvas"),k=j.getContext&&j.getContext("2d");for(i=Array("flag","emoji4"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='bootstrap-css-css'  href='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/css/bootstrap.min.css?ver=3.3.5' type='text/css' media='all' />
+<link rel='stylesheet' id='font-awesome-css-css'  href='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/css/font-awesome.min.css?ver=4.4.0' type='text/css' media='all' />
+<link rel='stylesheet' id='shaped-blog-stylesheet-css'  href='http://ms.nala.ga/wp-content/themes/shaped-blog/style.css?ver=4.8.4' type='text/css' media='all' />
+<link rel='stylesheet' id='responsive-css-css'  href='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/css/responsive.css' type='text/css' media='all' />
+<script type='text/javascript' src='http://ms.nala.ga/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
+<script type='text/javascript' src='http://ms.nala.ga/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+<link rel='https://api.w.org/' href='http://ms.nala.ga/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://ms.nala.ga/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://ms.nala.ga/wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='신입사원 웹 개발자 필기 시험 문제' href='http://ms.nala.ga/%ec%8b%a0%ec%9e%85%ec%82%ac%ec%9b%90-%ec%9b%b9-%ea%b0%9c%eb%b0%9c%ec%9e%90-%ed%95%84%ea%b8%b0-%ec%8b%9c%ed%97%98-%eb%ac%b8%ec%a0%9c/' />
+<link rel='next' title='LG G6 디자인 유출 어떻게 봐야하나' href='http://ms.nala.ga/lg-g6-%eb%94%94%ec%9e%90%ec%9d%b8-%ec%9c%a0%ec%b6%9c-%ec%96%b4%eb%96%bb%ea%b2%8c-%eb%b4%90%ec%95%bc%ed%95%98%eb%82%98/' />
+<meta name="generator" content="WordPress 4.8.4" />
+<link rel='shortlink' href='http://ms.nala.ga/?p=18949' />
+<link rel="alternate" type="application/json+oembed" href="http://ms.nala.ga/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fms.nala.ga%2Fjavascript-typescript-%25ec%25bd%2594%25eb%2593%259c-%25eb%25b3%25b4%25ec%2595%2588%2F" />
+<link rel="alternate" type="text/xml+oembed" href="http://ms.nala.ga/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fms.nala.ga%2Fjavascript-typescript-%25ec%25bd%2594%25eb%2593%259c-%25eb%25b3%25b4%25ec%2595%2588%2F&#038;format=xml" />
+
+	<style>
+
+		/* Border Color */
+		.btn-social:hover,
+		blockquote,
+		#respond input:focus[type="text"], 
+	    #respond input:focus[type="email"], 
+	    #respond input:focus[type="url"],
+	    #respond textarea:focus,
+	    #comments .comment-reply a:hover
+		{
+			border-color: ;
+		}
+
+		
+		/* Background Color */
+		.scroll-up a,
+		.btn-social:hover,
+		button,
+		input[type="button"],
+		input[type="reset"],
+		input[type="submit"],
+		.navbar-default .navbar-nav .dropdown-menu li a:hover, .dropdown-menu li a:focus, .navbar-default .navbar-nav .dropdown-menu .active a,
+		.pagination>li>a:focus, .pagination>li>a:hover, .pagination>li>span:focus, .pagination>li>span:hover, .pagination li .current,
+		.next-previous-posts .next-post a:hover,
+		.next-previous-posts .previous-post a:hover,
+		.btn-goback,
+		.btn-submit,
+		a.more-link,
+		.featured-post .fa,
+		#comments .comment-reply a:hover,
+		.widget .tagcloud a
+		{
+			background-color: ;
+		}
+
+		
+		/* Color */
+		.text-logo a,
+		.navbar-default .navbar-nav .active a, .navbar-default .navbar-nav .active a:hover, .navbar-default .navbar-nav .active a:focus,
+		.navbar-default .navbar-nav li a:hover, .navbar-default .navbar-nav li a:focus,
+		a:hover,
+    	a:focus,
+		.next-previous-posts .previous-post a,
+		.next-previous-posts .next-post a,
+		.pagination>li>a, .pagination>li>span,
+		#comments .comment-author a:hover, 
+    	#respond .logged-in-as a:hover,
+    	#wp-calendar a,
+    	h2.entry-title a:hover
+		{
+			color: ;
+		}
+
+
+		/* A Color */
+		a{
+			color: ;
+		}
+
+		/* a:hover Color */
+		a:hover,
+		a:focus,
+		a:active,
+		.widget a:hover,
+		.post .post-content .entry-meta ul li a:hover
+		{
+			color: ;
+		}
+
+		/* .featured-post .fa:after*/
+		.featured-post .fa:after{
+			border-color:   transparent ;
+		}
+
+
+		
+
+	</style>
+</head>
+
+<body class="post-template-default single single-post postid-18949 single-format-standard">
+
+    <div id="st-preloader">
+        <div id="pre-status">
+            <div class="preload-placeholder"></div>
+        </div>
+    </div>
+<!-- /Preloader -->
+
+<header id="header">	
+	<div id="trueHeader">
+    	<div class="wrapper">
+            <div class="container">
+            	<!-- Menu -->
+            	<div class="menu_main">
+                	<div class="navbar blogx-navbar navbar-default">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#st-navber-collapse">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+
+                                                            <div class="text-logo">
+                                    <a href="http://ms.nala.ga">All About MS CCL Contents</a>
+                                    <p>All About MS CCL Contents</p>
+                                </div><!-- /Logo -->
+                                                    </div>
+                      
+                        <div id="st-navber-collapse" class="navbar-collapse collapse pull-right">
+                             
+                        </div>
+                    </div>
+            	</div><!-- end menu -->
+        	</div> <!-- /.container -->
+    	</div>
+	</div>
+	<DIV class='ads_adsense_img' style='margin:40px 0px 40px 0px;'>
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<!-- only display -->
+	<ins class="adsbygoogle"
+	     style="display:block"
+	     data-ad-client="ca-pub-8393857339019314"
+	     data-ad-slot="7474886381"
+	     data-ad-format="auto"></ins>
+	<script>
+	(adsbygoogle = window.adsbygoogle || []).push({});
+	</script>
+	</DIV>	
+
+</header>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div id="primary" class="content-area">
+                    <main id="main" class="site-main" role="main">
+
+                        
+                                <article id="post-18949" class="post-18949 post type-post status-publish format-standard hentry category-uncategorized tag-javascript tag-typescript tag-15598 tag-12812">
+    <header class="entry-header">
+        
+        
+    </header> <!--/.entry-header -->
+
+    <div class="clearfix post-content media">
+
+        <h2 class="entry-title">
+            [JavaScript, TypeScript] 코드 보안        </h2> <!-- //.entry-title -->
+
+        <div class="clearfix entry-meta">
+            
+            <ul class="list-inline">
+                <li>
+                    <span class="author vcard">
+                        By <a class="url fn n" href="http://ms.nala.ga/author/admin/">admin</a>                    </span>
+                </li>
+                <li>
+                    on <span class="posted-on">1월 16, 2018</span>
+                </li>
+                                    <li>
+                        in <span class="posted-in">
+                            <a href="http://ms.nala.ga/category/uncategorized/" rel="category tag">미분류</a>                        </span>
+                    </li>
+                            </ul>
+                </div> <!--/.entry-meta -->
+        
+        <div class="entry-summary">
+            <h1>3줄 요약 </h1>
+<div style='color:#fff;background-color:#000;border-radius:10px;'>
+<ol>
+<li><span>자바스크립트와 타입스크립트를 공부하면서 가장큰 불안요소가 내가 만든 코드 <small>&#8230;중략&#8230;</small> 기능을 잘 사용하면 코드 보안에 도움이 될 것 같은 기능들을 설명하겠다.</span></li>
+<li><span>클로저는 이미 생명 주기가 끝난 외부 함수의 변수를 참조하는 방법이다.  <small>&#8230;중략&#8230;</small> 정의한 함수를 리턴하고 사용은 바깥에서 하게된다. 우선 아래 코드를 보자</span></li>
+<li><span>// 클로저 미적용var gameManager = { num: 1, ge <small>&#8230;중략&#8230;</small> console.log(gameManager.getNum());  // 2</span></li>
+</ol>
+</div>
+<p><span id="more-18949"></span></p>
+<p><iframe src='http://ad.selfhow.com/rd' width='100%' border=0 frameborder=0 style='height:auto;width:100%'></iframe></p>
+<hr />
+<p><span style="font-size: 18pt;"><b>코드 보안</b></span></p>
+<p></p>
+<p>자바스크립트와 타입스크립트를 공부하면서 가장큰 불안요소가 내가 만든 코드에 접근하여 코드를 조작하는 부분이었다. 크롬이나 익스플로러 등, 웹으로 동작하는 모든것들은 개발자 창을 통해 코드를 볼 수 있고, 콘솔창에서 어떤 함수나 변수에 접근도 가능하다. 물론 해킹을 방지하기 위해서 자바스크립트 난독화 라던지 암호화 등 많은 보안 기술이 나왔지만, 여전히 허점은 존재하는 것 같다. 이번 내용은 필자가 자바스크립트와 타입스크립트를 공부하면서 이 기능을 잘 사용하면 코드 보안에 도움이 될 것 같은 기능들을 설명하겠다.</p>
+<p><b><br /></b></p>
+<p><b><span style="font-size: 18pt;">클로저 (closure</span><span style="font-size: 18pt;">)</span></b></p>
+<p></p>
+<p>클로저는 이미 생명 주기가 끝난 외부 함수의 변수를 참조하는 방법이다. 외부 함수가 종료 되더라도 내부함수가 실행되는 상태면 내부함수에서 참조하는 외부함수는 닫히지 못하고 내부함수에 의해서 닫히게 된다. 즉, 클로저 안에 정의된 함수는 외부에서 만들어진 환경을 기억하고 있다 라고 생각하면 된다.</p>
+<p>흔히 함수 내에서 함수를 정의하고 사용하면 클로저라고 한다. 하지만 보통 정의한 함수를 리턴하고 사용은 바깥에서 하게된다. 우선 아래 코드를 보자</p>
+<p></p>
+<div style='color: rgb(212, 212, 212); background-color: rgb(30, 30, 30); font-family: Menlo, Monaco, "Courier New", monospace; font-size: 12px; line-height: 18px; white-space: pre;'>
+<div><span style="color: #569cd6;">function</span> <span style="color: #dcdcaa;">getClosure</span>() {</div>
+<div> <span style="color: #569cd6;">var</span> <span style="color: #9cdcfe;">text</span> = <span style="color: #ce9178;">&#8216;접근가능??&#8217;</span>;</div>
+<div> <span style="color: #c586c0;">return</span> <span style="color: #569cd6;">function</span>() {</div>
+<div> <span style="color: #c586c0;">return</span> <span style="color: #9cdcfe;">text</span>;</div>
+<div>    };</div>
+<div>}</div>
+<div><span style="color: #569cd6;">var</span> <span style="color: #9cdcfe;">closure</span> = <span style="color: #dcdcaa;">getClosure</span>();</div>
+<div><span style="color: #4ec9b0;">console</span>.<span style="color: #dcdcaa;">log</span>(<span style="color: #dcdcaa;">closure</span>()); <span style="color: #608b4e;">// &#8216;접근가능??&#8217;</span></div>
+</div>
+<p></p>
+<p>위에서 정의한 getClosure를 호출해서 closure 변수에 함수를 반환하고, 반환된 함수는 getClosure() 내부에서 선언된 변수를 참조하고 있다. 또한 이렇게 참조된 변수는 함수 실행이 끝났다고 해서 사라지지 않았고, 제대로 된 값을 반환하고 있는 걸 알 수 있다.</p>
+<p>그렇다면 이 클로저를 이용하여 어떻게 코드를 보안할 수 있을까?? 바로 함수내에 있는 변수 접근 제한을 줄 수 있다. 위의 예시코드도 보면 closure 변수를 호출해서 text 값을 참조한것이지, 직접적으로 console.log(text)를 호출해보면 오류가 발생할 것이다. 이 방법을 사용해서 모든 접근제한자가 public인 변수를 private 하게 꾸며줄 수 있다는 것이다.</p>
+<p></p>
+<p>예시로 아래의 gameManager 객체를 보자 (필자가 게임 개발자라서&#8230; ㅎㅎ). </p>
+<p></p>
+<div style='color: rgb(212, 212, 212); background-color: rgb(30, 30, 30); font-family: Menlo, Monaco, "Courier New", monospace; font-size: 12px; line-height: 18px; white-space: pre;'>
+<div><span style="color: #608b4e;">// 클로저 미적용</span></div>
+<div><span style="color: #569cd6;">var</span> <span style="color: #9cdcfe;">gameManager</span> = {</div>
+<div> <span style="color: #9cdcfe;">num:</span> <span style="color: #b5cea8;">1</span>,</div>
+<div> <span style="color: #dcdcaa;">getNum</span><span style="color: #9cdcfe;">:</span> <span style="color: #569cd6;">function</span> () {</div>
+<div> <span style="color: #c586c0;">return</span> <span style="color: #569cd6;">this</span>.<span style="color: #9cdcfe;">num</span>;</div>
+<div>    }</div>
+<div>}</div>
+<div><span style="color: #4ec9b0;">console</span>.<span style="color: #dcdcaa;">log</span>(<span style="color: #9cdcfe;">gameManager</span>.<span style="color: #dcdcaa;">getNum</span>());  <span style="color: #608b4e;">// 1</span></div>
+<div><span style="color: #9cdcfe;">gameManager</span>.<span style="color: #9cdcfe;">num</span> = <span style="color: #b5cea8;">2</span>;</div>
+<div><span style="color: #4ec9b0;">console</span>.<span style="color: #dcdcaa;">log</span>(<span style="color: #9cdcfe;">gameManager</span>.<span style="color: #dcdcaa;">getNum</span>());  <span style="color: #608b4e;">// 2</span></div>
+</div>
+<p></p>
+<p>gameManager 객체에는 num 프로퍼티와 num 프로퍼티값을 반환하는 getNum 메서드가 있다. 클로저가 미적용된 객체는 직접적으로 num 프로퍼티에 접근할 수 있어서 마지막 console.log 에 프린트된 값을 보면 2가 나오게된다. 웹에서 콘솔로 코드를 수정할 수 있는 스크립트의 특성상, 이런식으로 코드를 작성하면 변수 조작은 식은죽 먹기다.</p>
+<div></div>
+<div>
+<div style='color: rgb(212, 212, 212); background-color: rgb(30, 30, 30); font-family: Menlo, Monaco, "Courier New", monospace; font-size: 12px; line-height: 18px; white-space: pre;'>
+<div><span style="color: #608b4e;">// 클로저 적용</span></div>
+<div><span style="color: #569cd6;">var</span> <span style="color: #9cdcfe;">gameManager</span> = (<span style="color: #569cd6;">function</span> () {</div>
+<div> <span style="color: #569cd6;">var</span> <span style="color: #9cdcfe;">_num</span> = <span style="color: #b5cea8;">1</span>;</div>
+<div> <span style="color: #c586c0;">return</span> {</div>
+<div> <span style="color: #dcdcaa;">getNum</span><span style="color: #9cdcfe;">:</span> <span style="color: #569cd6;">function</span> () {</div>
+<div> <span style="color: #c586c0;">return</span> <span style="color: #9cdcfe;">_num</span>;</div>
+<div>        }</div>
+<div>    }</div>
+<div>}());</div>
+<div><span style="color: #4ec9b0;">console</span>.<span style="color: #dcdcaa;">log</span>(<span style="color: #9cdcfe;">gameManager</span>.<span style="color: #dcdcaa;">getNum</span>()); <span style="color: #608b4e;">// 1</span></div>
+<div><span style="color: #9cdcfe;">gameManager</span>.<span style="color: #9cdcfe;">_num</span> = <span style="color: #b5cea8;">2</span>;</div>
+<div><span style="color: #4ec9b0;">console</span>.<span style="color: #dcdcaa;">log</span>(<span style="color: #9cdcfe;">gameManager</span>.<span style="color: #dcdcaa;">getNum</span>()); <span style="color: #608b4e;">// 1</span></div>
+</div>
+</div>
+<p></p>
+<p>위의 코드는 클로저가 적용된 gameManager 객체이다. 아니 function을 대입했는데 왜 이게 객제라고 하냐고 물을수도 있지만, 그 이유는 함수끝에 () 를 넣어서 즉시실행했기 때문이다. 즉 gameManager 변수에는 익명함수를 즉시실행한 리턴값이 담겨있다. 리턴값에는 getNum 메서드가 담겨있는 객체이고 getNum은 _num의 값을 출력하게 되어있다. 우리는 클로저에 대해 배웠으니 gameManager.getNum() 을 실행하면 1이 나오는것을 알 수 있다. 그럼 아까와 똑같이 gameManager의 _num프로퍼티를 변경하고 getNum을 호출하면 뭐가 나올까? 당황스럽게도 1이나온다. 그 이유는 우리가 변경한 _num은 리턴한 객체의 this._num이지, 외부에 선언한 var _num이 아니라는 것이다. 이처럼 클로저로 외부의 접근을 제한하면서도 개발자는 필요할 때 사용할 수 있게 코드를 구현할 수 있다.</p>
+<p><b><br /></b></p>
+<p><span style="font-size: 18pt;"><b>get / set</b></span></p>
+<p></p>
+<p>get / set 는 ES5 부터 사용할 수 있는 기능이다. 어떤 프로퍼티에 값을 저장하거나 읽을 때 설정을 하고싶다면 get과 set 기능을 사용할 수 있다. 아래 TypeScript 예제를 보자.</p>
+<p></p>
+<div style='color: rgb(212, 212, 212); background-color: rgb(30, 30, 30); font-family: Menlo, Monaco, "Courier New", monospace; font-size: 12px; line-height: 18px; white-space: pre;'>
+<div><span style="color: #569cd6;">class</span> <span style="color: #4ec9b0;">Employee</span> {</div>
+<div> <span style="color: #9cdcfe;">fullName</span>: <span style="color: #4ec9b0;">string</span>;</div>
+<div>}</div>
+<p></p>
+<div><span style="color: #569cd6;">let</span> <span style="color: #9cdcfe;">e</span> = <span style="color: #569cd6;">new</span> <span style="color: #4ec9b0;">Employee</span>();</div>
+<div><span style="color: #9cdcfe;">e</span>.<span style="color: #9cdcfe;">fullName</span> = <span style="color: #ce9178;">&#8220;Bob Smith&#8221;</span>;</div>
+<div><span style="color: #c586c0;">if</span> (<span style="color: #9cdcfe;">e</span>.<span style="color: #9cdcfe;">fullName</span>) {</div>
+<div> <span style="color: #4ec9b0;">console</span>.<span style="color: #dcdcaa;">log</span>(<span style="color: #9cdcfe;">e</span>.<span style="color: #9cdcfe;">fullName</span>);</div>
+<div>}</div>
+</div>
+<p></p>
+<p>위의 코드는 간단한 Employee 클래스안에 fullName 프로퍼티가 있는 코드이다. new Employee() 를하면 Employee 객체가 변수 e에 담기게 되고 e.fullName 으로 접근하여 값을 변경할 수 있다. 이렇게 코드를 작성하면 외부에서 쉽게 fullName 프로퍼티에 접근이 가능하여 코드를 조작하기가 쉬워진다. 이제 이를 해결하기 위해서 get / set 을 사용할 차례다. 아래코드를 보자.</p>
+<p></p>
+<div style='color: rgb(212, 212, 212); background-color: rgb(30, 30, 30); font-family: Menlo, Monaco, "Courier New", monospace; font-size: 12px; line-height: 18px; white-space: pre;'>
+<div><span style="color: #569cd6;">class</span> <span style="color: #4ec9b0;">Employee</span> {</div>
+<div> <span style="color: #569cd6;">private</span> <span style="color: #9cdcfe;">_fullName</span>: <span style="color: #4ec9b0;">string</span>;</div>
+<div> <span style="color: #569cd6;">private</span> <span style="color: #9cdcfe;">passcode</span> = <span style="color: #ce9178;">&#8220;secret passcode&#8221;</span>;</div>
+<p></p>
+<div> <span style="color: #569cd6;">get</span> <span style="color: #dcdcaa;">fullName</span>(): <span style="color: #4ec9b0;">string</span> {</div>
+<div> <span style="color: #c586c0;">return</span> <span style="color: #569cd6;">this</span>.<span style="color: #9cdcfe;">_fullName</span>;</div>
+<div>    }</div>
+<p></p>
+<div> <span style="color: #569cd6;">set</span> <span style="color: #dcdcaa;">fullName</span>(<span style="color: #9cdcfe;">newName</span>: <span style="color: #4ec9b0;">string</span>) {</div>
+<div> <span style="color: #c586c0;">if</span> (<span style="color: #569cd6;">this</span>.<span style="color: #9cdcfe;">passcode</span> &amp;&amp; <span style="color: #569cd6;">this</span>.<span style="color: #9cdcfe;">passcode</span> == <span style="color: #ce9178;">&#8220;secret passcode&#8221;</span>) {</div>
+<div> <span style="color: #569cd6;">this</span>.<span style="color: #9cdcfe;">_fullName</span> = <span style="color: #9cdcfe;">newName</span>;</div>
+<div>        }</div>
+<div> <span style="color: #c586c0;">else</span> {</div>
+<div> <span style="color: #4ec9b0;">console</span>.<span style="color: #dcdcaa;">log</span>(<span style="color: #ce9178;">&#8220;Error: Unauthorized update of employee!&#8221;</span>);</div>
+<div>        }</div>
+<div>    }</div>
+<div>}</div>
+<p></p>
+<div><span style="color: #569cd6;">let</span> <span style="color: #9cdcfe;">e</span> = <span style="color: #569cd6;">new</span> <span style="color: #4ec9b0;">Employee</span>();</div>
+<div><span style="color: #9cdcfe;">e</span>.<span style="color: #9cdcfe;">fullName</span> = <span style="color: #ce9178;">&#8220;Bob Smith&#8221;</span>;</div>
+<div><span style="color: #c586c0;">if</span> (<span style="color: #9cdcfe;">e</span>.<span style="color: #9cdcfe;">fullName</span>) {</div>
+<div> <span style="color: #4ec9b0;">console</span>.<span style="color: #dcdcaa;">log</span>(<span style="color: #9cdcfe;">e</span>.<span style="color: #9cdcfe;">fullName</span>);</div>
+<div>}</div>
+</div>
+<p></p>
+<p>먼저 쉽게 접근 가능했던 _fullName을 private 으로 변경해서 Employee 클래스를 제외하고는 접근할 수 없게 만든다. 그리고 fullName 이름을 사용하는 get / set 메서드를 생성한다. 생성은 (get / set) 메서드명 {} 으로 생성한다. get에는 return으로 현재 _fullName 값을 전달해주고 set 에는 코드 예외처리를 통해 _fullName의 값을 변경한다. 위 의 예제는 Employee 객체를 e 변수에 담아서 e.fullName 에 &#8220;Bob Smith&#8221; 값을 넣는다. 그럼 Employee 객체에서는 값을 넣었으니 set 함수가 호출이 되고 예외 처리를 통해 _fullName에 값을 넣어주게 된다. 만약 passcode 가 잘못된 형식으로 되어있으면 값을 넣을 수가 없게 된다. 마지막으로 e.fullName 을 console.log 로 프린트하면 get이 호출되면서 _fullName의 값을 호출할 수 있게 된다. </p>
+<p>이처럼 get 과 set 을 이용하여 클로저와 비슷한 방식으로 변수로 직접접근 대신, 간접적으로 거쳐서 데이터를 변경할 수 있게 된다.</p>
+<p></p>
+<p><b><span style="font-size: 18pt;">데코레이터 (decorator</span><span style="font-size: 18pt;">)</span></b></p>
+<p></p>
+<p>데코레이터는 ES7 부터 사용할 수 있는 기능이고 주로 TypeScript에서 사용한다. 데코레이터는 함수를 선언한 뒤 어노테이션(@) 키워드를 이용하여 선언된 함수를 데코레이터로 사용할 수 있다. 어노테이션은 모든 클래스나 메서드, 프로퍼티, 파라미터에 사용할 수 있다. 많은 기능들이 있지만 그중 보안에 관련한 기능을 살펴보고 더많은 기능이 궁금하면 <a class="tx-link" href="https://www.typescriptlang.org/docs/handbook/decorators.html" target="_blank">여기</a> 에서 확인하기 바란다.</p>
+<p>데코레이터 에서 가장 흥미로운 부분은 메서드나 프로퍼티를 수정 불가능하게 만드는 기능이 있다는 것이다. 아래 코드를 보자.</p>
+<p></p>
+<div style='color: rgb(212, 212, 212); background-color: rgb(30, 30, 30); font-family: Menlo, Monaco, "Courier New", monospace; font-size: 12px; line-height: 18px; white-space: pre;'>
+<div><span style="color: #608b4e;">// 데코레이터 함수는 컴퓨터가 코드를 읽는 순간부터 실행된다.</span></div>
+<div><span style="color: #569cd6;">function</span> <span style="color: #dcdcaa;">editable</span>(<span style="color: #9cdcfe;">canBeEditable</span>: <span style="color: #4ec9b0;">boolean</span>) {</div>
+<div> <span style="color: #c586c0;">return</span> <span style="color: #569cd6;">function</span> (<span style="color: #9cdcfe;">target</span>: <span style="color: #4ec9b0;">any</span>, <span style="color: #9cdcfe;">propName</span>: <span style="color: #4ec9b0;">string</span>, <span style="color: #9cdcfe;">description</span>: <span style="color: #4ec9b0;">PropertyDescriptor</span>) {</div>
+<div> <span style="color: #4ec9b0;">console</span>.<span style="color: #dcdcaa;">log</span>(<span style="color: #9cdcfe;">target</span>); <span style="color: #608b4e;">// Person 객체</span></div>
+<div> <span style="color: #4ec9b0;">console</span>.<span style="color: #dcdcaa;">log</span>(<span style="color: #9cdcfe;">propName</span>); <span style="color: #608b4e;">// hello 메서드 이름</span></div>
+<div> <span style="color: #9cdcfe;">description</span>.<span style="color: #9cdcfe;">writable</span> = <span style="color: #9cdcfe;">canBeEditable</span>; <span style="color: #608b4e;">//description.writable 이 false 면 수정이 안된다.</span></div>
+<div>    }</div>
+<div>}</div>
+<div><span style="color: #569cd6;">class</span> <span style="color: #4ec9b0;">Person</span> {</div>
+<div>    @<span style="color: #dcdcaa;">editable</span>(<span style="color: #569cd6;">false</span>)</div>
+<div> <span style="color: #dcdcaa;">hello</span>() {</div>
+<div> <span style="color: #4ec9b0;">console</span>.<span style="color: #dcdcaa;">log</span>(<span style="color: #ce9178;">&#8216;hello~&#8217;</span>);</div>
+<div>    }</div>
+<div>}</div>
+<div><span style="color: #569cd6;">const</span> <span style="color: #9cdcfe;">p</span> = <span style="color: #569cd6;">new</span> <span style="color: #4ec9b0;">Person</span>();</div>
+<div><span style="color: #9cdcfe;">p</span>.<span style="color: #dcdcaa;">hello</span>(); <span style="color: #608b4e;">// hello~</span></div>
+<div><span style="color: #9cdcfe;">p</span>.<span style="color: #dcdcaa;">hello</span> = <span style="color: #569cd6;">function</span> () {</div>
+<div> <span style="color: #4ec9b0;">console</span>.<span style="color: #dcdcaa;">log</span>(<span style="color: #ce9178;">&#8216;world&#8217;</span>);</div>
+<div>}</div>
+<div><span style="color: #9cdcfe;">p</span>.<span style="color: #dcdcaa;">hello</span>(); <span style="color: #608b4e;">// hello~</span></div>
+</div>
+<p></p>
+<p>데코레이터로 정의된 함수는 컴퓨터가 코드를 읽는 순간에 실행된다. 위의 코드를 보면 컴퓨터가 Person 클래스를 읽으면서 @editable(false) 를 읽는 순간 editable함수가 실행된다는 것이다. 데코레이터는 방금 말했듯이 클래스나 메서드, 프로퍼티 파라미터에 사용할 수 있는데 첫번째 예시는 메서드에 데코레이터를 사용하는 방법이다.</p>
+<p>위의 코드는 Person 클래스에서 hello 메서드에 데코레이션을 달았다. 실행된 데코레이션 함수는 3개의 인자를 가진 함수를 반환하는데 첫번쨰 인자 target은 Person 객체를, propName은 데코레이션을 단 메서드의 이름, description는 ProertyDescriptor 객체를 가지고 있다. 여기서 3번째 인자인 description.writable을 false로 지정하면 해당 메서드는 오버로딩이 불가능 해진다. 메서드를 변경할 수 없다는 뜻이다. 아래 결과를 보면 중간에 p.hello를 재정의 했는데도 p.hello 를 호출하면 처음과 같은 값 hello~ 가 호출이 된다.</p>
+<p></p>
+<div style='color: rgb(212, 212, 212); background-color: rgb(30, 30, 30); font-family: Menlo, Monaco, "Courier New", monospace; font-size: 12px; line-height: 18px; white-space: pre;'>
+<div><span style="color: #9cdcfe;">hello</span>~</div>
+<div><span style="color: #9cdcfe;">hello</span>~</div>
+</div>
+<p></p>
+<p>아래는 프로퍼티 변경을 막는 예제이다. </p>
+<p></p>
+<div style='color: rgb(212, 212, 212); background-color: rgb(30, 30, 30); font-family: Menlo, Monaco, "Courier New", monospace; font-size: 12px; line-height: 18px; white-space: pre;'>
+<div><span style="color: #569cd6;">function</span> <span style="color: #dcdcaa;">writable</span>(<span style="color: #9cdcfe;">canBeWritable</span>: <span style="color: #4ec9b0;">boolean</span>) {</div>
+<div> <span style="color: #c586c0;">return</span> <span style="color: #569cd6;">function</span> (<span style="color: #9cdcfe;">target</span>: <span style="color: #4ec9b0;">any</span>, <span style="color: #9cdcfe;">propName</span>: <span style="color: #4ec9b0;">string</span>): <span style="color: #4ec9b0;">any</span> {</div>
+<div> <span style="color: #4ec9b0;">console</span>.<span style="color: #dcdcaa;">log</span>(<span style="color: #9cdcfe;">target</span>);</div>
+<div> <span style="color: #4ec9b0;">console</span>.<span style="color: #dcdcaa;">log</span>(<span style="color: #9cdcfe;">propName</span>);</div>
+<div> <span style="color: #c586c0;">return</span> {</div>
+<div> <span style="color: #9cdcfe;">writable:</span> <span style="color: #9cdcfe;">canBeWritable</span></div>
+<div>        };</div>
+<div>    }</div>
+<div>}</div>
+<div><span style="color: #569cd6;">class</span> <span style="color: #4ec9b0;">Person</span> {</div>
+<div>    @<span style="color: #dcdcaa;">writable</span>(<span style="color: #569cd6;">false</span>)</div>
+<div> <span style="color: #9cdcfe;">name</span>: <span style="color: #4ec9b0;">string</span> = <span style="color: #ce9178;">&#8220;manJae&#8221;</span>;</div>
+<div>}</div>
+<div><span style="color: #569cd6;">const</span> <span style="color: #9cdcfe;">p</span> = <span style="color: #569cd6;">new</span> <span style="color: #4ec9b0;">Person</span>();</div>
+<div><span style="color: #4ec9b0;">console</span>.<span style="color: #dcdcaa;">log</span>(<span style="color: #9cdcfe;">p</span>.<span style="color: #9cdcfe;">name</span>); <span style="color: #608b4e;">// manJae</span></div>
+<div><span style="color: #9cdcfe;">p</span>.<span style="color: #9cdcfe;">name</span> = <span style="color: #ce9178;">&#8216;minJae&#8217;</span>; <span style="color: #608b4e;">// error!</span></div>
+</div>
+<p></p>
+<p>아까 위의 메서드 데코레이터 와 비슷하게 writable 데코레이터 함수를 선언해서 name 프로퍼티에 데코레이터를 부착한 모습이다. 이번엔 인자가 2개인데 3번째 인자인 description이 return 객체로 대체하게 된다. 즉, 반환하는 객체에서 writable 프로퍼티를 false 로 지정해주면 name 프로퍼티를 수정불가능하게 할 수 있다. 위의 예시를 보면 p.name 을 변경하는 순간 에러가 발생하게 된다.</p>
+<p></p>
+<p>이처럼 데코레이터를 이용하여 클래스안에 프로퍼티나 메서드를 변경불가능하게 만들 수 있다. 이제 위와같은 기능을 배웠으니 실전으로 넘어가서 사용해보자.</p>
+<p></p>
+<p><span style="font-size: 18pt;"><b>텔레그램 게임 해킹</b></span></p>
+<p></p>
+<p>텔레그램이라는 인터넷 메신저가 있는데 거기서 지원하는 웹게임, 흔히 말하는 HTML5 게임을 제공하고 있다. 아래영상은 게임을 개발자모드에서 해킹하여 미사일의 속도를 1로 줄이는 영상이다.</p>
+<p></p>
+<div class="tt-youtube-plugin" style="text-align: center"><iframe allowfullscreen="" frameborder="0" height="420" src="http://www.youtube.com/embed/qaMHt1-LaAA?rel=0" width="560"></iframe></div>
+<p></p>
+<p>아이구야;;;; 미사일을 전역변수로 지정한것이 큰 오점이다. 전역변수는 코드에서 가장 접근하기 쉽고 변경하기 쉬운 것이다. 아마 코드 난독화도 안된다는걸로 알고 있다. 그래서 저렇게 쉽게 접근하여 미사일의 속도를 제어할 수 있게되는 것이다.</p>
+<p>그럼 어떻게하면 미사일을 접근하지 못하게 할 수 있을까? 일단 미사일을 전역이아닌 클래스나 객체에 담아야하고 클로저나 get / set으로 한번 감싸야 된다. 아래 코드를 보자.</p>
+<p></p>
+<div style='color: rgb(212, 212, 212); background-color: rgb(30, 30, 30); font-family: Menlo, Monaco, "Courier New", monospace; font-size: 12px; line-height: 18px; white-space: pre;'>
+<div><span style="color: #608b4e;">// 클로저, get / set 이용</span></div>
+<div><span style="color: #569cd6;">var</span> <span style="color: #9cdcfe;">bulletManager</span> = (<span style="color: #569cd6;">function</span> () {</div>
+<div> <span style="color: #569cd6;">var</span> <span style="color: #9cdcfe;">_bulletSpeed</span> = <span style="color: #b5cea8;">120</span>;</div>
+<p></p>
+<div> <span style="color: #c586c0;">return</span> {</div>
+<div> <span style="color: #569cd6;">get</span> <span style="color: #dcdcaa;">bulletSpeed</span> () {</div>
+<div> <span style="color: #c586c0;">return</span> <span style="color: #9cdcfe;">_bulletSpeed</span>;</div>
+<div>        },</div>
+<div> <span style="color: #569cd6;">set</span> <span style="color: #dcdcaa;">bulletSpeed</span> (<span style="color: #9cdcfe;">bulletSpeed</span>) {</div>
+<div> <span style="color: #608b4e;">// 외부에서 데이터를 접근하지 못하는 예외 처리</span></div>
+<div>        },</div>
+<div>    }</div>
+<div>}());</div>
+</div>
+<p></p>
+<p>일단 첫번째는 bulletSpeed를 bulletManager 클로저를 이용하여 객체에 담아 외부에서 접근하지 못하게 막았다. 이렇게 되면 코드압축을 통해서 변수를 쉽게 접근하지 못하게 할 수 있다. 두번째로는 get / set 을 이용하여 한번 감싸서 bulletSpeed에 접근 할 수 있다. set 을 통하여 예외처리를 통과하면 bulletSpeed의 값을 변경할 수 있게도 할 수 있다. 그보다도 가장 중요한 것은 중요한 데이터를 전역변수로 설정하지 않는것이 가장 중요하다.</p>
+<p></p>
+<p><span style="font-size: 18pt;"><b>코드 보안을 마치며</b></span></p>
+<p></p>
+<p>솔직히 100프로 보안은 힘들다고 생각한다. 하지만 해커들을 조금이나마 귀찮게 굴어서 해킹을 포기하게 만든다면 필자는 이와 같은 기능들을 적극 사용 할 것이다. ES5 이전만 해도 사용하고 싶은 패턴을 폴리필 해야만 했는데 버전이 업그레이드 되고나서 클래스, 프록시, 데코레이터 등등 많은 기능들이 추가되었다. 이렇게 좋은 기능들이 계속 추가하다보면 언젠가는 보안도 완벽하게 할 수 있는 코드를 작성할 수 있지 않을까 싶다.</p>
+<hr />
+<p><iframe src='http://ad.selfhow.com/rd' width='100%' border=0 frameborder=0 style='height:auto;width:100%'></iframe></p>
+<p><a href='http://thd0011.tistory.com/2' target='_blank'>Origin Content : 만재 송</a> | <a href="/cdn-cgi/l/email-protection#bcdfdfd0dffcd2ddd0dd92dbdd" target='_blank'>Contact : <span class="__cf_email__" data-cfemail="4724242b240729262b26692026">[email&#160;protected]</span></a>
+</p>
+<p>Cotent License : CC-BY </p>
+<p>This content is collected under the CCL license.</p>
+<p>Please check the license of the original article before asking about copyright.</p>
+<ul>
+<li><a href='/tag/JavaScript'>More About <span style='font-weight:bold;'>JavaScript</span></a></li>
+<li><a href='/tag/TypeScript'>More About <span style='font-weight:bold;'>TypeScript</span></a></li>
+<li><a href='/tag/코드'>More About <span style='font-weight:bold;'>코드</span></a></li>
+<li><a href='/tag/보안'>More About <span style='font-weight:bold;'>보안</span></a></li>
+</ul>
+        </div> <!-- //.entry-summary -->
+        
+                    <div class="entry-tags"><b>Tags:</b> <a href="http://ms.nala.ga/tag/javascript/" rel="tag">JavaScript</a>, <a href="http://ms.nala.ga/tag/typescript/" rel="tag">TypeScript</a>, <a href="http://ms.nala.ga/tag/%eb%b3%b4%ec%95%88/" rel="tag">보안</a>, <a href="http://ms.nala.ga/tag/%ec%bd%94%eb%93%9c/" rel="tag">코드</a></div>
+        
+    </div>
+
+</article> <!--/#post-->
+
+
+
+
+
+                                                                    <div class="post-nav-area">
+                                                    
+            <nav class="next-previous-post clearfix media" role="navigation">
+                <div class="row">
+                    <!-- Previous Post -->
+                    <div class="previous-post col-sm-6 pull-left">
+                        <div class="nav-previous"><i class="fa fa-angle-left"></i> <a href="http://ms.nala.ga/%ec%8b%a0%ec%9e%85%ec%82%ac%ec%9b%90-%ec%9b%b9-%ea%b0%9c%eb%b0%9c%ec%9e%90-%ed%95%84%ea%b8%b0-%ec%8b%9c%ed%97%98-%eb%ac%b8%ec%a0%9c/" rel="prev">신입사원 웹 개발자 필기 시험 문제</a></div>                    </div>
+
+                    <!-- Next Post -->
+                    <div class="next-post col-sm-6 pull-right text-right">
+                        <div class="nav-next"><a href="http://ms.nala.ga/lg-g6-%eb%94%94%ec%9e%90%ec%9d%b8-%ec%9c%a0%ec%b6%9c-%ec%96%b4%eb%96%bb%ea%b2%8c-%eb%b4%90%ec%95%bc%ed%95%98%eb%82%98/" rel="next">LG G6 디자인 유출 어떻게 봐야하나</a> <i class="fa fa-angle-right"></i></div>                    </div>
+                </div>
+            </nav><!-- .navigation -->
+            
+                                            </div>
+                                
+                                
+                            
+                                            </main> <!-- /.site-main -->
+                </div>  <!-- /.content-area -->
+            </div> <!-- /col -->
+
+            <!-- Blogsidebar -->
+            
+	<div class="col-md-4">
+	    <div class="primary-sidebar widget-area" role="complementary">
+	        <div id="tag_cloud-2" class="widget widget_tag_cloud"><h2 class="widget-title">태그</h2><div class="tagcloud"><a href="http://ms.nala.ga/tag/1%ec%9b%94/" class="tag-cloud-link tag-link-2 tag-link-position-1" style="font-size: 18.440677966102pt;" aria-label="1월 (115 아이템)">1월</a>
+<a href="http://ms.nala.ga/tag/2017/" class="tag-cloud-link tag-link-21 tag-link-position-2" style="font-size: 17.016949152542pt;" aria-label="2017 (98 아이템)">2017</a>
+<a href="http://ms.nala.ga/tag/2017%eb%85%84/" class="tag-cloud-link tag-link-551 tag-link-position-3" style="font-size: 14.406779661017pt;" aria-label="2017년 (77 아이템)">2017년</a>
+<a href="http://ms.nala.ga/tag/2018/" class="tag-cloud-link tag-link-155 tag-link-position-4" style="font-size: 15.830508474576pt;" aria-label="2018 (89 아이템)">2018</a>
+<a href="http://ms.nala.ga/tag/2018%eb%85%84/" class="tag-cloud-link tag-link-64 tag-link-position-5" style="font-size: 19.864406779661pt;" aria-label="2018년 (130 아이템)">2018년</a>
+<a href="http://ms.nala.ga/tag/the/" class="tag-cloud-link tag-link-310 tag-link-position-6" style="font-size: 11.322033898305pt;" aria-label="the (57 아이템)">the</a>
+<a href="http://ms.nala.ga/tag/vs/" class="tag-cloud-link tag-link-128 tag-link-position-7" style="font-size: 8pt;" aria-label="vs (41 아이템)">vs</a>
+<a href="http://ms.nala.ga/tag/%ea%b0%80%ea%b2%a9/" class="tag-cloud-link tag-link-275 tag-link-position-8" style="font-size: 12.271186440678pt;" aria-label="가격 (62 아이템)">가격</a>
+<a href="http://ms.nala.ga/tag/%ea%b2%b0%ed%98%bc/" class="tag-cloud-link tag-link-501 tag-link-position-9" style="font-size: 20.338983050847pt;" aria-label="결혼 (136 아이템)">결혼</a>
+<a href="http://ms.nala.ga/tag/%ea%b3%b5%ea%b0%9c/" class="tag-cloud-link tag-link-260 tag-link-position-10" style="font-size: 9.8983050847458pt;" aria-label="공개 (49 아이템)">공개</a>
+<a href="http://ms.nala.ga/tag/%ea%b7%b8%eb%a6%ac%ea%b3%a0/" class="tag-cloud-link tag-link-980 tag-link-position-11" style="font-size: 10.135593220339pt;" aria-label="그리고 (50 아이템)">그리고</a>
+<a href="http://ms.nala.ga/tag/%eb%82%98%ec%9d%b4%ec%b0%a8/" class="tag-cloud-link tag-link-1184 tag-link-position-12" style="font-size: 8.2372881355932pt;" aria-label="나이차 (42 아이템)">나이차</a>
+<a href="http://ms.nala.ga/tag/%eb%82%a8%ec%9e%90/" class="tag-cloud-link tag-link-364 tag-link-position-13" style="font-size: 9.4237288135593pt;" aria-label="남자 (47 아이템)">남자</a>
+<a href="http://ms.nala.ga/tag/%eb%82%a8%ed%8e%b8/" class="tag-cloud-link tag-link-603 tag-link-position-14" style="font-size: 16.305084745763pt;" aria-label="남편 (92 아이템)">남편</a>
+<a href="http://ms.nala.ga/tag/%eb%85%b8%eb%9e%98/" class="tag-cloud-link tag-link-713 tag-link-position-15" style="font-size: 8.9491525423729pt;" aria-label="노래 (45 아이템)">노래</a>
+<a href="http://ms.nala.ga/tag/%eb%8c%80%ed%95%9c/" class="tag-cloud-link tag-link-3572 tag-link-position-16" style="font-size: 10.135593220339pt;" aria-label="대한 (50 아이템)">대한</a>
+<a href="http://ms.nala.ga/tag/%eb%93%9c%eb%9d%bc%eb%a7%88/" class="tag-cloud-link tag-link-1041 tag-link-position-17" style="font-size: 16.542372881356pt;" aria-label="드라마 (95 아이템)">드라마</a>
+<a href="http://ms.nala.ga/tag/%eb%a6%ac%eb%b7%b0/" class="tag-cloud-link tag-link-447 tag-link-position-18" style="font-size: 12.508474576271pt;" aria-label="리뷰 (64 아이템)">리뷰</a>
+<a href="http://ms.nala.ga/tag/%eb%a7%9b%ec%a7%91/" class="tag-cloud-link tag-link-782 tag-link-position-19" style="font-size: 16.779661016949pt;" aria-label="맛집 (97 아이템)">맛집</a>
+<a href="http://ms.nala.ga/tag/%eb%aa%a8%ec%9d%8c/" class="tag-cloud-link tag-link-1142 tag-link-position-20" style="font-size: 13.694915254237pt;" aria-label="모음 (72 아이템)">모음</a>
+<a href="http://ms.nala.ga/tag/%eb%aa%b8%eb%a7%a4/" class="tag-cloud-link tag-link-2391 tag-link-position-21" style="font-size: 15.830508474576pt;" aria-label="몸매 (88 아이템)">몸매</a>
+<a href="http://ms.nala.ga/tag/%eb%b0%a9%eb%b2%95/" class="tag-cloud-link tag-link-930 tag-link-position-22" style="font-size: 17.491525423729pt;" aria-label="방법 (103 아이템)">방법</a>
+<a href="http://ms.nala.ga/tag/%eb%b0%b0%ec%9a%b0/" class="tag-cloud-link tag-link-895 tag-link-position-23" style="font-size: 15.593220338983pt;" aria-label="배우 (86 아이템)">배우</a>
+<a href="http://ms.nala.ga/tag/%eb%b6%80%ec%82%b0/" class="tag-cloud-link tag-link-157 tag-link-position-24" style="font-size: 8.4745762711864pt;" aria-label="부산 (43 아이템)">부산</a>
+<a href="http://ms.nala.ga/tag/%ec%82%ac%eb%9e%91/" class="tag-cloud-link tag-link-2972 tag-link-position-25" style="font-size: 14.406779661017pt;" aria-label="사랑 (77 아이템)">사랑</a>
+<a href="http://ms.nala.ga/tag/%ec%82%ac%ec%a7%84/" class="tag-cloud-link tag-link-410 tag-link-position-26" style="font-size: 9.4237288135593pt;" aria-label="사진 (47 아이템)">사진</a>
+<a href="http://ms.nala.ga/tag/%ec%95%84%eb%82%b4/" class="tag-cloud-link tag-link-3039 tag-link-position-27" style="font-size: 9.6610169491525pt;" aria-label="아내 (48 아이템)">아내</a>
+<a href="http://ms.nala.ga/tag/%ec%95%88%eb%82%b4/" class="tag-cloud-link tag-link-1327 tag-link-position-28" style="font-size: 11.322033898305pt;" aria-label="안내 (56 아이템)">안내</a>
+<a href="http://ms.nala.ga/tag/%ec%95%8c%ec%95%84%eb%b3%b4%ea%b8%b0/" class="tag-cloud-link tag-link-821 tag-link-position-29" style="font-size: 15.118644067797pt;" aria-label="알아보기 (82 아이템)">알아보기</a>
+<a href="http://ms.nala.ga/tag/%ec%95%8c%ec%95%84%eb%b3%b4%ec%9e%90/" class="tag-cloud-link tag-link-341 tag-link-position-30" style="font-size: 11.322033898305pt;" aria-label="알아보자 (56 아이템)">알아보자</a>
+<a href="http://ms.nala.ga/tag/%ec%97%ac%ed%96%89/" class="tag-cloud-link tag-link-873 tag-link-position-31" style="font-size: 17.016949152542pt;" aria-label="여행 (98 아이템)">여행</a>
+<a href="http://ms.nala.ga/tag/%ec%98%81%ed%99%94/" class="tag-cloud-link tag-link-562 tag-link-position-32" style="font-size: 19.389830508475pt;" aria-label="영화 (124 아이템)">영화</a>
+<a href="http://ms.nala.ga/tag/%ec%98%a4%eb%8a%98/" class="tag-cloud-link tag-link-1059 tag-link-position-33" style="font-size: 13.694915254237pt;" aria-label="오늘 (72 아이템)">오늘</a>
+<a href="http://ms.nala.ga/tag/%ec%9a%b0%eb%a6%ac/" class="tag-cloud-link tag-link-888 tag-link-position-34" style="font-size: 11.322033898305pt;" aria-label="우리 (57 아이템)">우리</a>
+<a href="http://ms.nala.ga/tag/%ec%9c%84%ed%95%9c/" class="tag-cloud-link tag-link-1175 tag-link-position-35" style="font-size: 12.983050847458pt;" aria-label="위한 (66 아이템)">위한</a>
+<a href="http://ms.nala.ga/tag/%ec%9d%b4%ec%95%bc%ea%b8%b0/" class="tag-cloud-link tag-link-611 tag-link-position-36" style="font-size: 12.508474576271pt;" aria-label="이야기 (64 아이템)">이야기</a>
+<a href="http://ms.nala.ga/tag/%ec%9d%b4%ec%9c%a0/" class="tag-cloud-link tag-link-296 tag-link-position-37" style="font-size: 10.372881355932pt;" aria-label="이유 (51 아이템)">이유</a>
+<a href="http://ms.nala.ga/tag/%ec%9e%90%ea%b2%a9%ec%a6%9d/" class="tag-cloud-link tag-link-2111 tag-link-position-38" style="font-size: 9.4237288135593pt;" aria-label="자격증 (47 아이템)">자격증</a>
+<a href="http://ms.nala.ga/tag/%ec%a0%95%eb%a6%ac/" class="tag-cloud-link tag-link-1831 tag-link-position-39" style="font-size: 13.220338983051pt;" aria-label="정리 (68 아이템)">정리</a>
+<a href="http://ms.nala.ga/tag/%ec%a0%95%eb%b3%b4/" class="tag-cloud-link tag-link-89 tag-link-position-40" style="font-size: 15.118644067797pt;" aria-label="정보 (83 아이템)">정보</a>
+<a href="http://ms.nala.ga/tag/%ec%b6%94%ec%b2%9c/" class="tag-cloud-link tag-link-146 tag-link-position-41" style="font-size: 22pt;" aria-label="추천 (162 아이템)">추천</a>
+<a href="http://ms.nala.ga/tag/%ec%b6%9c%ec%97%b0/" class="tag-cloud-link tag-link-2930 tag-link-position-42" style="font-size: 10.847457627119pt;" aria-label="출연 (54 아이템)">출연</a>
+<a href="http://ms.nala.ga/tag/%ed%95%9c%ea%b5%ad/" class="tag-cloud-link tag-link-3361 tag-link-position-43" style="font-size: 11.796610169492pt;" aria-label="한국 (59 아이템)">한국</a>
+<a href="http://ms.nala.ga/tag/%ed%9a%a8%eb%8a%a5/" class="tag-cloud-link tag-link-810 tag-link-position-44" style="font-size: 9.6610169491525pt;" aria-label="효능 (48 아이템)">효능</a>
+<a href="http://ms.nala.ga/tag/%ed%9b%84%ea%b8%b0/" class="tag-cloud-link tag-link-14 tag-link-position-45" style="font-size: 17.966101694915pt;" aria-label="후기 (109 아이템)">후기</a></div>
+</div>	    </div>
+	</div>
+
+        </div> <!-- /.row -->
+    </div> <!-- /.container -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <hr>
+            </div>
+        </div>
+    </div>
+    <footer class="site-footer" role="contentinfo">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 text-center">
+  
+                    <p></p>
+                    
+                                            <div class="footer-social-icons">
+                                                                                                                                                                                                                                                                                                                                                                                                        
+                        </div>
+                    
+                </div>
+            </div>
+        </div>
+    </footer>
+
+            <div class="scroll-up">
+            <a href="#"><i class="fa fa-angle-up"></i></a>
+        </div>
+        <!-- Scroll Up -->
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/af2821b0/cloudflare-static/email-decode.min.js"></script><script type='text/javascript' src='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/js/bootstrap.min.js?ver=3.3.5'></script>
+<script type='text/javascript' src='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/js/scripts.js'></script>
+<script type='text/javascript' src='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/js/jquery.fitvids.js'></script>
+<script type='text/javascript' src='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/js/smoothscroll.js'></script>
+<script type='text/javascript' src='http://ms.nala.ga/wp-includes/js/wp-embed.min.js?ver=4.8.4'></script>
+    </body>
+</html>

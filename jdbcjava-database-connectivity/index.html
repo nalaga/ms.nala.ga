@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="profile" href="http://gmpg.org/xfn/11">
+    <link rel="pingback" href="http://ms.nala.ga/xmlrpc.php">
+
+<title>JDBC(Java Database Connectivity) | All About MS CCL Contents</title>
+<meta name='robots' content='noindex,follow' />
+
+<!-- All in One SEO Pack 2.4.4 by Michael Torbert of Semper Fi Web Design[276,349] -->
+<meta name="description"  content="3줄 요약 if(!dbConn.isClosed()) {	//-- isClosed() 메소드를 통해 연결 상태 확인 (연결이 살아있으면 true) public static void main(String::하나의 워크 스테이션에 클라이언트와 서버가 설치되어 있기 때문에, 이 2개가 다 있는 것임.6. JDBC API JDBC API는 데이터베이스의 데이터를 액세스할 수 있도록 제공되는 표준 자바 API 클래스와 인터페이스로 구성되며 다음 기능을 실행하기 위한 클래스와 인터페이스를 제공한다. - Java 프로그램에서 데이터베이스에 서버 접속 - SQL 문을 구성," />
+<meta name="robots" content="index,nofollow" />
+
+<link rel="canonical" href="http://ms.nala.ga/jdbcjava-database-connectivity/" />
+<!-- /all in one seo pack -->
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="All About MS CCL Contents &raquo; 피드" href="http://ms.nala.ga/feed/" />
+<link rel="alternate" type="application/rss+xml" title="All About MS CCL Contents &raquo; 댓글 피드" href="http://ms.nala.ga/comments/feed/" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.3\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.3\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/ms.nala.ga\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.8.4"}};
+			!function(a,b,c){function d(a){var b,c,d,e,f=String.fromCharCode;if(!k||!k.fillText)return!1;switch(k.clearRect(0,0,j.width,j.height),k.textBaseline="top",k.font="600 32px Arial",a){case"flag":return k.fillText(f(55356,56826,55356,56819),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,56826,8203,55356,56819),0,0),c=j.toDataURL(),b!==c&&(k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447),0,0),c=j.toDataURL(),b!==c);case"emoji4":return k.fillText(f(55358,56794,8205,9794,65039),0,0),d=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55358,56794,8203,9794,65039),0,0),e=j.toDataURL(),d!==e}return!1}function e(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i,j=b.createElement("canvas"),k=j.getContext&&j.getContext("2d");for(i=Array("flag","emoji4"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='bootstrap-css-css'  href='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/css/bootstrap.min.css?ver=3.3.5' type='text/css' media='all' />
+<link rel='stylesheet' id='font-awesome-css-css'  href='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/css/font-awesome.min.css?ver=4.4.0' type='text/css' media='all' />
+<link rel='stylesheet' id='shaped-blog-stylesheet-css'  href='http://ms.nala.ga/wp-content/themes/shaped-blog/style.css?ver=4.8.4' type='text/css' media='all' />
+<link rel='stylesheet' id='responsive-css-css'  href='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/css/responsive.css' type='text/css' media='all' />
+<script type='text/javascript' src='http://ms.nala.ga/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
+<script type='text/javascript' src='http://ms.nala.ga/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+<link rel='https://api.w.org/' href='http://ms.nala.ga/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://ms.nala.ga/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://ms.nala.ga/wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='평택인터넷가입○' href='http://ms.nala.ga/%ed%8f%89%ed%83%9d%ec%9d%b8%ed%84%b0%eb%84%b7%ea%b0%80%ec%9e%85%e2%97%8b/' />
+<link rel='next' title='부동액 교환비용 교환주기 정보 알아보기' href='http://ms.nala.ga/%eb%b6%80%eb%8f%99%ec%95%a1-%ea%b5%90%ed%99%98%eb%b9%84%ec%9a%a9-%ea%b5%90%ed%99%98%ec%a3%bc%ea%b8%b0-%ec%a0%95%eb%b3%b4-%ec%95%8c%ec%95%84%eb%b3%b4%ea%b8%b0/' />
+<meta name="generator" content="WordPress 4.8.4" />
+<link rel='shortlink' href='http://ms.nala.ga/?p=1174' />
+<link rel="alternate" type="application/json+oembed" href="http://ms.nala.ga/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fms.nala.ga%2Fjdbcjava-database-connectivity%2F" />
+<link rel="alternate" type="text/xml+oembed" href="http://ms.nala.ga/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fms.nala.ga%2Fjdbcjava-database-connectivity%2F&#038;format=xml" />
+
+	<style>
+
+		/* Border Color */
+		.btn-social:hover,
+		blockquote,
+		#respond input:focus[type="text"], 
+	    #respond input:focus[type="email"], 
+	    #respond input:focus[type="url"],
+	    #respond textarea:focus,
+	    #comments .comment-reply a:hover
+		{
+			border-color: ;
+		}
+
+		
+		/* Background Color */
+		.scroll-up a,
+		.btn-social:hover,
+		button,
+		input[type="button"],
+		input[type="reset"],
+		input[type="submit"],
+		.navbar-default .navbar-nav .dropdown-menu li a:hover, .dropdown-menu li a:focus, .navbar-default .navbar-nav .dropdown-menu .active a,
+		.pagination>li>a:focus, .pagination>li>a:hover, .pagination>li>span:focus, .pagination>li>span:hover, .pagination li .current,
+		.next-previous-posts .next-post a:hover,
+		.next-previous-posts .previous-post a:hover,
+		.btn-goback,
+		.btn-submit,
+		a.more-link,
+		.featured-post .fa,
+		#comments .comment-reply a:hover,
+		.widget .tagcloud a
+		{
+			background-color: ;
+		}
+
+		
+		/* Color */
+		.text-logo a,
+		.navbar-default .navbar-nav .active a, .navbar-default .navbar-nav .active a:hover, .navbar-default .navbar-nav .active a:focus,
+		.navbar-default .navbar-nav li a:hover, .navbar-default .navbar-nav li a:focus,
+		a:hover,
+    	a:focus,
+		.next-previous-posts .previous-post a,
+		.next-previous-posts .next-post a,
+		.pagination>li>a, .pagination>li>span,
+		#comments .comment-author a:hover, 
+    	#respond .logged-in-as a:hover,
+    	#wp-calendar a,
+    	h2.entry-title a:hover
+		{
+			color: ;
+		}
+
+
+		/* A Color */
+		a{
+			color: ;
+		}
+
+		/* a:hover Color */
+		a:hover,
+		a:focus,
+		a:active,
+		.widget a:hover,
+		.post .post-content .entry-meta ul li a:hover
+		{
+			color: ;
+		}
+
+		/* .featured-post .fa:after*/
+		.featured-post .fa:after{
+			border-color:   transparent ;
+		}
+
+
+		
+
+	</style>
+</head>
+
+<body class="post-template-default single single-post postid-1174 single-format-standard">
+
+    <div id="st-preloader">
+        <div id="pre-status">
+            <div class="preload-placeholder"></div>
+        </div>
+    </div>
+<!-- /Preloader -->
+
+<header id="header">	
+	<div id="trueHeader">
+    	<div class="wrapper">
+            <div class="container">
+            	<!-- Menu -->
+            	<div class="menu_main">
+                	<div class="navbar blogx-navbar navbar-default">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#st-navber-collapse">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+
+                                                            <div class="text-logo">
+                                    <a href="http://ms.nala.ga">All About MS CCL Contents</a>
+                                    <p>All About MS CCL Contents</p>
+                                </div><!-- /Logo -->
+                                                    </div>
+                      
+                        <div id="st-navber-collapse" class="navbar-collapse collapse pull-right">
+                             
+                        </div>
+                    </div>
+            	</div><!-- end menu -->
+        	</div> <!-- /.container -->
+    	</div>
+	</div>
+	<DIV class='ads_adsense_img' style='margin:40px 0px 40px 0px;'>
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<!-- only display -->
+	<ins class="adsbygoogle"
+	     style="display:block"
+	     data-ad-client="ca-pub-8393857339019314"
+	     data-ad-slot="7474886381"
+	     data-ad-format="auto"></ins>
+	<script>
+	(adsbygoogle = window.adsbygoogle || []).push({});
+	</script>
+	</DIV>	
+
+</header>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div id="primary" class="content-area">
+                    <main id="main" class="site-main" role="main">
+
+                        
+                                <article id="post-1174" class="post-1174 post type-post status-publish format-standard hentry category-uncategorized tag-connectivity tag-database tag-jdbcjava">
+    <header class="entry-header">
+        
+        
+    </header> <!--/.entry-header -->
+
+    <div class="clearfix post-content media">
+
+        <h2 class="entry-title">
+            JDBC(Java Database Connectivity)        </h2> <!-- //.entry-title -->
+
+        <div class="clearfix entry-meta">
+            
+            <ul class="list-inline">
+                <li>
+                    <span class="author vcard">
+                        By <a class="url fn n" href="http://ms.nala.ga/author/admin/">admin</a>                    </span>
+                </li>
+                <li>
+                    on <span class="posted-on">1월 12, 2018</span>
+                </li>
+                                    <li>
+                        in <span class="posted-in">
+                            <a href="http://ms.nala.ga/category/uncategorized/" rel="category tag">미분류</a>                        </span>
+                    </li>
+                            </ul>
+                </div> <!--/.entry-meta -->
+        
+        <div class="entry-summary">
+            <p><img src='http://cfile21.uf.tistory.com/image/99D35C3D5A580E5333E783' style='max-width:250px;min-width:0px;' onError='this.style.display="none"' /></p>
+<h1>3줄 요약 </h1>
+<div style='color:#fff;background-color:#000;border-radius:10px;'>
+<ol>
+<li><span>if(!dbConn.isClosed()) {	//&#8211; isClosed() 메소드를 통해 연결 상태 확인 (연결이 살아있으면 true)</span></li>
+<li><span>public static void main(String[] args) {</span></li>
+<li><span>int result = stmt.executeUpdate(sql);</span></li>
+</ol>
+</div>
+<p><span id="more-1174"></span></p>
+<p><iframe src='http://ad.selfhow.com/rd' width='100%' border=0 frameborder=0 style='height:auto;width:100%'></iframe></p>
+<hr />
+<h1><span style='font-family: "맑은 고딕", sans-serif;'>&#8211;■■■ JDBC(Java Database Connectivity) ■■■&#8211;</span></h1>
+<p><span style='font-family: "맑은 고딕", sans-serif;'>&#8220;자바딴에서 쿼리를 날리는 것을 하기 위한 과정&#8221;</span></p>
+<p></p>
+<p></p>
+<h2><span style='font-family: "맑은 고딕", sans-serif;'>1. JDBC(Java DataBase Connectivity)</span><br /></h2>
+<p><span style='font-family: "맑은 고딕", sans-serif;'>   JDBC는 자바 프로그램이 DBMS에 일관된 방식으로 </span><br /><span style='font-family: "맑은 고딕", sans-serif;'>   접근할 수 있도록 API를 제공하는 자바 클래스들의 모임으로 다음의 특징을 가진다.</span></p>
+<p></p>
+<p><span style='white-space: pre; font-family: "맑은 고딕", sans-serif;'> </span><span style='font-family: "맑은 고딕", sans-serif;'>1) JDBC는 함수 호출용 SQL 인터페이스</span></p>
+<p><span style='white-space: pre; font-family: "맑은 고딕", sans-serif;'> </span><span style='font-family: "맑은 고딕", sans-serif;'>2) JDBC는 ANSI SQL-92 표준을 지원</span></p>
+<p><span style='white-space: pre; font-family: "맑은 고딕", sans-serif;'> </span><span style='font-family: "맑은 고딕", sans-serif;'>3) JDBC는 공통된 SQL 인터페이스를 바탕</span></p>
+<p></p>
+<p><span style='font-family: "맑은 고딕", sans-serif;'>&#8211;&gt; JDBC란 데이터베이스에 연결 및 작업을 하기 위한</span></p>
+<p><span style='font-family: "맑은 고딕", sans-serif;'>&#8212;  자바 표준 인터페이스이다.</span></p>
+<p></p>
+<h2><span style='font-family: "맑은 고딕", sans-serif;'>2. JDBC 구</span><span style='font-family: "맑은 고딕", sans-serif;'>성</span></h2>
+<p></p>
+<h3><span style='white-space: pre; font-family: "맑은 고딕", sans-serif;'> </span><span style='font-family: "맑은 고딕", sans-serif;'>1) 응용 프로그램</span></h3>
+<p><span style='white-space: pre; font-family: "맑은 고딕", sans-serif;'> </span><span style='font-family: "맑은 고딕", sans-serif;'>&#8211; 데이터베이스에 연결을 요청</span></p>
+<p><span style='white-space: pre; font-family: "맑은 고딕", sans-serif;'> </span><span style='font-family: "맑은 고딕", sans-serif;'>&#8211; 데이터베이스에 SQL 문을 전송</span></p>
+<p><span style='white-space: pre; font-family: "맑은 고딕", sans-serif;'> </span><span style='font-family: "맑은 고딕", sans-serif;'>&#8211; SQL 문의 결과를 요청</span></p>
+<p><span style='white-space: pre; font-family: "맑은 고딕", sans-serif;'> </span><span style='font-family: "맑은 고딕", sans-serif;'>&#8211; 오류가 발생하는 경우 오류 처리</span></p>
+<p><span style='white-space: pre; font-family: "맑은 고딕", sans-serif;'> </span><span style='font-family: "맑은 고딕", sans-serif;'>&#8211; 트랜잭션을 제어</span></p>
+<p></p>
+<h3><span style='white-space: pre; font-family: "맑은 고딕", sans-serif;'> </span><span style='font-family: "맑은 고딕", sans-serif;'>2) 드라이버 매니저</span></h3>
+<p><span style='white-space: pre; font-family: "맑은 고딕", sans-serif;'> </span><span style='font-family: "맑은 고딕", sans-serif;'>&#8211; 데이터베이스에 맞는 드라이버 검색</span></p>
+<p><span style='white-space: pre; font-family: "맑은 고딕", sans-serif;'> </span><span style='font-family: "맑은 고딕", sans-serif;'>&#8211; JDBC 초기화를 위한 작업을 수행</span></p>
+<p></p>
+<h3><span style='white-space: pre; font-family: "맑은 고딕", sans-serif;'> </span><span style='font-family: "맑은 고딕", sans-serif;'>3) 드라이버</span></h3>
+<p><span style='white-space: pre; font-family: "맑은 고딕", sans-serif;'> </span><span style='font-family: "맑은 고딕", sans-serif;'>&#8211; 데이터베이스에 연결</span></p>
+<p><span style='white-space: pre; font-family: "맑은 고딕", sans-serif;'> </span><span style='font-family: "맑은 고딕", sans-serif;'>&#8211; 데이터베이스에 SQL 문을 전달</span></p>
+<p><span style='white-space: pre; font-family: "맑은 고딕", sans-serif;'> </span><span style='font-family: "맑은 고딕", sans-serif;'>&#8211; 응용프로그램에 검색 결과를 전달</span></p>
+<p><span style='white-space: pre; font-family: "맑은 고딕", sans-serif;'> </span><span style='font-family: "맑은 고딕", sans-serif;'>&#8211; 필요한 경우 커서를 조작</span></p>
+<p><span style='white-space: pre; font-family: "맑은 고딕", sans-serif;'> </span><span style='font-family: "맑은 고딕", sans-serif;'>&#8211; 필요한 경우 트랜잭션을 시작</span></p>
+<p></p>
+<h3><span style='white-space: pre; font-family: "맑은 고딕", sans-serif;'> </span><span style='font-family: "맑은 고딕", sans-serif;'>4) DBMS</span></h3>
+<p><span style='white-space: pre; font-family: "맑은 고딕", sans-serif;'> </span><span style='font-family: "맑은 고딕", sans-serif;'>&#8211; 데이터가 저장되어 있는 장소</span></p>
+<p></p>
+<h2><span style='font-family: "맑은 고딕", sans-serif;'>3. System Architecture</span></h2>
+<p><span style='white-space: pre; font-family: "맑은 고딕", sans-serif;'> </span><span style='font-family: "맑은 고딕", sans-serif;'>JDBC API는 2-tier와 3-tier를 모두 지원한다.</span></p>
+<p style="margin-left: 2em;"><span style='font-family: "맑은 고딕", sans-serif;'><br /></span></p>
+<p style="margin-left: 2em;"><span style='font-family: "맑은 고딕", sans-serif;'>  cf) tier: 일련의 유사한 객체가 나열된 상태에서 계층 또는 열을 의미한다.<br />      프로그램의 일부가 여러 객체에 나뉘어 존재할 수 있으며, 그 계층 또한 네트워크 상의 서로 다른 컴퓨터에 위치할 수 있다.</span></p>
+<div></div>
+<h3 style="margin-left: 2em;"><span style='font-family: "맑은 고딕", sans-serif;'>1) 2-tier</span></h3>
+<div style="margin-left: 6em;"><span style='font-family: "맑은 고딕", sans-serif;'>&#8211; 자바 애플릿이나 애플리케이션이 JDBC를 이용하여 </span><span style='font-family: "맑은 고딕", sans-serif;'>DBMS 데이터베이스에 직접 접근</span></div>
+<div style="margin-left: 6em;"><span style='font-family: "맑은 고딕", sans-serif;'><br /></span></div>
+<div style="margin-left: 6em;"><span style='font-family: "맑은 고딕", sans-serif;'>&#8211; 가장 대표적인 C/S(Client/Server) 구조</span></div>
+<div style="margin-left: 6em;"><span style='font-family: "맑은 고딕", sans-serif;'><br /></span></div>
+<div style="margin-left: 6em;"><span style='font-family: "맑은 고딕", sans-serif;'>&#8211; 프로그래밍이 간단하다는 장점</span></div>
+<div style="margin-left: 6em;"><span style='font-family: "맑은 고딕", sans-serif;'>&#8211; 보안, 로드밸런싱, 확장성(오브젝트 재사용) 등의 문제점</span></div>
+<div style="margin-left: 6em;"><span style='font-family: "맑은 고딕", sans-serif;'>&#8211; 2-tier 디자인이 적합한 경우</span></div>
+<div style="margin-left: 8em;"><span style='font-family: "맑은 고딕", sans-serif;'>· 애플리케이션이 하나의 데이터베이스만을 사용</span></div>
+<div style="margin-left: 8em;"><span style='font-family: "맑은 고딕", sans-serif;'>· 데이터베이스 엔진이 하나의 CPU에서 동작</span></div>
+<div style="margin-left: 8em;"><span style='font-family: "맑은 고딕", sans-serif;'>· 데이터베이스가 계속 거의 같은 크기로 유지</span></div>
+<div style="margin-left: 8em;"><span style='font-family: "맑은 고딕", sans-serif;'>· 사용자 기반이 같은 크기로 유지</span></div>
+<div style="margin-left: 8em;"><span style='font-family: "맑은 고딕", sans-serif;'>· 요구가 확정되어 변화 가능성이 극히 적거나 없는 경우</span></div>
+<div style="margin-left: 8em;"><span style='font-family: "맑은 고딕", sans-serif;'>· 애플리케이션을 종료한 후에도 최소한의 지속성을 요구</span></div>
+<h3 style="margin-left: 2em;"><span style='font-family: "맑은 고딕", sans-serif;'><span style='font-family: "맑은 고딕", sans-serif;'>2</span><span style='font-family: "맑은 고딕", sans-serif;'>) 3-tier</span></span></h3>
+<div style="margin-left: 6em;"><span style='font-family: "맑은 고딕", sans-serif;'><span style='font-family: "맑은 고딕", sans-serif;'>&#8211; 자바 애플릿이나 </span><span style='font-family: "맑은 고딕", sans-serif;'>애플리케이션이 DBMS를 직접 접근하는 것이 아니라</span></span><br /><span style='font-family: "맑은 고딕", sans-serif;'>  중간에 미들웨어(미들티어)를 거쳐 데이터베이스로 접근</p>
+<p></span></div>
+<div style="margin-left: 6em;"><span style='font-family: "맑은 고딕", sans-serif;'>&#8211; 데이터베이스와의 연동 부분을 분리시킴으로써</span></div>
+<div style="margin-left: 6em;"><span style='font-family: "맑은 고딕", sans-serif;'>  Presentation Layer가 데이터 저장 방법에 신경을 쓰지 않아도 된다.</p>
+<p></span></div>
+<div style="margin-left: 6em;"><span style='font-family: "맑은 고딕", sans-serif;'>&#8211; 클라이언트는 단지 미들티어를 참조</p>
+<p></span></div>
+<div style="margin-left: 6em;"><span style='font-family: "맑은 고딕", sans-serif;'>&#8211; 미들티어 서버는 DBMS와 같이 특정한 작업만 수행하는</span></div>
+<div style="margin-left: 6em;"><span style='font-family: "맑은 고딕", sans-serif;'>  최종 서버와 통신을 하여 결과를 얻은 후 이 결과를 클라이언트에게 전달</p>
+<p></span></div>
+<div style="margin-left: 6em;"><span style='font-family: "맑은 고딕", sans-serif;'>&#8211; 2-tier 모델보다 안정적이고 유연하며 보안이 강화</span></div>
+<div style="margin-left: 8em;"><span style='font-family: "맑은 고딕", sans-serif;'>· tier 1 : 사용자 인터페이스를 담당하는 클라이언트</span></div>
+<div style="margin-left: 8em;"><span style='font-family: "맑은 고딕", sans-serif;'>· tier 2 : http, 코바 등을 지원하는 응용 처리 서버</span></div>
+<div style="margin-left: 8em;"><span style='font-family: "맑은 고딕", sans-serif;'>· tier 3 : DBMS와 같이 사용자가 최종적으로 원하는 기능을 수행할 서버</span></div>
+<p></p>
+<p><font face="맑은 고딕, sans-serif"><br /></font></p>
+<p><font face="맑은 고딕, sans-serif"><br /></font></p>
+<h2><font face="맑은 고딕, sans-serif"><span style='font-family: "맑은 고딕", sans-serif;'>4. JDBC Driver 유형</span></font></h2>
+<p><font face="맑은 고딕, sans-serif"><br /></font></p>
+<p><font face="맑은 고딕, sans-serif"><br /></font></p>
+<h3><font face="맑은 고딕, sans-serif"><span style='white-space: pre; font-family: "맑은 고딕", sans-serif;'> </span><span style='font-family: "맑은 고딕", sans-serif;'>1) Ty</span><span style='font-family: "맑은 고딕", sans-serif;'>pe 1</span></font></h3>
+<p><font face="맑은 고딕, sans-serif"><span style='white-space: pre; font-family: "맑은 고딕", sans-serif;'> </span><span style='font-family: "맑은 고딕", sans-serif;'>&#8211; JDBC-ODBC Bridge</span></font></p>
+<p><font face="맑은 고딕, sans-serif"><br /></font></p>
+<p><font face="맑은 고딕, sans-serif"><span style='white-space: pre; font-family: "맑은 고딕", sans-serif;'> </span><span style='font-family: "맑은 고딕", sans-serif;'>&#8211; 특징</span></font></p>
+<p><font face="맑은 고딕, sans-serif"><span style='white-space: pre; font-family: "맑은 고딕", sans-serif;'> </span><span style='font-family: "맑은 고딕", sans-serif;'>· 데이터베이스를 연동하기 위해 브릿지 기술을 사용</span></p>
+<p></font></p>
+<p><font face="맑은 고딕, sans-serif"><span style='white-space: pre; font-family: "맑은 고딕", sans-serif;'> </span><span style='font-family: "맑은 고딕", sans-serif;'>· ODBC API로의 게이트웨이를 제공하여 실제로는 ODBC의 API를 구현함으로써 데이버이스를 만듦.</span></p>
+<p></font></p>
+<p><font face="맑은 고딕, sans-serif"><span style='white-space: pre; font-family: "맑은 고딕", sans-serif;'> </span><span style='font-family: "맑은 고딕", sans-serif;'>· 브릿지 솔루션은 보통 클라이언트에 소프트웨어가 설치될 것을 요구</span></p>
+<p></font></p>
+<p><font face="맑은 고딕, sans-serif"><span style='white-space: pre; font-family: "맑은 고딕", sans-serif;'> </span><span style='font-family: "맑은 고딕", sans-serif;'>· JDBC-ODBC 드라이버는 ODBC 드라이버가 풍부하기 때문에 거의 대부분 데이터베이스 시스템에서</span></font></p>
+<p><font face="맑은 고딕, sans-serif"><span style='white-space: pre; font-family: "맑은 고딕", sans-serif;'> </span><span style='font-family: "맑은 고딕", sans-serif;'>   사용할 수 있으며 JDBC-ODBC 드라이버를 사용하는 클라이언트에 사전에 ODBC 드라이버가</span></font></p>
+<p><font face="맑은 고딕, sans-serif"><span style='white-space: pre; font-family: "맑은 고딕", sans-serif;'> </span><span style='font-family: "맑은 고딕", sans-serif;'>   설치되어 있는 겨우 매우 유용하게 사용할 수 있다.</p>
+<p></span></font></p>
+<p><font face="맑은 고딕, sans-serif"><span style='white-space: pre; font-family: "맑은 고딕", sans-serif;'> </span><span style='font-family: "맑은 고딕", sans-serif;'>· 속도와 관련한 가장 큰 문제</span></font></p>
+<p><font face="맑은 고딕, sans-serif"><span style='white-space: pre; font-family: "맑은 고딕", sans-serif;'> </span><span style='font-family: "맑은 고딕", sans-serif;'>   JDBC를 통해 호출된 명령이 다시 ODBC를 통해 나가야 하기 때문에 두 개의 브릿지를 거치며,</span><br /><span style='font-family: "맑은 고딕", sans-serif;'>    </span><span style='font-family: "맑은 고딕", sans-serif;'>    </span><span style='font-family: "맑은 고딕", sans-serif;'>    </span><span style='font-family: "맑은 고딕", sans-serif;'>    </span><span style='font-family: "맑은 고딕", sans-serif;'>    </span><span style='font-family: "맑은 고딕", sans-serif;'>    </span><span style='font-family: "맑은 고딕", sans-serif;'>   </span><span style='font-family: "맑은 고딕", sans-serif;'></span><span style='font-family: "맑은 고딕", sans-serif;'></span><span style='font-family: "맑은 고딕", sans-serif;'></span><span style='font-family: "맑은 고딕", sans-serif;'></span><span style='font-family: "맑은 고딕", sans-serif;'></span><span style='font-family: "맑은 고딕", sans-serif;'></span><span style='font-family: "맑은 고딕", sans-serif;'></span><span style='font-family: "맑은 고딕", sans-serif;'>이로 인해 빠른 속도를 기대하기 어렵다.<br /></span></font></p>
+<p><font face="맑은 고딕, sans-serif"><span style='white-space: pre; font-family: "맑은 고딕", sans-serif;'> </span><span style='font-family: "맑은 고딕", sans-serif;'>   빠른 성능을 요구하는 애플리케이션의 경우에는 Type 1, JDBC-ODBC 브릿지는 적당하지 않다.</p>
+<p></span></font></p>
+<p><font face="맑은 고딕, sans-serif"><span style='white-space: pre; font-family: "맑은 고딕", sans-serif;'> </span><span style='font-family: "맑은 고딕", sans-serif;'>· JDBC-ODBC 브릿지를 사용하는 시스템에는 반드시 해당 데이터베이스에 연결하기 위한 ODBC 드라이버가</span><br /><span style='font-family: "맑은 고딕", sans-serif;'>    </span><span style='font-family: "맑은 고딕", sans-serif;'>    </span><span style='font-family: "맑은 고딕", sans-serif;'>    </span><span style='font-family: "맑은 고딕", sans-serif;'>    </span><span style='font-family: "맑은 고딕", sans-serif;'>    </span><span style='font-family: "맑은 고딕", sans-serif;'>      </span><span style='font-family: "맑은 고딕", sans-serif;'></span><span style='font-family: "맑은 고딕", sans-serif;'></span><span style='font-family: "맑은 고딕", sans-serif;'></span><span style='font-family: "맑은 고딕", sans-serif;'></span><span style='font-family: "맑은 고딕", sans-serif;'></span><span style='font-family: "맑은 고딕", sans-serif;'>설치되어야 하며, 이 단점은 애플릿에서 JDBC를 사용하여 프로그래밍 하는 경우 많은 문제가 된다.</span></font></p>
+<p><font face="맑은 고딕, sans-serif"><span style='white-space: pre; font-family: "맑은 고딕", sans-serif;'> </span><span style='font-family: "맑은 고딕", sans-serif;'>  </span><span style='font-family: "맑은 고딕", sans-serif;'>애플릿을 이용하여 JDBC-ODBC를 사용할 경우, 애플릿을 다운받은 클라이언트에 미리 ODBC 드라이버가</span><br /><span style='font-family: "맑은 고딕", sans-serif;'>    </span><span style='font-family: "맑은 고딕", sans-serif;'>    </span><span style='font-family: "맑은 고딕", sans-serif;'>    </span><span style='font-family: "맑은 고딕", sans-serif;'>    </span><span style='font-family: "맑은 고딕", sans-serif;'>    </span><span style='font-family: "맑은 고딕", sans-serif;'>    </span><span style='font-family: "맑은 고딕", sans-serif;'>  </span><span style='font-family: "맑은 고딕", sans-serif;'></span><span style='font-family: "맑은 고딕", sans-serif;'></span><span style='font-family: "맑은 고딕", sans-serif;'></span><span style='font-family: "맑은 고딕", sans-serif;'></span><span style='font-family: "맑은 고딕", sans-serif;'></span><span style='font-family: "맑은 고딕", sans-serif;'></span><span style='font-family: "맑은 고딕", sans-serif;'></span><span style='font-family: "맑은 고딕", sans-serif;'>설치되어 있어야 하기 때문에 배포 등에 많은 문제가 발생하게 된다.</span></font></p>
+<p><font face="맑은 고딕, sans-serif"><br /></font></p>
+<p><font face="맑은 고딕, sans-serif"><br /></font></p>
+<h3><font face="맑은 고딕, sans-serif"><span style='white-space: pre; font-family: "맑은 고딕", sans-serif;'> </span><span style='font-family: "맑은 고딕", sans-serif;'>2) T</span><span style='font-family: "맑은 고딕", sans-serif;'>ype 2</span></font></h3>
+<p><font face="맑은 고딕, sans-serif"><span style='white-space: pre; font-family: "맑은 고딕", sans-serif;'> </span><span style='font-family: "맑은 고딕", sans-serif;'>&#8211; Native-API / Partly Java Driver(사용 일부 자바)</span></font></p>
+<p><font face="맑은 고딕, sans-serif"><span style='white-space: pre; font-family: "맑은 고딕", sans-serif;'> </span><span style='font-family: "맑은 고딕", sans-serif;'>&#8211; 특징</span></font></p>
+<p><font face="맑은 고딕, sans-serif"><span style='white-space: pre; font-family: "맑은 고딕", sans-serif;'> </span><span style='font-family: "맑은 고딕", sans-serif;'>· 각각의 데이터베이스 제조업체들이 제공한 C 혹은 C++ 메소드를 자바 코드가 호출하는 방식</p>
+<p></span></font></p>
+<p><font face="맑은 고딕, sans-serif"><span style='white-space: pre; font-family: "맑은 고딕", sans-serif;'> </span><span style='font-family: "맑은 고딕", sans-serif;'>· 부분적으로 자바 드라이버인 원시 API 라고 일컬어짐</p>
+<p></span></font></p>
+<p><font face="맑은 고딕, sans-serif"><span style='white-space: pre; font-family: "맑은 고딕", sans-serif;'> </span><span style='font-family: "맑은 고딕", sans-serif;'>· 데이터베이스와 연결되는 부분이 Native Code로 구현되어있는 만큼 </span><br /><span style='font-family: "맑은 고딕", sans-serif;'>    </span><span style='font-family: "맑은 고딕", sans-serif;'>    </span><span style='font-family: "맑은 고딕", sans-serif;'>    </span><span style='font-family: "맑은 고딕", sans-serif;'>    </span><span style='font-family: "맑은 고딕", sans-serif;'>    </span><span style='font-family: "맑은 고딕", sans-serif;'>      </span><span style='font-family: "맑은 고딕", sans-serif;'></span><span style='font-family: "맑은 고딕", sans-serif;'></span><span style='font-family: "맑은 고딕", sans-serif;'></span><span style='font-family: "맑은 고딕", sans-serif;'></span><span style='font-family: "맑은 고딕", sans-serif;'></span><span style='font-family: "맑은 고딕", sans-serif;'>JDBC-ODBC 브릿지에 비해 빠른 속도를 제공한다.</p>
+<p></span></font></p>
+<p><font face="맑은 고딕, sans-serif"><span style='white-space: pre; font-family: "맑은 고딕", sans-serif;'> </span><span style='font-family: "맑은 고딕", sans-serif;'>· JDBC 드라이버를 사용하고자 하는 각각의 클라이언트에 DBMS Vendor의 데이터베이스 라이브러리가</span><br /><span style='font-family: "맑은 고딕", sans-serif;'>    </span><span style='font-family: "맑은 고딕", sans-serif;'>    </span><span style='font-family: "맑은 고딕", sans-serif;'>    </span><span style='font-family: "맑은 고딕", sans-serif;'>    </span><span style='font-family: "맑은 고딕", sans-serif;'>    </span><span style='font-family: "맑은 고딕", sans-serif;'>    </span><span style='font-family: "맑은 고딕", sans-serif;'>  </span><span style='font-family: "맑은 고딕", sans-serif;'></span><span style='font-family: "맑은 고딕", sans-serif;'></span><span style='font-family: "맑은 고딕", sans-serif;'></span><span style='font-family: "맑은 고딕", sans-serif;'></span><span style='font-family: "맑은 고딕", sans-serif;'></span><span style='font-family: "맑은 고딕", sans-serif;'></span><span style='font-family: "맑은 고딕", sans-serif;'></span><span style='font-family: "맑은 고딕", sans-serif;'>로드되어야 하기 때문에 인터넷이나 CS 환경에서는 사용하기 적합하지 않다.</span><br /><span style='font-family: "맑은 고딕", sans-serif;'>    </span><span style='font-family: "맑은 고딕", sans-serif;'>    </span><span style='font-family: "맑은 고딕", sans-serif;'>    </span><span style='font-family: "맑은 고딕", sans-serif;'>    </span><span style='font-family: "맑은 고딕", sans-serif;'>    </span><span style='font-family: "맑은 고딕", sans-serif;'>    </span><span style='font-family: "맑은 고딕", sans-serif;'>  </span><span style='font-family: "맑은 고딕", sans-serif;'></span><span style='font-family: "맑은 고딕", sans-serif;'></span><span style='font-family: "맑은 고딕", sans-serif;'></span><span style='font-family: "맑은 고딕", sans-serif;'></span><span style='font-family: "맑은 고딕", sans-serif;'></span><span style='font-family: "맑은 고딕", sans-serif;'></span><span style='font-family: "맑은 고딕", sans-serif;'></span><span style='font-family: "맑은 고딕", sans-serif;'>또한, Type3, Type4 드라이버에 비해 낮은 성능</span></font></p>
+<p><font face="맑은 고딕, sans-serif"><br /></font></p>
+<h3><font face="맑은 고딕, sans-serif"><span style='white-space: pre; font-family: "맑은 고딕", sans-serif;'> </span><span style='font-family: "맑은 고딕", sans-serif;'>3) Typ</span><span style='font-family: "맑은 고딕", sans-serif;'>e 3</span></font></h3>
+<p><font face="맑은 고딕, sans-serif"><span style='white-space: pre; font-family: "맑은 고딕", sans-serif;'> </span><span style='font-family: "맑은 고딕", sans-serif;'>&#8211; Net-Protocol / All-Java Driver(순수 자바)</p>
+<p></span></font></p>
+<p><font face="맑은 고딕, sans-serif"><span style='white-space: pre; font-family: "맑은 고딕", sans-serif;'> </span><span style='font-family: "맑은 고딕", sans-serif;'>&#8211; 클라이언트에서 일반적인 Network API를 이용해 보낸 정보를<br /></span></font></p>
+<p><font face="맑은 고딕, sans-serif"><span style='white-space: pre; font-family: "맑은 고딕", sans-serif;'> </span><span style='font-family: "맑은 고딕", sans-serif;'>  서버가 Database에 독점적인 형태로 변환하는 방식</p>
+<p></span></font></p>
+<p><font face="맑은 고딕, sans-serif"><span style='white-space: pre; font-family: "맑은 고딕", sans-serif;'> </span><span style='font-family: "맑은 고딕", sans-serif;'>&#8211; 특징</span></font></p>
+<p><font face="맑은 고딕, sans-serif"><span style='white-space: pre; font-family: "맑은 고딕", sans-serif;'> </span><span style='font-family: "맑은 고딕", sans-serif;'>· 클라이언트에 존재하는 JDBC 드라이버는 소켓을 사용하여</span><br /><span style='font-family: "맑은 고딕", sans-serif;'>    </span><span style='font-family: "맑은 고딕", sans-serif;'>    </span><span style='font-family: "맑은 고딕", sans-serif;'>    </span><span style='font-family: "맑은 고딕", sans-serif;'>    </span><span style='font-family: "맑은 고딕", sans-serif;'>    </span><span style='font-family: "맑은 고딕", sans-serif;'>      </span><span style='font-family: "맑은 고딕", sans-serif;'></span><span style='font-family: "맑은 고딕", sans-serif;'></span><span style='font-family: "맑은 고딕", sans-serif;'></span><span style='font-family: "맑은 고딕", sans-serif;'></span><span style='font-family: "맑은 고딕", sans-serif;'></span><span style='font-family: "맑은 고딕", sans-serif;'></span><span style='font-family: "맑은 고딕", sans-serif;'>서버에 존재하는 미들웨어(Middleware) 애플리케이션에 연결</span></font></p>
+<p><font face="맑은 고딕, sans-serif"><span style='white-space: pre; font-family: "맑은 고딕", sans-serif;'> </span><span style='font-family: "맑은 고딕", sans-serif;'>· 애플리케이션은 클라이언트의 요청을 사용하고자 하는 데이터베이스에 독점적인 APU로 전환</span></font></p>
+<p><font face="맑은 고딕, sans-serif"><span style='white-space: pre; font-family: "맑은 고딕", sans-serif;'> </span><span style='font-family: "맑은 고딕", sans-serif;'>· 하나의 드라이버로 여러 개의 데이터베이스를 연동</span></font></p>
+<p><font face="맑은 고딕, sans-serif"><span style='white-space: pre; font-family: "맑은 고딕", sans-serif;'> </span><span style='font-family: "맑은 고딕", sans-serif;'>· 클라이언트에 소프트웨어를 설치할 필요가 없음</span></font></p>
+<p><font face="맑은 고딕, sans-serif"><br /></font></p>
+<h3><font face="맑은 고딕, sans-serif"><span style='white-space: pre; font-family: "맑은 고딕", sans-serif;'> </span><span style='font-family: "맑은 고딕", sans-serif;'>4) T</span><span style='font-family: "맑은 고딕", sans-serif;'>ype 4</span><span style='white-space: pre; font-family: "맑은 고딕", sans-serif;'> </span></font></h3>
+<p><font face="맑은 고딕, sans-serif"><span style='white-space: pre; font-family: "맑은 고딕", sans-serif;'> </span><span style='font-family: "맑은 고딕", sans-serif;'>&#8211; Native-Protocol / All-Java Driver</span></font></p>
+<p><font face="맑은 고딕, sans-serif"><span style='white-space: pre; font-family: "맑은 고딕", sans-serif;'> </span><span style='font-family: "맑은 고딕", sans-serif;'>&#8211; Database Engine에 사용되는 Network Protocol을 자바 소켓으로 직접 Database에 교신하는 방식</span></font></p>
+<p><font face="맑은 고딕, sans-serif"><span style='white-space: pre; font-family: "맑은 고딕", sans-serif;'> </span><span style='font-family: "맑은 고딕", sans-serif;'>&#8211; 특징</span></font></p>
+<p><font face="맑은 고딕, sans-serif"><span style='white-space: pre; font-family: "맑은 고딕", sans-serif;'> </span><span style='font-family: "맑은 고딕", sans-serif;'>· 가장 직접적인 순수 자바 솔루션</span></font></p>
+<p><font face="맑은 고딕, sans-serif"><span style='white-space: pre; font-family: "맑은 고딕", sans-serif;'> </span><span style='font-family: "맑은 고딕", sans-serif;'>· 거의 대부분 데이터베이스의 제조업체가 제공한다.</span></font></p>
+<p><font face="맑은 고딕, sans-serif"><span style='white-space: pre; font-family: "맑은 고딕", sans-serif;'> </span><span style='font-family: "맑은 고딕", sans-serif;'>· ODBC나 Native Lib 형태로 request를 변환하지 않기 때문에 Performance가 매우 좋다.</span></font></p>
+<p><font face="맑은 고딕, sans-serif"><span style='white-space: pre; font-family: "맑은 고딕", sans-serif;'> </span><span style='font-family: "맑은 고딕", sans-serif;'>   또한, 특별하게 Driver나 Lib, Middleware 등을 설치할 필요가 없기 때문에 배포 등이 매우 용이하다.</span></font></p>
+<p><font face="맑은 고딕, sans-serif"><br /></font></p>
+<p><font face="맑은 고딕, sans-serif"><br /></font></p>
+<h2><font face="맑은 고딕, sans-serif"><span style='font-family: "맑은 고딕", sans-serif;'>5. Oracle JD</span><span style='font-family: "맑은 고딕", sans-serif;'>BC Driver</span></font></h2>
+<p><font face="맑은 고딕, sans-serif"><br /></font></p>
+<p><font face="맑은 고딕, sans-serif"><br /></font></p>
+<h3><font face="맑은 고딕, sans-serif"><span style='white-space: pre; font-family: "맑은 고딕", sans-serif;'> </span><span style='font-family: "맑은 고딕", sans-serif;'>1) Type 2</span></font></h3>
+<p><font face="맑은 고딕, sans-serif"><span style='white-space: pre; font-family: "맑은 고딕", sans-serif;'> </span><span style='font-family: "맑은 고딕", sans-serif;'>오라클 &#8220;OCI Driver&#8221;라고 불리운다.</span></font></p>
+<p><font face="맑은 고딕, sans-serif"><br /></font></p>
+<p><font face="맑은 고딕, sans-serif"><span style='white-space: pre; font-family: "맑은 고딕", sans-serif;'> </span><span style='font-family: "맑은 고딕", sans-serif;'>ex) -OCI8 드라이버: Oracle8 데이터베이스를 지원</span></font></p>
+<p><font face="맑은 고딕, sans-serif"><span style='white-space: pre; font-family: "맑은 고딕", sans-serif;'> </span><span style='font-family: "맑은 고딕", sans-serif;'>    -OCI9 드라이버: Oracle9 데이터베이스를 지원</span></font></p>
+<p><font face="맑은 고딕, sans-serif"><br /></font></p>
+<p><font face="맑은 고딕, sans-serif"><span style='white-space: pre; font-family: "맑은 고딕", sans-serif;'> </span><span style='font-family: "맑은 고딕", sans-serif;'>이러한 드라이버는 한정된 플랫폼으로</span></font></p>
+<p><font face="맑은 고딕, sans-serif"><span style='white-space: pre; font-family: "맑은 고딕", sans-serif;'> </span><span style='font-family: "맑은 고딕", sans-serif;'>모든 오라클 드라이버는 JDK 1.0과 1.1.x에 종속적이며 JDBC 1.22 표준을 지원한다.</span></font></p>
+<p><font face="맑은 고딕, sans-serif"><span style='white-space: pre; font-family: "맑은 고딕", sans-serif;'> </span><span style='font-family: "맑은 고딕", sans-serif;'>또한 Net8 을 포함하는 Oracle Client 를 설치해야 사용이 가능하다.</span></font></p>
+<p><font face="맑은 고딕, sans-serif"><br /></font></p>
+<h3><font face="맑은 고딕, sans-serif"><span style='white-space: pre; font-family: "맑은 고딕", sans-serif;'> </span><span style='font-family: "맑은 고딕", sans-serif;'>2) Typ</span><span style='font-family: "맑은 고딕", sans-serif;'>e 4 ★</span></font></h3>
+<p><font face="맑은 고딕, sans-serif"><span style='white-space: pre; font-family: "맑은 고딕", sans-serif;'> </span><span style='font-family: "맑은 고딕", sans-serif;'>오라클 &#8220;Thin Driver&#8221;라고 불리운다.</span></font></p>
+<p><font face="맑은 고딕, sans-serif"><br /></font></p>
+<p><font face="맑은 고딕, sans-serif"><span style='white-space: pre; font-family: "맑은 고딕", sans-serif;'> </span><span style='font-family: "맑은 고딕", sans-serif;'>자바로 작성된 Net8의 TCP/IP 버전의 자체 실행을 포함하며 플랫폼에 독립적이고 실행시간에 브라우저를 다운로드 된다.</span></font></p>
+<p><font face="맑은 고딕, sans-serif"><span style='white-space: pre; font-family: "맑은 고딕", sans-serif;'> </span><span style='font-family: "맑은 고딕", sans-serif;'>그리고 서버 측에서는 TCP/IP Listener 가 필요하며 연결 스트링은 TNSNAMES 엔트리가 아닌 </span><br /><span style='font-family: "맑은 고딕", sans-serif;'>    </span><span style='font-family: "맑은 고딕", sans-serif;'>    </span><span style='font-family: "맑은 고딕", sans-serif;'>    </span><span style='font-family: "맑은 고딕", sans-serif;'>    </span><span style='font-family: "맑은 고딕", sans-serif;'></span><span style='font-family: "맑은 고딕", sans-serif;'></span><span style='font-family: "맑은 고딕", sans-serif;'></span><span style='font-family: "맑은 고딕", sans-serif;'>TCP/IP 주소와 포트번호가 된다.</span></font></p>
+<p><font face="맑은 고딕, sans-serif"><br /></font></p>
+<p><font face="맑은 고딕, sans-serif"><span style='white-space: pre; font-family: "맑은 고딕", sans-serif;'> </span><span style='font-family: "맑은 고딕", sans-serif;'>URL Format → jdbc:oracle:thin:@[host]:[port]:[database]</span></font></p>
+<p><font face="맑은 고딕, sans-serif"><span style='font-family: "맑은 고딕", sans-serif;'><br /></span></font></p>
+<p style="text-align: center; clear: none; float: none;"><span class="imageblock" style="display:inline-block;width:900px;;height:auto;max-width:100%"><img filemime="image/jpeg" filename="캡처.PNG" height="238" src="http://cfile21.uf.tistory.com/image/99D35C3D5A580E5333E783" style="" width="900"/></span></p>
+<p><font face="맑은 고딕, sans-serif"><span style='font-family: "맑은 고딕", sans-serif;'><br /></span></font></p>
+<p><span style='font-family: "맑은 고딕", sans-serif;'>하나의 워크 스테이션에 클라이언트와 서버가 설치되어 있기 때문에, 이 2개가 다 있는 것임.</span></p>
+<p><font face="맑은 고딕, sans-serif"><br /></font></p>
+<h2><font face="맑은 고딕, sans-serif"><span style='font-family: "맑은 고딕", sans-serif;'>6. JDBC </span><span style='font-family: "맑은 고딕", sans-serif;'>API</span></font></h2>
+<p><font face="맑은 고딕, sans-serif"><span style='white-space: pre; font-family: "맑은 고딕", sans-serif;'> </span><span style='font-family: "맑은 고딕", sans-serif;'>JDBC API는 데이터베이스의 데이터를 액세스할 수 있도록 제공되는</span></font></p>
+<p><font face="맑은 고딕, sans-serif"><span style='white-space: pre; font-family: "맑은 고딕", sans-serif;'> </span><span style='font-family: "맑은 고딕", sans-serif;'>표준 자바 API 클래스와 인터페이스로 구성되며</span></font></p>
+<p><font face="맑은 고딕, sans-serif"><span style='white-space: pre; font-family: "맑은 고딕", sans-serif;'> </span><span style='font-family: "맑은 고딕", sans-serif;'>다음 기능을 실행하기 위한 클래스와 인터페이스를 제공한다.</span></font></p>
+<p><font face="맑은 고딕, sans-serif"><br /></font></p>
+<p><font face="맑은 고딕, sans-serif"><span style='white-space: pre; font-family: "맑은 고딕", sans-serif;'> </span><span style='font-family: "맑은 고딕", sans-serif;'>&#8211; Java 프로그램에서 데이터베이스에 서버 접속</span></font></p>
+<p><font face="맑은 고딕, sans-serif"><span style='white-space: pre; font-family: "맑은 고딕", sans-serif;'> </span><span style='font-family: "맑은 고딕", sans-serif;'>&#8211; SQL 문을 구성, 데이터베이스 서버에서 실행</span></font></p>
+<p><font face="맑은 고딕, sans-serif"><span style='white-space: pre; font-family: "맑은 고딕", sans-serif;'> </span><span style='font-family: "맑은 고딕", sans-serif;'>&#8211; 데이터베이스 서버가 처리한 결과 가져오기</span></font></p>
+<p><font face="맑은 고딕, sans-serif"><span style='white-space: pre; font-family: "맑은 고딕", sans-serif;'> </span><span style='font-family: "맑은 고딕", sans-serif;'>&#8211; 데이터베이스의 정보, 처리 결과에 대한 정보 등을 가져오기</span></font></p>
+<p><font face="맑은 고딕, sans-serif"><br /></font></p>
+<p><font face="맑은 고딕, sans-serif"><span style='white-space: pre; font-family: "맑은 고딕", sans-serif;'> </span><span style='font-family: "맑은 고딕", sans-serif;'>※<b> java.sql.* 패키지(package)</b></span></font></p>
+<p><font face="맑은 고딕, sans-serif"><span style='white-space: pre; font-family: "맑은 고딕", sans-serif;'> </span><span style='font-family: "맑은 고딕", sans-serif;'>&#8211; Java Application 으로부터 Database를 조작하는 API는</span></font></p>
+<p><font face="맑은 고딕, sans-serif"><span style='white-space: pre; font-family: "맑은 고딕", sans-serif;'> </span><span style='font-family: "맑은 고딕", sans-serif;'>  JDK의 코어 API로 『java.sql.*』 패키지에 설정되어 있다.</span></font></p>
+<p><font face="맑은 고딕, sans-serif"><span style='white-space: pre; font-family: "맑은 고딕", sans-serif;'> </span><span style='font-family: "맑은 고딕", sans-serif;'>&#8211; JDBC는 데이터베이스에 <u>접속하기 위해</u></span></font></p>
+<p><font face="맑은 고딕, sans-serif"><span style='white-space: pre; font-family: "맑은 고딕", sans-serif;'> </span><span style='font-family: "맑은 고딕", sans-serif;'>  한 개의 클래스(java.sql.DriverManager) 와</span></font></p>
+<p><font face="맑은 고딕, sans-serif"><span style='white-space: pre; font-family: "맑은 고딕", sans-serif;'> </span><span style='font-family: "맑은 고딕", sans-serif;'>  두 개의 인터페이스(java.sql.Driver 와 java.sql.Connection)를 사용한다.</span></font></p>
+<p></p>
+<p></p>
+<h1 data-parsoid='{"dsr":[4482,4506,1,1]}' id=".E2.96.A0.E2.96.A0.E2.96.A0_.EC.82.AC.EC.A0.84_.EC.84.A4.EC.A0.95.28.EC.A3.BC.EC.9D.98_.EC.82.AC.ED.95.AD.29_.E2.96.A0.E2.96.A0.E2.96.A0"><span style='font-family: "맑은 고딕", sans-serif;'> ■■■ 사전 설정(주의 사항) ■■■ </span></h1>
+<p data-parsoid='{"dsr":[4507,4524,0,0]}'><span style='font-family: "맑은 고딕", sans-serif;'>○ 오라클이 설치되어 있는 경우</span></p>
+<p data-parsoid='{"dsr":[4526,4553,0,0]}'><span style='font-family: "맑은 고딕", sans-serif;'>&#8211; 시스템의 classpath를 다음과 같이 변경</span></p>
+<p data-parsoid='{"dsr":[4555,4600,0,0]}'><span style='font-family: "맑은 고딕", sans-serif;'>(11g Express Edtion의 설치 경로가 C:\oraclexe 인 경우)</span></p>
+<p data-parsoid='{"dsr":[4602,4657,0,0]}'><span style='font-family: "맑은 고딕", sans-serif;'>.;C:\oraclexe\app\oracle\product\11.2.0\server\jdbc\lib</span></p>
+<p data-parsoid='{"dsr":[4659,4705,0,0]}'><span style='font-family: "맑은 고딕", sans-serif;'>(10g Enterprise Edtion의 설치 경로가 C:\oracle 인 경우)</span></p>
+<p data-parsoid='{"dsr":[4707,4760,0,0]}'><span style='font-family: "맑은 고딕", sans-serif;'>.;C:\oracle\product\10.x.x\db_x\jdbc\lib\ojdbc14.jar;</span></p>
+<p data-parsoid='{"dsr":[4762,4769,0,0]}'><span style='font-family: "맑은 고딕", sans-serif;'>환경변수 설정</span></p>
+<figure class="mw-halign-none" data-parsoid='{"optList":[{"ck":"none","ak":"없음"},{"ck":"thumbnail","ak":"섬네일"},{"ck":"width","ak":"1046x1046픽셀"}],"dsr":[4770,4817,2,2]}' data-ve-attributes='{"typeof":"mw:Image/Thumb"}' typeof="mw:Image/Thumb"><a data-parsoid='{"a":{"href":"./파일:오라클_설치된_경우_사전_설정_.png"},"sa":{"href":"파일:오라클 설치된 경우 사전 설정 .png"},"dsr":[4772,4815,null,null]}' href="http://172.27.42.57/mediawiki/index.php/%ED%8C%8C%EC%9D%BC:%EC%98%A4%EB%9D%BC%ED%81%B4_%EC%84%A4%EC%B9%98%EB%90%9C_%EA%B2%BD%EC%9A%B0_%EC%82%AC%EC%A0%84_%EC%84%A4%EC%A0%95_.png"><img data-file-height="1033" data-file-type="bitmap" data-file-width="1920" data-parsoid='{"a":{"resource":"./파일:오라클_설치된_경우_사전_설정_.png","height":"563","width":"1046"},"sa":{"resource":"파일:오라클 설치된 경우 사전 설정 .png"}}' data-ve-attributes='{"resource":"./파일:오라클_설치된_경우_사전_설정_.png"}' height="563" resource="./파일:오라클_설치된_경우_사전_설정_.png" src="//172.27.42.57/mediawiki/images/thumb/d/d0/%EC%98%A4%EB%9D%BC%ED%81%B4_%EC%84%A4%EC%B9%98%EB%90%9C_%EA%B2%BD%EC%9A%B0_%EC%82%AC%EC%A0%84_%EC%84%A4%EC%A0%95_.png/1046px-%EC%98%A4%EB%9D%BC%ED%81%B4_%EC%84%A4%EC%B9%98%EB%90%9C_%EA%B2%BD%EC%9A%B0_%EC%82%AC%EC%A0%84_%EC%84%A4%EC%A0%95_.png" width="1046"/></a></figure>
+<p data-parsoid='{"dsr":[4819,4839,0,0]}'><span style='font-family: "맑은 고딕", sans-serif;'>○ 오라클이 설치되어 있지 않은 경우</span></p>
+<p data-parsoid='{"dsr":[4841,4870,0,0]}'><span style='font-family: "맑은 고딕", sans-serif;'>&#8211; Oracle 용 JDBC 를 다운로드 해야 한다.</span></p>
+<p data-parsoid='{"dsr":[4872,4882,0,0]}'><span style='font-family: "맑은 고딕", sans-serif;'>가. 다운로드 경로</span></p>
+<p data-parsoid='{"dsr":[4884,4910,0,0]}'><span style='font-family: "맑은 고딕", sans-serif;'>① </span><a data-parsoid='{"stx":"url","dsr":[4886,4907,0,0]}' data-ve-attributes='{"rel":"mw:ExtLink"}' href="http://www.oracle.com/" rel="mw:ExtLink"><span style='font-family: "맑은 고딕", sans-serif;'>http://www.oracle.com</span></a><span style='font-family: "맑은 고딕", sans-serif;'> 이동</span></p>
+<p data-parsoid='{"dsr":[4912,5013,0,0]}'><span style='font-family: "맑은 고딕", sans-serif;'>②  </span><a data-parsoid='{"stx":"url","dsr":[4915,5010,0,0]}' data-ve-attributes='{"rel":"mw:ExtLink"}' href="http://www.oracle.com/technetwork/database/features/jdbc/jdbc-drivers-12c-download-1958347.html" rel="mw:ExtLink"><span style='font-family: "맑은 고딕", sans-serif;'>http://www.oracle.com/technetwork/database/features/jdbc/jdbc-drivers-12c-download-1958347.html</span></a><span style='font-family: "맑은 고딕", sans-serif;'> 이동</span></p>
+<p data-parsoid='{"dsr":[5015,5068,0,0]}'><span style='font-family: "맑은 고딕", sans-serif;'>③ Drivers 항목들 중 JDBC Driver 를 버전에 맞는 항목을 선택하여 다운로드 진행</span></p>
+<figure class="mw-halign-none" data-parsoid='{"optList":[{"ck":"none","ak":"없음"},{"ck":"thumbnail","ak":"섬네일"},{"ck":"width","ak":"675x675픽셀"}],"dsr":[5069,5101,2,2]}' data-ve-attributes='{"typeof":"mw:Image/Thumb"}' typeof="mw:Image/Thumb"><a data-parsoid='{"a":{"href":"./파일:캡처zz.png"},"sa":{"href":"파일:캡처zz.png"},"dsr":[5071,5099,null,null]}' href="http://172.27.42.57/mediawiki/index.php/%ED%8C%8C%EC%9D%BC:%EC%BA%A1%EC%B2%98zz.png"><img data-file-height="915" data-file-type="bitmap" data-file-width="1139" data-parsoid='{"a":{"resource":"./파일:캡처zz.png","height":"542","width":"675"},"sa":{"resource":"파일:캡처zz.png"}}' data-ve-attributes='{"resource":"./파일:캡처zz.png"}' height="542" resource="./파일:캡처zz.png" src="//172.27.42.57/mediawiki/images/thumb/e/e4/%EC%BA%A1%EC%B2%98zz.png/675px-%EC%BA%A1%EC%B2%98zz.png" width="675"/></a></figure>
+<p data-parsoid='{"dsr":[5103,5110,0,0]}'><span style='font-family: "맑은 고딕", sans-serif;'>나. 파일 명</span></p>
+<p data-parsoid='{"dsr":[5112,5139,0,0]}'><span style='font-family: "맑은 고딕", sans-serif;'>&#8211; ojdbc6.jar 또는 ojdbc14.jar</span></p>
+<p data-parsoid='{"dsr":[5141,5174,0,0]}'><span style='font-family: "맑은 고딕", sans-serif;'>cf) Oracle 12g면 ojdbc7.jar를 받아야 함</span></p>
+<p data-parsoid='{"dsr":[5176,5232,0,0]}'><span style='font-family: "맑은 고딕", sans-serif;'>다. 시스템의 classpath 항목에 ojdbc6.jar(ojdbc14.jar) 추가 → 경로 포함</span></p>
+<p data-parsoid='{"dsr":[5234,5238,0,0]}'><span style='font-family: "맑은 고딕", sans-serif;'>○ 공통</span></p>
+<p data-parsoid='{"dsr":[5240,5298,0,0]}'><span style='font-family: "맑은 고딕", sans-serif;'>JDBC 드라이버 설치를 위한 ojdbc6.jar(ojdbc14.jar) 파일을 경로에 복사 &amp; 붙여넣기</span></p>
+<p data-parsoid='{"dsr":[5300,5347,0,0]}'><span style='font-family: "맑은 고딕", sans-serif;'>1. C:\Program Files\Java\jdk1.8.x.x\jre\lib\ext</span></p>
+<p data-parsoid='{"dsr":[5349,5387,0,0]}'><span style='font-family: "맑은 고딕", sans-serif;'>2. C:\Program Files\Java\jre-x.x.x\lib</span></p>
+<p data-parsoid='{"dsr":[5389,5407,0,0]}'><span style='font-family: "맑은 고딕", sans-serif;'>○ JSP 실습을 위한 추가 설정</span></p>
+<p data-parsoid='{"dsr":[5409,5450,0,0]}'><span style='font-family: "맑은 고딕", sans-serif;'>&#8211; 웹 서버에서 실질적으로 Oracle 용 JDBC 드라이버를 찾는 경로는</span></p>
+<p data-parsoid='{"dsr":[5452,5514,0,0]}'><span style='font-family: "맑은 고딕", sans-serif;'>『톰캣루트\lib』 이므로 이 경로에 ojdbc6.jar(ojdbc14.jar) 파일을 복사 &amp; 붙여놓기 한다.</span></p>
+<p data-parsoid='{"dsr":[5516,5556,0,0]}'><span style='font-family: "맑은 고딕", sans-serif;'>ex) 현재 실습 경로 C:\apache-tomcat-8.5.20\lib</span></p>
+<p data-parsoid='{"dsr":[5558,5592,0,0]}'><span style='font-family: "맑은 고딕", sans-serif;'>cf) 톰캣 다운로드(</span><a data-parsoid='{"stx":"url","dsr":[5570,5591,0,0]}' data-ve-attributes='{"rel":"mw:ExtLink"}' href="http://www.apache.org/" rel="mw:ExtLink"><span style='font-family: "맑은 고딕", sans-serif;'>http://www.apache.org</span></a><span style='font-family: "맑은 고딕", sans-serif;'>)</span></p>
+<h2 data-parsoid='{"dsr":[5594,5621,2,2]}' id=".E2.96.A0.E2.96.A0.E2.96.A0_JDBC_.ED.94.84.EB.A1.9C.EA.B7.B8.EB.9E.98.EB.B0.8D_.EC.A0.88.EC.B0.A8_.E2.96.A0.E2.96.A0.E2.96.A0"><span style='font-family: "맑은 고딕", sans-serif;'> ■■■ JDBC 프로그래밍 절차 ■■■ </span></h2>
+<h3 data-parsoid='{"dsr":[5623,5658,3,3]}' id="1._.EB.93.9C.EB.9D.BC.EC.9D.B4.EB.B2.84_.EB.A1.9C.EB.94.A9:_Class.forName.28.29"><span style='font-family: "맑은 고딕", sans-serif;'> 1. 드라이버 로딩: Class.forName() </span></h3>
+<p data-parsoid='{"dsr":[5659,5710,0,0]}'><span style='font-family: "맑은 고딕", sans-serif;'>&#8211; Oracle Driver를 Java에서 사용하기 위해 드라이버를 JVM에 로딩하는 과정.</span></p>
+<h3 data-parsoid='{"dsr":[5712,5762,3,3]}' id="2._.EC.BB.A4.EB.84.A5.EC.85.98_.ED.95.A0.EB.8B.B9.EB.B0.9B.EA.B8.B0:_DriverManager.getConnection.28.29"><span style='font-family: "맑은 고딕", sans-serif;'> 2. 커넥션 할당받기: DriverManager.getConnection() </span></h3>
+<p data-parsoid='{"dsr":[5763,5808,0,0]}'><span style='font-family: "맑은 고딕", sans-serif;'>cf) 싱글턴: 한번 연결되서 생성된 객체를 이 연결객체를 활용해서 쿼리문을 날림</span></p>
+<p data-parsoid='{"dsr":[5810,5892,0,0]}'><span style='font-family: "맑은 고딕", sans-serif;'>내가 insert, update, delete한다면, insert를 위한 커넥션 객체를 하나 하나 생성하는게 아니라. 하나 생성해놓고 쓰는게 나음.</span></p>
+<h3 data-parsoid='{"dsr":[5894,5972,3,3]}' id="3._.EC.BF.BC.EB.A6.AC.EB.AC.B8_.EC.A0.84.EC.86.A1.EC.9D.84_.EC.9C.84.ED.95.9C_Statement_.EB.98.90.EB.8A.94_PreparedStatement_.EB.98.90.EB.8A.94_CallableStatement_.ED.95.A0.EB.8B.B9.EB.B0.9B.EA.B8.B0"><span style='font-family: "맑은 고딕", sans-serif;'> 3. 쿼리문 전송을 위한 Statement 또는 PreparedStatement 또는 CallableStatement 할당받기 </span></h3>
+<p data-parsoid='{"dsr":[5973,6041,0,0]}'><span class="ve-pasteProtect" data-parsoid='{"dsr":[5973,5991,8,9]}' data-ve-attributes='{"typeof":"mw:Nowiki"}' style='font-family: "맑은 고딕", sans-serif;' typeof="mw:Nowiki">:</span><span style='font-family: "맑은 고딕", sans-serif;'> conn.createStatement() 또는 conn.prepareStatement()</span></p>
+<p data-parsoid='{"dsr":[6043,6089,0,0]}'><span style='font-family: "맑은 고딕", sans-serif;'>/*********************************************</span></p>
+<p data-parsoid='{"dsr":[6091,6123,0,0]}'><span style='font-family: "맑은 고딕", sans-serif;'>statement는 광산의 운반차 같은것을 생각하면 된다.</span></p>
+<p data-parsoid='{"dsr":[6125,6151,0,0]}'><span style='font-family: "맑은 고딕", sans-serif;'>&#8220;석탄을 옮겨주겠니? 새참은 내려줄테니까 먹어&#8221;</span></p>
+<p data-parsoid='{"dsr":[6153,6192,0,0]}'><span style='font-family: "맑은 고딕", sans-serif;'>즉, 작업 객체라 불림! 석탄대신 SQL문을 싣고 가는거라 생각하면 됨</span></p>
+<figure class="mw-halign-none" data-parsoid='{"optList":[{"ck":"none","ak":"없음"},{"ck":"thumbnail","ak":"섬네일"},{"ck":"width","ak":"933x933픽셀"}],"dsr":[6194,6230,2,2]}' data-ve-attributes='{"typeof":"mw:Image/Thumb"}' typeof="mw:Image/Thumb"><a data-parsoid='{"a":{"href":"./파일:Jdbc_비유도.png"},"sa":{"href":"파일:Jdbc 비유도.png"},"dsr":[6196,6228,null,null]}' href="http://172.27.42.57/mediawiki/index.php/%ED%8C%8C%EC%9D%BC:Jdbc_%EB%B9%84%EC%9C%A0%EB%8F%84.png"><img data-file-height="720" data-file-type="bitmap" data-file-width="1280" data-parsoid='{"a":{"resource":"./파일:Jdbc_비유도.png","height":"525","width":"933"},"sa":{"resource":"파일:Jdbc 비유도.png"}}' data-ve-attributes='{"resource":"./파일:Jdbc_비유도.png"}' height="525" resource="./파일:Jdbc_비유도.png" src="//172.27.42.57/mediawiki/images/thumb/d/d6/Jdbc_%EB%B9%84%EC%9C%A0%EB%8F%84.png/933px-Jdbc_%EB%B9%84%EC%9C%A0%EB%8F%84.png" width="933"/></a></figure>
+<p data-parsoid='{"dsr":[6232,6285,0,0]}'><span style='font-family: "맑은 고딕", sans-serif;'>cf) PrepareStatement와 CallableStatement를 상속받아야 하는 이유?</span></p>
+<p data-parsoid='{"dsr":[6287,6341,0,0]}'><span style='font-family: "맑은 고딕", sans-serif;'>statement 앞선(pre)에서 보안을 향상시키위해 사용 PrepareStatement를 씀.</span></p>
+<p data-parsoid='{"dsr":[6343,6387,0,0]}'><span style='font-family: "맑은 고딕", sans-serif;'>Oracle 내부에 내장된 함수를 쓰기위해 CallableStatement를 씀</span></p>
+<p data-parsoid='{"dsr":[6389,6457,0,0]}'><span class="ve-pasteProtect" data-parsoid='{"dsr":[6389,6456,8,9]}' data-ve-attributes='{"typeof":"mw:Nowiki"}' style='font-family: "맑은 고딕", sans-serif;' typeof="mw:Nowiki">**************************************************</span><span style='font-family: "맑은 고딕", sans-serif;'>/</span></p>
+<h3 data-parsoid='{"dsr":[6459,6512,3,3]}' id="4._Statement_.EB.98.90.EB.8A.94_PreparedStatement_.EB.A5.BC_.ED.86.B5.ED.95.9C_.EC.BF.BC.EB.A6.AC.EB.AC.B8_.EC.A0.84.EC.86.A1"><span style='font-family: "맑은 고딕", sans-serif;'> 4. Statement 또는 PreparedStatement 를 통한 쿼리문 전송 </span></h3>
+<p data-parsoid='{"dsr":[6513,6549,0,0]}'><span style='font-family: "맑은 고딕", sans-serif;'>○ DML (insert, update, delete) 문인 경우</span></p>
+<p data-parsoid='{"dsr":[6551,6687,0,0]}'><span class="ve-pasteProtect" data-parsoid='{"dsr":[6551,6569,8,9]}' data-ve-attributes='{"typeof":"mw:Nowiki"}' style='font-family: "맑은 고딕", sans-serif;' typeof="mw:Nowiki">:</span><span style='font-family: "맑은 고딕", sans-serif;'> int updateCount = stmt.executeUpdate(sql) // DDL(CREATE, ALTER, DROP) 등을 보냄 , [오라클 내에 변경사항이 생긴다면(없던게 생긴거나, 있던게 없어지거나]</span></p>
+<p data-parsoid='{"dsr":[6689,6704,0,0]}'><span style='font-family: "맑은 고딕", sans-serif;'>&#8211; 영향받은 레코드 수 반환</span></p>
+<p data-parsoid='{"dsr":[6706,6721,0,0]}'><span style='font-family: "맑은 고딕", sans-serif;'>○ select 구문의 경우</span></p>
+<p data-parsoid='{"dsr":[6723,6818,0,0]}'><span class="ve-pasteProtect" data-parsoid='{"dsr":[6723,6741,8,9]}' data-ve-attributes='{"typeof":"mw:Nowiki"}' style='font-family: "맑은 고딕", sans-serif;' typeof="mw:Nowiki">:</span><span style='font-family: "맑은 고딕", sans-serif;'> ResultSet rs = stmt.executeQuery(sql) // DDL(SELECT, INSERT, DELETE) 조회해주세요,</span></p>
+<h3 data-parsoid='{"dsr":[6820,6846,3,3]}' id="5._.28select_.EA.B5.AC.EB.AC.B8.EC.9D.98_.EA.B2.BD.EC.9A.B0.29"><span style='font-family: "맑은 고딕", sans-serif;'> 5. (select 구문의 경우) </span></h3>
+<p data-parsoid='{"dsr":[6847,6892,0,0]}'><span style='font-family: "맑은 고딕", sans-serif;'>ResultSet의 논리적 커서의 이동을 통해 각 컬럼의 데이터를 바인딩해 온다.</span></p>
+<p data-parsoid='{"dsr":[6894,6934,0,0]}'><span class="ve-pasteProtect" data-parsoid='{"dsr":[6894,6912,8,9]}' data-ve-attributes='{"typeof":"mw:Nowiki"}' style='font-family: "맑은 고딕", sans-serif;' typeof="mw:Nowiki">:</span><span style='font-family: "맑은 고딕", sans-serif;'> boolean b = rs.next()</span></p>
+<p data-parsoid='{"dsr":[6936,6944,0,0]}'><span style='font-family: "맑은 고딕", sans-serif;'>&#8211; 커서 이동.</span></p>
+<p data-parsoid='{"dsr":[6946,6994,0,0]}'><span style='font-family: "맑은 고딕", sans-serif;'>커서가 위치한 지점에 레코드가 존재하면 true 를 반환, 없으면 false 를 반환.</span></p>
+<p data-parsoid='{"dsr":[6996,7051,0,0]}'><span style='font-family: "맑은 고딕", sans-serif;'>커서는 가장 선두 첫 번째 레코드의 직전에 위치하고 있다가&#8230; next() 가 호출되면 진행한다.</span></p>
+<p data-parsoid='{"dsr":[7053,7190,0,0]}'><span class="ve-pasteProtect" data-parsoid='{"dsr":[7053,7190,8,9]}' data-ve-attributes='{"typeof":"mw:Nowiki"}' style='font-family: "맑은 고딕", sans-serif;' typeof="mw:Nowiki">&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;</span></p>
+<h3 data-parsoid='{"dsr":[7192,7208,3,3]}' id=".EC.8B.A4.EC.8A.B5_.ED.99.98.EA.B2.BD_.EC.84.B8.ED.8C.85"><span style='font-family: "맑은 고딕", sans-serif;'> 실습 환경 세팅 </span></h3>
+<h4 data-parsoid='{"dsr":[7210,7222,4,4]}' id=".EC.84.A4.EC.A0.95"><span style='font-family: "맑은 고딕", sans-serif;'> 설정 </span></h4>
+<p data-parsoid='{"dsr":[7223,7268,0,0]}'><span style='font-family: "맑은 고딕", sans-serif;'>project Explorer에서 new → dynamic web project </span></p>
+<figure class="mw-halign-none" data-parsoid='{"optList":[{"ck":"none","ak":"없음"},{"ck":"thumbnail","ak":"섬네일"},{"ck":"width","ak":"597x597픽셀"}],"dsr":[7269,7303,2,2]}' data-ve-attributes='{"typeof":"mw:Image/Thumb"}' typeof="mw:Image/Thumb"><a data-parsoid='{"a":{"href":"./파일:Jdbc_1.png"},"sa":{"href":"파일:Jdbc 1.png"},"dsr":[7271,7301,null,null]}' href="http://172.27.42.57/mediawiki/index.php/%ED%8C%8C%EC%9D%BC:Jdbc_1.png"><img data-file-height="497" data-file-type="bitmap" data-file-width="597" data-parsoid='{"a":{"resource":"./파일:Jdbc_1.png","height":"497","width":"597"},"sa":{"resource":"파일:Jdbc 1.png"}}' data-ve-attributes='{"resource":"./파일:Jdbc_1.png"}' height="497" resource="./파일:Jdbc_1.png" src="//172.27.42.57/mediawiki/images/5/56/Jdbc_1.png" width="597"/></a></figure>
+<p data-parsoid='{"dsr":[7305,7330,0,0]}'><span style='font-family: "맑은 고딕", sans-serif;'>이름설정 및 Apach Tomcat 버전 설정</span></p>
+<figure class="mw-halign-none" data-parsoid='{"optList":[{"ck":"none","ak":"없음"},{"ck":"thumbnail","ak":"섬네일"},{"ck":"width","ak":"675x675픽셀"}],"dsr":[7331,7365,2,2]}' data-ve-attributes='{"typeof":"mw:Image/Thumb"}' typeof="mw:Image/Thumb"><a data-parsoid='{"a":{"href":"./파일:Jdbc_2.png"},"sa":{"href":"파일:Jdbc 2.png"},"dsr":[7333,7363,null,null]}' href="http://172.27.42.57/mediawiki/index.php/%ED%8C%8C%EC%9D%BC:Jdbc_2.png"><img data-file-height="851" data-file-type="bitmap" data-file-width="1191" data-parsoid='{"a":{"resource":"./파일:Jdbc_2.png","height":"482","width":"675"},"sa":{"resource":"파일:Jdbc 2.png"}}' data-ve-attributes='{"resource":"./파일:Jdbc_2.png"}' height="482" resource="./파일:Jdbc_2.png" src="//172.27.42.57/mediawiki/images/thumb/8/8c/Jdbc_2.png/675px-Jdbc_2.png" width="675"/></a></figure>
+<p data-parsoid='{"dsr":[7367,7414,0,0]}'><span style='font-family: "맑은 고딕", sans-serif;'>Apache Tomcat 8.5 경로 설정 C:\apache-tomcat-8.5.20</span></p>
+<figure class="mw-halign-none" data-parsoid='{"optList":[{"ck":"none","ak":"없음"},{"ck":"thumbnail","ak":"섬네일"},{"ck":"width","ak":"868x868픽셀"}],"dsr":[7415,7449,2,2]}' data-ve-attributes='{"typeof":"mw:Image/Thumb"}' typeof="mw:Image/Thumb"><a data-parsoid='{"a":{"href":"./파일:Jdbc_3.png"},"sa":{"href":"파일:Jdbc 3.png"},"dsr":[7417,7447,null,null]}' href="http://172.27.42.57/mediawiki/index.php/%ED%8C%8C%EC%9D%BC:Jdbc_3.png"><img data-file-height="830" data-file-type="bitmap" data-file-width="945" data-parsoid='{"a":{"resource":"./파일:Jdbc_3.png","height":"762","width":"868"},"sa":{"resource":"파일:Jdbc 3.png"}}' data-ve-attributes='{"resource":"./파일:Jdbc_3.png"}' height="762" resource="./파일:Jdbc_3.png" src="//172.27.42.57/mediawiki/images/thumb/0/0a/Jdbc_3.png/868px-Jdbc_3.png" width="868"/></a></figure>
+<h4 data-parsoid='{"dsr":[7451,7467,4,4]}' id=".ED.8C.A8.ED.82.A4.EC.A7.80_.EC.84.A4.EC.A0.95"><span style='font-family: "맑은 고딕", sans-serif;'> 패키지 설정 </span></h4>
+<figure class="mw-default-size mw-halign-none" data-parsoid='{"optList":[{"ck":"none","ak":"없음"},{"ck":"thumbnail","ak":"섬네일"}],"dsr":[7468,7502,2,2]}' data-ve-attributes='{"typeof":"mw:Image/Thumb"}' typeof="mw:Image/Thumb"><a data-parsoid='{"a":{"href":"./파일:Package_com.util.png"},"sa":{"href":"파일:Package com.util.png"},"dsr":[7470,7500,null,null]}' href="http://172.27.42.57/mediawiki/index.php/%ED%8C%8C%EC%9D%BC:Package_com.util.png"><img data-file-height="50" data-file-type="bitmap" data-file-width="166" data-parsoid='{"a":{"resource":"./파일:Package_com.util.png","height":"50","width":"166"},"sa":{"resource":"파일:Package com.util.png"}}' data-ve-attributes='{"resource":"./파일:Package_com.util.png"}' height="50" resource="./파일:Package_com.util.png" src="//172.27.42.57/mediawiki/images/9/9f/Package_com.util.png" width="166"/></a></figure>
+<h4 data-parsoid='{"dsr":[7504,7528,4,4]}' id="DBConn.java_.EC.83.9D.EC.84.B1"><span style='font-family: "맑은 고딕", sans-serif;'> DBConn.java 생성 </span></h4>
+<p data-parsoid='{"dsr":[7529,7565,0,0]}'><span style='font-family: "맑은 고딕", sans-serif;'>싱글톤 패턴을 이용한 Database 연결 객체 생성 전용 클래스</span></p>
+<p data-parsoid='{"dsr":[7567,7592,0,0]}'><span style='font-family: "맑은 고딕", sans-serif;'>→ DB 연결 과정이 부하가 가장 크기 때문에</span></p>
+<p data-parsoid='{"dsr":[7594,7620,0,0]}'><span style='font-family: "맑은 고딕", sans-serif;'>한 번 연결된 객체를 계속 사용하는 것이 좋다.</span></p>
+<div about="#mwt3" class="mw-highlight mw-content-ltr" data-mw="{&quot;name&quot;:&quot;syntaxhighlight&quot;,&quot;attrs&quot;:{&quot;lang&quot;:&quot;java&quot;},&quot;body&quot;:{&quot;extsrc&quot;:&quot;\n/*=====================================================\n *  DBConn.java\n *  - 싱글톤 패턴을 이용한 Database 연결 객체 생성 전용 클래스\n *    → DB 연결 과정이 부하가 가장 크기 때문에\n *      한 번 연결된 객체를 계속 사용하는 것이 좋다. \n *=================================================== */\n\npackage com.util;\n\nimport java.sql.Connection;\nimport java.sql.DriverManager;\n\npublic class DBConn {\n\tprivate static Connection dbConn;\n\t//-- 자동으로 null 초기화\n\t//\n\t\n\t//== 연결을 수행하는 메소드, 하나 만들고 계속 사용하기 위해서 static메소드로 선언==\n\tpublic static Connection getConnection() {\n\t\t// try ~ catch 대신 getConnection() 메소드명 뒤에 『throws Exception』 (SQLException, ClassNotFoundException)\n\t\t// 을 사용하면 try ~ catch 문을 사용하지 않아도 된다.\n\t\t// 단, throws Exception을 사용할 경우 예외가 발생하게 되면\n\t\t// 프로그램 자체가 종료되어 버린다.\n\t\t// 하지만, try ~ catch 문을 사용할 경우 프로그램이 종료되는 것은 아니며\n\t\t// 연결 실패에 대한 원인 분석을 할 수 있다.\n\t\t// 또한, 이 오류가 발생되었을 경우 클라이언트에게 별도의 안내를 할 수도 있게 된다.\n\t\t\n\t\t//==dbConn이 채워져 있으면, 새로운 dbConn을 만들지 않겠다는 의미.(디자인패턴 中 싱글턴)\n\t\tif (dbConn == null) {\n\t\t\ttry {'\n\t\t\t\tString url = \&quot;jdbc:oracle:thin:@XXX.XX.XXX.XX:1521:xe\&quot;;\n\t\t\t\t//String url = \&quot;jdbc:oracle:thin:@172.29.167.17:1521:xe\&quot;;\n\t\t\t\t// --IP 주소는 오라클 서버의 주소(지금은! 현재의 로컬주소), 1521은 오라클  Port Number\n\t\t\t\t//   xe는 Express Edition을 사용할 경우 명시하게 되는 SID 이지만\n\t\t\t\t//   Standard Edition이나 Enterprise Edition 등을 사용할 경우\n\t\t\t\t//\t 별도로 부여된 SID 명을 사용해야 한다.\n\t\t\t\t\n\t\t\t\tString user =\&quot;scott\&quot;; \t//-- 오라클 사용자 계정\n\t\t\t\tString pwd =\&quot;tiger\&quot;; \t//-- 오라클 사용자 계정\n\t\t\t\t\n\t\t\t\tClass.forName(\&quot;oracle.jdbc.driver.OracleDriver\&quot;);\n\t\t\t\t//-- OracleDriver 클래스에 대한 객체 생성\n\t\t\t\t// 외우지 말고, OracleDriver 치고 ctrl + space\n\t\t\t\t\n\t\t\t\t/////////// 위에 까지는 연결 설정부분 /// 아래는 실제 연결 부분///////////\n\t\t\t\t\n\t\t\t\tdbConn = DriverManager.getConnection(url, user, pwd);\n\t\t\t\t//-- 오라클 서버 실제 연결\n\t\t\t\t//\t 갖고있는 인자값은 오라클 주소, 계정명, 패스워드\n\n\n                                // 여기서 java 이야기\n\t\t\t\t// getConnection은 어떤 특징을 가지고 있을까?\n\t\t\t\t// cf) static 클래스 변수 \t클래스 메소드\n\t\t\t\t//     생성자 호출 시 ... 생성자의 이름 직접 명시..... X\n\t\t\t\t// \t   this()    클래스 이름이 Circle이라면, 생성자는 Circle()\n\t\t\t\t//     super()\t \n\t\t\t\t// static변수나 static 메소드를 쓰게 되면, 참조변수명.변수, 참조변수명.메소드();\n\t\t\t\t// 클래스명.변수명;\n\t\t\t\t// 클래스명.메소드명;\n\t\t\t\t// getConnection을 보면, 아~ 얘는 참조변수명이 없이 불러오는 걸 보니, 클래스이름.메소명으로 쓴걸 보니 클래스 메소드구나~!\n\t\t\t\t\n\t\t\t} catch(Exception e) {\t\t// Exception 대신 SQLException, ClassNotFoundException 사용 가능\n\t\t\t\tSystem.out.println(e.toString());\n\t\t\t\t//-- 오라클 서버 연결 실패 시 오류 메시지 출력 부분\n\t\t\t}\n\t\t}\n\t\treturn dbConn;\n\t}\n\t\n\tpublic static Connection getConnection(String url, String user, String pwd) {\n\t\tif (dbConn == null)\t\t//없으면 진행할꺼야, 있으면 안해![싱글톤]\n\t\t{\n\t\t\ttry {\n\t\t\t\tClass.forName(\&quot;oracle.jdbc.driver.OracleDriver\&quot;);\n\t\t\t\tdbConn = DriverManager.getConnection(url, user, pwd);\n\t\t\t} catch (Exception e) {\n\t\t\t\tSystem.out.println(e.toString());\n\t\t\t}\n\t\t}\n\t\treturn dbConn;\n\t}\n\t\n\tpublic static void close() {\n\t\tif(dbConn != null) {\n\t\t\ttry {\n\t\t\t\tif(!dbConn.isClosed()) {\t//-- isClosed() 메소드를 통해 연결 상태 확인 (연결이 살아있으면 true)\n\t\t\t\t\tdbConn.close();\t\t\t//-- close() 메소드를 통해 연결 종료\n\t\t\t\t}\n\t\t\t} catch (Exception e) {\n\t\t\t\tSystem.out.println(e.toString());\n\t\t\t}\n\t\t}\n\t\tdbConn = null;\n\t}\n}\n\n&quot;}}" data-parsoid='{"dsr":[0,2994,2,2]}' data-ve-attributes='{"typeof":"mw:Extension/syntaxhighlight","about":"#mwt3"}' dir="ltr" typeof="mw:Extension/syntaxhighlight">
+<pre><span class="cm ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>/*=====================================================</span><span style='font-family: "맑은 고딕", sans-serif;'>
+</span><span class="cm ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'> *  DBConn.java</span><span style='font-family: "맑은 고딕", sans-serif;'>
+</span><span class="cm ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'> *  - 싱글톤 패턴을 이용한 Database 연결 객체 생성 전용 클래스</span><span style='font-family: "맑은 고딕", sans-serif;'>
+</span><span class="cm ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'> *    → DB 연결 과정이 부하가 가장 크기 때문에</span><span style='font-family: "맑은 고딕", sans-serif;'>
+</span><span class="cm ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'> *      한 번 연결된 객체를 계속 사용하는 것이 좋다. </span><span style='font-family: "맑은 고딕", sans-serif;'>
+</span><span class="cm ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'> *=================================================== */</span><span style='font-family: "맑은 고딕", sans-serif;'>
+
+</span><span class="kn ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>package</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="nn ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>com.util</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>;</span><span style='font-family: "맑은 고딕", sans-serif;'>
+
+</span><span class="kn ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>import</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="nn ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>java.sql.Connection</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>;</span><span style='font-family: "맑은 고딕", sans-serif;'>
+</span><span class="kn ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>import</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="nn ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>java.sql.DriverManager</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>;</span><span style='font-family: "맑은 고딕", sans-serif;'>
+
+</span><span class="kd ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>public</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="kd ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>class</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="nc ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>DBConn</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>{</span><span style='font-family: "맑은 고딕", sans-serif;'>
+	</span><span class="kd ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>private</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="kd ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>static</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>Connection</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>dbConn</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>;</span><span style='font-family: "맑은 고딕", sans-serif;'>
+	</span><span class="c1 ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>//-- 자동으로 null 초기화</span><span style='font-family: "맑은 고딕", sans-serif;'>
+	</span><span class="c1 ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>//</span><span style='font-family: "맑은 고딕", sans-serif;'>
+	
+	</span><span class="c1 ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>//== 연결을 수행하는 메소드, 하나 만들고 계속 사용하기 위해서 static메소드로 선언==</span><span style='font-family: "맑은 고딕", sans-serif;'>
+	</span><span class="kd ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>public</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="kd ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>static</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>Connection</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="nf ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>getConnection</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>()</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>{</span><span style='font-family: "맑은 고딕", sans-serif;'>
+		</span><span class="c1 ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>// try ~ catch 대신 getConnection() 메소드명 뒤에 『throws Exception』 (SQLException, ClassNotFoundException)</span><span style='font-family: "맑은 고딕", sans-serif;'>
+		</span><span class="c1 ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>// 을 사용하면 try ~ catch 문을 사용하지 않아도 된다.</span><span style='font-family: "맑은 고딕", sans-serif;'>
+		</span><span class="c1 ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>// 단, throws Exception을 사용할 경우 예외가 발생하게 되면</span><span style='font-family: "맑은 고딕", sans-serif;'>
+		</span><span class="c1 ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>// 프로그램 자체가 종료되어 버린다.</span><span style='font-family: "맑은 고딕", sans-serif;'>
+		</span><span class="c1 ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>// 하지만, try ~ catch 문을 사용할 경우 프로그램이 종료되는 것은 아니며</span><span style='font-family: "맑은 고딕", sans-serif;'>
+		</span><span class="c1 ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>// 연결 실패에 대한 원인 분석을 할 수 있다.</span><span style='font-family: "맑은 고딕", sans-serif;'>
+		</span><span class="c1 ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>// 또한, 이 오류가 발생되었을 경우 클라이언트에게 별도의 안내를 할 수도 있게 된다.</span><span style='font-family: "맑은 고딕", sans-serif;'>
+		
+		</span><span class="c1 ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>//==dbConn이 채워져 있으면, 새로운 dbConn을 만들지 않겠다는 의미.(디자인패턴 中 싱글턴)</span><span style='font-family: "맑은 고딕", sans-serif;'>
+		</span><span class="k ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>if</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>(</span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>dbConn</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>==</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="kc ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>null</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>)</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>{</span><span style='font-family: "맑은 고딕", sans-serif;'>
+			</span><span class="k ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>try</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>{</span><span class="err ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>'</span><span style='font-family: "맑은 고딕", sans-serif;'>
+				</span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>String</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>url</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>=</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="s ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>"jdbc:oracle:thin:@XXX.XX.XXX.XX:1521:xe"</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>;</span><span style='font-family: "맑은 고딕", sans-serif;'>
+				</span><span class="c1 ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>//String url = "jdbc:oracle:thin:@172.29.167.17:1521:xe";</span><span style='font-family: "맑은 고딕", sans-serif;'>
+				</span><span class="c1 ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>// --IP 주소는 오라클 서버의 주소(지금은! 현재의 로컬주소), 1521은 오라클  Port Number</span><span style='font-family: "맑은 고딕", sans-serif;'>
+				</span><span class="c1 ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>//   xe는 Express Edition을 사용할 경우 명시하게 되는 SID 이지만</span><span style='font-family: "맑은 고딕", sans-serif;'>
+				</span><span class="c1 ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>//   Standard Edition이나 Enterprise Edition 등을 사용할 경우</span><span style='font-family: "맑은 고딕", sans-serif;'>
+				</span><span class="c1 ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>//	 별도로 부여된 SID 명을 사용해야 한다.</span><span style='font-family: "맑은 고딕", sans-serif;'>
+				
+				</span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>String</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>user</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>=</span><span class="s ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>"scott"</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>;</span><span style='font-family: "맑은 고딕", sans-serif;'> 	</span><span class="c1 ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>//-- 오라클 사용자 계정</span><span style='font-family: "맑은 고딕", sans-serif;'>
+				</span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>String</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>pwd</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>=</span><span class="s ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>"tiger"</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>;</span><span style='font-family: "맑은 고딕", sans-serif;'> 	</span><span class="c1 ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>//-- 오라클 사용자 계정</span><span style='font-family: "맑은 고딕", sans-serif;'>
+				
+				</span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>Class</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>.</span><span class="na ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>forName</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>(</span><span class="s ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>"oracle.jdbc.driver.OracleDriver"</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>);</span><span style='font-family: "맑은 고딕", sans-serif;'>
+				</span><span class="c1 ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>//-- OracleDriver 클래스에 대한 객체 생성</span><span style='font-family: "맑은 고딕", sans-serif;'>
+				</span><span class="c1 ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>// 외우지 말고, OracleDriver 치고 ctrl + space</span><span style='font-family: "맑은 고딕", sans-serif;'>
+				
+				</span><span class="c1 ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>/////////// 위에 까지는 연결 설정부분 /// 아래는 실제 연결 부분///////////</span><span style='font-family: "맑은 고딕", sans-serif;'>
+				
+				</span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>dbConn</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>=</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>DriverManager</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>.</span><span class="na ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>getConnection</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>(</span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>url</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>,</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>user</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>,</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>pwd</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>);</span><span style='font-family: "맑은 고딕", sans-serif;'>
+				</span><span class="c1 ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>//-- 오라클 서버 실제 연결</span><span style='font-family: "맑은 고딕", sans-serif;'>
+				</span><span class="c1 ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>//	 갖고있는 인자값은 오라클 주소, 계정명, 패스워드</span><span style='font-family: "맑은 고딕", sans-serif;'>
+
+
+                                </span><span class="c1 ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>// 여기서 java 이야기</span><span style='font-family: "맑은 고딕", sans-serif;'>
+				</span><span class="c1 ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>// getConnection은 어떤 특징을 가지고 있을까?</span><span style='font-family: "맑은 고딕", sans-serif;'>
+				</span><span class="c1 ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>// cf) static 클래스 변수 	클래스 메소드</span><span style='font-family: "맑은 고딕", sans-serif;'>
+				</span><span class="c1 ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>//     생성자 호출 시 ... 생성자의 이름 직접 명시..... X</span><span style='font-family: "맑은 고딕", sans-serif;'>
+				</span><span class="c1 ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>// 	   this()    클래스 이름이 Circle이라면, 생성자는 Circle()</span><span style='font-family: "맑은 고딕", sans-serif;'>
+				</span><span class="c1 ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>//     super()	 </span><span style='font-family: "맑은 고딕", sans-serif;'>
+				</span><span class="c1 ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>// static변수나 static 메소드를 쓰게 되면, 참조변수명.변수, 참조변수명.메소드();</span><span style='font-family: "맑은 고딕", sans-serif;'>
+				</span><span class="c1 ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>// 클래스명.변수명;</span><span style='font-family: "맑은 고딕", sans-serif;'>
+				</span><span class="c1 ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>// 클래스명.메소드명;</span><span style='font-family: "맑은 고딕", sans-serif;'>
+				</span><span class="c1 ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>// getConnection을 보면, 아~ 얘는 참조변수명이 없이 불러오는 걸 보니, 클래스이름.메소명으로 쓴걸 보니 클래스 메소드구나~!</span><span style='font-family: "맑은 고딕", sans-serif;'>
+				
+			</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>}</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="k ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>catch</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>(</span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>Exception</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>e</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>)</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>{</span><span style='font-family: "맑은 고딕", sans-serif;'>		</span><span class="c1 ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>// Exception 대신 SQLException, ClassNotFoundException 사용 가능</span><span style='font-family: "맑은 고딕", sans-serif;'>
+				</span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>System</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>.</span><span class="na ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>out</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>.</span><span class="na ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>println</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>(</span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>e</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>.</span><span class="na ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>toString</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>());</span><span style='font-family: "맑은 고딕", sans-serif;'>
+				</span><span class="c1 ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>//-- 오라클 서버 연결 실패 시 오류 메시지 출력 부분</span><span style='font-family: "맑은 고딕", sans-serif;'>
+			</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>}</span><span style='font-family: "맑은 고딕", sans-serif;'>
+		</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>}</span><span style='font-family: "맑은 고딕", sans-serif;'>
+		</span><span class="k ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>return</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>dbConn</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>;</span><span style='font-family: "맑은 고딕", sans-serif;'>
+	</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>}</span><span style='font-family: "맑은 고딕", sans-serif;'>
+	
+	</span><span class="kd ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>public</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="kd ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>static</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>Connection</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="nf ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>getConnection</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>(</span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>String</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>url</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>,</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>String</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>user</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>,</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>String</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>pwd</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>)</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>{</span><span style='font-family: "맑은 고딕", sans-serif;'>
+		</span><span class="k ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>if</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>(</span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>dbConn</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>==</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="kc ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>null</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>)</span><span style='font-family: "맑은 고딕", sans-serif;'>		</span><span class="c1 ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>//없으면 진행할꺼야, 있으면 안해![싱글톤]</span><span style='font-family: "맑은 고딕", sans-serif;'>
+		</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>{</span><span style='font-family: "맑은 고딕", sans-serif;'>
+			</span><span class="k ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>try</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>{</span><span style='font-family: "맑은 고딕", sans-serif;'>
+				</span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>Class</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>.</span><span class="na ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>forName</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>(</span><span class="s ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>"oracle.jdbc.driver.OracleDriver"</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>);</span><span style='font-family: "맑은 고딕", sans-serif;'>
+				</span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>dbConn</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>=</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>DriverManager</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>.</span><span class="na ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>getConnection</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>(</span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>url</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>,</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>user</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>,</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>pwd</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>);</span><span style='font-family: "맑은 고딕", sans-serif;'>
+			</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>}</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="k ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>catch</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>(</span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>Exception</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>e</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>)</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>{</span><span style='font-family: "맑은 고딕", sans-serif;'>
+				</span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>System</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>.</span><span class="na ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>out</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>.</span><span class="na ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>println</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>(</span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>e</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>.</span><span class="na ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>toString</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>());</span><span style='font-family: "맑은 고딕", sans-serif;'>
+			</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>}</span><span style='font-family: "맑은 고딕", sans-serif;'>
+		</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>}</span><span style='font-family: "맑은 고딕", sans-serif;'>
+		</span><span class="k ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>return</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>dbConn</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>;</span><span style='font-family: "맑은 고딕", sans-serif;'>
+	</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>}</span><span style='font-family: "맑은 고딕", sans-serif;'>
+	
+	</span><span class="kd ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>public</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="kd ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>static</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="kt ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>void</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="nf ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>close</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>()</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>{</span><span style='font-family: "맑은 고딕", sans-serif;'>
+		</span><span class="k ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>if</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>(</span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>dbConn</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>!=</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="kc ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>null</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>)</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>{</span><span style='font-family: "맑은 고딕", sans-serif;'>
+			</span><span class="k ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>try</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>{</span><span style='font-family: "맑은 고딕", sans-serif;'>
+				</span><span class="k ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>if</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>(!</span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>dbConn</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>.</span><span class="na ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>isClosed</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>())</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>{</span><span style='font-family: "맑은 고딕", sans-serif;'>	</span><span class="c1 ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>//-- isClosed() 메소드를 통해 연결 상태 확인 (연결이 살아있으면 true)</span><span style='font-family: "맑은 고딕", sans-serif;'>
+					</span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>dbConn</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>.</span><span class="na ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>close</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>();</span><span style='font-family: "맑은 고딕", sans-serif;'>			</span><span class="c1 ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>//-- close() 메소드를 통해 연결 종료</span><span style='font-family: "맑은 고딕", sans-serif;'>
+				</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>}</span><span style='font-family: "맑은 고딕", sans-serif;'>
+			</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>}</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="k ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>catch</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>(</span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>Exception</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>e</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>)</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>{</span><span style='font-family: "맑은 고딕", sans-serif;'>
+				</span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>System</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>.</span><span class="na ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>out</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>.</span><span class="na ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>println</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>(</span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>e</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>.</span><span class="na ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>toString</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>());</span><span style='font-family: "맑은 고딕", sans-serif;'>
+			</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>}</span><span style='font-family: "맑은 고딕", sans-serif;'>
+		</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>}</span><span style='font-family: "맑은 고딕", sans-serif;'>
+		</span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>dbConn</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>=</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="kc ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>null</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>;</span><span style='font-family: "맑은 고딕", sans-serif;'>
+	</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>}</span><span style='font-family: "맑은 고딕", sans-serif;'>
+</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>}</span><span style='font-family: "맑은 고딕", sans-serif;'>
+</span></pre>
+</div>
+<h4 data-parsoid='{"dsr":[10616,10648,4,4]}' id="ConnectionTest.java_.EC.83.9D.EC.84.B1"><span style='font-family: "맑은 고딕", sans-serif;'> ConnectionTest.java 생성 </span></h4>
+<figure class="mw-default-size mw-halign-none" data-parsoid='{"optList":[{"ck":"none","ak":"없음"},{"ck":"thumbnail","ak":"섬네일"}],"dsr":[10649,10683,2,2]}' data-ve-attributes='{"typeof":"mw:Image/Thumb"}' typeof="mw:Image/Thumb"><a data-parsoid='{"a":{"href":"./파일:Package_com.test.png"},"sa":{"href":"파일:Package com.test.png"},"dsr":[10651,10681,null,null]}' href="http://172.27.42.57/mediawiki/index.php/%ED%8C%8C%EC%9D%BC:Package_com.test.png"><img data-file-height="74" data-file-type="bitmap" data-file-width="239" data-parsoid='{"a":{"resource":"./파일:Package_com.test.png","height":"74","width":"239"},"sa":{"resource":"파일:Package com.test.png"}}' data-ve-attributes='{"resource":"./파일:Package_com.test.png"}' height="74" resource="./파일:Package_com.test.png" src="//172.27.42.57/mediawiki/images/2/2f/Package_com.test.png" width="239"/></a></figure>
+<p data-parsoid='{"dsr":[10685,10713,0,0]}'><span style='font-family: "맑은 고딕", sans-serif;'>DBConn(연결전용객체 생성 전용 클래스)를 통해</span></p>
+<p data-parsoid='{"dsr":[10715,10740,0,0]}'><span style='font-family: "맑은 고딕", sans-serif;'>오라클 서버와 연결이 제대로 이루어지는지 확인</span></p>
+<div about="#mwt3" class="mw-highlight mw-content-ltr" data-mw='{"name":"syntaxhighlight","attrs":{"lang":"java"},"body":{"extsrc":"\n/*===========================================\n * \tConnectionTest.java\n * \t- DBConn(연결전용객체 생성 전용 클래스)를 통해\n *    오라클 서버와 연결이 제대로 이루어지는지 확인\n *===========================================*/\n\npackage com.test;\n\nimport java.sql.Connection;\n\nimport com.util.DBConn;\n\npublic class ConnectionTest {\n\tpublic static void main(String[] args) {\n\t\tConnection conn = DBConn.getConnection();\n\t\t//-- DB 연결 과정이 가장 부하가 크기 때문에\n\t\t//   한 번 연결된 객체를 계속 사용할 예정\n\t\t\n\t\tif(conn != null) {\n\t\t\tSystem.out.println(\"DB 연결 성공!!!\");\n\t\t}\n\t\t\n\t\tDBConn.close();\n\t\t\n\t}\n}\n\n"}}' data-parsoid='{"dsr":[0,579,2,2]}' data-ve-attributes='{"typeof":"mw:Extension/syntaxhighlight","about":"#mwt3"}' dir="ltr" typeof="mw:Extension/syntaxhighlight">
+<pre><span class="cm ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>/*===========================================</span><span style='font-family: "맑은 고딕", sans-serif;'>
+</span><span class="cm ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'> * 	ConnectionTest.java</span><span style='font-family: "맑은 고딕", sans-serif;'>
+</span><span class="cm ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'> * 	- DBConn(연결전용객체 생성 전용 클래스)를 통해</span><span style='font-family: "맑은 고딕", sans-serif;'>
+</span><span class="cm ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'> *    오라클 서버와 연결이 제대로 이루어지는지 확인</span><span style='font-family: "맑은 고딕", sans-serif;'>
+</span><span class="cm ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'> *===========================================*/</span><span style='font-family: "맑은 고딕", sans-serif;'>
+
+</span><span class="kn ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>package</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="nn ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>com.test</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>;</span><span style='font-family: "맑은 고딕", sans-serif;'>
+
+</span><span class="kn ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>import</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="nn ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>java.sql.Connection</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>;</span><span style='font-family: "맑은 고딕", sans-serif;'>
+
+</span><span class="kn ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>import</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="nn ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>com.util.DBConn</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>;</span><span style='font-family: "맑은 고딕", sans-serif;'>
+
+</span><span class="kd ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>public</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="kd ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>class</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="nc ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>ConnectionTest</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>{</span><span style='font-family: "맑은 고딕", sans-serif;'>
+	</span><span class="kd ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>public</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="kd ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>static</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="kt ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>void</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="nf ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>main</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>(</span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>String</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>[]</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>args</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>)</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>{</span><span style='font-family: "맑은 고딕", sans-serif;'>
+		</span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>Connection</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>conn</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>=</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>DBConn</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>.</span><span class="na ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>getConnection</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>();</span><span style='font-family: "맑은 고딕", sans-serif;'>
+		</span><span class="c1 ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>//-- DB 연결 과정이 가장 부하가 크기 때문에</span><span style='font-family: "맑은 고딕", sans-serif;'>
+		</span><span class="c1 ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>//   한 번 연결된 객체를 계속 사용할 예정</span><span style='font-family: "맑은 고딕", sans-serif;'>
+		
+		</span><span class="k ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>if</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>(</span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>conn</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>!=</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="kc ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>null</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>)</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>{</span><span style='font-family: "맑은 고딕", sans-serif;'>
+			</span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>System</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>.</span><span class="na ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>out</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>.</span><span class="na ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>println</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>(</span><span class="s ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>"DB 연결 성공!!!"</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>);</span><span style='font-family: "맑은 고딕", sans-serif;'>
+		</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>}</span><span style='font-family: "맑은 고딕", sans-serif;'>
+		
+		</span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>DBConn</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>.</span><span class="na ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>close</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>();</span><span style='font-family: "맑은 고딕", sans-serif;'>
+		
+	</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>}</span><span style='font-family: "맑은 고딕", sans-serif;'>
+</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>}</span><span style='font-family: "맑은 고딕", sans-serif;'>
+</span></pre>
+</div>
+<p data-parsoid='{"dsr":[11319,11321,0,0]}'><span style='font-family: "맑은 고딕", sans-serif;'>결과</span></p>
+<div about="#mwt3" class="mw-highlight mw-content-ltr" data-mw='{"name":"syntaxhighlight","attrs":{"lang":"console"},"body":{"extsrc":"\nDB 연결 성공!!!\n"}}' data-parsoid='{"dsr":[0,63,2,2]}' data-ve-attributes='{"typeof":"mw:Extension/syntaxhighlight","about":"#mwt3"}' dir="ltr" typeof="mw:Extension/syntaxhighlight">
+<pre><span class="go ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>DB 연결 성공!!!</span><span style='font-family: "맑은 고딕", sans-serif;'>
+</span></pre>
+</div>
+<h4 data-parsoid='{"dsr":[11386,11414,4,4]}' id="Oracle_DB_.EC.97.B0.EA.B2.B0_.EB.B0.8F_.ED.85.8C.EC.8A.A4.ED.8A.B8"><span style='font-family: "맑은 고딕", sans-serif;'> Oracle DB 연결 및 테스트 </span></h4>
+<div about="#mwt3" class="mw-highlight mw-content-ltr" data-mw="{&quot;name&quot;:&quot;syntaxhighlight&quot;,&quot;attrs&quot;:{&quot;lang&quot;:&quot;sql&quot;},&quot;body&quot;:{&quot;extsrc&quot;:&quot;\nselect USER\nfrom dual;\n--==&gt;&gt; SCOTT\n\n--○ SQL 구문 전송 실습을 위한 준비\n\n--테이블 생성\nCREATE TABLE TBL_MEMBER\n( SID   NUMBER\n, NAME  VARCHAR(20)\n, TEL   VARCHAR(40)\n, CONSTRAINT MEMBER_SID_PK PRIMARY KEY(SID)\n);\n--==&gt;&gt; Table TBL_MEMBER이(가) 생성되었습니다.\n\nINSERT INTO TBL_MEMBER(SID, NAME, TEL) VALUES(1, '김준협', '010-1111-1111')\n;\n--==&gt;&gt; 1 행 이(가) 삽입되었습니다.\n\n\nSELECT *\nFROM TBL_MEMBER;\n--==&gt;&gt; 1\t김준협\t010-1111-1111\n\nROLLBACK;\n--==&gt;&gt; 롤백 완료.\n\nSELECT *\nFROM TBL_MEMBER;\n--==&gt;&gt; 결과 없음\n\n&quot;}}" data-parsoid='{"dsr":[0,503,2,2]}' data-ve-attributes='{"typeof":"mw:Extension/syntaxhighlight","about":"#mwt3"}' dir="ltr" typeof="mw:Extension/syntaxhighlight">
+<pre><span class="k ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>select</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="k ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>USER</span><span style='font-family: "맑은 고딕", sans-serif;'>
+</span><span class="k ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>from</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>dual</span><span class="p ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>;</span><span style='font-family: "맑은 고딕", sans-serif;'>
+</span><span class="c1 ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>--==&gt;&gt; SCOTT</span><span style='font-family: "맑은 고딕", sans-serif;'>
+
+</span><span class="c1 ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>--○ SQL 구문 전송 실습을 위한 준비</span><span style='font-family: "맑은 고딕", sans-serif;'>
+
+</span><span class="c1 ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>--테이블 생성</span><span style='font-family: "맑은 고딕", sans-serif;'>
+</span><span class="k ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>CREATE</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="k ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>TABLE</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>TBL_MEMBER</span><span style='font-family: "맑은 고딕", sans-serif;'>
+</span><span class="p ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>(</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>SID</span><span style='font-family: "맑은 고딕", sans-serif;'>   </span><span class="nb ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>NUMBER</span><span style='font-family: "맑은 고딕", sans-serif;'>
+</span><span class="p ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>,</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>NAME</span><span style='font-family: "맑은 고딕", sans-serif;'>  </span><span class="nb ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>VARCHAR</span><span class="p ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>(</span><span class="mi ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>20</span><span class="p ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>)</span><span style='font-family: "맑은 고딕", sans-serif;'>
+</span><span class="p ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>,</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>TEL</span><span style='font-family: "맑은 고딕", sans-serif;'>   </span><span class="nb ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>VARCHAR</span><span class="p ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>(</span><span class="mi ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>40</span><span class="p ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>)</span><span style='font-family: "맑은 고딕", sans-serif;'>
+</span><span class="p ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>,</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="k ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>CONSTRAINT</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>MEMBER_SID_PK</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="k ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>PRIMARY</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="k ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>KEY</span><span class="p ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>(</span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>SID</span><span class="p ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>)</span><span style='font-family: "맑은 고딕", sans-serif;'>
+</span><span class="p ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>);</span><span style='font-family: "맑은 고딕", sans-serif;'>
+</span><span class="c1 ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>--==&gt;&gt; Table TBL_MEMBER이(가) 생성되었습니다.</span><span style='font-family: "맑은 고딕", sans-serif;'>
+
+</span><span class="k ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>INSERT</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="k ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>INTO</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>TBL_MEMBER</span><span class="p ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>(</span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>SID</span><span class="p ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>,</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>NAME</span><span class="p ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>,</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>TEL</span><span class="p ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>)</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="k ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>VALUES</span><span class="p ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>(</span><span class="mi ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>1</span><span class="p ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>,</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="s1 ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>'김준협'</span><span class="p ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>,</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="s1 ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>'010-1111-1111'</span><span class="p ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>)</span><span style='font-family: "맑은 고딕", sans-serif;'>
+</span><span class="p ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>;</span><span style='font-family: "맑은 고딕", sans-serif;'>
+</span><span class="c1 ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>--==&gt;&gt; 1 행 이(가) 삽입되었습니다.</span><span style='font-family: "맑은 고딕", sans-serif;'>
+
+
+</span><span class="k ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>SELECT</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>*</span><span style='font-family: "맑은 고딕", sans-serif;'>
+</span><span class="k ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>FROM</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>TBL_MEMBER</span><span class="p ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>;</span><span style='font-family: "맑은 고딕", sans-serif;'>
+</span><span class="c1 ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>--==&gt;&gt; 1	김준협	010-1111-1111</span><span style='font-family: "맑은 고딕", sans-serif;'>
+
+</span><span class="k ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>ROLLBACK</span><span class="p ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>;</span><span style='font-family: "맑은 고딕", sans-serif;'>
+</span><span class="c1 ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>--==&gt;&gt; 롤백 완료.</span><span style='font-family: "맑은 고딕", sans-serif;'>
+
+</span><span class="k ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>SELECT</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>*</span><span style='font-family: "맑은 고딕", sans-serif;'>
+</span><span class="k ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>FROM</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>TBL_MEMBER</span><span class="p ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>;</span><span style='font-family: "맑은 고딕", sans-serif;'>
+</span><span class="c1 ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>--==&gt;&gt; 결과 없음</span><span style='font-family: "맑은 고딕", sans-serif;'>
+</span></pre>
+</div>
+<h4 data-parsoid='{"dsr":[11920,11945,4,4]}' id="SqlTest.java_.EC.83.9D.EC.84.B1"><span style='font-family: "맑은 고딕", sans-serif;'> SqlTest.java 생성 </span></h4>
+<h5 data-parsoid='{"dsr":[11947,11976,5,5]}' id="SqlTest01.java_.EC.83.9D.EC.84.B1"><span style='font-family: "맑은 고딕", sans-serif;'> SqlTest01.java 생성 </span></h5>
+<div about="#mwt3" class="mw-highlight mw-content-ltr" data-mw="{&quot;name&quot;:&quot;syntaxhighlight&quot;,&quot;attrs&quot;:{&quot;lang&quot;:&quot;java&quot;},&quot;body&quot;:{&quot;extsrc&quot;:&quot;\npackage com.test;\n\nimport java.sql.Connection;\nimport java.sql.Statement;\n\nimport com.util.DBConn;\n\npublic class SqlTest01 {\n\n\tpublic static void main(String[] args) {\n\t\t// DBConn에 있는 드라이버 정보, ip정보, DB 유저와 비밀번호 정보등을 가져옴.\n\t\tConnection conn = DBConn.getConnection();\n\t\t\n\t\tif (conn == null) {\n\t\t\tSystem.out.println(\&quot;DB 연결 실패!!!\&quot;);\n\t\t\t//메인메소드를  0을 넘겨주고 죽음.\n\t\t\tSystem.exit(0);\n\t\t}\n\t\t\n\t\t//데이터 입력 쿼리문 실행\n\t\t//한 번 입력하면 다시 실행하지 못하는 상황 → primary key 제약조건 위반\n\t\ttry {\n\t\t\t//작업 객체 생성(비유. 수레 생성)\n\t\t\t//cf) conn은 연결객체(비유. 탄광입구부터 광부들한테까지 도로)\n\t\t\tStatement stmt = conn.createStatement();\n\t\t\t\n\t\t\t//쿼리문 준비\n\t\t\tString sql=\&quot;INSERT INTO TBL_MEMBER(SID, NAME, TEL) VALUES(1, '김준협', '010-1111-1111')\&quot;;\n\t\t\t//-- 주의사항 쿼리문을 문자열로 구성하는 과정에서 공백 발생 지점을 명확히 처리한다.\n\t\t\t//-- 주의. 문자열 영역 안에서 쿼리문 끝에다가 『;』 을 붙이지 않는다.\n\t\t\t//-- 주의. 자바에서 실행한 DML 구문은 자동으로 COMMIT 된다.\n\t\t\t\n\t\t\t//준비된 쿼리문 실행\n\t\t\t//cf) DML구문은 executeUpdate, DDL구문은 excuteQuery~\n\t\t\t//executeUpdate는 명령 행을 반환한다.(sql-&gt;\&quot;5명 지워주세요.\&quot;, result는 5 반환)\n\t\t\tint result = stmt.executeUpdate(sql);\n\t\t\t\n\t\t\tif(result &gt;0)\n\t\t\t\tSystem.out.println(\&quot;데이터 입력 성공 !!!!\&quot;);\n\t\t\t\n\t\t} catch (Exception e) {\n\t\t\tSystem.out.println(e.toString());\n\t\t}\n\t\t\n\t\tDBConn.close();\n\t}\n\t\n}\n\n&quot;}}" data-parsoid='{"dsr":[0,1205,2,2]}' data-ve-attributes='{"typeof":"mw:Extension/syntaxhighlight","about":"#mwt3"}' dir="ltr" typeof="mw:Extension/syntaxhighlight">
+<pre><span class="kn ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>package</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="nn ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>com.test</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>;</span><span style='font-family: "맑은 고딕", sans-serif;'>
+
+</span><span class="kn ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>import</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="nn ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>java.sql.Connection</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>;</span><span style='font-family: "맑은 고딕", sans-serif;'>
+</span><span class="kn ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>import</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="nn ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>java.sql.Statement</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>;</span><span style='font-family: "맑은 고딕", sans-serif;'>
+
+</span><span class="kn ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>import</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="nn ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>com.util.DBConn</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>;</span><span style='font-family: "맑은 고딕", sans-serif;'>
+
+</span><span class="kd ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>public</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="kd ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>class</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="nc ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>SqlTest01</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>{</span><span style='font-family: "맑은 고딕", sans-serif;'>
+
+	</span><span class="kd ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>public</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="kd ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>static</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="kt ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>void</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="nf ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>main</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>(</span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>String</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>[]</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>args</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>)</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>{</span><span style='font-family: "맑은 고딕", sans-serif;'>
+		</span><span class="c1 ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>// DBConn에 있는 드라이버 정보, ip정보, DB 유저와 비밀번호 정보등을 가져옴.</span><span style='font-family: "맑은 고딕", sans-serif;'>
+		</span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>Connection</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>conn</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>=</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>DBConn</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>.</span><span class="na ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>getConnection</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>();</span><span style='font-family: "맑은 고딕", sans-serif;'>
+		
+		</span><span class="k ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>if</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>(</span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>conn</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>==</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="kc ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>null</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>)</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>{</span><span style='font-family: "맑은 고딕", sans-serif;'>
+			</span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>System</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>.</span><span class="na ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>out</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>.</span><span class="na ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>println</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>(</span><span class="s ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>"DB 연결 실패!!!"</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>);</span><span style='font-family: "맑은 고딕", sans-serif;'>
+			</span><span class="c1 ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>//메인메소드를  0을 넘겨주고 죽음.</span><span style='font-family: "맑은 고딕", sans-serif;'>
+			</span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>System</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>.</span><span class="na ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>exit</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>(</span><span class="mi ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>0</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>);</span><span style='font-family: "맑은 고딕", sans-serif;'>
+		</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>}</span><span style='font-family: "맑은 고딕", sans-serif;'>
+		
+		</span><span class="c1 ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>//데이터 입력 쿼리문 실행</span><span style='font-family: "맑은 고딕", sans-serif;'>
+		</span><span class="c1 ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>//한 번 입력하면 다시 실행하지 못하는 상황 → primary key 제약조건 위반</span><span style='font-family: "맑은 고딕", sans-serif;'>
+		</span><span class="k ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>try</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>{</span><span style='font-family: "맑은 고딕", sans-serif;'>
+			</span><span class="c1 ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>//작업 객체 생성(비유. 수레 생성)</span><span style='font-family: "맑은 고딕", sans-serif;'>
+			</span><span class="c1 ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>//cf) conn은 연결객체(비유. 탄광입구부터 광부들한테까지 도로)</span><span style='font-family: "맑은 고딕", sans-serif;'>
+			</span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>Statement</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>stmt</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>=</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>conn</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>.</span><span class="na ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>createStatement</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>();</span><span style='font-family: "맑은 고딕", sans-serif;'>
+			
+			</span><span class="c1 ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>//쿼리문 준비</span><span style='font-family: "맑은 고딕", sans-serif;'>
+			</span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>String</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>sql</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>=</span><span class="s ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>"INSERT INTO TBL_MEMBER(SID, NAME, TEL) VALUES(1, '김준협', '010-1111-1111')"</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>;</span><span style='font-family: "맑은 고딕", sans-serif;'>
+			</span><span class="c1 ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>//-- 주의사항 쿼리문을 문자열로 구성하는 과정에서 공백 발생 지점을 명확히 처리한다.</span><span style='font-family: "맑은 고딕", sans-serif;'>
+			</span><span class="c1 ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>//-- 주의. 문자열 영역 안에서 쿼리문 끝에다가 『;』 을 붙이지 않는다.</span><span style='font-family: "맑은 고딕", sans-serif;'>
+			</span><span class="c1 ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>//-- 주의. 자바에서 실행한 DML 구문은 자동으로 COMMIT 된다.</span><span style='font-family: "맑은 고딕", sans-serif;'>
+			
+			</span><span class="c1 ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>//준비된 쿼리문 실행</span><span style='font-family: "맑은 고딕", sans-serif;'>
+			</span><span class="c1 ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>//cf) DML구문은 executeUpdate, DDL구문은 excuteQuery~</span><span style='font-family: "맑은 고딕", sans-serif;'>
+			</span><span class="c1 ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>//executeUpdate는 명령 행을 반환한다.(sql-&gt;"5명 지워주세요.", result는 5 반환)</span><span style='font-family: "맑은 고딕", sans-serif;'>
+			</span><span class="kt ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>int</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>result</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>=</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>stmt</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>.</span><span class="na ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>executeUpdate</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>(</span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>sql</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>);</span><span style='font-family: "맑은 고딕", sans-serif;'>
+			
+			</span><span class="k ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>if</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>(</span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>result</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>&gt;</span><span class="mi ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>0</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>)</span><span style='font-family: "맑은 고딕", sans-serif;'>
+				</span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>System</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>.</span><span class="na ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>out</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>.</span><span class="na ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>println</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>(</span><span class="s ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>"데이터 입력 성공 !!!!"</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>);</span><span style='font-family: "맑은 고딕", sans-serif;'>
+			
+		</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>}</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="k ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>catch</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>(</span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>Exception</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>e</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>)</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>{</span><span style='font-family: "맑은 고딕", sans-serif;'>
+			</span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>System</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>.</span><span class="na ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>out</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>.</span><span class="na ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>println</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>(</span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>e</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>.</span><span class="na ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>toString</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>());</span><span style='font-family: "맑은 고딕", sans-serif;'>
+		</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>}</span><span style='font-family: "맑은 고딕", sans-serif;'>
+		
+		</span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>DBConn</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>.</span><span class="na ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>close</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>();</span><span style='font-family: "맑은 고딕", sans-serif;'>
+	</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>}</span><span style='font-family: "맑은 고딕", sans-serif;'>
+	
+</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>}</span><span style='font-family: "맑은 고딕", sans-serif;'>
+</span></pre>
+</div>
+<h5 data-parsoid='{"dsr":[13184,13213,5,5]}' id="SqlTest02.java_.EC.83.9D.EC.84.B1"><span style='font-family: "맑은 고딕", sans-serif;'> SqlTest02.java 생성 </span></h5>
+<p><span style='font-family: "맑은 고딕", sans-serif;'><br />
+</span><span style='font-family: "맑은 고딕", sans-serif;'><br />
+</span><span style='font-family: "맑은 고딕", sans-serif;'><br />
+</span><span style='font-family: "맑은 고딕", sans-serif;'><br />
+</span><span style='font-family: "맑은 고딕", sans-serif;'><br />
+</span><span style='font-family: "맑은 고딕", sans-serif;'><br />
+</span><span style='font-family: "맑은 고딕", sans-serif;'><br />
+</span><span style='font-family: "맑은 고딕", sans-serif;'><br />
+</span><span style='font-family: "맑은 고딕", sans-serif;'><br />
+</span><span style='font-family: "맑은 고딕", sans-serif;'><br />
+</span><span style='font-family: "맑은 고딕", sans-serif;'><br />
+</span><span style='font-family: "맑은 고딕", sans-serif;'><br />
+</span><span style='font-family: "맑은 고딕", sans-serif;'><br />
+</span><span style='font-family: "맑은 고딕", sans-serif;'><br />
+</span><span style='font-family: "맑은 고딕", sans-serif;'><br />
+</span><span style='font-family: "맑은 고딕", sans-serif;'><br />
+</span><span style='font-family: "맑은 고딕", sans-serif;'><br />
+</span><span style='font-family: "맑은 고딕", sans-serif;'><br />
+</span><span style='font-family: "맑은 고딕", sans-serif;'><br />
+</span><span style='font-family: "맑은 고딕", sans-serif;'><br />
+</span><span style='font-family: "맑은 고딕", sans-serif;'><br />
+</span><span style='font-family: "맑은 고딕", sans-serif;'><br />
+</span><span style='font-family: "맑은 고딕", sans-serif;'><br />
+</span><span style='font-family: "맑은 고딕", sans-serif;'><br />
+</span><span style='font-family: "맑은 고딕", sans-serif;'><br />
+</span><span style='font-family: "맑은 고딕", sans-serif;'><br />
+</span><span style='font-family: "맑은 고딕", sans-serif;'><br />
+</span><span style='font-family: "맑은 고딕", sans-serif;'><br />
+</span><span style='font-family: "맑은 고딕", sans-serif;'><br />
+</span><span style='font-family: "맑은 고딕", sans-serif;'><br />
+</span><span style='font-family: "맑은 고딕", sans-serif;'><br />
+</span><span style='font-family: "맑은 고딕", sans-serif;'><br />
+</span><span style='font-family: "맑은 고딕", sans-serif;'><br />
+</span><span style='font-family: "맑은 고딕", sans-serif;'><br />
+</span><span style='font-family: "맑은 고딕", sans-serif;'><br />
+</span><span style='font-family: "맑은 고딕", sans-serif;'><br />
+</span><span style='font-family: "맑은 고딕", sans-serif;'><br />
+</span><span style='font-family: "맑은 고딕", sans-serif;'><br />
+</span><span style='font-family: "맑은 고딕", sans-serif;'><br />
+</span><span style='font-family: "맑은 고딕", sans-serif;'><br />
+</span><span style='font-family: "맑은 고딕", sans-serif;'><br />
+</span><span style='font-family: "맑은 고딕", sans-serif;'><br />
+</span><span style='font-family: "맑은 고딕", sans-serif;'><br />
+</span><span style='font-family: "맑은 고딕", sans-serif;'><br />
+</span><span style='font-family: "맑은 고딕", sans-serif;'><br />
+</span><span style='font-family: "맑은 고딕", sans-serif;'><br />
+</span><span style='font-family: "맑은 고딕", sans-serif;'><br />
+</span><span style='font-family: "맑은 고딕", sans-serif;'><br />
+</span><span style='font-family: "맑은 고딕", sans-serif;'><br />
+</span><span style='font-family: "맑은 고딕", sans-serif;'><br />
+</span><span style='font-family: "맑은 고딕", sans-serif;'><br />
+</span><span style='font-family: "맑은 고딕", sans-serif;'><br />
+</span><span style='font-family: "맑은 고딕", sans-serif;'><br />
+</span><span style='font-family: "맑은 고딕", sans-serif;'><br />
+</span><span style='font-family: "맑은 고딕", sans-serif;'><br />
+</span><span style='font-family: "맑은 고딕", sans-serif;'><br />
+</span><span style='font-family: "맑은 고딕", sans-serif;'><br />
+</span><span style='font-family: "맑은 고딕", sans-serif;'><br />
+</span><span style='font-family: "맑은 고딕", sans-serif;'><br />
+</span><span style='font-family: "맑은 고딕", sans-serif;'><br />
+</span><span style='font-family: "맑은 고딕", sans-serif;'><br />
+</span><span style='font-family: "맑은 고딕", sans-serif;'><br />
+</span><span style='font-family: "맑은 고딕", sans-serif;'><br />
+</span><span style='font-family: "맑은 고딕", sans-serif;'><br />
+</span><span style='font-family: "맑은 고딕", sans-serif;'><br />
+</span><span style='font-family: "맑은 고딕", sans-serif;'><br />
+</span><span style='font-family: "맑은 고딕", sans-serif;'><br />
+</span><span style='font-family: "맑은 고딕", sans-serif;'><br />
+</span><span style='font-family: "맑은 고딕", sans-serif;'><br />
+</span><span style='font-family: "맑은 고딕", sans-serif;'><br />
+</span><span style='font-family: "맑은 고딕", sans-serif;'><br />
+</span><span style='font-family: "맑은 고딕", sans-serif;'><br />
+</span><span about="#mwt3" class="ve-pasteProtect" data-ve-attributes='{"about":"#mwt3"}' style='font-family: "맑은 고딕", sans-serif;'><br />
+</span><span style='font-family: "맑은 고딕", sans-serif;'><br />
+</span><span style='font-family: "맑은 고딕", sans-serif;'><br />
+</span><span style='font-family: "맑은 고딕", sans-serif;'><br />
+</span><span style='font-family: "맑은 고딕", sans-serif;'><br />
+</span><span about="#mwt3" class="ve-pasteProtect" data-ve-attributes='{"about":"#mwt3"}' style='font-family: "맑은 고딕", sans-serif;'><br />
+</span><span about="#mwt3" class="ve-pasteProtect" data-ve-attributes='{"about":"#mwt3"}' style='font-family: "맑은 고딕", sans-serif;'><br />
+</span><span style='font-family: "맑은 고딕", sans-serif;'><br />
+</span><span style='font-family: "맑은 고딕", sans-serif;'><br />
+</span><span about="#mwt3" class="ve-pasteProtect" data-ve-attributes='{"about":"#mwt3"}' style='font-family: "맑은 고딕", sans-serif;'><br />
+</span><span style='font-family: "맑은 고딕", sans-serif;'><br />
+</span><span style='font-family: "맑은 고딕", sans-serif;'><br />
+</span><span style='font-family: "맑은 고딕", sans-serif;'><br />
+</span><span about="#mwt3" class="ve-pasteProtect" data-ve-attributes='{"about":"#mwt3"}' style='font-family: "맑은 고딕", sans-serif;'><br />
+</span><span style='font-family: "맑은 고딕", sans-serif;'><br />
+</span><span style='font-family: "맑은 고딕", sans-serif;'><br />
+</span><span about="#mwt3" class="ve-pasteProtect" data-ve-attributes='{"about":"#mwt3"}'></span></p>
+<div about="#mwt3" class="mw-highlight mw-content-ltr" data-mw="{&quot;name&quot;:&quot;syntaxhighlight&quot;,&quot;attrs&quot;:{&quot;lang&quot;:&quot;java&quot;},&quot;body&quot;:{&quot;extsrc&quot;:&quot;\npackage com.test;\n\nimport java.sql.Connection;\nimport java.sql.Statement;\nimport java.util.Scanner;\n\nimport com.util.DBConn;\n\npublic class SqlTest02 {\n\n\tpublic static void main(String[] args) {\n\t\t\n\t\tScanner sc = new Scanner(System.in);\n\t\t\n\t\tConnection conn = DBConn.getConnection();\n\t\t\n\t\tdo {\n\t\t\tSystem.out.println(\&quot;번호를 입력하세요: \&quot;);\n\t\t\t\n\t\t\tString sid = sc.next();\n\t\t\tif(sid.equals(\&quot;-1\&quot;))\n\t\t\t\tbreak;\n\t\t\t\n\t\t\tSystem.out.println(\&quot;이름을 입력하세요: \&quot;);\n\t\t\tString name = sc.next();\n\t\t\tSystem.out.println(\&quot;전화번호를 입력하세요 : \&quot;);\n\t\t\tString tel = sc.next();\n\t\t\t\n\t\t\tif (conn != null) {\n\t\t\t\tSystem.out.println(\&quot;데이터베이스 연결 성공 !!!\&quot;);\n\t\t\t\t\n\t\t\t\ttry {\n\t\t\t\t\tStatement stmt = conn.createStatement();\n\t\t\t\t\tString sql = String.format(\&quot;INSERT INTO TBL_MEMBER(SID, NAME, TEL) VALUES(%s, '%s', '%s')\&quot;\n\t\t\t\t\t\t\t\t\t\t\t, sid, name, tel);\n\t\t\t\t\tint result = stmt.executeUpdate(sql);\n\t\t\t\t\tif(result &gt; 0) {\n\t\t\t\t\t\tSystem.out.println(\&quot;회원 정보 입력 완료 !!!!\&quot;);\n\t\t\t\t\t}\n\t\t\t\t\t\n\t\t\t\t} catch (Exception e) {\n\t\t\t\t\tSystem.out.println(e.toString());\n\t\t\t\t}\n\t\t\t}\n\t\t\t\n\t\t\t\n\t\t} while (true);\n\t\tDBConn.close();\n\t\t\n\t\tSystem.out.println(\&quot;데이터베이스 연결 닫힘\&quot;);\n\t\tSystem.out.println(\&quot;프로그램 종료됨!!!\&quot;);\n\t}\n\t\n}\n\n&quot;}}" data-parsoid='{"dsr":[0,1173,2,2]}' data-ve-attributes='{"typeof":"mw:Extension/syntaxhighlight","about":"#mwt3"}' dir="ltr" typeof="mw:Extension/syntaxhighlight">
+<pre><span class="kn ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>package</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="nn ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>com.test</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>;</span><span style='font-family: "맑은 고딕", sans-serif;'>
+
+</span><span class="kn ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>import</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="nn ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>java.sql.Connection</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>;</span><span style='font-family: "맑은 고딕", sans-serif;'>
+</span><span class="kn ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>import</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="nn ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>java.sql.Statement</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>;</span><span style='font-family: "맑은 고딕", sans-serif;'>
+</span><span class="kn ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>import</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="nn ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>java.util.Scanner</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>;</span><span style='font-family: "맑은 고딕", sans-serif;'>
+
+</span><span class="kn ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>import</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="nn ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>com.util.DBConn</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>;</span><span style='font-family: "맑은 고딕", sans-serif;'>
+
+</span><span class="kd ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>public</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="kd ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>class</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="nc ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>SqlTest02</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>{</span><span style='font-family: "맑은 고딕", sans-serif;'>
+
+	</span><span class="kd ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>public</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="kd ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>static</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="kt ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>void</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="nf ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>main</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>(</span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>String</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>[]</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>args</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>)</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>{</span><span style='font-family: "맑은 고딕", sans-serif;'>
+		
+		</span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>Scanner</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>sc</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>=</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="k ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>new</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>Scanner</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>(</span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>System</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>.</span><span class="na ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>in</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>);</span><span style='font-family: "맑은 고딕", sans-serif;'>
+		
+		</span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>Connection</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>conn</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>=</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>DBConn</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>.</span><span class="na ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>getConnection</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>();</span><span style='font-family: "맑은 고딕", sans-serif;'>
+		
+		</span><span class="k ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>do</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>{</span><span style='font-family: "맑은 고딕", sans-serif;'>
+			</span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>System</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>.</span><span class="na ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>out</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>.</span><span class="na ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>println</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>(</span><span class="s ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>"번호를 입력하세요: "</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>);</span><span style='font-family: "맑은 고딕", sans-serif;'>
+			
+			</span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>String</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>sid</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>=</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>sc</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>.</span><span class="na ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>next</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>();</span><span style='font-family: "맑은 고딕", sans-serif;'>
+			</span><span class="k ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>if</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>(</span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>sid</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>.</span><span class="na ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>equals</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>(</span><span class="s ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>"-1"</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>))</span><span style='font-family: "맑은 고딕", sans-serif;'>
+				</span><span class="k ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>break</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>;</span><span style='font-family: "맑은 고딕", sans-serif;'>
+			
+			</span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>System</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>.</span><span class="na ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>out</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>.</span><span class="na ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>println</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>(</span><span class="s ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>"이름을 입력하세요: "</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>);</span><span style='font-family: "맑은 고딕", sans-serif;'>
+			</span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>String</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>name</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>=</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>sc</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>.</span><span class="na ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>next</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>();</span><span style='font-family: "맑은 고딕", sans-serif;'>
+			</span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>System</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>.</span><span class="na ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>out</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>.</span><span class="na ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>println</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>(</span><span class="s ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>"전화번호를 입력하세요 : "</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>);</span><span style='font-family: "맑은 고딕", sans-serif;'>
+			</span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>String</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>tel</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>=</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>sc</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>.</span><span class="na ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>next</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>();</span><span style='font-family: "맑은 고딕", sans-serif;'>
+			
+			</span><span class="k ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>if</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>(</span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>conn</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>!=</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="kc ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>null</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>)</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>{</span><span style='font-family: "맑은 고딕", sans-serif;'>
+				</span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>System</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>.</span><span class="na ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>out</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>.</span><span class="na ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>println</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>(</span><span class="s ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>"데이터베이스 연결 성공 !!!"</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>);</span><span style='font-family: "맑은 고딕", sans-serif;'>
+				
+				</span><span class="k ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>try</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>{</span><span style='font-family: "맑은 고딕", sans-serif;'>
+					</span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>Statement</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>stmt</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>=</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>conn</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>.</span><span class="na ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>createStatement</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>();</span><span style='font-family: "맑은 고딕", sans-serif;'>
+					</span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>String</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>sql</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>=</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>String</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>.</span><span class="na ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>format</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>(</span><span class="s ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>"INSERT INTO TBL_MEMBER(SID, NAME, TEL) VALUES(%s, '%s', '%s')"</span><span style='font-family: "맑은 고딕", sans-serif;'>
+											</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>,</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>sid</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>,</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>name</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>,</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>tel</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>);</span><span style='font-family: "맑은 고딕", sans-serif;'>
+					</span><span class="kt ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>int</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>result</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>=</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>stmt</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>.</span><span class="na ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>executeUpdate</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>(</span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>sql</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>);</span><span style='font-family: "맑은 고딕", sans-serif;'>
+					</span><span class="k ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>if</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>(</span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>result</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>&gt;</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="mi ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>0</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>)</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>{</span><span style='font-family: "맑은 고딕", sans-serif;'>
+						</span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>System</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>.</span><span class="na ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>out</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>.</span><span class="na ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>println</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>(</span><span class="s ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>"회원 정보 입력 완료 !!!!"</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>);</span><span style='font-family: "맑은 고딕", sans-serif;'>
+					</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>}</span><span style='font-family: "맑은 고딕", sans-serif;'>
+					
+				</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>}</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="k ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>catch</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>(</span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>Exception</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>e</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>)</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>{</span><span style='font-family: "맑은 고딕", sans-serif;'>
+					</span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>System</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>.</span><span class="na ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>out</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>.</span><span class="na ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>println</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>(</span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>e</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>.</span><span class="na ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>toString</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>());</span><span style='font-family: "맑은 고딕", sans-serif;'>
+				</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>}</span><span style='font-family: "맑은 고딕", sans-serif;'>
+			</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>}</span><span style='font-family: "맑은 고딕", sans-serif;'>
+			
+			
+		</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>}</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="k ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>while</span><span style='font-family: "맑은 고딕", sans-serif;'> </span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>(</span><span class="kc ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>true</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>);</span><span style='font-family: "맑은 고딕", sans-serif;'>
+		</span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>DBConn</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>.</span><span class="na ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>close</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>();</span><span style='font-family: "맑은 고딕", sans-serif;'>
+		
+		</span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>System</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>.</span><span class="na ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>out</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>.</span><span class="na ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>println</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>(</span><span class="s ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>"데이터베이스 연결 닫힘"</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>);</span><span style='font-family: "맑은 고딕", sans-serif;'>
+		</span><span class="n ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>System</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>.</span><span class="na ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>out</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>.</span><span class="na ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>println</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>(</span><span class="s ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>"프로그램 종료됨!!!"</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>);</span><span style='font-family: "맑은 고딕", sans-serif;'>
+	</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>}</span><span style='font-family: "맑은 고딕", sans-serif;'>
+	
+</span><span class="o ve-pasteProtect" style='font-family: "맑은 고딕", sans-serif;'>}</span><span style='font-family: "맑은 고딕", sans-serif;'>
+</span></pre>
+</div>
+<p></p>
+<p></p>
+<p></p>
+<hr />
+<p><iframe src='http://ad.selfhow.com/rd' width='100%' border=0 frameborder=0 style='height:auto;width:100%'></iframe></p>
+<p><a href='http://racoonlotty.tistory.com/41' target='_blank'>Origin Content : 로티의 블로그</a> | <a href="/cdn-cgi/l/email-protection#8be8e8e7e8cbe5eae7eaa5ecea" target='_blank'>Contact : <span class="__cf_email__" data-cfemail="4320202f20032d222f226d2422">[email&#160;protected]</span></a>
+</p>
+<p>Cotent License : CC-BY </p>
+<p>This content is collected under the CCL license.</p>
+<p>Please check the license of the original article before asking about copyright.</p>
+<ul>
+<li><a href='/tag/JDBCJava'>More About <span style='font-weight:bold;'>JDBCJava</span></a></li>
+<li><a href='/tag/Database'>More About <span style='font-weight:bold;'>Database</span></a></li>
+<li><a href='/tag/Connectivity'>More About <span style='font-weight:bold;'>Connectivity</span></a></li>
+</ul>
+        </div> <!-- //.entry-summary -->
+        
+                    <div class="entry-tags"><b>Tags:</b> <a href="http://ms.nala.ga/tag/connectivity/" rel="tag">Connectivity</a>, <a href="http://ms.nala.ga/tag/database/" rel="tag">Database</a>, <a href="http://ms.nala.ga/tag/jdbcjava/" rel="tag">JDBCJava</a></div>
+        
+    </div>
+
+</article> <!--/#post-->
+
+
+
+
+
+                                                                    <div class="post-nav-area">
+                                                    
+            <nav class="next-previous-post clearfix media" role="navigation">
+                <div class="row">
+                    <!-- Previous Post -->
+                    <div class="previous-post col-sm-6 pull-left">
+                        <div class="nav-previous"><i class="fa fa-angle-left"></i> <a href="http://ms.nala.ga/%ed%8f%89%ed%83%9d%ec%9d%b8%ed%84%b0%eb%84%b7%ea%b0%80%ec%9e%85%e2%97%8b/" rel="prev">평택인터넷가입○</a></div>                    </div>
+
+                    <!-- Next Post -->
+                    <div class="next-post col-sm-6 pull-right text-right">
+                        <div class="nav-next"><a href="http://ms.nala.ga/%eb%b6%80%eb%8f%99%ec%95%a1-%ea%b5%90%ed%99%98%eb%b9%84%ec%9a%a9-%ea%b5%90%ed%99%98%ec%a3%bc%ea%b8%b0-%ec%a0%95%eb%b3%b4-%ec%95%8c%ec%95%84%eb%b3%b4%ea%b8%b0/" rel="next">부동액 교환비용 교환주기 정보 알아보기</a> <i class="fa fa-angle-right"></i></div>                    </div>
+                </div>
+            </nav><!-- .navigation -->
+            
+                                            </div>
+                                
+                                
+                            
+                                            </main> <!-- /.site-main -->
+                </div>  <!-- /.content-area -->
+            </div> <!-- /col -->
+
+            <!-- Blogsidebar -->
+            
+	<div class="col-md-4">
+	    <div class="primary-sidebar widget-area" role="complementary">
+	        <div id="tag_cloud-2" class="widget widget_tag_cloud"><h2 class="widget-title">태그</h2><div class="tagcloud"><a href="http://ms.nala.ga/tag/1%ec%9b%94/" class="tag-cloud-link tag-link-2 tag-link-position-1" style="font-size: 18.440677966102pt;" aria-label="1월 (115 아이템)">1월</a>
+<a href="http://ms.nala.ga/tag/2017/" class="tag-cloud-link tag-link-21 tag-link-position-2" style="font-size: 17.016949152542pt;" aria-label="2017 (98 아이템)">2017</a>
+<a href="http://ms.nala.ga/tag/2017%eb%85%84/" class="tag-cloud-link tag-link-551 tag-link-position-3" style="font-size: 14.406779661017pt;" aria-label="2017년 (77 아이템)">2017년</a>
+<a href="http://ms.nala.ga/tag/2018/" class="tag-cloud-link tag-link-155 tag-link-position-4" style="font-size: 15.830508474576pt;" aria-label="2018 (89 아이템)">2018</a>
+<a href="http://ms.nala.ga/tag/2018%eb%85%84/" class="tag-cloud-link tag-link-64 tag-link-position-5" style="font-size: 19.864406779661pt;" aria-label="2018년 (130 아이템)">2018년</a>
+<a href="http://ms.nala.ga/tag/the/" class="tag-cloud-link tag-link-310 tag-link-position-6" style="font-size: 11.322033898305pt;" aria-label="the (57 아이템)">the</a>
+<a href="http://ms.nala.ga/tag/vs/" class="tag-cloud-link tag-link-128 tag-link-position-7" style="font-size: 8pt;" aria-label="vs (41 아이템)">vs</a>
+<a href="http://ms.nala.ga/tag/%ea%b0%80%ea%b2%a9/" class="tag-cloud-link tag-link-275 tag-link-position-8" style="font-size: 12.271186440678pt;" aria-label="가격 (62 아이템)">가격</a>
+<a href="http://ms.nala.ga/tag/%ea%b2%b0%ed%98%bc/" class="tag-cloud-link tag-link-501 tag-link-position-9" style="font-size: 20.338983050847pt;" aria-label="결혼 (136 아이템)">결혼</a>
+<a href="http://ms.nala.ga/tag/%ea%b3%b5%ea%b0%9c/" class="tag-cloud-link tag-link-260 tag-link-position-10" style="font-size: 9.8983050847458pt;" aria-label="공개 (49 아이템)">공개</a>
+<a href="http://ms.nala.ga/tag/%ea%b7%b8%eb%a6%ac%ea%b3%a0/" class="tag-cloud-link tag-link-980 tag-link-position-11" style="font-size: 10.135593220339pt;" aria-label="그리고 (50 아이템)">그리고</a>
+<a href="http://ms.nala.ga/tag/%eb%82%98%ec%9d%b4%ec%b0%a8/" class="tag-cloud-link tag-link-1184 tag-link-position-12" style="font-size: 8.2372881355932pt;" aria-label="나이차 (42 아이템)">나이차</a>
+<a href="http://ms.nala.ga/tag/%eb%82%a8%ec%9e%90/" class="tag-cloud-link tag-link-364 tag-link-position-13" style="font-size: 9.4237288135593pt;" aria-label="남자 (47 아이템)">남자</a>
+<a href="http://ms.nala.ga/tag/%eb%82%a8%ed%8e%b8/" class="tag-cloud-link tag-link-603 tag-link-position-14" style="font-size: 16.305084745763pt;" aria-label="남편 (92 아이템)">남편</a>
+<a href="http://ms.nala.ga/tag/%eb%85%b8%eb%9e%98/" class="tag-cloud-link tag-link-713 tag-link-position-15" style="font-size: 8.9491525423729pt;" aria-label="노래 (45 아이템)">노래</a>
+<a href="http://ms.nala.ga/tag/%eb%8c%80%ed%95%9c/" class="tag-cloud-link tag-link-3572 tag-link-position-16" style="font-size: 10.135593220339pt;" aria-label="대한 (50 아이템)">대한</a>
+<a href="http://ms.nala.ga/tag/%eb%93%9c%eb%9d%bc%eb%a7%88/" class="tag-cloud-link tag-link-1041 tag-link-position-17" style="font-size: 16.542372881356pt;" aria-label="드라마 (95 아이템)">드라마</a>
+<a href="http://ms.nala.ga/tag/%eb%a6%ac%eb%b7%b0/" class="tag-cloud-link tag-link-447 tag-link-position-18" style="font-size: 12.508474576271pt;" aria-label="리뷰 (64 아이템)">리뷰</a>
+<a href="http://ms.nala.ga/tag/%eb%a7%9b%ec%a7%91/" class="tag-cloud-link tag-link-782 tag-link-position-19" style="font-size: 16.779661016949pt;" aria-label="맛집 (97 아이템)">맛집</a>
+<a href="http://ms.nala.ga/tag/%eb%aa%a8%ec%9d%8c/" class="tag-cloud-link tag-link-1142 tag-link-position-20" style="font-size: 13.694915254237pt;" aria-label="모음 (72 아이템)">모음</a>
+<a href="http://ms.nala.ga/tag/%eb%aa%b8%eb%a7%a4/" class="tag-cloud-link tag-link-2391 tag-link-position-21" style="font-size: 15.830508474576pt;" aria-label="몸매 (88 아이템)">몸매</a>
+<a href="http://ms.nala.ga/tag/%eb%b0%a9%eb%b2%95/" class="tag-cloud-link tag-link-930 tag-link-position-22" style="font-size: 17.491525423729pt;" aria-label="방법 (103 아이템)">방법</a>
+<a href="http://ms.nala.ga/tag/%eb%b0%b0%ec%9a%b0/" class="tag-cloud-link tag-link-895 tag-link-position-23" style="font-size: 15.593220338983pt;" aria-label="배우 (86 아이템)">배우</a>
+<a href="http://ms.nala.ga/tag/%eb%b6%80%ec%82%b0/" class="tag-cloud-link tag-link-157 tag-link-position-24" style="font-size: 8.4745762711864pt;" aria-label="부산 (43 아이템)">부산</a>
+<a href="http://ms.nala.ga/tag/%ec%82%ac%eb%9e%91/" class="tag-cloud-link tag-link-2972 tag-link-position-25" style="font-size: 14.406779661017pt;" aria-label="사랑 (77 아이템)">사랑</a>
+<a href="http://ms.nala.ga/tag/%ec%82%ac%ec%a7%84/" class="tag-cloud-link tag-link-410 tag-link-position-26" style="font-size: 9.4237288135593pt;" aria-label="사진 (47 아이템)">사진</a>
+<a href="http://ms.nala.ga/tag/%ec%95%84%eb%82%b4/" class="tag-cloud-link tag-link-3039 tag-link-position-27" style="font-size: 9.6610169491525pt;" aria-label="아내 (48 아이템)">아내</a>
+<a href="http://ms.nala.ga/tag/%ec%95%88%eb%82%b4/" class="tag-cloud-link tag-link-1327 tag-link-position-28" style="font-size: 11.322033898305pt;" aria-label="안내 (56 아이템)">안내</a>
+<a href="http://ms.nala.ga/tag/%ec%95%8c%ec%95%84%eb%b3%b4%ea%b8%b0/" class="tag-cloud-link tag-link-821 tag-link-position-29" style="font-size: 15.118644067797pt;" aria-label="알아보기 (82 아이템)">알아보기</a>
+<a href="http://ms.nala.ga/tag/%ec%95%8c%ec%95%84%eb%b3%b4%ec%9e%90/" class="tag-cloud-link tag-link-341 tag-link-position-30" style="font-size: 11.322033898305pt;" aria-label="알아보자 (56 아이템)">알아보자</a>
+<a href="http://ms.nala.ga/tag/%ec%97%ac%ed%96%89/" class="tag-cloud-link tag-link-873 tag-link-position-31" style="font-size: 17.016949152542pt;" aria-label="여행 (98 아이템)">여행</a>
+<a href="http://ms.nala.ga/tag/%ec%98%81%ed%99%94/" class="tag-cloud-link tag-link-562 tag-link-position-32" style="font-size: 19.389830508475pt;" aria-label="영화 (124 아이템)">영화</a>
+<a href="http://ms.nala.ga/tag/%ec%98%a4%eb%8a%98/" class="tag-cloud-link tag-link-1059 tag-link-position-33" style="font-size: 13.694915254237pt;" aria-label="오늘 (72 아이템)">오늘</a>
+<a href="http://ms.nala.ga/tag/%ec%9a%b0%eb%a6%ac/" class="tag-cloud-link tag-link-888 tag-link-position-34" style="font-size: 11.322033898305pt;" aria-label="우리 (57 아이템)">우리</a>
+<a href="http://ms.nala.ga/tag/%ec%9c%84%ed%95%9c/" class="tag-cloud-link tag-link-1175 tag-link-position-35" style="font-size: 12.983050847458pt;" aria-label="위한 (66 아이템)">위한</a>
+<a href="http://ms.nala.ga/tag/%ec%9d%b4%ec%95%bc%ea%b8%b0/" class="tag-cloud-link tag-link-611 tag-link-position-36" style="font-size: 12.508474576271pt;" aria-label="이야기 (64 아이템)">이야기</a>
+<a href="http://ms.nala.ga/tag/%ec%9d%b4%ec%9c%a0/" class="tag-cloud-link tag-link-296 tag-link-position-37" style="font-size: 10.372881355932pt;" aria-label="이유 (51 아이템)">이유</a>
+<a href="http://ms.nala.ga/tag/%ec%9e%90%ea%b2%a9%ec%a6%9d/" class="tag-cloud-link tag-link-2111 tag-link-position-38" style="font-size: 9.4237288135593pt;" aria-label="자격증 (47 아이템)">자격증</a>
+<a href="http://ms.nala.ga/tag/%ec%a0%95%eb%a6%ac/" class="tag-cloud-link tag-link-1831 tag-link-position-39" style="font-size: 13.220338983051pt;" aria-label="정리 (68 아이템)">정리</a>
+<a href="http://ms.nala.ga/tag/%ec%a0%95%eb%b3%b4/" class="tag-cloud-link tag-link-89 tag-link-position-40" style="font-size: 15.118644067797pt;" aria-label="정보 (83 아이템)">정보</a>
+<a href="http://ms.nala.ga/tag/%ec%b6%94%ec%b2%9c/" class="tag-cloud-link tag-link-146 tag-link-position-41" style="font-size: 22pt;" aria-label="추천 (162 아이템)">추천</a>
+<a href="http://ms.nala.ga/tag/%ec%b6%9c%ec%97%b0/" class="tag-cloud-link tag-link-2930 tag-link-position-42" style="font-size: 10.847457627119pt;" aria-label="출연 (54 아이템)">출연</a>
+<a href="http://ms.nala.ga/tag/%ed%95%9c%ea%b5%ad/" class="tag-cloud-link tag-link-3361 tag-link-position-43" style="font-size: 11.796610169492pt;" aria-label="한국 (59 아이템)">한국</a>
+<a href="http://ms.nala.ga/tag/%ed%9a%a8%eb%8a%a5/" class="tag-cloud-link tag-link-810 tag-link-position-44" style="font-size: 9.6610169491525pt;" aria-label="효능 (48 아이템)">효능</a>
+<a href="http://ms.nala.ga/tag/%ed%9b%84%ea%b8%b0/" class="tag-cloud-link tag-link-14 tag-link-position-45" style="font-size: 17.966101694915pt;" aria-label="후기 (109 아이템)">후기</a></div>
+</div>	    </div>
+	</div>
+
+        </div> <!-- /.row -->
+    </div> <!-- /.container -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <hr>
+            </div>
+        </div>
+    </div>
+    <footer class="site-footer" role="contentinfo">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 text-center">
+  
+                    <p></p>
+                    
+                                            <div class="footer-social-icons">
+                                                                                                                                                                                                                                                                                                                                                                                                        
+                        </div>
+                    
+                </div>
+            </div>
+        </div>
+    </footer>
+
+            <div class="scroll-up">
+            <a href="#"><i class="fa fa-angle-up"></i></a>
+        </div>
+        <!-- Scroll Up -->
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/af2821b0/cloudflare-static/email-decode.min.js"></script><script type='text/javascript' src='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/js/bootstrap.min.js?ver=3.3.5'></script>
+<script type='text/javascript' src='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/js/scripts.js'></script>
+<script type='text/javascript' src='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/js/jquery.fitvids.js'></script>
+<script type='text/javascript' src='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/js/smoothscroll.js'></script>
+<script type='text/javascript' src='http://ms.nala.ga/wp-includes/js/wp-embed.min.js?ver=4.8.4'></script>
+    </body>
+</html>

@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="profile" href="http://gmpg.org/xfn/11">
+    <link rel="pingback" href="http://ms.nala.ga/xmlrpc.php">
+
+<title>Scala – 1 | All About MS CCL Contents</title>
+<meta name='robots' content='noindex,follow' />
+
+<!-- All in One SEO Pack 2.4.4 by Michael Torbert of Semper Fi Web Design[276,332] -->
+<meta name="description"  content="3줄 요약 함수가 여러 식으로 이루어진 경우, {}를 사용해 이를 위한 공간을 만들 수 있다.def timesTwo(i: Int): Int = { scala&gt; val c = new C val shineRefraction = 12 스칼라를 사용해야 하는 이유는?풍부한 표현력1급 함수(First-class function)클로져(Closure)간결함타입 추론함수 리터럴(Literal)자바와의 혼용 가능자바 라이브러리 재사용 가능자바 도구를 재사용 가능성능의 손실 없이 사용 가능스칼라를 어떻게 쓸 수 있나?자바 바이트코드로 컴파일됨표준적인 자바 VM에서 잘 동작함심지어는" />
+<meta name="robots" content="index,nofollow" />
+
+<link rel="canonical" href="http://ms.nala.ga/scala-1/" />
+<!-- /all in one seo pack -->
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="All About MS CCL Contents &raquo; 피드" href="http://ms.nala.ga/feed/" />
+<link rel="alternate" type="application/rss+xml" title="All About MS CCL Contents &raquo; 댓글 피드" href="http://ms.nala.ga/comments/feed/" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.3\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.3\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/ms.nala.ga\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.8.5"}};
+			!function(a,b,c){function d(a){var b,c,d,e,f=String.fromCharCode;if(!k||!k.fillText)return!1;switch(k.clearRect(0,0,j.width,j.height),k.textBaseline="top",k.font="600 32px Arial",a){case"flag":return k.fillText(f(55356,56826,55356,56819),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,56826,8203,55356,56819),0,0),c=j.toDataURL(),b!==c&&(k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447),0,0),c=j.toDataURL(),b!==c);case"emoji4":return k.fillText(f(55358,56794,8205,9794,65039),0,0),d=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55358,56794,8203,9794,65039),0,0),e=j.toDataURL(),d!==e}return!1}function e(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i,j=b.createElement("canvas"),k=j.getContext&&j.getContext("2d");for(i=Array("flag","emoji4"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='bootstrap-css-css'  href='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/css/bootstrap.min.css?ver=3.3.5' type='text/css' media='all' />
+<link rel='stylesheet' id='font-awesome-css-css'  href='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/css/font-awesome.min.css?ver=4.4.0' type='text/css' media='all' />
+<link rel='stylesheet' id='shaped-blog-stylesheet-css'  href='http://ms.nala.ga/wp-content/themes/shaped-blog/style.css?ver=4.8.5' type='text/css' media='all' />
+<link rel='stylesheet' id='responsive-css-css'  href='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/css/responsive.css' type='text/css' media='all' />
+<script type='text/javascript' src='http://ms.nala.ga/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
+<script type='text/javascript' src='http://ms.nala.ga/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+<link rel='https://api.w.org/' href='http://ms.nala.ga/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://ms.nala.ga/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://ms.nala.ga/wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='PWM Install' href='http://ms.nala.ga/pwm-install/' />
+<link rel='next' title='화지 나 빼 뮤비/듣기/가사 다운로드 &#8211; Hwaji Music Download' href='http://ms.nala.ga/%ed%99%94%ec%a7%80-%eb%82%98-%eb%b9%bc-%eb%ae%a4%eb%b9%84%eb%93%a3%ea%b8%b0%ea%b0%80%ec%82%ac-%eb%8b%a4%ec%9a%b4%eb%a1%9c%eb%93%9c-hwaji-music-download/' />
+<meta name="generator" content="WordPress 4.8.5" />
+<link rel='shortlink' href='http://ms.nala.ga/?p=11240' />
+<link rel="alternate" type="application/json+oembed" href="http://ms.nala.ga/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fms.nala.ga%2Fscala-1%2F" />
+<link rel="alternate" type="text/xml+oembed" href="http://ms.nala.ga/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fms.nala.ga%2Fscala-1%2F&#038;format=xml" />
+
+	<style>
+
+		/* Border Color */
+		.btn-social:hover,
+		blockquote,
+		#respond input:focus[type="text"], 
+	    #respond input:focus[type="email"], 
+	    #respond input:focus[type="url"],
+	    #respond textarea:focus,
+	    #comments .comment-reply a:hover
+		{
+			border-color: ;
+		}
+
+		
+		/* Background Color */
+		.scroll-up a,
+		.btn-social:hover,
+		button,
+		input[type="button"],
+		input[type="reset"],
+		input[type="submit"],
+		.navbar-default .navbar-nav .dropdown-menu li a:hover, .dropdown-menu li a:focus, .navbar-default .navbar-nav .dropdown-menu .active a,
+		.pagination>li>a:focus, .pagination>li>a:hover, .pagination>li>span:focus, .pagination>li>span:hover, .pagination li .current,
+		.next-previous-posts .next-post a:hover,
+		.next-previous-posts .previous-post a:hover,
+		.btn-goback,
+		.btn-submit,
+		a.more-link,
+		.featured-post .fa,
+		#comments .comment-reply a:hover,
+		.widget .tagcloud a
+		{
+			background-color: ;
+		}
+
+		
+		/* Color */
+		.text-logo a,
+		.navbar-default .navbar-nav .active a, .navbar-default .navbar-nav .active a:hover, .navbar-default .navbar-nav .active a:focus,
+		.navbar-default .navbar-nav li a:hover, .navbar-default .navbar-nav li a:focus,
+		a:hover,
+    	a:focus,
+		.next-previous-posts .previous-post a,
+		.next-previous-posts .next-post a,
+		.pagination>li>a, .pagination>li>span,
+		#comments .comment-author a:hover, 
+    	#respond .logged-in-as a:hover,
+    	#wp-calendar a,
+    	h2.entry-title a:hover
+		{
+			color: ;
+		}
+
+
+		/* A Color */
+		a{
+			color: ;
+		}
+
+		/* a:hover Color */
+		a:hover,
+		a:focus,
+		a:active,
+		.widget a:hover,
+		.post .post-content .entry-meta ul li a:hover
+		{
+			color: ;
+		}
+
+		/* .featured-post .fa:after*/
+		.featured-post .fa:after{
+			border-color:   transparent ;
+		}
+
+
+		
+
+	</style>
+</head>
+
+<body class="post-template-default single single-post postid-11240 single-format-standard">
+
+    <div id="st-preloader">
+        <div id="pre-status">
+            <div class="preload-placeholder"></div>
+        </div>
+    </div>
+<!-- /Preloader -->
+
+<header id="header">	
+	<div id="trueHeader">
+    	<div class="wrapper">
+            <div class="container">
+            	<!-- Menu -->
+            	<div class="menu_main">
+                	<div class="navbar blogx-navbar navbar-default">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#st-navber-collapse">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+
+                                                            <div class="text-logo">
+                                    <a href="http://ms.nala.ga">All About MS CCL Contents</a>
+                                    <p>All About MS CCL Contents</p>
+                                </div><!-- /Logo -->
+                                                    </div>
+                      
+                        <div id="st-navber-collapse" class="navbar-collapse collapse pull-right">
+                             
+                        </div>
+                    </div>
+            	</div><!-- end menu -->
+        	</div> <!-- /.container -->
+    	</div>
+	</div>
+	<DIV class='ads_adsense_img' style='margin:40px 0px 40px 0px;'>
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<!-- only display -->
+	<ins class="adsbygoogle"
+	     style="display:block"
+	     data-ad-client="ca-pub-8393857339019314"
+	     data-ad-slot="7474886381"
+	     data-ad-format="auto"></ins>
+	<script>
+	(adsbygoogle = window.adsbygoogle || []).push({});
+	</script>
+	</DIV>	
+
+</header>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div id="primary" class="content-area">
+                    <main id="main" class="site-main" role="main">
+
+                        
+                                <article id="post-11240" class="post-11240 post type-post status-publish format-standard hentry category-uncategorized tag-scala">
+    <header class="entry-header">
+        
+        
+    </header> <!--/.entry-header -->
+
+    <div class="clearfix post-content media">
+
+        <h2 class="entry-title">
+            Scala &#8211; 1        </h2> <!-- //.entry-title -->
+
+        <div class="clearfix entry-meta">
+            
+            <ul class="list-inline">
+                <li>
+                    <span class="author vcard">
+                        By <a class="url fn n" href="http://ms.nala.ga/author/admin/">admin</a>                    </span>
+                </li>
+                <li>
+                    on <span class="posted-on">1월 13, 2018</span>
+                </li>
+                                    <li>
+                        in <span class="posted-in">
+                            <a href="http://ms.nala.ga/category/uncategorized/" rel="category tag">미분류</a>                        </span>
+                    </li>
+                            </ul>
+                </div> <!--/.entry-meta -->
+        
+        <div class="entry-summary">
+            <h1>3줄 요약 </h1>
+<div style='color:#fff;background-color:#000;border-radius:10px;'>
+<ol>
+<li><span>함수가 여러 식으로 이루어진 경우, {}를 사용해 이를 위한 공간을 만들 수 있다.def timesTwo(i: Int): Int = {</span></li>
+<li><span>scala> val c = new C</span></li>
+<li><span>val shineRefraction = 12</span></li>
+</ol>
+</div>
+<p><span id="more-11240"></span></p>
+<p><iframe src='http://ad.selfhow.com/rd' width='100%' border=0 frameborder=0 style='height:auto;width:100%'></iframe></p>
+<hr />
+<h2 id="overview" style='margin-top: 0px; margin-right: 0px; margin-bottom: 0px; padding: 40px 0px 0px; border: 0px; font-size: 24px; line-height: 36px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(64, 64, 64);'>스칼라를 사용해야 하는 이유는?</h2>
+<ul style='margin: 0px 0px 18px 25px; padding: 0px; border: 0px; line-height: 1; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; list-style-position: initial; list-style-image: initial; color: rgb(48, 48, 48);'>
+<li style="margin: 0px; padding: 0px; border: 0px; line-height: 18px; font-family: inherit;">풍부한 표현력
+<ul style="margin: 0px 0px 0px 25px; padding: 0px; border: 0px; line-height: 1; font-family: inherit; list-style-position: initial; list-style-image: initial;">
+<li style="margin: 0px; padding: 0px; border: 0px; line-height: 18px; font-family: inherit;">1급 함수(First-class function)</li>
+<li style="margin: 0px; padding: 0px; border: 0px; line-height: 18px; font-family: inherit;">클로져(Closure)</li>
+</ul>
+</li>
+<li style="margin: 0px; padding: 0px; border: 0px; line-height: 18px; font-family: inherit;">간결함
+<ul style="margin: 0px 0px 0px 25px; padding: 0px; border: 0px; line-height: 1; font-family: inherit; list-style-position: initial; list-style-image: initial;">
+<li style="margin: 0px; padding: 0px; border: 0px; line-height: 18px; font-family: inherit;">타입 추론</li>
+<li style="margin: 0px; padding: 0px; border: 0px; line-height: 18px; font-family: inherit;">함수 리터럴(Literal)</li>
+</ul>
+</li>
+<li style="margin: 0px; padding: 0px; border: 0px; line-height: 18px; font-family: inherit;">자바와의 혼용 가능
+<ul style="margin: 0px 0px 0px 25px; padding: 0px; border: 0px; line-height: 1; font-family: inherit; list-style-position: initial; list-style-image: initial;">
+<li style="margin: 0px; padding: 0px; border: 0px; line-height: 18px; font-family: inherit;">자바 라이브러리 재사용 가능</li>
+<li style="margin: 0px; padding: 0px; border: 0px; line-height: 18px; font-family: inherit;">자바 도구를 재사용 가능</li>
+<li style="margin: 0px; padding: 0px; border: 0px; line-height: 18px; font-family: inherit;">성능의 손실 없이 사용 가능</li>
+</ul>
+</li>
+</ul>
+<h3 style='margin: 0px; padding: 0px; border: 0px; font-size: 18px; line-height: 36px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(64, 64, 64);'>스칼라를 어떻게 쓸 수 있나?</h3>
+<ul style='margin: 0px 0px 18px 25px; padding: 0px; border: 0px; line-height: 1; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; list-style-position: initial; list-style-image: initial; color: rgb(48, 48, 48);'>
+<li style="margin: 0px; padding: 0px; border: 0px; line-height: 18px; font-family: inherit;">자바 바이트코드로 컴파일됨</li>
+<li style="margin: 0px; padding: 0px; border: 0px; line-height: 18px; font-family: inherit;">표준적인 자바 VM에서 잘 동작함
+<ul style="margin: 0px 0px 0px 25px; padding: 0px; border: 0px; line-height: 1; font-family: inherit; list-style-position: initial; list-style-image: initial;">
+<li style="margin: 0px; padding: 0px; border: 0px; line-height: 18px; font-family: inherit;">심지어는 달빅(Dalvik)과 같은 비표준 JVM에서도 동작</li>
+<li style="margin: 0px; padding: 0px; border: 0px; line-height: 18px; font-family: inherit;">자바 컴파일러를 만든 사람이 스칼라 컴파일러도 만듦</li>
+</ul>
+</li>
+</ul>
+<h3 style='margin: 0px; padding: 0px; border: 0px; font-size: 18px; line-height: 36px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(64, 64, 64);'>스칼라 방식으로 생각하자</h3>
+<p style='margin: 0px 0px 9px; padding: 0px; border: 0px; line-height: 18px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(48, 48, 48);'>스칼라는 단지 “더 나은 자바”가 아니다. 전혀 새로운 마음으로 스칼라를 배우기 바란다. 그래야 이 강좌를 넘어서는 많은 것을 배울 수 있다.</p>
+<h3 style='margin: 0px; padding: 0px; border: 0px; font-size: 18px; line-height: 36px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(64, 64, 64);'>인터프리터 시작하기</h3>
+<p style='margin: 0px 0px 9px; padding: 0px; border: 0px; line-height: 18px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(48, 48, 48);'><code style='margin: 0px; padding: 1px 3px; border: 0px; font-size: 12px; line-height: 1; font-family: Monaco, "Andale Mono", "Courier New", monospace; border-radius: 3px; color: rgb(0, 0, 0); background-color: rgb(254, 233, 204);'>sbt console</code>로 시작하라.</p>
+<pre style='margin-top: 0px; margin-bottom: 18px; padding: 17px; border: 1px solid rgba(0, 0, 0, 0.15); font-size: 12px; line-height: 18px; font-family: Monaco, "Andale Mono", "Courier New", monospace; border-radius: 3px; background-color: rgb(245, 245, 245); white-space: pre-wrap;'>$ sbt console
+
+[...]
+
+Welcome to Scala version 2.8.0.final (Java HotSpot(TM) 64-Bit Server VM, Java 1.6.0_20).
+Type in expressions to have them evaluated.
+Type :help for more information.
+
+scala&gt;
+</pre>
+<h2 id="expressions" style='margin: 0px; padding: 40px 0px 0px; border: 0px; font-size: 24px; line-height: 36px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(64, 64, 64);'>식</h2>
+<pre style='margin-top: 0px; margin-bottom: 18px; padding: 17px; border: 1px solid rgba(0, 0, 0, 0.15); font-size: 12px; line-height: 18px; font-family: Monaco, "Andale Mono", "Courier New", monospace; border-radius: 3px; background-color: rgb(245, 245, 245); white-space: pre-wrap;'>scala&gt; 1 + 1
+res0: Int = 2
+</pre>
+<p style='margin: 0px 0px 9px; padding: 0px; border: 0px; line-height: 18px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(48, 48, 48);'>식을 입력하면 인터프리터가 결과를 출력한다. 이때, res0는 결과 값에 인터프리터가 부여한 이름이다. 이 값의 타입은 Int이고, 값은 2라는 정수이다.</p>
+<p style='margin: 0px 0px 9px; padding: 0px; border: 0px; line-height: 18px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(48, 48, 48);'>스칼라의 (거의) 모든 문장은 식이다.</p>
+<h2 id="val" style='margin: 0px; padding: 40px 0px 0px; border: 0px; font-size: 24px; line-height: 36px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(64, 64, 64);'>값</h2>
+<p style='margin: 0px 0px 9px; padding: 0px; border: 0px; line-height: 18px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(48, 48, 48);'>식의 결과에 이름을 붙일 수 있다.</p>
+<pre style='margin-top: 0px; margin-bottom: 18px; padding: 17px; border: 1px solid rgba(0, 0, 0, 0.15); font-size: 12px; line-height: 18px; font-family: Monaco, "Andale Mono", "Courier New", monospace; border-radius: 3px; background-color: rgb(245, 245, 245); white-space: pre-wrap;'>scala&gt; val two = 1 + 1
+two: Int = 2
+</pre>
+<p style='margin: 0px 0px 9px; padding: 0px; border: 0px; line-height: 18px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(48, 48, 48);'>val로 어떤 값에 이름을 붙인 경우, 이 관계를 변경할 수 없다.</p>
+<h3 style='margin: 0px; padding: 0px; border: 0px; font-size: 18px; line-height: 36px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(64, 64, 64);'>변수</h3>
+<p style='margin: 0px 0px 9px; padding: 0px; border: 0px; line-height: 18px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(48, 48, 48);'>값과 이름의 관계를 변경할 필요가 있다면, <code style='margin: 0px; padding: 1px 3px; border: 0px; font-size: 12px; line-height: 1; font-family: Monaco, "Andale Mono", "Courier New", monospace; border-radius: 3px; color: rgb(0, 0, 0); background-color: rgb(254, 233, 204);'>var</code>를 사용해야만 한다.</p>
+<pre style='margin-top: 0px; margin-bottom: 18px; padding: 17px; border: 1px solid rgba(0, 0, 0, 0.15); font-size: 12px; line-height: 18px; font-family: Monaco, "Andale Mono", "Courier New", monospace; border-radius: 3px; background-color: rgb(245, 245, 245); white-space: pre-wrap;'>scala&gt; var name = "steve"
+name: java.lang.String = steve
+
+scala&gt; name = "marius"
+name: java.lang.String = marius
+</pre>
+<h2 id="functions" style='margin: 0px; padding: 40px 0px 0px; border: 0px; font-size: 24px; line-height: 36px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(64, 64, 64);'>함수</h2>
+<p style='margin: 0px 0px 9px; padding: 0px; border: 0px; line-height: 18px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(48, 48, 48);'>def를 사용해 함수를 만들 수 있다.</p>
+<pre style='margin-top: 0px; margin-bottom: 18px; padding: 17px; border: 1px solid rgba(0, 0, 0, 0.15); font-size: 12px; line-height: 18px; font-family: Monaco, "Andale Mono", "Courier New", monospace; border-radius: 3px; background-color: rgb(245, 245, 245); white-space: pre-wrap;'>scala&gt; def addOne(m: Int): Int = m + 1
+addOne: (m: Int)Int
+</pre>
+<p style='margin: 0px 0px 9px; padding: 0px; border: 0px; line-height: 18px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(48, 48, 48);'>스칼라에서는 함수 인자의 타입을 명시해야 한다. 인터프리터는 기꺼이 타입 시그니쳐를 다시 표시해줄 것이다.</p>
+<pre style='margin-top: 0px; margin-bottom: 18px; padding: 17px; border: 1px solid rgba(0, 0, 0, 0.15); font-size: 12px; line-height: 18px; font-family: Monaco, "Andale Mono", "Courier New", monospace; border-radius: 3px; background-color: rgb(245, 245, 245); white-space: pre-wrap;'>scala&gt; val three = addOne(2)
+three: Int = 3
+</pre>
+<p style='margin: 0px 0px 9px; padding: 0px; border: 0px; line-height: 18px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(48, 48, 48);'>인자가 없는 함수의 경우 호출시 괄호를 생략할 수도 있다.</p>
+<pre style='margin-top: 0px; margin-bottom: 18px; padding: 17px; border: 1px solid rgba(0, 0, 0, 0.15); font-size: 12px; line-height: 18px; font-family: Monaco, "Andale Mono", "Courier New", monospace; border-radius: 3px; background-color: rgb(245, 245, 245); white-space: pre-wrap;'>scala&gt; def three() = 1 + 2
+three: ()Int
+
+scala&gt; three()
+res2: Int = 3
+
+scala&gt; three
+res3: Int = 3
+</pre>
+<h3 style='margin: 0px; padding: 0px; border: 0px; font-size: 18px; line-height: 36px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(64, 64, 64);'>이름 없는 함수</h3>
+<p style='margin: 0px 0px 9px; padding: 0px; border: 0px; line-height: 18px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(48, 48, 48);'>이름 없는 함수를 만들 수 있다.</p>
+<pre style='margin-top: 0px; margin-bottom: 18px; padding: 17px; border: 1px solid rgba(0, 0, 0, 0.15); font-size: 12px; line-height: 18px; font-family: Monaco, "Andale Mono", "Courier New", monospace; border-radius: 3px; background-color: rgb(245, 245, 245); white-space: pre-wrap;'>scala&gt; (x: Int) =&gt; x + 1
+res2: (Int) =&gt; Int = &lt;function1&gt;
+</pre>
+<p style='margin: 0px 0px 9px; padding: 0px; border: 0px; line-height: 18px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(48, 48, 48);'>위 함수는 x라는 이름의 Int에 1을 더한다.</p>
+<pre style='margin-top: 0px; margin-bottom: 18px; padding: 17px; border: 1px solid rgba(0, 0, 0, 0.15); font-size: 12px; line-height: 18px; font-family: Monaco, "Andale Mono", "Courier New", monospace; border-radius: 3px; background-color: rgb(245, 245, 245); white-space: pre-wrap;'>scala&gt; res2(1)
+res3: Int = 2
+</pre>
+<p style='margin: 0px 0px 9px; padding: 0px; border: 0px; line-height: 18px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(48, 48, 48);'>이름 없는 함수를 다른 함수나 식에 넘기거나 val에 저장할 수도 있다.</p>
+<pre style='margin-top: 0px; margin-bottom: 18px; padding: 17px; border: 1px solid rgba(0, 0, 0, 0.15); font-size: 12px; line-height: 18px; font-family: Monaco, "Andale Mono", "Courier New", monospace; border-radius: 3px; background-color: rgb(245, 245, 245); white-space: pre-wrap;'>scala&gt; val addOne = (x: Int) =&gt; x + 1
+addOne: (Int) =&gt; Int = &lt;function1&gt;
+
+scala&gt; addOne(1)
+res4: Int = 2
+</pre>
+<p style='margin: 0px 0px 9px; padding: 0px; border: 0px; line-height: 18px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(48, 48, 48);'>함수가 여러 식으로 이루어진 경우, {}를 사용해 이를 위한 공간을 만들 수 있다.</p>
+<pre style='margin-top: 0px; margin-bottom: 18px; padding: 17px; border: 1px solid rgba(0, 0, 0, 0.15); font-size: 12px; line-height: 18px; font-family: Monaco, "Andale Mono", "Courier New", monospace; border-radius: 3px; background-color: rgb(245, 245, 245); white-space: pre-wrap;'>def timesTwo(i: Int): Int = {
+  println("hello world")
+  i * 2
+}
+</pre>
+<p style='margin: 0px 0px 9px; padding: 0px; border: 0px; line-height: 18px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(48, 48, 48);'>이름 없는 함수의 경우도 마찬가지이다.</p>
+<pre style='margin-top: 0px; margin-bottom: 18px; padding: 17px; border: 1px solid rgba(0, 0, 0, 0.15); font-size: 12px; line-height: 18px; font-family: Monaco, "Andale Mono", "Courier New", monospace; border-radius: 3px; background-color: rgb(245, 245, 245); white-space: pre-wrap;'>scala&gt; { i: Int =&gt;
+  println("hello world")
+  i * 2
+}
+res0: (Int) =&gt; Int = &lt;function1&gt;
+</pre>
+<p style='margin: 0px 0px 9px; padding: 0px; border: 0px; line-height: 18px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(48, 48, 48);'>이름 없는 함수를 넘길 때 위와 같은 형태를 자주 보게 될 것이다.</p>
+<h3 style='margin: 0px; padding: 0px; border: 0px; font-size: 18px; line-height: 36px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(64, 64, 64);'>인자의 일부만 사용해 호출하기(부분 적용, Partial application)</h3>
+<p style='margin: 0px 0px 9px; padding: 0px; border: 0px; line-height: 18px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(48, 48, 48);'>함수 호출시 밑줄(_)을 사용해 일부만 적용할 수 있다. 그렇게 하면 새로운 함수를 얻는다. 스칼라에서 밑줄은 문맥에 따라 의미가 다르다. 하지만 보통 이름 없는 마법의 문자로 생각해도 된다. `{ _ + 2 }` 이라는 문맥에서 밑줄은 이름이 없는 매개변수를 가리킨다. 다음과 같이 이를 사용할 수 있다.</p>
+<pre style='margin-top: 0px; margin-bottom: 18px; padding: 17px; border: 1px solid rgba(0, 0, 0, 0.15); font-size: 12px; line-height: 18px; font-family: Monaco, "Andale Mono", "Courier New", monospace; border-radius: 3px; background-color: rgb(245, 245, 245); white-space: pre-wrap;'>scala&gt; def adder(m: Int, n: Int) = m + n
+adder: (m: Int,n: Int)Int
+</pre>
+<pre style='margin-top: 0px; margin-bottom: 18px; padding: 17px; border: 1px solid rgba(0, 0, 0, 0.15); font-size: 12px; line-height: 18px; font-family: Monaco, "Andale Mono", "Courier New", monospace; border-radius: 3px; background-color: rgb(245, 245, 245); white-space: pre-wrap;'>scala&gt; val add2 = adder(2, _:Int)
+add2: (Int) =&gt; Int = &lt;function1&gt;
+
+scala&gt; add2(3)
+res50: Int = 5
+</pre>
+<p style='margin: 0px 0px 9px; padding: 0px; border: 0px; line-height: 18px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(48, 48, 48);'>인자 중에서 원하는 어떤 것이든 부분 적용이 가능하다. 꼭 맨 마지막 위치가 아니라도 아무 곳에서 밑줄을 넣을 수 있다.<br />(역주: 사실은 _는 부분 적용하는 것에서 제외되는 위치가 혼동되지 않도록 표시해주는 역할을 한다. 혼동하면 안되는 것은 _이 부분적용이 아니고, _를 제외하고 호출하는 코드에 적힌 실제 인자가 부분적용의 인자값이라는 것이다. 다만 이 scala school에서는 _를 일관되게 부분 적용이라고 부르고 있지만, 역자 생각에 이는 틀린 것이다. 다만 의미의 혼동을 피하기 위해서 원저자의 표현을 그대로 사용할 것이다.)</p>
+<h3 style='margin: 0px; padding: 0px; border: 0px; font-size: 18px; line-height: 36px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(64, 64, 64);'>커리 함수(Curried functions)</h3>
+<p style='margin: 0px 0px 9px; padding: 0px; border: 0px; line-height: 18px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(48, 48, 48);'>떄로 함수의 인자중 일부를 적용하고, 나머지는 나중에 적용하게 남겨두는 것이 더 쓸모있는 경우가 있다.</p>
+<p style='margin: 0px 0px 9px; padding: 0px; border: 0px; line-height: 18px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(48, 48, 48);'>다음은 두 수를 곱하는 곱셈기를 만들 수 있는 함수이다. 첫 호출시 승수를 지정하고, 나중에 피승수를 지정할 수 있다.</p>
+<pre style='margin-top: 0px; margin-bottom: 18px; padding: 17px; border: 1px solid rgba(0, 0, 0, 0.15); font-size: 12px; line-height: 18px; font-family: Monaco, "Andale Mono", "Courier New", monospace; border-radius: 3px; background-color: rgb(245, 245, 245); white-space: pre-wrap;'>scala&gt; def multiply(m: Int)(n: Int): Int = m * n
+multiply: (m: Int)(n: Int)Int
+</pre>
+<p style='margin: 0px 0px 9px; padding: 0px; border: 0px; line-height: 18px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(48, 48, 48);'>물론 두 인자를 한꺼번에 적용할 수도 있다.</p>
+<pre style='margin-top: 0px; margin-bottom: 18px; padding: 17px; border: 1px solid rgba(0, 0, 0, 0.15); font-size: 12px; line-height: 18px; font-family: Monaco, "Andale Mono", "Courier New", monospace; border-radius: 3px; background-color: rgb(245, 245, 245); white-space: pre-wrap;'>scala&gt; multiply(2)(3)
+res0: Int = 6
+</pre>
+<p style='margin: 0px 0px 9px; padding: 0px; border: 0px; line-height: 18px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(48, 48, 48);'>다음과 같이 첫 인자를 채워 넣고 두번째 인자를 부분적용 할 수도 있다.</p>
+<pre style='margin-top: 0px; margin-bottom: 18px; padding: 17px; border: 1px solid rgba(0, 0, 0, 0.15); font-size: 12px; line-height: 18px; font-family: Monaco, "Andale Mono", "Courier New", monospace; border-radius: 3px; background-color: rgb(245, 245, 245); white-space: pre-wrap;'>scala&gt; val timesTwo = multiply(2) _
+timesTwo: (Int) =&gt; Int = &lt;function1&gt;
+
+scala&gt; timesTwo(3)
+res1: Int = 6
+</pre>
+<p style='margin: 0px 0px 9px; padding: 0px; border: 0px; line-height: 18px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(48, 48, 48);'>인자가 여러개 있는 함수를 가지고 커리할 수 있다. 앞에서 본 <code style='margin: 0px; padding: 1px 3px; border: 0px; font-size: 12px; line-height: 1; font-family: Monaco, "Andale Mono", "Courier New", monospace; border-radius: 3px; color: rgb(0, 0, 0); background-color: rgb(254, 233, 204);'>adder</code>에 적용해 보자.</p>
+<pre style='margin-top: 0px; margin-bottom: 18px; padding: 17px; border: 1px solid rgba(0, 0, 0, 0.15); font-size: 12px; line-height: 18px; font-family: Monaco, "Andale Mono", "Courier New", monospace; border-radius: 3px; background-color: rgb(245, 245, 245); white-space: pre-wrap;'>scala&gt; (adder _).curried
+res1: (Int) =&gt; (Int) =&gt; Int = &lt;function1&gt;
+</pre>
+<p style='margin: 0px 0px 9px; padding: 0px; border: 0px; line-height: 18px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(48, 48, 48);'>(연습문제(역자): 어떤 함수 f(x1,x2,….)의 커리화 된 함수를 어떻게 작성할 수 있을까? 이름없는 함수(무명함수 또는 람다식이라고도 한다)를 사용해 이를 구현해 보라.)</p>
+<h3 style='margin: 0px; padding: 0px; border: 0px; font-size: 18px; line-height: 36px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(64, 64, 64);'>가변 길이 인자</h3>
+<p style='margin: 0px 0px 9px; padding: 0px; border: 0px; line-height: 18px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(48, 48, 48);'>동일한 타입의 매개변수가 반복되는 경우를 처리할 수 있는 특별한 문법이 있다. 여러 문자열에 동시에 `capitalize`를 호출하고 싶을 경우 다음과 같이 쓸 수 있다.</p>
+<pre style='margin-top: 0px; margin-bottom: 18px; padding: 17px; border: 1px solid rgba(0, 0, 0, 0.15); font-size: 12px; line-height: 18px; font-family: Monaco, "Andale Mono", "Courier New", monospace; border-radius: 3px; background-color: rgb(245, 245, 245); white-space: pre-wrap;'>def capitalizeAll(args: String*) = {
+  args.map { arg =&gt;
+    arg.capitalize
+  }
+}
+
+scala&gt; capitalizeAll("rarity", "applejack")
+res2: Seq[String] = ArrayBuffer(Rarity, Applejack)
+</pre>
+<h2 id="class" style='margin: 0px; padding: 40px 0px 0px; border: 0px; font-size: 24px; line-height: 36px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(64, 64, 64);'>클래스</h2>
+<pre style='margin-top: 0px; margin-bottom: 18px; padding: 17px; border: 1px solid rgba(0, 0, 0, 0.15); font-size: 12px; line-height: 18px; font-family: Monaco, "Andale Mono", "Courier New", monospace; border-radius: 3px; background-color: rgb(245, 245, 245); white-space: pre-wrap;'>scala&gt; class Calculator {
+     |   val brand: String = "HP"
+     |   def add(m: Int, n: Int): Int = m + n
+     | }
+defined class Calculator
+
+scala&gt; val calc = new Calculator
+calc: Calculator = <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="6122000d02140d00150e1321045654005050">[email&#160;protected]</a>
+
+scala&gt; calc.add(1, 2)
+res1: Int = 3
+
+scala&gt; calc.brand
+res2: String = "HP"
+</pre>
+<p style='margin: 0px 0px 9px; padding: 0px; border: 0px; line-height: 18px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(48, 48, 48);'>위 예와 같이 클래스 안에서 메소드는 def로, 필드는 val로 정의한다. 메소드는 단지 클래스(객체)의 상태를 억세스할 수 있는 함수에 지나지 않는다.</p>
+<h3 style='margin: 0px; padding: 0px; border: 0px; font-size: 18px; line-height: 36px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(64, 64, 64);'>생성자</h3>
+<p style='margin: 0px 0px 9px; padding: 0px; border: 0px; line-height: 18px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(48, 48, 48);'>스칼라에서는 생성자가 특별한 메소드로 따로 존재하지 않는다. 클래스 몸체에서 메소드 정의 부분 밖에 있는 모든 코드가 생성자 코드가 된다. Calculator 예제를 생성자가 인자를 받아 내부 상태를 초기화하도록 변경해 보자.</p>
+<pre style='margin-top: 0px; margin-bottom: 18px; padding: 17px; border: 1px solid rgba(0, 0, 0, 0.15); font-size: 12px; line-height: 18px; font-family: Monaco, "Andale Mono", "Courier New", monospace; border-radius: 3px; background-color: rgb(245, 245, 245); white-space: pre-wrap;'>class Calculator(brand: String) {
+  /**
+   * 생성자
+   */
+  val color: String = if (brand == "TI") {
+    "blue"
+  } else if (brand == "HP") {
+    "black"
+  } else {
+    "white"
+  }
+
+  // 인스턴스 메소드
+  def add(m: Int, n: Int): Int = m + n
+}
+</pre>
+<p style='margin: 0px 0px 9px; padding: 0px; border: 0px; line-height: 18px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(48, 48, 48);'>주석을 만드는 방법이 두가지 있다는 점에 유의하라.</p>
+<p style='margin: 0px 0px 9px; padding: 0px; border: 0px; line-height: 18px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(48, 48, 48);'>생성자를 사용해 인스턴스를 만들어낼 수 있다.</p>
+<pre style='margin-top: 0px; margin-bottom: 18px; padding: 17px; border: 1px solid rgba(0, 0, 0, 0.15); font-size: 12px; line-height: 18px; font-family: Monaco, "Andale Mono", "Courier New", monospace; border-radius: 3px; background-color: rgb(245, 245, 245); white-space: pre-wrap;'>scala&gt; val calc = new Calculator("HP")
+calc: Calculator = <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="7f3c1e131c0a131e0b100d3f4e1a494b1c1c4b1b">[email&#160;protected]</a>
+
+scala&gt; calc.color
+res0: String = black
+</pre>
+<h3 style='margin: 0px; padding: 0px; border: 0px; font-size: 18px; line-height: 36px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(64, 64, 64);'>식</h3>
+<p style='margin: 0px 0px 9px; padding: 0px; border: 0px; line-height: 18px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(48, 48, 48);'>BasicCalculator 예제를 보면 스칼라가 식 중심의 언어란 점을 잘 알 수 있다. color 값은 if/else 식에 의해 초기화되었다. 스칼라는 대부분의 구성 요소가 문(statement, 반환값이 없는 문장)이 아니고 식(expression, 결과를 반환하는 문장)이라는 점에서 식 중심의 언어이다.</p>
+<h3 style='margin: 0px; padding: 0px; border: 0px; font-size: 18px; line-height: 36px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(64, 64, 64);'>곁다리: 함수 대 메소드</h3>
+<p style='margin: 0px 0px 9px; padding: 0px; border: 0px; line-height: 18px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(48, 48, 48);'>함수와 메소드는 서로 바꿔쓸 수 있는 개념이다. 함수와 메소드는 매우 유사하며, 실제 여러분이 호출 중인 어떤 <em style="margin: 0px; padding: 0px; border: 0px; font-weight: inherit; line-height: inherit; font-family: inherit;">것</em>이 함수인지 메소드인지를 기억하지 못할 수도 있다. 실제 메소드와 함수의 차이와 마주치게 되면 혼동이 올 수도 있다.</p>
+<pre style='margin-top: 0px; margin-bottom: 18px; padding: 17px; border: 1px solid rgba(0, 0, 0, 0.15); font-size: 12px; line-height: 18px; font-family: Monaco, "Andale Mono", "Courier New", monospace; border-radius: 3px; background-color: rgb(245, 245, 245); white-space: pre-wrap;'>scala&gt; class C {
+     |   var acc = 0
+     |   def minc = { acc += 1 }
+     |   val finc = { () =&gt; acc += 1 }
+     | }
+defined class C
+
+scala&gt; val c = new C
+c: C = <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="0e4d4e3f6f683f6c6a38">[email&#160;protected]</a>
+
+scala&gt; c.minc // c.minc() 호출함
+
+scala&gt; c.finc // 함수 값(반환값이 아니라 함수 자체)을 반환함
+res2: () =&gt; Unit = &lt;function0&gt;
+</pre>
+<p style='margin: 0px 0px 9px; padding: 0px; border: 0px; line-height: 18px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(48, 48, 48);'>어떤 &#8220;함수&#8221;를 괄호 없이 호출할 수 있는데, 다른 것은 그렇게 할 수 없다면, <em style="margin: 0px; padding: 0px; border: 0px; font-weight: inherit; line-height: inherit; font-family: inherit;">어라? 스칼라 함수가 어떻게 돌아가는지 잘 안다고 생각했는데, 안그런 모양이네. 때로 괄호를 꼭 써야하는 경우도 있나?</em>라고 생각할 지 모르겠다. 아마 함수라고 생각하고 있지만, 메소드를 사용하는 것이었을 수도 있다.(역주. 인자가 없는 메소드는 이름만으로 호출 가능하지만, 인자가 없는 함수는 이름만 사용하면 해당 함수를 의미하지, 그 함수를 적용한 값을 의미하지 않는다. )</p>
+<p style='margin: 0px 0px 9px; padding: 0px; border: 0px; line-height: 18px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(48, 48, 48);'>실제로는 메소드와 함수의 차이를 잘 모르더라도 스칼라로 훌륭한 일을 해낼 수 있다. 스칼라를 처음 접하는 독자가 <a href="https://www.google.com/search?q=difference+scala+function+method" style="margin: 0px; padding: 0px; border: 0px; font-weight: inherit; line-height: inherit; font-family: inherit; color: rgb(0, 105, 214);">그 둘의 차이에 대한 설명</a>을 보면, 내용을 따라가기 어려울 수도 있다. 하지만 이는 스칼라 언어를 상당히 깊이 파고 들어야 그 둘의 차이를 구분할 수 있을 만큼 함수와 메소드의 차이가 미묘하다는 사실을 보여주는 것 뿐이다. 위 c.finc 부분의 결과를 보면 이를 알 수 있다.)</p>
+<h2 id="extends" style='margin: 0px; padding: 40px 0px 0px; border: 0px; font-size: 24px; line-height: 36px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(64, 64, 64);'>상속</h2>
+<pre style='margin-top: 0px; margin-bottom: 18px; padding: 17px; border: 1px solid rgba(0, 0, 0, 0.15); font-size: 12px; line-height: 18px; font-family: Monaco, "Andale Mono", "Courier New", monospace; border-radius: 3px; background-color: rgb(245, 245, 245); white-space: pre-wrap;'>class ScientificCalculator(brand: String) extends Calculator(brand) {
+  def log(m: Double, base: Double) = math.log(m) / math.log(base)
+}
+</pre>
+<p style='margin: 0px 0px 9px; padding: 0px; border: 0px; line-height: 18px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(48, 48, 48);'><strong style="margin: 0px; padding: 0px; border: 0px; font-style: inherit; line-height: inherit; font-family: inherit;">See Also</strong> “효율적인 스칼라(effective scala)”에서는 하위클래스가 상위클래스와 실제 다르지 않을 경우 <a href="http://twitter.github.com/effectivescala/#Types%20and%20Generics-Type%20aliases" style="margin: 0px; padding: 0px; border: 0px; font-weight: inherit; line-height: inherit; font-family: inherit; color: rgb(0, 105, 214);">타입 별명</a>이 <code style='margin: 0px; padding: 1px 3px; border: 0px; font-size: 12px; line-height: 1; font-family: Monaco, "Andale Mono", "Courier New", monospace; border-radius: 3px; color: rgb(0, 0, 0); background-color: rgb(254, 233, 204);'>extends(확장)</code>보다 더 낫다고 말한다. 스칼라 여행(Tour of Scala)에서는 <a href="http://www.scala-lang.org/node/125" style="margin: 0px; padding: 0px; border: 0px; font-weight: inherit; line-height: inherit; font-family: inherit; color: rgb(0, 105, 214);">상속하기(Subclassing)</a>에 대해 다루고 있다.</p>
+<h3 style='margin: 0px; padding: 0px; border: 0px; font-size: 18px; line-height: 36px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(64, 64, 64);'>메소드 중복정의(Overloading)</h3>
+<pre style='margin-top: 0px; margin-bottom: 18px; padding: 17px; border: 1px solid rgba(0, 0, 0, 0.15); font-size: 12px; line-height: 18px; font-family: Monaco, "Andale Mono", "Courier New", monospace; border-radius: 3px; background-color: rgb(245, 245, 245); white-space: pre-wrap;'>class EvenMoreScientificCalculator(brand: String) extends ScientificCalculator(brand) {
+  def log(m: Int): Double = log(m, math.exp(1))
+}
+</pre>
+<h3 style='margin: 0px; padding: 0px; border: 0px; font-size: 18px; line-height: 36px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(64, 64, 64);'>추상 클래스</h3>
+<p style='margin: 0px 0px 9px; padding: 0px; border: 0px; line-height: 18px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(48, 48, 48);'><em style="margin: 0px; padding: 0px; border: 0px; font-weight: inherit; line-height: inherit; font-family: inherit;">추상 클래스(abstract class)</em>는 메소드 정의는 있지만 구현은 없는 클래스이다. 대신 이를 상속한 하위클래스에서 메소드를 구현하게 된다. 추상 클래스의 인스턴스를 만들 수는 없다.</p>
+<pre style='margin-top: 0px; margin-bottom: 18px; padding: 17px; border: 1px solid rgba(0, 0, 0, 0.15); font-size: 12px; line-height: 18px; font-family: Monaco, "Andale Mono", "Courier New", monospace; border-radius: 3px; background-color: rgb(245, 245, 245); white-space: pre-wrap;'>scala&gt; abstract class Shape {
+     |   def getArea():Int    // 하위클래스에서 이 메소드를 정의해야만 한다
+     | }
+defined class Shape
+
+scala&gt; class Circle(r: Int) extends Shape {
+     |   def getArea():Int = { r * r * 3 }
+     | }
+defined class Circle
+
+scala&gt; val s = new Shape
+&lt;console&gt;:8: error: class Shape is abstract; cannot be instantiated
+       val s = new Shape
+               ^
+
+scala&gt; val c = new Circle(2)
+c: Circle = <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="02416b70616e67423437613232313760">[email&#160;protected]</a>
+</pre>
+<h2 id="trait" style='margin: 0px; padding: 40px 0px 0px; border: 0px; font-size: 24px; line-height: 36px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(64, 64, 64);'>트레잇(Traits, 특성이라는 뜻)</h2>
+<p style='margin: 0px 0px 9px; padding: 0px; border: 0px; line-height: 18px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(48, 48, 48);'><code style='margin: 0px; padding: 1px 3px; border: 0px; font-size: 12px; line-height: 1; font-family: Monaco, "Andale Mono", "Courier New", monospace; border-radius: 3px; color: rgb(0, 0, 0); background-color: rgb(254, 233, 204);'>트레잇(trait)</code>은 다른 클래스가 확장(즉, 상속)하거나 섞어 넣을 수 있는(이를 믹스인Mix in 이라 한다) 필드와 동작의 모음이다.</p>
+<pre style='margin-top: 0px; margin-bottom: 18px; padding: 17px; border: 1px solid rgba(0, 0, 0, 0.15); font-size: 12px; line-height: 18px; font-family: Monaco, "Andale Mono", "Courier New", monospace; border-radius: 3px; background-color: rgb(245, 245, 245); white-space: pre-wrap;'>trait Car {
+  val brand: String
+}
+
+trait Shiny {
+  val shineRefraction: Int
+}
+</pre>
+<pre style='margin-top: 0px; margin-bottom: 18px; padding: 17px; border: 1px solid rgba(0, 0, 0, 0.15); font-size: 12px; line-height: 18px; font-family: Monaco, "Andale Mono", "Courier New", monospace; border-radius: 3px; background-color: rgb(245, 245, 245); white-space: pre-wrap;'>class BMW extends Car {
+  val brand = "BMW"
+}
+</pre>
+<p style='margin: 0px 0px 9px; padding: 0px; border: 0px; line-height: 18px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(48, 48, 48);'>클래스는 여러 트레잇를 <code style='margin: 0px; padding: 1px 3px; border: 0px; font-size: 12px; line-height: 1; font-family: Monaco, "Andale Mono", "Courier New", monospace; border-radius: 3px; color: rgb(0, 0, 0); background-color: rgb(254, 233, 204);'>with</code> 키워드를 사용해 확장할 수 있다.</p>
+<pre style='margin-top: 0px; margin-bottom: 18px; padding: 17px; border: 1px solid rgba(0, 0, 0, 0.15); font-size: 12px; line-height: 18px; font-family: Monaco, "Andale Mono", "Courier New", monospace; border-radius: 3px; background-color: rgb(245, 245, 245); white-space: pre-wrap;'>class BMW extends Car with Shiny {
+  val brand = "BMW"
+  val shineRefraction = 12
+}
+</pre>
+<p style='margin: 0px 0px 9px; padding: 0px; border: 0px; line-height: 18px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(48, 48, 48);'><strong style="margin: 0px; padding: 0px; border: 0px; font-style: inherit; line-height: inherit; font-family: inherit;">See Also</strong> 효율적인 스칼라도 <a href="http://twitter.github.com/effectivescala/#Object oriented programming-Traits" style="margin: 0px; padding: 0px; border: 0px; font-weight: inherit; line-height: inherit; font-family: inherit; color: rgb(0, 105, 214);">트레잇에</a>대해 다루고 있다.<br />.</p>
+<p style='margin: 0px 0px 9px; padding: 0px; border: 0px; line-height: 18px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(48, 48, 48);'><strong style="margin: 0px; padding: 0px; border: 0px; font-style: inherit; line-height: inherit; font-family: inherit;">추상클래스 대신 트레잇를 사용해야 하는 경우는 언제인가?</strong> 인터페이스 역할을 하는 타입을 설계할 때 트레잇과 추상클래스 중 어떤 것을 골라야할까? 두 가지 다 어떤 동작을 하는 타입을 만들 수 있으며, 확장하는 쪽에서 일부를 구현하도록 요청한다. 중요한 규칙은 다음과 같다.</p>
+<ul style='margin: 0px 0px 18px 25px; padding: 0px; border: 0px; line-height: 1; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; list-style-position: initial; list-style-image: initial; color: rgb(48, 48, 48);'>
+<li style="margin: 0px; padding: 0px; border: 0px; line-height: 18px; font-family: inherit;">트레잇을 사용하는 것이 낫다. 클래스는 오직 하나만 상속(extend)할 수 있지만, 트레잇은 여러 가지를 받아 사용할 수 있다.</li>
+<li style="margin: 0px; padding: 0px; border: 0px; line-height: 18px; font-family: inherit;">생성자 매개변수가 필요한 경우라면 추상 클래스를 사용하라. 추상 클래스의 생성자는 매개변수를 받을 수 있지만, 트레잇의 생성자는 그렇지 않다. 예를 들어 <code style='margin: 0px; padding: 1px 3px; border: 0px; font-size: 12px; line-height: 1; font-family: Monaco, "Andale Mono", "Courier New", monospace; border-radius: 3px; color: rgb(0, 0, 0); background-color: rgb(254, 233, 204);'>trait t(i: Int) {}</code> 에서 <code style='margin: 0px; padding: 1px 3px; border: 0px; font-size: 12px; line-height: 1; font-family: Monaco, "Andale Mono", "Courier New", monospace; border-radius: 3px; color: rgb(0, 0, 0); background-color: rgb(254, 233, 204);'>i</code> 매개변수는 허용되지 않는다.</li>
+</ul>
+<p style='margin: 0px 0px 9px; padding: 0px; border: 0px; line-height: 18px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(48, 48, 48);'>당신이 이런 질문을 한 첫번째 사람은 아니다. 스택 오버플로우에서 <a href="http://stackoverflow.com/questions/1991042/scala-traits-vs-abstract-classes" style="margin: 0px; padding: 0px; border: 0px; font-weight: inherit; line-height: inherit; font-family: inherit; color: rgb(0, 105, 214);">트레잇과 추상 클래스의 비교</a>, <a href="http://stackoverflow.com/questions/2005681/difference-between-abstract-class-and-trait" style="margin: 0px; padding: 0px; border: 0px; font-weight: inherit; line-height: inherit; font-family: inherit; color: rgb(0, 105, 214);">추상 클래스와 트레잇의 차이</a>, <br />또는 <a href="http://www.artima.com/pins1ed/traits.html#12.7" style="margin: 0px; padding: 0px; border: 0px; font-weight: inherit; line-height: inherit; font-family: inherit; color: rgb(0, 105, 214);">스칼라 프로그래밍: 트레잇냐 아니냐 그것이 문제로다?</a> 등을 참조하라.</p>
+<h2 id="types" style='margin: 0px; padding: 40px 0px 0px; border: 0px; font-size: 24px; line-height: 36px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(64, 64, 64);'>타입</h2>
+<p style='margin: 0px 0px 9px; padding: 0px; border: 0px; line-height: 18px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(48, 48, 48);'>앞에서 숫자 타입중 하나인 <code style='margin: 0px; padding: 1px 3px; border: 0px; font-size: 12px; line-height: 1; font-family: Monaco, "Andale Mono", "Courier New", monospace; border-radius: 3px; color: rgb(0, 0, 0); background-color: rgb(254, 233, 204);'>Int</code>를 인자로 받는 함수를 보았다. 모든 타입의 값을 처리할 수 있는 일반적(generic)인 함수를 만들 수도 있다. 일반적 함수를 만들 때는 각괄호([])안에 타입 매개변수를 추가한다. 아래는 키와 값을 가지는 일반적인 캐시를 보여준다.</p>
+<pre style='margin-top: 0px; margin-bottom: 18px; padding: 17px; border: 1px solid rgba(0, 0, 0, 0.15); font-size: 12px; line-height: 18px; font-family: Monaco, "Andale Mono", "Courier New", monospace; border-radius: 3px; background-color: rgb(245, 245, 245); white-space: pre-wrap;'>trait Cache[K, V] {
+  def get(key: K): V
+  def put(key: K, value: V)
+  def delete(key: K)
+}
+</pre>
+<p style='margin: 0px 0px 9px; padding: 0px; border: 0px; line-height: 18px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(48, 48, 48);'>메소드에도 타입 매개변수를 추가할 수 있다.</p>
+<pre style='margin-top: 0px; margin-bottom: 18px; padding: 17px; border: 1px solid rgba(0, 0, 0, 0.15); font-size: 12px; line-height: 18px; font-family: Monaco, "Andale Mono", "Courier New", monospace; border-radius: 3px; background-color: rgb(245, 245, 245); white-space: pre-wrap;'>def remove[K](key: K)</pre>
+<p></p>
+<h2 id="apply" style='margin: 0px; padding: 40px 0px 0px; border: 0px; font-size: 24px; line-height: 36px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(64, 64, 64);'>apply 메소드</h2>
+<p style='margin: 0px 0px 9px; padding: 0px; border: 0px; line-height: 18px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(48, 48, 48);'>apply 메소드를 사용하면 클래스나 객체의 용도가 주로 하나만 있는 경우를 아주 멋지게 표현할 수 있다.</p>
+<pre style='margin-top: 0px; margin-bottom: 18px; padding: 17px; border: 1px solid rgba(0, 0, 0, 0.15); font-size: 12px; line-height: 18px; font-family: Monaco, "Andale Mono", "Courier New", monospace; border-radius: 3px; background-color: rgb(245, 245, 245); white-space: pre-wrap;'>scala&gt; class Foo {}
+defined class Foo
+
+scala&gt; object FooMaker {
+     |   def apply() = new Foo
+     | }
+defined module FooMaker
+
+scala&gt; val newFoo = FooMaker()
+newFoo: Foo = <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="8acce5e5cabfe8b2b9ecbdbcb8">[email&#160;protected]</a>
+</pre>
+<p style='margin: 0px 0px 9px; padding: 0px; border: 0px; line-height: 18px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(48, 48, 48);'>위와 같이 사용하거나, 다음과 같이 쓸 수 있다.</p>
+<pre style='margin-top: 0px; margin-bottom: 18px; padding: 17px; border: 1px solid rgba(0, 0, 0, 0.15); font-size: 12px; line-height: 18px; font-family: Monaco, "Andale Mono", "Courier New", monospace; border-radius: 3px; background-color: rgb(245, 245, 245); white-space: pre-wrap;'>scala&gt; class Bar {
+     |   def apply() = 0
+     | }
+defined class Bar
+
+scala&gt; val bar = new Bar
+bar: Bar = <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="581a392a186c6f6f69696c6f61">[email&#160;protected]</a>
+
+scala&gt; bar()
+res8: Int = 0
+</pre>
+<p style='margin: 0px 0px 9px; padding: 0px; border: 0px; line-height: 18px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(48, 48, 48);'>apply를 정의하면 메소드를 호출하듯 객체 인스턴스를 호출할 수 있다. 객체 인스턴스를 호출하면 그 객체(클래스)에 정의된 apply()가 호출된다. 자세한 것은 나중에 살펴볼 것이다.</p>
+<h2 id="object" style='margin: 0px; padding: 40px 0px 0px; border: 0px; font-size: 24px; line-height: 36px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(64, 64, 64);'>객체</h2>
+<p style='margin: 0px 0px 9px; padding: 0px; border: 0px; line-height: 18px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(48, 48, 48);'>객체(여기서는 object 키워드로 선언하는 객체를 말함)는 클래스의 유일한 인스턴스를 넣기 위해 사용한다. 보통 팩토리에 사용된다.</p>
+<pre style='margin-top: 0px; margin-bottom: 18px; padding: 17px; border: 1px solid rgba(0, 0, 0, 0.15); font-size: 12px; line-height: 18px; font-family: Monaco, "Andale Mono", "Courier New", monospace; border-radius: 3px; background-color: rgb(245, 245, 245); white-space: pre-wrap;'>object Timer {
+  var count = 0
+
+  def currentCount(): Long = {
+    count += 1
+    count
+  }
+}
+</pre>
+<p style='margin: 0px 0px 9px; padding: 0px; border: 0px; line-height: 18px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(48, 48, 48);'>위와 같이 정의하면 다음과 같이 사용할 수 있다.</p>
+<pre style='margin-top: 0px; margin-bottom: 18px; padding: 17px; border: 1px solid rgba(0, 0, 0, 0.15); font-size: 12px; line-height: 18px; font-family: Monaco, "Andale Mono", "Courier New", monospace; border-radius: 3px; background-color: rgb(245, 245, 245); white-space: pre-wrap;'>scala&gt; Timer.currentCount()
+res0: Long = 1
+</pre>
+<p style='margin: 0px 0px 9px; padding: 0px; border: 0px; line-height: 18px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(48, 48, 48);'>클래스와 객체가 같은 이름을 가질 수도 있다. 이런 객체는 ‘짝 객체(Companion Object)’라 한다. 보통 팩토리를 만들 때 짝 객체를 사용한다.</p>
+<p style='margin: 0px 0px 9px; padding: 0px; border: 0px; line-height: 18px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(48, 48, 48);'>다음 예는 ’new’를 사용하지 않고 새 객체를 만들 수 있음을 보여준다.</p>
+<pre style='margin-top: 0px; margin-bottom: 18px; padding: 17px; border: 1px solid rgba(0, 0, 0, 0.15); font-size: 12px; line-height: 18px; font-family: Monaco, "Andale Mono", "Courier New", monospace; border-radius: 3px; background-color: rgb(245, 245, 245); white-space: pre-wrap;'>class Bar(foo: String)
+
+object Bar {
+  def apply(foo: String) = new Bar(foo)
+}
+</pre>
+<h2 id="fnobj" style='margin: 0px; padding: 40px 0px 0px; border: 0px; font-size: 24px; line-height: 36px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(64, 64, 64);'>함수는 객체이다</h2>
+<p style='margin: 0px 0px 9px; padding: 0px; border: 0px; line-height: 18px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(48, 48, 48);'>스칼라에 대해 이야기할 떄, 객체-함수형 프로그래밍이라는 말을 하고는 한다. 그 말이 무슨 뜻일까? 함수란 실제로 무엇일까?</p>
+<p style='margin: 0px 0px 9px; padding: 0px; border: 0px; line-height: 18px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(48, 48, 48);'>함수는 트레잇의 집합이다. 구체적으로 말하자면, 인자를 하나만 받는 함수는 <code style='margin: 0px; padding: 1px 3px; border: 0px; font-size: 12px; line-height: 1; font-family: Monaco, "Andale Mono", "Courier New", monospace; border-radius: 3px; color: rgb(0, 0, 0); background-color: rgb(254, 233, 204);'>Function1</code> 트레잇의 인스턴스이다. 이 트레잇에는 앞에서 설명했던 <code style='margin: 0px; padding: 1px 3px; border: 0px; font-size: 12px; line-height: 1; font-family: Monaco, "Andale Mono", "Courier New", monospace; border-radius: 3px; color: rgb(0, 0, 0); background-color: rgb(254, 233, 204);'>apply()</code>가 정의되어 있다. 따라서 함수를 호출하듯 객체를 호출할 수 있다.</p>
+<pre style='margin-top: 0px; margin-bottom: 18px; padding: 17px; border: 1px solid rgba(0, 0, 0, 0.15); font-size: 12px; line-height: 18px; font-family: Monaco, "Andale Mono", "Courier New", monospace; border-radius: 3px; background-color: rgb(245, 245, 245); white-space: pre-wrap;'>scala&gt; object addOne extends Function1[Int, Int] {
+     |   def apply(m: Int): Int = m + 1
+     | }
+defined module addOne
+
+scala&gt; addOne(1)
+res2: Int = 2
+</pre>
+<p style='margin: 0px 0px 9px; padding: 0px; border: 0px; line-height: 18px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(48, 48, 48);'>스칼라에는 Function이 1부터 22까지 준비되어 있다. 22인 이유는? 그냥 그렇게 정한 것이다. 저자는 인자가 22개 보다 더 많이 필요한 함수를 본 적이 없다. 22개면 충분하리라 본다.</p>
+<p style='margin: 0px 0px 9px; padding: 0px; border: 0px; line-height: 18px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(48, 48, 48);'>apply를 통한 편리 문법(syntactic sugar)을 통해 객체와 함수 프로그래밍 양쪽을 잘 통합할 수 있다. 여러분은 클래스를 여기저기 넘기면서 함수 처럼 호출해 사용할 수 있고, 함수는 한꺼풀 벗겨보면 단지 클래스의 인스턴스일 뿐이다.</p>
+<p style='margin: 0px 0px 9px; padding: 0px; border: 0px; line-height: 18px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(48, 48, 48);'>그렇다면 클래스의 메소드를 정의할 때마다 실제로 Function*의 인스턴스가 만들어지는 걸까? 아니다. 클래스 내부의 메소드는 메소드이다. repl(read eval print loop. 입력을 받아 값을 계산하고 결과를 출력하는 루프. 스칼라 인터프리터라 생각하면 대략 맞다)에서 정의한 개별 메소드는 Function*의 인스턴스이다.</p>
+<p style='margin: 0px 0px 9px; padding: 0px; border: 0px; line-height: 18px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(48, 48, 48);'>Function*을 확장한 클래스를 정의할 수도 있다. 물론 이런 클래스도 ()로 호출할 수 있다.</p>
+<pre style='margin-top: 0px; margin-bottom: 18px; padding: 17px; border: 1px solid rgba(0, 0, 0, 0.15); font-size: 12px; line-height: 18px; font-family: Monaco, "Andale Mono", "Courier New", monospace; border-radius: 3px; background-color: rgb(245, 245, 245); white-space: pre-wrap;'>scala&gt; class AddOne extends Function1[Int, Int] {
+     |   def apply(m: Int): Int = m + 1
+     | }
+defined class AddOne
+
+scala&gt; val plusOne = new AddOne()
+plusOne: AddOne = &lt;function1&gt;
+
+scala&gt; plusOne(1)
+res0: Int = 2
+</pre>
+<p style='margin: 0px 0px 9px; padding: 0px; border: 0px; line-height: 18px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(48, 48, 48);'><code style='margin: 0px; padding: 1px 3px; border: 0px; font-size: 12px; line-height: 1; font-family: Monaco, "Andale Mono", "Courier New", monospace; border-radius: 3px; color: rgb(0, 0, 0); background-color: rgb(254, 233, 204);'>extends Function1[Int, Int]</code>는 <code style='margin: 0px; padding: 1px 3px; border: 0px; font-size: 12px; line-height: 1; font-family: Monaco, "Andale Mono", "Courier New", monospace; border-radius: 3px; color: rgb(0, 0, 0); background-color: rgb(254, 233, 204);'>extends (Int =&gt; Int)&lt;/code라고 더 알아보기 쉽게 쓸 수 있다.</code></p>
+<pre style='margin-top: 0px; margin-bottom: 18px; padding: 17px; border: 1px solid rgba(0, 0, 0, 0.15); font-size: 12px; line-height: 18px; font-family: Monaco, "Andale Mono", "Courier New", monospace; border-radius: 3px; background-color: rgb(245, 245, 245); white-space: pre-wrap;'>class AddOne extends (Int =&gt; Int) {
+  def apply(m: Int): Int = m + 1
+}
+</pre>
+<h2 id="package" style="margin: 0px; padding: 40px 0px 0px; border: 0px; font-size: 24px; line-height: 36px; font-family: inherit; color: rgb(64, 64, 64);">패키지</h2>
+<p style="margin: 0px 0px 9px; padding: 0px; border: 0px; line-height: 18px; font-family: inherit;">코드를 패키지로 구성할 수 있다.</p>
+<pre style='margin-top: 0px; margin-bottom: 18px; padding: 17px; border: 1px solid rgba(0, 0, 0, 0.15); font-size: 12px; line-height: 18px; font-family: Monaco, "Andale Mono", "Courier New", monospace; border-radius: 3px; background-color: rgb(245, 245, 245); white-space: pre-wrap;'>package com.twitter.example
+</pre>
+<p style="margin: 0px 0px 9px; padding: 0px; border: 0px; line-height: 18px; font-family: inherit;">위와 같이 파일의 맨 앞에서 선언하면 파일 내의 모든 것이 위 패키지 안에 포함된다.</p>
+<p style="margin: 0px 0px 9px; padding: 0px; border: 0px; line-height: 18px; font-family: inherit;">값이나 함수는 클래스나 객체 바깥에 존재할 수 없다. 객체(여기서도 object로 선언한 객체를 의미함)를 사용하면 정적인(자바의 정적 함수와 동일) 함수를 관리하기 쉽다.</p>
+<pre style='margin-top: 0px; margin-bottom: 18px; padding: 17px; border: 1px solid rgba(0, 0, 0, 0.15); font-size: 12px; line-height: 18px; font-family: Monaco, "Andale Mono", "Courier New", monospace; border-radius: 3px; background-color: rgb(245, 245, 245); white-space: pre-wrap;'>package com.twitter.example
+
+object colorHolder {
+  val BLUE = "Blue"
+  val RED = "Red"
+}
+</pre>
+<p style="margin: 0px 0px 9px; padding: 0px; border: 0px; line-height: 18px; font-family: inherit;">이제 직접 객체의 멤버를 사용할 수 있다.</p>
+<pre style='margin-top: 0px; margin-bottom: 18px; padding: 17px; border: 1px solid rgba(0, 0, 0, 0.15); font-size: 12px; line-height: 18px; font-family: Monaco, "Andale Mono", "Courier New", monospace; border-radius: 3px; background-color: rgb(245, 245, 245); white-space: pre-wrap;'>println("the color is: " + com.twitter.example.colorHolder.BLUE)
+</pre>
+<p style="margin: 0px 0px 9px; padding: 0px; border: 0px; line-height: 18px; font-family: inherit;">여러분이 이렇게 객체를 정의하면 스칼라 repl은 다음과 같이 표시해준다.</p>
+<pre style='margin-top: 0px; margin-bottom: 18px; padding: 17px; border: 1px solid rgba(0, 0, 0, 0.15); font-size: 12px; line-height: 18px; font-family: Monaco, "Andale Mono", "Courier New", monospace; border-radius: 3px; background-color: rgb(245, 245, 245); white-space: pre-wrap;'>scala&gt; object colorHolder {
+     |   val Blue = "Blue"
+     |   val Red = "Red"
+     | }
+defined module colorHolder
+</pre>
+<p style="margin: 0px 0px 9px; padding: 0px; border: 0px; line-height: 18px; font-family: inherit;">모듈이라고 repl이 응답하는 것에 유의하라. 이는 스칼라 언어를 설계시 객체를 모듈 시스템의 일부로 생각하고 설계했음을 보여준다.</p>
+<h2 id="match" style="margin: 0px; padding: 40px 0px 0px; border: 0px; font-size: 24px; line-height: 36px; font-family: inherit; color: rgb(64, 64, 64);">패턴 매칭</h2>
+<p style="margin: 0px 0px 9px; padding: 0px; border: 0px; line-height: 18px; font-family: inherit;">패턴 매치는 스칼라에서 가장 유용한 기능 중 하나이다.</p>
+<p style="margin: 0px 0px 9px; padding: 0px; border: 0px; line-height: 18px; font-family: inherit;">값에 대해 매칭할 수 있다.</p>
+<pre style='margin-top: 0px; margin-bottom: 18px; padding: 17px; border: 1px solid rgba(0, 0, 0, 0.15); font-size: 12px; line-height: 18px; font-family: Monaco, "Andale Mono", "Courier New", monospace; border-radius: 3px; background-color: rgb(245, 245, 245); white-space: pre-wrap;'>val times = 1
+
+times match {
+  case 1 =&gt; "one"
+  case 2 =&gt; "two"
+  case _ =&gt; "some other number"
+}
+</pre>
+<p style="margin: 0px 0px 9px; padding: 0px; border: 0px; line-height: 18px; font-family: inherit;">가드(조건문)를 사용해 매칭할 수 있다.</p>
+<pre style='margin-top: 0px; margin-bottom: 18px; padding: 17px; border: 1px solid rgba(0, 0, 0, 0.15); font-size: 12px; line-height: 18px; font-family: Monaco, "Andale Mono", "Courier New", monospace; border-radius: 3px; background-color: rgb(245, 245, 245); white-space: pre-wrap;'>times match {
+  case i if i == 1 =&gt; "one"
+  case i if i == 2 =&gt; "two"
+  case _ =&gt; "some other number"
+}
+</pre>
+<p style="margin: 0px 0px 9px; padding: 0px; border: 0px; line-height: 18px; font-family: inherit;">변수 ’i’에 어떻게 값을 잡아 넣었는지 주의깊게 살펴보라.</p>
+<p style="margin: 0px 0px 9px; padding: 0px; border: 0px; line-height: 18px; font-family: inherit;">마지막 경우의 <code style='margin: 0px; padding: 1px 3px; border: 0px; font-size: 12px; line-height: 1; font-family: Monaco, "Andale Mono", "Courier New", monospace; border-radius: 3px; background-color: rgb(254, 233, 204);'>_</code>는 와일드카드이다. 즉, 모든 경우를 처리한다. 만약 이 부분이 없다면 매치되지 않는 값이 들어온 경우 런타임 에러가 발생할 것이다. 이에 대해서는 나중에 살펴보겠다.</p>
+<p style="margin: 0px 0px 9px; padding: 0px; border: 0px; line-height: 18px; font-family: inherit;"><strong style="margin: 0px; padding: 0px; border: 0px; font-style: inherit; line-height: inherit; font-family: inherit;">See Also</strong> 효율적인 스칼라에서 <a href="http://twitter.github.com/effectivescala/#Functional programming-Pattern matching" style="margin: 0px; padding: 0px; border: 0px; font-weight: inherit; line-height: inherit; font-family: inherit; color: rgb(0, 105, 214);">패턴매치를 사용해야 하는 경우</a>와 <a href="http://twitter.github.com/effectivescala/#Formatting-Pattern matching" style="margin: 0px; padding: 0px; border: 0px; font-weight: inherit; line-height: inherit; font-family: inherit; color: rgb(0, 105, 214);">패턴 매칭을 어떤 형식으로 할지</a>에 대해 설명한다. 스칼라 여행에서도 <a href="http://www.scala-lang.org/node/120" style="margin: 0px; padding: 0px; border: 0px; font-weight: inherit; line-height: inherit; font-family: inherit; color: rgb(0, 105, 214);">패턴매칭</a>을 다룬다.</p>
+<h3 style="margin: 0px; padding: 0px; border: 0px; font-size: 18px; line-height: 36px; font-family: inherit; color: rgb(64, 64, 64);">타입에 대해 매치시키기</h3>
+<p style="margin: 0px 0px 9px; padding: 0px; border: 0px; line-height: 18px; font-family: inherit;"><code style='margin: 0px; padding: 1px 3px; border: 0px; font-size: 12px; line-height: 1; font-family: Monaco, "Andale Mono", "Courier New", monospace; border-radius: 3px; background-color: rgb(254, 233, 204);'>match</code>를 사용해 타입이 다른 값을 서로 다른 방식으로 처리 가능하다.</p>
+<pre style='margin-top: 0px; margin-bottom: 18px; padding: 17px; border: 1px solid rgba(0, 0, 0, 0.15); font-size: 12px; line-height: 18px; font-family: Monaco, "Andale Mono", "Courier New", monospace; border-radius: 3px; background-color: rgb(245, 245, 245); white-space: pre-wrap;'>def bigger(o: Any): Any = {
+  o match {
+    case i: Int if i &lt; 0 =&gt; i - 1
+    case i: Int =&gt; i + 1
+    case d: Double if d &lt; 0.0 =&gt; d - 0.1
+    case d: Double =&gt; d + 0.1
+    case text: String =&gt; text + "s"
+  }
+}
+</pre>
+<h3 style="margin: 0px; padding: 0px; border: 0px; font-size: 18px; line-height: 36px; font-family: inherit; color: rgb(64, 64, 64);">클래스 멤버에 대해 매치시키기</h3>
+<p style="margin: 0px 0px 9px; padding: 0px; border: 0px; line-height: 18px; font-family: inherit;">앞에서 봤던 계산기 예제를 다시 떠올려보자.</p>
+<p style="margin: 0px 0px 9px; padding: 0px; border: 0px; line-height: 18px; font-family: inherit;">타입(계산기의 유형)에 따라 계산기를 구분하자.</p>
+<pre style='margin-top: 0px; margin-bottom: 18px; padding: 17px; border: 1px solid rgba(0, 0, 0, 0.15); font-size: 12px; line-height: 18px; font-family: Monaco, "Andale Mono", "Courier New", monospace; border-radius: 3px; background-color: rgb(245, 245, 245); white-space: pre-wrap;'>def calcType(calc: Calculator) = calc match {
+  case calc.brand == "HP" &amp;&amp; calc.model == "20B" =&gt; "financial"
+  case calc.brand == "HP" &amp;&amp; calc.model == "48G" =&gt; "scientific"
+  case calc.brand == "HP" &amp;&amp; calc.model == "30B" =&gt; "business"
+  case _ =&gt; "unknown"
+}
+</pre>
+<p style="margin: 0px 0px 9px; padding: 0px; border: 0px; line-height: 18px; font-family: inherit;">아이구, 힘들어 죽겄다. 스칼라는 이런 처리를 쉽게 할 수 있는 도구를 제공한다.</p>
+<h2 id="caseclass" style="margin: 0px; padding: 40px 0px 0px; border: 0px; font-size: 24px; line-height: 36px; font-family: inherit; color: rgb(64, 64, 64);">케이스 클래스(case class)</h2>
+<p style="margin: 0px 0px 9px; padding: 0px; border: 0px; line-height: 18px; font-family: inherit;">케이스 클래스는 손쉽게 내용을 어떤 클래스에 저장하고, 그에 따라 매치를 하고 싶은 경우 사용한다. new를 사용하지 않고도 케이스 클래스의 인스턴스 생성이 가능하다.</p>
+<pre style='margin-top: 0px; margin-bottom: 18px; padding: 17px; border: 1px solid rgba(0, 0, 0, 0.15); font-size: 12px; line-height: 18px; font-family: Monaco, "Andale Mono", "Courier New", monospace; border-radius: 3px; background-color: rgb(245, 245, 245); white-space: pre-wrap;'>scala&gt; case class Calculator(brand: String, model: String)
+defined class Calculator
+
+scala&gt; val hp20b = Calculator("HP", "20b")
+hp20b: Calculator = Calculator(hp,20b)
+
+</pre>
+<p style="margin: 0px 0px 9px; padding: 0px; border: 0px; line-height: 18px; font-family: inherit;">케이스 클래스는 자동으로 생성자 인자에 따른 동등성 검사를 제공하며, 또한 보기 좋은 toString 메소드도 제공한다.</p>
+<pre style='margin-top: 0px; margin-bottom: 18px; padding: 17px; border: 1px solid rgba(0, 0, 0, 0.15); font-size: 12px; line-height: 18px; font-family: Monaco, "Andale Mono", "Courier New", monospace; border-radius: 3px; background-color: rgb(245, 245, 245); white-space: pre-wrap;'>scala&gt; val hp20b = Calculator("HP", "20b")
+hp20b: Calculator = Calculator(hp,20b)
+
+scala&gt; val hp20B = Calculator("HP", "20b")
+hp20B: Calculator = Calculator(hp,20b)
+
+scala&gt; hp20b == hp20B
+res6: Boolean = true
+</pre>
+<p style="margin: 0px 0px 9px; padding: 0px; border: 0px; line-height: 18px; font-family: inherit;">케이스 클래스 안에도 일반 클래스와 똑같이 메소드를 정의할 수 있다.</p>
+<h6 style="margin: 0px; padding: 0px; border: 0px; font-size: 13px; line-height: 36px; font-family: inherit; color: rgb(191, 191, 191); text-transform: uppercase;">케이스 클래스와 패턴 매칭</h6>
+<p style="margin: 0px 0px 9px; padding: 0px; border: 0px; line-height: 18px; font-family: inherit;">케이스 클래스는 패턴 매치와 사용하기 위해 설계된 것이다. 앞의 계산기 분류 예제를 간략하게 만들어보자.</p>
+<pre style='margin-top: 0px; margin-bottom: 18px; padding: 17px; border: 1px solid rgba(0, 0, 0, 0.15); font-size: 12px; line-height: 18px; font-family: Monaco, "Andale Mono", "Courier New", monospace; border-radius: 3px; background-color: rgb(245, 245, 245); white-space: pre-wrap;'>val hp20b = Calculator("HP", "20B")
+val hp30b = Calculator("HP", "30B")
+
+def calcType(calc: Calculator) = calc match {
+  case Calculator("HP", "20B") =&gt; "financial"
+  case Calculator("HP", "48G") =&gt; "scientific"
+  case Calculator("HP", "30B") =&gt; "business"
+  case Calculator(ourBrand, ourModel) =&gt; "Calculator: %s %s is of unknown type".format(ourBrand, ourModel)
+}
+</pre>
+<p style="margin: 0px 0px 9px; padding: 0px; border: 0px; line-height: 18px; font-family: inherit;">마지막 매치는 다음과 같이 쓸 수도 있다.</p>
+<pre style='margin-top: 0px; margin-bottom: 18px; padding: 17px; border: 1px solid rgba(0, 0, 0, 0.15); font-size: 12px; line-height: 18px; font-family: Monaco, "Andale Mono", "Courier New", monospace; border-radius: 3px; background-color: rgb(245, 245, 245); white-space: pre-wrap;'>  case Calculator(_, _) =&gt; "Calculator of unknown type"
+</pre>
+<p style="margin: 0px 0px 9px; padding: 0px; border: 0px; line-height: 18px; font-family: inherit;">혹은, 그냥 calc가 계산기인지 아닌지도 명시하지 않아도 된다.</p>
+<pre style='margin-top: 0px; margin-bottom: 18px; padding: 17px; border: 1px solid rgba(0, 0, 0, 0.15); font-size: 12px; line-height: 18px; font-family: Monaco, "Andale Mono", "Courier New", monospace; border-radius: 3px; background-color: rgb(245, 245, 245); white-space: pre-wrap;'>  case _ =&gt; "Calculator of unknown type"
+</pre>
+<p style="margin: 0px 0px 9px; padding: 0px; border: 0px; line-height: 18px; font-family: inherit;">아니면, 매치된 값에 다른 이름을 붙일 수도 있다.</p>
+<pre style='margin-top: 0px; margin-bottom: 18px; padding: 17px; border: 1px solid rgba(0, 0, 0, 0.15); font-size: 12px; line-height: 18px; font-family: Monaco, "Andale Mono", "Courier New", monospace; border-radius: 3px; background-color: rgb(245, 245, 245); white-space: pre-wrap;'>  case <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a2c1e2e1c3cec1d7cec3d6cdd0">[email&#160;protected]</a>(_, _) =&gt; "Calculator: %s of unknown type".format(c)
+</pre>
+<h2 id="exception" style="margin: 0px; padding: 40px 0px 0px; border: 0px; font-size: 24px; line-height: 36px; font-family: inherit; color: rgb(64, 64, 64);">예외</h2>
+<p style="margin: 0px 0px 9px; padding: 0px; border: 0px; line-height: 18px; font-family: inherit;">스칼라에서는 예외 처리시 try-catch-finally 문법에 패턴 매치를 사용할 수 있다.</p>
+<pre style='margin-top: 0px; margin-bottom: 18px; padding: 17px; border: 1px solid rgba(0, 0, 0, 0.15); font-size: 12px; line-height: 18px; font-family: Monaco, "Andale Mono", "Courier New", monospace; border-radius: 3px; background-color: rgb(245, 245, 245); white-space: pre-wrap;'>try {
+  remoteCalculatorService.add(1, 2)
+} catch {
+  case e: ServerIsDownException =&gt; log.error(e, "the remote calculator service is unavailble. should have kept your trustry HP.")
+} finally {
+  remoteCalculatorService.close()
+}
+</pre>
+<p style="margin: 0px 0px 9px; padding: 0px; border: 0px; line-height: 18px; font-family: inherit;"><code style='margin: 0px; padding: 1px 3px; border: 0px; font-size: 12px; line-height: 1; font-family: Monaco, "Andale Mono", "Courier New", monospace; border-radius: 3px; background-color: rgb(254, 233, 204);'>try</code> 역시 식 중심의 구문이다.</p>
+<pre style='margin-top: 0px; margin-bottom: 18px; padding: 17px; border: 1px solid rgba(0, 0, 0, 0.15); font-size: 12px; line-height: 18px; font-family: Monaco, "Andale Mono", "Courier New", monospace; border-radius: 3px; background-color: rgb(245, 245, 245); white-space: pre-wrap;'>val result: Int = try {
+  remoteCalculatorService.add(1, 2)
+} catch {
+  case e: ServerIsDownException =&gt; {
+    log.error(e, "the remote calculator service is unavailble. should have kept your trustry HP.")
+    0
+  }
+} finally {
+  remoteCalculatorService.close()
+}
+</pre>
+<p style="margin: 0px 0px 9px; padding: 0px; border: 0px; line-height: 18px; font-family: inherit;">이렇게 하는게 좋은 프로그램 스타일은 아니다. 위 내용은 단지 다른 대부분의 스칼라 구성 요소와 마찬가지로 try-catch-finally도 결과값을 내는 식임을 보여주기 위한 예일 뿐이다.</p>
+<p><code style='margin: 0px; padding: 1px 3px; border: 0px; font-size: 12px; line-height: 1; font-family: Monaco, "Andale Mono", "Courier New", monospace; border-radius: 3px; background-color: rgb(254, 233, 204);'></code></p>
+<p style="margin: 0px 0px 9px; padding: 0px; border: 0px; font-weight: normal; font-style: normal; font-size: 13px; line-height: 18px; font-family: inherit;">finally는 예외가 처리(catch)된 다음에 실행될 것이다. 이 부분은 전체 식의 일부가 아니다. 예외가 발생하지 않으면 try {} 안의 마지막 식의 값이 try-catch-finally 전체의 값이 되고, 예외가 발생하는 경우에는 catch 안의 식의 값이 전체 식의 최종 값이 된다.</p>
+<hr />
+<p><iframe src='http://ad.selfhow.com/rd' width='100%' border=0 frameborder=0 style='height:auto;width:100%'></iframe></p>
+<p><a href='http://denos.tistory.com/62' target='_blank'>Origin Content : Denos</a> | <a href="/cdn-cgi/l/email-protection#4023232c23002e212c216e2721" target='_blank'>Contact : <span class="__cf_email__" data-cfemail="791a1a151a3917181518571e18">[email&#160;protected]</span></a>
+</p>
+<p>Cotent License : CC-BY </p>
+<p>This content is collected under the CCL license.</p>
+<p>Please check the license of the original article before asking about copyright.</p>
+<ul>
+<li><a href='/tag/Scala'>More About <span style='font-weight:bold;'>Scala</span></a></li>
+</ul>
+        </div> <!-- //.entry-summary -->
+        
+                    <div class="entry-tags"><b>Tags:</b> <a href="http://ms.nala.ga/tag/scala/" rel="tag">Scala</a></div>
+        
+    </div>
+
+</article> <!--/#post-->
+
+
+
+
+
+                                                                    <div class="post-nav-area">
+                                                    
+            <nav class="next-previous-post clearfix media" role="navigation">
+                <div class="row">
+                    <!-- Previous Post -->
+                    <div class="previous-post col-sm-6 pull-left">
+                        <div class="nav-previous"><i class="fa fa-angle-left"></i> <a href="http://ms.nala.ga/pwm-install/" rel="prev">PWM Install</a></div>                    </div>
+
+                    <!-- Next Post -->
+                    <div class="next-post col-sm-6 pull-right text-right">
+                        <div class="nav-next"><a href="http://ms.nala.ga/%ed%99%94%ec%a7%80-%eb%82%98-%eb%b9%bc-%eb%ae%a4%eb%b9%84%eb%93%a3%ea%b8%b0%ea%b0%80%ec%82%ac-%eb%8b%a4%ec%9a%b4%eb%a1%9c%eb%93%9c-hwaji-music-download/" rel="next">화지 나 빼 뮤비/듣기/가사 다운로드 &#8211; Hwaji Music Download</a> <i class="fa fa-angle-right"></i></div>                    </div>
+                </div>
+            </nav><!-- .navigation -->
+            
+                                            </div>
+                                
+                                
+                            
+                                            </main> <!-- /.site-main -->
+                </div>  <!-- /.content-area -->
+            </div> <!-- /col -->
+
+            <!-- Blogsidebar -->
+            
+	<div class="col-md-4">
+	    <div class="primary-sidebar widget-area" role="complementary">
+	        <div id="tag_cloud-2" class="widget widget_tag_cloud"><h2 class="widget-title">태그</h2><div class="tagcloud"><a href="http://ms.nala.ga/tag/1%ec%9b%94/" class="tag-cloud-link tag-link-2 tag-link-position-1" style="font-size: 18.440677966102pt;" aria-label="1월 (115 아이템)">1월</a>
+<a href="http://ms.nala.ga/tag/2017/" class="tag-cloud-link tag-link-21 tag-link-position-2" style="font-size: 17.016949152542pt;" aria-label="2017 (98 아이템)">2017</a>
+<a href="http://ms.nala.ga/tag/2017%eb%85%84/" class="tag-cloud-link tag-link-551 tag-link-position-3" style="font-size: 14.406779661017pt;" aria-label="2017년 (77 아이템)">2017년</a>
+<a href="http://ms.nala.ga/tag/2018/" class="tag-cloud-link tag-link-155 tag-link-position-4" style="font-size: 15.830508474576pt;" aria-label="2018 (89 아이템)">2018</a>
+<a href="http://ms.nala.ga/tag/2018%eb%85%84/" class="tag-cloud-link tag-link-64 tag-link-position-5" style="font-size: 19.864406779661pt;" aria-label="2018년 (130 아이템)">2018년</a>
+<a href="http://ms.nala.ga/tag/the/" class="tag-cloud-link tag-link-310 tag-link-position-6" style="font-size: 11.322033898305pt;" aria-label="the (57 아이템)">the</a>
+<a href="http://ms.nala.ga/tag/vs/" class="tag-cloud-link tag-link-128 tag-link-position-7" style="font-size: 8pt;" aria-label="vs (41 아이템)">vs</a>
+<a href="http://ms.nala.ga/tag/%ea%b0%80%ea%b2%a9/" class="tag-cloud-link tag-link-275 tag-link-position-8" style="font-size: 12.271186440678pt;" aria-label="가격 (62 아이템)">가격</a>
+<a href="http://ms.nala.ga/tag/%ea%b2%b0%ed%98%bc/" class="tag-cloud-link tag-link-501 tag-link-position-9" style="font-size: 20.338983050847pt;" aria-label="결혼 (136 아이템)">결혼</a>
+<a href="http://ms.nala.ga/tag/%ea%b3%b5%ea%b0%9c/" class="tag-cloud-link tag-link-260 tag-link-position-10" style="font-size: 9.8983050847458pt;" aria-label="공개 (49 아이템)">공개</a>
+<a href="http://ms.nala.ga/tag/%ea%b7%b8%eb%a6%ac%ea%b3%a0/" class="tag-cloud-link tag-link-980 tag-link-position-11" style="font-size: 10.135593220339pt;" aria-label="그리고 (50 아이템)">그리고</a>
+<a href="http://ms.nala.ga/tag/%eb%82%98%ec%9d%b4%ec%b0%a8/" class="tag-cloud-link tag-link-1184 tag-link-position-12" style="font-size: 8.2372881355932pt;" aria-label="나이차 (42 아이템)">나이차</a>
+<a href="http://ms.nala.ga/tag/%eb%82%a8%ec%9e%90/" class="tag-cloud-link tag-link-364 tag-link-position-13" style="font-size: 9.4237288135593pt;" aria-label="남자 (47 아이템)">남자</a>
+<a href="http://ms.nala.ga/tag/%eb%82%a8%ed%8e%b8/" class="tag-cloud-link tag-link-603 tag-link-position-14" style="font-size: 16.305084745763pt;" aria-label="남편 (92 아이템)">남편</a>
+<a href="http://ms.nala.ga/tag/%eb%85%b8%eb%9e%98/" class="tag-cloud-link tag-link-713 tag-link-position-15" style="font-size: 8.9491525423729pt;" aria-label="노래 (45 아이템)">노래</a>
+<a href="http://ms.nala.ga/tag/%eb%8c%80%ed%95%9c/" class="tag-cloud-link tag-link-3572 tag-link-position-16" style="font-size: 10.135593220339pt;" aria-label="대한 (50 아이템)">대한</a>
+<a href="http://ms.nala.ga/tag/%eb%93%9c%eb%9d%bc%eb%a7%88/" class="tag-cloud-link tag-link-1041 tag-link-position-17" style="font-size: 16.542372881356pt;" aria-label="드라마 (95 아이템)">드라마</a>
+<a href="http://ms.nala.ga/tag/%eb%a6%ac%eb%b7%b0/" class="tag-cloud-link tag-link-447 tag-link-position-18" style="font-size: 12.508474576271pt;" aria-label="리뷰 (64 아이템)">리뷰</a>
+<a href="http://ms.nala.ga/tag/%eb%a7%9b%ec%a7%91/" class="tag-cloud-link tag-link-782 tag-link-position-19" style="font-size: 16.779661016949pt;" aria-label="맛집 (97 아이템)">맛집</a>
+<a href="http://ms.nala.ga/tag/%eb%aa%a8%ec%9d%8c/" class="tag-cloud-link tag-link-1142 tag-link-position-20" style="font-size: 13.694915254237pt;" aria-label="모음 (72 아이템)">모음</a>
+<a href="http://ms.nala.ga/tag/%eb%aa%b8%eb%a7%a4/" class="tag-cloud-link tag-link-2391 tag-link-position-21" style="font-size: 15.830508474576pt;" aria-label="몸매 (88 아이템)">몸매</a>
+<a href="http://ms.nala.ga/tag/%eb%b0%a9%eb%b2%95/" class="tag-cloud-link tag-link-930 tag-link-position-22" style="font-size: 17.491525423729pt;" aria-label="방법 (103 아이템)">방법</a>
+<a href="http://ms.nala.ga/tag/%eb%b0%b0%ec%9a%b0/" class="tag-cloud-link tag-link-895 tag-link-position-23" style="font-size: 15.593220338983pt;" aria-label="배우 (86 아이템)">배우</a>
+<a href="http://ms.nala.ga/tag/%eb%b6%80%ec%82%b0/" class="tag-cloud-link tag-link-157 tag-link-position-24" style="font-size: 8.4745762711864pt;" aria-label="부산 (43 아이템)">부산</a>
+<a href="http://ms.nala.ga/tag/%ec%82%ac%eb%9e%91/" class="tag-cloud-link tag-link-2972 tag-link-position-25" style="font-size: 14.406779661017pt;" aria-label="사랑 (77 아이템)">사랑</a>
+<a href="http://ms.nala.ga/tag/%ec%82%ac%ec%a7%84/" class="tag-cloud-link tag-link-410 tag-link-position-26" style="font-size: 9.4237288135593pt;" aria-label="사진 (47 아이템)">사진</a>
+<a href="http://ms.nala.ga/tag/%ec%95%84%eb%82%b4/" class="tag-cloud-link tag-link-3039 tag-link-position-27" style="font-size: 9.6610169491525pt;" aria-label="아내 (48 아이템)">아내</a>
+<a href="http://ms.nala.ga/tag/%ec%95%88%eb%82%b4/" class="tag-cloud-link tag-link-1327 tag-link-position-28" style="font-size: 11.322033898305pt;" aria-label="안내 (56 아이템)">안내</a>
+<a href="http://ms.nala.ga/tag/%ec%95%8c%ec%95%84%eb%b3%b4%ea%b8%b0/" class="tag-cloud-link tag-link-821 tag-link-position-29" style="font-size: 15.118644067797pt;" aria-label="알아보기 (82 아이템)">알아보기</a>
+<a href="http://ms.nala.ga/tag/%ec%95%8c%ec%95%84%eb%b3%b4%ec%9e%90/" class="tag-cloud-link tag-link-341 tag-link-position-30" style="font-size: 11.322033898305pt;" aria-label="알아보자 (56 아이템)">알아보자</a>
+<a href="http://ms.nala.ga/tag/%ec%97%ac%ed%96%89/" class="tag-cloud-link tag-link-873 tag-link-position-31" style="font-size: 17.016949152542pt;" aria-label="여행 (98 아이템)">여행</a>
+<a href="http://ms.nala.ga/tag/%ec%98%81%ed%99%94/" class="tag-cloud-link tag-link-562 tag-link-position-32" style="font-size: 19.389830508475pt;" aria-label="영화 (124 아이템)">영화</a>
+<a href="http://ms.nala.ga/tag/%ec%98%a4%eb%8a%98/" class="tag-cloud-link tag-link-1059 tag-link-position-33" style="font-size: 13.694915254237pt;" aria-label="오늘 (72 아이템)">오늘</a>
+<a href="http://ms.nala.ga/tag/%ec%9a%b0%eb%a6%ac/" class="tag-cloud-link tag-link-888 tag-link-position-34" style="font-size: 11.322033898305pt;" aria-label="우리 (57 아이템)">우리</a>
+<a href="http://ms.nala.ga/tag/%ec%9c%84%ed%95%9c/" class="tag-cloud-link tag-link-1175 tag-link-position-35" style="font-size: 12.983050847458pt;" aria-label="위한 (66 아이템)">위한</a>
+<a href="http://ms.nala.ga/tag/%ec%9d%b4%ec%95%bc%ea%b8%b0/" class="tag-cloud-link tag-link-611 tag-link-position-36" style="font-size: 12.508474576271pt;" aria-label="이야기 (64 아이템)">이야기</a>
+<a href="http://ms.nala.ga/tag/%ec%9d%b4%ec%9c%a0/" class="tag-cloud-link tag-link-296 tag-link-position-37" style="font-size: 10.372881355932pt;" aria-label="이유 (51 아이템)">이유</a>
+<a href="http://ms.nala.ga/tag/%ec%9e%90%ea%b2%a9%ec%a6%9d/" class="tag-cloud-link tag-link-2111 tag-link-position-38" style="font-size: 9.4237288135593pt;" aria-label="자격증 (47 아이템)">자격증</a>
+<a href="http://ms.nala.ga/tag/%ec%a0%95%eb%a6%ac/" class="tag-cloud-link tag-link-1831 tag-link-position-39" style="font-size: 13.220338983051pt;" aria-label="정리 (68 아이템)">정리</a>
+<a href="http://ms.nala.ga/tag/%ec%a0%95%eb%b3%b4/" class="tag-cloud-link tag-link-89 tag-link-position-40" style="font-size: 15.118644067797pt;" aria-label="정보 (83 아이템)">정보</a>
+<a href="http://ms.nala.ga/tag/%ec%b6%94%ec%b2%9c/" class="tag-cloud-link tag-link-146 tag-link-position-41" style="font-size: 22pt;" aria-label="추천 (162 아이템)">추천</a>
+<a href="http://ms.nala.ga/tag/%ec%b6%9c%ec%97%b0/" class="tag-cloud-link tag-link-2930 tag-link-position-42" style="font-size: 10.847457627119pt;" aria-label="출연 (54 아이템)">출연</a>
+<a href="http://ms.nala.ga/tag/%ed%95%9c%ea%b5%ad/" class="tag-cloud-link tag-link-3361 tag-link-position-43" style="font-size: 11.796610169492pt;" aria-label="한국 (59 아이템)">한국</a>
+<a href="http://ms.nala.ga/tag/%ed%9a%a8%eb%8a%a5/" class="tag-cloud-link tag-link-810 tag-link-position-44" style="font-size: 9.6610169491525pt;" aria-label="효능 (48 아이템)">효능</a>
+<a href="http://ms.nala.ga/tag/%ed%9b%84%ea%b8%b0/" class="tag-cloud-link tag-link-14 tag-link-position-45" style="font-size: 17.966101694915pt;" aria-label="후기 (109 아이템)">후기</a></div>
+</div>	    </div>
+	</div>
+
+        </div> <!-- /.row -->
+    </div> <!-- /.container -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <hr>
+            </div>
+        </div>
+    </div>
+    <footer class="site-footer" role="contentinfo">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 text-center">
+  
+                    <p></p>
+                    
+                                            <div class="footer-social-icons">
+                                                                                                                                                                                                                                                                                                                                                                                                        
+                        </div>
+                    
+                </div>
+            </div>
+        </div>
+    </footer>
+
+            <div class="scroll-up">
+            <a href="#"><i class="fa fa-angle-up"></i></a>
+        </div>
+        <!-- Scroll Up -->
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/af2821b0/cloudflare-static/email-decode.min.js"></script><script type='text/javascript' src='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/js/bootstrap.min.js?ver=3.3.5'></script>
+<script type='text/javascript' src='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/js/scripts.js'></script>
+<script type='text/javascript' src='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/js/jquery.fitvids.js'></script>
+<script type='text/javascript' src='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/js/smoothscroll.js'></script>
+<script type='text/javascript' src='http://ms.nala.ga/wp-includes/js/wp-embed.min.js?ver=4.8.5'></script>
+    </body>
+</html>

@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="profile" href="http://gmpg.org/xfn/11">
+    <link rel="pingback" href="http://ms.nala.ga/xmlrpc.php">
+
+<title>기본적인 조인연산. | All About MS CCL Contents</title>
+<meta name='robots' content='noindex,follow' />
+
+<!-- All in One SEO Pack 2.4.4 by Michael Torbert of Semper Fi Web Design[276,327] -->
+<meta name="description"  content="3줄 요약 WHERE employees.last_name = &#039;King&#039;; WHERE TO_CHAR(hire_date, &#039;YYYY-MM&#039;) BETWEEN &#039;1999-01&#039; AND &#039;1999-06&#039;; FROM employees e, departments d 데이터베이스에서 가장 중요한 역할을 하는 것은 &#039;조인&#039; 연산이라고 할 수 있다. 데이터베이스에 많은 데이터가 있지만, 그 데이터를 얼마나 효율적으로 가져오는지가 중요하다. 이 과정이 조인이 필요한 이유이다. JOIN 연산 일반적으로 데이터베이스에 있는 데이터를 가져오기 위해서는 &#039;SELECT&#039;문을 사용하게 되는데," />
+<meta name="robots" content="index,nofollow" />
+
+<link rel="canonical" href="http://ms.nala.ga/%ea%b8%b0%eb%b3%b8%ec%a0%81%ec%9d%b8-%ec%a1%b0%ec%9d%b8%ec%97%b0%ec%82%b0/" />
+<!-- /all in one seo pack -->
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="All About MS CCL Contents &raquo; 피드" href="http://ms.nala.ga/feed/" />
+<link rel="alternate" type="application/rss+xml" title="All About MS CCL Contents &raquo; 댓글 피드" href="http://ms.nala.ga/comments/feed/" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.3\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.3\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/ms.nala.ga\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.8.5"}};
+			!function(a,b,c){function d(a){var b,c,d,e,f=String.fromCharCode;if(!k||!k.fillText)return!1;switch(k.clearRect(0,0,j.width,j.height),k.textBaseline="top",k.font="600 32px Arial",a){case"flag":return k.fillText(f(55356,56826,55356,56819),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,56826,8203,55356,56819),0,0),c=j.toDataURL(),b!==c&&(k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447),0,0),c=j.toDataURL(),b!==c);case"emoji4":return k.fillText(f(55358,56794,8205,9794,65039),0,0),d=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55358,56794,8203,9794,65039),0,0),e=j.toDataURL(),d!==e}return!1}function e(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i,j=b.createElement("canvas"),k=j.getContext&&j.getContext("2d");for(i=Array("flag","emoji4"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='bootstrap-css-css'  href='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/css/bootstrap.min.css?ver=3.3.5' type='text/css' media='all' />
+<link rel='stylesheet' id='font-awesome-css-css'  href='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/css/font-awesome.min.css?ver=4.4.0' type='text/css' media='all' />
+<link rel='stylesheet' id='shaped-blog-stylesheet-css'  href='http://ms.nala.ga/wp-content/themes/shaped-blog/style.css?ver=4.8.5' type='text/css' media='all' />
+<link rel='stylesheet' id='responsive-css-css'  href='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/css/responsive.css' type='text/css' media='all' />
+<script type='text/javascript' src='http://ms.nala.ga/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
+<script type='text/javascript' src='http://ms.nala.ga/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+<link rel='https://api.w.org/' href='http://ms.nala.ga/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://ms.nala.ga/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://ms.nala.ga/wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='좀더 다양한 방법으로 조인한기.(셀프조인, 서브쿼리)' href='http://ms.nala.ga/%ec%a2%80%eb%8d%94-%eb%8b%a4%ec%96%91%ed%95%9c-%eb%b0%a9%eb%b2%95%ec%9c%bc%eb%a1%9c-%ec%a1%b0%ec%9d%b8%ed%95%9c%ea%b8%b0-%ec%85%80%ed%94%84%ec%a1%b0%ec%9d%b8-%ec%84%9c%eb%b8%8c%ec%bf%bc%eb%a6%ac/' />
+<link rel='next' title='TVガイド 11/18号 : いつも5人でSexy Zone' href='http://ms.nala.ga/tv%e3%82%ac%e3%82%a4%e3%83%89-1118%e5%8f%b7-%e3%81%84%e3%81%a4%e3%82%825%e4%ba%ba%e3%81%a7sexy-zone/' />
+<meta name="generator" content="WordPress 4.8.5" />
+<link rel='shortlink' href='http://ms.nala.ga/?p=10132' />
+<link rel="alternate" type="application/json+oembed" href="http://ms.nala.ga/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fms.nala.ga%2F%25ea%25b8%25b0%25eb%25b3%25b8%25ec%25a0%2581%25ec%259d%25b8-%25ec%25a1%25b0%25ec%259d%25b8%25ec%2597%25b0%25ec%2582%25b0%2F" />
+<link rel="alternate" type="text/xml+oembed" href="http://ms.nala.ga/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fms.nala.ga%2F%25ea%25b8%25b0%25eb%25b3%25b8%25ec%25a0%2581%25ec%259d%25b8-%25ec%25a1%25b0%25ec%259d%25b8%25ec%2597%25b0%25ec%2582%25b0%2F&#038;format=xml" />
+
+	<style>
+
+		/* Border Color */
+		.btn-social:hover,
+		blockquote,
+		#respond input:focus[type="text"], 
+	    #respond input:focus[type="email"], 
+	    #respond input:focus[type="url"],
+	    #respond textarea:focus,
+	    #comments .comment-reply a:hover
+		{
+			border-color: ;
+		}
+
+		
+		/* Background Color */
+		.scroll-up a,
+		.btn-social:hover,
+		button,
+		input[type="button"],
+		input[type="reset"],
+		input[type="submit"],
+		.navbar-default .navbar-nav .dropdown-menu li a:hover, .dropdown-menu li a:focus, .navbar-default .navbar-nav .dropdown-menu .active a,
+		.pagination>li>a:focus, .pagination>li>a:hover, .pagination>li>span:focus, .pagination>li>span:hover, .pagination li .current,
+		.next-previous-posts .next-post a:hover,
+		.next-previous-posts .previous-post a:hover,
+		.btn-goback,
+		.btn-submit,
+		a.more-link,
+		.featured-post .fa,
+		#comments .comment-reply a:hover,
+		.widget .tagcloud a
+		{
+			background-color: ;
+		}
+
+		
+		/* Color */
+		.text-logo a,
+		.navbar-default .navbar-nav .active a, .navbar-default .navbar-nav .active a:hover, .navbar-default .navbar-nav .active a:focus,
+		.navbar-default .navbar-nav li a:hover, .navbar-default .navbar-nav li a:focus,
+		a:hover,
+    	a:focus,
+		.next-previous-posts .previous-post a,
+		.next-previous-posts .next-post a,
+		.pagination>li>a, .pagination>li>span,
+		#comments .comment-author a:hover, 
+    	#respond .logged-in-as a:hover,
+    	#wp-calendar a,
+    	h2.entry-title a:hover
+		{
+			color: ;
+		}
+
+
+		/* A Color */
+		a{
+			color: ;
+		}
+
+		/* a:hover Color */
+		a:hover,
+		a:focus,
+		a:active,
+		.widget a:hover,
+		.post .post-content .entry-meta ul li a:hover
+		{
+			color: ;
+		}
+
+		/* .featured-post .fa:after*/
+		.featured-post .fa:after{
+			border-color:   transparent ;
+		}
+
+
+		
+
+	</style>
+</head>
+
+<body class="post-template-default single single-post postid-10132 single-format-standard">
+
+    <div id="st-preloader">
+        <div id="pre-status">
+            <div class="preload-placeholder"></div>
+        </div>
+    </div>
+<!-- /Preloader -->
+
+<header id="header">	
+	<div id="trueHeader">
+    	<div class="wrapper">
+            <div class="container">
+            	<!-- Menu -->
+            	<div class="menu_main">
+                	<div class="navbar blogx-navbar navbar-default">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#st-navber-collapse">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+
+                                                            <div class="text-logo">
+                                    <a href="http://ms.nala.ga">All About MS CCL Contents</a>
+                                    <p>All About MS CCL Contents</p>
+                                </div><!-- /Logo -->
+                                                    </div>
+                      
+                        <div id="st-navber-collapse" class="navbar-collapse collapse pull-right">
+                             
+                        </div>
+                    </div>
+            	</div><!-- end menu -->
+        	</div> <!-- /.container -->
+    	</div>
+	</div>
+	<DIV class='ads_adsense_img' style='margin:40px 0px 40px 0px;'>
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<!-- only display -->
+	<ins class="adsbygoogle"
+	     style="display:block"
+	     data-ad-client="ca-pub-8393857339019314"
+	     data-ad-slot="7474886381"
+	     data-ad-format="auto"></ins>
+	<script>
+	(adsbygoogle = window.adsbygoogle || []).push({});
+	</script>
+	</DIV>	
+
+</header>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div id="primary" class="content-area">
+                    <main id="main" class="site-main" role="main">
+
+                        
+                                <article id="post-10132" class="post-10132 post type-post status-publish format-standard hentry category-uncategorized tag-16550 tag-16551">
+    <header class="entry-header">
+        
+        
+    </header> <!--/.entry-header -->
+
+    <div class="clearfix post-content media">
+
+        <h2 class="entry-title">
+            기본적인 조인연산.        </h2> <!-- //.entry-title -->
+
+        <div class="clearfix entry-meta">
+            
+            <ul class="list-inline">
+                <li>
+                    <span class="author vcard">
+                        By <a class="url fn n" href="http://ms.nala.ga/author/admin/">admin</a>                    </span>
+                </li>
+                <li>
+                    on <span class="posted-on">1월 13, 2018</span>
+                </li>
+                                    <li>
+                        in <span class="posted-in">
+                            <a href="http://ms.nala.ga/category/uncategorized/" rel="category tag">미분류</a>                        </span>
+                    </li>
+                            </ul>
+                </div> <!--/.entry-meta -->
+        
+        <div class="entry-summary">
+            <p><img src='//i1.daumcdn.net/cfs.tistory/resource/4191/static/admin/editor/ccl_black01.png' style='max-width:250px;min-width:0px;' onError='this.style.display="none"' /></p>
+<h1>3줄 요약 </h1>
+<div style='color:#fff;background-color:#000;border-radius:10px;'>
+<ol>
+<li><span>WHERE employees.last_name = &#8216;King&#8217;;</span></li>
+<li><span>WHERE TO_CHAR(hire_date, &#8216;YYYY-MM&#8217;) BETWEEN &#8216;1999-01&#8217; AND &#8216;1999-06&#8217;;</span></li>
+<li><span>FROM employees e, departments d</span></li>
+</ol>
+</div>
+<p><span id="more-10132"></span></p>
+<p><iframe src='http://ad.selfhow.com/rd' width='100%' border=0 frameborder=0 style='height:auto;width:100%'></iframe></p>
+<hr />
+<div class="txc-textbox" style="BORDER-BOTTOM: #fedec7 1px solid; BORDER-LEFT: #fedec7 1px solid; PADDING-BOTTOM: 10px; BACKGROUND-COLOR: #fedec7; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BORDER-TOP: #fedec7 1px solid; BORDER-RIGHT: #fedec7 1px solid; PADDING-TOP: 10px">데이터베이스에서 가장 중요한 역할을 하는 것은 &#8216;조인&#8217; 연산이라고 할 수 있다. 데이터베이스에 많은 데이터가 있지만, 그 데이터를 얼마나 효율적으로 가져오는지가 중요하다. 이 과정이 조인이 필요한 이유이다.
+</div>
+<p><strong><span style="FONT-SIZE: 10pt">JOIN 연산</span></strong><br />
+일반적으로 데이터베이스에 있는 데이터를 가져오기 위해서는 &#8216;SELECT&#8217;문을 사용하게 되는데, 기본적인 셀렉트 문을 사용해서는 하나의 테이블안에 있는 데이터밖에는 가져오지 못한다는 문제점이 있다. 조인 연산은 둘 이상의 테이블에 있는 데이터를 가져올 수 있도록 해준다. 만일 employees 테이블에 &#8216;King&#8217; 이라는 사람의 부서 이름을 구하고자 한다. 하지만, employees 테이블에는 department_id 만 있을뿐 부서의 이름은 찾을 수가 없다. 하지만, departments 라는 테이블에서 department_id를 통해 부서의 이름을 알 수는 있다. JOIN 연산을 하지 않는다면, employees 에서 department_id 를 검색한후 department_id 를 가지고 departments 테이블에서 찾아낸 department_id 에 맞는 부서의 이름을 검색하여 결과를 얻어내야 할 것이다. 하지만, JOIN 연산을 사용한다면 다음과 같이 한번에 표현하는 것이 가능하다.</p>
+<div class="txc-textbox" style="BORDER-BOTTOM: #fe8943 1px dashed; BORDER-LEFT: #fe8943 1px dashed; PADDING-BOTTOM: 10px; BACKGROUND-COLOR: #fedec7; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BORDER-TOP: #fe8943 1px dashed; BORDER-RIGHT: #fe8943 1px dashed; PADDING-TOP: 10px">SELECT employees.last_name, departments.department_name<br />
+  FROM employees JOIN departments ON employees.department_id = departments.department_id<br />
+    WHERE employees.last_name = &#8216;King&#8217;;
+</div>
+<p><strong><span style="FONT-SIZE: 10pt">기본적인 JOIN.</span></strong><br />
+표준 조인방법은 위의것과 같다. JOIN 에 데이터를 추가하고자 하는 테이블의 이름을 써넣고, ON 에는 두 테이블을 이어주는 관계조건을 명시해주면 된다. 위에서는 테이블의 이름을 계속써야 하기때문에 조금 불편한면이 있다. 각 테이블명에 앨리어스 기능을 사용하는 것이 가능하다. &#8216;FROM employees e&#8217; 라고 하면 employees 를 써야 하는 부분에는 &#8216;e&#8217; 를 써주면 된다. e.last_name과 같이 사용할 수 있다.</p>
+<div class="txc-textbox" style="BORDER-BOTTOM: #fe8943 1px dashed; BORDER-LEFT: #fe8943 1px dashed; PADDING-BOTTOM: 10px; BACKGROUND-COLOR: #fedec7; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BORDER-TOP: #fe8943 1px dashed; BORDER-RIGHT: #fe8943 1px dashed; PADDING-TOP: 10px">SELECT e.last_name, d.department_name<br />
+  FROM employees e JOIN departments d ON e.department_id = d.department_id<br />
+    WHERE e.last_name = &#8216;King&#8217;;
+</div>
+<p>조금은 더 간단하게 사용하는 것이 가능하다. 위의 방법은 표준 조인이라고 불린다. 그리고 위의 방법 외에 WHERE 문에 조건을  더 주는 방법으로 JOIN문을 사용하지 않고 조인을 사용하는 것이 가능하다.</p>
+<div class="txc-textbox" style="BORDER-BOTTOM: #fe8943 1px dashed; BORDER-LEFT: #fe8943 1px dashed; PADDING-BOTTOM: 10px; BACKGROUND-COLOR: #fedec7; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BORDER-TOP: #fe8943 1px dashed; BORDER-RIGHT: #fe8943 1px dashed; PADDING-TOP: 10px">SELECT e.last_name, d.department_name<br />
+  FROM employees e, departments d<br />
+    WHERE e.last_name = &#8216;King&#8217; AND e.department_id = d.department_id;
+</div>
+<p><strong><span style="FONT-SIZE: 10pt">좀더 많이 조인하기.</span></strong><br />
+그렇다면 두개이상의 조인은 어떻게 해야할까? 밑의 WHERE 을 사용하는 방법을 사용한다면 AND 를 사용해서 조건을 추가함으로써 쉽게 조인 테이블을 추가할 수 있다. </p>
+<div class="txc-textbox" style="BORDER-BOTTOM: #fe8943 1px dashed; BORDER-LEFT: #fe8943 1px dashed; PADDING-BOTTOM: 10px; BACKGROUND-COLOR: #fedec7; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BORDER-TOP: #fe8943 1px dashed; BORDER-RIGHT: #fe8943 1px dashed; PADDING-TOP: 10px">SELECT e.last_name, d.department_name<br />
+  FROM employees e, departments d, locations l<br />
+    WHERE e.last_name = &#8216;King&#8217; AND e.department_id = d.department_id AND d.location_id = l.location_id;
+</div>
+<p>위의 방법보다는 조금 더 복잡하게 보일 수 있겠지만, 표준조인 방식으로는 JOIN 과 ON 을 추가하여 조인 테이블을 추가해야 한다.</p>
+<div class="txc-textbox" style="BORDER-BOTTOM: #fe8943 1px dashed; BORDER-LEFT: #fe8943 1px dashed; PADDING-BOTTOM: 10px; BACKGROUND-COLOR: #fedec7; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BORDER-TOP: #fe8943 1px dashed; BORDER-RIGHT: #fe8943 1px dashed; PADDING-TOP: 10px">SELECT e.last_name, d.department_name<br />
+  FROM employees e JOIN departments d ON e.department_id = d.department_id<br />
+    JOIN locations l ON d.location_id = l.location_id<br />
+      WHERE e.last_name = &#8216;King&#8217;;
+</div>
+<p>WHERE 보다는 쿼리문이 조금 길어진다는 단점이 있지만, 원하는 조건을 WHERE 문에만 쓸 수 있어서 찾고자 하는 조건을 좀더 명확하게 알 수 있다는 장점이 있다. 하지만, 어떠한 방식을 취하는것은 개발자의 몫이다.</p>
+<p><strong><span style="FONT-SIZE: 10pt">모든 데이터를 출력하는 OUTER JOIN.</span><br />
+</strong>HR 계정에서 다음의 쿼리문을 실행해보자.</p>
+<div class="txc-textbox" style="BORDER-BOTTOM: #fe8943 1px dashed; BORDER-LEFT: #fe8943 1px dashed; PADDING-BOTTOM: 10px; BACKGROUND-COLOR: #fedec7; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BORDER-TOP: #fe8943 1px dashed; BORDER-RIGHT: #fe8943 1px dashed; PADDING-TOP: 10px">SELECT employee_id, last_name, hire_date  FROM employees e, departments d<br />
+    WHERE TO_CHAR(hire_date, &#8216;YYYY-MM&#8217;) BETWEEN &#8216;1999-01&#8217; AND &#8216;1999-06&#8217;;
+</div>
+<p>11개의 결과값이 나오는 것을 확인할 수 있다. 그렇다면 조인 연산을 이용해서 부서명까지 출력을 해보면&#8230;</p>
+<div class="txc-textbox" style="BORDER-BOTTOM: #fe8943 1px dashed; BORDER-LEFT: #fe8943 1px dashed; PADDING-BOTTOM: 10px; BACKGROUND-COLOR: #fedec7; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BORDER-TOP: #fe8943 1px dashed; BORDER-RIGHT: #fe8943 1px dashed; PADDING-TOP: 10px">SELECT e.employee_id, e.last_name, e.hire_date, d.department_name<br />
+  FROM employees e, departments d<br />
+    WHERE e.department_id = d.department_id<br />
+      AND TO_CHAR(hire_date, &#8216;YYYY-MM&#8217;) BETWEEN &#8216;1999-01&#8217; AND &#8216;1999-06&#8217;;
+</div>
+<p>결과값이 뭔가 이상하다. 11개의 행이 나와야 하는데, 10개의 행밖에 나오지 않는다. 그 이유가 무엇일까?? 이유는 employee 테이블에 있는 데이터 중에서 department_id 값이 널인것이 있기 때문이다. 부서명을 출력하기 위해서 조인연산을 사용했지만, department_id 가 없는 것에 대해서는 조건이 만족하지 않기 때문에 아예 결과가 출력되지 않는 것이다. 그렇다면 그 결과는 영영 출력할 수 없는 것일까? 아웃터 조인이라는 방법은 이러한 문제점을 해결해 준다. employees 에는 있지만, departments 에 없는 데이터를 출력하기 위해서는 WHERE 조건을 e.department_id = d.department_id(+) 라고 &#8216;(+)&#8217;만 추가해주면 된다. 그렇게 되면 원하던 11개의 결과를 얻을 수 있을 것이다.</p>
+<div class="txc-textbox" style="BORDER-BOTTOM: #fe8943 1px dashed; BORDER-LEFT: #fe8943 1px dashed; PADDING-BOTTOM: 10px; BACKGROUND-COLOR: #fedec7; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BORDER-TOP: #fe8943 1px dashed; BORDER-RIGHT: #fe8943 1px dashed; PADDING-TOP: 10px">    WHERE e.department_id = d.department_id(+)
+</div>
+<p>하지만 표준 조인을 사용하는 방식에서는 조금 다르게 사용을 해야 한다. JOIN 대신에 LEFT JOIN 이나 RIGHT JOIN 을 사용해야 한다.</p>
+<div class="txc-textbox" style="BORDER-BOTTOM: #fe8943 1px dashed; BORDER-LEFT: #fe8943 1px dashed; PADDING-BOTTOM: 10px; BACKGROUND-COLOR: #fedec7; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BORDER-TOP: #fe8943 1px dashed; BORDER-RIGHT: #fe8943 1px dashed; PADDING-TOP: 10px">  FROM employees e LEFT JOIN departments d ON e.department_id = d.department_id
+</div>
+<p>표준조인에서는 위의 방법과는 다르게 데이터가 있는 employees 쪽으로 표시를 해주어야 한다. 만일 위의 employees 와 departments 의 위치가 바뀐다면 RIGHT 를 사용해야 할 것이다.</p>
+<div class="txc-textbox" style="BORDER-BOTTOM: #fe8943 1px dashed; BORDER-LEFT: #fe8943 1px dashed; PADDING-BOTTOM: 10px; BACKGROUND-COLOR: #fedec7; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BORDER-TOP: #fe8943 1px dashed; BORDER-RIGHT: #fe8943 1px dashed; PADDING-TOP: 10px">  FROM department d RIGHT JOIN employees e ON e.department_id = d.department_id
+</div>
+<p>가끔은 표준이 아닌것이 훨씬 더 편하게 사용되는것이 많은것 같은 생각도 문득 든다.</p>
+<div class="entry-ccl" style="clear: both; text-align: right; margin-bottom: 10px">
+<a href="http://creativecommons.org/licenses/by/4.0/deed.ko" style="text-decoration: none" target="_blank"><br />
+<img alt="저작자 표시" class="entry-ccl-by" id="ccl-icon-156-0" src="//i1.daumcdn.net/cfs.tistory/resource/4191/static/admin/editor/ccl_black01.png"/><br />
+<!--
+	<rdf:RDF xmlns="http://web.resource.org/cc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+		<Work rdf:about="">
+			<license rdf:resource="http://creativecommons.org/licenses/by-fr/2.0/kr/" />
+		</Work>
+		<License rdf:about="http://creativecommons.org/licenses/by-fr/">
+			<permits rdf:resource="http://web.resource.org/cc/Reproduction"/>
+			<permits rdf:resource="http://web.resource.org/cc/Distribution"/>
+			<requires rdf:resource="http://web.resource.org/cc/Notice"/>
+			<requires rdf:resource="http://web.resource.org/cc/Attribution"/>
+			<permits rdf:resource="http://web.resource.org/cc/DerivativeWorks"/>
+		</License>
+	</rdf:RDF>
+	--><br />
+</a>
+</div>
+<fieldset style="margin:20px 0px 20px 0px;padding:5px;">
+<legend><span><strong>Creative Commons License</strong></span></legend>
+<p><!--Creative Commons License--></p>
+<div style="float: left; width: 88px; margin-top: 3px;"><a href="http://creativecommons.org/licenses/by-nc-sa/2.0/kr/" rel="license" target="_blank"><img alt="Creative Commons License" src="http://i.creativecommons.org/l/by-nc-sa/2.0/kr/88x31.png" style="border-width: 0"/></a></div>
+<div style="margin-left: 92px; margin-top: 3px; text-align: justify;">이 저작물은 <a href="http://creativecommons.org/licenses/by-nc-sa/2.0/kr/" rel="license" target="_blank">크리에이티브 커먼즈 코리아 저작자표시-비영리-동일조건변경허락 2.0 대한민국 라이선스</a>에 따라 이용하실 수 있습니다.<br />
+			<!-- Creative Commons License--><br />
+<!-- <rdf:RDF xmlns="http://web.resource.org/cc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+			<Work rdf:about="">
+			<license rdf:resource="http://creativecommons.org/licenses/by-nc-sa/2.0/kr/" />
+			</Work>
+			<License rdf:about="http://creativecommons.org/licenses/by-nc-sa/">
+			<permits rdf:resource="http://web.resource.org/cc/Reproduction"/>
+			<permits rdf:resource="http://web.resource.org/cc/Distribution"/>
+			<requires rdf:resource="http://web.resource.org/cc/Notice"/>
+			<requires rdf:resource="http://web.resource.org/cc/Attribution"/>
+			<permits rdf:resource="http://web.resource.org/cc/DerivativeWorks"/>
+			<requires rdf:resource="http://web.resource.org/cc/ShareAlike"/><prohibits rdf:resource="http://web.resource.org/cc/CommercialUse"/></License></rdf:RDF> --></div>
+</fieldset>
+<hr />
+<p><iframe src='http://ad.selfhow.com/rd' width='100%' border=0 frameborder=0 style='height:auto;width:100%'></iframe></p>
+<p><a href='http://devist.tistory.com/156' target='_blank'>Origin Content : 무른모 공방</a> | <a href="/cdn-cgi/l/email-protection#0360606f60436d626f622d6462" target='_blank'>Contact : <span class="__cf_email__" data-cfemail="3655555a557658575a57185157">[email&#160;protected]</span></a>
+</p>
+<p>Cotent License : CC-BY </p>
+<p>This content is collected under the CCL license.</p>
+<p>Please check the license of the original article before asking about copyright.</p>
+<ul>
+<li><a href='/tag/기본적인'>More About <span style='font-weight:bold;'>기본적인</span></a></li>
+<li><a href='/tag/조인연산'>More About <span style='font-weight:bold;'>조인연산</span></a></li>
+</ul>
+        </div> <!-- //.entry-summary -->
+        
+                    <div class="entry-tags"><b>Tags:</b> <a href="http://ms.nala.ga/tag/%ea%b8%b0%eb%b3%b8%ec%a0%81%ec%9d%b8/" rel="tag">기본적인</a>, <a href="http://ms.nala.ga/tag/%ec%a1%b0%ec%9d%b8%ec%97%b0%ec%82%b0/" rel="tag">조인연산</a></div>
+        
+    </div>
+
+</article> <!--/#post-->
+
+
+
+
+
+                                                                    <div class="post-nav-area">
+                                                    
+            <nav class="next-previous-post clearfix media" role="navigation">
+                <div class="row">
+                    <!-- Previous Post -->
+                    <div class="previous-post col-sm-6 pull-left">
+                        <div class="nav-previous"><i class="fa fa-angle-left"></i> <a href="http://ms.nala.ga/%ec%a2%80%eb%8d%94-%eb%8b%a4%ec%96%91%ed%95%9c-%eb%b0%a9%eb%b2%95%ec%9c%bc%eb%a1%9c-%ec%a1%b0%ec%9d%b8%ed%95%9c%ea%b8%b0-%ec%85%80%ed%94%84%ec%a1%b0%ec%9d%b8-%ec%84%9c%eb%b8%8c%ec%bf%bc%eb%a6%ac/" rel="prev">좀더 다양한 방법으로 조인한기.(셀프조인, 서브쿼리)</a></div>                    </div>
+
+                    <!-- Next Post -->
+                    <div class="next-post col-sm-6 pull-right text-right">
+                        <div class="nav-next"><a href="http://ms.nala.ga/tv%e3%82%ac%e3%82%a4%e3%83%89-1118%e5%8f%b7-%e3%81%84%e3%81%a4%e3%82%825%e4%ba%ba%e3%81%a7sexy-zone/" rel="next">TVガイド 11/18号 : いつも5人でSexy Zone</a> <i class="fa fa-angle-right"></i></div>                    </div>
+                </div>
+            </nav><!-- .navigation -->
+            
+                                            </div>
+                                
+                                
+                            
+                                            </main> <!-- /.site-main -->
+                </div>  <!-- /.content-area -->
+            </div> <!-- /col -->
+
+            <!-- Blogsidebar -->
+            
+	<div class="col-md-4">
+	    <div class="primary-sidebar widget-area" role="complementary">
+	        <div id="tag_cloud-2" class="widget widget_tag_cloud"><h2 class="widget-title">태그</h2><div class="tagcloud"><a href="http://ms.nala.ga/tag/1%ec%9b%94/" class="tag-cloud-link tag-link-2 tag-link-position-1" style="font-size: 18.440677966102pt;" aria-label="1월 (115 아이템)">1월</a>
+<a href="http://ms.nala.ga/tag/2017/" class="tag-cloud-link tag-link-21 tag-link-position-2" style="font-size: 17.016949152542pt;" aria-label="2017 (98 아이템)">2017</a>
+<a href="http://ms.nala.ga/tag/2017%eb%85%84/" class="tag-cloud-link tag-link-551 tag-link-position-3" style="font-size: 14.406779661017pt;" aria-label="2017년 (77 아이템)">2017년</a>
+<a href="http://ms.nala.ga/tag/2018/" class="tag-cloud-link tag-link-155 tag-link-position-4" style="font-size: 15.830508474576pt;" aria-label="2018 (89 아이템)">2018</a>
+<a href="http://ms.nala.ga/tag/2018%eb%85%84/" class="tag-cloud-link tag-link-64 tag-link-position-5" style="font-size: 19.864406779661pt;" aria-label="2018년 (130 아이템)">2018년</a>
+<a href="http://ms.nala.ga/tag/the/" class="tag-cloud-link tag-link-310 tag-link-position-6" style="font-size: 11.322033898305pt;" aria-label="the (57 아이템)">the</a>
+<a href="http://ms.nala.ga/tag/vs/" class="tag-cloud-link tag-link-128 tag-link-position-7" style="font-size: 8pt;" aria-label="vs (41 아이템)">vs</a>
+<a href="http://ms.nala.ga/tag/%ea%b0%80%ea%b2%a9/" class="tag-cloud-link tag-link-275 tag-link-position-8" style="font-size: 12.271186440678pt;" aria-label="가격 (62 아이템)">가격</a>
+<a href="http://ms.nala.ga/tag/%ea%b2%b0%ed%98%bc/" class="tag-cloud-link tag-link-501 tag-link-position-9" style="font-size: 20.338983050847pt;" aria-label="결혼 (136 아이템)">결혼</a>
+<a href="http://ms.nala.ga/tag/%ea%b3%b5%ea%b0%9c/" class="tag-cloud-link tag-link-260 tag-link-position-10" style="font-size: 9.8983050847458pt;" aria-label="공개 (49 아이템)">공개</a>
+<a href="http://ms.nala.ga/tag/%ea%b7%b8%eb%a6%ac%ea%b3%a0/" class="tag-cloud-link tag-link-980 tag-link-position-11" style="font-size: 10.135593220339pt;" aria-label="그리고 (50 아이템)">그리고</a>
+<a href="http://ms.nala.ga/tag/%eb%82%98%ec%9d%b4%ec%b0%a8/" class="tag-cloud-link tag-link-1184 tag-link-position-12" style="font-size: 8.2372881355932pt;" aria-label="나이차 (42 아이템)">나이차</a>
+<a href="http://ms.nala.ga/tag/%eb%82%a8%ec%9e%90/" class="tag-cloud-link tag-link-364 tag-link-position-13" style="font-size: 9.4237288135593pt;" aria-label="남자 (47 아이템)">남자</a>
+<a href="http://ms.nala.ga/tag/%eb%82%a8%ed%8e%b8/" class="tag-cloud-link tag-link-603 tag-link-position-14" style="font-size: 16.305084745763pt;" aria-label="남편 (92 아이템)">남편</a>
+<a href="http://ms.nala.ga/tag/%eb%85%b8%eb%9e%98/" class="tag-cloud-link tag-link-713 tag-link-position-15" style="font-size: 8.9491525423729pt;" aria-label="노래 (45 아이템)">노래</a>
+<a href="http://ms.nala.ga/tag/%eb%8c%80%ed%95%9c/" class="tag-cloud-link tag-link-3572 tag-link-position-16" style="font-size: 10.135593220339pt;" aria-label="대한 (50 아이템)">대한</a>
+<a href="http://ms.nala.ga/tag/%eb%93%9c%eb%9d%bc%eb%a7%88/" class="tag-cloud-link tag-link-1041 tag-link-position-17" style="font-size: 16.542372881356pt;" aria-label="드라마 (95 아이템)">드라마</a>
+<a href="http://ms.nala.ga/tag/%eb%a6%ac%eb%b7%b0/" class="tag-cloud-link tag-link-447 tag-link-position-18" style="font-size: 12.508474576271pt;" aria-label="리뷰 (64 아이템)">리뷰</a>
+<a href="http://ms.nala.ga/tag/%eb%a7%9b%ec%a7%91/" class="tag-cloud-link tag-link-782 tag-link-position-19" style="font-size: 16.779661016949pt;" aria-label="맛집 (97 아이템)">맛집</a>
+<a href="http://ms.nala.ga/tag/%eb%aa%a8%ec%9d%8c/" class="tag-cloud-link tag-link-1142 tag-link-position-20" style="font-size: 13.694915254237pt;" aria-label="모음 (72 아이템)">모음</a>
+<a href="http://ms.nala.ga/tag/%eb%aa%b8%eb%a7%a4/" class="tag-cloud-link tag-link-2391 tag-link-position-21" style="font-size: 15.830508474576pt;" aria-label="몸매 (88 아이템)">몸매</a>
+<a href="http://ms.nala.ga/tag/%eb%b0%a9%eb%b2%95/" class="tag-cloud-link tag-link-930 tag-link-position-22" style="font-size: 17.491525423729pt;" aria-label="방법 (103 아이템)">방법</a>
+<a href="http://ms.nala.ga/tag/%eb%b0%b0%ec%9a%b0/" class="tag-cloud-link tag-link-895 tag-link-position-23" style="font-size: 15.593220338983pt;" aria-label="배우 (86 아이템)">배우</a>
+<a href="http://ms.nala.ga/tag/%eb%b6%80%ec%82%b0/" class="tag-cloud-link tag-link-157 tag-link-position-24" style="font-size: 8.4745762711864pt;" aria-label="부산 (43 아이템)">부산</a>
+<a href="http://ms.nala.ga/tag/%ec%82%ac%eb%9e%91/" class="tag-cloud-link tag-link-2972 tag-link-position-25" style="font-size: 14.406779661017pt;" aria-label="사랑 (77 아이템)">사랑</a>
+<a href="http://ms.nala.ga/tag/%ec%82%ac%ec%a7%84/" class="tag-cloud-link tag-link-410 tag-link-position-26" style="font-size: 9.4237288135593pt;" aria-label="사진 (47 아이템)">사진</a>
+<a href="http://ms.nala.ga/tag/%ec%95%84%eb%82%b4/" class="tag-cloud-link tag-link-3039 tag-link-position-27" style="font-size: 9.6610169491525pt;" aria-label="아내 (48 아이템)">아내</a>
+<a href="http://ms.nala.ga/tag/%ec%95%88%eb%82%b4/" class="tag-cloud-link tag-link-1327 tag-link-position-28" style="font-size: 11.322033898305pt;" aria-label="안내 (56 아이템)">안내</a>
+<a href="http://ms.nala.ga/tag/%ec%95%8c%ec%95%84%eb%b3%b4%ea%b8%b0/" class="tag-cloud-link tag-link-821 tag-link-position-29" style="font-size: 15.118644067797pt;" aria-label="알아보기 (82 아이템)">알아보기</a>
+<a href="http://ms.nala.ga/tag/%ec%95%8c%ec%95%84%eb%b3%b4%ec%9e%90/" class="tag-cloud-link tag-link-341 tag-link-position-30" style="font-size: 11.322033898305pt;" aria-label="알아보자 (56 아이템)">알아보자</a>
+<a href="http://ms.nala.ga/tag/%ec%97%ac%ed%96%89/" class="tag-cloud-link tag-link-873 tag-link-position-31" style="font-size: 17.016949152542pt;" aria-label="여행 (98 아이템)">여행</a>
+<a href="http://ms.nala.ga/tag/%ec%98%81%ed%99%94/" class="tag-cloud-link tag-link-562 tag-link-position-32" style="font-size: 19.389830508475pt;" aria-label="영화 (124 아이템)">영화</a>
+<a href="http://ms.nala.ga/tag/%ec%98%a4%eb%8a%98/" class="tag-cloud-link tag-link-1059 tag-link-position-33" style="font-size: 13.694915254237pt;" aria-label="오늘 (72 아이템)">오늘</a>
+<a href="http://ms.nala.ga/tag/%ec%9a%b0%eb%a6%ac/" class="tag-cloud-link tag-link-888 tag-link-position-34" style="font-size: 11.322033898305pt;" aria-label="우리 (57 아이템)">우리</a>
+<a href="http://ms.nala.ga/tag/%ec%9c%84%ed%95%9c/" class="tag-cloud-link tag-link-1175 tag-link-position-35" style="font-size: 12.983050847458pt;" aria-label="위한 (66 아이템)">위한</a>
+<a href="http://ms.nala.ga/tag/%ec%9d%b4%ec%95%bc%ea%b8%b0/" class="tag-cloud-link tag-link-611 tag-link-position-36" style="font-size: 12.508474576271pt;" aria-label="이야기 (64 아이템)">이야기</a>
+<a href="http://ms.nala.ga/tag/%ec%9d%b4%ec%9c%a0/" class="tag-cloud-link tag-link-296 tag-link-position-37" style="font-size: 10.372881355932pt;" aria-label="이유 (51 아이템)">이유</a>
+<a href="http://ms.nala.ga/tag/%ec%9e%90%ea%b2%a9%ec%a6%9d/" class="tag-cloud-link tag-link-2111 tag-link-position-38" style="font-size: 9.4237288135593pt;" aria-label="자격증 (47 아이템)">자격증</a>
+<a href="http://ms.nala.ga/tag/%ec%a0%95%eb%a6%ac/" class="tag-cloud-link tag-link-1831 tag-link-position-39" style="font-size: 13.220338983051pt;" aria-label="정리 (68 아이템)">정리</a>
+<a href="http://ms.nala.ga/tag/%ec%a0%95%eb%b3%b4/" class="tag-cloud-link tag-link-89 tag-link-position-40" style="font-size: 15.118644067797pt;" aria-label="정보 (83 아이템)">정보</a>
+<a href="http://ms.nala.ga/tag/%ec%b6%94%ec%b2%9c/" class="tag-cloud-link tag-link-146 tag-link-position-41" style="font-size: 22pt;" aria-label="추천 (162 아이템)">추천</a>
+<a href="http://ms.nala.ga/tag/%ec%b6%9c%ec%97%b0/" class="tag-cloud-link tag-link-2930 tag-link-position-42" style="font-size: 10.847457627119pt;" aria-label="출연 (54 아이템)">출연</a>
+<a href="http://ms.nala.ga/tag/%ed%95%9c%ea%b5%ad/" class="tag-cloud-link tag-link-3361 tag-link-position-43" style="font-size: 11.796610169492pt;" aria-label="한국 (59 아이템)">한국</a>
+<a href="http://ms.nala.ga/tag/%ed%9a%a8%eb%8a%a5/" class="tag-cloud-link tag-link-810 tag-link-position-44" style="font-size: 9.6610169491525pt;" aria-label="효능 (48 아이템)">효능</a>
+<a href="http://ms.nala.ga/tag/%ed%9b%84%ea%b8%b0/" class="tag-cloud-link tag-link-14 tag-link-position-45" style="font-size: 17.966101694915pt;" aria-label="후기 (109 아이템)">후기</a></div>
+</div>	    </div>
+	</div>
+
+        </div> <!-- /.row -->
+    </div> <!-- /.container -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <hr>
+            </div>
+        </div>
+    </div>
+    <footer class="site-footer" role="contentinfo">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 text-center">
+  
+                    <p></p>
+                    
+                                            <div class="footer-social-icons">
+                                                                                                                                                                                                                                                                                                                                                                                                        
+                        </div>
+                    
+                </div>
+            </div>
+        </div>
+    </footer>
+
+            <div class="scroll-up">
+            <a href="#"><i class="fa fa-angle-up"></i></a>
+        </div>
+        <!-- Scroll Up -->
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/af2821b0/cloudflare-static/email-decode.min.js"></script><script type='text/javascript' src='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/js/bootstrap.min.js?ver=3.3.5'></script>
+<script type='text/javascript' src='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/js/scripts.js'></script>
+<script type='text/javascript' src='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/js/jquery.fitvids.js'></script>
+<script type='text/javascript' src='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/js/smoothscroll.js'></script>
+<script type='text/javascript' src='http://ms.nala.ga/wp-includes/js/wp-embed.min.js?ver=4.8.5'></script>
+    </body>
+</html>

@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="profile" href="http://gmpg.org/xfn/11">
+    <link rel="pingback" href="http://ms.nala.ga/xmlrpc.php">
+
+<title>직무교육 16일차(jQuery) | All About MS CCL Contents</title>
+<meta name='robots' content='noindex,follow' />
+
+<!-- All in One SEO Pack 2.4.4 by Michael Torbert of Semper Fi Web Design[276,334] -->
+<meta name="description"  content="3줄 요약 $(document).ready(function () {}) $(function () {})- 두가지 방법 모두 결과는 같다. .slideUp()$(&#039;#mydiv&#039;).slideUp(1000);` .end();- 메소드 체인에서 이전요소로 돌아간다.(&#039;ul&#039;).find(&#039;.foo&#039;).css(&#039;background-color&#039;, &#039;red&#039;).end().find(&#039;.bar&#039;).css(&#039;background-color&#039;, &#039;green&#039;);- ul태그에서 foo를 찾아서 배경색을 red로 바꾼 후, end()를 만나 foo가 아닌 ul태그를 재선택한 후 bar를 찾아" />
+<meta name="robots" content="index,nofollow" />
+
+<link rel="canonical" href="http://ms.nala.ga/%ec%a7%81%eb%ac%b4%ea%b5%90%ec%9c%a1-16%ec%9d%bc%ec%b0%a8jquery/" />
+<!-- /all in one seo pack -->
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="All About MS CCL Contents &raquo; 피드" href="http://ms.nala.ga/feed/" />
+<link rel="alternate" type="application/rss+xml" title="All About MS CCL Contents &raquo; 댓글 피드" href="http://ms.nala.ga/comments/feed/" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.3\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.3\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/ms.nala.ga\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.8.5"}};
+			!function(a,b,c){function d(a){var b,c,d,e,f=String.fromCharCode;if(!k||!k.fillText)return!1;switch(k.clearRect(0,0,j.width,j.height),k.textBaseline="top",k.font="600 32px Arial",a){case"flag":return k.fillText(f(55356,56826,55356,56819),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,56826,8203,55356,56819),0,0),c=j.toDataURL(),b!==c&&(k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447),0,0),c=j.toDataURL(),b!==c);case"emoji4":return k.fillText(f(55358,56794,8205,9794,65039),0,0),d=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55358,56794,8203,9794,65039),0,0),e=j.toDataURL(),d!==e}return!1}function e(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i,j=b.createElement("canvas"),k=j.getContext&&j.getContext("2d");for(i=Array("flag","emoji4"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='bootstrap-css-css'  href='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/css/bootstrap.min.css?ver=3.3.5' type='text/css' media='all' />
+<link rel='stylesheet' id='font-awesome-css-css'  href='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/css/font-awesome.min.css?ver=4.4.0' type='text/css' media='all' />
+<link rel='stylesheet' id='shaped-blog-stylesheet-css'  href='http://ms.nala.ga/wp-content/themes/shaped-blog/style.css?ver=4.8.5' type='text/css' media='all' />
+<link rel='stylesheet' id='responsive-css-css'  href='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/css/responsive.css' type='text/css' media='all' />
+<script type='text/javascript' src='http://ms.nala.ga/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
+<script type='text/javascript' src='http://ms.nala.ga/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+<link rel='https://api.w.org/' href='http://ms.nala.ga/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://ms.nala.ga/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://ms.nala.ga/wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='학살이나 캐나다의 창시자 건축가?' href='http://ms.nala.ga/%ed%95%99%ec%82%b4%ec%9d%b4%eb%82%98-%ec%ba%90%eb%82%98%eb%8b%a4%ec%9d%98-%ec%b0%bd%ec%8b%9c%ec%9e%90-%ea%b1%b4%ec%b6%95%ea%b0%80/' />
+<link rel='next' title='GUQ8eDgvdM4afn7cXtpM7PV0jrWegJ' href='http://ms.nala.ga/guq8edgvdm4afn7cxtpm7pv0jrwegj/' />
+<meta name="generator" content="WordPress 4.8.5" />
+<link rel='shortlink' href='http://ms.nala.ga/?p=15928' />
+<link rel="alternate" type="application/json+oembed" href="http://ms.nala.ga/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fms.nala.ga%2F%25ec%25a7%2581%25eb%25ac%25b4%25ea%25b5%2590%25ec%259c%25a1-16%25ec%259d%25bc%25ec%25b0%25a8jquery%2F" />
+<link rel="alternate" type="text/xml+oembed" href="http://ms.nala.ga/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fms.nala.ga%2F%25ec%25a7%2581%25eb%25ac%25b4%25ea%25b5%2590%25ec%259c%25a1-16%25ec%259d%25bc%25ec%25b0%25a8jquery%2F&#038;format=xml" />
+
+	<style>
+
+		/* Border Color */
+		.btn-social:hover,
+		blockquote,
+		#respond input:focus[type="text"], 
+	    #respond input:focus[type="email"], 
+	    #respond input:focus[type="url"],
+	    #respond textarea:focus,
+	    #comments .comment-reply a:hover
+		{
+			border-color: ;
+		}
+
+		
+		/* Background Color */
+		.scroll-up a,
+		.btn-social:hover,
+		button,
+		input[type="button"],
+		input[type="reset"],
+		input[type="submit"],
+		.navbar-default .navbar-nav .dropdown-menu li a:hover, .dropdown-menu li a:focus, .navbar-default .navbar-nav .dropdown-menu .active a,
+		.pagination>li>a:focus, .pagination>li>a:hover, .pagination>li>span:focus, .pagination>li>span:hover, .pagination li .current,
+		.next-previous-posts .next-post a:hover,
+		.next-previous-posts .previous-post a:hover,
+		.btn-goback,
+		.btn-submit,
+		a.more-link,
+		.featured-post .fa,
+		#comments .comment-reply a:hover,
+		.widget .tagcloud a
+		{
+			background-color: ;
+		}
+
+		
+		/* Color */
+		.text-logo a,
+		.navbar-default .navbar-nav .active a, .navbar-default .navbar-nav .active a:hover, .navbar-default .navbar-nav .active a:focus,
+		.navbar-default .navbar-nav li a:hover, .navbar-default .navbar-nav li a:focus,
+		a:hover,
+    	a:focus,
+		.next-previous-posts .previous-post a,
+		.next-previous-posts .next-post a,
+		.pagination>li>a, .pagination>li>span,
+		#comments .comment-author a:hover, 
+    	#respond .logged-in-as a:hover,
+    	#wp-calendar a,
+    	h2.entry-title a:hover
+		{
+			color: ;
+		}
+
+
+		/* A Color */
+		a{
+			color: ;
+		}
+
+		/* a:hover Color */
+		a:hover,
+		a:focus,
+		a:active,
+		.widget a:hover,
+		.post .post-content .entry-meta ul li a:hover
+		{
+			color: ;
+		}
+
+		/* .featured-post .fa:after*/
+		.featured-post .fa:after{
+			border-color:   transparent ;
+		}
+
+
+		
+
+	</style>
+</head>
+
+<body class="post-template-default single single-post postid-15928 single-format-standard">
+
+    <div id="st-preloader">
+        <div id="pre-status">
+            <div class="preload-placeholder"></div>
+        </div>
+    </div>
+<!-- /Preloader -->
+
+<header id="header">	
+	<div id="trueHeader">
+    	<div class="wrapper">
+            <div class="container">
+            	<!-- Menu -->
+            	<div class="menu_main">
+                	<div class="navbar blogx-navbar navbar-default">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#st-navber-collapse">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+
+                                                            <div class="text-logo">
+                                    <a href="http://ms.nala.ga">All About MS CCL Contents</a>
+                                    <p>All About MS CCL Contents</p>
+                                </div><!-- /Logo -->
+                                                    </div>
+                      
+                        <div id="st-navber-collapse" class="navbar-collapse collapse pull-right">
+                             
+                        </div>
+                    </div>
+            	</div><!-- end menu -->
+        	</div> <!-- /.container -->
+    	</div>
+	</div>
+	<DIV class='ads_adsense_img' style='margin:40px 0px 40px 0px;'>
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<!-- only display -->
+	<ins class="adsbygoogle"
+	     style="display:block"
+	     data-ad-client="ca-pub-8393857339019314"
+	     data-ad-slot="7474886381"
+	     data-ad-format="auto"></ins>
+	<script>
+	(adsbygoogle = window.adsbygoogle || []).push({});
+	</script>
+	</DIV>	
+
+</header>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div id="primary" class="content-area">
+                    <main id="main" class="site-main" role="main">
+
+                        
+                                <article id="post-15928" class="post-15928 post type-post status-publish format-standard hentry category-uncategorized tag-16jquery tag-24445">
+    <header class="entry-header">
+        
+        
+    </header> <!--/.entry-header -->
+
+    <div class="clearfix post-content media">
+
+        <h2 class="entry-title">
+            직무교육 16일차(jQuery)        </h2> <!-- //.entry-title -->
+
+        <div class="clearfix entry-meta">
+            
+            <ul class="list-inline">
+                <li>
+                    <span class="author vcard">
+                        By <a class="url fn n" href="http://ms.nala.ga/author/admin/">admin</a>                    </span>
+                </li>
+                <li>
+                    on <span class="posted-on">1월 13, 2018</span>
+                </li>
+                                    <li>
+                        in <span class="posted-in">
+                            <a href="http://ms.nala.ga/category/uncategorized/" rel="category tag">미분류</a>                        </span>
+                    </li>
+                            </ul>
+                </div> <!--/.entry-meta -->
+        
+        <div class="entry-summary">
+            <h1>3줄 요약 </h1>
+<div style='color:#fff;background-color:#000;border-radius:10px;'>
+<ol>
+<li><span>$(document).ready(function () {})        $(function () {})- 두가지 방법 모두 결과는 같다.</span></li>
+<li><span></body></html></span></li>
+<li><span>.slideUp()$(&#8216;#mydiv&#8217;).slideUp(1000);`</span></li>
+</ol>
+</div>
+<p><span id="more-15928"></span></p>
+<p><iframe src='http://ad.selfhow.com/rd' width='100%' border=0 frameborder=0 style='height:auto;width:100%'></iframe></p>
+<hr />
+<p><b style="font-size: 12pt;"><span style="font-size: 12pt;">[TRAVERSING]</span></b></p>
+<p><span style="font-size: 12pt;"><span style="font-size: 10pt;">.end();</span><br /></span></p>
+<p>&#8211; 메소드 체인에서 이전요소로 돌아간다.</p>
+<p>(&#8216;ul&#8217;).find(&#8216;.foo&#8217;).css(&#8216;background-color&#8217;, &#8216;red&#8217;).end().find(&#8216;.bar&#8217;).css(&#8216;background-color&#8217;, &#8216;green&#8217;);</p>
+<p>&#8211; ul태그에서 foo를 찾아서 배경색을 red로 바꾼 후, end()를 만나 foo가 아닌 ul태그를 재선택한 후 bar를 찾아 배경색을 green을 바꾼다.</p>
+<p></p>
+<p><b style="font-size: 16px;"><span style="font-size: 12pt;">[MANIPULATION]</span></b></p>
+<p><span style="font-size: 10pt;">.append()</span></p>
+<p><span style="font-size: 10pt;">&#8211; selector의 child로 추가된다.</span></p>
+<p><span style="font-size: 10pt;">$(&#8216;.container&#8217;).append($(&#8216;#myp&#8217;));</span></p>
+<p><span style="font-size: 10pt;">&#8211; id myp를 .container의 child로 이동시켜 추가한다.</span></p>
+<p><span style="font-size: 16px;"><br /></span></p>
+<p><span style="font-size: 10pt;">.after() : selector 다음에 sibling(형제관계)로 추가된다.</span></p>
+<p><span style="font-size: 10pt;">.before() : selector 이전에 sibling(형제관계)로 추가된다.</span></p>
+<p><span style="font-size: 10pt;">* 동급으로 추가해주고 싶으면 .after() / .before() 사용</span></p>
+<p></p>
+<p><span style="font-size: 10pt;">.insertBefore()</span></p>
+<p><span style="font-size: 10pt;">$(&#8216;h2&#8217;).insertBefore($(&#8216;.container&#8217;));</span></p>
+<p><span style="font-size: 10pt;">&#8211; h2가 .container 앞쪽으로 재배치된다.</span></p>
+<p></p>
+<p><span style="font-size: 10pt;">.insertAfter()</span></p>
+<p><span style="font-size: 10pt;">$(&#8216;h2&#8217;).insertAfter($(&#8216;.container&#8217;));</span></p>
+<p><span style="font-size: 10pt;">&#8211; h2가 .container 뒤쪽으로 재배치된다.</span></p>
+<p><span style="font-size: 12pt;"><br /></span></p>
+<p><span style="font-size: 10pt;">.replaceAll()</span></p>
+<p><span style="font-size: 10pt;">$(&#8216;&lt;h1&gt;replace data&lt;/h1&gt;&#8217;).replaceAll(&#8216;.inner&#8217;);</span></p>
+<p><span style="font-size: 10pt;">&#8211; .inner 내용이 </span><span style="font-size: 10pt;">&lt;h1&gt;replace data&lt;/h1&gt;로 바뀐다.</span></p>
+<p><span style="font-size: 10pt;">&#8211; CSS에서 h1 스타일 지정되어있으면 적용된다.</span></p>
+<p><span style="font-size: 16px;"><br /></span></p>
+<p><span style="font-size: 10pt;">.wrap()</span></p>
+<p><span style="font-size: 10pt;">$(&#8216;p&#8217;).wrap(&#8216;&lt;div class=&#8221;new&#8221;&gt;&lt;/div&gt;&#8217;)</span></p>
+<p><span style="font-size: 10pt;">&#8211; p태그가 </span><span style="font-size: 10pt;">&lt;div class=&#8221;new&#8221;&gt;&lt;/div&gt;로 감싸진다.</span></p>
+<p><span style="font-size: 10pt;">&#8211; p태그가 여러개이면 하나씩 개별적으로 각각 &lt;div&gt;&lt;/div&gt;로 감싸진다.</span></p>
+<p><span style="font-size: 16px;"><br /></span></p>
+<p><span style="font-size: 10pt;">.wrapAll()</span></p>
+<p><span style="font-size: 10pt;">$(&#8216;p&#8217;).wrapAll(&#8216;&lt;div class=&#8221;new&#8221;&gt;&lt;/div&gt;&#8217;)</span></p>
+<p><span style="font-size: 10pt;">&#8211; p태그가 </span><span style="font-size: 10pt;">&lt;div class=&#8221;new&#8221;&gt;&lt;/div&gt;로 감싸진다.</span></p>
+<p><span style="font-size: 10pt;">&#8211; p태그가 여러개이면 한꺼번에 &lt;div&gt;&lt;/div&gt;로 감싸진다.</span></p>
+<p><span style="font-size: 16px;"><br /></span></p>
+<p><span style="font-size: 10pt;">.wrapInner()</span></p>
+<p><span style="font-size: 10pt;">$(&#8216;p&#8217;).wrapInner(&#8216;&lt;div class=&#8221;new&#8221;&gt;&lt;/div&gt;&#8217;);</span></p>
+<p><span style="font-size: 10pt;">&#8211; p태그 안쪽으로 </span><span style="font-size: 10pt;">&lt;div class=&#8221;new&#8221;&gt;&lt;/div&gt;가 생긴다.</span></p>
+<p></p>
+<p></p>
+<p><span style="font-size: 10pt;">.addClass()</span></p>
+<p><span style="font-size: 10pt;">$(&#8216;#mydiv&#8217;).addClass(&#8216;myclass&#8217;);</span></p>
+<p><span style="font-size: 10pt;">&#8211; mydiv에 class=&#8221;myclass&#8221; 속성을 추가한다.</span></p>
+<p><span style="font-size: 16px;"><br /></span></p>
+<p><span style="font-size: 10pt;">.removeClass()</span></p>
+<p><span style="font-size: 10pt;">$(&#8216;#mydiv&#8217;).removeClass(&#8216;myclass&#8217;);</span></p>
+<p><span style="font-size: 10pt;">&#8211; mydiv에 class=&#8221;myclass&#8221; 속성을 제거한다.</span></p>
+<p></p>
+<p><b style="font-size: 16px;"><span style="font-size: 12pt;">[EVENTS]</span></b></p>
+<p><b style="font-size: 16px;"><span style="font-size: 12pt;"><br /></span></b></p>
+<table border="0" cellpadding="0" cellspacing="0" class="txc-table" sans-serif;font-size:13px"="" style="border:none;border-collapse:collapse;;font-family:" width="864" 고딕",="" 맑은="">
+<tbody>
+<tr>
+<td style="width: 864px; height: 545px; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204);">
+<p><span style="font-size: 10pt;"> &lt;!DOCTYPE html&gt;</span></p>
+<p><span style="font-size: 10pt;">&lt;html lang=&#8221;en&#8221;&gt;</span></p>
+<p><span style="font-size: 10pt;">&lt;head&gt;</span></p>
+<p><span style="font-size: 10pt;">    &lt;meta charset=&#8221;UTF-8&#8243;&gt;</span></p>
+<p><span style="font-size: 10pt;">    &lt;title&gt;Title&lt;/title&gt;</span></p>
+<p><span style="font-size: 10pt;">    &lt;script src=&#8221;js/jquery-3.2.1.min.js&#8221;&gt;&lt;/script&gt;</span></p>
+<p><span style="font-size: 10pt;">    &lt;script&gt;</span></p>
+<p><span style="font-size: 10pt;">        function init() {</span></p>
+<p><span style="font-size: 10pt;">            //방법1</span></p>
+<p><span style="font-size: 10pt;">            /*mybtn.onclick = function () {</span></p>
+<p><span style="font-size: 10pt;">                alert(&#8216;a&#8217;);</span></p>
+<p></p>
+<p><span style="font-size: 10pt;">            }*/</span></p>
+<p><span style="font-size: 10pt;">            //방법2</span></p>
+<p><span style="font-size: 10pt;">            /*mybtn.addEventListener(&#8220;click&#8221;, function () {</span></p>
+<p><span style="font-size: 10pt;">                alert(&#8216;b&#8217;);</span></p>
+<p><span style="font-size: 10pt;">            })*/</span></p>
+<p></p>
+<p><span style="font-size: 10pt;">            //방법3(btnClick 함수 필요)</span></p>
+<p><span style="font-size: 10pt;">            //mybtn.onclick = btnClick;</span></p>
+<p><span style="font-size: 10pt;">            //방법4(btnClick 함수 필요)</span></p>
+<p><span style="font-size: 10pt;">            //mybtn.addEventListener(&#8220;click&#8221;, btnClick);</span></p>
+<p><span style="font-size: 10pt;">            //방법5(btnClick 함수 필요)</span></p>
+<p><span style="font-size: 10pt;">            //$(&#8216;#mybtn&#8217;).click(btnClick);</span></p>
+<p><span style="font-size: 10pt;">            //방법6(btnClick 함수 필요)</span></p>
+<p><span style="font-size: 10pt;">            //$(&#8216;#mybtn&#8217;).on(&#8216;click&#8217;, btnClick);</span></p>
+<p><span style="font-size: 10pt;">        }</span></p>
+<p><span style="font-size: 10pt;">        function btnClick() {</span></p>
+<p><span style="font-size: 10pt;">            alert(&#8216;c&#8217;);</span></p>
+<p><span style="font-size: 10pt;">        }</span></p>
+<p><span style="font-size: 10pt;">    &lt;/script&gt;</span></p>
+<p><span style="font-size: 10pt;">&lt;/head&gt;</span></p>
+<p><span style="font-size: 10pt;">&lt;body onload=&#8221;init()&#8221;&gt;</span></p>
+<p><span style="font-size: 10pt;">&lt;button id=&#8221;mybtn&#8221;&gt;button&lt;/button&gt;</span></p>
+<p><span style="font-size: 10pt;">&lt;/body&gt;</span></p>
+<p><span style="font-size: 10pt;">&lt;/html&gt;</span></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p><span style="font-size: 13.3333px;"><br /></span></p>
+<p><span style="font-size: 10pt;">$(document).ready(init);</span></p>
+</p>
+<p><span style="font-size: 10pt;">$(init);</span></p>
+<p><span style="font-size: 10pt;">&lt;body onload=&#8221;init()&gt;</span></p>
+<p><span style="font-size:10pt;">&#8211; 세가지 방법 모두 결과는 같다.</span></p>
+<p><span style="font-size:10pt;"><br /></span></p>
+<p><span style="font-size: 10pt;">$(document).ready(function () {</span></p>
+<p><span style="font-size: 10pt;">})</span></p>
+<p><span style="font-size: 10pt;">        </span></p>
+<p><span style="font-size: 10pt;">$(function () {</span></p>
+</p>
+<p><span style="font-size: 10pt;">})</span></p>
+<p><span style="font-size: 10pt;">&#8211; 두가지 방법 모두 결과는 같다.</span></p>
+<p><span style="font-size:10pt;"><br /></span></p>
+<p><span style="font-size:10pt;">.click()</span></p>
+<p><span style="font-size: 10pt;">$(function () {</span></p>
+<p><span style="font-size: 10pt;">            $(&#8216;div&#8217;).click(function () {</span></p>
+<p><span style="font-size: 10pt;">                alert($(this).text()); </span><span style="font-size: 10pt;">//alert(this.innerText)</span></p>
+<p><span style="font-size: 10pt;">            })</span></p>
+<p style="margin-left: 4em;"><span style="font-size: 10pt;">$(&#8216;#mybtn&#8217;).click(function () {</span></p>
+<p style="margin-left: 4em;"><span style="font-size: 10pt;">     alert(&#8216;call&#8230;&#8217;);</span></p>
+<p style="margin-left: 4em;">
+<p style="margin-left: 4em;"><span style="font-size: 10pt;"> })</span></p>
+</p>
+<p><span style="font-size: 10pt;">        })</span></p>
+<p><span style="font-size: 10pt;">&#8211; div 내용 click시 alert창에 div 내용이 뜬다.</span></p>
+<p><span style="font-size: 10pt;">&#8211; mybtn click시 alert창에 call&#8230;.이 뜬다.</span></p>
+<p><span style="font-size:10pt;"><br /></span></p>
+<p><span style="font-size: 10pt;">&lt;Mouse Events&gt;</span></p>
+<table border="0" cellpadding="0" cellspacing="0" class="txc-table" sans-serif;font-size:13px"="" style="border:none;border-collapse:collapse;;font-family:" width="864" 고딕",="" 맑은="">
+<tbody>
+<tr>
+<td style="width:864;height:24;border-bottom:1px solid #ccc;border-right:1px solid #ccc;border-top:1px solid #ccc;border-left:1px solid #ccc;;">
+<p><span style="font-size: 10pt;">$(document).ready(init);</span></p>
+<p><span style="font-size: 10pt;">        function init() {</span></p>
+<p><span style="font-size: 10pt;">            $(&#8216;#mydiv&#8217;).mousedown(function (event) {</span></p>
+<p><span style="font-size: 10pt;">                console.log(event.clientX, event.clientY);</span></p>
+<p><span style="font-size: 10pt;">            })//1</span></p>
+<p><span style="font-size: 10pt;">            $(&#8216;#mydiv&#8217;).mousemove(function (event) {</span></p>
+<p><span style="font-size: 10pt;">                console.log(event.clientX, event.clientY);</span></p>
+<p><span style="font-size: 10pt;">            })//2</span></p>
+<p><span style="font-size: 10pt;">            $(&#8216;#mydiv&#8217;).on(&#8216;mousemove&#8217;, function (event) {</span></p>
+<p><span style="font-size: 10pt;">                console.log(event.clientX, event.clientY);</span></p>
+<p><span style="font-size: 10pt;">            })//3</span></p>
+<p><span style="font-size: 10pt;">            $(&#8216;#mydiv&#8217;).hover(function () {</span></p>
+<p><span style="font-size: 10pt;">                $(this).css(&#8216;background-color&#8217;, &#8216;blue&#8217;)</span></p>
+<p><span style="font-size: 10pt;">            }, function () {</span></p>
+<p><span style="font-size: 10pt;">                $(this).css(&#8216;background-color&#8217;, &#8216;yellow&#8217;)</span></p>
+<p><span style="font-size: 10pt;">            })//4</span></p>
+<p><span style="font-size: 10pt;">        } </span></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<p><span style="font-size: 10pt;">#1&gt; mydiv 클릭했을 경우 발생한다.</span></p>
+<p><span style="font-size: 10pt;">#2&gt; mydiv 클릭했다 뗐을 경우 발생한다.</span></p>
+<p><span style="font-size: 10pt;">#3&gt; 2번과 결과는 같다.</span></p>
+<p><span style="font-size: 10pt;">#4&gt; 마우스 hover됐을 경우 발생한다.</span></p>
+<p><span style="font-size:10pt;"><br /></span></p>
+<table border="0" cellpadding="0" cellspacing="0" class="txc-table" sans-serif;font-size:13px"="" style="border:none;border-collapse:collapse;;font-family:" width="864" 고딕",="" 맑은=""></table>
+<table border="0" cellpadding="0" cellspacing="0" class="txc-table" sans-serif;font-size:13px"="" style="border:none;border-collapse:collapse;;font-family:" width="864" 고딕",="" 맑은="">
+<tbody>
+<tr>
+<td style="width:864;height:24;border-bottom:1px solid #ccc;border-right:1px solid #ccc;border-top:1px solid #ccc;border-left:1px solid #ccc;;">
+<p><span style="font-size: 10pt;">&lt;!DOCTYPE html&gt;</span></p>
+<p><span style="font-size: 10pt;">&lt;html lang=&#8221;en&#8221;&gt;</span></p>
+<p><span style="font-size: 10pt;">&lt;head&gt;</span></p>
+<p><span style="font-size: 10pt;">    &lt;meta charset=&#8221;UTF-8&#8243;&gt;</span></p>
+<p><span style="font-size: 10pt;">    &lt;title&gt;Title&lt;/title&gt;</span></p>
+<p><span style="font-size: 10pt;">    &lt;script src=&#8221;js/jquery-3.2.1.min.js&#8221;&gt;&lt;/script&gt;</span></p>
+<p><span style="font-size: 10pt;">    &lt;script&gt;</span></p>
+<p><span style="font-size: 10pt;">        $(function () {</span></p>
+<p><span style="font-size: 10pt;">            $(&#8216;#mydiv&#8217;).click(cfn)</span></p>
+<p><span style="font-size: 10pt;">        })</span></p>
+<p><span style="font-size: 10pt;">        function cfn() {</span></p>
+<p><span style="font-size: 10pt;">            alert(&#8216;call&#8217;)</span></p>
+<p><span style="font-size: 10pt;">        }</span></p>
+<p><span style="font-size: 10pt;">        function rfn() {</span></p>
+<p><span style="font-size: 10pt;">            $(&#8216;#mydiv&#8217;).off(&#8220;click&#8221;, cfn)</span></p>
+<p><span style="font-size: 10pt;">        }</span></p>
+<p><span style="font-size: 10pt;">        function afn() {</span></p>
+<p><span style="font-size: 10pt;">            $(&#8216;#mydiv&#8217;).on(&#8220;click&#8221;, cfn)</span></p>
+<p><span style="font-size: 10pt;">        }</span></p>
+<p><span style="font-size: 10pt;">    &lt;/script&gt;</span></p>
+<p><span style="font-size: 10pt;">&lt;/head&gt;</span></p>
+<p><span style="font-size: 10pt;">&lt;body&gt;</span></p>
+<p><span style="font-size: 10pt;">    &lt;div id=&#8221;mydiv&#8221;&gt;mydiv&lt;/div&gt;&lt;br&gt;</span></p>
+<p><span style="font-size: 10pt;">    &lt;button onclick=&#8221;afn()&#8221;&gt;확인&lt;/button&gt;</span></p>
+<p><span style="font-size: 10pt;">    &lt;button onclick=&#8221;rfn()&#8221;&gt;취소&lt;/button&gt;</span></p>
+<p><span style="font-size: 10pt;">&lt;/body&gt;</span></p>
+<p><span style="font-size: 10pt;">&lt;/html&gt; </span></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<table border="0" cellpadding="0" cellspacing="0" class="txc-table" sans-serif;font-size:13px"="" style="border:none;border-collapse:collapse;;font-family:" width="864" 고딕",="" 맑은="">
+<tbody>
+<tr>
+<td style="width:864;height:24;border-bottom:1px solid #ccc;border-right:1px solid #ccc;border-top:1px solid #ccc;border-left:1px solid #ccc;;">
+<p><span style="font-size: 10pt;">&lt;!DOCTYPE html&gt;</span></p>
+<p><span style="font-size: 10pt;">&lt;html lang=&#8221;en&#8221;&gt;</span></p>
+<p><span style="font-size: 10pt;">&lt;head&gt;</span></p>
+<p><span style="font-size: 10pt;">    &lt;meta charset=&#8221;UTF-8&#8243;&gt;</span></p>
+<p><span style="font-size: 10pt;">    &lt;title&gt;Title&lt;/title&gt;</span></p>
+<p><span style="font-size: 10pt;">    &lt;script src=&#8221;js/jquery-3.2.1.min.js&#8221;&gt;&lt;/script&gt;</span></p>
+<p><span style="font-size: 10pt;">    &lt;script&gt;</span></p>
+<p><span style="font-size: 10pt;">        $(function () {</span></p>
+<p><span style="font-size: 10pt;">            //$(&#8216;li&#8217;).click(cfn)</span></p>
+<p><span style="font-size: 10pt;">            $(document).on(&#8216;click&#8217;, &#8216;li&#8217;, cfn)</span></p>
+<p><span style="font-size: 10pt;">        })</span></p>
+<p><span style="font-size: 10pt;">        function cfn() {</span></p>
+<p><span style="font-size: 10pt;">            alert(&#8216;call&#8217;)</span></p>
+<p><span style="font-size: 10pt;">        }</span></p>
+<p><span style="font-size: 10pt;">        function afn() {</span></p>
+<p><span style="font-size: 10pt;">            $(&#8216;ul&#8217;).append(&#8216;&lt;li&gt;추가&lt;/li&gt;&#8217;)</span></p>
+<p><span style="font-size: 10pt;">        }</span></p>
+<p><span style="font-size: 10pt;">    &lt;/script&gt;</span></p>
+<p><span style="font-size: 10pt;">&lt;/head&gt;</span></p>
+<p><span style="font-size: 10pt;">&lt;body&gt;</span></p>
+<p><span style="font-size: 10pt;">&lt;ul&gt;</span></p>
+<p><span style="font-size: 10pt;">    &lt;li&gt;list&lt;/li&gt;</span></p>
+<p><span style="font-size: 10pt;">&lt;/ul&gt;</span></p>
+<p><span style="font-size: 10pt;">    &lt;button onclick=&#8221;afn()&#8221;&gt;추가&lt;/button&gt;</span></p>
+<p><span style="font-size: 10pt;">&lt;/body&gt;</span></p>
+<p><span style="font-size: 10pt;">&lt;/html&gt; </span></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<table border="0" cellpadding="0" cellspacing="0" class="txc-table" sans-serif;font-size:13px"="" style="border:none;border-collapse:collapse;;font-family:" width="864" 고딕",="" 맑은="">
+<tbody>
+<tr>
+<td style="width:864;height:24;border-bottom:1px solid #ccc;border-right:1px solid #ccc;border-top:1px solid #ccc;border-left:1px solid #ccc;;">
+<p><span style="font-size: 10pt;">&lt;!DOCTYPE html&gt;</span></p>
+<p><span style="font-size: 10pt;">&lt;html lang=&#8221;en&#8221;&gt;</span></p>
+<p><span style="font-size: 10pt;">&lt;head&gt;</span></p>
+<p><span style="font-size: 10pt;">    &lt;meta charset=&#8221;UTF-8&#8243;&gt;</span></p>
+<p><span style="font-size: 10pt;">    &lt;title&gt;Title&lt;/title&gt;</span></p>
+<p><span style="font-size: 10pt;">    &lt;style&gt;</span></p>
+<p><span style="font-size: 10pt;">        table{</span></p>
+<p><span style="font-size: 10pt;">            width: 400px;</span></p>
+<p><span style="font-size: 10pt;">            text-align: center;</span></p>
+<p><span style="font-size: 10pt;">        }</span></p>
+<p><span style="font-size: 10pt;">    &lt;/style&gt;</span></p>
+<p><span style="font-size: 10pt;">    &lt;script src=&#8221;js/jquery-3.2.1.min.js&#8221;&gt;&lt;/script&gt;</span></p>
+<p><span style="font-size: 10pt;">    &lt;script&gt;</span></p>
+<p><span style="font-size: 10pt;">        $(function () {</span></p>
+<p><span style="font-size: 10pt;">            $(document).on(&#8220;click&#8221;, &#8220;.bdel&#8221;, function () {</span></p>
+<p><span style="font-size: 10pt;">                $(this).parent().parent().remove();</span></p>
+<p><span style="font-size: 10pt;">            })</span></p>
+<p></p>
+<p><span style="font-size: 10pt;">            $(document).on(&#8220;click&#8221;, &#8220;.bmodify&#8221;, function () {</span></p>
+<p><span style="font-size: 10pt;">                $(this).parent().prev().prev().attr(&#8216;contenteditable&#8217;, true);</span></p>
+<p><span style="font-size: 10pt;">                $(this).parent().prev().attr(&#8216;contenteditable&#8217;, true);</span></p>
+<p><span style="font-size: 10pt;">                $(this).text(&#8216;완료&#8217;);</span></p>
+<p><span style="font-size: 10pt;">            })</span></p>
+<p><span style="font-size: 10pt;">        })</span></p>
+<p><span style="font-size: 10pt;">        function addFn() {</span></p>
+<p><span style="font-size: 10pt;">            $(&#8216;#mytable&#8217;).append(&#8216;&lt;tr&gt;&lt;td&gt;테스트&lt;/td&gt;&lt;td&gt;20&lt;/td&gt;&#8217; +</span></p>
+<p><span style="font-size: 10pt;">                &#8216;&lt;td&gt;&lt;button class=&#8221;bmodify&#8221;&gt;수정&lt;/button&gt;&lt;/td&gt;&#8217; +</span></p>
+<p><span style="font-size: 10pt;">                &#8216;&lt;td&gt;&lt;button class=&#8221;bdel&#8221;&gt;삭제&lt;/button&gt;&lt;/td&gt;&lt;/tr&gt;&#8217;);</span></p>
+<p></p>
+<p><span style="font-size: 10pt;">        }    </span></p>
+<p><span style="font-size: 10pt;">    &lt;/script&gt;</span></p>
+<p><span style="font-size: 10pt;">&lt;/head&gt;</span></p>
+<p><span style="font-size: 10pt;">&lt;body&gt;</span></p>
+<p><span style="font-size: 10pt;">&lt;button onclick=&#8221;addFn()&#8221;&gt;추가하기&lt;/button&gt;&lt;br&gt;</span></p>
+<p><span style="font-size: 10pt;">    &lt;table id=&#8221;mytable&#8221; border=&#8221;1&#8243;&gt;</span></p>
+<p><span style="font-size: 10pt;">        &lt;tr&gt;</span></p>
+<p><span style="font-size: 10pt;">            &lt;th&gt;이름&lt;/th&gt;</span></p>
+<p><span style="font-size: 10pt;">            &lt;th&gt;나이&lt;/th&gt;</span></p>
+<p><span style="font-size: 10pt;">            &lt;th colspan=&#8221;2&#8243;&gt;편집&lt;/th&gt;</span></p>
+<p><span style="font-size: 10pt;">        &lt;/tr&gt;</span></p>
+<p><span style="font-size: 10pt;">    &lt;/table&gt;</span></p>
+<p><span style="font-size: 10pt;">&lt;/body&gt;</span></p>
+<p><span style="font-size: 10pt;">&lt;/html&gt; </span></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p><span style="font-size:10pt;"><br /></span></p>
+<table border="0" cellpadding="0" cellspacing="0" class="txc-table" sans-serif;font-size:13px"="" style="border:none;border-collapse:collapse;;font-family:" width="864" 고딕",="" 맑은=""></table>
+<table border="0" cellpadding="0" cellspacing="0" class="txc-table" sans-serif;font-size:13px"="" style="border:none;border-collapse:collapse;;font-family:" width="864" 고딕",="" 맑은="">
+<tbody>
+<tr>
+<td style="width:864;height:24;border-bottom:1px solid #ccc;border-right:1px solid #ccc;border-top:1px solid #ccc;border-left:1px solid #ccc;;">
+<p><span style="font-size: 10pt;">&lt;!DOCTYPE html&gt;</span></p>
+<p><span style="font-size: 10pt;">&lt;html lang=&#8221;en&#8221;&gt;</span></p>
+<p><span style="font-size: 10pt;">&lt;head&gt;</span></p>
+<p><span style="font-size: 10pt;">    &lt;meta charset=&#8221;UTF-8&#8243;&gt;</span></p>
+<p><span style="font-size: 10pt;">    &lt;title&gt;Title&lt;/title&gt;</span></p>
+<p><span style="font-size: 10pt;">    &lt;script src=&#8221;js/jquery-3.2.1.min.js&#8221;&gt;&lt;/script&gt;</span></p>
+<p><span style="font-size: 10pt;">    &lt;script&gt;</span></p>
+<p><span style="font-size: 10pt;">        $(function () {</span></p>
+<p><span style="font-size: 10pt;">            $(&#8216;[name=&#8221;grade&#8221;]&#8217;).click(function () {</span></p>
+<p><span style="font-size: 10pt;">                alert($(this).val())</span></p>
+<p><span style="font-size: 10pt;">            })</span></p>
+<p><span style="font-size: 10pt;">            $(&#8216;#mysel&#8217;).change(function () {</span></p>
+<p><span style="font-size: 10pt;">                alert($(this).val())</span></p>
+<p><span style="font-size: 10pt;">            })</span></p>
+<p><span style="font-size: 10pt;">            $(&#8216;#myin&#8217;).keyup(function () {</span></p>
+<p><span style="font-size: 10pt;">                $(&#8216;#myin1&#8217;).val($(this).val());</span></p>
+<p><span style="font-size: 10pt;">            })</span></p>
+<p><span style="font-size: 10pt;">        })</span></p>
+<p><span style="font-size: 10pt;">    &lt;/script&gt;</span></p>
+<p><span style="font-size: 10pt;">&lt;/head&gt;</span></p>
+<p><span style="font-size: 10pt;">&lt;body&gt;</span></p>
+<p><span style="font-size: 10pt;">    이름 : &lt;input id=&#8221;myin&#8221; type=&#8221;text&#8221;&gt;&lt;br&gt;</span></p>
+<p><span style="font-size: 10pt;">    이름 : &lt;input id=&#8221;myin1&#8243; type=&#8221;text&#8221;&gt;&lt;br&gt;</span></p>
+<p><span style="font-size: 10pt;">    &lt;input type=&#8221;radio&#8221; name=&#8221;grade&#8221; value=&#8221;1학년&#8221;&gt;1학년&lt;br&gt;</span></p>
+<p><span style="font-size: 10pt;">    &lt;input type=&#8221;radio&#8221; name=&#8221;grade&#8221; value=&#8221;2학년&#8221;&gt;2학년&lt;br&gt;</span></p>
+<p><span style="font-size: 10pt;">    &lt;input type=&#8221;radio&#8221; name=&#8221;grade&#8221; value=&#8221;3학년&#8221;&gt;3학년&lt;br&gt;</span></p>
+<p></p>
+<p><span style="font-size: 10pt;">    &lt;select id=&#8221;mysel&#8221;&gt;</span></p>
+<p><span style="font-size: 10pt;">        &lt;option value=&#8221;선택1&#8243;&gt;선택1&lt;/option&gt;</span></p>
+<p><span style="font-size: 10pt;">        &lt;option value=&#8221;선택2&#8243;&gt;선택2&lt;/option&gt;</span></p>
+<p><span style="font-size: 10pt;">        &lt;option value=&#8221;선택3&#8243;&gt;선택3&lt;/option&gt;</span></p>
+<p><span style="font-size: 10pt;">    &lt;/select&gt;</span></p>
+<p></p>
+<p><span style="font-size: 10pt;">&lt;/body&gt;</span></p>
+<p><span style="font-size: 10pt;">&lt;/html&gt; </span></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<table border="0" cellpadding="0" cellspacing="0" class="txc-table" sans-serif;font-size:13px"="" style="border:none;border-collapse:collapse;;font-family:" width="864" 고딕",="" 맑은="">
+<tbody>
+<tr>
+<td style="width:864;height:24;border-bottom:1px solid #ccc;border-right:1px solid #ccc;border-top:1px solid #ccc;border-left:1px solid #ccc;;">
+<p><span style="font-size: 10pt;"> &lt;!DOCTYPE html&gt;</span></p>
+<p><span style="font-size: 10pt;">&lt;html lang=&#8221;en&#8221;&gt;</span></p>
+<p><span style="font-size: 10pt;">&lt;head&gt;</span></p>
+<p><span style="font-size: 10pt;">    &lt;meta charset=&#8221;UTF-8&#8243;&gt;</span></p>
+<p><span style="font-size: 10pt;">    &lt;title&gt;Title&lt;/title&gt;</span></p>
+<p><span style="font-size: 10pt;">    &lt;style&gt;</span></p>
+<p><span style="font-size: 10pt;">        img{</span></p>
+<p><span style="font-size: 10pt;">            width: 150px;</span></p>
+<p><span style="font-size: 10pt;">            height:150px;</span></p>
+<p><span style="font-size: 10pt;">        }</span></p>
+<p><span style="font-size: 10pt;">    &lt;/style&gt;</span></p>
+<p><span style="font-size: 10pt;">    &lt;script src=&#8221;js/jquery-3.2.1.min.js&#8221;&gt;&lt;/script&gt;</span></p>
+<p><span style="font-size: 10pt;">    &lt;script&gt;</span></p>
+<p><span style="font-size: 10pt;">        $(function () {</span></p>
+<p><span style="font-size: 10pt;">                $(document).on(&#8220;click&#8221;, &#8220;img&#8221;, function () {</span></p>
+<p><span style="font-size: 10pt;">                    $(&#8216;#wrap&#8217;).prepend($(this));</span></p>
+<p><span style="font-size: 10pt;">                })</span></p>
+<p><span style="font-size: 10pt;">                /*$(&#8220;img&#8221;).click(function () {</span></p>
+<p><span style="font-size: 10pt;">                    $(&#8216;#wrap&#8217;).prepend($(this))</span></p>
+<p><span style="font-size: 10pt;">                })*/</span></p>
+<p><span style="font-size: 10pt;">        })</span></p>
+<p><span style="font-size: 10pt;">    &lt;/script&gt;</span></p>
+<p><span style="font-size: 10pt;">&lt;/head&gt;</span></p>
+<p><span style="font-size: 10pt;">&lt;body&gt;</span></p>
+<p><span style="font-size: 10pt;">&lt;div id=&#8221;wrap&#8221;&gt;</span></p>
+<p><span style="font-size: 10pt;">    &lt;img src=&#8221;image/aa.jpg&#8221;&gt;</span></p>
+<p><span style="font-size: 10pt;">    &lt;img src=&#8221;image/bb.png&#8221;&gt;</span></p>
+<p><span style="font-size: 10pt;">    &lt;img src=&#8221;image/c.jpg&#8221;&gt;</span></p>
+<p><span style="font-size: 10pt;">    &lt;img src=&#8221;image/d.jpg&#8221;&gt;</span></p>
+<p><span style="font-size: 10pt;">&lt;/div&gt;</span></p>
+<p><span style="font-size: 10pt;">&lt;/body&gt;</span></p>
+<p><span style="font-size: 10pt;">&lt;/html&gt;</span></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<p><span style="font-size: 12pt;"><b>[EFFECTS]</b></span></p>
+<p></p>
+<p><span style="font-size: 10pt;">.hide()</span></p>
+<p><span style="font-size: 10pt;"> $(&#8216;#myimg&#8217;).hide(3000, function () {</span></p>
+<p style="margin-left: 2em;"><span style="font-size: 10pt;">console.log(&#8216;end&#8230;&#8217;)</span></p>
+<p style="margin-left: 2em;"><span style="font-size: 10pt;">$(&#8216;#mydiv&#8217;).text(&#8216;hide~~~~&#8217;)</span></p>
+<p><span style="font-size: 10pt;">})</span></p>
+<p><span style="font-size: 10pt;">&#8211; 나타난다.(3초동안 서서히).</span></p>
+<p></p>
+<p><span style="font-size: 10pt;">.show()</span></p>
+<p><span style="font-size: 10pt;"> $(&#8216;#myimg&#8217;).show(3000, function () {</span></p>
+<p style="margin-left: 2em;"><span style="font-size: 10pt;">console.log(&#8216;end&#8230;&#8217;)</span></p>
+<p style="margin-left: 2em;"><span style="font-size: 10pt;">$(&#8216;#mydiv&#8217;).text(&#8216;hide~~~~&#8217;)</span></p>
+<p><span style="font-size: 10pt;">})</span></p>
+<p><span style="font-size: 10pt;">&#8211; 나타난다.(3초동안 서서히).</span></p>
+<p></p>
+<p><span style="font-size:10pt;">.toggle()</span></p>
+<p><span style="font-size: 10pt;">$(&#8216;#myimg&#8217;).toggle(2000);</span></p>
+<p><span style="font-size: 10pt;">&#8211; 숨겨져있으면 보여지게되고, 보여지고 있으면 숨겨진다.</span></p>
+<p><span style="font-size:10pt;"><br /></span></p>
+<p><span style="font-size:10pt;">.slideDown()</span></p>
+<p><span style="font-size: 10pt;">$(&#8216;#mydiv&#8217;).slideDown(1000);`</span></p>
+<p><span style="font-size:10pt;"><br /></span></p>
+<p><span style="font-size:10pt;">.slideUp()</span></p>
+<p><span style="font-size: 10pt;">$(&#8216;#mydiv&#8217;).slideUp(1000);`</span></p>
+<p><span style="font-size:10pt;"><br /></span></p>
+<p><span style="font-size:10pt;">.animate()</span></p>
+<p><span style="font-size: 10pt;">imgattr = {width:&#8221;300px&#8221;, height:&#8221;300px&#8221;, left:&#8221;100px&#8221;}</span></p>
+</p>
+<p><span style="font-size: 10pt;">$(&#8216;#myimg&#8217;).animate(imgattr, 2000);</span></p>
+<p><span style="font-size:10pt;">&#8211; imgattr 속성값으로 움직인다.(2초동안 서서히)</span></p>
+<p><span style="font-size:10pt;"><br /></span></p>
+<p><span style="font-size: 10pt;">내용보기 text 클릭시 아래 내용 나오는 예제</span></p>
+<table border="0" cellpadding="0" cellspacing="0" class="txc-table" sans-serif;font-size:13px"="" style="border:none;border-collapse:collapse;;font-family:" width="864" 고딕",="" 맑은="">
+<tbody>
+<tr>
+<td style="width:864;height:24;border-bottom:1px solid #ccc;border-right:1px solid #ccc;border-top:1px solid #ccc;border-left:1px solid #ccc;;">
+<p><span style="font-size: 10pt;">&lt;!DOCTYPE html&gt;</span></p>
+<p><span style="font-size: 10pt;">&lt;html lang=&#8221;en&#8221;&gt;</span></p>
+<p><span style="font-size: 10pt;">&lt;head&gt;</span></p>
+<p><span style="font-size: 10pt;">    &lt;meta charset=&#8221;UTF-8&#8243;&gt;</span></p>
+<p><span style="font-size: 10pt;">    &lt;title&gt;Title&lt;/title&gt;</span></p>
+<p><span style="font-size: 10pt;">    &lt;style&gt;</span></p>
+<p><span style="font-size: 10pt;">        #title, #panel{</span></p>
+<p><span style="font-size: 10pt;">            background-color: #ffd8c5;</span></p>
+<p><span style="font-size: 10pt;">            color: white;</span></p>
+<p><span style="font-size: 10pt;">            border-radius: 10px;</span></p>
+<p><span style="font-size: 10pt;">            border:2px solid #ff9490;</span></p>
+<p><span style="font-size: 10pt;">            text-align: center;</span></p>
+<p><span style="font-size: 10pt;">        }</span></p>
+<p><span style="font-size: 10pt;">        #panel{</span></p>
+<p><span style="font-size: 10pt;">            display: none;</span></p>
+<p><span style="font-size: 10pt;">        }</span></p>
+<p><span style="font-size: 10pt;">    &lt;/style&gt;</span></p>
+<p><span style="font-size: 10pt;">    &lt;script src=&#8221;js/jquery-3.2.1.min.js&#8221;&gt;&lt;/script&gt;</span></p>
+<p><span style="font-size: 10pt;">    &lt;script&gt;</span></p>
+<p><span style="font-size: 10pt;">        var isdown = false;</span></p>
+<p><span style="font-size: 10pt;">        $(function () {</span></p>
+<p><span style="font-size: 10pt;">            $(&#8216;#title&#8217;).click(function () {</span></p>
+<p><span style="font-size: 10pt;">                if(isdown){</span></p>
+<p><span style="font-size: 10pt;">                    $(&#8216;#panel&#8217;).slideUp(1000);</span></p>
+<p><span style="font-size: 10pt;">                    isdown=false;</span></p>
+<p><span style="font-size: 10pt;">                }else{</span></p>
+<p><span style="font-size: 10pt;">                    $(&#8216;#panel&#8217;).slideDown(1000);</span></p>
+<p><span style="font-size: 10pt;">                    isdown=true;</span></p>
+<p><span style="font-size: 10pt;">                }</span></p>
+<p><span style="font-size: 10pt;">            })</span></p>
+<p><span style="font-size: 10pt;">        })</span></p>
+<p><span style="font-size: 10pt;">    &lt;/script&gt;</span></p>
+<p><span style="font-size: 10pt;">&lt;/head&gt;</span></p>
+<p><span style="font-size: 10pt;">&lt;body&gt;</span></p>
+<p><span style="font-size: 10pt;">    &lt;div id=&#8221;title&#8221;&gt;내용보기&lt;/div&gt;</span></p>
+<p><span style="font-size: 10pt;">    &lt;div id=&#8221;panel&#8221;&gt;나는 자랑스런 태극기 앞에</span></p>
+<p><span style="font-size: 10pt;">    조국과 민족의 무궁한 영광을 위하여</span></p>
+<p><span style="font-size: 10pt;">    &lt;/div&gt;</span></p>
+<p><span style="font-size: 10pt;">&lt;/body&gt;</span></p>
+<p><span style="font-size: 10pt;">&lt;/html&gt; </span></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p><span style="font-size: 13.3333px;"><br /></span></p>
+<p><span style="font-size: 13.3333px;"><br /></span></p>
+<p><span style="font-size: 13.3333px;"><br /></span></p>
+<p><span style="font-size: 10pt;">.removeAttr();</span></p>
+<p><span style="font-size: 10pt;">$(this).removeAttr(&#8216;style&#8217;);</span></p>
+<p><span style="font-size: 10pt;">&#8211; style 속성을 제거한다.</span></p>
+<p><span style="font-size: 13.3333px;"><br /></span></p>
+<p><span style="font-size: 10pt;">이미지 클릭시 이미지 확대되는 예제</span></p>
+<table border="0" cellpadding="0" cellspacing="0" class="txc-table" sans-serif;font-size:13px"="" style="border:none;border-collapse:collapse;;font-family:" width="864" 고딕",="" 맑은="">
+<tbody>
+<tr>
+<td style="width:864;height:24;border-bottom:1px solid #ccc;border-right:1px solid #ccc;border-top:1px solid #ccc;border-left:1px solid #ccc;;">
+<p><span style="font-size: 10pt;">&lt;!DOCTYPE html&gt;</span></p>
+<p><span style="font-size: 10pt;">&lt;html lang=&#8221;en&#8221;&gt;</span></p>
+<p><span style="font-size: 10pt;">&lt;head&gt;</span></p>
+<p><span style="font-size: 10pt;">    &lt;meta charset=&#8221;UTF-8&#8243;&gt;</span></p>
+<p><span style="font-size: 10pt;">    &lt;title&gt;Title&lt;/title&gt;</span></p>
+<p><span style="font-size: 10pt;">    &lt;style&gt;</span></p>
+<p><span style="font-size: 10pt;">        img{</span></p>
+<p><span style="font-size: 10pt;">            position: relative;</span></p>
+<p><span style="font-size: 10pt;">            width: 150px;</span></p>
+<p><span style="font-size: 10pt;">            height:150px;</span></p>
+<p><span style="font-size: 10pt;">        }</span></p>
+<p><span style="font-size: 10pt;">    &lt;/style&gt;</span></p>
+<p><span style="font-size: 10pt;">    &lt;script src=&#8221;js/jquery-3.2.1.min.js&#8221;&gt;&lt;/script&gt;</span></p>
+<p><span style="font-size: 10pt;">    &lt;script&gt;</span></p>
+<p><span style="font-size: 10pt;">        var prevElm;</span></p>
+<p><span style="font-size: 10pt;">        $(function () {</span></p>
+<p><span style="font-size: 10pt;">            $(&#8216;img&#8217;).click(function () {</span></p>
+<p><span style="font-size: 10pt;">                $(prevElm).removeAttr(&#8216;style&#8217;);</span></p>
+<p><span style="font-size: 10pt;">                imgattr = {width:&#8221;300px&#8221;, height:&#8221;300px&#8221;, left:&#8221;100px&#8221;}</span></p>
+<p><span style="font-size: 10pt;">                $(this).animate(imgattr, 1000, function () {</span></p>
+<p><span style="font-size: 10pt;">                    prevElm = this;</span></p>
+<p><span style="font-size: 10pt;">                })</span></p>
+<p><span style="font-size: 10pt;">            })</span></p>
+<p><span style="font-size: 10pt;">        })</span></p>
+<p><span style="font-size: 10pt;">    &lt;/script&gt;</span></p>
+<p><span style="font-size: 10pt;">&lt;/head&gt;</span></p>
+<p><span style="font-size: 10pt;">&lt;body&gt;</span></p>
+<p><span style="font-size: 10pt;">&lt;div id=&#8221;wrap&#8221;&gt;</span></p>
+<p><span style="font-size: 10pt;">    &lt;img src=&#8221;image/aa.jpg&#8221;&gt;&lt;br&gt;</span></p>
+<p><span style="font-size: 10pt;">    &lt;img src=&#8221;image/bb.png&#8221;&gt;&lt;br&gt;</span></p>
+<p><span style="font-size: 10pt;">    &lt;img src=&#8221;image/c.jpg&#8221;&gt;&lt;br&gt;</span></p>
+<p><span style="font-size: 10pt;">    &lt;img src=&#8221;image/d.jpg&#8221;&gt;&lt;br&gt;</span></p>
+<p><span style="font-size: 10pt;">&lt;/div&gt;</span></p>
+<p><span style="font-size: 10pt;">&lt;/body&gt;</span></p>
+<p><span style="font-size: 10pt;">&lt;/html&gt;</span><span style="font-size: 10pt;"> </span></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p><span style="font-size: 13.3333px;"><br /></span></p>
+<p><span style="font-size:10pt;">2017-08-02 과제</span></p>
+<table border="0" cellpadding="0" cellspacing="0" class="txc-table" sans-serif;font-size:13px"="" style="border:none;border-collapse:collapse;;font-family:" width="864" 고딕",="" 맑은="">
+<tbody>
+<tr>
+<td style="width:864;height:24;border-bottom:1px solid #ccc;border-right:1px solid #ccc;border-top:1px solid #ccc;border-left:1px solid #ccc;;">
+<p>&lt;!DOCTYPE html&gt;</p>
+<p>&lt;html lang=&#8221;en&#8221;&gt;</p>
+<p>&lt;head&gt;</p>
+<p>    &lt;meta charset=&#8221;UTF-8&#8243;&gt;</p>
+<p>    &lt;title&gt;Title&lt;/title&gt;</p>
+<p>    &lt;style&gt;</p>
+<p>        #wrap{</p>
+<p>            padding: 4%;</p>
+<p>            margin:auto;</p>
+<p>            text-align: center;</p>
+<p>        }</p>
+<p>        body{</p>
+<p>            background-color: gainsboro;</p>
+<p>        }</p>
+<p>        img{</p>
+<p>            position: relative;</p>
+<p>            width: 200px;</p>
+<p>            height:400px;</p>
+<p>            vertical-align: middle;</p>
+<p>        }</p>
+<p>        .story{</p>
+<p>            border: 1px solid;</p>
+<p>            padding: 2%;</p>
+<p>        }</p>
+<p>        div.m1,div.m2, div.m3, div.m4, div.m5{</p>
+<p>            margin: auto;</p>
+<p>            width: 80%;</p>
+<p>            display: none;</p>
+<p>            padding: 0 2% 2% 2%;</p>
+<p>            border: 1px solid;</p>
+<p>        }</p>
+<p>        .aaa{</p>
+<p>            width: 150px;</p>
+<p>            height:150px;</p>
+<p>        }</p>
+<p>        .one{</p>
+<p>            text-align: center;</p>
+<p>        }</p>
+<p>    &lt;/style&gt;</p>
+<p></p>
+<p>    &lt;script src=&#8221;js/jquery-3.2.1.min.js&#8221;&gt;&lt;/script&gt;</p>
+<p>    &lt;script&gt;</p>
+<p>        var prevElm;</p>
+<p>        var cn;</p>
+<p>        $(function () {</p>
+<p>            $(&#8216;[src^=&#8221;image/m&#8221;]&#8217;).click(function () {</p>
+<p>                $(prevElm).removeAttr(&#8216;style&#8217;);</p>
+<p>                /*$(#wrap).append($(this));</p>
+<p>                * $(&#8216;img:eq(1)&#8217;).after($(this));*/</p>
+<p>                $(&#8216;img:eq(2)&#8217;).before($(this));</p>
+<p>                if($(&#8216;img:eq(0)&#8217;)){</p>
+<p>                    $(&#8216;img:eq(3)&#8217;).before($(this));</p>
+<p>                }</p>
+<p>                imgattr = {width:&#8221;250px&#8221;, height:&#8221;500px&#8221;}</p>
+<p>                $(this).animate(imgattr, 500, function () {</p>
+<p>                    prevElm = this;</p>
+<p>                    cn = prevElm.className;</p>
+<p>                    $(&#8220;div.&#8221;+cn).show();</p>
+<p>                })</p>
+<p>                $(&#8220;div.&#8221;+cn).hide();</p>
+<p>            })</p>
+<p>        })</p>
+<p>    &lt;/script&gt;</p>
+<p>&lt;/head&gt;</p>
+<p>&lt;body&gt;</p>
+<p>&lt;div id=&#8221;mydiv&#8221;&gt;</p>
+<p>&lt;div id=&#8221;wrap&#8221;&gt;</p>
+<p>    &lt;img class=&#8221;m1&#8243; src=&#8221;image/m1.jpg&#8221;&gt;</p>
+<p>    &lt;img class=&#8221;m2&#8243; src=&#8221;image/m2.jpg&#8221;&gt;</p>
+<p>    &lt;img class=&#8221;m3&#8243; src=&#8221;image/m3.jpg&#8221;&gt;</p>
+<p>    &lt;img class=&#8221;m4&#8243; src=&#8221;image/m4.jpg&#8221;&gt;</p>
+<p>    &lt;img class=&#8221;m5&#8243; src=&#8221;image/m5.jpg&#8221;&gt;</p>
+<p>&lt;/div&gt;&lt;br&gt;</p>
+<p></p>
+<p></p>
+<p>    &lt;div class=&#8221;m1&#8243;&gt;</p>
+<p>        &lt;h2&gt;영화제목&lt;/h2&gt;</p>
+<p>        택시운전사</p>
+<p>        &lt;h2&gt;영화이미지&lt;/h2&gt;</p>
+<p>        &lt;div class=&#8221;one&#8221;&gt;</p>
+<p>            &lt;img class=&#8221;aaa&#8221; src=&#8221;image/1_1.jpg&#8221;&gt;</p>
+<p>            &lt;img class=&#8221;aaa&#8221; src=&#8221;image/1_2.jpg&#8221;&gt;</p>
+<p>            &lt;img class=&#8221;aaa&#8221; src=&#8221;image/1_3.jpg&#8221;&gt;</p>
+<p>            &lt;img class=&#8221;aaa&#8221; src=&#8221;image/1_1.jpg&#8221;&gt;</p>
+<p>            &lt;img class=&#8221;aaa&#8221; src=&#8221;image/1_2.jpg&#8221;&gt;</p>
+<p>            &lt;img class=&#8221;aaa&#8221; src=&#8221;image/1_3.jpg&#8221;&gt;</p>
+<p>            &lt;img class=&#8221;aaa&#8221; src=&#8221;image/1_1.jpg&#8221;&gt;</p>
+<p>            &lt;img class=&#8221;aaa&#8221; src=&#8221;image/1_2.jpg&#8221;&gt;</p>
+<p>            &lt;img class=&#8221;aaa&#8221; src=&#8221;image/1_3.jpg&#8221;&gt;</p>
+<p>        &lt;/div&gt;</p>
+<p>        &lt;h2&gt;영화줄거리&lt;/h2&gt;</p>
+<p>        &lt;div class=&#8221;story&#8221;&gt;</p>
+<p>            1980년 5월, 서울 택시운전사.&lt;br&gt;</p>
+<p>            “광주? 돈 워리, 돈 워리! 아이 베스트 드라이버”&lt;br&gt;</p>
+<p>            택시운전사 만섭(송강호)은 외국손님을 태우고 광주에 갔다 통금 전에 돌아오면&lt;br&gt;</p>
+<p>            밀린 월세를 갚을 수 있는 거금 10만원을 준다는 말에&lt;br&gt;</p>
+<p>            독일기자 피터(토마스 크레취만)를 태우고 영문도 모른 채 길을 나선다.&lt;br&gt;</p>
+<p>            광주 그리고 사람들. “모르겄어라, 우덜도 우덜한테 와 그라는지…”&lt;br&gt;</p>
+<p>            어떻게든 택시비를 받아야 하는 만섭의 기지로 검문을 뚫고 겨우 들어선 광주.&lt;br&gt;</p>
+<p>            위험하니 서울로 돌아가자는 만섭의 만류에도&lt;br&gt;</p>
+<p>            피터는 대학생 재식(류준열)과 황기사(유해진)의 도움 속에 촬영을 시작한다.&lt;br&gt;</p>
+<p>            그러나 상황은 점점 심각해지고 만섭은 집에 혼자 있을 딸 걱정에 점점 초조해지는데…&lt;br&gt;</p>
+<p>        &lt;/div&gt;</p>
+<p>    &lt;/div&gt;</p>
+<p></p>
+<p>    &lt;div class=&#8221;m2&#8243;&gt;</p>
+<p>        &lt;h2&gt;영화제목&lt;/h2&gt;</p>
+<p>        군함도</p>
+<p>        &lt;h2&gt;영화이미지&lt;/h2&gt;</p>
+<p>        &lt;div class=&#8221;one&#8221;&gt;</p>
+<p>            &lt;img class=&#8221;aaa&#8221; src=&#8221;image/2_1.jpg&#8221;&gt;</p>
+<p>            &lt;img class=&#8221;aaa&#8221; src=&#8221;image/2_2.jpg&#8221;&gt;</p>
+<p>            &lt;img class=&#8221;aaa&#8221; src=&#8221;image/2_3.jpg&#8221;&gt;</p>
+<p>            &lt;img class=&#8221;aaa&#8221; src=&#8221;image/2_1.jpg&#8221;&gt;</p>
+<p>            &lt;img class=&#8221;aaa&#8221; src=&#8221;image/2_2.jpg&#8221;&gt;</p>
+<p>            &lt;img class=&#8221;aaa&#8221; src=&#8221;image/2_3.jpg&#8221;&gt;</p>
+<p>            &lt;img class=&#8221;aaa&#8221; src=&#8221;image/2_1.jpg&#8221;&gt;</p>
+<p>            &lt;img class=&#8221;aaa&#8221; src=&#8221;image/2_2.jpg&#8221;&gt;</p>
+<p>            &lt;img class=&#8221;aaa&#8221; src=&#8221;image/2_3.jpg&#8221;&gt;</p>
+<p>        &lt;/div&gt;</p>
+<p>        &lt;h2&gt;영화줄거리&lt;/h2&gt;</p>
+<p>        &lt;div class=&#8221;story&#8221;&gt;</p>
+<p>            1945년 일제강점기.&lt;br&gt;</p>
+<p>            경성 반도호텔 악단장 ‘강옥’(황정민)과 그의 하나뿐인 딸 ‘소희’(김수안).&lt;br&gt;</p>
+<p>            그리고 종로 일대를 주름잡던 주먹 ‘칠성’(소지섭), 일제 치하에서 온갖 고초를 겪어온 ‘말년’(이정현) 등&lt;br&gt;</p>
+<p>            각기 다른 사연을 품은 조선인들이 일본에서 돈을 벌 수 있다는 말에 속아 군함도로 향한다.&lt;br&gt;</p>
+<p>            하지만 그들이 함께 탄 배가 도착한 곳은 조선인들을 강제 징용해 노동자로 착취하고 있던 ‘지옥섬’ 군함도였다.&lt;br&gt;</p>
+<p>            영문도 모른 채 끌려온 조선인들이 해저 1,000 미터 깊이의 막장 속에서&lt;br&gt;</p>
+<p>            매일 가스 폭발의 위험을 감수하며 노역해야 하는 군함도.&lt;br&gt;</p>
+<p>            강옥은 어떻게 하든 일본인 관리의 비위를 맞춰 딸 소희만이라도 지키기 위해 온갖 수를 다하고,&lt;br&gt;</p>
+<p>            칠성과 말년은 각자의 방식으로 고통스런 하루하루를 견뎌낸다.&lt;br&gt;</p>
+<p>            한편 전쟁이 막바지로 치닫자 광복군 소속 OSS 요원 ‘무영’(송중기)은&lt;br&gt;</p>
+<p>            독립운동의 주요인사 구출 작전을 지시 받고 군함도에 잠입한다.&lt;br&gt;</p>
+<p>            일본 전역에 미국의 폭격이 시작되고 일본의 패색이 짙어지자&lt;br&gt;</p>
+<p>            일본은 군함도에서 조선인에게 저지른 모든 만행을 은폐하기 위해 조선인들을 갱도에 가둔 채 폭파하려고 한다.&lt;br&gt;</p>
+<p>            이를 눈치 챈 무영은, 강옥, 칠성, 말년을 비롯한 조선인 모두와 군함도를 빠져나가기로 결심하는데&#8230;!&lt;br&gt;</p>
+<p>            지옥섬 군함도, 조선인들의 목숨을 건 탈출이 시작된다!&lt;br&gt;</p>
+<p>        &lt;/div&gt;</p>
+<p>    &lt;/div&gt;</p>
+<p></p>
+<p>    &lt;div class=&#8221;m3&#8243;&gt;</p>
+<p>        &lt;h2&gt;영화제목&lt;/h2&gt;</p>
+<p>        슈퍼배드3</p>
+<p>        &lt;h2&gt;영화이미지&lt;/h2&gt;</p>
+<p>        &lt;div class=&#8221;one&#8221;&gt;</p>
+<p>            &lt;img class=&#8221;aaa&#8221; src=&#8221;image/3_1.jpg&#8221;&gt;</p>
+<p>            &lt;img class=&#8221;aaa&#8221; src=&#8221;image/3_2.jpg&#8221;&gt;</p>
+<p>            &lt;img class=&#8221;aaa&#8221; src=&#8221;image/3_3.jpg&#8221;&gt;</p>
+<p>            &lt;img class=&#8221;aaa&#8221; src=&#8221;image/3_1.jpg&#8221;&gt;</p>
+<p>            &lt;img class=&#8221;aaa&#8221; src=&#8221;image/3_2.jpg&#8221;&gt;</p>
+<p>            &lt;img class=&#8221;aaa&#8221; src=&#8221;image/3_3.jpg&#8221;&gt;</p>
+<p>            &lt;img class=&#8221;aaa&#8221; src=&#8221;image/3_1.jpg&#8221;&gt;</p>
+<p>            &lt;img class=&#8221;aaa&#8221; src=&#8221;image/3_2.jpg&#8221;&gt;</p>
+<p>            &lt;img class=&#8221;aaa&#8221; src=&#8221;image/3_3.jpg&#8221;&gt;</p>
+<p>        &lt;/div&gt;</p>
+<p>        &lt;h2&gt;영화줄거리&lt;/h2&gt;</p>
+<p>        &lt;div class=&#8221;story&#8221;&gt;</p>
+<p>            전 세계를 점령할 놈들이 온다!&lt;br&gt;</p>
+<p>            최고의 악당만을 보스로 섬기는 ‘미니언’&lt;br&gt;</p>
+<p>            가족을 위해 악당 은퇴를 선언한 ‘그루’&lt;br&gt;</p>
+<p>            그루의 배신에 실망한 미니언들은&lt;br&gt;</p>
+<p>            스스로 악당이 되기 위해 그루를 떠난다.&lt;br&gt;</p>
+<p>            한편, 같은 얼굴 다른 스펙의 쌍둥이 동생 ‘드루’의 등장으로 인해&lt;br&gt;</p>
+<p>            그루는 자신이 역사상 가장 위대한 악당 가문의 후예임을 알게 되고,&lt;br&gt;</p>
+<p>            거부할 수 없는 슈퍼배드의 운명을 따르게 되는데…&lt;br&gt;</p>
+<p>            돌아온 그루와 미니언들은&lt;br&gt;</p>
+<p>            다시 함께할 수 있을까?&lt;br&gt;</p>
+<p>        &lt;/div&gt;</p>
+<p>    &lt;/div&gt;</p>
+<p></p>
+<p>    &lt;div class=&#8221;m4&#8243;&gt;</p>
+<p>        &lt;h2&gt;영화제목&lt;/h2&gt;</p>
+<p>        명탐정코난:진흥의 연가</p>
+<p>        &lt;h2&gt;영화이미지&lt;/h2&gt;</p>
+<p>        &lt;div class=&#8221;one&#8221;&gt;</p>
+<p>            &lt;img class=&#8221;aaa&#8221; src=&#8221;image/4_1.jpg&#8221;&gt;</p>
+<p>            &lt;img class=&#8221;aaa&#8221; src=&#8221;image/4_2.jpg&#8221;&gt;</p>
+<p>            &lt;img class=&#8221;aaa&#8221; src=&#8221;image/4_3.jpg&#8221;&gt;</p>
+<p>            &lt;img class=&#8221;aaa&#8221; src=&#8221;image/4_1.jpg&#8221;&gt;</p>
+<p>            &lt;img class=&#8221;aaa&#8221; src=&#8221;image/4_2.jpg&#8221;&gt;</p>
+<p>            &lt;img class=&#8221;aaa&#8221; src=&#8221;image/4_3.jpg&#8221;&gt;</p>
+<p>            &lt;img class=&#8221;aaa&#8221; src=&#8221;image/4_1.jpg&#8221;&gt;</p>
+<p>            &lt;img class=&#8221;aaa&#8221; src=&#8221;image/4_2.jpg&#8221;&gt;</p>
+<p>            &lt;img class=&#8221;aaa&#8221; src=&#8221;image/4_3.jpg&#8221;&gt;</p>
+<p>        &lt;/div&gt;</p>
+<p>        &lt;h2&gt;영화줄거리&lt;/h2&gt;</p>
+<p>        &lt;div class=&#8221;story&#8221;&gt;</p>
+<p>            오사카와 교토에서 발생한 의문의 사건들!&lt;br&gt;</p>
+<p>            헤이지와 카즈하, 그리고 모미지의 운명은 과연?!&lt;br&gt;</p>
+<p>            갑작스러운 폭발로 대혼란에 빠지고 만 오사카의 한 TV 방송국.&lt;br&gt;</p>
+<p>            마치 테러와도 같은 사건. 하지만 범인의 정체는 물론 범행 목적조차 파악되지 않는 상황이 계속되고,&lt;br&gt;</p>
+<p>            혼란 속에서 코난과 친구들은 헤이지의 약혼자임을 주장하며 당돌하게 대시하는 카루타(일본의 전통 카드 게임)&lt;br&gt;</p>
+<p>            대회 고교 챔피언 오오카 모미지를 만나 더욱 당황한다.&lt;br&gt;</p>
+<p>            한편, 방송국 폭발과 동시에 교토에서는 카루타 대회 2년 연속 우승자가 살해당하는 사건이 발생하고,&lt;br&gt;</p>
+<p>            현장의 TV에서는 다름 아닌 모미지의 경기 모습과 함께 한편의 시가 고요히 울려 퍼지고 있었는데&#8230;&#8230;&lt;br&gt;</p>
+<p>        &lt;/div&gt;</p>
+<p>    &lt;/div&gt;</p>
+<p></p>
+<p>    &lt;div class=&#8221;m5&#8243;&gt;</p>
+<p>        &lt;h2&gt;영화제목&lt;/h2&gt;</p>
+<p>        덩케르트</p>
+<p>        &lt;h2&gt;영화이미지&lt;/h2&gt;</p>
+<p>        &lt;div class=&#8221;one&#8221;&gt;</p>
+<p>            &lt;img class=&#8221;aaa&#8221; src=&#8221;image/5_1.jpg&#8221;&gt;</p>
+<p>            &lt;img class=&#8221;aaa&#8221; src=&#8221;image/5_2.jpg&#8221;&gt;</p>
+<p>            &lt;img class=&#8221;aaa&#8221; src=&#8221;image/5_3.jpg&#8221;&gt;</p>
+<p>            &lt;img class=&#8221;aaa&#8221; src=&#8221;image/5_1.jpg&#8221;&gt;</p>
+<p>            &lt;img class=&#8221;aaa&#8221; src=&#8221;image/5_2.jpg&#8221;&gt;</p>
+<p>            &lt;img class=&#8221;aaa&#8221; src=&#8221;image/5_3.jpg&#8221;&gt;</p>
+<p>            &lt;img class=&#8221;aaa&#8221; src=&#8221;image/5_1.jpg&#8221;&gt;</p>
+<p>            &lt;img class=&#8221;aaa&#8221; src=&#8221;image/5_2.jpg&#8221;&gt;</p>
+<p>            &lt;img class=&#8221;aaa&#8221; src=&#8221;image/5_3.jpg&#8221;&gt;</p>
+<p>        &lt;/div&gt;</p>
+<p>        &lt;h2&gt;영화줄거리&lt;/h2&gt;</p>
+<p>        &lt;div class=&#8221;story&#8221;&gt;</p>
+<p>            &#8220;우린 끝까지 싸울 것이다&#8221;</p>
+<p>            살아남는 것이 승리다!</p>
+<p>            해변: 보이지 않는 적에게 포위된 채 어디서 총알이 날아올지 모르는 위기의 일주일&lt;br&gt;</p>
+<p>            바다: 군인들의 탈출을 돕기 위해 배를 몰고 덩케르크로 항해하는 하루&lt;br&gt;</p>
+<p>            하늘: 적의 전투기를 공격해 추락시키는 임무, 남은 연료로 비행이 가능한 한 시간&lt;br&gt;</p>
+<p>            “우리는 해변에서 싸울 것이다. 우리는 상륙지에서 싸울 것이다. 우리는 들판에서 싸우고 시가에서도 싸울 것이다. 우리는 끝까지 싸울 것이다”&lt;br&gt;</p>
+<p>        &lt;/div&gt;</p>
+<p></p>
+<p>&lt;/div&gt;</p>
+<p>&lt;/div&gt;</p>
+<p>&lt;/body&gt;</p>
+<p>&lt;/html&gt; </p>
+</td>
+</tr>
+</tbody>
+</table>
+<p><span style="font-size:10pt;"><br /></span></p>
+<div class="tt_adsense_bottom" style="margin-top:30px">
+</div>
+<hr />
+<p><iframe src='http://ad.selfhow.com/rd' width='100%' border=0 frameborder=0 style='height:auto;width:100%'></iframe></p>
+<p><a href='http://wondong2.com/77' target='_blank'>Origin Content : 동그리동동닷컴</a> | <a href="/cdn-cgi/l/email-protection#1a797976795a747b767b347d7b" target='_blank'>Contact : <span class="__cf_email__" data-cfemail="94f7f7f8f7d4faf5f8f5baf3f5">[email&#160;protected]</span></a>
+</p>
+<p>Cotent License : CC-BY </p>
+<p>This content is collected under the CCL license.</p>
+<p>Please check the license of the original article before asking about copyright.</p>
+<ul>
+<li><a href='/tag/직무교육'>More About <span style='font-weight:bold;'>직무교육</span></a></li>
+<li><a href='/tag/16일차jQuery'>More About <span style='font-weight:bold;'>16일차jQuery</span></a></li>
+</ul>
+        </div> <!-- //.entry-summary -->
+        
+                    <div class="entry-tags"><b>Tags:</b> <a href="http://ms.nala.ga/tag/16%ec%9d%bc%ec%b0%a8jquery/" rel="tag">16일차jQuery</a>, <a href="http://ms.nala.ga/tag/%ec%a7%81%eb%ac%b4%ea%b5%90%ec%9c%a1/" rel="tag">직무교육</a></div>
+        
+    </div>
+
+</article> <!--/#post-->
+
+
+
+
+
+                                                                    <div class="post-nav-area">
+                                                    
+            <nav class="next-previous-post clearfix media" role="navigation">
+                <div class="row">
+                    <!-- Previous Post -->
+                    <div class="previous-post col-sm-6 pull-left">
+                        <div class="nav-previous"><i class="fa fa-angle-left"></i> <a href="http://ms.nala.ga/%ed%95%99%ec%82%b4%ec%9d%b4%eb%82%98-%ec%ba%90%eb%82%98%eb%8b%a4%ec%9d%98-%ec%b0%bd%ec%8b%9c%ec%9e%90-%ea%b1%b4%ec%b6%95%ea%b0%80/" rel="prev">학살이나 캐나다의 창시자 건축가?</a></div>                    </div>
+
+                    <!-- Next Post -->
+                    <div class="next-post col-sm-6 pull-right text-right">
+                        <div class="nav-next"><a href="http://ms.nala.ga/guq8edgvdm4afn7cxtpm7pv0jrwegj/" rel="next">GUQ8eDgvdM4afn7cXtpM7PV0jrWegJ</a> <i class="fa fa-angle-right"></i></div>                    </div>
+                </div>
+            </nav><!-- .navigation -->
+            
+                                            </div>
+                                
+                                
+                            
+                                            </main> <!-- /.site-main -->
+                </div>  <!-- /.content-area -->
+            </div> <!-- /col -->
+
+            <!-- Blogsidebar -->
+            
+	<div class="col-md-4">
+	    <div class="primary-sidebar widget-area" role="complementary">
+	        <div id="tag_cloud-2" class="widget widget_tag_cloud"><h2 class="widget-title">태그</h2><div class="tagcloud"><a href="http://ms.nala.ga/tag/1%ec%9b%94/" class="tag-cloud-link tag-link-2 tag-link-position-1" style="font-size: 18.440677966102pt;" aria-label="1월 (115 아이템)">1월</a>
+<a href="http://ms.nala.ga/tag/2017/" class="tag-cloud-link tag-link-21 tag-link-position-2" style="font-size: 17.016949152542pt;" aria-label="2017 (98 아이템)">2017</a>
+<a href="http://ms.nala.ga/tag/2017%eb%85%84/" class="tag-cloud-link tag-link-551 tag-link-position-3" style="font-size: 14.406779661017pt;" aria-label="2017년 (77 아이템)">2017년</a>
+<a href="http://ms.nala.ga/tag/2018/" class="tag-cloud-link tag-link-155 tag-link-position-4" style="font-size: 15.830508474576pt;" aria-label="2018 (89 아이템)">2018</a>
+<a href="http://ms.nala.ga/tag/2018%eb%85%84/" class="tag-cloud-link tag-link-64 tag-link-position-5" style="font-size: 19.864406779661pt;" aria-label="2018년 (130 아이템)">2018년</a>
+<a href="http://ms.nala.ga/tag/the/" class="tag-cloud-link tag-link-310 tag-link-position-6" style="font-size: 11.322033898305pt;" aria-label="the (57 아이템)">the</a>
+<a href="http://ms.nala.ga/tag/vs/" class="tag-cloud-link tag-link-128 tag-link-position-7" style="font-size: 8pt;" aria-label="vs (41 아이템)">vs</a>
+<a href="http://ms.nala.ga/tag/%ea%b0%80%ea%b2%a9/" class="tag-cloud-link tag-link-275 tag-link-position-8" style="font-size: 12.271186440678pt;" aria-label="가격 (62 아이템)">가격</a>
+<a href="http://ms.nala.ga/tag/%ea%b2%b0%ed%98%bc/" class="tag-cloud-link tag-link-501 tag-link-position-9" style="font-size: 20.338983050847pt;" aria-label="결혼 (136 아이템)">결혼</a>
+<a href="http://ms.nala.ga/tag/%ea%b3%b5%ea%b0%9c/" class="tag-cloud-link tag-link-260 tag-link-position-10" style="font-size: 9.8983050847458pt;" aria-label="공개 (49 아이템)">공개</a>
+<a href="http://ms.nala.ga/tag/%ea%b7%b8%eb%a6%ac%ea%b3%a0/" class="tag-cloud-link tag-link-980 tag-link-position-11" style="font-size: 10.135593220339pt;" aria-label="그리고 (50 아이템)">그리고</a>
+<a href="http://ms.nala.ga/tag/%eb%82%98%ec%9d%b4%ec%b0%a8/" class="tag-cloud-link tag-link-1184 tag-link-position-12" style="font-size: 8.2372881355932pt;" aria-label="나이차 (42 아이템)">나이차</a>
+<a href="http://ms.nala.ga/tag/%eb%82%a8%ec%9e%90/" class="tag-cloud-link tag-link-364 tag-link-position-13" style="font-size: 9.4237288135593pt;" aria-label="남자 (47 아이템)">남자</a>
+<a href="http://ms.nala.ga/tag/%eb%82%a8%ed%8e%b8/" class="tag-cloud-link tag-link-603 tag-link-position-14" style="font-size: 16.305084745763pt;" aria-label="남편 (92 아이템)">남편</a>
+<a href="http://ms.nala.ga/tag/%eb%85%b8%eb%9e%98/" class="tag-cloud-link tag-link-713 tag-link-position-15" style="font-size: 8.9491525423729pt;" aria-label="노래 (45 아이템)">노래</a>
+<a href="http://ms.nala.ga/tag/%eb%8c%80%ed%95%9c/" class="tag-cloud-link tag-link-3572 tag-link-position-16" style="font-size: 10.135593220339pt;" aria-label="대한 (50 아이템)">대한</a>
+<a href="http://ms.nala.ga/tag/%eb%93%9c%eb%9d%bc%eb%a7%88/" class="tag-cloud-link tag-link-1041 tag-link-position-17" style="font-size: 16.542372881356pt;" aria-label="드라마 (95 아이템)">드라마</a>
+<a href="http://ms.nala.ga/tag/%eb%a6%ac%eb%b7%b0/" class="tag-cloud-link tag-link-447 tag-link-position-18" style="font-size: 12.508474576271pt;" aria-label="리뷰 (64 아이템)">리뷰</a>
+<a href="http://ms.nala.ga/tag/%eb%a7%9b%ec%a7%91/" class="tag-cloud-link tag-link-782 tag-link-position-19" style="font-size: 16.779661016949pt;" aria-label="맛집 (97 아이템)">맛집</a>
+<a href="http://ms.nala.ga/tag/%eb%aa%a8%ec%9d%8c/" class="tag-cloud-link tag-link-1142 tag-link-position-20" style="font-size: 13.694915254237pt;" aria-label="모음 (72 아이템)">모음</a>
+<a href="http://ms.nala.ga/tag/%eb%aa%b8%eb%a7%a4/" class="tag-cloud-link tag-link-2391 tag-link-position-21" style="font-size: 15.830508474576pt;" aria-label="몸매 (88 아이템)">몸매</a>
+<a href="http://ms.nala.ga/tag/%eb%b0%a9%eb%b2%95/" class="tag-cloud-link tag-link-930 tag-link-position-22" style="font-size: 17.491525423729pt;" aria-label="방법 (103 아이템)">방법</a>
+<a href="http://ms.nala.ga/tag/%eb%b0%b0%ec%9a%b0/" class="tag-cloud-link tag-link-895 tag-link-position-23" style="font-size: 15.593220338983pt;" aria-label="배우 (86 아이템)">배우</a>
+<a href="http://ms.nala.ga/tag/%eb%b6%80%ec%82%b0/" class="tag-cloud-link tag-link-157 tag-link-position-24" style="font-size: 8.4745762711864pt;" aria-label="부산 (43 아이템)">부산</a>
+<a href="http://ms.nala.ga/tag/%ec%82%ac%eb%9e%91/" class="tag-cloud-link tag-link-2972 tag-link-position-25" style="font-size: 14.406779661017pt;" aria-label="사랑 (77 아이템)">사랑</a>
+<a href="http://ms.nala.ga/tag/%ec%82%ac%ec%a7%84/" class="tag-cloud-link tag-link-410 tag-link-position-26" style="font-size: 9.4237288135593pt;" aria-label="사진 (47 아이템)">사진</a>
+<a href="http://ms.nala.ga/tag/%ec%95%84%eb%82%b4/" class="tag-cloud-link tag-link-3039 tag-link-position-27" style="font-size: 9.6610169491525pt;" aria-label="아내 (48 아이템)">아내</a>
+<a href="http://ms.nala.ga/tag/%ec%95%88%eb%82%b4/" class="tag-cloud-link tag-link-1327 tag-link-position-28" style="font-size: 11.322033898305pt;" aria-label="안내 (56 아이템)">안내</a>
+<a href="http://ms.nala.ga/tag/%ec%95%8c%ec%95%84%eb%b3%b4%ea%b8%b0/" class="tag-cloud-link tag-link-821 tag-link-position-29" style="font-size: 15.118644067797pt;" aria-label="알아보기 (82 아이템)">알아보기</a>
+<a href="http://ms.nala.ga/tag/%ec%95%8c%ec%95%84%eb%b3%b4%ec%9e%90/" class="tag-cloud-link tag-link-341 tag-link-position-30" style="font-size: 11.322033898305pt;" aria-label="알아보자 (56 아이템)">알아보자</a>
+<a href="http://ms.nala.ga/tag/%ec%97%ac%ed%96%89/" class="tag-cloud-link tag-link-873 tag-link-position-31" style="font-size: 17.016949152542pt;" aria-label="여행 (98 아이템)">여행</a>
+<a href="http://ms.nala.ga/tag/%ec%98%81%ed%99%94/" class="tag-cloud-link tag-link-562 tag-link-position-32" style="font-size: 19.389830508475pt;" aria-label="영화 (124 아이템)">영화</a>
+<a href="http://ms.nala.ga/tag/%ec%98%a4%eb%8a%98/" class="tag-cloud-link tag-link-1059 tag-link-position-33" style="font-size: 13.694915254237pt;" aria-label="오늘 (72 아이템)">오늘</a>
+<a href="http://ms.nala.ga/tag/%ec%9a%b0%eb%a6%ac/" class="tag-cloud-link tag-link-888 tag-link-position-34" style="font-size: 11.322033898305pt;" aria-label="우리 (57 아이템)">우리</a>
+<a href="http://ms.nala.ga/tag/%ec%9c%84%ed%95%9c/" class="tag-cloud-link tag-link-1175 tag-link-position-35" style="font-size: 12.983050847458pt;" aria-label="위한 (66 아이템)">위한</a>
+<a href="http://ms.nala.ga/tag/%ec%9d%b4%ec%95%bc%ea%b8%b0/" class="tag-cloud-link tag-link-611 tag-link-position-36" style="font-size: 12.508474576271pt;" aria-label="이야기 (64 아이템)">이야기</a>
+<a href="http://ms.nala.ga/tag/%ec%9d%b4%ec%9c%a0/" class="tag-cloud-link tag-link-296 tag-link-position-37" style="font-size: 10.372881355932pt;" aria-label="이유 (51 아이템)">이유</a>
+<a href="http://ms.nala.ga/tag/%ec%9e%90%ea%b2%a9%ec%a6%9d/" class="tag-cloud-link tag-link-2111 tag-link-position-38" style="font-size: 9.4237288135593pt;" aria-label="자격증 (47 아이템)">자격증</a>
+<a href="http://ms.nala.ga/tag/%ec%a0%95%eb%a6%ac/" class="tag-cloud-link tag-link-1831 tag-link-position-39" style="font-size: 13.220338983051pt;" aria-label="정리 (68 아이템)">정리</a>
+<a href="http://ms.nala.ga/tag/%ec%a0%95%eb%b3%b4/" class="tag-cloud-link tag-link-89 tag-link-position-40" style="font-size: 15.118644067797pt;" aria-label="정보 (83 아이템)">정보</a>
+<a href="http://ms.nala.ga/tag/%ec%b6%94%ec%b2%9c/" class="tag-cloud-link tag-link-146 tag-link-position-41" style="font-size: 22pt;" aria-label="추천 (162 아이템)">추천</a>
+<a href="http://ms.nala.ga/tag/%ec%b6%9c%ec%97%b0/" class="tag-cloud-link tag-link-2930 tag-link-position-42" style="font-size: 10.847457627119pt;" aria-label="출연 (54 아이템)">출연</a>
+<a href="http://ms.nala.ga/tag/%ed%95%9c%ea%b5%ad/" class="tag-cloud-link tag-link-3361 tag-link-position-43" style="font-size: 11.796610169492pt;" aria-label="한국 (59 아이템)">한국</a>
+<a href="http://ms.nala.ga/tag/%ed%9a%a8%eb%8a%a5/" class="tag-cloud-link tag-link-810 tag-link-position-44" style="font-size: 9.6610169491525pt;" aria-label="효능 (48 아이템)">효능</a>
+<a href="http://ms.nala.ga/tag/%ed%9b%84%ea%b8%b0/" class="tag-cloud-link tag-link-14 tag-link-position-45" style="font-size: 17.966101694915pt;" aria-label="후기 (109 아이템)">후기</a></div>
+</div>	    </div>
+	</div>
+
+        </div> <!-- /.row -->
+    </div> <!-- /.container -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <hr>
+            </div>
+        </div>
+    </div>
+    <footer class="site-footer" role="contentinfo">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 text-center">
+  
+                    <p></p>
+                    
+                                            <div class="footer-social-icons">
+                                                                                                                                                                                                                                                                                                                                                                                                        
+                        </div>
+                    
+                </div>
+            </div>
+        </div>
+    </footer>
+
+            <div class="scroll-up">
+            <a href="#"><i class="fa fa-angle-up"></i></a>
+        </div>
+        <!-- Scroll Up -->
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/af2821b0/cloudflare-static/email-decode.min.js"></script><script type='text/javascript' src='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/js/bootstrap.min.js?ver=3.3.5'></script>
+<script type='text/javascript' src='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/js/scripts.js'></script>
+<script type='text/javascript' src='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/js/jquery.fitvids.js'></script>
+<script type='text/javascript' src='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/js/smoothscroll.js'></script>
+<script type='text/javascript' src='http://ms.nala.ga/wp-includes/js/wp-embed.min.js?ver=4.8.5'></script>
+    </body>
+</html>

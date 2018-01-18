@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="profile" href="http://gmpg.org/xfn/11">
+    <link rel="pingback" href="http://ms.nala.ga/xmlrpc.php">
+
+<title>[개발도구] Oracle SQL Developer MS SQL Server Database 사용 | All About MS CCL Contents</title>
+<meta name='robots' content='noindex,follow' />
+
+<!-- All in One SEO Pack 2.4.4 by Michael Torbert of Semper Fi Web Design[276,370] -->
+<meta name="description"  content="3줄 요약 ​​​마이크로소프트 SQL 서버는 마이크로소프트가 1989년 사이베이스(Sybase)를 기반으로 개발한 관계형 데이터베이스입니다. ​모든 자료는 사용 전 ⦁ 후의 솔직한 평을 기록하며 현재 기록된 시세나 ...중략... 내용은 다른 블로거의 포스트를 참고해 주세요. JDBC 모든 정보 입력이 완료되었으면 테스트를 거친 후 접속하면 연결된 데이터베 ...중략... 나열됨을 확인할 수 있습니다. 기타 시스템 이관 TOOL ★자리의 개발도구 다루기RDBMS 부문 : ORACLE SQL Developer MS SQL Sever Database 사용원문 : ★자리의" />
+<meta name="robots" content="index,nofollow" />
+
+<link rel="canonical" href="http://ms.nala.ga/%ea%b0%9c%eb%b0%9c%eb%8f%84%ea%b5%ac-oracle-sql-developer-ms-sql-server-database-%ec%82%ac%ec%9a%a9/" />
+<!-- /all in one seo pack -->
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="All About MS CCL Contents &raquo; 피드" href="http://ms.nala.ga/feed/" />
+<link rel="alternate" type="application/rss+xml" title="All About MS CCL Contents &raquo; 댓글 피드" href="http://ms.nala.ga/comments/feed/" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.3\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.3\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/ms.nala.ga\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.8.5"}};
+			!function(a,b,c){function d(a){var b,c,d,e,f=String.fromCharCode;if(!k||!k.fillText)return!1;switch(k.clearRect(0,0,j.width,j.height),k.textBaseline="top",k.font="600 32px Arial",a){case"flag":return k.fillText(f(55356,56826,55356,56819),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,56826,8203,55356,56819),0,0),c=j.toDataURL(),b!==c&&(k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447),0,0),c=j.toDataURL(),b!==c);case"emoji4":return k.fillText(f(55358,56794,8205,9794,65039),0,0),d=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55358,56794,8203,9794,65039),0,0),e=j.toDataURL(),d!==e}return!1}function e(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i,j=b.createElement("canvas"),k=j.getContext&&j.getContext("2d");for(i=Array("flag","emoji4"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='bootstrap-css-css'  href='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/css/bootstrap.min.css?ver=3.3.5' type='text/css' media='all' />
+<link rel='stylesheet' id='font-awesome-css-css'  href='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/css/font-awesome.min.css?ver=4.4.0' type='text/css' media='all' />
+<link rel='stylesheet' id='shaped-blog-stylesheet-css'  href='http://ms.nala.ga/wp-content/themes/shaped-blog/style.css?ver=4.8.5' type='text/css' media='all' />
+<link rel='stylesheet' id='responsive-css-css'  href='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/css/responsive.css' type='text/css' media='all' />
+<script type='text/javascript' src='http://ms.nala.ga/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
+<script type='text/javascript' src='http://ms.nala.ga/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+<link rel='https://api.w.org/' href='http://ms.nala.ga/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://ms.nala.ga/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://ms.nala.ga/wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='사사기 3장' href='http://ms.nala.ga/%ec%82%ac%ec%82%ac%ea%b8%b0-3%ec%9e%a5/' />
+<link rel='next' title='2015년 2월 일드 순위' href='http://ms.nala.ga/2015%eb%85%84-2%ec%9b%94-%ec%9d%bc%eb%93%9c-%ec%88%9c%ec%9c%84/' />
+<meta name="generator" content="WordPress 4.8.5" />
+<link rel='shortlink' href='http://ms.nala.ga/?p=10240' />
+<link rel="alternate" type="application/json+oembed" href="http://ms.nala.ga/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fms.nala.ga%2F%25ea%25b0%259c%25eb%25b0%259c%25eb%258f%2584%25ea%25b5%25ac-oracle-sql-developer-ms-sql-server-database-%25ec%2582%25ac%25ec%259a%25a9%2F" />
+<link rel="alternate" type="text/xml+oembed" href="http://ms.nala.ga/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fms.nala.ga%2F%25ea%25b0%259c%25eb%25b0%259c%25eb%258f%2584%25ea%25b5%25ac-oracle-sql-developer-ms-sql-server-database-%25ec%2582%25ac%25ec%259a%25a9%2F&#038;format=xml" />
+
+	<style>
+
+		/* Border Color */
+		.btn-social:hover,
+		blockquote,
+		#respond input:focus[type="text"], 
+	    #respond input:focus[type="email"], 
+	    #respond input:focus[type="url"],
+	    #respond textarea:focus,
+	    #comments .comment-reply a:hover
+		{
+			border-color: ;
+		}
+
+		
+		/* Background Color */
+		.scroll-up a,
+		.btn-social:hover,
+		button,
+		input[type="button"],
+		input[type="reset"],
+		input[type="submit"],
+		.navbar-default .navbar-nav .dropdown-menu li a:hover, .dropdown-menu li a:focus, .navbar-default .navbar-nav .dropdown-menu .active a,
+		.pagination>li>a:focus, .pagination>li>a:hover, .pagination>li>span:focus, .pagination>li>span:hover, .pagination li .current,
+		.next-previous-posts .next-post a:hover,
+		.next-previous-posts .previous-post a:hover,
+		.btn-goback,
+		.btn-submit,
+		a.more-link,
+		.featured-post .fa,
+		#comments .comment-reply a:hover,
+		.widget .tagcloud a
+		{
+			background-color: ;
+		}
+
+		
+		/* Color */
+		.text-logo a,
+		.navbar-default .navbar-nav .active a, .navbar-default .navbar-nav .active a:hover, .navbar-default .navbar-nav .active a:focus,
+		.navbar-default .navbar-nav li a:hover, .navbar-default .navbar-nav li a:focus,
+		a:hover,
+    	a:focus,
+		.next-previous-posts .previous-post a,
+		.next-previous-posts .next-post a,
+		.pagination>li>a, .pagination>li>span,
+		#comments .comment-author a:hover, 
+    	#respond .logged-in-as a:hover,
+    	#wp-calendar a,
+    	h2.entry-title a:hover
+		{
+			color: ;
+		}
+
+
+		/* A Color */
+		a{
+			color: ;
+		}
+
+		/* a:hover Color */
+		a:hover,
+		a:focus,
+		a:active,
+		.widget a:hover,
+		.post .post-content .entry-meta ul li a:hover
+		{
+			color: ;
+		}
+
+		/* .featured-post .fa:after*/
+		.featured-post .fa:after{
+			border-color:   transparent ;
+		}
+
+
+		
+
+	</style>
+</head>
+
+<body class="post-template-default single single-post postid-10240 single-format-standard">
+
+    <div id="st-preloader">
+        <div id="pre-status">
+            <div class="preload-placeholder"></div>
+        </div>
+    </div>
+<!-- /Preloader -->
+
+<header id="header">	
+	<div id="trueHeader">
+    	<div class="wrapper">
+            <div class="container">
+            	<!-- Menu -->
+            	<div class="menu_main">
+                	<div class="navbar blogx-navbar navbar-default">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#st-navber-collapse">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+
+                                                            <div class="text-logo">
+                                    <a href="http://ms.nala.ga">All About MS CCL Contents</a>
+                                    <p>All About MS CCL Contents</p>
+                                </div><!-- /Logo -->
+                                                    </div>
+                      
+                        <div id="st-navber-collapse" class="navbar-collapse collapse pull-right">
+                             
+                        </div>
+                    </div>
+            	</div><!-- end menu -->
+        	</div> <!-- /.container -->
+    	</div>
+	</div>
+	<DIV class='ads_adsense_img' style='margin:40px 0px 40px 0px;'>
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<!-- only display -->
+	<ins class="adsbygoogle"
+	     style="display:block"
+	     data-ad-client="ca-pub-8393857339019314"
+	     data-ad-slot="7474886381"
+	     data-ad-format="auto"></ins>
+	<script>
+	(adsbygoogle = window.adsbygoogle || []).push({});
+	</script>
+	</DIV>	
+
+</header>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div id="primary" class="content-area">
+                    <main id="main" class="site-main" role="main">
+
+                        
+                                <article id="post-10240" class="post-10240 post type-post status-publish format-standard hentry category-uncategorized tag-database tag-developer tag-ms tag-oracle tag-server tag-sql tag-16707 tag-9715">
+    <header class="entry-header">
+        
+        
+    </header> <!--/.entry-header -->
+
+    <div class="clearfix post-content media">
+
+        <h2 class="entry-title">
+            [개발도구] Oracle SQL Developer MS SQL Server Database 사용        </h2> <!-- //.entry-title -->
+
+        <div class="clearfix entry-meta">
+            
+            <ul class="list-inline">
+                <li>
+                    <span class="author vcard">
+                        By <a class="url fn n" href="http://ms.nala.ga/author/admin/">admin</a>                    </span>
+                </li>
+                <li>
+                    on <span class="posted-on">1월 13, 2018</span>
+                </li>
+                                    <li>
+                        in <span class="posted-in">
+                            <a href="http://ms.nala.ga/category/uncategorized/" rel="category tag">미분류</a>                        </span>
+                    </li>
+                            </ul>
+                </div> <!--/.entry-meta -->
+        
+        <div class="entry-summary">
+            <p><img src='http://cfile24.uf.tistory.com/image/9986D3335A278ADF15C8E3' style='max-width:250px;min-width:0px;' onError='this.style.display="none"' /></p>
+<h1>3줄 요약 </h1>
+<div style='color:#fff;background-color:#000;border-radius:10px;'>
+<ol>
+<li><span>​​​마이크로소프트 SQL 서버는 마이크로소프트가 1989년 사이베이스(Sybase)를 기반으로 개발한 관계형 데이터베이스입니다.</span></li>
+<li><span>​모든 자료는 사용 전 ⦁ 후의 솔직한 평을 기록하며 현재 기록된 시세나 <small>&#8230;중략&#8230;</small>  내용은 다른 블로거의 포스트를 참고해 주세요.          JDBC</span></li>
+<li><span>모든 정보 입력이 완료되었으면 테스트를 거친 후 접속하면 연결된 데이터베 <small>&#8230;중략&#8230;</small>  나열됨을 확인할 수 있습니다.         기타 시스템 이관 TOOL</span></li>
+</ol>
+</div>
+<p><span id="more-10240"></span></p>
+<p><iframe src='http://ad.selfhow.com/rd' width='100%' border=0 frameborder=0 style='height:auto;width:100%'></iframe></p>
+<hr />
+<p></p>
+<table attr_no_border_tbl="1" border="1" cellpadding="0" cellspacing="0" class="__se_tbl" style="border-width: 1px 1px 0px 0px; border-top-style: dashed; border-right-style: dashed; border-bottom-style: initial; border-left-style: initial; border-top-color: rgb(199, 199, 199); border-right-color: rgb(199, 199, 199); border-bottom-color: initial; border-left-color: initial; border-image: initial;">
+<tbody>
+<tr>
+<td class="" style="width: 810px; height: 26px; background-color: rgb(255, 255, 255); border-width: 0px 0px 1px 1px; border-top-style: initial; border-right-style: initial; border-bottom-style: dashed; border-left-style: dashed; border-top-color: initial; border-right-color: initial; border-bottom-color: rgb(199, 199, 199); border-left-color: rgb(199, 199, 199); border-image: initial;">
+<p style="line-height: 1.5;"><span style='font-family: "나눔고딕",NanumGothic;'><span style="font-size: 12pt;"><strong><span style="color: rgb(255, 0, 0); font-size: 12pt;">★</span><span style="font-size: 12pt;">자리</span></strong>의 </span></span><span style="color: rgb(37, 37, 37); font-family: 나눔고딕, NanumGothic; font-size: 16px;"><span style="font-size: 12pt;"><span style="color: rgb(0, 158, 37); font-size: 12pt;"><b>개발도구 </b><span style="color: rgb(0, 0, 0);">다루기</span></span></span></span></p>
+<p style="line-height: 1.5;"><strong style="font-family: 나눔고딕, NanumGothic; font-size: 14pt;"><span style="color: rgb(99, 99, 99); font-size: 14pt;">RDBMS </span></strong><span style="font-family: 나눔고딕, NanumGothic; font-size: 14pt;">부문 : </span><strong style="font-family: 나눔고딕, NanumGothic; font-size: 14pt;"><span style="color: rgb(58, 50, 195); font-size: 14pt;">ORACLE SQL Developer<span style="font-family: 나눔고딕, NanumGothic;">  <span style="color: rgb(255, 0, 0);">MS SQL Sever</span> <span style="color: rgb(0, 158, 37);">Database</span> <span style="color: rgb(0, 0, 0);">사용</span></span></span></strong></p>
+<p style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; font-size: 10pt;">원문 : </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 10pt; color: rgb(255, 0, 0);">★</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 10pt;">자리의 달콤한 꿈 이야기</span></p>
+<p style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; font-size: 10pt;">글 : <span style="color: rgb(255, 0, 0); font-size: 10pt;">별</span>자리 ｜ 이미지 : ORACLE SQL Developer MS SQL Server Database 사용</span></p>
+</td>
+<td style="width: 124px; height: 26px; background-color: rgb(255, 255, 255); border-width: 0px 0px 1px 1px; border-top-style: initial; border-right-style: initial; border-bottom-style: dashed; border-left-style: dashed; border-top-color: initial; border-right-color: initial; border-bottom-color: rgb(199, 199, 199); border-left-color: rgb(199, 199, 199); border-image: initial;">
+<p style="text-align: center; clear: none; float: none;"><span class="imageblock" style="display:inline-block;width:300px;;height:auto;max-width:100%"><img filemime="image/gif" filename="개발-도구N.gif" height="80" src="http://cfile24.uf.tistory.com/image/9986D3335A278ADF15C8E3" width="300"/></span></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<p style="text-align: left; clear: none; float: none;"><span class="imageblock" style="display:inline-block;width:936px;;height:auto;max-width:100%"><img filemime="image/jpeg" filename="라인.png" height="13" src="http://cfile10.uf.tistory.com/image/99F201335A278AC3250C87" width="936"/></span></p>
+<p><span style="font-family: 나눔고딕, NanumGothic;">​</span></p>
+<p style="text-align: left; clear: none; float: none;"><span class="imageblock" style="display:inline-block;width:936px;;height:auto;max-width:100%"><img filemime="image/jpeg" filename="대표.png" height="580" src="http://cfile22.uf.tistory.com/image/99C8D4335A278A9B1DE18F" width="936"/></span></p>
+<p></p>
+<p></p>
+<p class="0" style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">JDBC</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">는 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">Java database connectivity</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">의 약어로 이 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">API(application programming interfaces) </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">세트는 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">ODBC</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">와 유사하게 자바 애플릿이 데이터베이스를 다룰 수 있는 표준적인 방법을 제공합니다</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">.</span></p>
+<p style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">​</span></p>
+<p></p>
+<p style="line-height: 1.5;"><span style='font-family: "나눔고딕",NanumGothic;'><br /></span></p>
+<p style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic;"><br /></span></p>
+<p style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic;">​</span></p>
+<p style="line-height: 1.5; text-align: left; clear: none; float: none;"><span class="imageblock" style="display:inline-block;width:936px;;height:auto;max-width:100%"><img filemime="image/jpeg" filename="기본정보.png" height="43" src="http://cfile8.uf.tistory.com/image/996C53335A278B071361D5" width="936"/></span></p>
+<p style="line-height: 1.5; text-align: left; clear: none; float: none;"></p>
+<p style="line-height: 1.5;">
+<table attr_no_border_tbl="1" border="1" cellpadding="0" cellspacing="0" class="__se_tbl" style="border-width: 1px 1px 0px 0px; border-top-style: dashed; border-right-style: dashed; border-bottom-style: initial; border-left-style: initial; border-top-color: rgb(199, 199, 199); border-right-color: rgb(199, 199, 199); border-bottom-color: initial; border-left-color: initial; border-image: initial;">
+<tbody>
+<tr>
+<td class="" colspan="2" rowspan="1" style="width: 934px; height: 7px; background-color: rgb(255, 255, 255); border-width: 0px 0px 1px 1px; border-top-style: initial; border-right-style: initial; border-bottom-style: dashed; border-left-style: dashed; border-top-color: initial; border-right-color: initial; border-bottom-color: rgb(199, 199, 199); border-left-color: rgb(199, 199, 199); border-image: initial;">
+<p style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; font-size: 10pt;"> <span style="font-family: 나눔고딕; color: rgb(172, 172, 172);"><span style="font-family: 나눔고딕, NanumGothic; font-size: 10pt;">──</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 10pt;">─</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 10pt;">───────────────────────────────────────────────────────────</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 10pt;">──────────</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 10pt;">──</span></span></span></p>
+</td>
+</tr>
+<tr>
+<td class="" style="width: 237px; height: 27px; background-color: rgb(255, 255, 255); border-width: 0px 0px 1px 1px; border-top-style: initial; border-right-style: initial; border-bottom-style: dashed; border-left-style: dashed; border-top-color: initial; border-right-color: initial; border-bottom-color: rgb(199, 199, 199); border-left-color: rgb(199, 199, 199); border-image: initial;">
+<p style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; font-size: 10pt;">  <b>명 칭</b></span></p>
+</td>
+<td class="" style="width: 697px; height: 27px; background-color: rgb(255, 255, 255); border-width: 0px 0px 1px 1px; border-top-style: initial; border-right-style: initial; border-bottom-style: dashed; border-left-style: dashed; border-top-color: initial; border-right-color: initial; border-bottom-color: rgb(199, 199, 199); border-left-color: rgb(199, 199, 199); border-image: initial;">
+<p style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; font-size: 10pt;">  ORACLE 11g</span></p>
+</td>
+</tr>
+<tr>
+<td class="" rowspan="1" style="width: 237px; height: 26px; background-color: rgb(255, 255, 255); border-width: 0px 0px 1px 1px; border-top-style: initial; border-right-style: initial; border-bottom-style: dashed; border-left-style: dashed; border-top-color: initial; border-right-color: initial; border-bottom-color: rgb(199, 199, 199); border-left-color: rgb(199, 199, 199); border-image: initial;">
+<p style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; font-size: 10pt;"><span style="font-family: 나눔고딕, NanumGothic;">  <b>개</b></span><b><span style="font-family: 나눔고딕, NanumGothic;">발</span><span style="font-family: 나눔고딕, NanumGothic;">자</span></b></span></p>
+</td>
+<td class="" rowspan="1" style="width: 697px; height: 26px; background-color: rgb(255, 255, 255); border-width: 0px 0px 1px 1px; border-top-style: initial; border-right-style: initial; border-bottom-style: dashed; border-left-style: dashed; border-top-color: initial; border-right-color: initial; border-bottom-color: rgb(199, 199, 199); border-left-color: rgb(199, 199, 199); border-image: initial;">
+<p style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; font-size: 10pt;">  ORACLE</span></p>
+</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1" style="width: 237px; height: 28px; background-color: rgb(255, 255, 255); border-width: 0px 0px 1px 1px; border-top-style: initial; border-right-style: initial; border-bottom-style: dashed; border-left-style: dashed; border-top-color: initial; border-right-color: initial; border-bottom-color: rgb(199, 199, 199); border-left-color: rgb(199, 199, 199); border-image: initial;"><b><span style="font-family: 나눔고딕, NanumGothic;">  <span style="font-size: 10pt;">운영 </span></span><span style="font-family: 나눔고딕, NanumGothic; font-size: 10pt;">체제</span></b></td>
+<td class="" colspan="1" rowspan="1" style="width: 697px; height: 28px; background-color: rgb(255, 255, 255); border-width: 0px 0px 1px 1px; border-top-style: initial; border-right-style: initial; border-bottom-style: dashed; border-left-style: dashed; border-top-color: initial; border-right-color: initial; border-bottom-color: rgb(199, 199, 199); border-left-color: rgb(199, 199, 199); border-image: initial;"><span style="font-family: 나눔고딕, NanumGothic; font-size: 10pt;">  크로스 플랫폼</span></td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1" style="width: 237px; height: 26px; background-color: rgb(255, 255, 255); border-width: 0px 0px 1px 1px; border-top-style: initial; border-right-style: initial; border-bottom-style: dashed; border-left-style: dashed; border-top-color: initial; border-right-color: initial; border-bottom-color: rgb(199, 199, 199); border-left-color: rgb(199, 199, 199); border-image: initial;"><span style="font-family: 나눔고딕, NanumGothic;"><b>  <span style="font-size: 10pt;">종 류</span></b></span></td>
+<td class="" colspan="1" rowspan="1" style="width: 697px; height: 26px; background-color: rgb(255, 255, 255); border-width: 0px 0px 1px 1px; border-top-style: initial; border-right-style: initial; border-bottom-style: dashed; border-left-style: dashed; border-top-color: initial; border-right-color: initial; border-bottom-color: rgb(199, 199, 199); border-left-color: rgb(199, 199, 199); border-image: initial;"><span style="font-family: 나눔고딕, NanumGothic; font-size: 10pt;">  관계형 데이터베이스</span></td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1" style="width: 237px; height: 26px; background-color: rgb(255, 255, 255); border-width: 0px 0px 1px 1px; border-top-style: initial; border-right-style: initial; border-bottom-style: dashed; border-left-style: dashed; border-top-color: initial; border-right-color: initial; border-bottom-color: rgb(199, 199, 199); border-left-color: rgb(199, 199, 199); border-image: initial;">
+<p style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; font-size: 10pt;">  <b>라이선스</b></span></p>
+</td>
+<td class="" colspan="1" rowspan="1" style="width: 697px; height: 26px; background-color: rgb(255, 255, 255); border-width: 0px 0px 1px 1px; border-top-style: initial; border-right-style: initial; border-bottom-style: dashed; border-left-style: dashed; border-top-color: initial; border-right-color: initial; border-bottom-color: rgb(199, 199, 199); border-left-color: rgb(199, 199, 199); border-image: initial;">
+<p style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; font-size: 10pt;">  상용 라이선스</span></p>
+</td>
+</tr>
+<tr>
+<td class="" colspan="2" rowspan="1" style="width: 934px; height: 5px; background-color: rgb(255, 255, 255); border-width: 0px 0px 1px 1px; border-top-style: initial; border-right-style: initial; border-bottom-style: dashed; border-left-style: dashed; border-top-color: initial; border-right-color: initial; border-bottom-color: rgb(199, 199, 199); border-left-color: rgb(199, 199, 199); border-image: initial;">
+<p style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; font-size: 10pt;"> <span style="color: rgb(172, 172, 172);"><span style="font-family: 나눔고딕, NanumGothic; font-size: 10pt;">──</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 10pt;">─</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 10pt;">───────────────────────────────────────────────────────────</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 10pt;">──────────</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 10pt;">──</span></span></span></p>
+</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1" style="width: 237px; height: 25px; background-color: rgb(255, 255, 255); border-width: 0px 0px 1px 1px; border-top-style: initial; border-right-style: initial; border-bottom-style: dashed; border-left-style: dashed; border-top-color: initial; border-right-color: initial; border-bottom-color: rgb(199, 199, 199); border-left-color: rgb(199, 199, 199); border-image: initial;">
+<p style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; font-size: 10pt;">  <strong><span style="font-size: 10pt;">오라클 공식 사이트</span></strong></span></p>
+</td>
+<td class="" colspan="1" rowspan="1" style="width: 697px; height: 25px; background-color: rgb(255, 255, 255); border-width: 0px 0px 1px 1px; border-top-style: initial; border-right-style: initial; border-bottom-style: dashed; border-left-style: dashed; border-top-color: initial; border-right-color: initial; border-bottom-color: rgb(199, 199, 199); border-left-color: rgb(199, 199, 199); border-image: initial;">
+<p style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; font-size: 10pt;">  <span style='color: rgb(255, 255, 255); font-family: "나눔고딕",NanumGothic; background-color: rgb(51, 51, 204);'><a class="con_link" href="https://www.oracle.com/kr/index.html" target="_blank"><strong><span style="color: rgb(255, 255, 255); font-family: 나눔고딕, NanumGothic; font-size: 10pt;"> ORACLE </span></strong></a></span></span></p>
+</td>
+</tr>
+<tr>
+<td class="" colspan="2" rowspan="1" style="width: 934px; height: 5px; background-color: rgb(255, 255, 255); border-width: 0px 0px 1px 1px; border-top-style: initial; border-right-style: initial; border-bottom-style: dashed; border-left-style: dashed; border-top-color: initial; border-right-color: initial; border-bottom-color: rgb(199, 199, 199); border-left-color: rgb(199, 199, 199); border-image: initial;">
+<p style="line-height: 1.5;"><span style="color: rgb(154, 154, 154);"> </span><span style="color: rgb(154, 154, 154);">───</span><span style="color: rgb(154, 154, 154);">──<span style="color: rgb(154, 154, 154);">─</span></span><span style="color: rgb(154, 154, 154);">─</span><span style="color: rgb(154, 154, 154);">───</span><span style="color: rgb(154, 154, 154);">─</span><span style="color: rgb(154, 154, 154);">───</span><span style="color: rgb(154, 154, 154);">─</span><span style="color: rgb(154, 154, 154);"><span style="color: rgb(154, 154, 154);">─</span><span style="color: rgb(154, 154, 154);">──</span></span><span style="color: rgb(154, 154, 154);">──</span><span style="color: rgb(154, 154, 154);">─</span><span style="color: rgb(154, 154, 154);">───</span><span style="color: rgb(154, 154, 154);">─</span><span style="color: rgb(154, 154, 154);">─</span><span style="color: rgb(154, 154, 154);">──</span><span style="color: rgb(154, 154, 154);">─</span><span style="color: rgb(154, 154, 154);">───</span><span style="color: rgb(154, 154, 154);">─</span><span style="color: rgb(154, 154, 154);">─</span><span style="color: rgb(154, 154, 154);">──</span><span style="color: rgb(154, 154, 154);">─</span><span style="color: rgb(154, 154, 154);">───</span><span style="color: rgb(154, 154, 154);">─</span><span style="color: rgb(154, 154, 154);">─</span><span style="color: rgb(154, 154, 154);">──</span><span style="color: rgb(154, 154, 154);">─</span><span style="color: rgb(154, 154, 154);">───</span><span style="color: rgb(154, 154, 154);">─</span><span style="color: rgb(154, 154, 154);">─</span><span style="color: rgb(154, 154, 154);">──</span><span style="color: rgb(154, 154, 154);">─</span><span style="color: rgb(154, 154, 154);">───</span><span style="color: rgb(154, 154, 154);">─</span><span style="color: rgb(154, 154, 154);">─</span><span style="color: rgb(154, 154, 154);">──</span><span style="color: rgb(154, 154, 154);">─</span><span style="color: rgb(154, 154, 154);">───</span><span style="color: rgb(154, 154, 154);">─</span><span style="color: rgb(154, 154, 154);">─</span><span style="color: rgb(154, 154, 154);">─</span><span style="color: rgb(154, 154, 154);">─</span><span style="color: rgb(154, 154, 154);"><span style="color: rgb(154, 154, 154);">─</span>──</span><span style="color: rgb(154, 154, 154);">─</span><span style="color: rgb(154, 154, 154);">─</span><span style="color: rgb(154, 154, 154);">─</span><span style="color: rgb(154, 154, 154);">───</span></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<p><span style='font-family: "나눔고딕",NanumGothic;'><br /></span></p>
+<p style="line-height: 1.5;"><span style='font-family: "나눔고딕",NanumGothic;'><br /></span></p>
+<p style="line-height: 1.5;"><span style='font-family: "나눔고딕",NanumGothic;'><br /></span></p>
+<p style="line-height: 1.5;"><span style='font-family: "나눔고딕",NanumGothic;'>​</span></p>
+<p style="line-height: 1.5; text-align: left; clear: none; float: none;"><span class="imageblock" style="display:inline-block;width:936px;;height:auto;max-width:100%"><img filemime="image/jpeg" filename="핵심정보.png" height="43" src="http://cfile3.uf.tistory.com/image/998E02335A278B1D217430" width="936"/></span></p>
+<p style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic;">​</span><span style="font-family: 나눔고딕, NanumGothic;">​</span></p>
+<p class="0" style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">마이크로소프트 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">SQL </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">서버</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">는 마이크로소프트가 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">1989</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">년 사이베이스</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">(Sybase)</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">를 기반으로 개발한 관계형 데이터베이스입니다.</span></p>
+<p class="0" style="line-height: 1.5;"><span style="font-family:맑은 고딕;mso-fareast-font-family:맑은 고딕;"><br /></span></p>
+<p class="0" style="line-height: 1.5;"><span style="font-family:맑은 고딕;mso-fareast-font-family:맑은 고딕;"><br /></span></p>
+<p class="0" style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;"><b>역사</b></span></p>
+<p class="0" style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">■ 1989</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">년  :  마이크로소프트 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">SQL </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">서버 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">1.0</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;"> 출시</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">.</span></p>
+<p class="0" style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;"><span style="font-size: 11pt; font-family: 나눔고딕, NanumGothic;">■ </span>1991</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">년  :  마이크로소프트 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">SQL </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">서버 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">1.1</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;"> 출시</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">.</span></p>
+<p class="0" style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;"><span style="font-size: 11pt; font-family: 나눔고딕, NanumGothic;">■ </span>1993</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">년  :  마이크로소프트 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">SQL </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">서버 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">4.2</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;"> 출시</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">.</span></p>
+<p class="0" style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;"><span style="font-size: 11pt; font-family: 나눔고딕, NanumGothic;">■ </span>1995</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">년  :  마이크로소프트 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">SQL </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">서버 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">6.0 </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">출시</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">.</span></p>
+<p class="0" style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;"><span style="font-size: 11pt; font-family: 나눔고딕, NanumGothic;">■ </span>1996</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">년  :  마이크로소프트 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">SQL </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">서버 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">6.5</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;"> 출시</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">.</span></p>
+<p class="0" style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;"><span style="font-size: 11pt; font-family: 나눔고딕, NanumGothic;">■ </span>1998</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">년  :  마이크로소프트 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">SQL </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">서버 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">7.0</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;"> 출시</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">.</span></p>
+<p class="0" style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;"><span style="font-size: 11pt; font-family: 나눔고딕, NanumGothic;">■ </span>2000</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">년  :  마이크로소프트 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">SQL </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">서버 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">2000</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;"> 출시</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">.</span></p>
+<p class="0" style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;"><span style="font-size: 11pt; font-family: 나눔고딕, NanumGothic;">■ </span>2005</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">년  :  마이크로소프트 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">SQL </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">서버 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">2005</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;"> 출시.</span></p>
+<p class="0" style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;"><span style="font-size: 11pt; font-family: 나눔고딕, NanumGothic;">■ </span>2008</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">년  :  마이크로소프트 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">SQL </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">서버 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">2008 </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">출시</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">.</span></p>
+<p class="0" style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;"><span style="font-size: 11pt; font-family: 나눔고딕, NanumGothic;">■ </span>2012</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">년  :  마이크로소프트 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">SQL </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">서버 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">2012</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;"> 출시</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">.</span></p>
+<p class="0" style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;"><span style="font-size: 11pt; font-family: 나눔고딕, NanumGothic;">■ </span>2014</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">년  :  마이크로소프트 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">SQL </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">서버 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">2014</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;"> 출시</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">.</span></p>
+<p class="0" style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;"><span style="font-size: 11pt; font-family: 나눔고딕, NanumGothic;">■ </span>2016</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">년  :  마이크로소프트 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">SQL </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">서버 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">2016</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;"> 출시</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">.</span></p>
+<p class="0" style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;"><span style="font-size: 11pt; font-family: 나눔고딕, NanumGothic;">■ </span>2017</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">년  :  마이크로소프트 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">SQL </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">서버 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">2017</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;"> 출시</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">.</span></p>
+<p style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; font-size: 14.6667px;"><br /></span></p>
+<p style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; font-size: 14.6667px;"><br /></span></p>
+<p style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;"><b>제품군</b></span></p>
+<p class="0" style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">■ </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">엔터프라이즈 에디션</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">(enterprise edition)</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;"> </span></p>
+<p class="0" style="line-height: 1.5;"><!-- Removed Tag Filtered (o:p) --></p>
+<p class="0" style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">&#8216;</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">AlwaysOn&#8217;</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">이라고 불리는 고가용성은 물론 보안</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">, </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">복제</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">, </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">데이터 웨어하우징 등과 관련하여 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">MS SQL </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">서버가 포함하고 있는 대부분의 기능들을 모두 제공한다</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">. </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">확장성과 성능이 가장 뛰어난 제품군으로 </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">대규모의 데이터 센터를 구축하거나</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">, </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">높은 성능의 데이터 웨어하우스 솔루션을 개발하는 데 주로 활용된다</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">.</span></p>
+<p class="0" style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;"> </span><!-- Removed Tag Filtered (&lt;!==[if !supportEmptyParas]==&gt;) --><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;"> </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;"> </span><!-- Removed Tag Filtered (o:p) --></p>
+<p class="0" style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">■ </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">비즈니스 인텔리젼스 에디션</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">(business intelligence edition)</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;"> </span></p>
+<p class="0" style="line-height: 1.5;"><!-- Removed Tag Filtered (o:p) --></p>
+<p class="0" style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">엔터프라이즈 에디션보다 제공되는 기능은 적지만</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">, </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">안전하고 관리하기 쉬운 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">BI(Business Intelligence) </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">솔루션을 개발하기에 충분하며 </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">데이터 탐색과 시각화를 기반으로 하는 브라우저</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">, </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">데이터 분해 및 통합 관리에 뛰어난 기능을 제공한다</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">.</span></p>
+<p class="0" style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;"> </span><!-- Removed Tag Filtered (&lt;!==[if !supportEmptyParas]==&gt;) --><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;"> </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;"> </span><!-- Removed Tag Filtered (o:p) --></p>
+<p class="0" style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">■ </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">스탠다드 에디션</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">(standard edition)</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;"> </span></p>
+<p class="0" style="line-height: 1.5;"><!-- Removed Tag Filtered (o:p) --></p>
+<p class="0" style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">기본 데이터 관리는 물론 클라우드용 공동 개발 도구 등을 지원하므로 최소한의 자원으로 데이터베이스 관리 기능을 제공하고자 할 때 적합하며 </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">엔터프라이즈 에디션이나 비즈니스 인텔리젼스 에디션을 사용하는 조직보다 상대적으로 작은 조직에서 주로 활용된다</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">.</span></p>
+<p class="0" style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;"> </span><!-- Removed Tag Filtered (&lt;!==[if !supportEmptyParas]==&gt;) --><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;"> </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;"> </span><!-- Removed Tag Filtered (o:p) --></p>
+<p class="0" style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">■ </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">익스프레스 에디션</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">(express edition)</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;"> </span></p>
+<p class="0" style="line-height: 1.5;"><!-- Removed Tag Filtered (o:p) --></p>
+<p class="0" style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">SQL </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">서버의 확장형 버전으로</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">, SQL </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">서버의 기본 기능을 제공하면서도 무료로 배포되기 때문에</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;"> </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">데스크톱이나 소규모의 서버에서 데이터베이스 관리 기능을 이용한 응용 프로그램을 분석하고 개발하는 데 주로 활용된다. </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">설치가 빠르고 적은 수의 필수 구성 요소를 포함하여</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">, </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">개발자나 취미로 데이터베이스 기반의 응용 프로그램을 개발하고자 하는 사용자들에게 적합하다</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">.</span></p>
+<p class="0"><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;"> </span><!-- Removed Tag Filtered (&lt;!==[if !supportEmptyParas]==&gt;) --><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;"> </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;"> </span><!-- Removed Tag Filtered (o:p) --></p>
+<p class="0"></p>
+<p class="0"></p>
+<p class="0"></p>
+<p></p>
+<p style="text-align: left; clear: none; float: none;"><span class="imageblock" style="display:inline-block;width:936px;;height:auto;max-width:100%"><img filemime="image/jpeg" filename="관련정보.png" height="43" src="http://cfile4.uf.tistory.com/image/998936335A278B450BBF84" width="936"/></span></p>
+</p>
+<p class="0" style="line-height: 1.5;"><b><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;"><br /></span></b></p>
+<p class="0" style="line-height: 1.5;"><b><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">고가용성  </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">&lt; </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">高可用性 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">, HA , High Availability &gt;</span></b></p>
+<p class="0" style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">서버와 네트워크</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">, </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">프로그램 등의 정보 시스템이 상당히 오랜 기간 동안 지속적으로 정상 운영이 가능한 성질을 말한다</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">. </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">고</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">(</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">高</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">)</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">가용성이란 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">&#8220;</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">가용성이 높다</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">&#8220;</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">는 뜻으로서</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">, &#8220;</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">절대 고장 나지 않음</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">&#8220;</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">을 의미한다</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">. </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">고가용성은 흔히 가용한 시간의 비율을 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">99%, 99.9% </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">등과 같은 퍼센티지로 표현하는데</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">, 1</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">년에 계획 된 것 제외 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">5</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">분 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">15</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">초 이하의 장애시간을 허용한다는 의미의 파이브 나인스</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">(5 nines), </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">즉 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">99.999%</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">는 매우 높은 수준으로 고품질의 데이터센터에서 목표로 한다고 알려져 있다</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">. </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">하나의 정보 시스템에 고가용성이 요구된다면</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">, </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">그 시스템의 모든 부품과 구성 요소들은 미리 잘 설계되어야 하며</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">, </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">실제로 사용되기 전에 완전하게 시험되어야 한다</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">.</span></p>
+<p class="0" style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">고가용성 솔루션</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">(HACMP)</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">을 이용하면</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">, </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">각 시스템 간에 공유 디스크를 중심으로 집단화하여 클러스터로 엮어지게 만들 수 있다</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">. </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">동시에 다수의 시스템을 클러스터로 연결할 수 있지만 주로 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">2</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">개의 서버를 연결하는 방식을 많이 사용한다</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">. </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">만약 클러스터로 묶인 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">2</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">개의 서버 중 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">1</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">대의 서버에서 장애가 발생할 경우</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">, </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">다른 서버가 즉시 그 업무를 대신 수행하므로</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">, </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">시스템 장애를 불과 몇 초만에 복구할 수 있다</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">. </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">고가용성 저장 장치로 레이드</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">(RAID) </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">방식과 샌</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">(SAN) </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">방식이 많이 이용되고 있다</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">.</span></p>
+<p class="0" style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;"> </span><!-- Removed Tag Filtered (&lt;!==[if !supportEmptyParas]==&gt;) --><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;"> </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;"> </span><!-- Removed Tag Filtered (o:p) --></p>
+<p class="0" style="line-height: 1.5;"><b><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">마이크로소프트 코퍼레이션  </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">&lt; Microsoft Corporation &gt;</span></b></p>
+<p class="0" style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">미국의 세계 최대의 다국적 소프트웨어 및 하드웨어 기업이다</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">. </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">기업명의 공식 약칭은 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">MS</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">이나</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">, </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">대한민국에서는 마소로도 불린다</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">.</span></p>
+<p class="0" style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;"> </span><!-- Removed Tag Filtered (&lt;!==[if !supportEmptyParas]==&gt;) --><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;"> </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;"> </span><!-- Removed Tag Filtered (o:p) --></p>
+<p class="0" style="line-height: 1.5;"><b><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">사이베이스  </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">&lt; Sybase &gt;</span></b></p>
+<p class="0" style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">1984</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">년 설립된 관계형 데이터베이스 관리 시스템 전문 기업 또는 그 제품이다</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">. </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">사이베이스 회사는 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">2010</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">년 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">5</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">월 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">SAP</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">에 인수되었다</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">. </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">사이베이스 제품의 최신 버전은 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">Sybase ASE</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">라고 불린다</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">. ASE</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">는 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">Adaptive Server Enterprise</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">의 약자이다</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">.</span></p>
+<p class="0" style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">1989</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">년 마이크로소프트가 개발한 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">SQL </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">서버 버전 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">1.0</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">은 사이베이스를 기반으로 개발한 관계형 데이터베이스로서 그 구조가 사이베이스와 매우 유사하다</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">. </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">그 이후에도 줄곧 마이크로소프트 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">SQL</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">은 사이베이스와 유사한 구조를 유지했으나</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">, </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">버전 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">6.0 </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">이후 제품의 성능을 대폭 개선하면서 구조가 많이 달라 지게 되었다</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">.</span></p>
+<p class="0" style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;"><br /></span></p>
+<p class="0" style="line-height: 1.5;"><b><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">소스포지   </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">&lt; SourceForge.net &gt;</span></b></p>
+<p class="0" style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">소프트웨어 개발자들을 위해 열려있는</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">, </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">오픈 소스 소프트웨어 개발관리를 위한 웹사이트이다</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">. </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">중앙에 집중된 개발관리 시스템으로서</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">, </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">또한 일종의 소스 코드 저장소로서 동작한다</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">. </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">현재 지크넷이 소스포지</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">.</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">넷을 운영하고 있다</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">. (</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">이 회사의 이전 이름은 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">VA </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">소프트웨어이다</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">.) </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">이 회사는 소스포지</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">.</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">넷 웹사이트를 위해 소스포지 소프트웨어의 오픈 소스 버전 중 가장 마지막 버전에서 분기된 버전을 돌리고 있다</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">. </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">매우 많은 수의 오픈 소스 프로젝트들이 이 사이트에서 호스팅되고 있다</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">. 2007</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">년 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">8</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">월 현재 프로젝트 수는 무려 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">15</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">만 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">5585</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">개이고</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">, </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">등록 사용자 수는 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">168</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">만 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">8777</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">명이다</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">. </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">비록 개발이 중단된 프로젝트나 일인 프로젝트도 호스팅하고 있지만 말이다</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">.</span></p>
+<p class="0" style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">소스포지</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">.</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">넷은</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">, </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">지난 수 년에 걸쳐 자유 소프트웨어 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">/ </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">오픈 소스 소프트웨어 개발자들에게 호스팅 서비스와 개발툴들을 무료로 지원해 주고 있다</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">. </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">이러한 서비스 때문에</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">, </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">개발자 커뮤니티에서 인기가 높다</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">.</span></p>
+<p class="0" style="line-height: 1.5;">
+<p class="0" style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">소스포지</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">.</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">넷과 비슷한 서비스를 제공하는 사이트로서 루비포지</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">, </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">티그리스</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">.</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">옥</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">, </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">바운티소스</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">, </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">베를리오스</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">, </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">자바포지</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">, </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">그누 사바나 등이 있다</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">.</span></p>
+<p class="0" style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;"><br /></span></p>
+<p class="0" style="line-height: 1.5;"><b><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">시스템 마이그레이션  </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">&lt; system migration &gt;</span></b></p>
+<p class="0" style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">명령어 집합이나 프로그램의 이관을 동반한다</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">. </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">이를테면</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">, PLC(</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">프로그래머블 로직 컨트롤러</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">) </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">프로그램들을 한 플랫폼에서 다른 플랫폼으로 이관하면서 리엔지니어링을 최소화한다</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">.</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;"> </span></p>
+<p class="0" style="line-height: 1.5;"><!-- Removed Tag Filtered (o:p) --></p>
+<p class="0" style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">시스템 이관은 오래된 시스템을 새로운 시스템으로 대체하는 동안 다운타임을 동반할 수 있다</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">.</span></p>
+<p class="0" style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">메인프레임 컴퓨터에서 클라우드 컴퓨팅 플랫폼과 같이 더 개방된 시스템으로 이관할 수도 있다</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">. </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">이는 비용 절약적인 측면에서 수행된다</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">.</span></p>
+<p class="0" style="line-height: 1.5;">
+<p class="0" style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">마이그레이션은 하드웨어를 더 이상 이용하지 못할 때에 필요할 수도 있다</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">.</span></p>
+<p class="0" style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;"><br /></span></p>
+<p class="0" style="line-height: 1.5;"><b><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">MySQL </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">워크벤치  </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">&lt; MySQL Workbench &gt;</span></b></p>
+<p class="0" style="line-height: 1.5;">
+<p class="0" style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">SQL </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">개발과 관리</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">, </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">데이터베이스 설계</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">, </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">생성 그리고 유지를 위한 단일 개발 통합 환경을 제공하는 비주얼 데이터베이스 설계 도구이다</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">. fabFORCE.NET</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">의 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">DBDesigner4</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">의 후속 판이며</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">, </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">이전 소프트웨어 패키지인 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">MySQL GUI </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">툴즈 번들을 대체한 것이다</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">.</span></p>
+<div></div>
+<p></p>
+<table attr_no_border_tbl="1" border="1" cellpadding="0" cellspacing="0" class="__se_tbl" style="border-width: 1px 1px 0px 0px; border-top-style: dashed; border-right-style: dashed; border-bottom-style: initial; border-left-style: initial; border-top-color: rgb(199, 199, 199); border-right-color: rgb(199, 199, 199); border-bottom-color: initial; border-left-color: initial; border-image: initial;">
+<tbody>
+<tr>
+<td class="" style="width: 591px; height: 18px; background-color: rgb(214, 212, 235); border-width: 0px 0px 1px 1px; border-top-style: initial; border-right-style: initial; border-bottom-style: dashed; border-left-style: dashed; border-top-color: initial; border-right-color: initial; border-bottom-color: rgb(199, 199, 199); border-left-color: rgb(199, 199, 199); border-image: initial;">
+<p style="line-height: 1.5;"> </p>
+<p style="line-height: 1.5;"><span style='font-family: "나눔고딕",NanumGothic; font-size: 10pt;'> </span><strong><span style='color: rgb(255, 255, 0); font-family: "2827838_12"; font-size: 12pt; background-color: rgb(51, 51, 51);'><span style='color: rgb(255, 255, 255); font-family: "나눔고딕",NanumGothic; font-size: 10pt; background-color: rgb(51, 51, 204);'><span style='color: rgb(255, 255, 255); font-family: "나눔고딕",NanumGothic; font-size: 12pt; background-color: rgb(51, 51, 204);'><span style="background-color: rgb(51, 51, 51); color: rgb(255, 255, 0);"> </span><span style="font-size: 14pt; background-color: rgb(51, 51, 51); color: rgb(255, 255, 0);"><span style="background-color: rgb(51, 51, 51); color: rgb(255, 255, 0);">관련 및 연계 홈페이지 링크</span> </span></span></span></span></strong></p>
+<p><strong><br /></strong></p>
+<p style="line-height: 1.5;"><strong><span style='font-family: "나눔고딕",NanumGothic; font-size: 10pt;'> </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 12pt;">■ 오라클</span></strong></p>
+<p style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic;"><span style="font-size: 8pt; font-family: 나눔고딕, NanumGothic;"> </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 13.3333px;">비지니스 소프트웨어, 하드웨어 전문 기업, 클라우드, 빅데이터, 모바일, IT 서비스 및 제품 소개.</span></span></p>
+<p style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic;"><span style="font-family: 나눔고딕, NanumGothic; font-size: 13.3333px;"><br /></span></span></p>
+</td>
+<td class="" style="width: 343px; height: 18px; background-color: rgb(214, 212, 235); border-width: 0px 0px 1px 1px; border-top-style: initial; border-right-style: initial; border-bottom-style: dashed; border-left-style: dashed; border-top-color: initial; border-right-color: initial; border-bottom-color: rgb(199, 199, 199); border-left-color: rgb(199, 199, 199); border-image: initial;">
+<p style="line-height: 1.5;"> </p>
+<p style="line-height: 1.5;"></p>
+<p style="line-height: 1.5;"></p>
+<p style="line-height: 1.5;"> <span style="font-family: 나눔고딕; font-size: 10pt;">『  </span><strong><span style='color: rgb(58, 50, 195); font-family: "나눔고딕",NanumGothic; font-size: 10pt;'><a class="con_link" href="https://www.oracle.com/kr/index.html" target="_blank">ORACLE</a></span></strong><span style='color: rgb(58, 50, 195); font-family: "나눔고딕",NanumGothic; font-size: 10pt;'>  </span><span style='font-family: "나눔고딕",NanumGothic; font-size: 10pt;'>』</span><span style="font-family: 나눔고딕;"><span style='font-family: "나눔고딕",NanumGothic; font-size: 10pt;'> </span></span><span style="font-family: 나눔고딕;"><span style='font-family: "나눔고딕",NanumGothic; font-size: 10pt;'>​</span></span><span style="font-family: 나눔고딕;"> </span></p>
+<p></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<p style="line-height: 1.5;"><span style='font-family: "나눔고딕",NanumGothic;'>​</span></p>
+<p style="line-height: 1.5;"><span style='font-family: "나눔고딕",NanumGothic;'>​</span></p>
+<p style="line-height: 1.5;"><span style='font-family: "나눔고딕",NanumGothic;'><br /></span></p>
+<p style="line-height: 1.5;"><span style='font-family: "나눔고딕",NanumGothic;'>​</span></p>
+<p style="line-height: 1.5; text-align: left; clear: none; float: none;"><span class="imageblock" style="display:inline-block;width:936px;;height:auto;max-width:100%"><img filemime="image/jpeg" filename="영상.png" height="43" src="http://cfile4.uf.tistory.com/image/997D93335A278B674199DB" width="936"/></span></p>
+<p style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic;">​</span></p>
+</p>
+<table attr_no_border_tbl="1" border="1" cellpadding="0" cellspacing="0" class="__se_tbl" style="border-width: 1px 1px 0px 0px; border-top-style: dashed; border-right-style: dashed; border-bottom-style: initial; border-left-style: initial; border-top-color: rgb(199, 199, 199); border-right-color: rgb(199, 199, 199); border-bottom-color: initial; border-left-color: initial; border-image: initial;">
+<tbody>
+<tr>
+<td class="" style="width: 934px; height: 42px; background-color: rgb(154, 154, 154); border-width: 0px 0px 1px 1px; border-top-style: initial; border-right-style: initial; border-bottom-style: dashed; border-left-style: dashed; border-top-color: initial; border-right-color: initial; border-bottom-color: rgb(199, 199, 199); border-left-color: rgb(199, 199, 199); border-image: initial;">
+<p align="center" style="text-align: center; line-height: 1.5;"><span style="font-family: 나눔고딕; font-size: 10pt;"><span style="font-size:7pt;"><strong><span style="letter-spacing: 0pt; font-family: 나눔고딕, NanumGothic; font-size: 14pt;">&#8211;  <span style="color: rgb(58, 50, 195); font-family: 나눔고딕, NanumGothic; font-size: 14pt;"> Oracle SQL Developer </span></span></strong></span></span><strong style="font-size: 7pt; font-family: 나눔고딕;"><span style="letter-spacing: 0pt; font-family: 나눔고딕, NanumGothic; font-size: 14pt;"><span style="color: rgb(125, 125, 125); font-size: 14pt;"><span style="color: rgb(255, 255, 255);"> </span></span></span></strong><strong style="font-size: 7pt; font-family: 나눔고딕;"><span style="letter-spacing: 0pt; font-family: 나눔고딕, NanumGothic; font-size: 14pt;"><span style="color: rgb(125, 125, 125); font-size: 14pt;"><span style="color: rgb(255, 255, 255);"> </span></span></span></strong><strong style="font-size: 7pt; font-family: 나눔고딕;"><span style="letter-spacing: 0pt; font-family: 나눔고딕, NanumGothic; font-size: 14pt;"><span style="color: rgb(58, 50, 195);"><span style="color: rgb(0, 158, 37); font-size: 14pt;"><span style="color: rgb(255, 239, 0);">JDBC </span></span></span><span style="color: rgb(125, 125, 125); font-size: 14pt;"> </span></span></strong><strong style="font-size: 7pt; font-family: 나눔고딕;"><span style="letter-spacing: 0pt; font-family: 나눔고딕, NanumGothic; font-size: 14pt;"><span style="font-size: 14pt;"><span style="color: rgb(255, 255, 255);">driver  </span></span></span></strong><strong style="font-size: 7pt; font-family: 나눔고딕;"><span style="letter-spacing: 0pt; font-family: 나눔고딕, NanumGothic; font-size: 14pt;"><span style="color: rgb(125, 125, 125); font-size: 14pt;"> <span style="color: rgb(70, 70, 70);">설치 </span></span></span><span style="font-family: 나눔고딕, NanumGothic; font-size: 14pt;"> Guide  </span><span style="letter-spacing: 0pt; font-family: 나눔고딕, NanumGothic; font-size: 14pt;">&#8211;</span></strong></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p><iframe allowfullscreen="" frameborder="0" height="527" src="https://www.youtube.com/embed/UGG_N9Mlgdw" width="936"></iframe></p>
+<p style="line-height: 1.5;"><span style='font-family: "나눔고딕",NanumGothic;'>​</span></p>
+<p><span style='font-family: "나눔고딕",NanumGothic;'><br /></span></p>
+<p><span style='font-family: "나눔고딕",NanumGothic;'><br /></span></p>
+</p>
+<table attr_no_border_tbl="1" border="1" cellpadding="0" cellspacing="0" class="__se_tbl" style="border-width: 1px 1px 0px 0px; border-top-style: dashed; border-right-style: dashed; border-bottom-style: initial; border-left-style: initial; border-top-color: rgb(199, 199, 199); border-right-color: rgb(199, 199, 199); border-bottom-color: initial; border-left-color: initial; border-image: initial;">
+<tbody>
+<tr>
+<td class="" style="width: 934px; height: 42px; background-color: rgb(154, 154, 154); border-width: 0px 0px 1px 1px; border-top-style: initial; border-right-style: initial; border-bottom-style: dashed; border-left-style: dashed; border-top-color: initial; border-right-color: initial; border-bottom-color: rgb(199, 199, 199); border-left-color: rgb(199, 199, 199); border-image: initial;">
+<p align="center" style="text-align: center; line-height: 1.5;"><span style="font-family: 나눔고딕; font-size: 10pt;"><span style="font-size:7pt;"><strong><span style="letter-spacing: 0pt; font-family: 나눔고딕, NanumGothic; font-size: 14pt;">&#8211;  <span style="color: rgb(58, 50, 195); font-size: 14pt;"> </span></span></strong></span></span><strong style="font-size: 7pt; font-family: 나눔고딕;"><span style="letter-spacing: 0pt; font-family: 나눔고딕, NanumGothic; font-size: 14pt;"><span style="color: rgb(58, 50, 195);"><span style="color: rgb(0, 158, 37); font-size: 14pt;"><span style="color: rgb(58, 50, 195);">Oracle SQL Developer</span><span style="color: rgb(58, 50, 195);"> </span> </span></span><span style="color: rgb(125, 125, 125); font-size: 14pt;"><span style="color: rgb(255, 255, 255);"><span style="color: rgb(255, 239, 0);">MY SQL</span> database</span>   <span style="color: rgb(70, 70, 70);">연결</span></span></span><span style="font-family: 나눔고딕, NanumGothic; font-size: 14pt;">  Guide  </span><span style="letter-spacing: 0pt; font-family: 나눔고딕, NanumGothic; font-size: 14pt;">&#8211;</span></strong></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p><iframe allowfullscreen="" frameborder="0" height="527" src="https://www.youtube.com/embed/CS4hhR691tY" width="936"></iframe></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p style="text-align: left; clear: none; float: none;"><span class="imageblock" style="display:inline-block;width:936px;;height:auto;max-width:100%"><img filemime="image/jpeg" filename="노트.png" height="43" src="http://cfile7.uf.tistory.com/image/99EF4E335A278B7C1032F7" width="936"/></span></p>
+<p>​</p>
+<p><!--StartFragment--><!--StartFragment--></p>
+<p class="0" style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">모든 자료는 사용 전 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">⦁ </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">후의 솔직한 평을 기록하며 현재 기록된 시세나 정보는 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">2017</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">년 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">12</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">월 기준으로 작성되었으므로 이후 경과일수에 따라 변경 폭이 커질 수 있습니다</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">. </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">이 포스트는 정보공유 및 개발도구 초심 사용자들의 참고를 목적으로 작성되었습니다</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">. </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">모든 사진은 클릭하면 확대되며 또 다른 블로그 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">‘</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt; color: rgb(255, 0, 0);">네이버 블로그</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">’ </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">와 함께 합니다</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">.  </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">혹 하단 링크 이미지에 문제가 발생하면 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">&#8216;F5&#8217; </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">를 눌러 새로 고침해주세요</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">. </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;"> </span></p>
+<p class="0" style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;"> </span><!-- Removed Tag Filtered (&lt;!==[if !supportEmptyParas]==&gt;) --><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;"> </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;"> </span><!-- Removed Tag Filtered (o:p) --></p>
+<p class="0" style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;"> </span><!-- Removed Tag Filtered (&lt;!==[if !supportEmptyParas]==&gt;) --><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;"> </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;"> </span><!-- Removed Tag Filtered (o:p) --></p>
+<p class="0" style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">ODBC</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">를 이용한 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">Data Link </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">외에 오라클에서 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">MS SQL Server Database</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">를 연결하여 사용하는 방법은 여러 가지가 있겠으나 이번 시간엔 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">JDBC API</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">를 이용한 방법을 지면에 싣고자 합니다</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">. </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">이 포스트는 접속에 관련한 내용만 게재하므로 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">Data Migration</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">에 관한 내용은 다른 블로거의 포스트를 참고해 주세요</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">. </span></p>
+<p class="0" style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;"> </span><!-- Removed Tag Filtered (&lt;!==[if !supportEmptyParas]==&gt;) --><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;"> </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;"> </span><!-- Removed Tag Filtered (o:p) --></p>
+<p class="0" style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;"> </span><!-- Removed Tag Filtered (&lt;!==[if !supportEmptyParas]==&gt;) --><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;"> </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;"> </span><!-- Removed Tag Filtered (o:p) --></p>
+<p class="0" style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;"> </span><!-- Removed Tag Filtered (&lt;!==[if !supportEmptyParas]==&gt;) --><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;"> </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;"> </span><!-- Removed Tag Filtered (o:p) --></p>
+<p class="0" style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 14pt;"><b>JDBC</b></span></p>
+<p class="0" style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 14pt;"><b><br /></b></span></p>
+<p class="0" style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">자바 프로그램 내에서 데이터베이스 질의문 즉</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">, SQL</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">을 실행하기 위한 자바 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">API(application programming interface)</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">를 말합니다</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">. Java database connectivity</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">의 약자로 생각하기도 하지만 실제로는 상표 이름이며 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">JDBC</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">는 데이터베이스 및 애플리케이션 개발자들을 위한 표준 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">API</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">를 제공하고 순수 자바 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">API</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">만으로도 데이터베이스 응용업무를 만들게 해줍니다</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">.</span></p>
+<p class="0" style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">JDBC API</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">를 사용하면 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">DB2, Sybase, Oracle, Informix, mSQL </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">등의 데이터베이스에 접근하는 프로그램을 따로 만들 필요가 없이</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">, </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">단지 하나의 프로그램을 작성하고 그 프로그램에서 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">SQL</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">문을 적당한 데이터베이스에 전송할 수 있습니다</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">.</span></p>
+<p class="0" style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;"><br /></span></p>
+<p class="0" style="text-align: left; clear: none; float: none;"><span class="imageblock" style="display:inline-block;width:936px;;height:auto;max-width:100%"><img filemime="image/jpeg" filename="conn.png" height="340" src="http://cfile25.uf.tistory.com/image/996173335A278BB4320407" width="936"/></span></p>
+<p class="0"></p>
+<p class="0" style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">또한 응용업무를 자바로 작성한다면 보유한 기종이나 소프트웨어에 따라 다르게 작성하지 않아도 되기 때문에 자바와 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">JDBC</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">의 결합은 하나의 프로그램이 어디에서나 동작할 수 있게 해줍니다</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">. </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">자바는 사용하기에 견고하고 안전하고 쉽고 이해하기 쉬우며 데이터베이스 응용업무를 만드는데 있어서 최적의 언어라 할 수 있습니다</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">. </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">단지 필요한 것은 다양한 데이터베이스에 연결하는 방법인데</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">, JDBC</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">는 이러한 것을 가능하게 하는 일종의 도구라 할 수 있습니다</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">.</span></p>
+<p class="0" style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;"> </span><!-- Removed Tag Filtered (&lt;!==[if !supportEmptyParas]==&gt;) --><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;"> </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;"> </span><!-- Removed Tag Filtered (o:p) --></p>
+<p class="0" style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;"> </span><!-- Removed Tag Filtered (&lt;!==[if !supportEmptyParas]==&gt;) --><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;"> </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;"> </span><!-- Removed Tag Filtered (o:p) --></p>
+<p class="0" style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;"> </span><!-- Removed Tag Filtered (&lt;!==[if !supportEmptyParas]==&gt;) --><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;"> </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;"> </span></p>
+<p class="0" style="line-height: 1.5;"><!-- Removed Tag Filtered (o:p) --></p>
+<p class="0" style="line-height: 1.5;"><b><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 14pt;">Oracle SQL Developer</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 14pt;">에서 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 14pt;">MS SQL Server Database </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 14pt;">연결하기</span></b></p>
+<p class="0" style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;"> </span><!-- Removed Tag Filtered (&lt;!==[if !supportEmptyParas]==&gt;) --><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;"> </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;"> </span><!-- Removed Tag Filtered (o:p) --></p>
+<p class="0" style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">Oracle </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">관련한 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">DBMS TOOL</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">은 다양하지만 이 지문에서는 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">SQL Developer</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">에 국한하여 소개하겠습니다</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">. </span></p>
+<p class="0" style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;"> </span><!-- Removed Tag Filtered (&lt;!==[if !supportEmptyParas]==&gt;) --><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;"> </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;"> </span><!-- Removed Tag Filtered (o:p) --></p>
+<p class="0" style="line-height: 1.5;"><b><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">JDBC Driver </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">다운로드</span></b></p>
+<p class="0" style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">소스포지</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">.</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">넷 사이트에 접속하여 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">jTDS</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">를 다운받습니다</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">. ‘</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">소스포지</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">‘</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">에 대해서는 이미 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">3</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">장에서 거론하였으므로 생략하고 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">12</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">월 현재 최신버전은 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">1.3.1 </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">버전입니다</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">. </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">간단한 유의 사항을 읽어보시고 아래 링크 버튼이나 다운로드 버튼을 클릭하여 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">1.3.1</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">버전 선택 후 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">’jTDS-1.3.1-dist.zip (551.2 kB)‘ </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">을 다운받은 후 적당한 곳에 압출파일을 해제합니다</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">.</span></p>
+<p class="0"><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;"><br /></span></p>
+<p class="0" style="text-align: left; clear: none; float: none;"><span class="imageblock" style="display:inline-block;width:482px;width: 482px; height: 259px;;height:auto;max-width:100%"><img filemime="image/jpeg" filename="JDBC driver 다운로드.png" height="259" src="http://cfile27.uf.tistory.com/image/99E52B335A278BDC0C817B" style="width: 482px; height: 259px;" width="482"/></span> <span class="imageblock" style="display:inline-block;width:413px;width: 413px; height: 260px;;height:auto;max-width:100%"><img filemime="image/jpeg" filename="jTDS - SQL Server and Sybase JDBC driver.png" height="260" src="http://cfile21.uf.tistory.com/image/99E52E335A278BDD0C0051" style="width: 413px; height: 260px;" width="413"/></span></p>
+<p class="0" style="text-align: left; clear: none; float: none;"><span class="imageblock" style="display:inline-block;width:916px;;height:auto;max-width:100%"><img filemime="image/jpeg" filename="추가0.png" height="679" src="http://cfile22.uf.tistory.com/image/99420B335A278BDD03D16B" width="916"/></span></p>
+<p class="0"></p>
+<p class="0"><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;"><br /></span></p>
+<p class="0" style="text-align: left; clear: none; float: none;"><a class="tx-link" href="http://medilamp.tistory.com/attachment/cfile3.uf@9923F6335A278CF7137A80.zip" target="_blank"><span class="imageblock" style="display:inline-block;width:445px;;height:auto;max-width:100%"><img filemime="image/jpeg" filename="다운로드.png" height="50" src="http://cfile5.uf.tistory.com/image/997B28335A278C9A2BEF9A" width="445"/></span></a>  <a class="tx-link" href="https://sourceforge.net/projects/jtds/files/jtds" target="_blank"><span class="imageblock" style="display:inline-block;width:445px;;height:auto;max-width:100%"><img filemime="image/jpeg" filename="링크.png" height="50" src="http://cfile7.uf.tistory.com/image/991181335A278C9A1E6DA6" width="445"/></span></a></p>
+<p class="0"></p>
+<p class="0"><span class="imageblock" style="display:inline-block;;height:auto;max-width:100%"><a href="http://medilamp.tistory.com/attachment/cfile3.uf@9923F6335A278CF7137A80.zip"><img alt="" src="https://t1.daumcdn.net/tistory_admin/blogs/image/extension/zip.gif?_version_=6d4e1af27da22b534695018e14d4cf6fdd9818c3" style="vertical-align: middle;"/> jtds-1.3.1-dist.zip</a></span></p>
+<p class="0"></p>
+<p class="0"><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;"> </span><!-- Removed Tag Filtered (&lt;!==[if !supportEmptyParas]==&gt;) --><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;"> </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;"> </span><!-- Removed Tag Filtered (o:p) --></p>
+<p class="0" style="line-height: 1.5;"><b><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">jTDS </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">등록</span></b></p>
+<p class="0" style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">Oracle SQL Developer</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">가 실행중인 상태에서 도구 탭 선택 후 최하단의 환경설정을 클릭합니다</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">. </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">환경설정 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">POP UP</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">이 활성화 되면 좌측 데이터베이스 루트 중 유틸리티 항목에 타사 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">JDBC </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">드라이버가 존재합니다</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">.</span></p>
+<p class="0" style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;"><br /></span></p>
+<p class="0" style="line-height: 1.5; text-align: left; clear: none; float: none;"><span class="imageblock" style="display:inline-block;width:448px;width: 448px; height: 341px;;height:auto;max-width:100%"><img filemime="image/jpeg" filename="추가1.png" height="341" src="http://cfile4.uf.tistory.com/image/997719335A278C3F2AED75" style="width: 448px; height: 341px;" width="448"/></span> <span class="imageblock" style="display:inline-block;width:448px;width: 448px; height: 339px;;height:auto;max-width:100%"><img filemime="image/jpeg" filename="추가2.png" height="339" src="http://cfile8.uf.tistory.com/image/99FA5A335A278C40201B5F" style="width: 448px; height: 339px;" width="448"/></span></p>
+<p class="0" style="line-height: 1.5; text-align: left; clear: none; float: none;"><span class="imageblock" style="display:inline-block;width:448px;width: 448px; height: 340px;;height:auto;max-width:100%"><img filemime="image/jpeg" filename="추가3.png" height="340" src="http://cfile28.uf.tistory.com/image/99EF6C335A278C4121EB52" style="width: 448px; height: 340px;" width="448"/></span> <span class="imageblock" style="display:inline-block;width:448px;width: 448px; height: 339px;;height:auto;max-width:100%"><img filemime="image/jpeg" filename="추가4.png" height="339" src="http://cfile2.uf.tistory.com/image/99758C335A278C412A6EA1" style="width: 448px; height: 339px;" width="448"/></span></p>
+<p class="0" style="line-height: 1.5;">
+<p class="0" style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;"><br /></span></p>
+<p class="0" style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">이제 항목 추가를 클릭하여 압축 해제한 폴더의 경로를 선택합니다</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">. ‘jtds-1.3.1.jar’ </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">파일이 등록되었음을 확인하고 확인 버튼을 클릭해 주세요</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">.</span></p>
+<p class="0" style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;"> </span><!-- Removed Tag Filtered (&lt;!==[if !supportEmptyParas]==&gt;) --><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;"> </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;"> </span><!-- Removed Tag Filtered (o:p) --></p>
+<p class="0" style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;"> </span><!-- Removed Tag Filtered (&lt;!==[if !supportEmptyParas]==&gt;) --><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;"> </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;"> </span><!-- Removed Tag Filtered (o:p) --></p>
+<p class="0" style="line-height: 1.5;"><b><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">MS SQL Server </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">접속</span></b></p>
+<p class="0" style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">연결할 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">MS SQL Server Database </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">쪽의 접속이름과 사용자명</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">, </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">그리고 비밀번호를 입력한 후 하단의 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">SQL Server </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">탭의 공백도 모두 채워주세요</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">.</span></p>
+<p class="0"><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;"><br /></span></p>
+<p class="0" style="text-align: left; clear: none; float: none;"><span class="imageblock" style="display:inline-block;width:936px;;height:auto;max-width:100%"><img filemime="image/jpeg" filename="추가5.png" height="710" src="http://cfile28.uf.tistory.com/image/9948A3335A278C770A0DAB" width="936"/></span></p>
+<p class="0">
+<p class="0" style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;"><br /></span></p>
+<p class="0" style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">모든 정보 입력이 완료되었으면 테스트를 거친 후 접속하면 연결된 데이터베이스의 테이블들이 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">SQL Developer </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">좌측에 나열됨을 확인할 수 있습니다</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">.</span></p>
+<p class="0" style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;"> </span><!-- Removed Tag Filtered (&lt;!==[if !supportEmptyParas]==&gt;) --><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;"> </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;"> </span><!-- Removed Tag Filtered (o:p) --></p>
+<p class="0" style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;"> </span><!-- Removed Tag Filtered (&lt;!==[if !supportEmptyParas]==&gt;) --><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;"> </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;"> </span><!-- Removed Tag Filtered (o:p) --></p>
+<p class="0" style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;"> </span><!-- Removed Tag Filtered (&lt;!==[if !supportEmptyParas]==&gt;) --><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;"> </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;"> </span><!-- Removed Tag Filtered (o:p) --></p>
+<p class="0" style="line-height: 1.5;"><b><span style="font-family: 나눔고딕, NanumGothic; font-size: 14pt;">기타 시스템 이관 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 14pt;">TOOL</span></b></p>
+<p class="0" style="line-height: 1.5;"><b><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 14pt;"><br /></span></b></p>
+<p class="0" style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">이 지면은 접속까지만 다뤘지만 오라클 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">SQL Developer</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">에서 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">Migration </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">저장소를 생성하고 캡처를 떠서 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">MS SQL Server Database</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">를 오라클로 전환할 수 있습니다</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">. </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">물론 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">Data type</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">을 변경하는 등의 세심한 작업이 사전에 이루어져야 조회되는 결과 값이 상이하지 않습니다</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">.</span></p>
+<p class="0" style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;"><br /></span></p>
+<p class="0" style="line-height: 1.5; text-align: left; clear: none; float: none;"><a class="tx-link" href="http://www.oracle.com/technetwork/topics/index-095746.html" target="_blank"><span class="imageblock" style="display:inline-block;width:445px;;height:auto;max-width:100%"><img filemime="image/jpeg" filename="링크.png" height="50" src="http://cfile3.uf.tistory.com/image/99CB75335A278CB30D81F4" width="445"/></span></a></p>
+<p class="0" style="line-height: 1.5;"></p>
+<p class="0" style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">그 외에 오라클에서 지원해주는 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">‘WorkBench‘</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">를 통하여 </span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">MS SQL Server</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">의 데이터베이스를 오라클로 이관할 수 있습니다</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">.  </span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt;">위의 링크버튼을 클릭하여 다운받아 사용하세요</span><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;">.</span><span style="font-family: 나눔고딕, NanumGothic; font-size: 11pt; letter-spacing: 0pt;">     FIN.</span></p>
+<p class="0" style="line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; letter-spacing: 0pt; font-size: 11pt;"><br /></span></p>
+<p class="0" style="mso-pagination: none; mso-padding-alt: 0pt 0pt 0pt 0pt;"></p>
+<p class="0" style="mso-pagination: none; mso-padding-alt: 0pt 0pt 0pt 0pt;"></p>
+<p><span style="font-family: 나눔고딕, NanumGothic;">​</span></p>
+<p><span style='font-family: "나눔고딕",NanumGothic;'><br /></span></p>
+<p><span style='font-family: "나눔고딕",NanumGothic;'><br /></span></p>
+<p><span style='font-family: "나눔고딕",NanumGothic;'><br /></span></p>
+<p align="center" style="text-align: center; line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; font-size: 14pt;">​<span style='font-family: "나눔고딕",NanumGothic; font-size: 14pt;'><img class="__se_object" height="12" jsonvalue="%7B%7D" s_subtype="image" s_type="attachment" src="http://static.se2.naver.com/static/img/reviewitem/speech3_01.png" style="border-color: rgb(0, 0, 0); width: 17px; height: 12px; vertical-align: top;" width="17"/></span></span></p>
+<p align="center" style="text-align: center; line-height: 1.5;"><span style="font-family: 나눔고딕, NanumGothic; font-size: 14pt;">      <strong><span style="color: rgb(154, 154, 154); font-family: 나눔고딕, NanumGothic; font-size: 14pt;">개발도구에 대한 다른 게시글도 확인해 보세요 </span><span style="color: rgb(154, 154, 154); font-family: 나눔고딕, NanumGothic; font-size: 14pt;">!!!</span></strong><span style="color: rgb(154, 154, 154); font-size: 14pt;">        </span></span></p>
+<p align="center" style="text-align: center;"></p>
+<p align="center" style="text-align: center;"><img class="__se_object" height="14" jsonvalue="%7B%7D" s_subtype="image" s_type="attachment" src="http://static.se2.naver.com/static/img/reviewitem/speech3_02.png" style="border-color: rgb(0, 0, 0); width: 17px; height: 14px; vertical-align: top;" width="17"/></p>
+<p align="center" style="text-align: center; line-height: 1.5;"> </p>
+<p align="center" style="line-height: 1.5; text-align: center; clear: none; float: none;"><a class="tx-link" href="http://medilamp.tistory.com/45" target="_blank"><span class="imageblock" style="display:inline-block;width:270px;;height:auto;max-width:100%"><img filemime="image/jpeg" filename="오라클 11g 데이터베이스 생성.png" height="300" src="http://cfile10.uf.tistory.com/image/99FA80335A278D3327852B" width="270"/></span></a>     <a class="tx-link" href="http://medilamp.tistory.com/46" target="_blank"><span class="imageblock" style="display:inline-block;width:270px;;height:auto;max-width:100%"><img filemime="image/jpeg" filename="오라클 11g 데이터베이스 삭제.png" height="300" src="http://cfile24.uf.tistory.com/image/99CF8D335A278D320F25F1" width="270"/></span></a>     <a class="tx-link" href="http://medilamp.tistory.com/47" target="_blank"><span class="imageblock" style="display:inline-block;width:270px;;height:auto;max-width:100%"><img filemime="image/jpeg" filename="오라클 11g MS SQL DB LINK 생성.png" height="300" src="http://cfile9.uf.tistory.com/image/99AEFC335A2790612E8F91" width="270"/></span></a></p>
+<p align="center" style="line-height: 1.5; text-align: center; clear: none; float: none;"></p>
+<p align="center" style="line-height: 1.5;"></p>
+<p align="center" style="line-height: 1.5;"></p>
+<p align="center" style="line-height: 1.5;"> </p>
+<p style="font-family: NanumGothic, 나눔고딕, ngttf, ngeot, dotum, 돋음, sans-serif; font-size: small; float: none; text-align: center; clear: none; padding-top: 0px !important; padding-bottom: 0px !important;"><span class="imageblock" style="display: inline-block; width: 199px; height: auto; max-width: 100%;"><img filemime="image/gif" filename="LINK4_01.gif" height="134" src="http://cfile28.uf.tistory.com/image/213CF14358D6320B1D4267" style="border: 0px; max-width: 100%; height: auto;" width="199"/></span><a class="tx-link" href="http://section.blog.naver.com/connect/PopConnectBuddyAddForm.nhn?blogId=medilamp" style="color: rgb(65, 83, 96);" target="_blank"><span class="imageblock" style="display: inline-block; width: 86px; height: auto; max-width: 100%;"><img filemime="image/gif" filename="NEIGHBOR.gif" height="134" src="http://cfile22.uf.tistory.com/image/2433034358D6320D274E69" style="border: 0px; max-width: 100%; height: auto;" width="86"/></span></a><a class="tx-link" href="/cdn-cgi/l/email-protection#e18c8485888d808c91a18f80978493cf828e8c" style="color: rgb(65, 83, 96);" target="_blank"><span class="imageblock" style="display: inline-block; width: 78px; height: auto; max-width: 100%;"><img filemime="image/gif" filename="E-MAIL.gif" height="134" src="http://cfile22.uf.tistory.com/image/2422DB4358D6320935BE22" style="border: 0px; max-width: 100%; height: auto;" width="78"/></span></a><a class="tx-link" href="http://note.naver.com/note/sendForm.nhn?targetUserId=medilamp&amp;svcType=1&amp;popup=1" style="color: rgb(65, 83, 96);" target="_blank"><span class="imageblock" style="display: inline-block; width: 77px; height: auto; max-width: 100%;"><img filemime="image/gif" filename="MESSAGE.gif" height="134" src="http://cfile30.uf.tistory.com/image/263CE64358D6320C1DC075" style="border: 0px; max-width: 100%; height: auto;" width="77"/></span></a><a class="tx-link" href="http://opencast.naver.com/CN994" style="color: rgb(65, 83, 96);" target="_blank"><span class="imageblock" style="display: inline-block; width: 71px; height: auto; max-width: 100%;"><img filemime="image/gif" filename="OPENCAST.gif" height="134" src="http://cfile1.uf.tistory.com/image/2231444358D6320E28C330" style="border: 0px; max-width: 100%; height: auto;" width="71"/></span></a><a class="tx-link" href="http://www.pholar.co/my/117834/profile" style="color: rgb(65, 83, 96);" target="_blank"><span class="imageblock" style="display: inline-block; width: 80px; height: auto; max-width: 100%;"><img filemime="image/gif" filename="PHOLAR.gif" height="134" src="http://cfile30.uf.tistory.com/image/2516964458D6320E1F8929" style="border: 0px; max-width: 100%; height: auto;" width="80"/></span></a><a class="tx-link" href="http://www.instagram.com/medilamp/" style="color: rgb(65, 83, 96);" target="_blank"><span class="imageblock" style="display: inline-block; width: 109px; height: auto; max-width: 100%;"><img filemime="image/gif" filename="INSTAGRAM.gif" height="134" src="http://cfile4.uf.tistory.com/image/2234A94358D6320A250512" style="border: 0px; max-width: 100%; height: auto;" width="109"/></span></a></p>
+<p style="font-family: NanumGothic, 나눔고딕, ngttf, ngeot, dotum, 돋음, sans-serif; font-size: small; float: none; text-align: center; clear: none; padding-top: 0px !important; padding-bottom: 0px !important;"><span class="imageblock" style="display: inline-block; width: 700px; height: auto; max-width: 100%;"><img filemime="image/jpeg" filename="LINK4 BASE.png" height="116" src="http://cfile2.uf.tistory.com/image/2544A94358D6320A185641" style="border: 0px; max-width: 100%; height: auto;" width="700"/></span></p>
+<hr />
+<p><iframe src='http://ad.selfhow.com/rd' width='100%' border=0 frameborder=0 style='height:auto;width:100%'></iframe></p>
+<p><a href='http://medilamp.tistory.com/48' target='_blank'>Origin Content : ★자리의 달콤한 꿈 이야기</a> | <a href="/cdn-cgi/l/email-protection#0764646b644769666b66296066" target='_blank'>Contact : <span class="__cf_email__" data-cfemail="7310101f10331d121f125d1412">[email&#160;protected]</span></a>
+</p>
+<p>Cotent License : CC-BY-SA </p>
+<p>This content is collected under the CCL license.</p>
+<p>Please check the license of the original article before asking about copyright.</p>
+<ul>
+<li><a href='/tag/개발도구'>More About <span style='font-weight:bold;'>개발도구</span></a></li>
+<li><a href='/tag/Oracle'>More About <span style='font-weight:bold;'>Oracle</span></a></li>
+<li><a href='/tag/SQL'>More About <span style='font-weight:bold;'>SQL</span></a></li>
+<li><a href='/tag/Developer'>More About <span style='font-weight:bold;'>Developer</span></a></li>
+<li><a href='/tag/MS'>More About <span style='font-weight:bold;'>MS</span></a></li>
+<li><a href='/tag/SQL'>More About <span style='font-weight:bold;'>SQL</span></a></li>
+<li><a href='/tag/Server'>More About <span style='font-weight:bold;'>Server</span></a></li>
+<li><a href='/tag/Database'>More About <span style='font-weight:bold;'>Database</span></a></li>
+<li><a href='/tag/사용'>More About <span style='font-weight:bold;'>사용</span></a></li>
+</ul>
+        </div> <!-- //.entry-summary -->
+        
+                    <div class="entry-tags"><b>Tags:</b> <a href="http://ms.nala.ga/tag/database/" rel="tag">Database</a>, <a href="http://ms.nala.ga/tag/developer/" rel="tag">Developer</a>, <a href="http://ms.nala.ga/tag/ms/" rel="tag">MS</a>, <a href="http://ms.nala.ga/tag/oracle/" rel="tag">Oracle</a>, <a href="http://ms.nala.ga/tag/server/" rel="tag">Server</a>, <a href="http://ms.nala.ga/tag/sql/" rel="tag">SQL</a>, <a href="http://ms.nala.ga/tag/%ea%b0%9c%eb%b0%9c%eb%8f%84%ea%b5%ac/" rel="tag">개발도구</a>, <a href="http://ms.nala.ga/tag/%ec%82%ac%ec%9a%a9/" rel="tag">사용</a></div>
+        
+    </div>
+
+</article> <!--/#post-->
+
+
+
+
+
+                                                                    <div class="post-nav-area">
+                                                    
+            <nav class="next-previous-post clearfix media" role="navigation">
+                <div class="row">
+                    <!-- Previous Post -->
+                    <div class="previous-post col-sm-6 pull-left">
+                        <div class="nav-previous"><i class="fa fa-angle-left"></i> <a href="http://ms.nala.ga/%ec%82%ac%ec%82%ac%ea%b8%b0-3%ec%9e%a5/" rel="prev">사사기 3장</a></div>                    </div>
+
+                    <!-- Next Post -->
+                    <div class="next-post col-sm-6 pull-right text-right">
+                        <div class="nav-next"><a href="http://ms.nala.ga/2015%eb%85%84-2%ec%9b%94-%ec%9d%bc%eb%93%9c-%ec%88%9c%ec%9c%84/" rel="next">2015년 2월 일드 순위</a> <i class="fa fa-angle-right"></i></div>                    </div>
+                </div>
+            </nav><!-- .navigation -->
+            
+                                            </div>
+                                
+                                
+                            
+                                            </main> <!-- /.site-main -->
+                </div>  <!-- /.content-area -->
+            </div> <!-- /col -->
+
+            <!-- Blogsidebar -->
+            
+	<div class="col-md-4">
+	    <div class="primary-sidebar widget-area" role="complementary">
+	        <div id="tag_cloud-2" class="widget widget_tag_cloud"><h2 class="widget-title">태그</h2><div class="tagcloud"><a href="http://ms.nala.ga/tag/1%ec%9b%94/" class="tag-cloud-link tag-link-2 tag-link-position-1" style="font-size: 18.440677966102pt;" aria-label="1월 (115 아이템)">1월</a>
+<a href="http://ms.nala.ga/tag/2017/" class="tag-cloud-link tag-link-21 tag-link-position-2" style="font-size: 17.016949152542pt;" aria-label="2017 (98 아이템)">2017</a>
+<a href="http://ms.nala.ga/tag/2017%eb%85%84/" class="tag-cloud-link tag-link-551 tag-link-position-3" style="font-size: 14.406779661017pt;" aria-label="2017년 (77 아이템)">2017년</a>
+<a href="http://ms.nala.ga/tag/2018/" class="tag-cloud-link tag-link-155 tag-link-position-4" style="font-size: 15.830508474576pt;" aria-label="2018 (89 아이템)">2018</a>
+<a href="http://ms.nala.ga/tag/2018%eb%85%84/" class="tag-cloud-link tag-link-64 tag-link-position-5" style="font-size: 19.864406779661pt;" aria-label="2018년 (130 아이템)">2018년</a>
+<a href="http://ms.nala.ga/tag/the/" class="tag-cloud-link tag-link-310 tag-link-position-6" style="font-size: 11.322033898305pt;" aria-label="the (57 아이템)">the</a>
+<a href="http://ms.nala.ga/tag/vs/" class="tag-cloud-link tag-link-128 tag-link-position-7" style="font-size: 8pt;" aria-label="vs (41 아이템)">vs</a>
+<a href="http://ms.nala.ga/tag/%ea%b0%80%ea%b2%a9/" class="tag-cloud-link tag-link-275 tag-link-position-8" style="font-size: 12.271186440678pt;" aria-label="가격 (62 아이템)">가격</a>
+<a href="http://ms.nala.ga/tag/%ea%b2%b0%ed%98%bc/" class="tag-cloud-link tag-link-501 tag-link-position-9" style="font-size: 20.338983050847pt;" aria-label="결혼 (136 아이템)">결혼</a>
+<a href="http://ms.nala.ga/tag/%ea%b3%b5%ea%b0%9c/" class="tag-cloud-link tag-link-260 tag-link-position-10" style="font-size: 9.8983050847458pt;" aria-label="공개 (49 아이템)">공개</a>
+<a href="http://ms.nala.ga/tag/%ea%b7%b8%eb%a6%ac%ea%b3%a0/" class="tag-cloud-link tag-link-980 tag-link-position-11" style="font-size: 10.135593220339pt;" aria-label="그리고 (50 아이템)">그리고</a>
+<a href="http://ms.nala.ga/tag/%eb%82%98%ec%9d%b4%ec%b0%a8/" class="tag-cloud-link tag-link-1184 tag-link-position-12" style="font-size: 8.2372881355932pt;" aria-label="나이차 (42 아이템)">나이차</a>
+<a href="http://ms.nala.ga/tag/%eb%82%a8%ec%9e%90/" class="tag-cloud-link tag-link-364 tag-link-position-13" style="font-size: 9.4237288135593pt;" aria-label="남자 (47 아이템)">남자</a>
+<a href="http://ms.nala.ga/tag/%eb%82%a8%ed%8e%b8/" class="tag-cloud-link tag-link-603 tag-link-position-14" style="font-size: 16.305084745763pt;" aria-label="남편 (92 아이템)">남편</a>
+<a href="http://ms.nala.ga/tag/%eb%85%b8%eb%9e%98/" class="tag-cloud-link tag-link-713 tag-link-position-15" style="font-size: 8.9491525423729pt;" aria-label="노래 (45 아이템)">노래</a>
+<a href="http://ms.nala.ga/tag/%eb%8c%80%ed%95%9c/" class="tag-cloud-link tag-link-3572 tag-link-position-16" style="font-size: 10.135593220339pt;" aria-label="대한 (50 아이템)">대한</a>
+<a href="http://ms.nala.ga/tag/%eb%93%9c%eb%9d%bc%eb%a7%88/" class="tag-cloud-link tag-link-1041 tag-link-position-17" style="font-size: 16.542372881356pt;" aria-label="드라마 (95 아이템)">드라마</a>
+<a href="http://ms.nala.ga/tag/%eb%a6%ac%eb%b7%b0/" class="tag-cloud-link tag-link-447 tag-link-position-18" style="font-size: 12.508474576271pt;" aria-label="리뷰 (64 아이템)">리뷰</a>
+<a href="http://ms.nala.ga/tag/%eb%a7%9b%ec%a7%91/" class="tag-cloud-link tag-link-782 tag-link-position-19" style="font-size: 16.779661016949pt;" aria-label="맛집 (97 아이템)">맛집</a>
+<a href="http://ms.nala.ga/tag/%eb%aa%a8%ec%9d%8c/" class="tag-cloud-link tag-link-1142 tag-link-position-20" style="font-size: 13.694915254237pt;" aria-label="모음 (72 아이템)">모음</a>
+<a href="http://ms.nala.ga/tag/%eb%aa%b8%eb%a7%a4/" class="tag-cloud-link tag-link-2391 tag-link-position-21" style="font-size: 15.830508474576pt;" aria-label="몸매 (88 아이템)">몸매</a>
+<a href="http://ms.nala.ga/tag/%eb%b0%a9%eb%b2%95/" class="tag-cloud-link tag-link-930 tag-link-position-22" style="font-size: 17.491525423729pt;" aria-label="방법 (103 아이템)">방법</a>
+<a href="http://ms.nala.ga/tag/%eb%b0%b0%ec%9a%b0/" class="tag-cloud-link tag-link-895 tag-link-position-23" style="font-size: 15.593220338983pt;" aria-label="배우 (86 아이템)">배우</a>
+<a href="http://ms.nala.ga/tag/%eb%b6%80%ec%82%b0/" class="tag-cloud-link tag-link-157 tag-link-position-24" style="font-size: 8.4745762711864pt;" aria-label="부산 (43 아이템)">부산</a>
+<a href="http://ms.nala.ga/tag/%ec%82%ac%eb%9e%91/" class="tag-cloud-link tag-link-2972 tag-link-position-25" style="font-size: 14.406779661017pt;" aria-label="사랑 (77 아이템)">사랑</a>
+<a href="http://ms.nala.ga/tag/%ec%82%ac%ec%a7%84/" class="tag-cloud-link tag-link-410 tag-link-position-26" style="font-size: 9.4237288135593pt;" aria-label="사진 (47 아이템)">사진</a>
+<a href="http://ms.nala.ga/tag/%ec%95%84%eb%82%b4/" class="tag-cloud-link tag-link-3039 tag-link-position-27" style="font-size: 9.6610169491525pt;" aria-label="아내 (48 아이템)">아내</a>
+<a href="http://ms.nala.ga/tag/%ec%95%88%eb%82%b4/" class="tag-cloud-link tag-link-1327 tag-link-position-28" style="font-size: 11.322033898305pt;" aria-label="안내 (56 아이템)">안내</a>
+<a href="http://ms.nala.ga/tag/%ec%95%8c%ec%95%84%eb%b3%b4%ea%b8%b0/" class="tag-cloud-link tag-link-821 tag-link-position-29" style="font-size: 15.118644067797pt;" aria-label="알아보기 (82 아이템)">알아보기</a>
+<a href="http://ms.nala.ga/tag/%ec%95%8c%ec%95%84%eb%b3%b4%ec%9e%90/" class="tag-cloud-link tag-link-341 tag-link-position-30" style="font-size: 11.322033898305pt;" aria-label="알아보자 (56 아이템)">알아보자</a>
+<a href="http://ms.nala.ga/tag/%ec%97%ac%ed%96%89/" class="tag-cloud-link tag-link-873 tag-link-position-31" style="font-size: 17.016949152542pt;" aria-label="여행 (98 아이템)">여행</a>
+<a href="http://ms.nala.ga/tag/%ec%98%81%ed%99%94/" class="tag-cloud-link tag-link-562 tag-link-position-32" style="font-size: 19.389830508475pt;" aria-label="영화 (124 아이템)">영화</a>
+<a href="http://ms.nala.ga/tag/%ec%98%a4%eb%8a%98/" class="tag-cloud-link tag-link-1059 tag-link-position-33" style="font-size: 13.694915254237pt;" aria-label="오늘 (72 아이템)">오늘</a>
+<a href="http://ms.nala.ga/tag/%ec%9a%b0%eb%a6%ac/" class="tag-cloud-link tag-link-888 tag-link-position-34" style="font-size: 11.322033898305pt;" aria-label="우리 (57 아이템)">우리</a>
+<a href="http://ms.nala.ga/tag/%ec%9c%84%ed%95%9c/" class="tag-cloud-link tag-link-1175 tag-link-position-35" style="font-size: 12.983050847458pt;" aria-label="위한 (66 아이템)">위한</a>
+<a href="http://ms.nala.ga/tag/%ec%9d%b4%ec%95%bc%ea%b8%b0/" class="tag-cloud-link tag-link-611 tag-link-position-36" style="font-size: 12.508474576271pt;" aria-label="이야기 (64 아이템)">이야기</a>
+<a href="http://ms.nala.ga/tag/%ec%9d%b4%ec%9c%a0/" class="tag-cloud-link tag-link-296 tag-link-position-37" style="font-size: 10.372881355932pt;" aria-label="이유 (51 아이템)">이유</a>
+<a href="http://ms.nala.ga/tag/%ec%9e%90%ea%b2%a9%ec%a6%9d/" class="tag-cloud-link tag-link-2111 tag-link-position-38" style="font-size: 9.4237288135593pt;" aria-label="자격증 (47 아이템)">자격증</a>
+<a href="http://ms.nala.ga/tag/%ec%a0%95%eb%a6%ac/" class="tag-cloud-link tag-link-1831 tag-link-position-39" style="font-size: 13.220338983051pt;" aria-label="정리 (68 아이템)">정리</a>
+<a href="http://ms.nala.ga/tag/%ec%a0%95%eb%b3%b4/" class="tag-cloud-link tag-link-89 tag-link-position-40" style="font-size: 15.118644067797pt;" aria-label="정보 (83 아이템)">정보</a>
+<a href="http://ms.nala.ga/tag/%ec%b6%94%ec%b2%9c/" class="tag-cloud-link tag-link-146 tag-link-position-41" style="font-size: 22pt;" aria-label="추천 (162 아이템)">추천</a>
+<a href="http://ms.nala.ga/tag/%ec%b6%9c%ec%97%b0/" class="tag-cloud-link tag-link-2930 tag-link-position-42" style="font-size: 10.847457627119pt;" aria-label="출연 (54 아이템)">출연</a>
+<a href="http://ms.nala.ga/tag/%ed%95%9c%ea%b5%ad/" class="tag-cloud-link tag-link-3361 tag-link-position-43" style="font-size: 11.796610169492pt;" aria-label="한국 (59 아이템)">한국</a>
+<a href="http://ms.nala.ga/tag/%ed%9a%a8%eb%8a%a5/" class="tag-cloud-link tag-link-810 tag-link-position-44" style="font-size: 9.6610169491525pt;" aria-label="효능 (48 아이템)">효능</a>
+<a href="http://ms.nala.ga/tag/%ed%9b%84%ea%b8%b0/" class="tag-cloud-link tag-link-14 tag-link-position-45" style="font-size: 17.966101694915pt;" aria-label="후기 (109 아이템)">후기</a></div>
+</div>	    </div>
+	</div>
+
+        </div> <!-- /.row -->
+    </div> <!-- /.container -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <hr>
+            </div>
+        </div>
+    </div>
+    <footer class="site-footer" role="contentinfo">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 text-center">
+  
+                    <p></p>
+                    
+                                            <div class="footer-social-icons">
+                                                                                                                                                                                                                                                                                                                                                                                                        
+                        </div>
+                    
+                </div>
+            </div>
+        </div>
+    </footer>
+
+            <div class="scroll-up">
+            <a href="#"><i class="fa fa-angle-up"></i></a>
+        </div>
+        <!-- Scroll Up -->
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/af2821b0/cloudflare-static/email-decode.min.js"></script><script type='text/javascript' src='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/js/bootstrap.min.js?ver=3.3.5'></script>
+<script type='text/javascript' src='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/js/scripts.js'></script>
+<script type='text/javascript' src='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/js/jquery.fitvids.js'></script>
+<script type='text/javascript' src='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/js/smoothscroll.js'></script>
+<script type='text/javascript' src='http://ms.nala.ga/wp-includes/js/wp-embed.min.js?ver=4.8.5'></script>
+    </body>
+</html>

@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="profile" href="http://gmpg.org/xfn/11">
+    <link rel="pingback" href="http://ms.nala.ga/xmlrpc.php">
+
+<title>[110151번] 이항 계수2 | All About MS CCL Contents</title>
+<meta name='robots' content='noindex,follow' />
+
+<!-- All in One SEO Pack 2.4.4 by Michael Torbert of Semper Fi Web Design[276,333] -->
+<meta name="robots" content="index,nofollow" />
+
+<link rel="canonical" href="http://ms.nala.ga/110151%eb%b2%88-%ec%9d%b4%ed%95%ad-%ea%b3%84%ec%88%982/" />
+<!-- /all in one seo pack -->
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="All About MS CCL Contents &raquo; 피드" href="http://ms.nala.ga/feed/" />
+<link rel="alternate" type="application/rss+xml" title="All About MS CCL Contents &raquo; 댓글 피드" href="http://ms.nala.ga/comments/feed/" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.3\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.3\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/ms.nala.ga\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.8.4"}};
+			!function(a,b,c){function d(a){var b,c,d,e,f=String.fromCharCode;if(!k||!k.fillText)return!1;switch(k.clearRect(0,0,j.width,j.height),k.textBaseline="top",k.font="600 32px Arial",a){case"flag":return k.fillText(f(55356,56826,55356,56819),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,56826,8203,55356,56819),0,0),c=j.toDataURL(),b!==c&&(k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447),0,0),c=j.toDataURL(),b!==c);case"emoji4":return k.fillText(f(55358,56794,8205,9794,65039),0,0),d=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55358,56794,8203,9794,65039),0,0),e=j.toDataURL(),d!==e}return!1}function e(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i,j=b.createElement("canvas"),k=j.getContext&&j.getContext("2d");for(i=Array("flag","emoji4"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='bootstrap-css-css'  href='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/css/bootstrap.min.css?ver=3.3.5' type='text/css' media='all' />
+<link rel='stylesheet' id='font-awesome-css-css'  href='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/css/font-awesome.min.css?ver=4.4.0' type='text/css' media='all' />
+<link rel='stylesheet' id='shaped-blog-stylesheet-css'  href='http://ms.nala.ga/wp-content/themes/shaped-blog/style.css?ver=4.8.4' type='text/css' media='all' />
+<link rel='stylesheet' id='responsive-css-css'  href='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/css/responsive.css' type='text/css' media='all' />
+<script type='text/javascript' src='http://ms.nala.ga/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
+<script type='text/javascript' src='http://ms.nala.ga/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+<link rel='https://api.w.org/' href='http://ms.nala.ga/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://ms.nala.ga/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://ms.nala.ga/wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='홍콩항공권 홍콩익스프레스 떳다 특가! 예약고~' href='http://ms.nala.ga/%ed%99%8d%ec%bd%a9%ed%95%ad%ea%b3%b5%ea%b6%8c-%ed%99%8d%ec%bd%a9%ec%9d%b5%ec%8a%a4%ed%94%84%eb%a0%88%ec%8a%a4-%eb%96%b3%eb%8b%a4-%ed%8a%b9%ea%b0%80-%ec%98%88%ec%95%bd%ea%b3%a0/' />
+<link rel='next' title='WITHCON 2017 bank' href='http://ms.nala.ga/withcon-2017-bank/' />
+<meta name="generator" content="WordPress 4.8.4" />
+<link rel='shortlink' href='http://ms.nala.ga/?p=18741' />
+<link rel="alternate" type="application/json+oembed" href="http://ms.nala.ga/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fms.nala.ga%2F110151%25eb%25b2%2588-%25ec%259d%25b4%25ed%2595%25ad-%25ea%25b3%2584%25ec%2588%25982%2F" />
+<link rel="alternate" type="text/xml+oembed" href="http://ms.nala.ga/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fms.nala.ga%2F110151%25eb%25b2%2588-%25ec%259d%25b4%25ed%2595%25ad-%25ea%25b3%2584%25ec%2588%25982%2F&#038;format=xml" />
+
+	<style>
+
+		/* Border Color */
+		.btn-social:hover,
+		blockquote,
+		#respond input:focus[type="text"], 
+	    #respond input:focus[type="email"], 
+	    #respond input:focus[type="url"],
+	    #respond textarea:focus,
+	    #comments .comment-reply a:hover
+		{
+			border-color: ;
+		}
+
+		
+		/* Background Color */
+		.scroll-up a,
+		.btn-social:hover,
+		button,
+		input[type="button"],
+		input[type="reset"],
+		input[type="submit"],
+		.navbar-default .navbar-nav .dropdown-menu li a:hover, .dropdown-menu li a:focus, .navbar-default .navbar-nav .dropdown-menu .active a,
+		.pagination>li>a:focus, .pagination>li>a:hover, .pagination>li>span:focus, .pagination>li>span:hover, .pagination li .current,
+		.next-previous-posts .next-post a:hover,
+		.next-previous-posts .previous-post a:hover,
+		.btn-goback,
+		.btn-submit,
+		a.more-link,
+		.featured-post .fa,
+		#comments .comment-reply a:hover,
+		.widget .tagcloud a
+		{
+			background-color: ;
+		}
+
+		
+		/* Color */
+		.text-logo a,
+		.navbar-default .navbar-nav .active a, .navbar-default .navbar-nav .active a:hover, .navbar-default .navbar-nav .active a:focus,
+		.navbar-default .navbar-nav li a:hover, .navbar-default .navbar-nav li a:focus,
+		a:hover,
+    	a:focus,
+		.next-previous-posts .previous-post a,
+		.next-previous-posts .next-post a,
+		.pagination>li>a, .pagination>li>span,
+		#comments .comment-author a:hover, 
+    	#respond .logged-in-as a:hover,
+    	#wp-calendar a,
+    	h2.entry-title a:hover
+		{
+			color: ;
+		}
+
+
+		/* A Color */
+		a{
+			color: ;
+		}
+
+		/* a:hover Color */
+		a:hover,
+		a:focus,
+		a:active,
+		.widget a:hover,
+		.post .post-content .entry-meta ul li a:hover
+		{
+			color: ;
+		}
+
+		/* .featured-post .fa:after*/
+		.featured-post .fa:after{
+			border-color:   transparent ;
+		}
+
+
+		
+
+	</style>
+</head>
+
+<body class="post-template-default single single-post postid-18741 single-format-standard">
+
+    <div id="st-preloader">
+        <div id="pre-status">
+            <div class="preload-placeholder"></div>
+        </div>
+    </div>
+<!-- /Preloader -->
+
+<header id="header">	
+	<div id="trueHeader">
+    	<div class="wrapper">
+            <div class="container">
+            	<!-- Menu -->
+            	<div class="menu_main">
+                	<div class="navbar blogx-navbar navbar-default">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#st-navber-collapse">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+
+                                                            <div class="text-logo">
+                                    <a href="http://ms.nala.ga">All About MS CCL Contents</a>
+                                    <p>All About MS CCL Contents</p>
+                                </div><!-- /Logo -->
+                                                    </div>
+                      
+                        <div id="st-navber-collapse" class="navbar-collapse collapse pull-right">
+                             
+                        </div>
+                    </div>
+            	</div><!-- end menu -->
+        	</div> <!-- /.container -->
+    	</div>
+	</div>
+	<DIV class='ads_adsense_img' style='margin:40px 0px 40px 0px;'>
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<!-- only display -->
+	<ins class="adsbygoogle"
+	     style="display:block"
+	     data-ad-client="ca-pub-8393857339019314"
+	     data-ad-slot="7474886381"
+	     data-ad-format="auto"></ins>
+	<script>
+	(adsbygoogle = window.adsbygoogle || []).push({});
+	</script>
+	</DIV>	
+
+</header>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div id="primary" class="content-area">
+                    <main id="main" class="site-main" role="main">
+
+                        
+                                <article id="post-18741" class="post-18741 post type-post status-publish format-standard hentry category-uncategorized tag-27957 tag-27959 tag-27958">
+    <header class="entry-header">
+        
+        
+    </header> <!--/.entry-header -->
+
+    <div class="clearfix post-content media">
+
+        <h2 class="entry-title">
+            [110151번] 이항 계수2        </h2> <!-- //.entry-title -->
+
+        <div class="clearfix entry-meta">
+            
+            <ul class="list-inline">
+                <li>
+                    <span class="author vcard">
+                        By <a class="url fn n" href="http://ms.nala.ga/author/admin/">admin</a>                    </span>
+                </li>
+                <li>
+                    on <span class="posted-on">1월 16, 2018</span>
+                </li>
+                                    <li>
+                        in <span class="posted-in">
+                            <a href="http://ms.nala.ga/category/uncategorized/" rel="category tag">미분류</a>                        </span>
+                    </li>
+                            </ul>
+                </div> <!--/.entry-meta -->
+        
+        <div class="entry-summary">
+            <p><img src='http://cfile23.uf.tistory.com/image/99F2994D5A5CC9D60C9136' style='max-width:250px;min-width:0px;' onError='this.style.display="none"' /></p>
+<h1>3줄 요약 </h1>
+<div style='color:#fff;background-color:#000;border-radius:10px;'>
+<ol>
+<li><span>Memoization해야할 것은 Factorial 연산이 아니라 Comb <small>&#8230;중략&#8230;</small> 니였다. 그래서 바로 Python 코드를 포기하고 C언어로 코딩을 했다.</span></li>
+<li><span>아무튼 내가 Python에서 제일 약한 2차원 배열의 형태가 나왔기 때문 <small>&#8230;중략&#8230;</small> 쓸 때마다 C++을 배워볼까라는 욕구가 매우 강하게 들곤 한다&#8230;!!)</span></li>
+<li><span>참고자료http://kwony91.tistory.com/entry/모듈러-나눗셈-연산-처리하기http://koosaga.com/63</span></li>
+</ol>
+</div>
+<p><span id="more-18741"></span></p>
+<p><iframe src='http://ad.selfhow.com/rd' width='100%' border=0 frameborder=0 style='height:auto;width:100%'></iframe></p>
+<hr />
+<p style="line-height: 1.5;"><span style="font-family: Menlo, Monaco, Consolas, monospace; font-size: 14pt; color: rgb(0, 0, 0); background-color: rgb(234, 234, 234);"><b> 문제</b></span></p>
+<p style="line-height: 1.5;"><span style="color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, monospace; font-size: 11pt;">자연수 </span><span class="MathJax_SVG" data-mathml='&lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;mi&gt;N&lt;/mi&gt;&lt;/math&gt;' id="MathJax-Element-1-Frame" role="presentation" style='box-sizing: border-box; display: inline-block; line-height: normal; font-size: 14.4px; word-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; color: rgb(85, 85, 85); font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, "Apple SD Gothic Neo", "Noto Sans CJK KR", "Noto Sans KR", 나눔바른고딕, 나눔고딕, NanumGothic, 맑은고딕, "Malgun Gothic", "Nanum Gothic", sans-serif; position: relative; border-radius: 0px !important;' tabindex="0"><svg aria-hidden="true" focusable="false" height="1.994ex" role="img" style="vertical-align: -0.238ex;" viewbox="0 -755.9 888.5 858.4" width="2.064ex" xmlns:xlink="http://www.w3.org/1999/xlink"><g fill="currentColor" stroke="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use x="0" xlink:href="#MJMATHI-4E" y="0"><path d="M234 637Q231 637 226 637Q201 637 196 638T191 649Q191 676 202 682Q204 683 299 683Q376 683 387 683T401 677Q612 181 616 168L670 381Q723 592 723 606Q723 633 659 637Q635 637 635 648Q635 650 637 660Q641 676 643 679T653 683Q656 683 684 682T767 680Q817 680 843 681T873 682Q888 682 888 672Q888 650 880 642Q878 637 858 637Q787 633 769 597L620 7Q618 0 599 0Q585 0 582 2Q579 5 453 305L326 604L261 344Q196 88 196 79Q201 46 268 46H278Q284 41 284 38T282 19Q278 6 272 0H259Q228 2 151 2Q123 2 100 2T63 2T46 1Q31 1 31 10Q31 14 34 26T39 40Q41 46 62 46Q130 49 150 85Q154 91 221 362L289 634Q287 635 234 637Z" id="MJMATHI-4E" stroke-width="1"></path></use></g></svg><span class="MJX_Assistive_MathML" role="presentation" style="box-sizing: border-box; border-radius: 0px !important; top: 0px; left: 0px; clip: rect(1px 1px 1px 1px); user-select: none; position: absolute !important; padding: 1px 0px 0px !important; border: 0px !important; height: 1px !important; width: 1px !important; overflow: hidden !important; display: block !important; transition: none;"></p>
+<math xmlns="http://www.w3.org/1998/Math/MathML"></math>
+<p><span style="font-family: Menlo, Monaco, Consolas, monospace; color: rgb(0, 0, 0); font-size: 11pt;">N</span></span></span><span style='color: rgb(85, 85, 85); font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, "Apple SD Gothic Neo", "Noto Sans CJK KR", "Noto Sans KR", 나눔바른고딕, 나눔고딕, NanumGothic, 맑은고딕, "Malgun Gothic", "Nanum Gothic", sans-serif; font-size: medium;'><span style="font-family: Menlo, Monaco, Consolas, monospace; color: rgb(0, 0, 0); font-size: 11pt;">과 정수</span><span style="font-family: Menlo, Monaco, Consolas, monospace; color: rgb(0, 0, 0); font-size: 11pt;"> </span></span><span class="MathJax_SVG" data-mathml='&lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;mi&gt;K&lt;/mi&gt;&lt;/math&gt;' id="MathJax-Element-2-Frame" role="presentation" style='box-sizing: border-box; display: inline-block; line-height: normal; font-size: 14.4px; word-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; color: rgb(85, 85, 85); font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, "Apple SD Gothic Neo", "Noto Sans CJK KR", "Noto Sans KR", 나눔바른고딕, 나눔고딕, NanumGothic, 맑은고딕, "Malgun Gothic", "Nanum Gothic", sans-serif; position: relative; border-radius: 0px !important;' tabindex="0"><svg aria-hidden="true" focusable="false" height="1.994ex" role="img" style="vertical-align: -0.238ex;" viewbox="0 -755.9 889.5 858.4" width="2.066ex" xmlns:xlink="http://www.w3.org/1999/xlink"><g fill="currentColor" stroke="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use x="0" xlink:href="#MJMATHI-4B" y="0"><path d="M285 628Q285 635 228 637Q205 637 198 638T191 647Q191 649 193 661Q199 681 203 682Q205 683 214 683H219Q260 681 355 681Q389 681 418 681T463 682T483 682Q500 682 500 674Q500 669 497 660Q496 658 496 654T495 648T493 644T490 641T486 639T479 638T470 637T456 637Q416 636 405 634T387 623L306 305Q307 305 490 449T678 597Q692 611 692 620Q692 635 667 637Q651 637 651 648Q651 650 654 662T659 677Q662 682 676 682Q680 682 711 681T791 680Q814 680 839 681T869 682Q889 682 889 672Q889 650 881 642Q878 637 862 637Q787 632 726 586Q710 576 656 534T556 455L509 418L518 396Q527 374 546 329T581 244Q656 67 661 61Q663 59 666 57Q680 47 717 46H738Q744 38 744 37T741 19Q737 6 731 0H720Q680 3 625 3Q503 3 488 0H478Q472 6 472 9T474 27Q478 40 480 43T491 46H494Q544 46 544 71Q544 75 517 141T485 216L427 354L359 301L291 248L268 155Q245 63 245 58Q245 51 253 49T303 46H334Q340 37 340 35Q340 19 333 5Q328 0 317 0Q314 0 280 1T180 2Q118 2 85 2T49 1Q31 1 31 11Q31 13 34 25Q38 41 42 43T65 46Q92 46 125 49Q139 52 144 61Q147 65 216 339T285 628Z" id="MJMATHI-4B" stroke-width="1"></path></use></g></svg><span class="MJX_Assistive_MathML" role="presentation" style="box-sizing: border-box; border-radius: 0px !important; top: 0px; left: 0px; clip: rect(1px 1px 1px 1px); user-select: none; position: absolute !important; padding: 1px 0px 0px !important; border: 0px !important; height: 1px !important; width: 1px !important; overflow: hidden !important; display: block !important; transition: none;"></p>
+<math xmlns="http://www.w3.org/1998/Math/MathML"></math>
+<p><span style="font-family: Menlo, Monaco, Consolas, monospace; color: rgb(0, 0, 0); font-size: 11pt;">K</span></span></span><span style='color: rgb(85, 85, 85); font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, "Apple SD Gothic Neo", "Noto Sans CJK KR", "Noto Sans KR", 나눔바른고딕, 나눔고딕, NanumGothic, 맑은고딕, "Malgun Gothic", "Nanum Gothic", sans-serif; font-size: medium;'><span style="font-family: Menlo, Monaco, Consolas, monospace; color: rgb(0, 0, 0); font-size: 11pt;">가 주어졌을 때 이항 계수</span><span style="font-family: Menlo, Monaco, Consolas, monospace; color: rgb(0, 0, 0); font-size: 11pt;"> </span></span><span class="MathJax_SVG" data-mathml='&lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;mrow&gt;&lt;mrow class="MJX-TeXAtom-OPEN"&gt;&lt;mo maxsize="1.2em" minsize="1.2em"&gt;(&lt;/mo&gt;&lt;/mrow&gt;&lt;mfrac linethickness="0"&gt;&lt;mi&gt;N&lt;/mi&gt;&lt;mi&gt;K&lt;/mi&gt;&lt;/mfrac&gt;&lt;mrow class="MJX-TeXAtom-CLOSE"&gt;&lt;mo maxsize="1.2em" minsize="1.2em"&gt;)&lt;/mo&gt;&lt;/mrow&gt;&lt;/mrow&gt;&lt;/math&gt;' id="MathJax-Element-3-Frame" role="presentation" style='box-sizing: border-box; display: inline-block; line-height: normal; font-size: 14.4px; word-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; color: rgb(85, 85, 85); font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, "Apple SD Gothic Neo", "Noto Sans CJK KR", "Noto Sans KR", 나눔바른고딕, 나눔고딕, NanumGothic, 맑은고딕, "Malgun Gothic", "Nanum Gothic", sans-serif; position: relative; border-radius: 0px !important;' tabindex="0"><svg aria-hidden="true" focusable="false" height="3.278ex" role="img" style="vertical-align: -0.938ex;" viewbox="0 -1007.2 1546 1411.3" width="3.591ex" xmlns:xlink="http://www.w3.org/1999/xlink"><g fill="currentColor" stroke="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use x="0" xlink:href="#MJSZ1-28" y="-1"><path d="M152 251Q152 646 388 850H416Q422 844 422 841Q422 837 403 816T357 753T302 649T255 482T236 250Q236 124 255 19T301 -147T356 -251T403 -315T422 -340Q422 -343 416 -349H388Q359 -325 332 -296T271 -213T212 -97T170 56T152 251Z" id="MJSZ1-28" stroke-width="1"></path></use><g transform="translate(458,0)"><use transform="scale(0.707)" x="0" xlink:href="#MJMATHI-4E" y="627"><path d="M234 637Q231 637 226 637Q201 637 196 638T191 649Q191 676 202 682Q204 683 299 683Q376 683 387 683T401 677Q612 181 616 168L670 381Q723 592 723 606Q723 633 659 637Q635 637 635 648Q635 650 637 660Q641 676 643 679T653 683Q656 683 684 682T767 680Q817 680 843 681T873 682Q888 682 888 672Q888 650 880 642Q878 637 858 637Q787 633 769 597L620 7Q618 0 599 0Q585 0 582 2Q579 5 453 305L326 604L261 344Q196 88 196 79Q201 46 268 46H278Q284 41 284 38T282 19Q278 6 272 0H259Q228 2 151 2Q123 2 100 2T63 2T46 1Q31 1 31 10Q31 14 34 26T39 40Q41 46 62 46Q130 49 150 85Q154 91 221 362L289 634Q287 635 234 637Z" id="MJMATHI-4E" stroke-width="1"></path></use><use transform="scale(0.707)" x="0" xlink:href="#MJMATHI-4B" y="-488"><path d="M285 628Q285 635 228 637Q205 637 198 638T191 647Q191 649 193 661Q199 681 203 682Q205 683 214 683H219Q260 681 355 681Q389 681 418 681T463 682T483 682Q500 682 500 674Q500 669 497 660Q496 658 496 654T495 648T493 644T490 641T486 639T479 638T470 637T456 637Q416 636 405 634T387 623L306 305Q307 305 490 449T678 597Q692 611 692 620Q692 635 667 637Q651 637 651 648Q651 650 654 662T659 677Q662 682 676 682Q680 682 711 681T791 680Q814 680 839 681T869 682Q889 682 889 672Q889 650 881 642Q878 637 862 637Q787 632 726 586Q710 576 656 534T556 455L509 418L518 396Q527 374 546 329T581 244Q656 67 661 61Q663 59 666 57Q680 47 717 46H738Q744 38 744 37T741 19Q737 6 731 0H720Q680 3 625 3Q503 3 488 0H478Q472 6 472 9T474 27Q478 40 480 43T491 46H494Q544 46 544 71Q544 75 517 141T485 216L427 354L359 301L291 248L268 155Q245 63 245 58Q245 51 253 49T303 46H334Q340 37 340 35Q340 19 333 5Q328 0 317 0Q314 0 280 1T180 2Q118 2 85 2T49 1Q31 1 31 11Q31 13 34 25Q38 41 42 43T65 46Q92 46 125 49Q139 52 144 61Q147 65 216 339T285 628Z" id="MJMATHI-4B" stroke-width="1"></path></use></g><use x="1087" xlink:href="#MJSZ1-29" y="-1"><path d="M305 251Q305 -145 69 -349H56Q43 -349 39 -347T35 -338Q37 -333 60 -307T108 -239T160 -136T204 27T221 250T204 473T160 636T108 740T60 807T35 839Q35 850 50 850H56H69Q197 743 256 566Q305 425 305 251Z" id="MJSZ1-29" stroke-width="1"></path></use></g></svg><span class="MJX_Assistive_MathML" role="presentation" style="box-sizing: border-box; border-radius: 0px !important; top: 0px; left: 0px; clip: rect(1px 1px 1px 1px); user-select: none; position: absolute !important; padding: 1px 0px 0px !important; border: 0px !important; height: 1px !important; width: 1px !important; overflow: hidden !important; display: block !important; transition: none;"></p>
+<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mrow class="MJX-TeXAtom-OPEN"><mo maxsize="1.2em" minsize="1.2em"><span style="font-family: Menlo, Monaco, Consolas, monospace; color: rgb(0, 0, 0); font-size: 11pt;">(</span></mo></mrow><mfrac linethickness="0"><mi><span style="font-family: Menlo, Monaco, Consolas, monospace; color: rgb(0, 0, 0); font-size: 11pt;">N</span></mi><mi><span style="font-family: Menlo, Monaco, Consolas, monospace; color: rgb(0, 0, 0); font-size: 11pt;">K</span></mi></mfrac><mrow class="MJX-TeXAtom-CLOSE"><mo maxsize="1.2em" minsize="1.2em"><span style="font-family: Menlo, Monaco, Consolas, monospace; color: rgb(0, 0, 0); font-size: 11pt;">)</span></mo></mrow></mrow></math>
+<p></span></span><span style="color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, monospace; font-size: 11pt;">를 10,007로 나눈 나머지를 구하는 프로그램을 작성하시오.</span></p>
+<p style="line-height: 1.5;"><span style="color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, monospace; font-size: medium;"><br /></span></p>
+<p style="line-height: 1.5;"><span style="color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, monospace; font-size: 14pt; background-color: rgb(234, 234, 234);"><b> 접근</b></span></p>
+<p style="line-height: 1.5;"><span style="color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, monospace; font-size: 11pt;">처음 이 문제를 읽어보았을 때, 이 문제로 이렇게 오래 고생할 줄은 몰랐다.</span></p>
+<p style="line-height: 1.5;"><font face="Menlo, Monaco, Consolas, monospace" size="3"><span style="font-size: 11pt; color: rgb(0, 0, 0);">결론적으로 이 문제는 하루만에 풀지못하고, 결국 하루를 넘겨서야, 프로그래밍 언어를 바꿔서 성공해냈다.</span></font></p>
+<p style="line-height: 1.5;"><font face="Menlo, Monaco, Consolas, monospace"><span style="font-size: 14.6667px; color: rgb(0, 0, 0);">일단, 문제의 조건이 Dynamic Programming을 이용하는 것이었다.</span></font></p>
+<p style="line-height: 1.5;"><font face="Menlo, Monaco, Consolas, monospace"><span style="font-size: 14.6667px;"><br /></span></font></p>
+<div class="colorscripter-code" style='color: rgb(1, 1, 1); overflow: auto; font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace !important; position: relative !important; line-height: 1.5;'>
+<table cellpadding="0" cellspacing="0" class="colorscripter-code-table" style="margin:0; padding:0; border:none; background-color:#fafafa; border-radius:4px;">
+<tbody>
+<tr>
+<td style="padding:6px; border-right:2px solid #e5e5e5">
+<div style="margin:0; padding:0; word-break:normal; text-align:right; color:#666; font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; line-height:130%">
+<div style="line-height:130%">1</div>
+<div style="line-height:130%">2</div>
+<div style="line-height:130%">3</div>
+<div style="line-height:130%">4</div>
+<div style="line-height:130%">5</div>
+<div style="line-height:130%">6</div>
+<div style="line-height:130%">7</div>
+<div style="line-height:130%">8</div>
+<div style="line-height:130%">9</div>
+</div>
+</td>
+<td style="padding:6px 0">
+<div style="margin:0; padding:0; color:#010101; font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; line-height:130%">
+<div style="padding:0 6px; white-space:pre; line-height:130%"><span style="font-size: 11pt;">n,k </span><span style="color: rgb(167, 29, 93); font-size: 11pt;">=</span><span style="font-size: 11pt;"> input().split(</span><span style="color: rgb(99, 163, 92); font-size: 11pt;">&#8216; &#8216;</span><span style="font-size: 11pt;">)</span></div>
+<div style="padding:0 6px; white-space:pre; line-height:130%"><span style="font-size: 11pt;">n </span><span style="color: rgb(167, 29, 93); font-size: 11pt;">=</span><span style="font-size: 11pt;"> </span><span style="color: rgb(6, 109, 226); font-size: 11pt;">int</span><span style="font-size: 11pt;">(n)</span></div>
+<div style="padding:0 6px; white-space:pre; line-height:130%"><span style="font-size: 11pt;">k </span><span style="color: rgb(167, 29, 93); font-size: 11pt;">=</span><span style="font-size: 11pt;"> </span><span style="color: rgb(6, 109, 226); font-size: 11pt;">int</span><span style="font-size: 11pt;">(k)</span></div>
+<div style="padding:0 6px; white-space:pre; line-height:130%"><span style="font-size: 11pt;">table </span><span style="color: rgb(167, 29, 93); font-size: 11pt;">=</span><span style="font-size: 11pt;"> [</span><span style="color: rgb(0, 153, 204); font-size: 11pt;">0</span><span style="font-size: 11pt;">]</span><span style="color: rgb(167, 29, 93); font-size: 11pt;">*</span><span style="font-size: 11pt;">n</span></div>
+<div style="padding:0 6px; white-space:pre; line-height:130%"><span style="font-size: 11pt;">table[</span><span style="color: rgb(0, 153, 204); font-size: 11pt;">0</span><span style="font-size: 11pt;">] </span><span style="color: rgb(167, 29, 93); font-size: 11pt;">=</span><span style="font-size: 11pt;"> </span><span style="color: rgb(0, 153, 204); font-size: 11pt;">1</span></div>
+<div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color: rgb(167, 29, 93); font-size: 11pt;">for</span><span style="font-size: 11pt;"> i </span><span style="color: rgb(167, 29, 93); font-size: 11pt;">in</span><span style="font-size: 11pt;"> </span><span style="color: rgb(6, 109, 226); font-size: 11pt;">range</span><span style="font-size: 11pt;">(</span><span style="color: rgb(0, 153, 204); font-size: 11pt;">1</span><span style="font-size: 11pt;">,n):</span></div>
+<div style="padding:0 6px; white-space:pre; line-height:130%"><span style="font-size: 11pt;">    table[i] </span><span style="color: rgb(167, 29, 93); font-size: 11pt;">=</span><span style="font-size: 11pt;"> (table[i</span><span style="color: rgb(167, 29, 93); font-size: 11pt;">&#8211;</span><span style="color: rgb(0, 153, 204); font-size: 11pt;">1</span><span style="font-size: 11pt;">]</span><span style="color: rgb(167, 29, 93); font-size: 11pt;">*</span><span style="font-size: 11pt;">(i</span><span style="color: rgb(167, 29, 93); font-size: 11pt;">+</span><span style="color: rgb(0, 153, 204); font-size: 11pt;">1</span><span style="font-size: 11pt;">))%</span><span style="color: rgb(0, 153, 204); font-size: 11pt;">10007</span></div>
+<div style="padding:0 6px; white-space:pre; line-height:130%"><span style="font-size: 11pt;">result </span><span style="color: rgb(167, 29, 93); font-size: 11pt;">=</span><span style="font-size: 11pt;"> </span><span style="color: rgb(6, 109, 226); font-size: 11pt;">int</span><span style="font-size: 11pt;">(table[n</span><span style="color: rgb(167, 29, 93); font-size: 11pt;">&#8211;</span><span style="color: rgb(0, 153, 204); font-size: 11pt;">1</span><span style="font-size: 11pt;">]</span><span style="color: rgb(167, 29, 93); font-size: 11pt;">/</span><span style="font-size: 11pt;">(table[k</span><span style="color: rgb(167, 29, 93); font-size: 11pt;">&#8211;</span><span style="color: rgb(0, 153, 204); font-size: 11pt;">1</span><span style="font-size: 11pt;">]</span><span style="color: rgb(167, 29, 93); font-size: 11pt;">*</span><span style="font-size: 11pt;">table[n</span><span style="color: rgb(167, 29, 93); font-size: 11pt;">&#8211;</span><span style="font-size: 11pt;">k</span><span style="color: rgb(167, 29, 93); font-size: 11pt;">&#8211;</span><span style="color: rgb(0, 153, 204); font-size: 11pt;">1</span><span style="font-size: 11pt;">]))</span></div>
+<div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color: rgb(6, 109, 226); font-size: 11pt;">print</span><span style="font-size: 11pt;">(result%</span><span style="color: rgb(0, 153, 204); font-size: 11pt;">10007</span><span style="font-size: 11pt;">)</span></div>
+</div>
+<div style="text-align:right; margin-top:-13px; margin-right:5px; font-size:9px; font-style:italic"><a href="http://colorscripter.com/info#e" style="color: rgb(229, 229, 229);" target="_blank">Colored by Color Scripter</a></div>
+</td>
+<td style="vertical-align:bottom; padding:0 2px 4px 0"><a href="http://colorscripter.com/info#e" style="color: white;" target="_blank"><span style="font-size: 9px; word-break: normal; background-color: rgb(229, 229, 229); border-radius: 10px; padding: 1px;">cs</span></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="colorscripter-code" style="overflow: auto; position: relative !important; line-height: 1.5;">
+<p style="">
+<p style="">
+<p style='color: rgb(1, 1, 1); font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace !important;'><span style="font-size: 11pt;"><br /></span></p>
+<p style='color: rgb(1, 1, 1); font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace !important;'><span style="font-size: 11pt;">위의 코드가 Python으로 처음 제출했던 코드다.</span></p>
+<p style='color: rgb(1, 1, 1); font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace !important;'><span style="font-size: 11pt;">나는 Dynamic Programming에서 주로 Memoization을 이용한다. </span><span style="font-size: 11pt;">(훨씬 구현이 쉬운 거 같다..</span><span style="font-size: 11pt;">)</span></p>
+<p style='color: rgb(1, 1, 1); font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace !important;'><span style="font-size: 14.6667px;">처음에는 저장하는 대상을 N!로 설정했었다.</span></p>
+<p style='color: rgb(1, 1, 1); font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace !important;'><span style="font-size: 14.6667px;">table이란 list를 만들어서 table[k]에 k!을 저장했다.</span></p>
+<p style='color: rgb(1, 1, 1); font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace !important;'><span style="font-size: 14.6667px;">그리고 출력을 할 때에는 n!, (n-k)!, k!을 각각 호출해서 계산한 결과를 출력했다.</span></p>
+<p style='color: rgb(1, 1, 1); font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace !important;'><span style="font-size: 14.6667px;">그런데 어떤 이유인지는 모르겠지만 계속 틀렸단 결과만 나왔다ㅠㅠ</span></p>
+<p style='color: rgb(1, 1, 1); font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace !important;'><span style="font-size: 14.6667px;">게다가 몇몇 test case를 넣어봐도 계속 정답이 나와서 더 멘붕이 왔다.</span></p>
+<p style='color: rgb(1, 1, 1); font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace !important;'><span style="font-size: 14.6667px;"><br /></span></p>
+<p style='color: rgb(1, 1, 1); font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace !important;'><span style="font-size: 14.6667px;">이 문제에서 조금 독특한 점은 10,007로 나눈 값을 출력한다는 것이었다.</span></p>
+<p style='color: rgb(1, 1, 1); font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace !important;'><span style="font-size: 14.6667px;">여러 수정 끝에도 답이 나오지 않아서 다른 사람들의 질문들을 읽어보았다.</span></p>
+<p style='color: rgb(1, 1, 1); font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace !important;'><span style="font-size: 14.6667px;">질문들을 보면서 개인적으로 이해가 가지 않았던 부분은 &#8216;(a+b)%c&#8217;에 대한 설명이 많았다는 점?</span></p>
+<p style='color: rgb(1, 1, 1); font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace !important;'><span style="font-size: 14.6667px;">당연히 C, Java 같은 언어들은 &#8216;(a+b)%c&#8217;와 같은 연산을 한다면 a+b 과정에서 이미 overflow가 발생할 것이다.</span></p>
+<p style='color: rgb(1, 1, 1); font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace !important;'><span style="font-size: 14.6667px;">하지만 내가 아는 Python은 아닐 것이란 생각이 많이 들었다.</span></p>
+<p style='color: rgb(1, 1, 1); font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace !important;'><span style="font-size: 14.6667px;">그리고, 나의 코드 상에서는 10,007로 나누는 과정에서 </span><span style="font-size: 14.6667px;">&#8216;(a+b)%c&#8217;와 같은 연산이 필요하지 않았다.</span></p>
+<p style='color: rgb(1, 1, 1); font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace !important;'><span style="font-size: 14.6667px;">내가 무언가 놓치고 있는게 있었을까?</span></p>
+<p style='color: rgb(1, 1, 1); font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace !important;'><span style="font-size: 14.6667px;"><br /></span></p>
+<p style='color: rgb(1, 1, 1); font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace !important;'><span style="font-size: 14.6667px;">그래서 이항계수에 대한 다양한 원리들을 찾아보던 중에 한가지 문제점을 찾았다.</span></p>
+<p style='color: rgb(1, 1, 1); font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace !important;'><span style="font-size: 14.6667px;">나는 modular 연산에서는 (a/b)%c=(a%c)/(b%c)가 성립을 할까?</span></p>
+<p style='color: rgb(1, 1, 1); font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace !important;'><span style="font-size: 14.6667px;">내 머리로는 &#8216;아니다&#8217;란 생각이 들었다.</span></p>
+<p style='color: rgb(1, 1, 1); font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace !important;'><span style="font-size: 14.6667px;">그래서 modular 연산과 나눗셈에 대해 구글링을 해보던 중에 조금 새로운 내용들을 배웠다.</span></p>
+<p style='color: rgb(1, 1, 1); font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace !important;'><span style="font-size: 14.6667px;"><br /></span></p>
+<p style='color: rgb(1, 1, 1); font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace !important;'><span style="font-size: 14.6667px;">바로 <b>&#8216;페르마의 소정리&#8217;</b>이다. <strike>(교양 수업 시간에 5살도 이해할 수 있다며 교수님이 설명하신 악몽의 소정리다.)</strike></span></p>
+<p style='color: rgb(1, 1, 1); font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace !important;'><span style="font-size: 14.6667px;">곱셈의 역원을 이용해 나머지를 정리하는 방법이다. </span><span style="font-size: 14.6667px;">먼저 곱셈의 역원을 구하면,</span></p>
+<p style='color: rgb(1, 1, 1); font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace !important;'><span style="font-size: 14.6667px;"><br /></span></p>
+<blockquote class="tx-quote-tistory" style='color: rgb(1, 1, 1); font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace !important;'>
+<p><span style="font-size: 14.6667px;"><span style="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);">modInv(k,mod) = {k^(mod-2)}%mod</span></span></p>
+</blockquote>
+<p style='color: rgb(1, 1, 1); font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace !important;'><span style="font-size: 14.6667px;"><br /></span></p>
+<p style='color: rgb(1, 1, 1); font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace !important;'><span style="font-size: 14.6667px;">가 된다. 이렇게 구한 곱셈의 역원을 이용해서</span></p>
+<p style='color: rgb(1, 1, 1); font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace !important;'><span style="font-size: 14.6667px;"><br /></span></p>
+<blockquote class="tx-quote-tistory" style='color: rgb(1, 1, 1); font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace !important;'>
+<p><span style="font-size: 14.6667px;">(n/k)%mod = {n*modInv(k, mod-2)}%mod</span></p>
+</blockquote>
+<p style='color: rgb(1, 1, 1); font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace !important;'><span style="font-size: 14.6667px;"><br /></span></p>
+<p style='color: rgb(1, 1, 1); font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace !important;'><span style="font-size: 14.6667px;">와 같이 정리할 수 있다고 한다. 이 역시 교양시간에 배웠는데 한 번 더 자세히 공부해 볼만한 것 같다.</span></p>
+<p style='color: rgb(1, 1, 1); font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace !important;'><span style="font-size: 11pt;">그리고 이항 계수에 대해 조금 더 공부하던 중 잊고있었던 이항 계수의 성질을 찾았다!</span></p>
+<p style='color: rgb(1, 1, 1); font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace !important;'><span style="font-size: 11pt;"><br /></span></p>
+<blockquote class="tx-quote-tistory">
+<p style='color: rgb(1, 1, 1); font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace !important;'><img class="txc-formula" height="37" historydata="%3Cflashrichtext%20version%3D%221%22%3E%0A%20%20%3Ctextformat%20font%3D%22Dotum%22%20size%3D%2216%22%20color%3D%222236962%22%20bold%3D%22false%22%20italic%3D%22false%22%20underline%3D%22false%22%20url%3D%22%22%20target%3D%22transparent%22%20align%3D%22left%22%20leftMargin%3D%2225%22%20rightMargin%3D%2225%22%20indent%3D%220%22%20leading%3D%220%22%20blockIndent%3D%220%22%20kerning%3D%22true%22%20letterSpacing%3D%220%22%20display%3D%22block%22%3E%28%5Cleft%28%20%5Cbegin%7B%20matrix%20%7D%20N%20%5C%5C%20K%20%5Cend%7B%20matrix%20%7D%20%5Cright%29%20%3D%5Cleft%28%20%5Cbegin%7B%20matrix%20%7D%20N-1%20%5C%5C%20K%20%5Cend%7B%20matrix%20%7D%20%5Cright%29%20+%5Cleft%28%20%5Cbegin%7B%20matrix%20%7D%20N-1%20%5C%5C%20K-1%20%5Cend%7B%20matrix%20%7D%20%5Cright%29%20%29%3C/textformat%3E%0A%3C/flashrichtext%3E%2C%0A10%2C%0Atransparent" src="http://cfile23.uf.tistory.com/image/99F2994D5A5CC9D60C9136" width="169"/></p>
+</blockquote>
+<p style='color: rgb(1, 1, 1); font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace !important;'><span style="font-size: 11pt;"><br /></span></p>
+<p style='color: rgb(1, 1, 1); font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace !important;'><span style="font-size: 11pt;">이 공식을 보자마자 내 Memoization이 잘못 되었다는 것을 깨달았다.</span></p>
+<p style='color: rgb(1, 1, 1); font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace !important;'><span style="font-size: 14.6667px;">Memoization해야할 것은 Factorial 연산이 아니라 Combination 연산이었던 것이다!</span></p>
+<p style='color: rgb(1, 1, 1); font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace !important;'><span style="font-size: 14.6667px;">1차원적인 list에 저장할 값들이 아니였다. 그래서</span><span style="font-size: 11pt;"> 바로 Python 코드를 포기하고 C언어로 코딩을 했다.</span></p>
+<p style='color: rgb(1, 1, 1); font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace !important;'><span style="font-size: 11pt;"><br /></span></p>
+<p style='color: rgb(1, 1, 1); font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace !important;'><span style="font-size: 11pt;">여담으로 말하자면 각 언어마다 다양한 장단점이 있지만 요즘 Python을 가장 자주 쓴다.</span></p>
+<p style='color: rgb(1, 1, 1); font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace !important;'><span style="font-size: 11pt;">Python이 정말 여러가지 편리한 점이 있지만 나는 크게 3가지 이유로 쓴다.</span></p>
+<p style='color: rgb(1, 1, 1); font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace !important;'><span style="font-size: 11pt;">첫번째로, &#8216;,&#8217;를 통해서 들어오는 input의 변수들을 따로 저장하기 편하다.</span></p>
+<p style='color: rgb(1, 1, 1); font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace !important;'><span style="font-size: 11pt;"><span style="color: rgb(93, 93, 93);">split(&#8216;,&#8217;)</span> 함수 하나만 이용하면 바로 변수들을 저장할 수 있으니깐!</span></p>
+<p style='color: rgb(1, 1, 1); font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace !important;'><span style="font-size: 11pt;">두번째로 list 자료형의 유연함은 나의 생각을 코드로 구현하기 더 쉽게 만들어준다.</span></p>
+<p style='color: rgb(1, 1, 1); font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace !important;'><span style="font-size: 14.6667px;">list 안에 tuple, list, bool 등 다양한 자료형이 들어갈 수 있다는 점이 코드 작성에 엄청난 편리함을 준다.</span></p>
+<p style='color: rgb(1, 1, 1); font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace !important;'><span style="font-size: 14.6667px; color: rgb(93, 93, 93);">(하지만 오히려 멍청하게도 C, Java에서의 2차원 배열은 Python에서 항상 에러가 뜬다. 야매 Python 공부의 폐해&#8230;)</span></p>
+<p style='color: rgb(1, 1, 1); font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace !important;'><span style="font-size: 11pt;">마지막으로 list(배열)의 길이가 가변적이라는 점이다.</span></p>
+<p style='color: rgb(1, 1, 1); font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace !important;'><span style="font-size: 11pt;">물론 C와 같은 언어에도 malloc 같은 함수들을 통해 동적할당이 가능한 것으로 알고 있지만, 내가 잘 모른다&#8230;</span></p>
+<p style='color: rgb(1, 1, 1); font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace !important;'><span style="font-size: 11pt;">아무튼 이 셋 중 하나에 포함될 경우-정말 많은 경우들이 여기에 포함된다!-나는 거의 무조건 Python을 사용한다.</span></p>
+<p style='color: rgb(1, 1, 1); font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace !important;'><span style="font-size: 11pt;"><br /></span></p>
+<p style='color: rgb(1, 1, 1); font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace !important;'><span style="font-size: 11pt;">아무튼 내가 Python에서 제일 약한 2차원 배열의 형태가 나왔기 때문에 이번 문제는 오랜만에 C로 작성했다.</span></p>
+<p style='color: rgb(1, 1, 1); font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace !important;'><span style="font-size: 11pt;">(항상 가끔 C를 쓸 때마다 C++을 배워볼까라는 욕구가 매우 강하게 들곤 한다&#8230;!!)</span></p>
+<p style='color: rgb(1, 1, 1); font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace !important;'><span style="font-size: 11pt;"><br /></span></p>
+<div class="colorscripter-code" style="color:#010101; font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important; overflow:auto">
+<table cellpadding="0" cellspacing="0" class="colorscripter-code-table" style="margin:0; padding:0; border:none; background-color:#fafafa; border-radius:4px;">
+<tbody>
+<tr>
+<td style="padding:6px; border-right:2px solid #e5e5e5">
+<div style="margin:0; padding:0; word-break:normal; text-align:right; color:#666; font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; line-height:130%">
+<div style="line-height:130%">1</div>
+<div style="line-height:130%">2</div>
+<div style="line-height:130%">3</div>
+<div style="line-height:130%">4</div>
+<div style="line-height:130%">5</div>
+<div style="line-height:130%">6</div>
+<div style="line-height:130%">7</div>
+<div style="line-height:130%">8</div>
+<div style="line-height:130%">9</div>
+<div style="line-height:130%">10</div>
+<div style="line-height:130%">11</div>
+<div style="line-height:130%">12</div>
+<div style="line-height:130%">13</div>
+<div style="line-height:130%">14</div>
+<div style="line-height:130%">15</div>
+<div style="line-height:130%">16</div>
+<div style="line-height:130%">17</div>
+<div style="line-height:130%">18</div>
+<div style="line-height:130%">19</div>
+<div style="line-height:130%">20</div>
+<div style="line-height:130%">21</div>
+<div style="line-height:130%">22</div>
+<div style="line-height:130%">23</div>
+</div>
+</td>
+<td style="padding:6px 0">
+<div style="margin:0; padding:0; color:#010101; font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; line-height:130%">
+<div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color: rgb(0, 134, 179); font-size: 11pt;">#include</span><span style="font-size: 11pt;"> </span><span style="color: rgb(167, 29, 93); font-size: 11pt;">&lt;</span><span style="font-size: 11pt;">stdio.h</span><span style="color: rgb(167, 29, 93); font-size: 11pt;">&gt;</span></div>
+<div style="padding:0 6px; white-space:pre; line-height:130%"><span style="font-size: 11pt;"> </span></div>
+<div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color: rgb(6, 109, 226); font-size: 11pt;">int</span><span style="font-size: 11pt;"> m[</span><span style="color: rgb(0, 153, 204); font-size: 11pt;">1001</span><span style="font-size: 11pt;">][</span><span style="color: rgb(0, 153, 204); font-size: 11pt;">1001</span><span style="font-size: 11pt;">] </span><span style="color: rgb(167, 29, 93); font-size: 11pt;">=</span><span style="font-size: 11pt;"> {</span><span style="color: rgb(0, 153, 204); font-size: 11pt;">0</span><span style="font-size: 11pt;">};</span></div>
+<div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color: rgb(6, 109, 226); font-size: 11pt;">int</span><span style="font-size: 11pt;"> i,j;</span></div>
+<div style="padding:0 6px; white-space:pre; line-height:130%"><span style="font-size: 11pt;"> </span></div>
+<div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color: rgb(6, 109, 226); font-size: 11pt;">int</span><span style="font-size: 11pt;"> main() {</span></div>
+<div style="padding:0 6px; white-space:pre; line-height:130%"><span style="font-size: 11pt;">    </span><span style="color: rgb(6, 109, 226); font-size: 11pt;">int</span><span style="font-size: 11pt;"> n,k;</span></div>
+<div style="padding:0 6px; white-space:pre; line-height:130%"><span style="font-size: 11pt;">    </span><span style="color: rgb(6, 109, 226); font-size: 11pt;">scanf</span><span style="font-size: 11pt;">(</span><span style="color: rgb(99, 163, 92); font-size: 11pt;">&#8220;%d %d&#8221;</span><span style="font-size: 11pt;">,</span><span style="color: rgb(167, 29, 93); font-size: 11pt;">&amp;</span><span style="font-size: 11pt;">n, </span><span style="color: rgb(167, 29, 93); font-size: 11pt;">&amp;</span><span style="font-size: 11pt;">k);</span></div>
+<div style="padding:0 6px; white-space:pre; line-height:130%"><span style="font-size: 11pt;">    m[</span><span style="color: rgb(0, 153, 204); font-size: 11pt;">1</span><span style="font-size: 11pt;">][</span><span style="color: rgb(0, 153, 204); font-size: 11pt;">0</span><span style="font-size: 11pt;">]</span><span style="color: rgb(167, 29, 93); font-size: 11pt;">=</span><span style="color: rgb(0, 153, 204); font-size: 11pt;">1</span><span style="font-size: 11pt;">;</span></div>
+<div style="padding:0 6px; white-space:pre; line-height:130%"><span style="font-size: 11pt;">    </span><span style="color: rgb(167, 29, 93); font-size: 11pt;">for</span><span style="font-size: 11pt;">(i</span><span style="color: rgb(167, 29, 93); font-size: 11pt;">=</span><span style="color: rgb(0, 153, 204); font-size: 11pt;">2</span><span style="font-size: 11pt;">;i</span><span style="color: rgb(167, 29, 93); font-size: 11pt;">&lt;</span><span style="color: rgb(167, 29, 93); font-size: 11pt;">=</span><span style="font-size: 11pt;">n;i</span><span style="color: rgb(167, 29, 93); font-size: 11pt;">+</span><span style="color: rgb(167, 29, 93); font-size: 11pt;">+</span><span style="font-size: 11pt;">){</span></div>
+<div style="padding:0 6px; white-space:pre; line-height:130%"><span style="font-size: 11pt;">        m[i][</span><span style="color: rgb(0, 153, 204); font-size: 11pt;">0</span><span style="font-size: 11pt;">]</span><span style="color: rgb(167, 29, 93); font-size: 11pt;">=</span><span style="font-size: 11pt;">m[i</span><span style="color: rgb(167, 29, 93); font-size: 11pt;">&#8211;</span><span style="color: rgb(0, 153, 204); font-size: 11pt;">1</span><span style="font-size: 11pt;">][</span><span style="color: rgb(0, 153, 204); font-size: 11pt;">0</span><span style="font-size: 11pt;">]</span><span style="color: rgb(167, 29, 93); font-size: 11pt;">*</span><span style="font-size: 11pt;">(i);</span></div>
+<div style="padding:0 6px; white-space:pre; line-height:130%"><span style="font-size: 11pt;">    }</span></div>
+<div style="padding:0 6px; white-space:pre; line-height:130%"><span style="font-size: 11pt;">    </span><span style="color: rgb(167, 29, 93); font-size: 11pt;">for</span><span style="font-size: 11pt;">(i</span><span style="color: rgb(167, 29, 93); font-size: 11pt;">=</span><span style="color: rgb(0, 153, 204); font-size: 11pt;">1</span><span style="font-size: 11pt;">; i</span><span style="color: rgb(167, 29, 93); font-size: 11pt;">&lt;</span><span style="color: rgb(167, 29, 93); font-size: 11pt;">=</span><span style="font-size: 11pt;">n; i</span><span style="color: rgb(167, 29, 93); font-size: 11pt;">+</span><span style="color: rgb(167, 29, 93); font-size: 11pt;">+</span><span style="font-size: 11pt;">) {</span></div>
+<div style="padding:0 6px; white-space:pre; line-height:130%"><span style="font-size: 11pt;">        m[i][</span><span style="color: rgb(0, 153, 204); font-size: 11pt;">1</span><span style="font-size: 11pt;">] </span><span style="color: rgb(167, 29, 93); font-size: 11pt;">=</span><span style="font-size: 11pt;"> i;</span></div>
+<div style="padding:0 6px; white-space:pre; line-height:130%"><span style="font-size: 11pt;">    }</span></div>
+<div style="padding:0 6px; white-space:pre; line-height:130%"><span style="font-size: 11pt;">    </span><span style="color: rgb(167, 29, 93); font-size: 11pt;">for</span><span style="font-size: 11pt;">(i</span><span style="color: rgb(167, 29, 93); font-size: 11pt;">=</span><span style="color: rgb(0, 153, 204); font-size: 11pt;">2</span><span style="font-size: 11pt;">; i</span><span style="color: rgb(167, 29, 93); font-size: 11pt;">&lt;</span><span style="color: rgb(167, 29, 93); font-size: 11pt;">=</span><span style="font-size: 11pt;">n;i</span><span style="color: rgb(167, 29, 93); font-size: 11pt;">+</span><span style="color: rgb(167, 29, 93); font-size: 11pt;">+</span><span style="font-size: 11pt;">) {</span></div>
+<div style="padding:0 6px; white-space:pre; line-height:130%"><span style="font-size: 11pt;">        </span><span style="color: rgb(167, 29, 93); font-size: 11pt;">for</span><span style="font-size: 11pt;">(j</span><span style="color: rgb(167, 29, 93); font-size: 11pt;">=</span><span style="color: rgb(0, 153, 204); font-size: 11pt;">2</span><span style="font-size: 11pt;">; j</span><span style="color: rgb(167, 29, 93); font-size: 11pt;">&lt;</span><span style="color: rgb(167, 29, 93); font-size: 11pt;">=</span><span style="font-size: 11pt;">i; j</span><span style="color: rgb(167, 29, 93); font-size: 11pt;">+</span><span style="color: rgb(167, 29, 93); font-size: 11pt;">+</span><span style="font-size: 11pt;">){</span></div>
+<div style="padding:0 6px; white-space:pre; line-height:130%"><span style="font-size: 11pt;">            m[i][j]</span><span style="color: rgb(167, 29, 93); font-size: 11pt;">=</span><span style="font-size: 11pt;">(m[i</span><span style="color: rgb(167, 29, 93); font-size: 11pt;">&#8211;</span><span style="color: rgb(0, 153, 204); font-size: 11pt;">1</span><span style="font-size: 11pt;">][j]</span><span style="color: rgb(167, 29, 93); font-size: 11pt;">+</span><span style="font-size: 11pt;">m[i</span><span style="color: rgb(167, 29, 93); font-size: 11pt;">&#8211;</span><span style="color: rgb(0, 153, 204); font-size: 11pt;">1</span><span style="font-size: 11pt;">][j</span><span style="color: rgb(167, 29, 93); font-size: 11pt;">&#8211;</span><span style="color: rgb(0, 153, 204); font-size: 11pt;">1</span><span style="font-size: 11pt;">])%</span><span style="color: rgb(0, 153, 204); font-size: 11pt;">10007</span><span style="font-size: 11pt;">;</span></div>
+<div style="padding:0 6px; white-space:pre; line-height:130%"><span style="font-size: 11pt;">        }</span></div>
+<div style="padding:0 6px; white-space:pre; line-height:130%"><span style="font-size: 11pt;">    }</span></div>
+<div style="padding:0 6px; white-space:pre; line-height:130%"><span style="font-size: 11pt;">    </span><span style="color: rgb(6, 109, 226); font-size: 11pt;">printf</span><span style="font-size: 11pt;">(</span><span style="color: rgb(99, 163, 92); font-size: 11pt;">&#8220;%d&#8221;</span><span style="font-size: 11pt;">, m[n][k]);</span></div>
+<div style="padding:0 6px; white-space:pre; line-height:130%"><span style="font-size: 11pt;">    </span><span style="color: rgb(167, 29, 93); font-size: 11pt;">return</span><span style="font-size: 11pt;"> </span><span style="color: rgb(0, 153, 204); font-size: 11pt;">0</span><span style="font-size: 11pt;">;</span></div>
+<div style="padding:0 6px; white-space:pre; line-height:130%"><span style="font-size: 11pt;">}</span></div>
+</div>
+<div style="text-align:right; margin-top:-13px; margin-right:5px; font-size:9px; font-style:italic"><a href="http://colorscripter.com/info#e" style="color: rgb(229, 229, 229);" target="_blank">Colored by Color Scripter</a></div>
+</td>
+<td style="vertical-align:bottom; padding:0 2px 4px 0"><a href="http://colorscripter.com/info#e" style="color: white;" target="_blank"><span style="font-size: 9px; word-break: normal; background-color: rgb(229, 229, 229); border-radius: 10px; padding: 1px;">cs</span></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<table cellpadding="0" cellspacing="0" class="colorscripter-code-table" style="margin:0; padding:0; border:none; background-color:#fafafa; border-radius:4px;"></table>
+<div class="colorscripter-code" style="color:#010101; font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important; overflow:auto"></div>
+<p style="">
+<p style='color: rgb(1, 1, 1); font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace !important;'><span style="font-size: 11pt;"><br /></span></p>
+<p style='color: rgb(1, 1, 1); font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace !important;'><span style="font-size: 11pt;">문제의 조건이 1&lt;=N&lt;=1000이었기 때문에 1001*1001짜리 배열을 만들었다.</span></p>
+<p style='color: rgb(1, 1, 1); font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace !important;'><span style="font-size: 11pt;">첫번째 for문을 통해서 <span style="font-size: 9pt;">n<span style="font-size: 14pt;">C</span>0</span>의 값들을 계산했다. </span><span style="font-size: 12px;">n</span><span style="font-size: 14pt;">C</span><span style="font-size: 12px;">0</span><span style="font-size: 11pt;">의 값은 n!이라 m[n-1[0]에서 n을 계속 곱해서 채웠다.</span></p>
+<p style='color: rgb(1, 1, 1); font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace !important;'><span style="font-size: 14.6667px;">두번째 for문을 통해서 </span><span style="font-size: 12px;">n</span><span style="font-size: 14pt;">C</span><span style="font-size: 12px;">1</span><span style="font-size: 14.6667px;">의 값들을 계산했다. </span><span style="font-size: 12px;">n</span><span style="font-size: 14pt;">C</span><span style="font-size: 12px;">1</span><span style="font-size: 14.6667px;">의 값은 n이라 별로 어렵지 않았다.</span></p>
+<p style='color: rgb(1, 1, 1); font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace !important;'><span style="font-size: 14.6667px;">세번째 for문을 통해서 이항계수의 성질을 이용해 나머지 값들을 계속 저장했다.</span></p>
+<p style='color: rgb(1, 1, 1); font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace !important;'><span style="font-size: 14.6667px;">C언어 코드는 별 어려움 없이 바로 통과했다!</span></p>
+<p style='color: rgb(1, 1, 1); font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace !important;'><span style="font-size: 14.6667px;"><br /></span></p>
+<p style='color: rgb(1, 1, 1); font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace !important;'><span style="font-size: 14.6667px;">오랜 고민과 시행착오 끝에 문제를 풀어서 너무 뿌듯했다. 오랜만에 만난 수학적 지식은 덤!ㅎㅎ</span></p>
+<p style='color: rgb(1, 1, 1); font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace !important;'><span style="font-size: 14.6667px;">공부를 하면서 참고했던 블로그 주소를 두개 밑에 적어놨다.</span></p>
+<p style='color: rgb(1, 1, 1); font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace !important;'><span style="font-size: 14.6667px;">첫번째 주소가 내 고민의 발단이었던 </span><span style="font-size: 14.6667px;">(a/b</span><span style="font-size: 14.6667px;">)%c을 해결하는 &#8216;페르마의 소정리&#8217;에 대한 글,</span></p>
+<p style='color: rgb(1, 1, 1); font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace !important;'><span style="font-size: 14.6667px;">두번째 주소는 아직 자세히 읽어보지는 않았지만 이항계수의 modular 연산에 관한 심도있는 글이다.</span></p>
+<p style='color: rgb(1, 1, 1); font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace !important;'><span style="font-size: 14.6667px;">기회가 되면 참고해서 더 공부해봐야겠다.</span></p>
+<p style='color: rgb(1, 1, 1); font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace !important;'><span style="font-size: 14.6667px;"><br /></span></p>
+<p style='color: rgb(1, 1, 1); font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace !important;'><span style="font-size: 14pt;"><b><span style="background-color: rgb(234, 234, 234);"> 참고자료</span></b></span></p>
+<p style=""><font color="#010101" face="Consolas, Liberation Mono, Menlo, Courier, monospace"><span style="font-size: 14.6667px;">http://kwony91.tistory.com/entry/모듈러-나눗셈-연산-처리하기</span></font></p>
+<p style=""><font color="#010101" face="Consolas, Liberation Mono, Menlo, Courier, monospace"><span style="font-size: 14.6667px;">http://koosaga.com/63</span></font></p>
+<p style='color: rgb(1, 1, 1); font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace !important;'><span style="font-size: 14.6667px;"><br /></span></p>
+<p style='color: rgb(1, 1, 1); font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace !important;'></p>
+<p style='color: rgb(1, 1, 1); font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace !important;'></p>
+</p>
+</div>
+<p style="line-height: 1.5;"></p>
+<hr />
+<p><iframe src='http://ad.selfhow.com/rd' width='100%' border=0 frameborder=0 style='height:auto;width:100%'></iframe></p>
+<p><a href='http://charging-with.tistory.com/3' target='_blank'>Origin Content : wITh</a> | <a href="/cdn-cgi/l/email-protection#1271717e71527c737e733c7573" target='_blank'>Contact : <span class="__cf_email__" data-cfemail="4d2e2e212e0d232c212c632a2c">[email&#160;protected]</span></a>
+</p>
+<p>Cotent License : CC-BY </p>
+<p>This content is collected under the CCL license.</p>
+<p>Please check the license of the original article before asking about copyright.</p>
+<ul>
+<li><a href='/tag/110151번'>More About <span style='font-weight:bold;'>110151번</span></a></li>
+<li><a href='/tag/이항'>More About <span style='font-weight:bold;'>이항</span></a></li>
+<li><a href='/tag/계수2'>More About <span style='font-weight:bold;'>계수2</span></a></li>
+</ul>
+        </div> <!-- //.entry-summary -->
+        
+                    <div class="entry-tags"><b>Tags:</b> <a href="http://ms.nala.ga/tag/110151%eb%b2%88/" rel="tag">110151번</a>, <a href="http://ms.nala.ga/tag/%ea%b3%84%ec%88%982/" rel="tag">계수2</a>, <a href="http://ms.nala.ga/tag/%ec%9d%b4%ed%95%ad/" rel="tag">이항</a></div>
+        
+    </div>
+
+</article> <!--/#post-->
+
+
+
+
+
+                                                                    <div class="post-nav-area">
+                                                    
+            <nav class="next-previous-post clearfix media" role="navigation">
+                <div class="row">
+                    <!-- Previous Post -->
+                    <div class="previous-post col-sm-6 pull-left">
+                        <div class="nav-previous"><i class="fa fa-angle-left"></i> <a href="http://ms.nala.ga/%ed%99%8d%ec%bd%a9%ed%95%ad%ea%b3%b5%ea%b6%8c-%ed%99%8d%ec%bd%a9%ec%9d%b5%ec%8a%a4%ed%94%84%eb%a0%88%ec%8a%a4-%eb%96%b3%eb%8b%a4-%ed%8a%b9%ea%b0%80-%ec%98%88%ec%95%bd%ea%b3%a0/" rel="prev">홍콩항공권 홍콩익스프레스 떳다 특가! 예약고~</a></div>                    </div>
+
+                    <!-- Next Post -->
+                    <div class="next-post col-sm-6 pull-right text-right">
+                        <div class="nav-next"><a href="http://ms.nala.ga/withcon-2017-bank/" rel="next">WITHCON 2017 bank</a> <i class="fa fa-angle-right"></i></div>                    </div>
+                </div>
+            </nav><!-- .navigation -->
+            
+                                            </div>
+                                
+                                
+                            
+                                            </main> <!-- /.site-main -->
+                </div>  <!-- /.content-area -->
+            </div> <!-- /col -->
+
+            <!-- Blogsidebar -->
+            
+	<div class="col-md-4">
+	    <div class="primary-sidebar widget-area" role="complementary">
+	        <div id="tag_cloud-2" class="widget widget_tag_cloud"><h2 class="widget-title">태그</h2><div class="tagcloud"><a href="http://ms.nala.ga/tag/1%ec%9b%94/" class="tag-cloud-link tag-link-2 tag-link-position-1" style="font-size: 18.440677966102pt;" aria-label="1월 (115 아이템)">1월</a>
+<a href="http://ms.nala.ga/tag/2017/" class="tag-cloud-link tag-link-21 tag-link-position-2" style="font-size: 17.016949152542pt;" aria-label="2017 (98 아이템)">2017</a>
+<a href="http://ms.nala.ga/tag/2017%eb%85%84/" class="tag-cloud-link tag-link-551 tag-link-position-3" style="font-size: 14.406779661017pt;" aria-label="2017년 (77 아이템)">2017년</a>
+<a href="http://ms.nala.ga/tag/2018/" class="tag-cloud-link tag-link-155 tag-link-position-4" style="font-size: 15.830508474576pt;" aria-label="2018 (89 아이템)">2018</a>
+<a href="http://ms.nala.ga/tag/2018%eb%85%84/" class="tag-cloud-link tag-link-64 tag-link-position-5" style="font-size: 19.864406779661pt;" aria-label="2018년 (130 아이템)">2018년</a>
+<a href="http://ms.nala.ga/tag/the/" class="tag-cloud-link tag-link-310 tag-link-position-6" style="font-size: 11.322033898305pt;" aria-label="the (57 아이템)">the</a>
+<a href="http://ms.nala.ga/tag/vs/" class="tag-cloud-link tag-link-128 tag-link-position-7" style="font-size: 8pt;" aria-label="vs (41 아이템)">vs</a>
+<a href="http://ms.nala.ga/tag/%ea%b0%80%ea%b2%a9/" class="tag-cloud-link tag-link-275 tag-link-position-8" style="font-size: 12.271186440678pt;" aria-label="가격 (62 아이템)">가격</a>
+<a href="http://ms.nala.ga/tag/%ea%b2%b0%ed%98%bc/" class="tag-cloud-link tag-link-501 tag-link-position-9" style="font-size: 20.338983050847pt;" aria-label="결혼 (136 아이템)">결혼</a>
+<a href="http://ms.nala.ga/tag/%ea%b3%b5%ea%b0%9c/" class="tag-cloud-link tag-link-260 tag-link-position-10" style="font-size: 9.8983050847458pt;" aria-label="공개 (49 아이템)">공개</a>
+<a href="http://ms.nala.ga/tag/%ea%b7%b8%eb%a6%ac%ea%b3%a0/" class="tag-cloud-link tag-link-980 tag-link-position-11" style="font-size: 10.135593220339pt;" aria-label="그리고 (50 아이템)">그리고</a>
+<a href="http://ms.nala.ga/tag/%eb%82%98%ec%9d%b4%ec%b0%a8/" class="tag-cloud-link tag-link-1184 tag-link-position-12" style="font-size: 8.2372881355932pt;" aria-label="나이차 (42 아이템)">나이차</a>
+<a href="http://ms.nala.ga/tag/%eb%82%a8%ec%9e%90/" class="tag-cloud-link tag-link-364 tag-link-position-13" style="font-size: 9.4237288135593pt;" aria-label="남자 (47 아이템)">남자</a>
+<a href="http://ms.nala.ga/tag/%eb%82%a8%ed%8e%b8/" class="tag-cloud-link tag-link-603 tag-link-position-14" style="font-size: 16.305084745763pt;" aria-label="남편 (92 아이템)">남편</a>
+<a href="http://ms.nala.ga/tag/%eb%85%b8%eb%9e%98/" class="tag-cloud-link tag-link-713 tag-link-position-15" style="font-size: 8.9491525423729pt;" aria-label="노래 (45 아이템)">노래</a>
+<a href="http://ms.nala.ga/tag/%eb%8c%80%ed%95%9c/" class="tag-cloud-link tag-link-3572 tag-link-position-16" style="font-size: 10.135593220339pt;" aria-label="대한 (50 아이템)">대한</a>
+<a href="http://ms.nala.ga/tag/%eb%93%9c%eb%9d%bc%eb%a7%88/" class="tag-cloud-link tag-link-1041 tag-link-position-17" style="font-size: 16.542372881356pt;" aria-label="드라마 (95 아이템)">드라마</a>
+<a href="http://ms.nala.ga/tag/%eb%a6%ac%eb%b7%b0/" class="tag-cloud-link tag-link-447 tag-link-position-18" style="font-size: 12.508474576271pt;" aria-label="리뷰 (64 아이템)">리뷰</a>
+<a href="http://ms.nala.ga/tag/%eb%a7%9b%ec%a7%91/" class="tag-cloud-link tag-link-782 tag-link-position-19" style="font-size: 16.779661016949pt;" aria-label="맛집 (97 아이템)">맛집</a>
+<a href="http://ms.nala.ga/tag/%eb%aa%a8%ec%9d%8c/" class="tag-cloud-link tag-link-1142 tag-link-position-20" style="font-size: 13.694915254237pt;" aria-label="모음 (72 아이템)">모음</a>
+<a href="http://ms.nala.ga/tag/%eb%aa%b8%eb%a7%a4/" class="tag-cloud-link tag-link-2391 tag-link-position-21" style="font-size: 15.830508474576pt;" aria-label="몸매 (88 아이템)">몸매</a>
+<a href="http://ms.nala.ga/tag/%eb%b0%a9%eb%b2%95/" class="tag-cloud-link tag-link-930 tag-link-position-22" style="font-size: 17.491525423729pt;" aria-label="방법 (103 아이템)">방법</a>
+<a href="http://ms.nala.ga/tag/%eb%b0%b0%ec%9a%b0/" class="tag-cloud-link tag-link-895 tag-link-position-23" style="font-size: 15.593220338983pt;" aria-label="배우 (86 아이템)">배우</a>
+<a href="http://ms.nala.ga/tag/%eb%b6%80%ec%82%b0/" class="tag-cloud-link tag-link-157 tag-link-position-24" style="font-size: 8.4745762711864pt;" aria-label="부산 (43 아이템)">부산</a>
+<a href="http://ms.nala.ga/tag/%ec%82%ac%eb%9e%91/" class="tag-cloud-link tag-link-2972 tag-link-position-25" style="font-size: 14.406779661017pt;" aria-label="사랑 (77 아이템)">사랑</a>
+<a href="http://ms.nala.ga/tag/%ec%82%ac%ec%a7%84/" class="tag-cloud-link tag-link-410 tag-link-position-26" style="font-size: 9.4237288135593pt;" aria-label="사진 (47 아이템)">사진</a>
+<a href="http://ms.nala.ga/tag/%ec%95%84%eb%82%b4/" class="tag-cloud-link tag-link-3039 tag-link-position-27" style="font-size: 9.6610169491525pt;" aria-label="아내 (48 아이템)">아내</a>
+<a href="http://ms.nala.ga/tag/%ec%95%88%eb%82%b4/" class="tag-cloud-link tag-link-1327 tag-link-position-28" style="font-size: 11.322033898305pt;" aria-label="안내 (56 아이템)">안내</a>
+<a href="http://ms.nala.ga/tag/%ec%95%8c%ec%95%84%eb%b3%b4%ea%b8%b0/" class="tag-cloud-link tag-link-821 tag-link-position-29" style="font-size: 15.118644067797pt;" aria-label="알아보기 (82 아이템)">알아보기</a>
+<a href="http://ms.nala.ga/tag/%ec%95%8c%ec%95%84%eb%b3%b4%ec%9e%90/" class="tag-cloud-link tag-link-341 tag-link-position-30" style="font-size: 11.322033898305pt;" aria-label="알아보자 (56 아이템)">알아보자</a>
+<a href="http://ms.nala.ga/tag/%ec%97%ac%ed%96%89/" class="tag-cloud-link tag-link-873 tag-link-position-31" style="font-size: 17.016949152542pt;" aria-label="여행 (98 아이템)">여행</a>
+<a href="http://ms.nala.ga/tag/%ec%98%81%ed%99%94/" class="tag-cloud-link tag-link-562 tag-link-position-32" style="font-size: 19.389830508475pt;" aria-label="영화 (124 아이템)">영화</a>
+<a href="http://ms.nala.ga/tag/%ec%98%a4%eb%8a%98/" class="tag-cloud-link tag-link-1059 tag-link-position-33" style="font-size: 13.694915254237pt;" aria-label="오늘 (72 아이템)">오늘</a>
+<a href="http://ms.nala.ga/tag/%ec%9a%b0%eb%a6%ac/" class="tag-cloud-link tag-link-888 tag-link-position-34" style="font-size: 11.322033898305pt;" aria-label="우리 (57 아이템)">우리</a>
+<a href="http://ms.nala.ga/tag/%ec%9c%84%ed%95%9c/" class="tag-cloud-link tag-link-1175 tag-link-position-35" style="font-size: 12.983050847458pt;" aria-label="위한 (66 아이템)">위한</a>
+<a href="http://ms.nala.ga/tag/%ec%9d%b4%ec%95%bc%ea%b8%b0/" class="tag-cloud-link tag-link-611 tag-link-position-36" style="font-size: 12.508474576271pt;" aria-label="이야기 (64 아이템)">이야기</a>
+<a href="http://ms.nala.ga/tag/%ec%9d%b4%ec%9c%a0/" class="tag-cloud-link tag-link-296 tag-link-position-37" style="font-size: 10.372881355932pt;" aria-label="이유 (51 아이템)">이유</a>
+<a href="http://ms.nala.ga/tag/%ec%9e%90%ea%b2%a9%ec%a6%9d/" class="tag-cloud-link tag-link-2111 tag-link-position-38" style="font-size: 9.4237288135593pt;" aria-label="자격증 (47 아이템)">자격증</a>
+<a href="http://ms.nala.ga/tag/%ec%a0%95%eb%a6%ac/" class="tag-cloud-link tag-link-1831 tag-link-position-39" style="font-size: 13.220338983051pt;" aria-label="정리 (68 아이템)">정리</a>
+<a href="http://ms.nala.ga/tag/%ec%a0%95%eb%b3%b4/" class="tag-cloud-link tag-link-89 tag-link-position-40" style="font-size: 15.118644067797pt;" aria-label="정보 (83 아이템)">정보</a>
+<a href="http://ms.nala.ga/tag/%ec%b6%94%ec%b2%9c/" class="tag-cloud-link tag-link-146 tag-link-position-41" style="font-size: 22pt;" aria-label="추천 (162 아이템)">추천</a>
+<a href="http://ms.nala.ga/tag/%ec%b6%9c%ec%97%b0/" class="tag-cloud-link tag-link-2930 tag-link-position-42" style="font-size: 10.847457627119pt;" aria-label="출연 (54 아이템)">출연</a>
+<a href="http://ms.nala.ga/tag/%ed%95%9c%ea%b5%ad/" class="tag-cloud-link tag-link-3361 tag-link-position-43" style="font-size: 11.796610169492pt;" aria-label="한국 (59 아이템)">한국</a>
+<a href="http://ms.nala.ga/tag/%ed%9a%a8%eb%8a%a5/" class="tag-cloud-link tag-link-810 tag-link-position-44" style="font-size: 9.6610169491525pt;" aria-label="효능 (48 아이템)">효능</a>
+<a href="http://ms.nala.ga/tag/%ed%9b%84%ea%b8%b0/" class="tag-cloud-link tag-link-14 tag-link-position-45" style="font-size: 17.966101694915pt;" aria-label="후기 (109 아이템)">후기</a></div>
+</div>	    </div>
+	</div>
+
+        </div> <!-- /.row -->
+    </div> <!-- /.container -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <hr>
+            </div>
+        </div>
+    </div>
+    <footer class="site-footer" role="contentinfo">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 text-center">
+  
+                    <p></p>
+                    
+                                            <div class="footer-social-icons">
+                                                                                                                                                                                                                                                                                                                                                                                                        
+                        </div>
+                    
+                </div>
+            </div>
+        </div>
+    </footer>
+
+            <div class="scroll-up">
+            <a href="#"><i class="fa fa-angle-up"></i></a>
+        </div>
+        <!-- Scroll Up -->
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/af2821b0/cloudflare-static/email-decode.min.js"></script><script type='text/javascript' src='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/js/bootstrap.min.js?ver=3.3.5'></script>
+<script type='text/javascript' src='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/js/scripts.js'></script>
+<script type='text/javascript' src='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/js/jquery.fitvids.js'></script>
+<script type='text/javascript' src='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/js/smoothscroll.js'></script>
+<script type='text/javascript' src='http://ms.nala.ga/wp-includes/js/wp-embed.min.js?ver=4.8.4'></script>
+    </body>
+</html>

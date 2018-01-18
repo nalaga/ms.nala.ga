@@ -1,0 +1,1274 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="profile" href="http://gmpg.org/xfn/11">
+    <link rel="pingback" href="http://ms.nala.ga/xmlrpc.php">
+
+<title>자바스크립트 표준 #2 | All About MS CCL Contents</title>
+<meta name='robots' content='noindex,follow' />
+
+<!-- All in One SEO Pack 2.4.4 by Michael Torbert of Semper Fi Web Design[276,329] -->
+<meta name="description"  content="3줄 요약 var {fourWheeles, twoWheels, fourWheeles ...중략... woWheels + &quot;, &quot; + cars + &quot;, &quot; + trucks); function* innerGenerator(){ yield 6; yield* new Set(); } console.log(weakSet.has(obj)); console.log(weakMap.has(obj)); 템플릿 문자열 표현식기존에 없엇던 완전히 새로운 기능 중 하나가 바로 템플릿 문자열 표현식이다.기존의 작은 따옴표(&#039;), 큰따옴표(&quot;)로 여닫는 문자열 표현식이 아닌 역따옴표(`)로" />
+<meta name="robots" content="index,nofollow" />
+
+<link rel="canonical" href="http://ms.nala.ga/%ec%9e%90%eb%b0%94%ec%8a%a4%ed%81%ac%eb%a6%bd%ed%8a%b8-%ed%91%9c%ec%a4%80-2/" />
+<!-- /all in one seo pack -->
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="All About MS CCL Contents &raquo; 피드" href="http://ms.nala.ga/feed/" />
+<link rel="alternate" type="application/rss+xml" title="All About MS CCL Contents &raquo; 댓글 피드" href="http://ms.nala.ga/comments/feed/" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.3\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.3\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/ms.nala.ga\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.8.5"}};
+			!function(a,b,c){function d(a){var b,c,d,e,f=String.fromCharCode;if(!k||!k.fillText)return!1;switch(k.clearRect(0,0,j.width,j.height),k.textBaseline="top",k.font="600 32px Arial",a){case"flag":return k.fillText(f(55356,56826,55356,56819),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,56826,8203,55356,56819),0,0),c=j.toDataURL(),b!==c&&(k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447),0,0),c=j.toDataURL(),b!==c);case"emoji4":return k.fillText(f(55358,56794,8205,9794,65039),0,0),d=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55358,56794,8203,9794,65039),0,0),e=j.toDataURL(),d!==e}return!1}function e(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i,j=b.createElement("canvas"),k=j.getContext&&j.getContext("2d");for(i=Array("flag","emoji4"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='bootstrap-css-css'  href='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/css/bootstrap.min.css?ver=3.3.5' type='text/css' media='all' />
+<link rel='stylesheet' id='font-awesome-css-css'  href='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/css/font-awesome.min.css?ver=4.4.0' type='text/css' media='all' />
+<link rel='stylesheet' id='shaped-blog-stylesheet-css'  href='http://ms.nala.ga/wp-content/themes/shaped-blog/style.css?ver=4.8.5' type='text/css' media='all' />
+<link rel='stylesheet' id='responsive-css-css'  href='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/css/responsive.css' type='text/css' media='all' />
+<script type='text/javascript' src='http://ms.nala.ga/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
+<script type='text/javascript' src='http://ms.nala.ga/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+<link rel='https://api.w.org/' href='http://ms.nala.ga/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://ms.nala.ga/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://ms.nala.ga/wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='[5장]자바스크립트_콜백함수' href='http://ms.nala.ga/5%ec%9e%a5%ec%9e%90%eb%b0%94%ec%8a%a4%ed%81%ac%eb%a6%bd%ed%8a%b8_%ec%bd%9c%eb%b0%b1%ed%95%a8%ec%88%98/' />
+<link rel='next' title='get autographs from celebrities,get born' href='http://ms.nala.ga/get-autographs-from-celebritiesget-born/' />
+<meta name="generator" content="WordPress 4.8.5" />
+<link rel='shortlink' href='http://ms.nala.ga/?p=10466' />
+<link rel="alternate" type="application/json+oembed" href="http://ms.nala.ga/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fms.nala.ga%2F%25ec%259e%2590%25eb%25b0%2594%25ec%258a%25a4%25ed%2581%25ac%25eb%25a6%25bd%25ed%258a%25b8-%25ed%2591%259c%25ec%25a4%2580-2%2F" />
+<link rel="alternate" type="text/xml+oembed" href="http://ms.nala.ga/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fms.nala.ga%2F%25ec%259e%2590%25eb%25b0%2594%25ec%258a%25a4%25ed%2581%25ac%25eb%25a6%25bd%25ed%258a%25b8-%25ed%2591%259c%25ec%25a4%2580-2%2F&#038;format=xml" />
+
+	<style>
+
+		/* Border Color */
+		.btn-social:hover,
+		blockquote,
+		#respond input:focus[type="text"], 
+	    #respond input:focus[type="email"], 
+	    #respond input:focus[type="url"],
+	    #respond textarea:focus,
+	    #comments .comment-reply a:hover
+		{
+			border-color: ;
+		}
+
+		
+		/* Background Color */
+		.scroll-up a,
+		.btn-social:hover,
+		button,
+		input[type="button"],
+		input[type="reset"],
+		input[type="submit"],
+		.navbar-default .navbar-nav .dropdown-menu li a:hover, .dropdown-menu li a:focus, .navbar-default .navbar-nav .dropdown-menu .active a,
+		.pagination>li>a:focus, .pagination>li>a:hover, .pagination>li>span:focus, .pagination>li>span:hover, .pagination li .current,
+		.next-previous-posts .next-post a:hover,
+		.next-previous-posts .previous-post a:hover,
+		.btn-goback,
+		.btn-submit,
+		a.more-link,
+		.featured-post .fa,
+		#comments .comment-reply a:hover,
+		.widget .tagcloud a
+		{
+			background-color: ;
+		}
+
+		
+		/* Color */
+		.text-logo a,
+		.navbar-default .navbar-nav .active a, .navbar-default .navbar-nav .active a:hover, .navbar-default .navbar-nav .active a:focus,
+		.navbar-default .navbar-nav li a:hover, .navbar-default .navbar-nav li a:focus,
+		a:hover,
+    	a:focus,
+		.next-previous-posts .previous-post a,
+		.next-previous-posts .next-post a,
+		.pagination>li>a, .pagination>li>span,
+		#comments .comment-author a:hover, 
+    	#respond .logged-in-as a:hover,
+    	#wp-calendar a,
+    	h2.entry-title a:hover
+		{
+			color: ;
+		}
+
+
+		/* A Color */
+		a{
+			color: ;
+		}
+
+		/* a:hover Color */
+		a:hover,
+		a:focus,
+		a:active,
+		.widget a:hover,
+		.post .post-content .entry-meta ul li a:hover
+		{
+			color: ;
+		}
+
+		/* .featured-post .fa:after*/
+		.featured-post .fa:after{
+			border-color:   transparent ;
+		}
+
+
+		
+
+	</style>
+</head>
+
+<body class="post-template-default single single-post postid-10466 single-format-standard">
+
+    <div id="st-preloader">
+        <div id="pre-status">
+            <div class="preload-placeholder"></div>
+        </div>
+    </div>
+<!-- /Preloader -->
+
+<header id="header">	
+	<div id="trueHeader">
+    	<div class="wrapper">
+            <div class="container">
+            	<!-- Menu -->
+            	<div class="menu_main">
+                	<div class="navbar blogx-navbar navbar-default">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#st-navber-collapse">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+
+                                                            <div class="text-logo">
+                                    <a href="http://ms.nala.ga">All About MS CCL Contents</a>
+                                    <p>All About MS CCL Contents</p>
+                                </div><!-- /Logo -->
+                                                    </div>
+                      
+                        <div id="st-navber-collapse" class="navbar-collapse collapse pull-right">
+                             
+                        </div>
+                    </div>
+            	</div><!-- end menu -->
+        	</div> <!-- /.container -->
+    	</div>
+	</div>
+	<DIV class='ads_adsense_img' style='margin:40px 0px 40px 0px;'>
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<!-- only display -->
+	<ins class="adsbygoogle"
+	     style="display:block"
+	     data-ad-client="ca-pub-8393857339019314"
+	     data-ad-slot="7474886381"
+	     data-ad-format="auto"></ins>
+	<script>
+	(adsbygoogle = window.adsbygoogle || []).push({});
+	</script>
+	</DIV>	
+
+</header>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div id="primary" class="content-area">
+                    <main id="main" class="site-main" role="main">
+
+                        
+                                <article id="post-10466" class="post-10466 post type-post status-publish format-standard hentry category-uncategorized tag-17056 tag-17057">
+    <header class="entry-header">
+        
+        
+    </header> <!--/.entry-header -->
+
+    <div class="clearfix post-content media">
+
+        <h2 class="entry-title">
+            자바스크립트 표준 #2        </h2> <!-- //.entry-title -->
+
+        <div class="clearfix entry-meta">
+            
+            <ul class="list-inline">
+                <li>
+                    <span class="author vcard">
+                        By <a class="url fn n" href="http://ms.nala.ga/author/admin/">admin</a>                    </span>
+                </li>
+                <li>
+                    on <span class="posted-on">1월 13, 2018</span>
+                </li>
+                                    <li>
+                        in <span class="posted-in">
+                            <a href="http://ms.nala.ga/category/uncategorized/" rel="category tag">미분류</a>                        </span>
+                    </li>
+                            </ul>
+                </div> <!--/.entry-meta -->
+        
+        <div class="entry-summary">
+            <h1>3줄 요약 </h1>
+<div style='color:#fff;background-color:#000;border-radius:10px;'>
+<ol>
+<li><span>var {fourWheeles, twoWheels, fourWheeles <small>&#8230;중략&#8230;</small> woWheels + &#8220;, &#8221; + cars + &#8220;, &#8221; + trucks);</span></li>
+<li><span>function* innerGenerator(){      yield 6;      yield* new Set([&#8220;7&#8243;,&#8221;8&#8221;]);    }</span></li>
+<li><span>console.log(weakSet.has(obj));  console.log(weakMap.has(obj));</span></li>
+</ol>
+</div>
+<p><span id="more-10466"></span></p>
+<p><iframe src='http://ad.selfhow.com/rd' width='100%' border=0 frameborder=0 style='height:auto;width:100%'></iframe></p>
+<hr />
+<p>템플릿 문자열 표현식</p>
+<p>기존에 없엇던 완전히 새로운 기능 중 하나가 바로 템플릿 문자열 표현식이다.</p>
+<p>기존의 작은 따옴표(&#8216;), 큰따옴표(&#8220;)로 여닫는 문자열 표현식이 아닌 역따옴표(`)로 여닫는 것을 &#8216;템플릿 문자열 표현식&#8217;이라고 한다.</p>
+<p>기존에는 문자열 중간중간 다른 변수를 넣어야 할때 문자열을 합치는 등의 작업이 필요했지만, 템플릿 문자열을 이용하면 간단하게 하게 해결</p>
+<table border="0" cellpadding="0" cellspacing="0" class="txc-table" style="border:none;border-collapse:collapse;;font-family:Dotum, 돋움;font-size:13px" width="964">
+<tbody>
+<tr>
+<td style="width:964;height:24;border-bottom:1px solid #ccc;border-right:1px solid #ccc;border-top:1px solid #ccc;border-left:1px solid #ccc;;">
+<p>&lt;!DOCTYPE html&gt;</p>
+<p>&lt;html lang=&#8221;ko&#8221;&gt;</p>
+<p> &lt;head&gt;</p>
+<p>   &lt;meta charset=&#8221;utf-8&#8243;&gt;</p>
+<p>   &lt;title&gt;ES6 template-string&lt;/title&gt;</p>
+<p> &lt;/head&gt;</p>
+<p> &lt;body&gt;</p>
+<p>   &lt;label&gt;Name: &lt;input id=&#8221;name&#8221;&gt;&lt;/label&gt;</p>
+<p>   &lt;div id=&#8221;greetings&#8221;&gt;&lt;/div&gt;</p>
+<p><span style="white-space: pre;"> </span> &lt;script&gt;</p>
+<p>  (()=&gt;{</p>
+<p>      var inputName = document.getElementById(&#8220;name&#8221;),</p>
+<p>          divGreetings = document.getElementById(&#8220;greetings&#8221;);</p>
+<p></p>
+<p>      inputName.addEventListener(&#8220;change&#8221;, ()=&gt;{</p>
+<p>        divGreetings.innerHTML = `Hello, ${inputName.value.toUpperCase()}`;</p>
+<p>      });</p>
+<p>  })();</p>
+<p><span style="white-space: pre;"> </span> &lt;/script&gt;</p>
+<p> &lt;/body&gt;</p>
+<p> &lt;/html&gt;</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>change 이벤트 핸들러를 통해서 별도의 &lt;div&gt; 태그에 인사말을 보여준다.</p>
+<p></p>
+<p>역따옴표의 변수 설정은 ${} 안에 이루어지면 여기에는 일반변수뿐만 아니라 함수호출이나 계산식도 넣을 수 있다.</p>
+<p>${inputName.value.toUpperCase()} 코드로 대문자로 변경한다.</p>
+<p></p>
+<p>템플릿 문자열의 특징은 동적 변수 문자열 할당뿐아니라 여러 줄 문자열을 쉽게 지원한다.</p>
+<p>이전에는 문자열을 여러 줄로 출력할 때는 특수문자 &#8220;\n&#8221; 으로 줄의 끝을 표기해줘야 했지만, 템플릿 문자열 표현식을 이용하면 셀이나 PHP의  EOL키워드와 유사하개 개행을 보이는 대로 적용해준다.</p>
+<table border="0" cellpadding="0" cellspacing="0" class="txc-table" style="border:none;border-collapse:collapse;;font-family:Dotum, 돋움;font-size:13px" width="964">
+<tbody>
+<tr>
+<td style="width:964;height:24;border-bottom:1px solid #ccc;border-right:1px solid #ccc;border-top:1px solid #ccc;border-left:1px solid #ccc;;">
+<p> &lt;!DOCTYPE html&gt;</p>
+<p>&lt;html lang=&#8221;ko&#8221;&gt;</p>
+<p> &lt;head&gt;</p>
+<p>   &lt;meta charset=&#8221;utf-8&#8243;&gt;</p>
+<p>   &lt;title&gt;ES6 template-string&lt;/title&gt;</p>
+<p> &lt;/head&gt;</p>
+<p> &lt;body&gt;</p>
+<p>   &lt;label&gt;Name: &lt;input id=&#8221;name&#8221;&gt;&lt;/label&gt;</p>
+<p>   &lt;pre id=&#8221;greetings&#8221;&gt;&lt;/pre&gt;</p>
+<p>   &lt;pre id=&#8221;greetingsES5&#8243;&gt;&lt;/pre&gt;</p>
+<p><span style="white-space: pre;"> </span> &lt;script&gt;</p>
+<p>  (()=&gt;{</p>
+<p>      var inputName = document.getElementById(&#8220;name&#8221;),</p>
+<p>          preGreetings = document.getElementById(&#8220;greetings&#8221;),</p>
+<p>          preGreetingsES5 = document.getElementById(&#8220;greetingsES5&#8221;);</p>
+<p></p>
+<p>      inputName.addEventListener(&#8220;change&#8221;, ()=&gt;{</p>
+<p>        preGreetings.innerHTML = `Hello,</p>
+<p>        ${inputName.value.toUpperCase()}\nWelcome to ES6`;</p>
+<p></p>
+<p>        preGreetingsES5.innerHTML = &#8220;Hello, \n&#8221; +</p>
+<p>        inputName.value.toUpperCase() +</p>
+<p>        &#8220;\nI&#8217;m using ES5&#8221;;</p>
+<p>      });</p>
+<p></p>
+<p></p>
+<p>  })();</p>
+<p><span style="white-space: pre;"> </span> &lt;/script&gt;</p>
+<p> &lt;/body&gt;</p>
+<p> &lt;/html&gt;</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>자바스크립트가 서버에서 동작하여 템플릿을 제공해야 할 때 코드상에서 보이는 것과 유사하게 프로그래밍할수 있어서 개발자에게 편리하다.</p>
+<p>템플릿 문자열 표현식의 또  다른 특징은 전체 문자열을 분석하거나 입력된 값에 따라서 다른 문자열이나 현재 문자열을 변경해서 처리할 수도 있다.</p>
+<table border="0" cellpadding="0" cellspacing="0" class="txc-table" style="border:none;border-collapse:collapse;;font-family:Dotum, 돋움;font-size:13px" width="964">
+<tbody>
+<tr>
+<td style="width:964;height:24;border-bottom:1px solid #ccc;border-right:1px solid #ccc;border-top:1px solid #ccc;border-left:1px solid #ccc;;">
+<p>    function analyze(strings, &#8230;values){</p>
+<p>      console.log(strings);</p>
+<p>      console.log(values);</p>
+<p>      return &#8220;Conditional string&#8221;;</p>
+<p>    }</p>
+<p></p>
+<p>    var name =&#8221;World&#8221;;</p>
+<p>    console.log(analyze `Hello, ${name}!\nECMAScript${2*2+2} is easy`);</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>함수뒤에 괄호를 열지 않고 바로 템플릿 문자열 표현식을 사용하면 함수에 첫번째 인자로는 변수값을 기준으로 나눈 문자열들이 배열로 넘긴다.</p>
+<p>그리고 각 변수들이 이후의 인자들로 넘긴다.</p>
+<p>여기서 인자의 확장 기능을 통해 values라는 하나의 배열로 나머지 실제 값들을 받는다.</p>
+<p>그리고 해당 함수의 반환값이 최종적으로 표시되는 문자열이므로 조건부로 다른 문자열을 보여주거나 특수문자 변환 등의 전처리가 필요하다면 이러한 함수 호출을 통해서 변경하면된다.</p>
+<p>이처럼 템플릿 문자열에 대한 정보를 함수로 넘겨줄때 괄호를 둘러싸면 템플릿 문자열이 먼저 처리되어 일반 문자열로 인자가 넘어가므로 이러한 함수를 활용할 때는 주의하면된다.</p>
+<p></p>
+<p>첫번째 인자인 string의 속성으로 raw라는 배열이 인자로 넘어오는데, 이 인자는 각 문자열을 실제로 어떻게 가지고 있는지 보여주는 순수 문자열이다.</p>
+<p>analyze() 함수 안에서 console.log(strings.raw[1] === &#8220;!\nECMAScript&#8221;); // true</p>
+<p>이러한 순수 문자열을 표현하고자 String.raw라는 새로운 함수로 추가되어 활용할 수 있다.</p>
+<table border="0" cellpadding="0" cellspacing="0" class="txc-table" style="border:none;border-collapse:collapse;;font-family:Dotum, 돋움;font-size:13px" width="964">
+<tbody>
+<tr>
+<td style="width:964;height:24;border-bottom:1px solid #ccc;border-right:1px solid #ccc;border-top:1px solid #ccc;border-left:1px solid #ccc;;">
+<p>String.raw `Hello, ${name}!\nECMAScript${2 * 2 + 2} is easy`</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>순수한 문자열로 전체 문자열을 변경할수 도 있다.</p>
+<p>이렇게 순수 문자열을 추력하는 것은 서버에서 템플릿 문자열을 가지고 웹페이지를 그릴 때 매우 유용하게 사용할 수 있다.</p>
+<p></p>
+<p>Destructuring</p>
+<p></p>
+<p>Destructuring은 기존 구조를 가지고 있던 객체를 분석하여 역으로 하나하나의 변수에 할당하는 것을 의미한다.</p>
+<p>Destructuring의 특징은 JSON 규격의 객체나 배열은 쉽게 매핑하여 변수를 할당할 수 있고, 특히 함수의 반환값을 여러 개로 할 수 있다.</p>
+<table border="0" cellpadding="0" cellspacing="0" class="txc-table" style="border:none;border-collapse:collapse;;font-family:Dotum, 돋움;font-size:13px" width="964">
+<tbody>
+<tr>
+<td style="width:964;height:24;border-bottom:1px solid #ccc;border-right:1px solid #ccc;border-top:1px solid #ccc;border-left:1px solid #ccc;;">
+<p>    var myArray = [1, 2, 3, 4, 5];</p>
+<p>    var[a , b ,  , c , d] = myArray;</p>
+<p></p>
+<p>    console.log(&#8220;Array shorthand: &#8221; + a + &#8221; , &#8221; + b + &#8221; , &#8221; + c + &#8221; , &#8221; + d);</p>
+<p></p>
+<p>    [a , b] = [b , a];</p>
+<p>    console.log(&#8220;Swap: &#8221; + a + &#8221; , &#8221; + b);</p>
+<p></p>
+<p>    var myObject = {</p>
+<p>      name: &#8220;Unikys&#8221;,</p>
+<p>      gender: &#8220;Male&#8221;,</p>
+<p>      job: &#8220;Programmer&#8221;</p>
+<p>    };</p>
+<p></p>
+<p>    var {name, gender, job} = myObject;</p>
+<p></p>
+<p>    console.log(&#8220;Object shorthand: &#8221; + name + &#8221; , &#8221; + gender + &#8221; , &#8221; + job);</p>
+<p></p>
+<p>    var vehicles = {</p>
+<p>      fourWheeles: {</p>
+<p>        cars: [</p>
+<p>          &#8220;SUV&#8221;,</p>
+<p>          &#8220;Sedan&#8221;</p>
+<p>        ],</p>
+<p>        trucks: [</p>
+<p>          &#8220;Pullover&#8221;,</p>
+<p>          &#8220;Wagen&#8221;</p>
+<p>        ]</p>
+<p>      },</p>
+<p>      twoWheels: [</p>
+<p>        &#8220;bicycle&#8221;,</p>
+<p>        &#8220;motorcycle&#8221;</p>
+<p>      ]</p>
+<p>    };</p>
+<p></p>
+<p>    var {fourWheeles, twoWheels, fourWheeles: {cars, trucks}} = vehicles;</p>
+<p>    console.log(&#8220;Deep object: &#8221; + fourWheeles + &#8220;, &#8220;+  twoWheels + &#8220;, &#8221; + cars + &#8220;, &#8221; + trucks);</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>각각의 Destructuring 활용 예를 보면 첫번째로 특정 배열을 변수에 입력하고자 한다면 var  이후에 변수들을 배열 표현식으로 동일하게 배치하여 넣으면된다.</p>
+<p>= 연산자 왼쪽에 이러한 표현식이 들어갈 수 있게 됨에 따라 swap 기능도 배열을 이용해서 쉽게 구현할 수 있다.</p>
+<p>배열이 아닌 객체도 왼쪽에 객체 표현식으로 할당할 수 있다.</p>
+<p>그리고 여러 단계를 가지는 객체도 같은 구조로 객체의 속성의 속성등을 할당하여 변수에 넣을 수 도 있다.</p>
+<p></p>
+<p>이처럼 객체나 배열을 통해서 여러 변수에 입력할수 있게 되면서 간혹 배열이나 객체가 잘못될 때 에러를 방지하기 위한 기본 값을 설정할 수 있다.</p>
+<table border="0" cellpadding="0" cellspacing="0" class="txc-table" style="border:none;border-collapse:collapse;;font-family:Dotum, 돋움;font-size:13px" width="964">
+<tbody>
+<tr>
+<td style="width:964;height:24;border-bottom:1px solid #ccc;border-right:1px solid #ccc;border-top:1px solid #ccc;border-left:1px solid #ccc;;">
+<p>    var myArray2 = [1 , 2];</p>
+<p></p>
+<p>    var [a=10, b=9, c=8, d=7] = myArray2;</p>
+<p></p>
+<p>    console.log(a + &#8221; , &#8221; + b + &#8221; , &#8221; + c + &#8221; , &#8221; + d);  //1 , 2 , 8 , 7</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<p>이처럼 왼쪽의 표현식에 = 연산자와 함께 값을 적을 때, 오른쪽의 객체나 배열에 값이 없으면 해당 기본값으로 설정되고, 값이 있으면 객체나 배열의 값이 설정된다.</p>
+<p>a, b는 배열의 값이 설정되고 c, d는 기본값으로 설정되는것을 확인할 수 있다.</p>
+<p></p>
+<p>Desstructuring은 변수 선언에서만 활용되는것이 아니라 함수의 인자로 객체를 넘겨줄 때도 정의하여 쉽게 변수를 할당할 수 있다.</p>
+<table border="0" cellpadding="0" cellspacing="0" class="txc-table" style="border:none;border-collapse:collapse;;font-family:Dotum, 돋움;font-size:13px" width="964">
+<tbody>
+<tr>
+<td style="width:964;height:24;border-bottom:1px solid #ccc;border-right:1px solid #ccc;border-top:1px solid #ccc;border-left:1px solid #ccc;;">
+<p>    function destructArray([first, second]){</p>
+<p>      console.log(&#8220;Inside destructArray function: &#8221; + first + &#8221; , &#8221; + second);</p>
+<p>      return [first + second, first &#8211; second, first * second, first / second];</p>
+<p>    }</p>
+<p></p>
+<p>    function destructObject({name, gender}){</p>
+<p>      console.log(&#8220;Inside destructObject function: &#8221; + name + &#8221; , &#8221; + gender);</p>
+<p>      return {</p>
+<p>          greetings: &#8220;Hello, &#8221; + name,</p>
+<p>          sayHello() {</p>
+<p>            console.log(&#8220;sayHello function : Hello &#8221; + name);</p>
+<p>          }</p>
+<p>      };</p>
+<p>    }</p>
+<p></p>
+<p>    var [sum, sub, mul, div] = destructArray([1 , 2]);</p>
+<p>    console.log(`Return value of destructArray: ${sum}, ${sub}, ${mul}, ${div}`);</p>
+<p></p>
+<p>    var {greetings, sayHello} = destructObject({name: &#8220;Unikys&#8221;, gender:&#8221;Male&#8221;});</p>
+<p>    sayHello();</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>함수에서  객체나 배열로 반환할 때 이를 Destructuring을 통해 여러 변수로 받을 수 있다는 점이다.</p>
+<p>기존에는 이렇게 객체나 배열로 여러 값을 반환할 때 추가적인 처리가 필요했지만, ES6에서는 Destructuring을 통하여 한 줄로 모든 값 입력을 완료할 수 있어서 매우 편리해졌다.</p>
+<p>특히 특정값과 함수를 많이 반환하는 자바스크립트에서 위의 destructuringObject의 반환값을 처리하는 부분처럼 함수를 반환하더라도 클로저를 동일하게 사용할 수 있다는 특징이다.</p>
+<p></p>
+<p>함수 인자 기능 확대</p>
+<p>자바스크립트에서 함수의 중요성은 매우 크기 때문에 이러한 함수에 대한 지원 범위를 ES6에서는 크게 확대하고 있다.</p>
+<p>기존 에는 함수가 호출되고 나면 arguments를 통해서 동적으로 인자를 받던 부분이나 apply를 통해서 동적으로 인자를 넘겨주던 부분에 대해서 표준을 정의하여 가변 인자에 대한 기능을 추가하였다.</p>
+<p>가변인자는 C에서도 사용하고 있는 &#8220;&#8230;&#8221; 키워드가 추가되었다.</p>
+<table border="0" cellpadding="0" cellspacing="0" class="txc-table" style="border:none;border-collapse:collapse;;font-family:Dotum, 돋움;font-size:13px" width="964">
+<tbody>
+<tr>
+<td style="width:964;height:24;border-bottom:1px solid #ccc;border-right:1px solid #ccc;border-top:1px solid #ccc;border-left:1px solid #ccc;;">
+<p>    function dynamicArguments(arg1, &#8230;rest){</p>
+<p>      console.log(arg1);</p>
+<p>      console.log(rest);</p>
+<p>    }</p>
+<p></p>
+<p>    dynamicArguments(1,2,3,4);</p>
+<p></p>
+<p>    var spread = [&#8220;P&#8221;,&#8221;R&#8221;,&#8221;E&#8221;,&#8221;A&#8221;];</p>
+<p></p>
+<p>    dynamicArguments(&#8220;S&#8221;, &#8230;spread, &#8220;D&#8221;);</p>
+<p></p>
+<p>    function previousDynamicArguments(arg1){</p>
+<p>      var rest = Array.prototype.slice.call(arguments, 1);</p>
+<p>      console.log(arg1);</p>
+<p>      console.log(rest);</p>
+<p>    }</p>
+<p>    previousDynamicArguments(1,2,3,4);</p>
+<p>    previousDynamicArguments.apply(this, [&#8220;S&#8221;].concat(spread).concat([&#8220;D&#8221;]));</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>인자를 받을 때 &#8220;&#8230;&#8221;키워드를 사용하면 그 이후의 모든 인자는 배열에 들어가게 되어 이들을 배열로 받는 것처럼 사용할 수 있다.</p>
+<p>ES6 이전에는 이러한 기능이 없어서 arguments를 사용해야했고, &#8220;&#8230;&#8221;처럼첫번째 인자 이후를 별도의 배열로 저장하려면 Array.prototype.slice() 함수로 잘라야 했다.</p>
+<p>반대로 함수를 호출할 때 &#8220;&#8230;&#8221; 키워드를 사용하면 해당 배열을 펼쳐서 여러 개의 인자를 넘겨주는 것이라고 생각하면된다.</p>
+<p>이는 인자를 동적으로 다르게 넘길 때 유용하게 활용할 수 있다.</p>
+<p>ES6 이전에는 함수를 호출하기 위하여 apply를 사용해서 전체 인자에 대한 배열을 넘겨야 했다.</p>
+<p>그러나 &#8220;&#8230;&#8221;키워드를 사용하면 중간에 필요한 부분만 배열로 동적으로 인자를 넘겨줄 수 있다.</p>
+<p></p>
+<p>이러한 동적인 인자 관리 이외에도 인자가 넘어오지 않을 때 기본값을 설정할 수 있다.</p>
+<p>이는 다른 프로그래밍 언어에서도 가능했지만, 자바스크립트에서는 항상 기본값이 undefined였던 것에서 확장할 수 있게 되었다.</p>
+<table border="0" cellpadding="0" cellspacing="0" class="txc-table" style="border:none;border-collapse:collapse;;font-family:Dotum, 돋움;font-size:13px" width="964">
+<tbody>
+<tr>
+<td style="width:964;height:24;border-bottom:1px solid #ccc;border-right:1px solid #ccc;border-top:1px solid #ccc;border-left:1px solid #ccc;;">
+<p>    function defaultValue(color=&#8221;black&#8221;, isNull=&#8221;Nullable&#8221;){</p>
+<p>      console.log(&#8220;color=&#8221; + color + &#8220;, isNull=&#8221;+ isNull);</p>
+<p>    }</p>
+<p></p>
+<p>    defaultValue(undefined, null);<span style="white-space: pre;"> </span>//color=black, isNull=null</p>
+<p></p>
+<p>    function previousDefaultValue(color, isNull){</p>
+<p>      color = color || &#8220;black&#8221;;</p>
+<p>      isNull = isNull || &#8220;Nullable&#8221;;</p>
+<p>      console.log(&#8220;color=&#8221; + color + &#8220;, isNull=&#8221;+ isNull);</p>
+<p>    }</p>
+<p></p>
+<p>    previousDefaultValue(undefined, null);<span style="white-space: pre;"> </span>//color=black, isNull=Nullable</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>인자 뒤에&#8221;=기본값&#8221;을 정의하면 인자가 undefined로 들어올때 해당 인자를 기본값으로 설정할 수 있다.</p>
+<p>이전의 자바스크립트에서 흔히 사용했던 기본값 설정은 다음처럼 colo= color || &#8220;black&#8221; 으로 많이 코딩했다.</p>
+<p>이러한 코드와 가장 큰 차이점이 있다면 이전의 ||를 통한 기본값 할당은 undefined뿐아니라 0, null, false, &#8220;&#8221;등의 값을 모두 처리하지만, ES6에서는 undefined만 처리한다는 점이니 주의해야한다.</p>
+<p>기본값에 null은 기도래 인자를 받고 있으므로 변수를 null로 초기화할 때는 확인이 필요할 수도 있다.</p>
+<p></p>
+<p></p>
+<p>iterator와 for-of 기능</p>
+<p>C++와 JAVA에서 배열이나 연결리스트와 같은 데이터 구조를 순환할 때 가장 많이 사용하는 것이 iterator이다.</p>
+<p>이러한 iterator는 특정 데이터 집합을 순서대로 접근하려고 할때 사용된다.</p>
+<p>기존 자바스크립트에서는 속성을 순환할 때는 단순히 for 루프나 for-in을 사용할수 밖에 없었지만, 조금 더 다양한 순환 기능을 제공할 수 있도록 iterator 기능과 이를 순환하기 위한 for-of 키워드가 정의되었다.</p>
+<p></p>
+<p>for-of 키워드를 사용하면 iterator를 반환하는 함수를 호출한다.</p>
+<p>이 함수는 for-of의 뒤에 오는 객체의 [Symbol.iterator]를 호출하며, iterator는 next()함수를 포함하고 있어야 한다.</p>
+<p>그리고  next() 함수를 호출하면 내부적으로 제한적인 또는 무한의 순환을 돌며, 그 반환 값으로 value 속성과 done 속성을 가지고 있는 객체를 반환하면 된다.</p>
+<p>반환되는 객체의 value 속성은 현재 iterator가 가리키는 곳의 값을 가지고 있고, done 속성은  iterator가 끝까지 도달했는지를 구분해주는 true/false 값을 가진다.</p>
+<p></p>
+<p>이러한 for-of를 지원하기 위하여 기존의 기본 객체들도 Symbol.iterator 속성을 제공하고 있는데, 대표적인 것이 배열과 문자열이다.</p>
+<p>iterator를 사용하면 배열은 순서대로 접근하고, 문자열은 각 문자를 하나씩 접근한다. 그리고 사용자 객체에 사용하고 싶다면 위의 Symbol.iterator 속성에 iterator에 맞는 규격으로 객체를 반환하도록 만들면 된다.</p>
+<table border="0" cellpadding="0" cellspacing="0" class="txc-table" style="border:none;border-collapse:collapse;;font-family:Dotum, 돋움;font-size:13px" width="964">
+<tbody>
+<tr>
+<td style="width:964;height:24;border-bottom:1px solid #ccc;border-right:1px solid #ccc;border-top:1px solid #ccc;border-left:1px solid #ccc;;">
+<p>    var fibonacci = {</p>
+<p>      maxStep: 20,</p>
+<p>      [Symbol.iterator](){</p>
+<p>        var previous = 0, current = 1, step = 0, maxStep = this.maxStep;</p>
+<p>        return {</p>
+<p>          next(){</p>
+<p>            [previous, current] = [current, previous + current];</p>
+<p>            return {</p>
+<p>              done: step++ &gt;= maxStep, value: current</p>
+<p>            };</p>
+<p>          }</p>
+<p>        };</p>
+<p>      }</p>
+<p>    };</p>
+<p></p>
+<p>    for(var fibonacciNumber of fibonacci){</p>
+<p>      console.log(fibonacciNumber);</p>
+<p>    }</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>피보나치 수열을 20단계까지 iterator를 이용해서 출력하는 예이다.</p>
+<p>여기에서 fibonacci객체가 for-of 키워드를 이용할 것이라 Symbol.iterator를 속성으로 하는 함수를 정의하여 Symbol.iterator 함수는 next() 함수를 속성으로 가지는 객체를 반환한다.</p>
+<p>그리고 next() 함수는 done과 value를 속성으로 가지는 객체를 반환한다.</p>
+<p>for-of는 done이 true가 될때까지 루프를 돌며, done이 true가 되는 시점에는 루프를 빠져나온다.</p>
+<p>사용자 정의 iterator를 이용할 때는 next()함수가 반환하는 객체의 done과 value를 순서에 맞게 반환하면된다.</p>
+<p></p>
+<p>위의경우에는 iterator를 처리하기 위한 규격으로 next() 함수와 반환객체를 맞춰야하는 번거러움이 있다.</p>
+<p>이러한  iterator 규격을 간단하게 처리하기 위한 generator 기능이 표준으로 정의되었다.</p>
+<p>이 generator를 이용하려면 새로운 키워드인 function*과 yield를 사용해야한다.</p>
+<p>function*은 generator 함수라고 하며 iterator를 반환하는 함수이다.</p>
+<p>yield는 return과 유사한 키워드로 return은 함수를 완전히 끝내지만, yield는 함수를 잠시 멈췄다가 다음에 호출되었을 때 다시 그 이후부터 이어서 시작한다.</p>
+<table border="0" cellpadding="0" cellspacing="0" class="txc-table" style="border:none;border-collapse:collapse;;font-family:Dotum, 돋움;font-size:13px" width="964">
+<tbody>
+<tr>
+<td style="width:964;height:24;border-bottom:1px solid #ccc;border-right:1px solid #ccc;border-top:1px solid #ccc;border-left:1px solid #ccc;;">
+<p>    var fibonacciF = {</p>
+<p>      maxStep: 20,</p>
+<p>      *[Symbol.iterator](){</p>
+<p>        var previous = 0, current = 1, step = 0, maxStep = this.maxStep;</p>
+<p>        while(step++ &lt; maxStep){</p>
+<p>          [previous, current] = [current, previous + current];</p>
+<p>          yield current;</p>
+<p>        }</p>
+<p>      }</p>
+<p>    };</p>
+<p></p>
+<p>    for(var fibonacciNumberF of fibonacciF){</p>
+<p>      console.log(fibonacciNumberF);</p>
+<p>    }</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>사용자 정의 iterator 함수와 같은 결과를 나타낸다.</p>
+<p>앞서  next()함수와 반환객체를 직접 작성하는 것보다 소스가 아주 간단해졌다.</p>
+<p>먼저 피보나치 수열을 생성하는 로직은 같고, 기존에 done으로 종료 조건을 판단해서 객체로 반환했다면 generator함수는 전체 함수가 종료되면 iterator도 종료되며, yield current를 통해서 값이 전달된다.</p>
+<p>yield current가 호출되면 generator 함수는 잠시 멈추었다가, 다음 for-of 루프를 돌 때 이전에 멈추었던 yield 키워드 이후에 이어서 실행된다.</p>
+<p></p>
+<p>두 예는 객체를 순환하기 위하여 Symbol.iterator 속성으로 정의된 함수를 사용하고 있지만, generator 함수는 직접 iterator 객체를 반환하여 사용할 수 도 있다.</p>
+<table border="0" cellpadding="0" cellspacing="0" class="txc-table" style="border:none;border-collapse:collapse;;font-family:Dotum, 돋움;font-size:13px" width="964">
+<tbody>
+<tr>
+<td style="width:964;height:24;border-bottom:1px solid #ccc;border-right:1px solid #ccc;border-top:1px solid #ccc;border-left:1px solid #ccc;;">
+<p>    var iterFibonacci = function*(maxStep){</p>
+<p>      var previous =0, current =1, step =0;</p>
+<p>      while(step++ &lt; maxStep){</p>
+<p>        [previous, current] = [current, previous + current];</p>
+<p>        yield current;</p>
+<p>      }</p>
+<p>    };</p>
+<p></p>
+<p>    for(var iterFibonacciNumber of iterFibonacci(20)){</p>
+<p>      console.log(iterFibonacciNumber);</p>
+<p>    }</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>generator 함수를 변수에 선언해서 사용하더라도 직접 iterator처럼 사용할 수 있고, 이전의 객체를 순환하는 경우와 달리 인자를 넘겨줄수 있다는 점이 다르다.</p>
+<p>따라서 이렇게 generator 함수를 사용하면 조금 더 유연한 iterator 기능을 만들어서 사용할 수 있다.</p>
+<p>또한 generator 함수 자체를 배열과 유사하게 취급할 수 있어서 앞서 살펴본 함수 인자 기능과 Destructuring을 활용하여 전체의 값을 가져올 수도 있다.</p>
+<table border="0" cellpadding="0" cellspacing="0" class="txc-table" style="border:none;border-collapse:collapse;;font-family:Dotum, 돋움;font-size:13px" width="964">
+<tbody>
+<tr>
+<td style="width:964;height:24;border-bottom:1px solid #ccc;border-right:1px solid #ccc;border-top:1px solid #ccc;border-left:1px solid #ccc;;">
+<p>    var fibonacciResult = [&#8230;iterFibonacci(20)];</p>
+<p>    var [n1, n2, n3, n4, n5, &#8230;rest] = iterFibonacci(20);</p>
+<p></p>
+<p>    console.log(fibonacciResult);</p>
+<p>    console.log([n1, n2, n3, n4, n5, &#8230;rest]);</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>첫번째 경우처럼 배열을 나열하는 용도로 &#8220;&#8230;&#8221;을 사용하면 이는 배열을 순서대로 나열하기보다는 순서대로 순환한 결과를 배열로 만든다고 생각하는것이 정확하다.</p>
+<table border="0" cellpadding="0" cellspacing="0" class="txc-table" style="border:none;border-collapse:collapse;;font-family:Dotum, 돋움;font-size:13px" width="964">
+<tbody>
+<tr>
+<td style="width:964;height:24;border-bottom:1px solid #ccc;border-right:1px solid #ccc;border-top:1px solid #ccc;border-left:1px solid #ccc;;">
+<p>    var myObject = {};</p>
+<p>    myObject[Symbol.iterator] = function* (){</p>
+<p>      yield &#8220;1&#8221;;</p>
+<p>      yield* [2,3];</p>
+<p>      yield* &#8220;45&#8221;;</p>
+<p>      yield* innerGenerator();</p>
+<p>      yield &#8220;9&#8221;;</p>
+<p>    };</p>
+<p></p>
+<p>    function* innerGenerator(){</p>
+<p>      yield 6;</p>
+<p>      yield* new Set([&#8220;7&#8243;,&#8221;8&#8221;]);</p>
+<p>    }</p>
+<p></p>
+<p>    console.log([&#8230;myObject]);</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>yield 키워드로 값을 반환하는 경우에는 단일 값이 전달되며, yield* 키워드로 값을 반환하면 해당 값이 다시 하나의 iterator로 취급되어 내부 루프를 처리하듯이 해당 iterator도 순서대로 처리하게 된다.</p>
+<p>따라서 [2,3]의 배열이나 &#8220;45&#8221;의 문자열, 그리고 새로운 iterator 객체는 각각 다시 iterator로 동작하여 값을 순서대로 반환한다.</p>
+<p></p>
+<p>이처럼 iterator 함수를 이용해서 단순하게 iterator 기능만 수행하는 것뿐만 아니라, function*과 yield 기능을 이용하여 차례로 처리해야하는 내용을 브라우저의 단일 스프레드를 잡아먹으면서 처리하지 않는 흐름 제어도 할 수 있다.</p>
+<p>예를 들면 XMLHttpRequest를 통해서 순서 보장이 되어야할 때 functioni*과 yield를 사용한다면 쉽게 순서 보장을 제공할 수 있다.</p>
+<table border="0" cellpadding="0" cellspacing="0" class="txc-table" style="border:none;border-collapse:collapse;;font-family:Dotum, 돋움;font-size:13px" width="964">
+<tbody>
+<tr>
+<td style="width:964;height:24;border-bottom:1px solid #ccc;border-right:1px solid #ccc;border-top:1px solid #ccc;border-left:1px solid #ccc;;">
+<p>    function getDOM(){</p>
+<p>      var xhr = new XMLHttpRequest();</p>
+<p>      xhr.open(&#8220;/fetchDOM&#8221;);</p>
+<p>      xhr.onload = function () {</p>
+<p>        xhrRequests.next(xhr.responseText);</p>
+<p>      }</p>
+<p>      xhr.send();</p>
+<p>    }</p>
+<p></p>
+<p>    function getData(){</p>
+<p>      var xhr = new XMLHttpRequest();</p>
+<p>      xhr.open(&#8220;/fetchData&#8221;);</p>
+<p>      xhr.onload = function () {</p>
+<p>        xhrRequests.next(xhr.responseText);</p>
+<p>      }</p>
+<p>      xhr.send();</p>
+<p>    }</p>
+<p></p>
+<p>    function mainpulateDOM(dom, data){</p>
+<p>      // Fix DOM</p>
+<p>    }</p>
+<p></p>
+<p>    var xhrRequests = function* () {</p>
+<p>      var dom, data;</p>
+<p>      dom = yield getDOM();</p>
+<p>      data = yield getData();</p>
+<p>      yield mainpulateDOM(dom, data);</p>
+<p>    };</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>getDOM, getData, manipulateDOM을 순서대로 호출하고자 할때, 흐름을 제어할 수 있는 한 가지 예를 보여주고있다.</p>
+<p>xhrRequests 변수는 iterator 객체로 전체흐름을 제어하고, 각 함수가 실제 처리하는 역할을 담당한다.</p>
+<p> xhrRequests 함수안에서는 각 순서 보장이 필요한 XMLHttpRequest들을 호출하고, 각 함수에서는 비동기 요청이 완료되면, onload 이벤트 핸들러에서 다음 단계를 실행할 수 있는 next()함수를 호출한다.</p>
+<p> 여기서 yield 키워드에 도달하면 generator 함수 안에서 잠시 멈췄다가 호출된 함수 안에서 xhrRequests.next(xhr.responseText)가 호출되면 yield의 결과값으로 xhr.responseText를 받아서 각 변수에 값을 넣고 다음 단계로 넘어가면서 동작한다.</p>
+<p></p>
+<p>이처럼 전체 흐름은 xhrRequests 객체가 프락시 패턴과 유사하게 동작하여 흐름을 제어하고 필요에 따라서 요청을 변경할 수 있다.</p>
+<p>또한 실제로 데이터를 요청하는 부분은 각 함수로 구분 지어서 모듈화 할수 있다.</p>
+<p>각각의 XMLHttpRequest가 순서대로 실행되어야 한다면 위와 같이 흐름 제어용으로  generator 함수를 활용할 수도 있다.</p>
+<p></p>
+<p>Map과 Set 기능 추가</p>
+<p>기존에 다른 프로그래밍 언어에서 많이 사용하는 데이터 구조도 추가되었다.,</p>
+<p>이미 자바스크립트에서는 객체와 배열 자체가 해당 기능을 수행하고 있지만, 입력 키의 목록과 입력값의 목록이나 특정 값이 있는지 찾아내는 데는 별도의 처리 과정이 필요했다.</p>
+<p>그러나 Map과 Set은 그러한 함수들을 기본으로 제공한다.</p>
+<table border="0" cellpadding="0" cellspacing="0" class="txc-table" style="border:none;border-collapse:collapse;;font-family:Dotum, 돋움;font-size:13px" width="964">
+<tbody>
+<tr>
+<td style="width:964;height:24;border-bottom:1px solid #ccc;border-right:1px solid #ccc;border-top:1px solid #ccc;border-left:1px solid #ccc;;">
+<p>  var map = new Map(),</p>
+<p>      key = {name: &#8220;Unikys&#8221;};</p>
+<p>  map.set(&#8220;Hello&#8221;, &#8220;World&#8221;).set(&#8220;ECMAScript&#8221;, 6).set(key, &#8220;javascript&#8221;);</p>
+<p></p>
+<p>  for(let [key, val] of map.entries()){</p>
+<p>    console.log(key + &#8221; = &#8221; + val);</p>
+<p>  }</p>
+<p></p>
+<p>  var set = new Set();</p>
+<p>  set.add(&#8220;Hello&#8221;).add(&#8220;World&#8221;).add(&#8220;ECMAScript&#8221;).add(6);</p>
+<p></p>
+<p>  console.log(set.has(&#8220;ECMAScript&#8221;));</p>
+<p>  for (let key of set.values()) {</p>
+<p>    console.log(key);</p>
+<p>  }</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Map과 Set과 비교해서 다른 곳에 변수에 대한 메모리 참조가 없어진다면 저절로  Map과 Set에 있는 데이터를 삭제하는 WeakMap과 WeakSet이 표준으로 정의되었다.</p>
+<p>WeakMap과 WeakSet에 대하여 참조가 없어지는 경우</p>
+<table border="0" cellpadding="0" cellspacing="0" class="txc-table" style="border:none;border-collapse:collapse;;font-family:Dotum, 돋움;font-size:13px" width="964">
+<tbody>
+<tr>
+<td style="width:964;height:24;border-bottom:1px solid #ccc;border-right:1px solid #ccc;border-top:1px solid #ccc;border-left:1px solid #ccc;;">
+<p>  var weakSet = new WeakSet(),</p>
+<p>      weakMap = new WeakMap(),</p>
+<p>      obj = {</p>
+<p>        name: &#8220;Unikys&#8221;</p>
+<p>      },</p>
+<p>      val = {</p>
+<p>        language: &#8220;javascript&#8221;</p>
+<p>      };</p>
+<p></p>
+<p>  weakSet.add(obj);</p>
+<p>  weakMap.set(obj, val);</p>
+<p></p>
+<p>  console.log(weakSet.has(obj));</p>
+<p>  console.log(weakMap.has(obj));</p>
+<p></p>
+<p>  obj = null;</p>
+<p></p>
+<p>  console.log(weakSet.has(obj));</p>
+<p>  console.log(weakMap.has(obj));</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>WeakMap의 키 값으로 사용한 객체나 WeakSet에 추가하였던 객체는 더는 사용되지 않는다면 WeakMap과 WeakSet에 있었던 데이터도 함께 삭제된다.</p>
+<p>자바스크립트의 메모리 관리 정책을 메모리에 있는 객체를 참조하는 레퍼런스가 없어야 객체를 가비지 컬렉터에 해제하는데, 객체가 여기저기 많이 참조되어 사용되고 있다면 이러한 메모리 해제가 어렵다.</p>
+<p>그런데 WeakMap과 WeakSet은 이러한 레퍼런스에 추가되지 않아 메모리 해제를 방해하지 않고, 메모리가 해제되는 경우에는 해당 데이터 구조에서도 함께 삭제된다.</p>
+<p>따라서 메모리 누수에 최적화된 데이터 구조라고 볼수 있다. 이는 서버에서 사용자의 데이터를 관리 할때 메모리 누수를 걱정하지 않아도 되므로 유용하게 활용할 수 있다.</p>
+<p></p>
+<p>Binary / Octal 표현식 추가</p>
+<p>ES6에서는 2진수와 8진수에 대한 표현식이 추가되었다.</p>
+<p>기존에 16진수 표현은 기본으로 있었으나, 2진수 8진수는 없어서 ES6에 추가되었다.</p>
+<table border="0" cellpadding="0" cellspacing="0" class="txc-table" style="border:none;border-collapse:collapse;;font-family:Dotum, 돋움;font-size:13px" width="964">
+<tbody>
+<tr>
+<td style="width:964;height:24;border-bottom:1px solid #ccc;border-right:1px solid #ccc;border-top:1px solid #ccc;border-left:1px solid #ccc;;">
+<p>  console.log(0b1001101010 === 618);  //binary</p>
+<p>  console.log(0o1152 === 618);  //octal</p>
+<p>  console.log(0x26A === 618);  //hex</p>
+<p></p>
+<p></p>
+<p>  console.log(parseInt(&#8220;1001101010&#8221;, 2) === 618);  //binary</p>
+<p>  console.log(parseInt(&#8220;1152&#8221;, 8) === 618);  //octal</p>
+<p>  console.log(parseInt(&#8220;26A&#8221;, 16) === 618);  //hex</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>기존에는 숫자를 문자열로 변환한 다음 parseInt() 함수를 통해 변환</p>
+<p>ES6에서는 표현식을 통해서 직접 숫자로 표시</p>
+<p>2진수를 통한 플래그 처리 소스에서 2진수 표현식을 사용한다면 코드의 이해도를 높일 수 있다.</p>
+<p></p>
+<p>TypedArray 기능 추가</p>
+<p>기존의 자바스크립트에서는 객체 기반의 배열만 가능했다면 ES6에서는 타입 기반의 배열을 정의하는 것도 가능하다.</p>
+<table border="0" cellpadding="0" cellspacing="0" class="txc-table" style="border:none;border-collapse:collapse;;font-family:Dotum, 돋움;font-size:13px" width="964">
+<tbody>
+<tr>
+<td style="width:964;height:24;border-bottom:1px solid #ccc;border-right:1px solid #ccc;border-top:1px solid #ccc;border-left:1px solid #ccc;;">
+<p>  var buffer = new ArrayBuffer(8);</p>
+<p>  var byteArray = new Unit8Array(buffer);</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<p>배열  버퍼를 만든 다음 원하는 형태 배열을 할당해주면 해당 크기로 메모리에 할당되어 배열이 생성된다.</p>
+<p>ES6에서 정의하고 있는 typedArray의 종류</p>
+<p></p>
+<p>기존에 변수타입이 모호했던 자바스크립트에서 배열을 사용하는것과 다르게 하나의 인덱스마다 크기를 명시할 수 있게 되었다.</p>
+<p>이에 따라 다른 것보다 바이트 단위의 데이터를 주고받을 때 더욱 효율적으로 처리할 수 있게 되었다.</p>
+<p>특히 TCP 프로토콜을 사용하는 다른 서버와 통신하기에 매우 좋아졌다고 볼수 있다.</p>
+<p>특히 C로 만들어진 서버의 구조체와 통신하는데 매우 적합해졌다고 볼수 있다.</p>
+<table border="0" cellpadding="0" cellspacing="0" class="txc-table" style="border:none;border-collapse:collapse;;font-family:Dotum, 돋움;font-size:13px" width="964">
+<tbody>
+<tr>
+<td style="width:964;height:24;border-bottom:1px solid #ccc;border-right:1px solid #ccc;border-top:1px solid #ccc;border-left:1px solid #ccc;;">
+<p>struct employer{</p>
+<p><span style="white-space: pre;"> </span>unsigned int id;</p>
+<p><span style="white-space: pre;"> </span>char name[16];</p>
+<p><span style="white-space: pre;"> </span>float man_moth;</p>
+<p>}</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<p></p>
+<table border="0" cellpadding="0" cellspacing="0" class="txc-table" style="border:none;border-collapse:collapse;;font-family:Dotum, 돋움;font-size:13px" width="964">
+<tbody>
+<tr>
+<td style="width:964;height:24;border-bottom:1px solid #ccc;border-right:1px solid #ccc;border-top:1px solid #ccc;border-left:1px solid #ccc;;">
+<p>class Employer {</p>
+<p>  constructor(arrayBuffer = new ArrayBuffer(24)){</p>
+<p>    this._arrayBuffer= arrayBuffer;</p>
+<p>    this._id = new Unit32Array(arrayBuffer, 0, 1);</p>
+<p>    this._name = enw Unit8Array(arrayBuffer, 4, 16);</p>
+<p>    this._manMonth = new Float32Array(arrayBuffer, 20, 1);</p>
+<p>  }</p>
+<p>  set id(id){</p>
+<p>    this._id = id;</p>
+<p>    this._arrayBuffer.set(id);</p>
+<p>  }</p>
+<p></p>
+<p>  get id() {</p>
+<p>    return this._id[0];</p>
+<p>  }</p>
+<p></p>
+<p>  set name(name) {</p>
+<p>    this._name = name;    </p>
+<p>  }</p>
+<p></p>
+<p>  get name(){</p>
+<p>    return this._name[0];</p>
+<p>  }</p>
+<p>  set manMonth(manMonth){</p>
+<p>    this._manMonth[0] = manMonth;</p>
+<p>  }</p>
+<p></p>
+<p>  get ManMonth(){</p>
+<p>    return this._manMonth[0];</p>
+<p>  }</p>
+<p></p>
+<p>  get toByte(){</p>
+<p>    return this._arrayBuffer;</p>
+<p>  }</p>
+<p>}</p>
+<div></div>
+</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<p>클래스는 생성자로 입력 버퍼를 받아서 각 속성을 설정한다.</p>
+<p>TypedArray의 생성자는 크기, 배열 객체 또는 ArrayBuffer를 인자로 받으며, ArrayBuffer를 인자로 받을 때 두번째 인자는 시작 시점, 세번째 인자는 길이를 입력받는다.</p>
+<p>따라서 Unit32Array는 0번째부터 1만큼, Unit8Array는 char 배열로 4번째부터 16만큼의 길이를 가져와서 변수로 설정한다ㅣ</p>
+<p>이처럼 다른 서버와의 연동 규격을 정의할 때 자바스크립트 서버에서 바이트 단위로 정의하고 처리하기에 편리해졌다고 볼수 있다.</p>
+<p></p>
+<p>모듈기능 표준화</p>
+<p>모듈은 Node.js와 CommonJs로부터 활성화하기 시작하여 ES6에서는 표준으로 정의되었다.</p>
+<p>자바스크립트를 이용하는 웹페이지나 서버의 코드들이 복잡해지기 시작하면서 효율적인 소스 관리가 필요해져서 이제는 모듈을 정의하는 것 또한 표준으로 정의된 것이다.</p>
+<p>모듈은 크게 export와 import로 나누어서 볼수 있으며 export하는 모듈 자바스크립트 파일과 이 모듈 자바스크립트 파일을 사용하는 쪽에서는 import 하면된다.</p>
+<p></p>
+<p>module.js</p>
+<table border="0" cellpadding="0" cellspacing="0" class="txc-table" style="border:none;border-collapse:collapse;;font-family:Dotum, 돋움;font-size:13px" width="964">
+<tbody>
+<tr>
+<td style="width:964;height:24;border-bottom:1px solid #ccc;border-right:1px solid #ccc;border-top:1px solid #ccc;border-left:1px solid #ccc;;">
+<p>export function getJSON(url, callback) {</p>
+<p>  var xhr = new XMLHttpRequest();</p>
+<p>  xhr.open(&#8220;GET&#8221;, url, true);</p>
+<p>  xhr.onload = function() {</p>
+<p>    callback(JSON.parse(this.responseText));</p>
+<p>  };</p>
+<p>  xhr.send();</p>
+<p>}</p>
+<p></p>
+<p>export default function (url, callback) {</p>
+<p>  var xhr = new XMLHttpRequest();</p>
+<p>  xhr.open(&#8220;GET&#8221;, url, true);</p>
+<p>  xhr.onload = function (){</p>
+<p>    callback(this.responseText);</p>
+<p>  };</p>
+<p>  xhr.send();</p>
+<p>}</p>
+<div></div>
+</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<p>app.js</p>
+<table border="0" cellpadding="0" cellspacing="0" class="txc-table" style="border:none;border-collapse:collapse;;font-family:Dotum, 돋움;font-size:13px" width="964">
+<tbody>
+<tr>
+<td style="width:964;height:24;border-bottom:1px solid #ccc;border-right:1px solid #ccc;border-top:1px solid #ccc;border-left:1px solid #ccc;;">
+<p>import getURL, * from &#8220;module.js&#8221;</p>
+<p>getJSON(&#8220;/getJSON&#8221;, function (json) {</p>
+<p>  console.log(json);</p>
+<p>});</p>
+<p></p>
+<p>getURL(&#8220;/getURL&#8221;, function (data) {</p>
+<p>  console.log(data);</p>
+<p>});</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>module.js에서는 getJSON 함수와 default 함수를 정의하고 있으며, app.js에서는 이를 import 하는데, 모든 내용을 가져오면서 default 함수는 getURL로 정의하고 있다.</p>
+<p>이것을 app.js에서는 해당 기능을 그대로 사용할 수 있다.</p>
+<p>브라우저에서는 아직 모듈 문법이 제대로 지원되지는 않고 있으나, 미래의 브라우저들에서는 &lt;script type=&#8221;module&#8221;&gt;이나 &lt;module&gt; 태그를 이용하여 모듈 문법을 이용할 수 있게 될 것이다.</p>
+<p></p>
+<p>프락시 모듈</p>
+<p>ES6에서 표준으로 프락시 모듈이 정의되어 내장 API로 제공된다.</p>
+<table border="0" cellpadding="0" cellspacing="0" class="txc-table" style="border:none;border-collapse:collapse;;font-family:Dotum, 돋움;font-size:13px" width="964">
+<tbody>
+<tr>
+<td style="width:964;height:24;border-bottom:1px solid #ccc;border-right:1px solid #ccc;border-top:1px solid #ccc;border-left:1px solid #ccc;;">
+<p>  var target = {</p>
+<p>    unikys : &#8220;Hello, Unikys&#8221;</p>
+<p>  };</p>
+<p></p>
+<p>  var proxy = new Proxy(target,{</p>
+<p>    get (target, name){</p>
+<p>      return name in target ? target[name] : `Nice to meet you, ${name}`</p>
+<p>    },</p>
+<p>    set (target, name, value){</p>
+<p>      if(name === &#8220;age&#8221;){</p>
+<p>          if(typeof value === &#8220;number&#8221;){</p>
+<p>            target[name] = value;</p>
+<p>          }else{</p>
+<p>            console.log(&#8220;Wrong type, must be number&#8221;);</p>
+<p>          }</p>
+<p>      }</p>
+<p>    }</p>
+<p>  });</p>
+<p></p>
+<p>  console.log(proxy.unikys);</p>
+<p>  console.log(proxy.stranger);</p>
+<p>  proxy.age = &#8220;4&#8221;;</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<p>특정 객체에 대해서 프락시 API 를 사용하면 모든 get이나 set에 일어날 때 중간에 관련 정보를 가지고 프락시 객체에 검증이나 예외처리 또는 다른 부가적인 처리를 하도록 할 수 있다.</p>
+<p>프락시 객체를 사용하면 생성자를 확장하거나 배열 검색을 문자열이나 다른 객체로 하도록 수정할 수 있다.</p>
+<p></p>
+<p>Symbol 모듈</p>
+<p>앞서 iterator에 대해서 살펴봤을 때 나왔던 새로운 내장 모듈이 바로  Symbol.iterator였다.</p>
+<p>이 Symbol 모듈은 기존의 속성을 정의할 때 사용할 수 있는 새로운 기본형을 만들어 주며, Symbol.iterator는 그러한 표준 속성으로 정의되어 있는 것이다.</p>
+<p>사용자 정의 Symbol 또한 추가할 수 있는데, Symbol을 생성할 때 마다 서로 다른 Symbol로 취급하여 속성으로 설정하면 결과적으로 다른 속성이 된다.</p>
+<table border="0" cellpadding="0" cellspacing="0" class="txc-table" style="border:none;border-collapse:collapse;;font-family:Dotum, 돋움;font-size:13px" width="964">
+<tbody>
+<tr>
+<td style="width:964;height:24;border-bottom:1px solid #ccc;border-right:1px solid #ccc;border-top:1px solid #ccc;border-left:1px solid #ccc;;">
+<p>  var myObject = {</p>
+<p>    [Symbol()] : &#8220;First symbol&#8221;,</p>
+<p>    [Symbol()] : &#8220;Second symbol&#8221;</p>
+<p>  };</p>
+<p></p>
+<p>  console.log(myObject);</p>
+<p>  const key = Symbol();</p>
+<p>  console.log(&#8220;typeof key : &#8221; + typeof key);</p>
+<p></p>
+<p>  myObject[key] = &#8220;New symbol&#8221;;</p>
+<p></p>
+<p>  console.log(Object.keys(myObject));</p>
+<p>  console.log(Object.getOwnPropertyNames(myObject));</p>
+<p>  console.log(Object.getOwnPropertySymbols(myObject));</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Symbol은 새로운 기본형을 가지게 되어 typeof의 결과로 symbol을 반환한다.</p>
+<p>그리고 Symbol을 이용해서 속성을 설정할 때 for-in이나 키의 목록을 가져오는 것으로 접근할 수 없고, Object.getOwnPropertySymbols() 함수를 통해서 Symbol에 접근할 수 있다.</p>
+<p>이로 인하여 간단하게 private과 비슷한 용도로 사용할 수 있으나 실제로는 외부에서 접근할 수 있기에 때문에 큰 의미가 없다.</p>
+<p></p>
+<p>Symbol은 매번 다르게 호출되며 생성자 문자열을 넘겨줄 수 있지만, Symbol 생성에는 영향을 미치지 않고 디버깅 용도로만 사용된다.</p>
+<p>Symbol을 글로벌로 사용하고 싶다면 Symbol.for()함수를 사용하면된다.</p>
+<table border="0" cellpadding="0" cellspacing="0" class="txc-table" style="border:none;border-collapse:collapse;;font-family:Dotum, 돋움;font-size:13px" width="964">
+<tbody>
+<tr>
+<td style="width:964;height:24;border-bottom:1px solid #ccc;border-right:1px solid #ccc;border-top:1px solid #ccc;border-left:1px solid #ccc;;">
+<p>  console.log(Symbol(&#8220;unikys&#8221;) === Symbol(&#8220;unikys&#8221;));    // false</p>
+<p>  console.log(Symbol.for(&#8220;unikys&#8221;) === Symbol.for(&#8220;unikys&#8221;));  //true</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<p>Promise 모듈</p>
+<p>Promise는 특정 함수 호출이나 연산이 비동기로 이루어져서 앞으로 완료되었을 때, 이후에 처리할 함수나 에러를 처리하기 위한 함수를 설정하는 모듈이다.</p>
+<table border="0" cellpadding="0" cellspacing="0" class="txc-table" style="border:none;border-collapse:collapse;;font-family:Dotum, 돋움;font-size:13px" width="964">
+<tbody>
+<tr>
+<td style="width:964;height:24;border-bottom:1px solid #ccc;border-right:1px solid #ccc;border-top:1px solid #ccc;border-left:1px solid #ccc;;">
+<p>  function sendMsg(msg, timeout){</p>
+<p>    return new Promise((resolve, reject)=&gt;{</p>
+<p>      setTimeout((()=&gt;{</p>
+<p>        resolve(msg);</p>
+<p>      }), timeout);</p>
+<p>    });</p>
+<p>  }</p>
+<p></p>
+<p>  sendMsg(&#8220;Hello, &#8220;, 1000).then((msg)=&gt;</p>
+<p>    sendMsg(`${msg} World`, 1000)</p>
+<p>  ).then((msg)=&gt;{</p>
+<p>    console.log(`${msg}! All done`);</p>
+<p>  });</p>
+<div></div>
+</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<p></p>
+<p>비동기인 상황을 만들고자 setTimeout을 사용하였지만, 이것은 XMLHttpRequest를 차례로 처리해야 하거나 그 직후에 다른 처리를 해야 할 때 이용할 수 있는 모듈이다.</p>
+<p>Promise 모듈은 특히 반환값 Chaining을 통해 순서대로 처리해야하는 함수들을 쭉 나열해서 호출할 수 있어서 순차 보장을 위한 프로그래밍을 최소화할 수 있다.</p>
+<p>자바스크립트에서 비동기 처리가 가장 많이 일어나는 XMLHttpRequest 처리에서 유용하게 사용할 수 있다.</p>
+<table border="0" cellpadding="0" cellspacing="0" class="txc-table" style="border:none;border-collapse:collapse;;font-family:Dotum, 돋움;font-size:13px" width="964">
+<tbody>
+<tr>
+<td style="width:964;height:24;border-bottom:1px solid #ccc;border-right:1px solid #ccc;border-top:1px solid #ccc;border-left:1px solid #ccc;;">
+<p>  var promise = new Promise(function (resolve, reject) {</p>
+<p>    var xhr = new XMLHttpRequest();</p>
+<p>    xhr.open(&#8220;GET&#8221;,&#8221;/longLoad&#8221;);</p>
+<p>    xhr.onload = function () {</p>
+<p>      if(this.status &gt;= 200 &amp;&amp; this.status &lt; 300) {</p>
+<p>        resolve(this.responseText);</p>
+<p>      }else {</p>
+<p>        reject(this.statusText);</p>
+<p>      }</p>
+<p>    };</p>
+<p>    xhr.onerror = function () {</p>
+<p>      reject(this.statusText);</p>
+<p>    }</p>
+<p>    xhr.send();</p>
+<p></p>
+<p>  });</p>
+<p></p>
+<p>  promise.then(function (responseText) {</p>
+<p>    console.log(responseText);</p>
+<p>  }).catch(function (statusText) {</p>
+<p>    alert(&#8220;Error! &#8221; + statusText);</p>
+<p>  });</p>
+<div></div>
+</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<p></p>
+<p></p>
+<p>ECMAScript 2016</p>
+<p>ECMAScript 7에 추가된 기능</p>
+<p></p>
+<p>Array.prototype.includes 함수</p>
+<p>ES6까지는 배열에 특정한 요소가 있는지 검색하기 위한 별도의 함수가 없어서 indexOf를 사용한다.</p>
+<p>그리고 indexOf를 호출한 결과를 토대로 해당 배열에 있는지 없는지도 구분하는데, 이것이 함수를 호출하는 것만 보면 그대로 그 의미를 뜻하는 것인지 불명확하다는 판단이 있어서 배열중에 특정요소가 있는지 검사하는 함수가 표준에 추가되었다.</p>
+<table border="0" cellpadding="0" cellspacing="0" class="txc-table" style="border:none;border-collapse:collapse;;font-family:Dotum, 돋움;font-size:13px" width="964">
+<tbody>
+<tr>
+<td style="width:964;height:24;border-bottom:1px solid #ccc;border-right:1px solid #ccc;border-top:1px solid #ccc;border-left:1px solid #ccc;;">
+<p>  // ES7 이상</p>
+<p>  var array = [&#8220;a&#8221;,&#8221;b&#8221;, 1, 2, NaN];</p>
+<p>  console.log(array.includes(&#8220;a&#8221;));</p>
+<p>  console.log(array.includes(2));</p>
+<p>  console.log(array.includes(NaN));</p>
+<p></p>
+<p>  //ES6 이하</p>
+<p>  console.log(array.indexOf(&#8220;a&#8221;) &gt;= 0);</p>
+<p>  console.log(array.indexOf(2) !== -1);</p>
+<p>  console.log(array.indexOf(NaN) !== -1);</p>
+<p>  var includesNaN = false;</p>
+<p>  for (var i = 0; i &lt; array.length; i++) {</p>
+<p>    if(isNaN(array[i])){</p>
+<p>      includesNaN = true;</p>
+<p>    }</p>
+<p>  }</p>
+<p>  console.log(includesNaN);</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>이전에는 indexOf를 한 다음 다시 한번 비교해야 했지만, 이제는 하나의 함수인 includes()를 통해서 해결할 수 있다.</p>
+<p>그리고 배열중에 NaN이 있는지 검사하려면 이전에는 indexOf() 함수를 사용할 수 없어서 일일이 비교해야 했지만 이제는 includes()함수를 통해서 NaN이 있는지 쉽게 검사할 수 있다.</p>
+<p></p>
+<p>이러한 includes() 함수명은 다른 언어와 유사하게 contains나 has 등으로 사용되고 있지만, contains를 사용하고 있는 웹 프레임워크가 있기 때문에 이러한 웹페이지들이 내부적인 충돌이 일어나지 않게 하려고 표준에서 includes()로 함수명을 변경한것이 독특한 점이다.</p>
+<p></p>
+<p>지수연산자</p>
+<p>지수연산자는 이미 자바스크립트에서 제공하고 있지만 조금 더 편한 방법으로 사용할수 있게 연산자가 추가되었다.</p>
+<p>지수연산자는 곱 연산자 두개를 이어서 **처럼 사용하면된다.</p>
+<table border="0" cellpadding="0" cellspacing="0" class="txc-table" style="border:none;border-collapse:collapse;;font-family:Dotum, 돋움;font-size:13px" width="964">
+<table border="0" cellpadding="0" cellspacing="0" class="txc-table" style="border:none;border-collapse:collapse;;font-family:Dotum, 돋움;font-size:13px" width="964">
+<tbody>
+<tr>
+<td style="width:964;height:24;border-bottom:1px solid #ccc;border-right:1px solid #ccc;border-top:1px solid #ccc;border-left:1px solid #ccc;;">
+<p>  var squareRootOfTwo = 2 ** 0.5;</p>
+<p>  var cubeTwo = 2 ** 3;</p>
+<p>  console.log(squareRootOfTwo);  //1.4142135623730951</p>
+<p>  console.log(cubeTwo);  //8</p>
+<p></p>
+<p>  var squareRootOfTwoES6 = Math.pow(2, 0.5);</p>
+<p>  var cubeTwoES6 = Math.pow(2, 3);</p>
+<p>  console.log(squareRootOfTwoES6); //1.4142135623730951</p>
+<p>  console.log(cubeTwoES6);  //8</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>기존에는 지수 연산을 하려면 Math.pow() 함수를 직접사용해야 했지만, ES7부터는 ** 연산자를 이용하면 된다.</p>
+<tbody></tbody>
+</table>
+<p>C나 자바에서는 지수 연산자가 ^ 연산자라서 조금 어색하게 느껴질수 있지만, 자바스크립트에서 ^연산자는 이미 XOR로 사용되고 있고, 파이썬, 루비등과 같은 다양한 스크립트 언어들은 지수연산자를 **로 사용하고 있기 때문에</p>
+<p>같은 스크립트 언어인 자바스크립트에서도 이들과 같은 문법을 채택하였다고 볼수 있다.</p>
+<p></p>
+<p style="text-align: right;"><span style='font-family: "Ubuntu Condensed", "Noto Sans Korean"; font-size: 15px; text-align: right;'>출처-속깊은 자바스크립트 양성익 지음</span></p>
+<div class="tt_adsense_bottom" style="margin-top:30px">
+<!-- 처음 --></p>
+</div>
+<hr />
+<p><iframe src='http://ad.selfhow.com/rd' width='100%' border=0 frameborder=0 style='height:auto;width:100%'></iframe></p>
+<p><a href='http://frontierdev.tistory.com/48' target='_blank'>Origin Content : 국경없는 개발</a> | <a href="/cdn-cgi/l/email-protection#d8bbbbb4bb98b6b9b4b9f6bfb9" target='_blank'>Contact : <span class="__cf_email__" data-cfemail="5d3e3e313e1d333c313c733a3c">[email&#160;protected]</span></a>
+</p>
+<p>Cotent License : CC-BY </p>
+<p>This content is collected under the CCL license.</p>
+<p>Please check the license of the original article before asking about copyright.</p>
+<ul>
+<li><a href='/tag/자바스크립트'>More About <span style='font-weight:bold;'>자바스크립트</span></a></li>
+<li><a href='/tag/표준'>More About <span style='font-weight:bold;'>표준</span></a></li>
+</ul>
+        </div> <!-- //.entry-summary -->
+        
+                    <div class="entry-tags"><b>Tags:</b> <a href="http://ms.nala.ga/tag/%ec%9e%90%eb%b0%94%ec%8a%a4%ed%81%ac%eb%a6%bd%ed%8a%b8/" rel="tag">자바스크립트</a>, <a href="http://ms.nala.ga/tag/%ed%91%9c%ec%a4%80/" rel="tag">표준</a></div>
+        
+    </div>
+
+</article> <!--/#post-->
+
+
+
+
+
+                                                                    <div class="post-nav-area">
+                                                    
+            <nav class="next-previous-post clearfix media" role="navigation">
+                <div class="row">
+                    <!-- Previous Post -->
+                    <div class="previous-post col-sm-6 pull-left">
+                        <div class="nav-previous"><i class="fa fa-angle-left"></i> <a href="http://ms.nala.ga/5%ec%9e%a5%ec%9e%90%eb%b0%94%ec%8a%a4%ed%81%ac%eb%a6%bd%ed%8a%b8_%ec%bd%9c%eb%b0%b1%ed%95%a8%ec%88%98/" rel="prev">[5장]자바스크립트_콜백함수</a></div>                    </div>
+
+                    <!-- Next Post -->
+                    <div class="next-post col-sm-6 pull-right text-right">
+                        <div class="nav-next"><a href="http://ms.nala.ga/get-autographs-from-celebritiesget-born/" rel="next">get autographs from celebrities,get born</a> <i class="fa fa-angle-right"></i></div>                    </div>
+                </div>
+            </nav><!-- .navigation -->
+            
+                                            </div>
+                                
+                                
+                            
+                                            </main> <!-- /.site-main -->
+                </div>  <!-- /.content-area -->
+            </div> <!-- /col -->
+
+            <!-- Blogsidebar -->
+            
+	<div class="col-md-4">
+	    <div class="primary-sidebar widget-area" role="complementary">
+	        <div id="tag_cloud-2" class="widget widget_tag_cloud"><h2 class="widget-title">태그</h2><div class="tagcloud"><a href="http://ms.nala.ga/tag/1%ec%9b%94/" class="tag-cloud-link tag-link-2 tag-link-position-1" style="font-size: 18.440677966102pt;" aria-label="1월 (115 아이템)">1월</a>
+<a href="http://ms.nala.ga/tag/2017/" class="tag-cloud-link tag-link-21 tag-link-position-2" style="font-size: 17.016949152542pt;" aria-label="2017 (98 아이템)">2017</a>
+<a href="http://ms.nala.ga/tag/2017%eb%85%84/" class="tag-cloud-link tag-link-551 tag-link-position-3" style="font-size: 14.406779661017pt;" aria-label="2017년 (77 아이템)">2017년</a>
+<a href="http://ms.nala.ga/tag/2018/" class="tag-cloud-link tag-link-155 tag-link-position-4" style="font-size: 15.830508474576pt;" aria-label="2018 (89 아이템)">2018</a>
+<a href="http://ms.nala.ga/tag/2018%eb%85%84/" class="tag-cloud-link tag-link-64 tag-link-position-5" style="font-size: 19.864406779661pt;" aria-label="2018년 (130 아이템)">2018년</a>
+<a href="http://ms.nala.ga/tag/the/" class="tag-cloud-link tag-link-310 tag-link-position-6" style="font-size: 11.322033898305pt;" aria-label="the (57 아이템)">the</a>
+<a href="http://ms.nala.ga/tag/vs/" class="tag-cloud-link tag-link-128 tag-link-position-7" style="font-size: 8pt;" aria-label="vs (41 아이템)">vs</a>
+<a href="http://ms.nala.ga/tag/%ea%b0%80%ea%b2%a9/" class="tag-cloud-link tag-link-275 tag-link-position-8" style="font-size: 12.271186440678pt;" aria-label="가격 (62 아이템)">가격</a>
+<a href="http://ms.nala.ga/tag/%ea%b2%b0%ed%98%bc/" class="tag-cloud-link tag-link-501 tag-link-position-9" style="font-size: 20.338983050847pt;" aria-label="결혼 (136 아이템)">결혼</a>
+<a href="http://ms.nala.ga/tag/%ea%b3%b5%ea%b0%9c/" class="tag-cloud-link tag-link-260 tag-link-position-10" style="font-size: 9.8983050847458pt;" aria-label="공개 (49 아이템)">공개</a>
+<a href="http://ms.nala.ga/tag/%ea%b7%b8%eb%a6%ac%ea%b3%a0/" class="tag-cloud-link tag-link-980 tag-link-position-11" style="font-size: 10.135593220339pt;" aria-label="그리고 (50 아이템)">그리고</a>
+<a href="http://ms.nala.ga/tag/%eb%82%98%ec%9d%b4%ec%b0%a8/" class="tag-cloud-link tag-link-1184 tag-link-position-12" style="font-size: 8.2372881355932pt;" aria-label="나이차 (42 아이템)">나이차</a>
+<a href="http://ms.nala.ga/tag/%eb%82%a8%ec%9e%90/" class="tag-cloud-link tag-link-364 tag-link-position-13" style="font-size: 9.4237288135593pt;" aria-label="남자 (47 아이템)">남자</a>
+<a href="http://ms.nala.ga/tag/%eb%82%a8%ed%8e%b8/" class="tag-cloud-link tag-link-603 tag-link-position-14" style="font-size: 16.305084745763pt;" aria-label="남편 (92 아이템)">남편</a>
+<a href="http://ms.nala.ga/tag/%eb%85%b8%eb%9e%98/" class="tag-cloud-link tag-link-713 tag-link-position-15" style="font-size: 8.9491525423729pt;" aria-label="노래 (45 아이템)">노래</a>
+<a href="http://ms.nala.ga/tag/%eb%8c%80%ed%95%9c/" class="tag-cloud-link tag-link-3572 tag-link-position-16" style="font-size: 10.135593220339pt;" aria-label="대한 (50 아이템)">대한</a>
+<a href="http://ms.nala.ga/tag/%eb%93%9c%eb%9d%bc%eb%a7%88/" class="tag-cloud-link tag-link-1041 tag-link-position-17" style="font-size: 16.542372881356pt;" aria-label="드라마 (95 아이템)">드라마</a>
+<a href="http://ms.nala.ga/tag/%eb%a6%ac%eb%b7%b0/" class="tag-cloud-link tag-link-447 tag-link-position-18" style="font-size: 12.508474576271pt;" aria-label="리뷰 (64 아이템)">리뷰</a>
+<a href="http://ms.nala.ga/tag/%eb%a7%9b%ec%a7%91/" class="tag-cloud-link tag-link-782 tag-link-position-19" style="font-size: 16.779661016949pt;" aria-label="맛집 (97 아이템)">맛집</a>
+<a href="http://ms.nala.ga/tag/%eb%aa%a8%ec%9d%8c/" class="tag-cloud-link tag-link-1142 tag-link-position-20" style="font-size: 13.694915254237pt;" aria-label="모음 (72 아이템)">모음</a>
+<a href="http://ms.nala.ga/tag/%eb%aa%b8%eb%a7%a4/" class="tag-cloud-link tag-link-2391 tag-link-position-21" style="font-size: 15.830508474576pt;" aria-label="몸매 (88 아이템)">몸매</a>
+<a href="http://ms.nala.ga/tag/%eb%b0%a9%eb%b2%95/" class="tag-cloud-link tag-link-930 tag-link-position-22" style="font-size: 17.491525423729pt;" aria-label="방법 (103 아이템)">방법</a>
+<a href="http://ms.nala.ga/tag/%eb%b0%b0%ec%9a%b0/" class="tag-cloud-link tag-link-895 tag-link-position-23" style="font-size: 15.593220338983pt;" aria-label="배우 (86 아이템)">배우</a>
+<a href="http://ms.nala.ga/tag/%eb%b6%80%ec%82%b0/" class="tag-cloud-link tag-link-157 tag-link-position-24" style="font-size: 8.4745762711864pt;" aria-label="부산 (43 아이템)">부산</a>
+<a href="http://ms.nala.ga/tag/%ec%82%ac%eb%9e%91/" class="tag-cloud-link tag-link-2972 tag-link-position-25" style="font-size: 14.406779661017pt;" aria-label="사랑 (77 아이템)">사랑</a>
+<a href="http://ms.nala.ga/tag/%ec%82%ac%ec%a7%84/" class="tag-cloud-link tag-link-410 tag-link-position-26" style="font-size: 9.4237288135593pt;" aria-label="사진 (47 아이템)">사진</a>
+<a href="http://ms.nala.ga/tag/%ec%95%84%eb%82%b4/" class="tag-cloud-link tag-link-3039 tag-link-position-27" style="font-size: 9.6610169491525pt;" aria-label="아내 (48 아이템)">아내</a>
+<a href="http://ms.nala.ga/tag/%ec%95%88%eb%82%b4/" class="tag-cloud-link tag-link-1327 tag-link-position-28" style="font-size: 11.322033898305pt;" aria-label="안내 (56 아이템)">안내</a>
+<a href="http://ms.nala.ga/tag/%ec%95%8c%ec%95%84%eb%b3%b4%ea%b8%b0/" class="tag-cloud-link tag-link-821 tag-link-position-29" style="font-size: 15.118644067797pt;" aria-label="알아보기 (82 아이템)">알아보기</a>
+<a href="http://ms.nala.ga/tag/%ec%95%8c%ec%95%84%eb%b3%b4%ec%9e%90/" class="tag-cloud-link tag-link-341 tag-link-position-30" style="font-size: 11.322033898305pt;" aria-label="알아보자 (56 아이템)">알아보자</a>
+<a href="http://ms.nala.ga/tag/%ec%97%ac%ed%96%89/" class="tag-cloud-link tag-link-873 tag-link-position-31" style="font-size: 17.016949152542pt;" aria-label="여행 (98 아이템)">여행</a>
+<a href="http://ms.nala.ga/tag/%ec%98%81%ed%99%94/" class="tag-cloud-link tag-link-562 tag-link-position-32" style="font-size: 19.389830508475pt;" aria-label="영화 (124 아이템)">영화</a>
+<a href="http://ms.nala.ga/tag/%ec%98%a4%eb%8a%98/" class="tag-cloud-link tag-link-1059 tag-link-position-33" style="font-size: 13.694915254237pt;" aria-label="오늘 (72 아이템)">오늘</a>
+<a href="http://ms.nala.ga/tag/%ec%9a%b0%eb%a6%ac/" class="tag-cloud-link tag-link-888 tag-link-position-34" style="font-size: 11.322033898305pt;" aria-label="우리 (57 아이템)">우리</a>
+<a href="http://ms.nala.ga/tag/%ec%9c%84%ed%95%9c/" class="tag-cloud-link tag-link-1175 tag-link-position-35" style="font-size: 12.983050847458pt;" aria-label="위한 (66 아이템)">위한</a>
+<a href="http://ms.nala.ga/tag/%ec%9d%b4%ec%95%bc%ea%b8%b0/" class="tag-cloud-link tag-link-611 tag-link-position-36" style="font-size: 12.508474576271pt;" aria-label="이야기 (64 아이템)">이야기</a>
+<a href="http://ms.nala.ga/tag/%ec%9d%b4%ec%9c%a0/" class="tag-cloud-link tag-link-296 tag-link-position-37" style="font-size: 10.372881355932pt;" aria-label="이유 (51 아이템)">이유</a>
+<a href="http://ms.nala.ga/tag/%ec%9e%90%ea%b2%a9%ec%a6%9d/" class="tag-cloud-link tag-link-2111 tag-link-position-38" style="font-size: 9.4237288135593pt;" aria-label="자격증 (47 아이템)">자격증</a>
+<a href="http://ms.nala.ga/tag/%ec%a0%95%eb%a6%ac/" class="tag-cloud-link tag-link-1831 tag-link-position-39" style="font-size: 13.220338983051pt;" aria-label="정리 (68 아이템)">정리</a>
+<a href="http://ms.nala.ga/tag/%ec%a0%95%eb%b3%b4/" class="tag-cloud-link tag-link-89 tag-link-position-40" style="font-size: 15.118644067797pt;" aria-label="정보 (83 아이템)">정보</a>
+<a href="http://ms.nala.ga/tag/%ec%b6%94%ec%b2%9c/" class="tag-cloud-link tag-link-146 tag-link-position-41" style="font-size: 22pt;" aria-label="추천 (162 아이템)">추천</a>
+<a href="http://ms.nala.ga/tag/%ec%b6%9c%ec%97%b0/" class="tag-cloud-link tag-link-2930 tag-link-position-42" style="font-size: 10.847457627119pt;" aria-label="출연 (54 아이템)">출연</a>
+<a href="http://ms.nala.ga/tag/%ed%95%9c%ea%b5%ad/" class="tag-cloud-link tag-link-3361 tag-link-position-43" style="font-size: 11.796610169492pt;" aria-label="한국 (59 아이템)">한국</a>
+<a href="http://ms.nala.ga/tag/%ed%9a%a8%eb%8a%a5/" class="tag-cloud-link tag-link-810 tag-link-position-44" style="font-size: 9.6610169491525pt;" aria-label="효능 (48 아이템)">효능</a>
+<a href="http://ms.nala.ga/tag/%ed%9b%84%ea%b8%b0/" class="tag-cloud-link tag-link-14 tag-link-position-45" style="font-size: 17.966101694915pt;" aria-label="후기 (109 아이템)">후기</a></div>
+</div>	    </div>
+	</div>
+
+        </div> <!-- /.row -->
+    </div> <!-- /.container -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <hr>
+            </div>
+        </div>
+    </div>
+    <footer class="site-footer" role="contentinfo">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 text-center">
+  
+                    <p></p>
+                    
+                                            <div class="footer-social-icons">
+                                                                                                                                                                                                                                                                                                                                                                                                        
+                        </div>
+                    
+                </div>
+            </div>
+        </div>
+    </footer>
+
+            <div class="scroll-up">
+            <a href="#"><i class="fa fa-angle-up"></i></a>
+        </div>
+        <!-- Scroll Up -->
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/af2821b0/cloudflare-static/email-decode.min.js"></script><script type='text/javascript' src='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/js/bootstrap.min.js?ver=3.3.5'></script>
+<script type='text/javascript' src='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/js/scripts.js'></script>
+<script type='text/javascript' src='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/js/jquery.fitvids.js'></script>
+<script type='text/javascript' src='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/js/smoothscroll.js'></script>
+<script type='text/javascript' src='http://ms.nala.ga/wp-includes/js/wp-embed.min.js?ver=4.8.5'></script>
+    </body>
+</html>

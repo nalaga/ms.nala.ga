@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="profile" href="http://gmpg.org/xfn/11">
+    <link rel="pingback" href="http://ms.nala.ga/xmlrpc.php">
+
+<title>V CASE API 연동을 통한 컨텐츠 업로드 샘플 | All About MS CCL Contents</title>
+<meta name='robots' content='noindex,follow' />
+
+<!-- All in One SEO Pack 2.4.4 by Michael Torbert of Semper Fi Web Design[276,345] -->
+<meta name="description"  content="3줄 요약 function ServiceFailed(xhr) { function uploadFile() { type: &#039;POST&#039;, 그럼 API 를 통해서 콘텐츠를 업로드 하는 방법입니다. API 를 이용하는 어플리케이션, 앱, 웹에서 손쉽게 콘텐츠를 V CASE 로 업로드 할 수 있습니다. 콘텐츠를 업로드 하기 위한 API 호출에 대한 인터페이스 명세서 입니다. 의 URL에 호출하여야 하며, API 관리에서 발급 받은 access_token 값과 업로드 할 영상 콘텐츠의 바이너리파일을 file 객체에 담아 전달하는 것이 필수 파라메터로 되어 있습니다. 그 외에는" />
+<meta name="robots" content="index,nofollow" />
+
+<link rel="canonical" href="http://ms.nala.ga/v-case-api-%ec%97%b0%eb%8f%99%ec%9d%84-%ed%86%b5%ed%95%9c-%ec%bb%a8%ed%85%90%ec%b8%a0-%ec%97%85%eb%a1%9c%eb%93%9c-%ec%83%98%ed%94%8c/" />
+<!-- /all in one seo pack -->
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="All About MS CCL Contents &raquo; 피드" href="http://ms.nala.ga/feed/" />
+<link rel="alternate" type="application/rss+xml" title="All About MS CCL Contents &raquo; 댓글 피드" href="http://ms.nala.ga/comments/feed/" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.3\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.3\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/ms.nala.ga\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.8.4"}};
+			!function(a,b,c){function d(a){var b,c,d,e,f=String.fromCharCode;if(!k||!k.fillText)return!1;switch(k.clearRect(0,0,j.width,j.height),k.textBaseline="top",k.font="600 32px Arial",a){case"flag":return k.fillText(f(55356,56826,55356,56819),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,56826,8203,55356,56819),0,0),c=j.toDataURL(),b!==c&&(k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447),0,0),c=j.toDataURL(),b!==c);case"emoji4":return k.fillText(f(55358,56794,8205,9794,65039),0,0),d=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55358,56794,8203,9794,65039),0,0),e=j.toDataURL(),d!==e}return!1}function e(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i,j=b.createElement("canvas"),k=j.getContext&&j.getContext("2d");for(i=Array("flag","emoji4"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='bootstrap-css-css'  href='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/css/bootstrap.min.css?ver=3.3.5' type='text/css' media='all' />
+<link rel='stylesheet' id='font-awesome-css-css'  href='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/css/font-awesome.min.css?ver=4.4.0' type='text/css' media='all' />
+<link rel='stylesheet' id='shaped-blog-stylesheet-css'  href='http://ms.nala.ga/wp-content/themes/shaped-blog/style.css?ver=4.8.4' type='text/css' media='all' />
+<link rel='stylesheet' id='responsive-css-css'  href='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/css/responsive.css' type='text/css' media='all' />
+<script type='text/javascript' src='http://ms.nala.ga/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
+<script type='text/javascript' src='http://ms.nala.ga/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+<link rel='https://api.w.org/' href='http://ms.nala.ga/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://ms.nala.ga/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://ms.nala.ga/wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='[etc] 롤 추적기 만들기' href='http://ms.nala.ga/etc-%eb%a1%a4-%ec%b6%94%ec%a0%81%ea%b8%b0-%eb%a7%8c%eb%93%a4%ea%b8%b0/' />
+<link rel='next' title='CD구워주는곳 [기고칼럼] 냅스터 부터 P2P까지, PC와 모바일의 클라이언트-서버 모델' href='http://ms.nala.ga/cd%ea%b5%ac%ec%9b%8c%ec%a3%bc%eb%8a%94%ea%b3%b3-%ea%b8%b0%ea%b3%a0%ec%b9%bc%eb%9f%bc-%eb%83%85%ec%8a%a4%ed%84%b0-%eb%b6%80%ed%84%b0-p2p%ea%b9%8c%ec%a7%80-pc%ec%99%80-%eb%aa%a8%eb%b0%94%ec%9d%bc/' />
+<meta name="generator" content="WordPress 4.8.4" />
+<link rel='shortlink' href='http://ms.nala.ga/?p=20930' />
+<link rel="alternate" type="application/json+oembed" href="http://ms.nala.ga/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fms.nala.ga%2Fv-case-api-%25ec%2597%25b0%25eb%258f%2599%25ec%259d%2584-%25ed%2586%25b5%25ed%2595%259c-%25ec%25bb%25a8%25ed%2585%2590%25ec%25b8%25a0-%25ec%2597%2585%25eb%25a1%259c%25eb%2593%259c-%25ec%2583%2598%25ed%2594%258c%2F" />
+<link rel="alternate" type="text/xml+oembed" href="http://ms.nala.ga/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fms.nala.ga%2Fv-case-api-%25ec%2597%25b0%25eb%258f%2599%25ec%259d%2584-%25ed%2586%25b5%25ed%2595%259c-%25ec%25bb%25a8%25ed%2585%2590%25ec%25b8%25a0-%25ec%2597%2585%25eb%25a1%259c%25eb%2593%259c-%25ec%2583%2598%25ed%2594%258c%2F&#038;format=xml" />
+
+	<style>
+
+		/* Border Color */
+		.btn-social:hover,
+		blockquote,
+		#respond input:focus[type="text"], 
+	    #respond input:focus[type="email"], 
+	    #respond input:focus[type="url"],
+	    #respond textarea:focus,
+	    #comments .comment-reply a:hover
+		{
+			border-color: ;
+		}
+
+		
+		/* Background Color */
+		.scroll-up a,
+		.btn-social:hover,
+		button,
+		input[type="button"],
+		input[type="reset"],
+		input[type="submit"],
+		.navbar-default .navbar-nav .dropdown-menu li a:hover, .dropdown-menu li a:focus, .navbar-default .navbar-nav .dropdown-menu .active a,
+		.pagination>li>a:focus, .pagination>li>a:hover, .pagination>li>span:focus, .pagination>li>span:hover, .pagination li .current,
+		.next-previous-posts .next-post a:hover,
+		.next-previous-posts .previous-post a:hover,
+		.btn-goback,
+		.btn-submit,
+		a.more-link,
+		.featured-post .fa,
+		#comments .comment-reply a:hover,
+		.widget .tagcloud a
+		{
+			background-color: ;
+		}
+
+		
+		/* Color */
+		.text-logo a,
+		.navbar-default .navbar-nav .active a, .navbar-default .navbar-nav .active a:hover, .navbar-default .navbar-nav .active a:focus,
+		.navbar-default .navbar-nav li a:hover, .navbar-default .navbar-nav li a:focus,
+		a:hover,
+    	a:focus,
+		.next-previous-posts .previous-post a,
+		.next-previous-posts .next-post a,
+		.pagination>li>a, .pagination>li>span,
+		#comments .comment-author a:hover, 
+    	#respond .logged-in-as a:hover,
+    	#wp-calendar a,
+    	h2.entry-title a:hover
+		{
+			color: ;
+		}
+
+
+		/* A Color */
+		a{
+			color: ;
+		}
+
+		/* a:hover Color */
+		a:hover,
+		a:focus,
+		a:active,
+		.widget a:hover,
+		.post .post-content .entry-meta ul li a:hover
+		{
+			color: ;
+		}
+
+		/* .featured-post .fa:after*/
+		.featured-post .fa:after{
+			border-color:   transparent ;
+		}
+
+
+		
+
+	</style>
+</head>
+
+<body class="post-template-default single single-post postid-20930 single-format-standard">
+
+    <div id="st-preloader">
+        <div id="pre-status">
+            <div class="preload-placeholder"></div>
+        </div>
+    </div>
+<!-- /Preloader -->
+
+<header id="header">	
+	<div id="trueHeader">
+    	<div class="wrapper">
+            <div class="container">
+            	<!-- Menu -->
+            	<div class="menu_main">
+                	<div class="navbar blogx-navbar navbar-default">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#st-navber-collapse">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+
+                                                            <div class="text-logo">
+                                    <a href="http://ms.nala.ga">All About MS CCL Contents</a>
+                                    <p>All About MS CCL Contents</p>
+                                </div><!-- /Logo -->
+                                                    </div>
+                      
+                        <div id="st-navber-collapse" class="navbar-collapse collapse pull-right">
+                             
+                        </div>
+                    </div>
+            	</div><!-- end menu -->
+        	</div> <!-- /.container -->
+    	</div>
+	</div>
+	<DIV class='ads_adsense_img' style='margin:40px 0px 40px 0px;'>
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<!-- only display -->
+	<ins class="adsbygoogle"
+	     style="display:block"
+	     data-ad-client="ca-pub-8393857339019314"
+	     data-ad-slot="7474886381"
+	     data-ad-format="auto"></ins>
+	<script>
+	(adsbygoogle = window.adsbygoogle || []).push({});
+	</script>
+	</DIV>	
+
+</header>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div id="primary" class="content-area">
+                    <main id="main" class="site-main" role="main">
+
+                        
+                                <article id="post-20930" class="post-20930 post type-post status-publish format-standard hentry category-uncategorized tag-api tag-case tag-27242 tag-30621 tag-30620 tag-13740 tag-9176">
+    <header class="entry-header">
+        
+        
+    </header> <!--/.entry-header -->
+
+    <div class="clearfix post-content media">
+
+        <h2 class="entry-title">
+            V CASE API 연동을 통한 컨텐츠 업로드 샘플        </h2> <!-- //.entry-title -->
+
+        <div class="clearfix entry-meta">
+            
+            <ul class="list-inline">
+                <li>
+                    <span class="author vcard">
+                        By <a class="url fn n" href="http://ms.nala.ga/author/admin/">admin</a>                    </span>
+                </li>
+                <li>
+                    on <span class="posted-on">1월 16, 2018</span>
+                </li>
+                                    <li>
+                        in <span class="posted-in">
+                            <a href="http://ms.nala.ga/category/uncategorized/" rel="category tag">미분류</a>                        </span>
+                    </li>
+                            </ul>
+                </div> <!--/.entry-meta -->
+        
+        <div class="entry-summary">
+            <p><img src='http://cfile9.uf.tistory.com/image/24B2A7335965A8110F3A54' style='max-width:250px;min-width:0px;' onError='this.style.display="none"' /></p>
+<h1>3줄 요약 </h1>
+<div style='color:#fff;background-color:#000;border-radius:10px;'>
+<ol>
+<li><span>function ServiceFailed(xhr) {</span></li>
+<li><span>function uploadFile() {</span></li>
+<li><span>type: &#8216;POST&#8217;,</span></li>
+</ol>
+</div>
+<p><span id="more-20930"></span></p>
+<p><iframe src='http://ad.selfhow.com/rd' width='100%' border=0 frameborder=0 style='height:auto;width:100%'></iframe></p>
+<hr />
+<p style="FLOAT: none; TEXT-ALIGN: left; CLEAR: none"><span class="imageblock" style="display:inline-block;width:600px;;height:auto;max-width:100%"><img filemime="image/jpeg" filename="1.jpg" height="308" src="http://cfile9.uf.tistory.com/image/24B2A7335965A8110F3A54" width="600"/></span></p>
+<p style="FLOAT: none; TEXT-ALIGN: left; CLEAR: none"> </p>
+<p style="FLOAT: none; TEXT-ALIGN: left; CLEAR: none"> </p>
+<p style="FLOAT: none; TEXT-ALIGN: left; CLEAR: none"><span style="FONT-SIZE: 10pt">그럼 API 를 통해서 콘텐츠를 업로드 하는 방법입니다.</span></p>
+<p style="FLOAT: none; TEXT-ALIGN: left; CLEAR: none"> </p>
+<p style="FLOAT: none; TEXT-ALIGN: left; CLEAR: none"><span style="FONT-SIZE: 10pt">API 를 이용하는 어플리케이션, 앱, 웹에서 손쉽게 콘텐츠를 V CASE 로 업로드 할 수 있습니다.</span></p>
+<p style="FLOAT: none; TEXT-ALIGN: left; CLEAR: none"> </p>
+<p style="FLOAT: none; TEXT-ALIGN: left; CLEAR: none"> </p>
+<p style="FLOAT: none; TEXT-ALIGN: left; CLEAR: none"><span class="imageblock" style="display:inline-block;width:600px;;height:auto;max-width:100%"><img filemime="image/jpeg" filename="2.jpg" height="421" src="http://cfile24.uf.tistory.com/image/23B271335965A8120FFBFC" width="600"/></span></p>
+<p style="FLOAT: none; TEXT-ALIGN: left; CLEAR: none"> </p>
+<p style="FLOAT: none; TEXT-ALIGN: left; CLEAR: none"><span style="FONT-SIZE: 10pt">콘텐츠를 업로드 하기 위한 API 호출에 대한 인터페이스 명세서 입니다.</span></p>
+<p style="FLOAT: none; TEXT-ALIGN: left; CLEAR: none"><a href="http://upload.vcase2.myskcdn.com:8081"><span style="FONT-SIZE: 10pt">http://upload.vcase2.myskcdn.com:8081</span></a><span style="FONT-SIZE: 10pt"> 의 URL에 호출하여야 하며, API 관리에서 발급 받은 access_token 값과 업로드 할 영상 콘텐츠의 바이너리파일을 file 객체에 담아 전달하는 것이 필수 파라메터로 되어 있습니다.</span></p>
+<p style="FLOAT: none; TEXT-ALIGN: left; CLEAR: none"><span style="FONT-SIZE: 10pt">그 외에는 필수 값이 아닌 옵션입니다. tags 파라메터를 입력하면, 영상에 태그를 입력할 수 있습니다. playlist_ids 파라메터에 입력된 값은 플레이리스트 식별 아이디 리스트로 각 아이디는 콤마(,)로 구분할 수 있습니다.</span></p>
+<p style="FLOAT: none; TEXT-ALIGN: left; CLEAR: none"> </p>
+<p style="FLOAT: none; TEXT-ALIGN: left; CLEAR: none"><span class="imageblock" style="display:inline-block;width:600px;;height:auto;max-width:100%"><img filemime="image/jpeg" filename="3.jpg" height="417" src="http://cfile28.uf.tistory.com/image/232305335965A8120C1EB7" width="600"/></span></p>
+<p style="FLOAT: none; TEXT-ALIGN: left; CLEAR: none"> </p>
+<table border="0" cellpadding="0" cellspacing="0" class="txc-table" style="FONT-SIZE: 13px; BORDER-TOP: medium none; FONT-FAMILY: '맑은 고딕',sans-serif; BORDER-RIGHT: medium none; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: medium none; BORDER-LEFT: medium none" width="564">
+<tbody>
+<tr>
+<td style="BORDER-TOP: #ccc 1px solid; HEIGHT: 24px; BORDER-RIGHT: #ccc 1px solid; WIDTH: 564px; BORDER-BOTTOM: #ccc 1px solid; BORDER-LEFT: #ccc 1px solid">
+<p><span style="FONT-SIZE: 10pt">&lt;%@ Page Language=&#8221;C#&#8221; AutoEventWireup=&#8221;true&#8221; CodeBehind=&#8221;vcaseCallTEST.aspx.cs&#8221; Inherits=&#8221;VCaseAccessTokenWebDemo1.vcaseCallTEST&#8221; %&gt;</span></p>
+<p><span style="FONT-SIZE: 10pt">&lt;!DOCTYPE html&gt;</span></p>
+<p><span style="FONT-SIZE: 10pt">&lt;html xmlns=&#8221;</span><a href="http://www.w3.org/1999/xhtml"><span style="FONT-SIZE: 10pt">http://www.w3.org/1999/xhtml</span></a><span style="FONT-SIZE: 10pt">&#8220;&gt;</span><br /><span style="FONT-SIZE: 10pt">&lt;head runat=&#8221;server&#8221;&gt;</span><br /><span style="FONT-SIZE: 10pt">&lt;meta http-equiv=&#8221;Content-Type&#8221; content=&#8221;text/html; charset=utf-8&#8243; /&gt;</span><br /><span style="FONT-SIZE: 10pt">&lt;title&gt;VCASE API AccessTokey DEMO1&lt;/title&gt;</span><br /><span style="FONT-SIZE: 10pt">&lt;script src=&#8221;</span><a href='https://code.jquery.com/jquery-2.2.0.min.js"&gt;&lt;/script'><span style="FONT-SIZE: 10pt">https://code.jquery.com/jquery-2.2.0.min.js&#8221;&gt;&lt;/script</span></a><span style="FONT-SIZE: 10pt">&gt;</span><br /><span style="FONT-SIZE: 10pt">&lt;script src=&#8221;</span><a href='http://code.jquery.com/ui/1.10.3/jquery-ui.js"&gt;&lt;/script'><span style="FONT-SIZE: 10pt">http://code.jquery.com/ui/1.10.3/jquery-ui.js&#8221;&gt;&lt;/script</span></a><span style="FONT-SIZE: 10pt">&gt;</span></p>
+<p><span style="FONT-SIZE: 10pt">&lt;script type=&#8221;text/javascript&#8221;&gt;</span><br /><span style="FONT-SIZE: 10pt">var url = &#8220;</span><a href="http://222.239.28.216:9090"><span style="FONT-SIZE: 10pt">http://222.239.28.216:9090</span></a><span style="FONT-SIZE: 10pt">&#8220;;</span><br /><span style="FONT-SIZE: 10pt">var uploadUrl = &#8216;http://upload.vcase2.myskcdn.com:8081&#8217;;</span><br /><span style="FONT-SIZE: 10pt">var vCaseAccessKey = &#8216;def57b4019034a19a2b2729ccc002416&#8217;;</span></p>
+<p><span style="FONT-SIZE: 10pt">var Type;</span><br /><span style="FONT-SIZE: 10pt">var Url;</span><br /><span style="FONT-SIZE: 10pt">var Data;</span><br /><span style="FONT-SIZE: 10pt">var ContentType;</span><br /><span style="FONT-SIZE: 10pt">var DataType;</span><br /><span style="FONT-SIZE: 10pt">var ProcessData;</span></p>
+<p><span style="FONT-SIZE: 10pt">// 컨텐츠 가져오기</span><br /><span style="FONT-SIZE: 10pt">function GetContents() {</span><br /><span style="FONT-SIZE: 10pt">// 파라메터</span><br /><span style="FONT-SIZE: 10pt">var parms = new Object();</span><br /><span style="FONT-SIZE: 10pt">parms.access_token = vCaseAccessKey;</span><br /><span style="FONT-SIZE: 10pt">parms.request_id = &#8216;1890740085&#8217;;</span></p>
+<p><span style="FONT-SIZE: 10pt">var jsonData = JSON.stringify(parms);</span><br /><span style="FONT-SIZE: 10pt">Url = url + &#8216;/v1/content/?access_token=&#8217; + vCaseAccessKey + &#8216;&amp;content_id?request_id=1890740085&#8217;;</span></p>
+<p><span style="FONT-SIZE: 10pt">$.ajax({</span><br /><span style="FONT-SIZE: 10pt">type: &#8220;GET&#8221;, //GET or POST or PUT or DELETE verb</span><br /><span style="FONT-SIZE: 10pt">url: Url, // Location of the service</span><br /><span style="FONT-SIZE: 10pt">data: jsonData, //Data sent to server</span><br /><span style="FONT-SIZE: 10pt">contentType: &#8220;application/json; charset=utf-8&#8221;, // content type sent to server</span><br /><span style="FONT-SIZE: 10pt">dataType: &#8220;json&#8221;, //Expected data format from server</span><br /><span style="FONT-SIZE: 10pt">processdata: true, //True or False</span><br /><span style="FONT-SIZE: 10pt">crossDomain: true, //crossDomain</span><br /><span style="FONT-SIZE: 10pt">success: function (result) {//On Successfull service call</span><br /><span style="FONT-SIZE: 10pt">resultObject = result.result;</span><br /><span style="FONT-SIZE: 10pt">document.write(result.result[&#8220;content&#8221;][0]);</span><br /><span style="FONT-SIZE: 10pt">},</span><br /><span style="FONT-SIZE: 10pt">error: ServiceFailed// When Service call fails</span><br /><span style="FONT-SIZE: 10pt">});</span><br /><span style="FONT-SIZE: 10pt">}</span></p>
+<p><span style="FONT-SIZE: 10pt">function ServiceSucceeded(result) {</span><br /><span style="FONT-SIZE: 10pt">resultObject = result.SecureGroupEDITResult;</span></p>
+<p><span style="FONT-SIZE: 10pt">document.write(&#8220;&#8221;);</span></p>
+<p><span style="FONT-SIZE: 10pt">alert(resultObject.Msg);</span><br /><span style="FONT-SIZE: 10pt">alert(resultObject.Result);</span><br /><span style="FONT-SIZE: 10pt">}</span><br /><span style="FONT-SIZE: 10pt">function ServiceFailed(xhr) {</span><br /><span style="FONT-SIZE: 10pt">document.write(&#8220;&#8221;);</span><br /><span style="FONT-SIZE: 10pt">document.write(xhr.responseText);</span></p>
+<p><span style="FONT-SIZE: 10pt">if (xhr.responseText) {</span><br /><span style="FONT-SIZE: 10pt">var err = xhr.responseText;</span><br /><span style="FONT-SIZE: 10pt">if (err)</span><br /><span style="FONT-SIZE: 10pt">error(err);</span><br /><span style="FONT-SIZE: 10pt">else</span><br /><span style="FONT-SIZE: 10pt">error({ Message: &#8220;Unknown server error.&#8221; })</span><br /><span style="FONT-SIZE: 10pt">}</span><br /><span style="FONT-SIZE: 10pt">return;</span><br /><span style="FONT-SIZE: 10pt">}</span></p>
+<p><span style="FONT-SIZE: 10pt">// JQuery 호출부.</span><br /><span style="FONT-SIZE: 10pt">$(document).ready(</span><br /><span style="FONT-SIZE: 10pt">function () {</span><br /><span style="FONT-SIZE: 10pt">//GetContents();</span><br /><span style="FONT-SIZE: 10pt">//UploadContents();</span></p>
+<p><span style="FONT-SIZE: 10pt">}</span><br /><span style="FONT-SIZE: 10pt">);</span><br /><span style="FONT-SIZE: 10pt">function uploadFile() {</span><br /><span style="FONT-SIZE: 10pt">var form = $(&#8216;#form1&#8217;)[0];</span><br /><span style="FONT-SIZE: 10pt">var formData = new FormData(form);</span><br /><span style="FONT-SIZE: 10pt">formData.append(&#8220;file&#8221;, $(&#8220;input[name=filesuploader]&#8221;)[0].files[0]);</span><br /><span style="FONT-SIZE: 10pt">formData.append(&#8220;access_token&#8221;, vCaseAccessKey);</span><br /><span style="FONT-SIZE: 10pt">Url = uploadUrl + &#8216;/v1/content/upload&#8217;;</span></p>
+<p><span style="FONT-SIZE: 10pt">$.ajax({</span><br /><span style="FONT-SIZE: 10pt">url: Url,</span><br /><span style="FONT-SIZE: 10pt">processData: false,</span><br /><span style="FONT-SIZE: 10pt">contentType: false,</span><br /><span style="FONT-SIZE: 10pt">data: formData,</span><br /><span style="FONT-SIZE: 10pt">type: &#8216;POST&#8217;,</span><br /><span style="FONT-SIZE: 10pt">success: function (result) {</span><br /><span style="FONT-SIZE: 10pt">alert(&#8220;업로드 성공!!&#8221;);</span><br /><span style="FONT-SIZE: 10pt">}</span><br /><span style="FONT-SIZE: 10pt">});</span><br /><span style="FONT-SIZE: 10pt">}</span><br /><span style="FONT-SIZE: 10pt">&lt;/script&gt;</span><br /><span style="FONT-SIZE: 10pt">&lt;/head&gt;</span></p>
+<p><span style="FONT-SIZE: 10pt">&lt;body&gt;</span><br /><span style="FONT-SIZE: 10pt">&lt;form id=&#8221;form1&#8243; runat=&#8221;server&#8221; method=&#8221;post&#8221; enctype=&#8221;multipart/form-data&#8221;&gt;</span><br /><span style="FONT-SIZE: 10pt">&lt;div&gt;</span><br /><span style="FONT-SIZE: 10pt">&lt;input type=&#8221;file&#8221; id=&#8221;fileupload&#8221; name=&#8221;filesuploader&#8221;&gt;</span><br /><span style="FONT-SIZE: 10pt">&lt;input type=&#8221;button&#8221; onclick=&#8221;javascript: uploadFile();&#8221; value=&#8221;Send&#8221; /&gt;</span><br /><span style="FONT-SIZE: 10pt">&lt;/div&gt;</span><br /><span style="FONT-SIZE: 10pt">&lt;/form&gt;</span><br /><span style="FONT-SIZE: 10pt">&lt;/body&gt;</span><br /><span style="FONT-SIZE: 10pt">&lt;/html&gt;</span><span style="FONT-SIZE: 10pt"></span><span style="FONT-SIZE: 10pt"> </span></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p style="FLOAT: none; TEXT-ALIGN: left; CLEAR: none"> </p>
+<p style="FLOAT: none; TEXT-ALIGN: left; CLEAR: none"><span style="FONT-SIZE: 10pt">파일 업로드 하는 간단한 샘플을 작성하였습니다.</span></p>
+<p style="FLOAT: none; TEXT-ALIGN: left; CLEAR: none"> </p>
+<p style="TEXT-ALIGN: left">
+<p style="FLOAT: none; TEXT-ALIGN: left; CLEAR: none"><span style="FONT-SIZE: 10pt">POST 방식으로 </span><span style='FONT-SIZE: 9pt; FONT-FAMILY: "맑은 고딕"; COLOR: black; LINE-HEIGHT: 107%; mso-bidi-font-family: 굴림; mso-font-kerning: 0pt; mso-ansi-language: EN-US; mso-fareast-language: KO; mso-bidi-language: AR-SA'><a href="http://upload.vcase2.myskcdn.com:8081/"><span style="FONT-SIZE: 10pt">http://upload.vcase2.myskcdn.com:8081</span></a><span style="FONT-SIZE: 10pt"> 의 URL 에 호출하며, from 태그에 </span></span></p>
+<p style="FLOAT: none; TEXT-ALIGN: left; CLEAR: none"><span style='FONT-SIZE: 9pt; FONT-FAMILY: "맑은 고딕"; COLOR: black; LINE-HEIGHT: 107%; mso-bidi-font-family: 굴림; mso-font-kerning: 0pt; mso-ansi-language: EN-US; mso-fareast-language: KO; mso-bidi-language: AR-SA'></span><span style="FONT-SIZE: 10pt"> </span></p>
+<p style="FLOAT: none; TEXT-ALIGN: left; CLEAR: none"><span style='FONT-SIZE: 10pt; FONT-FAMILY: "맑은 고딕"; COLOR: black; LINE-HEIGHT: 107%; mso-bidi-font-family: 굴림; mso-font-kerning: 0pt; mso-ansi-language: EN-US; mso-fareast-language: KO; mso-bidi-language: AR-SA'>multipart/form-data 방식으로 전달하게 속성을 지정하였습니다.</span></p>
+<p style="FLOAT: none; TEXT-ALIGN: left; CLEAR: none"><span style='FONT-SIZE: 9pt; FONT-FAMILY: "맑은 고딕"; COLOR: black; LINE-HEIGHT: 107%; mso-bidi-font-family: 굴림; mso-font-kerning: 0pt; mso-ansi-language: EN-US; mso-fareast-language: KO; mso-bidi-language: AR-SA'></span><span style="FONT-SIZE: 10pt"> </span></p>
+<p style="FLOAT: none; TEXT-ALIGN: left; CLEAR: none"><span style='FONT-SIZE: 10pt; FONT-FAMILY: "맑은 고딕"; COLOR: black; LINE-HEIGHT: 107%; mso-bidi-font-family: 굴림; mso-font-kerning: 0pt; mso-ansi-language: EN-US; mso-fareast-language: KO; mso-bidi-language: AR-SA'>파일 객체에 파일을 담다 file 파라메터로 전달하고, 인증을 위해서 accsee token 에 값을 담아 전달하였습니다.</span></p>
+<p style="FLOAT: none; TEXT-ALIGN: left; CLEAR: none"><span style='FONT-SIZE: 9pt; FONT-FAMILY: "맑은 고딕"; COLOR: black; LINE-HEIGHT: 107%; mso-bidi-font-family: 굴림; mso-font-kerning: 0pt; mso-ansi-language: EN-US; mso-fareast-language: KO; mso-bidi-language: AR-SA'></span><span style="FONT-SIZE: 10pt"> </span></p>
+<p style="FLOAT: none; TEXT-ALIGN: left; CLEAR: none"><span style='FONT-SIZE: 9pt; FONT-FAMILY: "맑은 고딕"; COLOR: black; LINE-HEIGHT: 107%; mso-bidi-font-family: 굴림; mso-font-kerning: 0pt; mso-ansi-language: EN-US; mso-fareast-language: KO; mso-bidi-language: AR-SA'></span><span style="FONT-SIZE: 10pt"> </span></p>
+<p style="FLOAT: none; TEXT-ALIGN: left; CLEAR: none"><span class="imageblock" style="display:inline-block;width:600px;;height:auto;max-width:100%"><img filemime="image/jpeg" filename="4.jpg" height="390" src="http://cfile7.uf.tistory.com/image/257322335965A8130937A4" width="600"/></span></p>
+<p style="FLOAT: none; TEXT-ALIGN: left; CLEAR: none"> </p>
+<p style="FLOAT: none; TEXT-ALIGN: left; CLEAR: none"> </p>
+<p style="FLOAT: none; TEXT-ALIGN: left; CLEAR: none"><span style="FONT-SIZE: 10pt">파일선택을 눌러 업로드할 파일을 선택하여 줍니다. </span></p>
+<p style="FLOAT: none; TEXT-ALIGN: left; CLEAR: none"> </p>
+<p style="FLOAT: none; TEXT-ALIGN: left; CLEAR: none"><span style="FONT-SIZE: 10pt">단 jQuery 업로드의 제약으로 5MB 이하의 영상을 선택하여야 합니다.</span></p>
+<p style="FLOAT: none; TEXT-ALIGN: left; CLEAR: none"> </p>
+<p style="FLOAT: none; TEXT-ALIGN: left; CLEAR: none"><span style="FONT-SIZE: 10pt">SEND 를 눌러 function 을 호출합니다.</span></p>
+<p style="FLOAT: none; TEXT-ALIGN: left; CLEAR: none"> </p>
+<p style="FLOAT: none; TEXT-ALIGN: left; CLEAR: none"><span class="imageblock" style="display:inline-block;width:600px;;height:auto;max-width:100%"><img filemime="image/jpeg" filename="5.jpg" height="183" src="http://cfile10.uf.tistory.com/image/21D4D2335965A8140E3D6A" width="600"/></span></p>
+<p style="FLOAT: none; TEXT-ALIGN: left; CLEAR: none"> </p>
+<p style="FLOAT: none; TEXT-ALIGN: left; CLEAR: none"> </p>
+<p style="FLOAT: none; TEXT-ALIGN: left; CLEAR: none"> </p>
+<p style="FLOAT: none; TEXT-ALIGN: left; CLEAR: none"><span style="FONT-SIZE: 10pt">파일이 성공적으로 업로드 되었다고 alert 알림창이 뜨게 됩니다.</span></p>
+<p style="FLOAT: none; TEXT-ALIGN: left; CLEAR: none"> </p>
+<p style="FLOAT: none; TEXT-ALIGN: left; CLEAR: none"> </p>
+<p style="FLOAT: none; TEXT-ALIGN: left; CLEAR: none"><span class="imageblock" style="display:inline-block;width:600px;;height:auto;max-width:100%"><img filemime="image/jpeg" filename="6.jpg" height="306" src="http://cfile29.uf.tistory.com/image/229B1B335965A81408BBCD" width="600"/></span></p>
+<p style="FLOAT: none; TEXT-ALIGN: left; CLEAR: none"> </p>
+<p style="FLOAT: none; TEXT-ALIGN: left; CLEAR: none"> </p>
+<p style="FLOAT: none; TEXT-ALIGN: left; CLEAR: none"><span style="FONT-SIZE: 10pt">V CASE 의 콘텐츠에 API 로 업로드 요청한 콘텐츠가 업로드 된 것을 확인할 수 있습니다.</span></p>
+<p style="FLOAT: none; TEXT-ALIGN: left; CLEAR: none"> </p>
+<p style="FLOAT: none; TEXT-ALIGN: left; CLEAR: none"><span style="FONT-SIZE: 10pt">API 제공되는 범위는 크게 콘텐츠 업로드&amp;관리, 플레이어 관리, 라이브 채널 관리, 라이브 DVR 프로파일러, 편성, 퍼블리싱 관리, 광고 콘텐츠 업로드/관리, 통계, 방송관리, 채팅관리, 방송 지역 광고 관리, 서비스 인증 토큰 관리, 코드 관리로 분류됩니다.</span></p>
+<p style="FLOAT: none; TEXT-ALIGN: left; CLEAR: none"> </p>
+<p style="FLOAT: none; TEXT-ALIGN: left; CLEAR: none"><span style="FONT-SIZE: 10pt">콘텐츠 관련된 상세 관리는 콘텐츠 파일 업로드, 재업로드, 원격 콘텐츠 업로드, 콘텐츠 메타 정보수정, 활성화 상태 수정, 콘텐츠 내 자막 바인딩/언바인딩/콘텐츠 목록 조회, 단일 조회, 콘텐츠 썸네일 제출, 콘텐츠 자르기/붙이기 등이 있어 API 를 통한 상세 설정이 가능합니다.</span></p>
+<p style="FLOAT: none; TEXT-ALIGN: left; CLEAR: none"> </p>
+<p style="FLOAT: none; TEXT-ALIGN: left; CLEAR: none"> </p>
+<p style="FLOAT: none; TEXT-ALIGN: left; CLEAR: none"><span class="imageblock" style="display:inline-block;width:600px;;height:auto;max-width:100%"><img filemime="image/jpeg" filename="7.jpg" height="208" src="http://cfile4.uf.tistory.com/image/26D682335965A8150E24EB" width="600"/></span></p>
+<p style="FLOAT: none; TEXT-ALIGN: left; CLEAR: none"> </p>
+<p style="FLOAT: none; TEXT-ALIGN: left; CLEAR: none"> </p>
+<p style="FLOAT: none; TEXT-ALIGN: left; CLEAR: none"> </p>
+<p style="FLOAT: none; TEXT-ALIGN: left; CLEAR: none"><span style="FONT-SIZE: 10pt">업로드 알람 설정은 대용량 미디어 파일을 효과적으로 업로드 관리하는 방법으로 CallBack 을 받아 </span></p>
+<p style="FLOAT: none; TEXT-ALIGN: left; CLEAR: none"><span style="FONT-SIZE: 10pt">고객사 서버로 상태정보를 전달하여 줍니다.</span></p>
+<p style="FLOAT: none; TEXT-ALIGN: left; CLEAR: none"> </p>
+<p style="FLOAT: none; TEXT-ALIGN: left; CLEAR: none"><span style="FONT-SIZE: 10pt">업로드가 정상적으로 되었는지 성공, 실패 등의 정보를 담아 줄 수 있습니다.</span></p>
+<p style="FLOAT: none; TEXT-ALIGN: left; CLEAR: none"> </p>
+<p style="FLOAT: none; TEXT-ALIGN: left; CLEAR: none"> </p>
+<p style="FLOAT: none; TEXT-ALIGN: left; CLEAR: none"><span class="imageblock" style="display:inline-block;width:600px;;height:auto;max-width:100%"><img filemime="image/jpeg" filename="8.jpg" height="155" src="http://cfile3.uf.tistory.com/image/264446335965A8150B8997" width="600"/></span></p>
+<p style="FLOAT: none; TEXT-ALIGN: left; CLEAR: none"> </p>
+<p style="FLOAT: none; TEXT-ALIGN: left; CLEAR: none"><span style="FONT-SIZE: 10pt">rev 파라메터를 추가로 입력하여 API 를 호출하게 되며, 업로드 시 입력한 사용자 매개변수를 그대로 돌려 줍니다. 그로 인해 고객사가 관리하는 데이타베이스(DB)에 로그 기록 및 추가적인 정보를 기록할 수 있게 합니다.</span></p>
+<p style="FLOAT: none; TEXT-ALIGN: left; CLEAR: none"> </p>
+<p style="FLOAT: none; TEXT-ALIGN: left; CLEAR: none"> </p>
+<p style="FLOAT: none; TEXT-ALIGN: left; CLEAR: none"><span class="imageblock" style="display:inline-block;width:600px;;height:auto;max-width:100%"><img filemime="image/jpeg" filename="9.jpg" height="391" src="http://cfile4.uf.tistory.com/image/233DA2335965A81604907F" width="600"/></span></p>
+<p style="FLOAT: none; TEXT-ALIGN: left; CLEAR: none"> </p>
+<p style="FLOAT: none; TEXT-ALIGN: left; CLEAR: none"> </p>
+<p style="FLOAT: none; TEXT-ALIGN: left; CLEAR: none"><span style="FONT-SIZE: 10pt">전송작업이 완료되면, 성공/실패에 해당되는 내용을 설정한 URL 로 알람 메시지를 전달해 줍니다. </span></p>
+<p style="FLOAT: none; TEXT-ALIGN: left; CLEAR: none"> </p>
+<p style="FLOAT: none; TEXT-ALIGN: left; CLEAR: none"><span style="FONT-SIZE: 10pt">콜백 URL 은 GET 또한 POST 메소드를 지정하여 원하는 방식으로 받을 수 있습니다.</span></p>
+<p style="FLOAT: none; TEXT-ALIGN: left; CLEAR: none"> </p>
+<p style="WORD-BREAK: keep-all; TEXT-ALIGN: left; MARGIN: 0cm 0cm 8pt; LINE-HEIGHT: normal; TEXT-AUTOSPACE: ideograph-numeric; mso-margin-top-alt: auto; mso-margin-bottom-alt: auto; mso-pagination: widow-orphan"><span style='FONT-SIZE: 10pt; COLOR: black; mso-ascii-font-family: "맑은 고딕"; mso-fareast-font-family: "맑은 고딕"; mso-hansi-font-family: "맑은 고딕"; mso-bidi-font-family: 굴림; mso-font-kerning: 0pt'>http://user-service-domain.com/vcase-transmission-callback?contents_id={content_id}&amp;state={state}&amp;job_publish_key={job_publish_key}&amp;target_co ntent_id={target_content_id}&amp;rev={rev}</span></p>
+<p style="WORD-BREAK: keep-all; TEXT-ALIGN: left; MARGIN: 0cm 0cm 8pt; LINE-HEIGHT: normal; TEXT-AUTOSPACE: ideograph-numeric; mso-margin-top-alt: auto; mso-margin-bottom-alt: auto; mso-pagination: widow-orphan"><span style='FONT-SIZE: 9pt; COLOR: black; mso-ascii-font-family: "맑은 고딕"; mso-fareast-font-family: "맑은 고딕"; mso-hansi-font-family: "맑은 고딕"; mso-bidi-font-family: 굴림; mso-font-kerning: 0pt'></span><span style="FONT-SIZE: 10pt"> </span></p>
+<p style="WORD-BREAK: keep-all; TEXT-ALIGN: left; MARGIN: 0cm 0cm 8pt; LINE-HEIGHT: normal; TEXT-AUTOSPACE: ideograph-numeric; mso-margin-top-alt: auto; mso-margin-bottom-alt: auto; mso-pagination: widow-orphan"><span style='FONT-SIZE: 9pt; COLOR: black; mso-ascii-font-family: "맑은 고딕"; mso-fareast-font-family: "맑은 고딕"; mso-hansi-font-family: "맑은 고딕"; mso-bidi-font-family: 굴림; mso-font-kerning: 0pt'><span style='FONT-SIZE: 10pt; FONT-FAMILY: "맑은 고딕"; COLOR: black; LINE-HEIGHT: 107%; mso-bidi-font-family: 굴림; mso-font-kerning: 0pt; mso-ansi-language: EN-US; mso-fareast-language: KO; mso-bidi-language: AR-SA'>user-service-domain.com/vcase-transmission-callback 은 고객사 서비스에서 직업 상태에 대한 콜백을</span></span></p>
+<p style="WORD-BREAK: keep-all; TEXT-ALIGN: left; MARGIN: 0cm 0cm 8pt; LINE-HEIGHT: normal; TEXT-AUTOSPACE: ideograph-numeric; mso-margin-top-alt: auto; mso-margin-bottom-alt: auto; mso-pagination: widow-orphan"><span style='FONT-SIZE: 9pt; COLOR: black; mso-ascii-font-family: "맑은 고딕"; mso-fareast-font-family: "맑은 고딕"; mso-hansi-font-family: "맑은 고딕"; mso-bidi-font-family: 굴림; mso-font-kerning: 0pt'><span style='FONT-SIZE: 9pt; FONT-FAMILY: "맑은 고딕"; COLOR: black; LINE-HEIGHT: 107%; mso-bidi-font-family: 굴림; mso-font-kerning: 0pt; mso-ansi-language: EN-US; mso-fareast-language: KO; mso-bidi-language: AR-SA'><span style="FONT-SIZE: 10pt"> </span><span style="FONT-SIZE: 10pt">받</span></span></span><span style='FONT-SIZE: 9pt; COLOR: black; mso-ascii-font-family: "맑은 고딕"; mso-fareast-font-family: "맑은 고딕"; mso-hansi-font-family: "맑은 고딕"; mso-bidi-font-family: 굴림; mso-font-kerning: 0pt'><span style='FONT-SIZE: 9pt; FONT-FAMILY: "맑은 고딕"; COLOR: black; LINE-HEIGHT: 107%; mso-bidi-font-family: 굴림; mso-font-kerning: 0pt; mso-ansi-language: EN-US; mso-fareast-language: KO; mso-bidi-language: AR-SA'><span style="FONT-SIZE: 10pt">을 수 있도록 제작한 URI 입니다.</span><span style="FONT-SIZE: 10pt"> </span></span></span></p>
+<p style="WORD-BREAK: keep-all; TEXT-ALIGN: left; MARGIN: 0cm 0cm 8pt; LINE-HEIGHT: normal; TEXT-AUTOSPACE: ideograph-numeric; mso-margin-top-alt: auto; mso-margin-bottom-alt: auto; mso-pagination: widow-orphan"><span style='FONT-SIZE: 9pt; COLOR: black; mso-ascii-font-family: "맑은 고딕"; mso-fareast-font-family: "맑은 고딕"; mso-hansi-font-family: "맑은 고딕"; mso-bidi-font-family: 굴림; mso-font-kerning: 0pt'><span style='FONT-SIZE: 9pt; FONT-FAMILY: "맑은 고딕"; COLOR: black; LINE-HEIGHT: 107%; mso-bidi-font-family: 굴림; mso-font-kerning: 0pt; mso-ansi-language: EN-US; mso-fareast-language: KO; mso-bidi-language: AR-SA'></span></span><span style="FONT-SIZE: 10pt"> </span></p>
+<p style="WORD-BREAK: keep-all; TEXT-ALIGN: left; MARGIN: 0cm 0cm 8pt; LINE-HEIGHT: normal; TEXT-AUTOSPACE: ideograph-numeric; mso-margin-top-alt: auto; mso-margin-bottom-alt: auto; mso-pagination: widow-orphan"><span style='FONT-SIZE: 9pt; COLOR: black; mso-ascii-font-family: "맑은 고딕"; mso-fareast-font-family: "맑은 고딕"; mso-hansi-font-family: "맑은 고딕"; mso-bidi-font-family: 굴림; mso-font-kerning: 0pt'><span style='FONT-SIZE: 9pt; FONT-FAMILY: "맑은 고딕"; COLOR: black; LINE-HEIGHT: 107%; mso-bidi-font-family: 굴림; mso-font-kerning: 0pt; mso-ansi-language: EN-US; mso-fareast-language: KO; mso-bidi-language: AR-SA'><span style='FONT-SIZE: 10pt; FONT-FAMILY: "맑은 고딕"; COLOR: black; LINE-HEIGHT: 107%; mso-bidi-font-family: 굴림; mso-font-kerning: 0pt; mso-ansi-language: EN-US; mso-fareast-language: KO; mso-bidi-language: AR-SA'>{contents_id}, {state}, {rev}와 같은 Vcase 의 시스템 메타 정보이며, </span></span></span></p>
+<p style="WORD-BREAK: keep-all; TEXT-ALIGN: left; MARGIN: 0cm 0cm 8pt; LINE-HEIGHT: normal; TEXT-AUTOSPACE: ideograph-numeric; mso-margin-top-alt: auto; mso-margin-bottom-alt: auto; mso-pagination: widow-orphan"><span style='FONT-SIZE: 9pt; COLOR: black; mso-ascii-font-family: "맑은 고딕"; mso-fareast-font-family: "맑은 고딕"; mso-hansi-font-family: "맑은 고딕"; mso-bidi-font-family: 굴림; mso-font-kerning: 0pt'><span style='FONT-SIZE: 9pt; FONT-FAMILY: "맑은 고딕"; COLOR: black; LINE-HEIGHT: 107%; mso-bidi-font-family: 굴림; mso-font-kerning: 0pt; mso-ansi-language: EN-US; mso-fareast-language: KO; mso-bidi-language: AR-SA'><span style='FONT-SIZE: 10pt; FONT-FAMILY: "맑은 고딕"; COLOR: black; LINE-HEIGHT: 107%; mso-bidi-font-family: 굴림; mso-font-kerning: 0pt; mso-ansi-language: EN-US; mso-fareast-language: KO; mso-bidi-language: AR-SA'>상기 URI에서 지정한 방식대로 전</span></span></span><span style='FONT-SIZE: 9pt; COLOR: black; mso-ascii-font-family: "맑은 고딕"; mso-fareast-font-family: "맑은 고딕"; mso-hansi-font-family: "맑은 고딕"; mso-bidi-font-family: 굴림; mso-font-kerning: 0pt'><span style='FONT-SIZE: 9pt; FONT-FAMILY: "맑은 고딕"; COLOR: black; LINE-HEIGHT: 107%; mso-bidi-font-family: 굴림; mso-font-kerning: 0pt; mso-ansi-language: EN-US; mso-fareast-language: KO; mso-bidi-language: AR-SA'><span style='FONT-SIZE: 10pt; FONT-FAMILY: "맑은 고딕"; COLOR: black; LINE-HEIGHT: 107%; mso-bidi-font-family: 굴림; mso-font-kerning: 0pt; mso-ansi-language: EN-US; mso-fareast-language: KO; mso-bidi-language: AR-SA'>달하게 됩니다.</span></span></span></p>
+<p style="WORD-BREAK: keep-all; TEXT-ALIGN: left; MARGIN: 0cm 0cm 8pt; LINE-HEIGHT: normal; TEXT-AUTOSPACE: ideograph-numeric; mso-margin-top-alt: auto; mso-margin-bottom-alt: auto; mso-pagination: widow-orphan"><span style='FONT-SIZE: 9pt; COLOR: black; mso-ascii-font-family: "맑은 고딕"; mso-fareast-font-family: "맑은 고딕"; mso-hansi-font-family: "맑은 고딕"; mso-bidi-font-family: 굴림; mso-font-kerning: 0pt'><span style='FONT-SIZE: 9pt; FONT-FAMILY: "맑은 고딕"; COLOR: black; LINE-HEIGHT: 107%; mso-bidi-font-family: 굴림; mso-font-kerning: 0pt; mso-ansi-language: EN-US; mso-fareast-language: KO; mso-bidi-language: AR-SA'><span style='FONT-SIZE: 9pt; FONT-FAMILY: "맑은 고딕"; COLOR: black; LINE-HEIGHT: 107%; mso-bidi-font-family: 굴림; mso-font-kerning: 0pt; mso-ansi-language: EN-US; mso-fareast-language: KO; mso-bidi-language: AR-SA'></span></span></span><span style="FONT-SIZE: 10pt"> </span></p>
+<p style="FLOAT: none; TEXT-ALIGN: left; CLEAR: none"><span class="imageblock" style="display:inline-block;width:600px;;height:auto;max-width:100%"><img filemime="image/jpeg" filename="10.jpg" height="403" src="http://cfile30.uf.tistory.com/image/23D522335965A817094F53" width="600"/></span></p>
+<p style="FLOAT: none; TEXT-ALIGN: left; CLEAR: none"> </p>
+<p style="FLOAT: none; TEXT-ALIGN: left; CLEAR: none"> </p>
+<p style="FLOAT: none; TEXT-ALIGN: left; CLEAR: none"><span style="FONT-SIZE: 10pt">어플리케이션, 웹, 앱까지 다양한 범위에서 사용할 수 있는 V CASE 에서 제공되는 </span></p>
+<p style="FLOAT: none; TEXT-ALIGN: left; CLEAR: none"><span style="FONT-SIZE: 10pt">SDK 및 API 연동에 대해서 알아 보았습니다.</span></p>
+<p style="FLOAT: none; TEXT-ALIGN: left; CLEAR: none"> </p>
+<p style="FLOAT: none; TEXT-ALIGN: left; CLEAR: none"><span style="FONT-SIZE: 10pt">인증 토큰을 통해서 V CASE 의 기능을 모두 API 로 제어할 수 있는 강력함을 제공하여 주었습니다.</span></p>
+<p style="FLOAT: none; TEXT-ALIGN: left; CLEAR: none"> </p>
+<p style="FLOAT: none; TEXT-ALIGN: left; CLEAR: none"><span style="FONT-SIZE: 10pt">고객사가 원하는 개발 시 필요한 모든 API 제공되며, 손쉬운 온라인 비디오 플랫폼을 사용할 수 있게 </span></p>
+<p style="FLOAT: none; TEXT-ALIGN: left; CLEAR: none"><span style="FONT-SIZE: 10pt">해 주었고, 손쉬운 연동으로 개발의 시간적인 단축을 가능하게 해줍니다.</span></p>
+<p style="TEXT-ALIGN: left">
+<hr />
+<p><iframe src='http://ad.selfhow.com/rd' width='100%' border=0 frameborder=0 style='height:auto;width:100%'></iframe></p>
+<p><a href='http://vcase.tistory.com/10' target='_blank'>Origin Content : vcase-story</a> | <a href="/cdn-cgi/l/email-protection#2645454a456648474a47084147" target='_blank'>Contact : <span class="__cf_email__" data-cfemail="2546464946654b4449440b4244">[email&#160;protected]</span></a>
+</p>
+<p>Cotent License : CC-BY </p>
+<p>This content is collected under the CCL license.</p>
+<p>Please check the license of the original article before asking about copyright.</p>
+<ul>
+<li><a href='/tag/CASE'>More About <span style='font-weight:bold;'>CASE</span></a></li>
+<li><a href='/tag/API'>More About <span style='font-weight:bold;'>API</span></a></li>
+<li><a href='/tag/연동'>More About <span style='font-weight:bold;'>연동</span></a></li>
+<li><a href='/tag/통한'>More About <span style='font-weight:bold;'>통한</span></a></li>
+<li><a href='/tag/컨텐츠'>More About <span style='font-weight:bold;'>컨텐츠</span></a></li>
+<li><a href='/tag/업로드'>More About <span style='font-weight:bold;'>업로드</span></a></li>
+<li><a href='/tag/샘플'>More About <span style='font-weight:bold;'>샘플</span></a></li>
+</ul>
+        </div> <!-- //.entry-summary -->
+        
+                    <div class="entry-tags"><b>Tags:</b> <a href="http://ms.nala.ga/tag/api/" rel="tag">API</a>, <a href="http://ms.nala.ga/tag/case/" rel="tag">CASE</a>, <a href="http://ms.nala.ga/tag/%ec%83%98%ed%94%8c/" rel="tag">샘플</a>, <a href="http://ms.nala.ga/tag/%ec%97%85%eb%a1%9c%eb%93%9c/" rel="tag">업로드</a>, <a href="http://ms.nala.ga/tag/%ec%97%b0%eb%8f%99/" rel="tag">연동</a>, <a href="http://ms.nala.ga/tag/%ec%bb%a8%ed%85%90%ec%b8%a0/" rel="tag">컨텐츠</a>, <a href="http://ms.nala.ga/tag/%ed%86%b5%ed%95%9c/" rel="tag">통한</a></div>
+        
+    </div>
+
+</article> <!--/#post-->
+
+
+
+
+
+                                                                    <div class="post-nav-area">
+                                                    
+            <nav class="next-previous-post clearfix media" role="navigation">
+                <div class="row">
+                    <!-- Previous Post -->
+                    <div class="previous-post col-sm-6 pull-left">
+                        <div class="nav-previous"><i class="fa fa-angle-left"></i> <a href="http://ms.nala.ga/etc-%eb%a1%a4-%ec%b6%94%ec%a0%81%ea%b8%b0-%eb%a7%8c%eb%93%a4%ea%b8%b0/" rel="prev">[etc] 롤 추적기 만들기</a></div>                    </div>
+
+                    <!-- Next Post -->
+                    <div class="next-post col-sm-6 pull-right text-right">
+                        <div class="nav-next"><a href="http://ms.nala.ga/cd%ea%b5%ac%ec%9b%8c%ec%a3%bc%eb%8a%94%ea%b3%b3-%ea%b8%b0%ea%b3%a0%ec%b9%bc%eb%9f%bc-%eb%83%85%ec%8a%a4%ed%84%b0-%eb%b6%80%ed%84%b0-p2p%ea%b9%8c%ec%a7%80-pc%ec%99%80-%eb%aa%a8%eb%b0%94%ec%9d%bc/" rel="next">CD구워주는곳 [기고칼럼] 냅스터 부터 P2P까지, PC와 모바일의 클라이언트-서버 모델</a> <i class="fa fa-angle-right"></i></div>                    </div>
+                </div>
+            </nav><!-- .navigation -->
+            
+                                            </div>
+                                
+                                
+                            
+                                            </main> <!-- /.site-main -->
+                </div>  <!-- /.content-area -->
+            </div> <!-- /col -->
+
+            <!-- Blogsidebar -->
+            
+	<div class="col-md-4">
+	    <div class="primary-sidebar widget-area" role="complementary">
+	        <div id="tag_cloud-2" class="widget widget_tag_cloud"><h2 class="widget-title">태그</h2><div class="tagcloud"><a href="http://ms.nala.ga/tag/1%ec%9b%94/" class="tag-cloud-link tag-link-2 tag-link-position-1" style="font-size: 18.440677966102pt;" aria-label="1월 (115 아이템)">1월</a>
+<a href="http://ms.nala.ga/tag/2017/" class="tag-cloud-link tag-link-21 tag-link-position-2" style="font-size: 17.016949152542pt;" aria-label="2017 (98 아이템)">2017</a>
+<a href="http://ms.nala.ga/tag/2017%eb%85%84/" class="tag-cloud-link tag-link-551 tag-link-position-3" style="font-size: 14.406779661017pt;" aria-label="2017년 (77 아이템)">2017년</a>
+<a href="http://ms.nala.ga/tag/2018/" class="tag-cloud-link tag-link-155 tag-link-position-4" style="font-size: 15.830508474576pt;" aria-label="2018 (89 아이템)">2018</a>
+<a href="http://ms.nala.ga/tag/2018%eb%85%84/" class="tag-cloud-link tag-link-64 tag-link-position-5" style="font-size: 19.864406779661pt;" aria-label="2018년 (130 아이템)">2018년</a>
+<a href="http://ms.nala.ga/tag/the/" class="tag-cloud-link tag-link-310 tag-link-position-6" style="font-size: 11.322033898305pt;" aria-label="the (57 아이템)">the</a>
+<a href="http://ms.nala.ga/tag/vs/" class="tag-cloud-link tag-link-128 tag-link-position-7" style="font-size: 8pt;" aria-label="vs (41 아이템)">vs</a>
+<a href="http://ms.nala.ga/tag/%ea%b0%80%ea%b2%a9/" class="tag-cloud-link tag-link-275 tag-link-position-8" style="font-size: 12.271186440678pt;" aria-label="가격 (62 아이템)">가격</a>
+<a href="http://ms.nala.ga/tag/%ea%b2%b0%ed%98%bc/" class="tag-cloud-link tag-link-501 tag-link-position-9" style="font-size: 20.338983050847pt;" aria-label="결혼 (136 아이템)">결혼</a>
+<a href="http://ms.nala.ga/tag/%ea%b3%b5%ea%b0%9c/" class="tag-cloud-link tag-link-260 tag-link-position-10" style="font-size: 9.8983050847458pt;" aria-label="공개 (49 아이템)">공개</a>
+<a href="http://ms.nala.ga/tag/%ea%b7%b8%eb%a6%ac%ea%b3%a0/" class="tag-cloud-link tag-link-980 tag-link-position-11" style="font-size: 10.135593220339pt;" aria-label="그리고 (50 아이템)">그리고</a>
+<a href="http://ms.nala.ga/tag/%eb%82%98%ec%9d%b4%ec%b0%a8/" class="tag-cloud-link tag-link-1184 tag-link-position-12" style="font-size: 8.2372881355932pt;" aria-label="나이차 (42 아이템)">나이차</a>
+<a href="http://ms.nala.ga/tag/%eb%82%a8%ec%9e%90/" class="tag-cloud-link tag-link-364 tag-link-position-13" style="font-size: 9.4237288135593pt;" aria-label="남자 (47 아이템)">남자</a>
+<a href="http://ms.nala.ga/tag/%eb%82%a8%ed%8e%b8/" class="tag-cloud-link tag-link-603 tag-link-position-14" style="font-size: 16.305084745763pt;" aria-label="남편 (92 아이템)">남편</a>
+<a href="http://ms.nala.ga/tag/%eb%85%b8%eb%9e%98/" class="tag-cloud-link tag-link-713 tag-link-position-15" style="font-size: 8.9491525423729pt;" aria-label="노래 (45 아이템)">노래</a>
+<a href="http://ms.nala.ga/tag/%eb%8c%80%ed%95%9c/" class="tag-cloud-link tag-link-3572 tag-link-position-16" style="font-size: 10.135593220339pt;" aria-label="대한 (50 아이템)">대한</a>
+<a href="http://ms.nala.ga/tag/%eb%93%9c%eb%9d%bc%eb%a7%88/" class="tag-cloud-link tag-link-1041 tag-link-position-17" style="font-size: 16.542372881356pt;" aria-label="드라마 (95 아이템)">드라마</a>
+<a href="http://ms.nala.ga/tag/%eb%a6%ac%eb%b7%b0/" class="tag-cloud-link tag-link-447 tag-link-position-18" style="font-size: 12.508474576271pt;" aria-label="리뷰 (64 아이템)">리뷰</a>
+<a href="http://ms.nala.ga/tag/%eb%a7%9b%ec%a7%91/" class="tag-cloud-link tag-link-782 tag-link-position-19" style="font-size: 16.779661016949pt;" aria-label="맛집 (97 아이템)">맛집</a>
+<a href="http://ms.nala.ga/tag/%eb%aa%a8%ec%9d%8c/" class="tag-cloud-link tag-link-1142 tag-link-position-20" style="font-size: 13.694915254237pt;" aria-label="모음 (72 아이템)">모음</a>
+<a href="http://ms.nala.ga/tag/%eb%aa%b8%eb%a7%a4/" class="tag-cloud-link tag-link-2391 tag-link-position-21" style="font-size: 15.830508474576pt;" aria-label="몸매 (88 아이템)">몸매</a>
+<a href="http://ms.nala.ga/tag/%eb%b0%a9%eb%b2%95/" class="tag-cloud-link tag-link-930 tag-link-position-22" style="font-size: 17.491525423729pt;" aria-label="방법 (103 아이템)">방법</a>
+<a href="http://ms.nala.ga/tag/%eb%b0%b0%ec%9a%b0/" class="tag-cloud-link tag-link-895 tag-link-position-23" style="font-size: 15.593220338983pt;" aria-label="배우 (86 아이템)">배우</a>
+<a href="http://ms.nala.ga/tag/%eb%b6%80%ec%82%b0/" class="tag-cloud-link tag-link-157 tag-link-position-24" style="font-size: 8.4745762711864pt;" aria-label="부산 (43 아이템)">부산</a>
+<a href="http://ms.nala.ga/tag/%ec%82%ac%eb%9e%91/" class="tag-cloud-link tag-link-2972 tag-link-position-25" style="font-size: 14.406779661017pt;" aria-label="사랑 (77 아이템)">사랑</a>
+<a href="http://ms.nala.ga/tag/%ec%82%ac%ec%a7%84/" class="tag-cloud-link tag-link-410 tag-link-position-26" style="font-size: 9.4237288135593pt;" aria-label="사진 (47 아이템)">사진</a>
+<a href="http://ms.nala.ga/tag/%ec%95%84%eb%82%b4/" class="tag-cloud-link tag-link-3039 tag-link-position-27" style="font-size: 9.6610169491525pt;" aria-label="아내 (48 아이템)">아내</a>
+<a href="http://ms.nala.ga/tag/%ec%95%88%eb%82%b4/" class="tag-cloud-link tag-link-1327 tag-link-position-28" style="font-size: 11.322033898305pt;" aria-label="안내 (56 아이템)">안내</a>
+<a href="http://ms.nala.ga/tag/%ec%95%8c%ec%95%84%eb%b3%b4%ea%b8%b0/" class="tag-cloud-link tag-link-821 tag-link-position-29" style="font-size: 15.118644067797pt;" aria-label="알아보기 (82 아이템)">알아보기</a>
+<a href="http://ms.nala.ga/tag/%ec%95%8c%ec%95%84%eb%b3%b4%ec%9e%90/" class="tag-cloud-link tag-link-341 tag-link-position-30" style="font-size: 11.322033898305pt;" aria-label="알아보자 (56 아이템)">알아보자</a>
+<a href="http://ms.nala.ga/tag/%ec%97%ac%ed%96%89/" class="tag-cloud-link tag-link-873 tag-link-position-31" style="font-size: 17.016949152542pt;" aria-label="여행 (98 아이템)">여행</a>
+<a href="http://ms.nala.ga/tag/%ec%98%81%ed%99%94/" class="tag-cloud-link tag-link-562 tag-link-position-32" style="font-size: 19.389830508475pt;" aria-label="영화 (124 아이템)">영화</a>
+<a href="http://ms.nala.ga/tag/%ec%98%a4%eb%8a%98/" class="tag-cloud-link tag-link-1059 tag-link-position-33" style="font-size: 13.694915254237pt;" aria-label="오늘 (72 아이템)">오늘</a>
+<a href="http://ms.nala.ga/tag/%ec%9a%b0%eb%a6%ac/" class="tag-cloud-link tag-link-888 tag-link-position-34" style="font-size: 11.322033898305pt;" aria-label="우리 (57 아이템)">우리</a>
+<a href="http://ms.nala.ga/tag/%ec%9c%84%ed%95%9c/" class="tag-cloud-link tag-link-1175 tag-link-position-35" style="font-size: 12.983050847458pt;" aria-label="위한 (66 아이템)">위한</a>
+<a href="http://ms.nala.ga/tag/%ec%9d%b4%ec%95%bc%ea%b8%b0/" class="tag-cloud-link tag-link-611 tag-link-position-36" style="font-size: 12.508474576271pt;" aria-label="이야기 (64 아이템)">이야기</a>
+<a href="http://ms.nala.ga/tag/%ec%9d%b4%ec%9c%a0/" class="tag-cloud-link tag-link-296 tag-link-position-37" style="font-size: 10.372881355932pt;" aria-label="이유 (51 아이템)">이유</a>
+<a href="http://ms.nala.ga/tag/%ec%9e%90%ea%b2%a9%ec%a6%9d/" class="tag-cloud-link tag-link-2111 tag-link-position-38" style="font-size: 9.4237288135593pt;" aria-label="자격증 (47 아이템)">자격증</a>
+<a href="http://ms.nala.ga/tag/%ec%a0%95%eb%a6%ac/" class="tag-cloud-link tag-link-1831 tag-link-position-39" style="font-size: 13.220338983051pt;" aria-label="정리 (68 아이템)">정리</a>
+<a href="http://ms.nala.ga/tag/%ec%a0%95%eb%b3%b4/" class="tag-cloud-link tag-link-89 tag-link-position-40" style="font-size: 15.118644067797pt;" aria-label="정보 (83 아이템)">정보</a>
+<a href="http://ms.nala.ga/tag/%ec%b6%94%ec%b2%9c/" class="tag-cloud-link tag-link-146 tag-link-position-41" style="font-size: 22pt;" aria-label="추천 (162 아이템)">추천</a>
+<a href="http://ms.nala.ga/tag/%ec%b6%9c%ec%97%b0/" class="tag-cloud-link tag-link-2930 tag-link-position-42" style="font-size: 10.847457627119pt;" aria-label="출연 (54 아이템)">출연</a>
+<a href="http://ms.nala.ga/tag/%ed%95%9c%ea%b5%ad/" class="tag-cloud-link tag-link-3361 tag-link-position-43" style="font-size: 11.796610169492pt;" aria-label="한국 (59 아이템)">한국</a>
+<a href="http://ms.nala.ga/tag/%ed%9a%a8%eb%8a%a5/" class="tag-cloud-link tag-link-810 tag-link-position-44" style="font-size: 9.6610169491525pt;" aria-label="효능 (48 아이템)">효능</a>
+<a href="http://ms.nala.ga/tag/%ed%9b%84%ea%b8%b0/" class="tag-cloud-link tag-link-14 tag-link-position-45" style="font-size: 17.966101694915pt;" aria-label="후기 (109 아이템)">후기</a></div>
+</div>	    </div>
+	</div>
+
+        </div> <!-- /.row -->
+    </div> <!-- /.container -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <hr>
+            </div>
+        </div>
+    </div>
+    <footer class="site-footer" role="contentinfo">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 text-center">
+  
+                    <p></p>
+                    
+                                            <div class="footer-social-icons">
+                                                                                                                                                                                                                                                                                                                                                                                                        
+                        </div>
+                    
+                </div>
+            </div>
+        </div>
+    </footer>
+
+            <div class="scroll-up">
+            <a href="#"><i class="fa fa-angle-up"></i></a>
+        </div>
+        <!-- Scroll Up -->
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/af2821b0/cloudflare-static/email-decode.min.js"></script><script type='text/javascript' src='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/js/bootstrap.min.js?ver=3.3.5'></script>
+<script type='text/javascript' src='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/js/scripts.js'></script>
+<script type='text/javascript' src='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/js/jquery.fitvids.js'></script>
+<script type='text/javascript' src='http://ms.nala.ga/wp-content/themes/shaped-blog/assets/js/smoothscroll.js'></script>
+<script type='text/javascript' src='http://ms.nala.ga/wp-includes/js/wp-embed.min.js?ver=4.8.4'></script>
+    </body>
+</html>
